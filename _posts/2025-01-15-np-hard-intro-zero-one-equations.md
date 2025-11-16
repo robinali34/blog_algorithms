@@ -2,7 +2,7 @@
 layout: post
 title: "Linear Programming: Zero-One Equations (ZOE)"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, CS6515, Linear Algebra]
+categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms, Linear Algebra]
 excerpt: "An introduction to NP-hardness through the Zero-One Equations Problem, covering problem definition, NP-completeness proof, and connections to Integer Linear Programming and 3-SAT."
 ---
 

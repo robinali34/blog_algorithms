@@ -1,6 +1,6 @@
 # Site settings
 title: "Robina Li"
-description: "CS6515 Blog - Graduate Algorithms course notes and resources"
+description: "Algorithms Blog - Graduate Algorithms course notes and resources"
 baseurl: "/blog_algorithms" # the subpath of your site, e.g. /blog_algorithms
 url: "https://robinali34.github.io/blog_algorithms/" # the base hostname & protocol for your site
 

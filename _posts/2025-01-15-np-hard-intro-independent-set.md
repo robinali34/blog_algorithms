@@ -2,7 +2,7 @@
 layout: post
 title: "NP-Hard Introduction: The Independent Set Problem"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, CS6515, Graph Theory]
+categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms, Graph Theory]
 excerpt: "An introduction to NP-hardness through the Independent Set Problem, covering problem definition, NP-completeness proof, and connections to Clique and Vertex Cover problems."
 ---
 

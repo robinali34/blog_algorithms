@@ -2,7 +2,7 @@
 layout: post
 title: "NP-Hard Introduction: 3D Matching"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, CS6515, Graph Theory]
+categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms, Graph Theory]
 excerpt: "An introduction to NP-hardness through the 3D Matching Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to bipartite matching."
 ---
 

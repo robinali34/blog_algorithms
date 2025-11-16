@@ -6,9 +6,9 @@ permalink: /about/
 
 ## About
 
-Welcome to my CS6515 Graduate Algorithms blog!
+Welcome to my Graduate Algorithms blog!
 
-This blog focuses on CS6515 course notes, study guides, and algorithm resources. Here you'll find comprehensive notes, problem-solving strategies, and study materials for the Graduate Algorithms course.
+This blog focuses on Algorithms course notes, study guides, and algorithm resources. Here you'll find comprehensive notes, problem-solving strategies, and study materials for the Graduate Algorithms course.
 
 ## What You'll Find Here
 

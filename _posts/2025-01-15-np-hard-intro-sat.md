@@ -2,7 +2,7 @@
 layout: post
 title: "NP-Hard Introduction: The Boolean Satisfiability Problem (SAT)"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, CS6515]
+categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms]
 excerpt: "An introduction to NP-hardness through the Boolean Satisfiability Problem (SAT), covering problem definition, NP-completeness, Cook-Levin theorem, and reduction techniques."
 ---
 

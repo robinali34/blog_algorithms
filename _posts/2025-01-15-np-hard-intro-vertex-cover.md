@@ -2,7 +2,7 @@
 layout: post
 title: "NP-Hard Introduction: The Vertex Cover Problem"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, CS6515, Graph Theory]
+categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms, Graph Theory]
 excerpt: "An introduction to NP-hardness through the Vertex Cover Problem, covering problem definition, NP-completeness proof, and connections to Independent Set and Clique problems."
 ---
 

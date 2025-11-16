@@ -1,6 +1,6 @@
-# CS6515 Blog
+# Algorithms Blog
 
-A blog focused on CS6515 Graduate Algorithms course notes, study guides, and resources. Powered by Jekyll and GitHub Pages.
+A blog focused on Graduate Algorithms course notes, study guides, and resources. Powered by Jekyll and GitHub Pages.
 
 ## Features
 
