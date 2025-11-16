@@ -65,52 +65,52 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix $A \in \mathbb{Z}^{m \times n}$ (coefficient matrix)</li>
-  <li>A vector $b \in \mathbb{Z}^m$ (right-hand side)</li>
+  <li>A matrix A in mathbb{Z}^{m times n} (coefficient matrix)</li>
+  <li>A vector b in mathbb{Z}^m (right-hand side)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a vector $x \in {0,1}^n$ such that $Ax = b$, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a vector x in {0,1}^n such that Ax = b, NO otherwise</p>
 
-<p><strong>Note:</strong> This is different from general linear equations (which can be solved in polynomial time) because we require $x_i \in {0,1}$ for all $i$.</p>
+<p><strong>Note:</strong> This is different from general linear equations (which can be solved in polynomial time) because we require x_i in {0,1} for all i.</p>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the system:</p>
 
-\[\begin{align}
-x_1 + x_2 + x_3 &amp;= 2 \\
-x_1 + x_3 &amp;= 1 \\
-x_2 + x_3 &amp;= 1
-\end{align}\]
+<p>begin{align}
+x₁ + x₁ + x₁ &amp;= 2 
+x₁ + x₁ &amp;= 1 
+x₁ + x₁ &amp;= 1
+end{align}</p>
 
-<p>where $x_1, x_2, x_3 \in {0,1}$.</p>
+<p>where x₁, x₁, x₁ ∈ {0,1}.</p>
 
 <p><strong>Trying solutions:</strong></p>
 <ul>
-  <li>$(1, 1, 0)$: $1+1+0=2$ ✓, $1+0=1$ ✓, $1+0=1$ ✓ (satisfies all equations!)</li>
-  <li>$(1, 0, 1)$: $1+0+1=2$ ✓, $1+1=2$ ✗</li>
-  <li>$(0, 1, 1)$: $0+1+1=2$ ✓, $0+1=1$ ✓, $1+1=2$ ✗</li>
-  <li>$(1, 1, 1)$: $1+1+1=3$ ✗</li>
+  <li>(1, 1, 0): 1+1+0=2 ✓, 1+0=1 ✓, 1+0=1 ✓ (satisfies all equations!)</li>
+  <li>(1, 0, 1): 1+0+1=2 ✓, 1+1=2 ✗</li>
+  <li>(0, 1, 1): 0+1+1=2 ✓, 0+1=1 ✓, 1+1=2 ✗</li>
+  <li>(1, 1, 1): 1+1+1=3 ✗</li>
 </ul>
 
-<p>So $(1, 1, 0)$ is a solution.</p>
+<p>So (1, 1, 0) is a solution.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
 <p>For the system:
-\(\begin{align}
-2x_1 + x_2 &amp;= 2 \\
-x_1 + x_2 + x_3 &amp;= 2
-\end{align}\)</p>
+begin{align}
+2x₁ + x₁ &amp;= 2 
+x₁ + x₁ + x₁ &amp;= 2
+end{align}</p>
 
 <p><strong>Possible 0-1 solutions:</strong></p>
 <ul>
-  <li>$(1, 0, 1)$: $2(1)+0=2$ ✓, $1+0+1=2$ ✓</li>
-  <li>$(0, 2, ?)$: Not valid (2 is not 0 or 1)</li>
-  <li>$(1, 1, 0)$: $2(1)+1=3$ ✗</li>
+  <li>(1, 0, 1): 2(1)+0=2 ✓, 1+0+1=2 ✓</li>
+  <li>(0, 2, ?): Not valid (2 is not 0 or 1)</li>
+  <li>(1, 1, 0): 2(1)+1=3 ✗</li>
 </ul>
 
-<p>So $(1, 0, 1)$ is a solution.</p>
+<p>So (1, 0, 1) is a solution.</p>
 
 <h2 id="why-zoe-is-in-np">Why ZOE is in NP</h2>
 
@@ -118,13 +118,13 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>ZOE ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a 0-1 vector $x$), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a 0-1 vector x), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that $x \in {0,1}^n$: $O(n)$ time</li>
-  <li>Check that $Ax = b$: $O(mn)$ time (matrix-vector multiplication and comparison)</li>
+  <li>Check that x ∈ {0,1}^n: O(n) time</li>
+  <li>Check that Ax = b: O(mn) time (matrix-vector multiplication and comparison)</li>
 </ol>
 
-<p>Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ZOE is in NP.</p>
+<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ZOE is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -132,24 +132,24 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 variables and clauses as equations.</p>
 
 <ol>
   <li><strong>Variables:</strong>
     <ul>
-      <li>For each Boolean variable $x_i$, create a 0-1 variable $y_i$</li>
-      <li>$y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$</li>
+      <li>For each Boolean variable x_i, create a 0-1 variable y_i</li>
+      <li>y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE</li>
     </ul>
   </li>
   <li><strong>Clauses:</strong>
     <ul>
-      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create an equation:
+      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create an equation:
         <ul>
-          <li>If literal is $x_i$, use $y_i$</li>
-          <li>If literal is $\neg x_i$, use $(1 - y_i)$</li>
-          <li>Equation: $y_{l_1} + y_{l_2} + y_{l_3} = 1$ (exactly one literal is true)</li>
+          <li>If literal is x_i, use y_i</li>
+          <li>If literal is ¬ x_i, use (1 - y_i)</li>
+          <li>Equation: y_{l_1} + y_{l_2} + y_{l_3} = 1 (exactly one literal is true)</li>
         </ul>
       </li>
     </ul>
@@ -160,9 +160,9 @@ x_1 + x_2 + x_3 &amp;= 2
   </li>
   <li><strong>Better Construction:</strong>
     <ul>
-      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create a <strong>slack variable</strong> $s_j \in {0,1}$</li>
-      <li>Create equation: $y_{l_1} + y_{l_2} + y_{l_3} + s_j = 1$</li>
-      <li>This ensures at least one literal is true (if all literals are false, $s_j$ must be 1, but then we need additional constraints)</li>
+      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create a <strong>slack variable</strong> s_j in {0,1}</li>
+      <li>Create equation: y_{l_1} + y_{l_2} + y_{l_3} + s_j = 1</li>
+      <li>This ensures at least one literal is true (if all literals are false, s_j must be 1, but then we need additional constraints)</li>
     </ul>
 
     <p><strong>Even Better:</strong> Use the standard reduction to ILP, then convert ILP to ZOE.</p>
@@ -177,8 +177,8 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>ILP to ZOE Reduction:</strong></p>
 <ul>
-  <li>ILP constraints are inequalities: $Ax \leq b$</li>
-  <li>Convert to equations using slack variables: $Ax + s = b$ where $s \geq 0$</li>
+  <li>ILP constraints are inequalities: Ax leq b</li>
+  <li>Convert to equations using slack variables: Ax + s = b where s geq 0</li>
   <li>But we need binary variables…</li>
   <li>Use binary expansion for integer variables</li>
   <li>This shows ZOE is NP-complete</li>
@@ -190,16 +190,16 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <ol>
   <li>
-    <p><strong>For each variable $x_i$:</strong> Create variable $y_i \in {0,1}$</p>
+    <p><strong>For each variable x_i:</strong> Create variable y_i in {0,1}</p>
   </li>
   <li>
-    <p><strong>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:</strong></p>
+    <p><strong>For each clause C_j = (l_1  ∨  l_2  ∨  l_3):</strong></p>
     <ul>
       <li>Create equation ensuring at least one literal is satisfied</li>
-      <li>Use: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (but ZOE uses equations, not inequalities)</li>
-      <li>Convert to equation: $y_{l_1} + y_{l_2} + y_{l_3} - s_j = 1$ where $s_j \in {0,1,2}$ (slack)</li>
-      <li>But $s_j$ must be binary…</li>
-      <li>Use binary representation: $s_j = s_{j,1} + 2s_{j,2}$ where $s_{j,1}, s_{j,2} \in {0,1}$</li>
+      <li>Use: y_{l_1} + y_{l_2} + y_{l_3} ≥ 1 (but ZOE uses equations, not inequalities)</li>
+      <li>Convert to equation: y_{l_1} + y_{l_2} + y_{l_3} - s_j = 1 where s_j ∈ {0,1,2} (slack)</li>
+      <li>But s_j must be binary…</li>
+      <li>Use binary representation: s_j = s_{j,1} + 2s_{j,2} where s_{j,1}, s_{j,2} ∈ {0,1}</li>
     </ul>
   </li>
 </ol>
@@ -257,7 +257,7 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
-  <li><strong>Brute Force</strong>: Try all $2^n$ possible 0-1 assignments - exponential</li>
+  <li><strong>Brute Force</strong>: Try all 2ⁿ possible 0-1 assignments - exponential</li>
   <li><strong>Gaussian Elimination</strong>: Doesn’t work directly (we need integer solutions)</li>
   <li><strong>Integer Methods</strong>: Similar to ILP solving techniques</li>
 </ol>
@@ -266,9 +266,9 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>1. Brute Force:</strong></p>
 <ul>
-  <li>Enumerate all $2^n$ assignments</li>
-  <li>Check each one: $O(2^n \cdot mn)$ time</li>
-  <li>Only feasible for small $n$</li>
+  <li>Enumerate all 2ⁿ assignments</li>
+  <li>Check each one: O(2^n cdot mn) time</li>
+  <li>Only feasible for small n</li>
 </ul>
 
 <p><strong>2. Backtracking:</strong></p>
@@ -287,7 +287,7 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>4. Special Cases:</strong></p>
 <ul>
-  <li><strong>Totally unimodular matrices</strong>: If $A$ is totally unimodular, can solve via LP</li>
+  <li><strong>Totally unimodular matrices</strong>: If A is totally unimodular, can solve via LP</li>
   <li><strong>Sparse systems</strong>: Specialized algorithms for sparse matrices</li>
   <li><strong>Small systems</strong>: Brute force or enumeration</li>
 </ul>
@@ -310,11 +310,11 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $2^n$ possible 0-1 assignments</p>
+<p><strong>Algorithm:</strong> Try all 2ⁿ possible 0-1 assignments</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot mn)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current assignment</li>
-  <li><strong>Analysis:</strong> For each assignment, compute $Ax$ and compare to $b$ ($O(mn)$ time)</li>
+  <li><strong>Time Complexity:</strong> O(2^n cdot mn)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current assignment</li>
+  <li><strong>Analysis:</strong> For each assignment, compute Ax and compare to b (O(mn) time)</li>
 </ul>
 
 <h3 id="backtracking">Backtracking</h3>
@@ -322,7 +322,7 @@ x_1 + x_2 + x_3 &amp;= 2
 <p><strong>Algorithm:</strong> Systematic search with early pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop early if constraints can’t be satisfied</li>
 </ul>
 
@@ -331,7 +331,7 @@ x_1 + x_2 + x_3 &amp;= 2
 <p><strong>Algorithm:</strong> Convert ZOE to 0-1 ILP, use commercial solvers</p>
 <ul>
   <li><strong>Time Complexity:</strong> Depends on ILP solver (exponential worst-case, but very efficient in practice)</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$ for storing constraints</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
   <li><strong>Practical Performance:</strong> Modern solvers (CPLEX, Gurobi) handle large instances efficiently</li>
 </ul>
 
@@ -339,7 +339,7 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>Why it fails:</strong> Gaussian elimination finds real solutions, but we need integer (0-1) solutions</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn^2)$ for real solutions</li>
+  <li><strong>Time Complexity:</strong> O(mn^2) for real solutions</li>
   <li><strong>Problem:</strong> Real solution might not be 0-1, rounding doesn’t guarantee feasibility</li>
 </ul>
 
@@ -347,8 +347,8 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>Totally Unimodular Matrices:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn^2)$ - solve as LP, solution automatically integer</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(mn^2) - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
 </ul>
 
 <p><strong>Sparse Systems:</strong></p>
@@ -360,8 +360,8 @@ x_1 + x_2 + x_3 &amp;= 2
 
 <p><strong>Given a candidate 0-1 solution:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn)$ - compute $Ax$ and compare to $b$</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(mn) - compute Ax and compare to b</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows ZOE is in NP</li>
 </ul>
 
@@ -407,15 +407,15 @@ x_1 + x_2 + x_3 &amp;= 2
 <ol>
   <li>
     <p><strong>Solve by hand</strong>: For the ZOE system:
-\(\begin{align}
-x_1 + x_2 &amp;= 1 \\
-x_2 + x_3 &amp;= 1 \\
-x_1 + x_3 &amp;= 1
-\end{align}\)
+begin{align}
+x₁ + x₁ &amp;= 1 
+x₁ + x₁ &amp;= 1 
+x₁ + x₁ &amp;= 1
+end{align}
 Find all 0-1 solutions.</p>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ZOE instance.</p>
+    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ZOE instance.</p>
   </li>
   <li><strong>Formulate as ZOE</strong>: Convert the following to ZOE:
     <ul>
@@ -435,7 +435,7 @@ Find all 0-1 solutions.</p>
     <p><strong>Algorithm design</strong>: Design a backtracking algorithm for ZOE. How can you prune the search space?</p>
   </li>
   <li>
-    <p><strong>Complexity</strong>: What is the time complexity of brute force for ZOE? Can you do better than $O(2^n \cdot mn)$?</p>
+    <p><strong>Complexity</strong>: What is the time complexity of brute force for ZOE? Can you do better than O(2^n · mn)?</p>
   </li>
   <li><strong>Applications</strong>: Research one real-world application of ZOE. How is it formulated? What solving methods are used?</li>
 </ol>

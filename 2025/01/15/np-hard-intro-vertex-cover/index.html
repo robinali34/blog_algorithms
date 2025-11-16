@@ -65,17 +65,17 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>An integer $k$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>An integer k</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ has a vertex cover of size at most $k$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G has a vertex cover of size at most k, NO otherwise</p>
 
 <p><strong>Vertex Cover Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> An undirected graph $G = (V, E)$</p>
+<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
 
-<p><strong>Output:</strong> The size of the smallest vertex cover in $G$ (called the <strong>vertex cover number</strong>, denoted $\beta(G)$ or $\tau(G)$)</p>
+<p><strong>Output:</strong> The size of the smallest vertex cover in G (called the <strong>vertex cover number</strong>, denoted beta(G) or \tau(G))</p>
 
 <h3 id="example">Example</h3>
 
@@ -89,13 +89,13 @@
 </code></pre></div></div>
 
 <ul>
-  <li>Vertex covers of size 4: ${1, 2, 3, 4}$ (all vertices)</li>
-  <li>Vertex covers of size 3: ${1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}$</li>
-  <li>Vertex covers of size 2: ${1, 4}, {2, 3}$ (these are minimum!)</li>
-  <li>Minimum vertex cover: Size 2 (e.g., ${1, 4}$ or ${2, 3}$)</li>
+  <li>Vertex covers of size 4: {1, 2, 3, 4} (all vertices)</li>
+  <li>Vertex covers of size 3: {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}</li>
+  <li>Vertex covers of size 2: {1, 4}, {2, 3} (these are minimum!)</li>
+  <li>Minimum vertex cover: Size 2 (e.g., {1, 4} or {2, 3})</li>
 </ul>
 
-<p>So the vertex cover number $\beta(G) = 2$.</p>
+<p>So the vertex cover number beta(G) = 2.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
@@ -107,9 +107,9 @@
 </code></pre></div></div>
 
 <ul>
-  <li>Some vertex covers: ${2, 5}, {1, 3, 4, 6}, {1, 2, 3}$, etc.</li>
-  <li>Minimum vertex cover: ${2, 5}$ (size 2)</li>
-  <li>Note: ${1}$ is NOT a vertex cover because edge $(2,3)$ is not covered</li>
+  <li>Some vertex covers: {2, 5}, {1, 3, 4, 6}, {1, 2, 3}, etc.</li>
+  <li>Minimum vertex cover: {2, 5} (size 2)</li>
+  <li>Note: {1} is NOT a vertex cover because edge (2,3) is not covered</li>
 </ul>
 
 <h2 id="why-vertex-cover-is-in-np">Why Vertex Cover is in NP</h2>
@@ -118,16 +118,16 @@
 
 <p><strong>Vertex Cover ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set of at most $k$ vertices), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set of at most k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has at most $k$ vertices: $O(k)$ time</li>
+  <li>Check that the set has at most k vertices: O(k) time</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Check that every edge has at least one endpoint in the set: $O(</td>
+          <td>Check that every edge has at least one endpoint in the set: O(</td>
           <td>E</td>
-          <td>)$ time (iterate through all edges and check if at least one endpoint is in the cover)</td>
+          <td>) time (iterate through all edges and check if at least one endpoint is in the cover)</td>
         </tr>
       </tbody>
     </table>
@@ -137,11 +137,11 @@
 <table>
   <tbody>
     <tr>
-      <td>Since $k \leq</td>
+      <td>Since k ≤</td>
       <td>V</td>
-      <td>$ and we need to check $</td>
+      <td>and we need to check</td>
       <td>E</td>
-      <td>$ edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.</td>
+      <td>edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.</td>
     </tr>
   </tbody>
 </table>
@@ -154,23 +154,23 @@
 
 <p><strong>Fundamental Observation:</strong></p>
 <ul>
-  <li>$S$ is an <strong>independent set</strong> in $G$ <strong>if and only if</strong> $V \setminus S$ is a <strong>vertex cover</strong> in $G$</li>
+  <li>S is an <strong>independent set</strong> in G <strong>if and only if</strong> V \setminus S is a <strong>vertex cover</strong> in G</li>
 </ul>
 
 <p><strong>Proof:</strong></p>
 
 <p><strong>Forward Direction (Independent Set → Vertex Cover):</strong></p>
 <ul>
-  <li>If $S$ is an independent set, then no edge has both endpoints in $S$</li>
-  <li>Therefore, every edge has at least one endpoint in $V \setminus S$</li>
-  <li>So $V \setminus S$ is a vertex cover</li>
+  <li>If S is an independent set, then no edge has both endpoints in S</li>
+  <li>Therefore, every edge has at least one endpoint in V \setminus S</li>
+  <li>So V \setminus S is a vertex cover</li>
 </ul>
 
 <p><strong>Reverse Direction (Vertex Cover → Independent Set):</strong></p>
 <ul>
-  <li>If $C$ is a vertex cover, then every edge has at least one endpoint in $C$</li>
-  <li>Therefore, no edge has both endpoints in $V \setminus C$</li>
-  <li>So $V \setminus C$ is an independent set</li>
+  <li>If C is a vertex cover, then every edge has at least one endpoint in C</li>
+  <li>Therefore, no edge has both endpoints in V \setminus C</li>
+  <li>So V \setminus C is an independent set</li>
 </ul>
 
 <p><strong>Corollary (Gallai’s Theorem):</strong></p>
@@ -179,14 +179,13 @@
     <table>
       <tbody>
         <tr>
-          <td>For any graph $G$, $\alpha(G) + \beta(G) =</td>
+          <td>For any graph G, \alpha(G) + \beta(G) =</td>
           <td>V</td>
-          <td>$</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Where $\alpha(G)$ is the independence number and $\beta(G)$ is the vertex cover number</li>
+  <li>Where \alpha(G) is the independence number and beta(G) is the vertex cover number</li>
 </ul>
 
 <h3 id="reduction-from-independent-set">Reduction from Independent Set</h3>
@@ -195,14 +194,14 @@
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given an Independent Set instance: graph $G$ and integer $k$</li>
+  <li>Given an Independent Set instance: graph G and integer k</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Vertex Cover instance: graph $G$ and integer $</td>
+          <td>Return Vertex Cover instance: graph G and integer</td>
           <td>V</td>
-          <td>- k$</td>
+          <td>- k</td>
         </tr>
       </tbody>
     </table>
@@ -215,9 +214,9 @@
     <table>
       <tbody>
         <tr>
-          <td>$G$ has an independent set of size at least $k$ <strong>if and only if</strong> $G$ has a vertex cover of size at most $</td>
+          <td>G has an independent set of size at least k <strong>if and only if</strong> G has a vertex cover of size at most</td>
           <td>V</td>
-          <td>- k$</td>
+          <td>- k</td>
         </tr>
       </tbody>
     </table>
@@ -228,9 +227,9 @@
         <table>
           <tbody>
             <tr>
-              <td>If maximum independent set has size $\geq k$, then minimum vertex cover has size $\leq</td>
+              <td>If maximum independent set has size ≥ k, then minimum vertex cover has size ≤</td>
               <td>V</td>
-              <td>- k$</td>
+              <td>- k</td>
             </tr>
           </tbody>
         </table>
@@ -239,9 +238,9 @@
         <table>
           <tbody>
             <tr>
-              <td>If minimum vertex cover has size $\leq</td>
+              <td>If minimum vertex cover has size ≤</td>
               <td>V</td>
-              <td>- k$, then maximum independent set has size $\geq k$</td>
+              <td>- k, then maximum independent set has size ≥ k</td>
             </tr>
           </tbody>
         </table>
@@ -253,7 +252,7 @@
 <p><strong>Polynomial Time:</strong></p>
 <ul>
   <li>The reduction is trivial (just changing the parameter)</li>
-  <li>This takes $O(1)$ time</li>
+  <li>This takes O(1) time</li>
 </ul>
 
 <p>Therefore, <strong>Vertex Cover is NP-complete</strong>.</p>
@@ -264,31 +263,31 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <ol>
   <li><strong>Create vertices</strong>:
     <ul>
-      <li>For each variable $x_i$, create two vertices: one for $x_i$ and one for $\neg x_i$</li>
-      <li>For each clause $C_j$, create a triangle (3 vertices, one for each literal)</li>
+      <li>For each variable x_i, create two vertices: one for x_i and one for ¬ x_i</li>
+      <li>For each clause C_j, create a triangle (3 vertices, one for each literal)</li>
     </ul>
   </li>
   <li><strong>Add edges</strong>:
     <ul>
-      <li>Connect each variable vertex to its negation (creating $n$ edges)</li>
+      <li>Connect each variable vertex to its negation (creating n edges)</li>
       <li>Within each clause triangle, connect all three vertices (creating 3 edges per clause)</li>
       <li>Connect clause vertices to corresponding variable vertices</li>
     </ul>
   </li>
-  <li><strong>Set $k = n + 2m$</strong>: We’re looking for a vertex cover of size $n + 2m$</li>
+  <li><strong>Set k = n + 2m</strong>: We’re looking for a vertex cover of size n + 2m</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>We need $n$ vertices to cover the variable-negation edges (one per variable pair)</li>
-  <li>We need $2m$ vertices to cover the clause triangles (2 out of 3 vertices per triangle)</li>
+  <li>We need n vertices to cover the variable-negation edges (one per variable pair)</li>
+  <li>We need 2m vertices to cover the clause triangles (2 out of 3 vertices per triangle)</li>
   <li>A satisfying assignment corresponds to selecting the “true” literals, which covers the appropriate edges</li>
 </ul>
 
@@ -296,18 +295,18 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Vertex Cover exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, pick vertices corresponding to true literals</li>
-  <li>For each variable, pick the vertex corresponding to its truth value ($n$ vertices)</li>
-  <li>For each clause, pick 2 vertices from its triangle that aren’t already covered ($2m$ vertices)</li>
-  <li>Total: $n + 2m$ vertices covering all edges</li>
+  <li>If \phi is satisfiable, pick vertices corresponding to true literals</li>
+  <li>For each variable, pick the vertex corresponding to its truth value (n vertices)</li>
+  <li>For each clause, pick 2 vertices from its triangle that aren’t already covered (2m vertices)</li>
+  <li>Total: n + 2m vertices covering all edges</li>
 </ul>
 
 <p><strong>Reverse Direction (Vertex Cover exists → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>A vertex cover of size $n + 2m$ must include exactly one vertex from each variable pair (to cover those $n$ edges)</li>
+  <li>A vertex cover of size n + 2m must include exactly one vertex from each variable pair (to cover those n edges)</li>
   <li>It must include at least 2 vertices from each clause triangle (to cover those 3 edges)</li>
   <li>The variable vertices selected give us a truth assignment</li>
-  <li>Since at least one literal per clause is true (otherwise we’d need 3 vertices from that clause), the assignment satisfies $\phi$</li>
+  <li>Since at least one literal per clause is true (otherwise we’d need 3 vertices from that clause), the assignment satisfies \phi</li>
 </ul>
 
 <h2 id="relationship-to-other-graph-problems">Relationship to Other Graph Problems</h2>
@@ -318,14 +317,14 @@
 
 <p>As we’ve seen:</p>
 <ul>
-  <li>$S$ is an independent set <strong>if and only if</strong> $V \setminus S$ is a vertex cover</li>
+  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>$\alpha(G) + \beta(G) =</td>
+          <td>\alpha(G) + \beta(G) =</td>
           <td>V</td>
-          <td>$ (Gallai’s theorem)</td>
+          <td>(Gallai’s theorem)</td>
         </tr>
       </tbody>
     </table>
@@ -363,8 +362,8 @@
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity for general graphs</li>
-  <li><strong>Brute Force</strong>: Check all $\binom{n}{k}$ subsets of size $k$ - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using inclusion-exclusion</li>
+  <li><strong>Brute Force</strong>: Check all \binom{n}{k} subsets of size k - exponential</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -376,9 +375,9 @@
 <ol>
   <li>While there are uncovered edges:
     <ul>
-      <li>Pick an uncovered edge $(u, v)$</li>
-      <li>Add both $u$ and $v$ to the cover</li>
-      <li>Remove all edges incident to $u$ or $v$</li>
+      <li>Pick an uncovered edge (u, v)</li>
+      <li>Add both u and v to the cover</li>
+      <li>Remove all edges incident to u or v</li>
     </ul>
   </li>
 </ol>
@@ -430,9 +429,9 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Gallai’s Theorem</strong>: The relationship $\alpha(G) + \beta(G) =</td>
+          <td><strong>Gallai’s Theorem</strong>: The relationship alpha(G) + beta(G) =</td>
           <td>V</td>
-          <td>$ is fundamental and elegant</td>
+          <td>is fundamental and elegant</td>
         </tr>
       </tbody>
     </table>
@@ -446,14 +445,14 @@
 
 <p><strong>Independent Set ≤ₚ Vertex Cover:</strong></p>
 <ul>
-  <li>Given Independent Set instance: graph $G$ and integer $k$</li>
+  <li>Given Independent Set instance: graph G and integer k</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Vertex Cover instance: graph $G$ and integer $</td>
+          <td>Return Vertex Cover instance: graph G and integer</td>
           <td>V</td>
-          <td>- k$</td>
+          <td>- k</td>
         </tr>
       </tbody>
     </table>
@@ -462,9 +461,9 @@
     <table>
       <tbody>
         <tr>
-          <td>$G$ has independent set of size $\geq k$ ↔ $G$ has vertex cover of size $\leq</td>
+          <td>G has independent set of size geq k ↔ G has vertex cover of size leq</td>
           <td>V</td>
-          <td>- k$</td>
+          <td>- k</td>
         </tr>
       </tbody>
     </table>
@@ -473,9 +472,9 @@
 
 <p><strong>3-SAT ≤ₚ Vertex Cover:</strong></p>
 <ul>
-  <li>Given 3-SAT instance with $n$ variables and $m$ clauses</li>
+  <li>Given 3-SAT instance with n variables and m clauses</li>
   <li>Create graph with variable pairs and clause triangles</li>
-  <li>3-SAT satisfiable ↔ Graph has vertex cover of size $n + 2m$</li>
+  <li>3-SAT satisfiable ↔ Graph has vertex cover of size n + 2m</li>
 </ul>
 
 <p>Both reductions are polynomial-time, establishing Vertex Cover as NP-complete.</p>
@@ -497,9 +496,9 @@
 <table>
   <tbody>
     <tr>
-      <td><strong>Time Complexity:</strong> $O(</td>
+      <td><strong>Time Complexity:</strong> O(</td>
       <td>E</td>
-      <td>)$</td>
+      <td>)</td>
     </tr>
   </tbody>
 </table>
@@ -511,16 +510,16 @@
   <li>For each edge we pick, the optimal cover must include at least one endpoint</li>
   <li>We include both endpoints, so we’re at most 2 times optimal</li>
   <li>The edges we pick form a matching (no two share an endpoint)</li>
-  <li>So if we pick $k$ edges, optimal cover has size $\geq k$, our cover has size $2k$</li>
+  <li>So if we pick k edges, optimal cover has size geq k, our cover has size 2k</li>
 </ul>
 
 <h3 id="lp-based-2-approximation">LP-Based 2-Approximation</h3>
 
 <p>Using linear programming relaxation:</p>
 <ul>
-  <li>Formulate as integer program: minimize $\sum_{v \in V} x_v$ subject to $x_u + x_v \geq 1$ for each edge $(u,v)$</li>
+  <li>Formulate as integer program: minimize sum_{v in V} x_v subject to x_u + x_v geq 1 for each edge (u,v)</li>
   <li>Solve LP relaxation (allowing fractional values)</li>
-  <li>Round: include vertex $v$ if $x_v \geq 1/2$</li>
+  <li>Round: include vertex v if x_v ≥ 1/2</li>
   <li>This also gives a 2-approximation</li>
 </ul>
 
@@ -528,29 +527,29 @@
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Check all subsets of vertices of size $\leq k$</p>
+<p><strong>Algorithm:</strong> Check all subsets of vertices of size ≤ k</p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(\sum_{i=0}^{k} \binom{n}{i} \cdot</td>
+          <td><strong>Time Complexity:</strong> O(sum_{i=0}^{k} binom{n}{i} cdot</td>
           <td>E</td>
-          <td>) = O(n^k \cdot</td>
+          <td>) = O(n^k cdot</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(k)$ for storing current subset</li>
+  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Analysis:</strong> For each subset, check if all edges are covered ($O(</td>
+          <td><strong>Analysis:</strong> For each subset, check if all edges are covered (O(</td>
           <td>E</td>
-          <td>)$ time)</td>
+          <td>) time)</td>
         </tr>
       </tbody>
     </table>
@@ -565,29 +564,29 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(2^n \cdot</td>
+          <td><strong>Time Complexity:</strong> O(2^n cdot</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(2^n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask]$ = minimum vertex cover for edges covered by vertices in $mask$</li>
-  <li><strong>Recurrence:</strong> $dp[mask] = \min_{v \notin mask} {dp[mask \cup {v}] + 1}$</li>
+  <li><strong>Space Complexity:</strong> O(2^n)</li>
+  <li><strong>Subproblem:</strong> dp[mask] = minimum vertex cover for edges covered by vertices in mask</li>
+  <li><strong>Recurrence:</strong> dp[mask] = min_{v ∉ mask} {dp[mask \cup {v}] + 1}</li>
 </ul>
 
 <h3 id="tree-dp-special-case">Tree DP (Special Case)</h3>
 
 <p><strong>Algorithm:</strong> For trees, use bottom-up DP</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
-  <li><strong>Subproblem:</strong> $dp[v][0/1]$ = minimum vertex cover in subtree rooted at $v$ (0 = don’t include $v$, 1 = include $v$)</li>
+  <li><strong>Time Complexity:</strong> O(n)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
+  <li><strong>Subproblem:</strong> dp[v][0/1] = minimum vertex cover in subtree rooted at v (0 = don’t include v, 1 = include v)</li>
   <li><strong>Recurrence:</strong>
     <ul>
-      <li>$dp[v][0] = \sum_{u \in children(v)} dp[u][1]$ (must cover edges to children)</li>
-      <li>$dp[v][1] = 1 + \sum_{u \in children(v)} \min(dp[u][0], dp[u][1])$</li>
+      <li>dp[v][0] = ∑_{u ∈ children(v)} dp[u][1] (must cover edges to children)</li>
+      <li>dp[v][1] = 1 + sum_{u in children(v)} min(dp[u][0], dp[u][1])</li>
     </ul>
   </li>
 </ul>
@@ -600,9 +599,9 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(\sqrt{n} \cdot</td>
+          <td><strong>Time Complexity:</strong> O(sqrt{n} cdot</td>
           <td>E</td>
-          <td>)$ using Hopcroft-Karp algorithm</td>
+          <td>) using Hopcroft-Karp algorithm</td>
         </tr>
       </tbody>
     </table>
@@ -611,9 +610,9 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(n +</td>
+          <td><strong>Space Complexity:</strong> O(n +</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
@@ -629,16 +628,16 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(2^k \cdot (n +</td>
+          <td><strong>Time Complexity:</strong> O(2^k cdot (n +</td>
           <td>E</td>
-          <td>))$ where $k$ is solution size</td>
+          <td>)) where k is solution size</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
-  <li><strong>Key Insight:</strong> If vertex has degree $&gt; k$, it must be in cover</li>
-  <li><strong>Recurrence:</strong> $T(k) = T(k-1) + T(k-\deg(v))$ for vertex $v$</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
+  <li><strong>Key Insight:</strong> If vertex has degree &gt; k, it must be in cover</li>
+  <li><strong>Recurrence:</strong> T(k) = T(k-1) + T(k-\deg(v)) for vertex v</li>
 </ul>
 
 <h3 id="greedy-2-approximation-1">Greedy 2-Approximation</h3>
@@ -649,14 +648,14 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(</td>
+          <td><strong>Time Complexity:</strong> O(</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation Ratio:</strong> 2</li>
 </ul>
 
@@ -664,14 +663,14 @@
 
 <p><strong>Algorithm:</strong> Solve LP relaxation, round</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(\text{LP solver time}) = O(n^{3.5}L)$ using interior-point methods</li>
+  <li><strong>Time Complexity:</strong> O(LP solver time) = O(n^{3.5}L) using interior-point methods</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(n +</td>
+          <td><strong>Space Complexity:</strong> O(n +</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
@@ -681,20 +680,20 @@
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
-<p><strong>Given a candidate vertex cover of size $k$:</strong></p>
+<p><strong>Given a candidate vertex cover of size k:</strong></p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(</td>
+          <td><strong>Time Complexity:</strong> O(</td>
           <td>E</td>
-          <td>)$ - check each edge has at least one endpoint in cover</td>
+          <td>) - check each edge has at least one endpoint in cover</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Vertex Cover is in NP</li>
 </ul>
 
@@ -705,7 +704,7 @@
   <li><strong>Gallai’s Theorem</strong>: The relationship between independent sets and vertex covers</li>
   <li><strong>König’s Theorem</strong>: Connection to matching in bipartite graphs</li>
   <li><strong>Approximation Algorithms</strong>: Vazirani’s “Approximation Algorithms” covers vertex cover in detail</li>
-  <li><strong>Parameterized Complexity</strong>: Vertex Cover is FPT (Fixed-Parameter Tractable) with parameter $k$</li>
+  <li><strong>Parameterized Complexity</strong>: Vertex Cover is FPT (Fixed-Parameter Tractable) with parameter k</li>
 </ul>
 
 <h2 id="practice-problems">Practice Problems</h2>
@@ -715,9 +714,9 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph $G$, $\alpha(G) + \beta(G) =</td>
+          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, alpha(G) + beta(G) =</td>
           <td>V</td>
-          <td>$ where $\alpha(G)$ is the independence number and $\beta(G)$ is the vertex cover number.</td>
+          <td>where alpha(G) is the independence number and \beta(G) is the vertex cover number.</td>
         </tr>
       </tbody>
     </table>
@@ -726,16 +725,16 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Prove the reduction</strong>: Show that $G$ has an independent set of size $\geq k$ if and only if $G$ has a vertex cover of size $\leq</td>
+          <td><strong>Prove the reduction</strong>: Show that G has an independent set of size geq k if and only if G has a vertex cover of size leq</td>
           <td>V</td>
-          <td>- k$.</td>
+          <td>- k.</td>
         </tr>
       </tbody>
     </table>
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-\((x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)\)
+(x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)
 Determine the vertex cover size and corresponding satisfying assignment.</p>
   </li>
   <li>
@@ -747,7 +746,7 @@ Determine the vertex cover size and corresponding satisfying assignment.</p>
   <li>
     <p><strong>König’s theorem</strong>: Research and explain König’s theorem. How does it provide a polynomial-time algorithm for Vertex Cover in bipartite graphs?</p>
   </li>
-  <li><strong>Parameterized complexity</strong>: Research why Vertex Cover is FPT (Fixed-Parameter Tractable) with respect to the solution size $k$. What is the time complexity?</li>
+  <li><strong>Parameterized complexity</strong>: Research why Vertex Cover is FPT (Fixed-Parameter Tractable) with respect to the solution size k. What is the time complexity?</li>
 </ol>
 
 <hr />

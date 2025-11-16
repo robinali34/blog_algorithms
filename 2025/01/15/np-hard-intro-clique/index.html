@@ -65,33 +65,33 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>An integer $k$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>An integer k</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a clique of size at least $k$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a clique of size at least k, NO otherwise</p>
 
 <p><strong>Clique Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> An undirected graph $G = (V, E)$</p>
+<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
 
-<p><strong>Output:</strong> The size of the largest clique in $G$ (called the <strong>clique number</strong>, denoted $\omega(G)$)</p>
+<p><strong>Output:</strong> The size of the largest clique in G (called the <strong>clique number</strong>, denoted omega(G))</p>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the following graph:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |\ /|
+    | /|
     | X |
-    |/ \|
+    |/ |
     3---4
 </code></pre></div></div>
 
 <ul>
-  <li>Cliques of size 2: ${1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}$</li>
-  <li>Cliques of size 3: ${1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}$</li>
-  <li>Clique of size 4: ${1,2,3,4}$ (this is a 4-clique, also called a complete graph $K_4$)</li>
+  <li>Cliques of size 2: {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}</li>
+  <li>Cliques of size 3: {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}</li>
+  <li>Clique of size 4: {1,2,3,4} (this is a 4-clique, also called a complete graph K_4)</li>
 </ul>
 
 <p>So the clique number of this graph is 4.</p>
@@ -107,7 +107,7 @@
         6
 </code></pre></div></div>
 
-<p>The vertices ${1, 2, 3}$ form a clique (all pairwise connected). The vertices ${4, 5, 6}$ do NOT form a clique because 5 and 6 are not connected.</p>
+<p>The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.</p>
 
 <h2 id="why-clique-is-in-np">Why Clique is in NP</h2>
 
@@ -115,18 +115,18 @@
 
 <p><strong>Clique ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set of $k$ vertices), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has exactly $k$ vertices: $O(k)$ time</li>
-  <li>Check that every pair of vertices in the set is connected by an edge: $O(k^2)$ time (check all $\binom{k}{2} = \frac{k(k-1)}{2}$ pairs)</li>
+  <li>Check that the set has exactly k vertices: O(k) time</li>
+  <li>Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs)</li>
 </ol>
 
 <table>
   <tbody>
     <tr>
-      <td>Since $k \leq</td>
+      <td>Since k ≤</td>
       <td>V</td>
-      <td>$, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</td>
+      <td>, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</td>
     </tr>
   </tbody>
 </table>
@@ -137,37 +137,37 @@
 
 <h3 id="reduction-strategy">Reduction Strategy</h3>
 
-<p>Given a 3-SAT instance with $m$ clauses, we construct a graph $G$ such that:</p>
+<p>Given a 3-SAT instance with m clauses, we construct a graph G such that:</p>
 <ul>
-  <li>The 3-SAT instance is satisfiable <strong>if and only if</strong> $G$ has a clique of size $m$</li>
+  <li>The 3-SAT instance is satisfiable <strong>if and only if</strong> G has a clique of size m</li>
 </ul>
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ where each clause $C_i$ has 3 literals:</p>
+<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:</p>
 
 <ol>
   <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
     <ul>
-      <li>Label vertices as $(i, j)$ where $i$ is the clause number and $j$ is the literal position</li>
-      <li>Example: For clause $C_1 = (x_1 \lor \neg x_2 \lor x_3)$, create vertices $(1,1)$ for $x_1$, $(1,2)$ for $\neg x_2$, and $(1,3)$ for $x_3$</li>
+      <li>Label vertices as (i, j) where i is the clause number and j is the literal position</li>
+      <li>Example: For clause C_1 = (x₁  ∨  ¬ x₁  ∨  x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁</li>
     </ul>
   </li>
-  <li><strong>Add edges</strong>: Connect two vertices $(i_1, j_1)$ and $(i_2, j_2)$ with an edge if:
+  <li><strong>Add edges</strong>: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
     <ul>
-      <li>They are in <strong>different clauses</strong> ($i_1 \neq i_2$)</li>
+      <li>They are in <strong>different clauses</strong> (i_1 neq i_2)</li>
       <li>The literals are <strong>not complementary</strong> (one is not the negation of the other)</li>
     </ul>
   </li>
-  <li><strong>Set $k = m$</strong>: We’re looking for a clique of size $m$ (one vertex per clause)</li>
+  <li><strong>Set k = m</strong>: We’re looking for a clique of size m (one vertex per clause)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>A clique of size $m$ means we pick one literal from each clause</li>
-  <li>Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both $x$ and $\neg x$</li>
+  <li>A clique of size m means we pick one literal from each clause</li>
+  <li>Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both x and ¬ x</li>
   <li>Therefore, a clique corresponds to a satisfying assignment</li>
 </ul>
 
@@ -175,9 +175,9 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Clique exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
+  <li>If phi is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
   <li>Pick the vertex corresponding to that true literal from each clause</li>
-  <li>These $m$ vertices form a clique because:
+  <li>These m vertices form a clique because:
     <ul>
       <li>They’re from different clauses (so edges exist by construction)</li>
       <li>They can’t be complementary (both can’t be true simultaneously)</li>
@@ -187,11 +187,11 @@
 
 <p><strong>Reverse Direction (Clique exists → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If there’s a clique of size $m$, we have one vertex (literal) from each clause</li>
+  <li>If there’s a clique of size m, we have one vertex (literal) from each clause</li>
   <li>Set variables to make these literals true:
     <ul>
-      <li>If literal is $x_i$, set $x_i = \text{TRUE}$</li>
-      <li>If literal is $\neg x_i$, set $x_i = \text{FALSE}$</li>
+      <li>If literal is x_i, set x_i = TRUE</li>
+      <li>If literal is ¬ x_i, set x_i = FALSE</li>
     </ul>
   </li>
   <li>Since no complementary literals are in the clique, this assignment is consistent</li>
@@ -201,27 +201,27 @@
 <h3 id="example-reduction">Example Reduction</h3>
 
 <p>Consider the 3-SAT instance:
-\(\phi = (x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3)\)</p>
+phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
 
 <p><strong>Step 1: Create vertices</strong></p>
 <ul>
-  <li>Clause 1: $(1,1)$ for $x_1$, $(1,2)$ for $x_2$, $(1,3)$ for $x_3$</li>
-  <li>Clause 2: $(2,1)$ for $\neg x_1$, $(2,2)$ for $x_2$, $(2,3)$ for $\neg x_3$</li>
-  <li>Clause 3: $(3,1)$ for $x_1$, $(3,2)$ for $\neg x_2$, $(3,3)$ for $x_3$</li>
+  <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
+  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
+  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
 </ul>
 
 <p><strong>Step 2: Add edges</strong></p>
 <ul>
   <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>For example: $(1,1)$ (represents $x_1$) connects to $(2,2)$ ($x_2$) and $(2,3)$ ($\neg x_3$) and $(3,1)$ ($x_1$) and $(3,2)$ ($\neg x_2$) and $(3,3)$ ($x_3$)</li>
-  <li>But $(1,1)$ does NOT connect to $(2,1)$ because $x_1$ and $\neg x_1$ are complementary</li>
-  <li>Similarly, $(1,3)$ does NOT connect to $(2,3)$ because $x_3$ and $\neg x_3$ are complementary</li>
+  <li>For example: (1,1) (represents x₁) connects to (2,2) (x₁) and (2,3) (¬ x₁) and (3,1) (x₁) and (3,2) (¬ x₁) and (3,3) (x₁)</li>
+  <li>But (1,1) does NOT connect to (2,1) because x₁ and ¬ x₁ are complementary</li>
+  <li>Similarly, (1,3) does NOT connect to (2,3) because x₁ and ¬ x₁ are complementary</li>
 </ul>
 
 <p><strong>Step 3: Find clique of size 3</strong></p>
 <ul>
-  <li>One possible clique: ${(1,2), (2,2), (3,3)}$ representing $x_2$ from clause 1, $x_2$ from clause 2, and $x_3$ from clause 3</li>
-  <li>This corresponds to assignment: $x_1 = \text{TRUE}$ (arbitrary), $x_2 = \text{TRUE}$, $x_3 = \text{TRUE}$</li>
+  <li>One possible clique: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3</li>
+  <li>This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE</li>
   <li>Verify: All clauses satisfied!</li>
 </ul>
 
@@ -235,7 +235,7 @@
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$S$ is a clique in $G$ <strong>if and only if</strong> $S$ is an independent set in $\overline{G}$ (the complement graph)</li>
+  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in \overline{G} (the complement graph)</li>
   <li>Therefore, Clique and Independent Set are polynomially equivalent</li>
 </ul>
 
@@ -245,17 +245,17 @@
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$S$ is an independent set <strong>if and only if</strong> $V \setminus S$ is a vertex cover</li>
+  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
   <li>This connects Clique to Vertex Cover through Independent Set</li>
 </ul>
 
 <h3 id="graph-coloring">Graph Coloring</h3>
 
-<p>The <strong>chromatic number</strong> $\chi(G)$ is the minimum number of colors needed to color vertices so no adjacent vertices share a color.</p>
+<p>The <strong>chromatic number</strong> \chi(G) is the minimum number of colors needed to color vertices so no adjacent vertices share a color.</p>
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$\omega(G) \leq \chi(G)$ (clique number is a lower bound for chromatic number)</li>
+  <li>omega(G) leq chi(G) (clique number is a lower bound for chromatic number)</li>
   <li>Finding the clique number helps bound the chromatic number</li>
 </ul>
 
@@ -267,8 +267,8 @@
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Check all $\binom{n}{k}$ subsets of size $k$ - exponential in $k$</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using inclusion-exclusion or bitmask DP</li>
+  <li><strong>Brute Force</strong>: Check all \binom{n}{k} subsets of size k - exponential in k</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -278,7 +278,7 @@
 
 <ul>
   <li><strong>No PTAS</strong>: Unless P = NP, there is no polynomial-time approximation scheme</li>
-  <li><strong>Hard to Approximate</strong>: Cannot be approximated within $n^{1-\epsilon}$ for any $\epsilon &gt; 0$ (unless P = NP)</li>
+  <li><strong>Hard to Approximate</strong>: Cannot be approximated within n^{1-\epsilon} for any \epsilon &gt; 0 (unless P = NP)</li>
   <li>This makes Clique one of the hardest problems to approximate</li>
 </ul>
 
@@ -309,21 +309,21 @@
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Check all $\binom{n}{k}$ subsets of size $k$</p>
+<p><strong>Algorithm:</strong> Check all \binom{n}{k} subsets of size k</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(\binom{n}{k} \cdot k^2) = O(n^k \cdot k^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(k)$ for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, check all $\binom{k}{2}$ pairs of vertices for edges</li>
+  <li><strong>Time Complexity:</strong> O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)</li>
+  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
+  <li><strong>Analysis:</strong> For each subset, check all \binom{k}{2} pairs of vertices for edges</li>
 </ul>
 
 <h3 id="dynamic-programming">Dynamic Programming</h3>
 
 <p><strong>Algorithm:</strong> Use bitmask DP to track visited vertices</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if there exists a clique in vertices $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
+  <li><strong>Time Complexity:</strong> O(2^n cdot n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n cdot n)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists a clique in vertices mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∈ E} dp[mask \setminus {v}][u]</li>
 </ul>
 
 <h3 id="branch-and-bound">Branch-and-Bound</h3>
@@ -331,25 +331,25 @@
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with good pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop exploring branches that can’t lead to clique of size $k$</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
+  <li><strong>Pruning:</strong> Stop exploring branches that can’t lead to clique of size k</li>
 </ul>
 
 <h3 id="bron-kerbosch-algorithm-maximum-clique">Bron-Kerbosch Algorithm (Maximum Clique)</h3>
 
 <p><strong>Algorithm:</strong> Recursive backtracking for finding all maximal cliques</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(3^{n/3})$ worst-case (tight bound)</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(3^{n/3}) worst-case (tight bound)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Practical Performance:</strong> Very efficient for sparse graphs</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
-<p><strong>Given a candidate clique of size $k$:</strong></p>
+<p><strong>Given a candidate clique of size k:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(k^2)$ - check all pairs</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Clique is in NP</li>
 </ul>
 
@@ -367,16 +367,16 @@
 
 <p><strong>3-SAT ≤ₚ Clique:</strong></p>
 <ul>
-  <li>Given 3-SAT instance with $m$ clauses</li>
+  <li>Given 3-SAT instance with m clauses</li>
   <li>Create graph with vertices for each literal occurrence</li>
   <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>3-SAT satisfiable ↔ Graph has clique of size $m$</li>
+  <li>3-SAT satisfiable ↔ Graph has clique of size m</li>
 </ul>
 
 <p>This reduction is polynomial-time because:</p>
 <ul>
-  <li>Number of vertices: $3m$ (at most)</li>
-  <li>Number of edges: $O(m^2)$ (check all pairs)</li>
+  <li>Number of vertices: 3m (at most)</li>
+  <li>Number of edges: O(m^2) (check all pairs)</li>
   <li>Construction time: Polynomial in input size</li>
 </ul>
 
@@ -394,11 +394,11 @@
 <ol>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-\((x_1 \lor x_2 \lor \neg x_3) \land (\neg x_1 \lor x_2 \lor x_3) \land (x_1 \lor \neg x_2 \lor x_3)\)
+(x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
 Find a clique of size 3 and determine the corresponding satisfying assignment.</p>
   </li>
   <li>
-    <p><strong>Prove the relationship</strong>: Show that $S$ is a clique in $G$ if and only if $S$ is an independent set in $\overline{G}$ (the complement graph).</p>
+    <p><strong>Prove the relationship</strong>: Show that S is a clique in G if and only if S is an independent set in overline{G} (the complement graph).</p>
   </li>
   <li>
     <p><strong>Reduction practice</strong>: Given that Clique is NP-complete, show that Independent Set is also NP-complete using the complement graph relationship.</p>

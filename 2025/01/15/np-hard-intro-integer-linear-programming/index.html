@@ -65,31 +65,31 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix $A \in \mathbb{Z}^{m \times n}$ (constraint coefficients)</li>
-  <li>A vector $b \in \mathbb{Z}^m$ (constraint bounds)</li>
-  <li>A vector $c \in \mathbb{Z}^n$ (objective coefficients)</li>
-  <li>An integer $k$ (target value)</li>
+  <li>A matrix A in mathbb{Z}^{m times n} (constraint coefficients)</li>
+  <li>A vector b in mathbb{Z}^m (constraint bounds)</li>
+  <li>A vector c in mathbb{Z}^n (objective coefficients)</li>
+  <li>An integer k (target value)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists an integer vector $x \in \mathbb{Z}^n$ such that:</p>
+<p><strong>Output:</strong> YES if there exists an integer vector x in mathbb{Z}^n such that:</p>
 <ul>
-  <li>$Ax \leq b$ (constraints satisfied)</li>
-  <li>$c^T x \geq k$ (objective value at least $k$)</li>
+  <li>Ax leq b (constraints satisfied)</li>
+  <li>c^T x geq k (objective value at least k)</li>
 </ul>
 
 <p>NO otherwise</p>
 
 <p><strong>ILP Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> Same as above (without $k$)</p>
+<p><strong>Input:</strong> Same as above (without k)</p>
 
-<p><strong>Output:</strong> The maximum value of $c^T x$ subject to $Ax \leq b$ and $x \in \mathbb{Z}^n$</p>
+<p><strong>Output:</strong> The maximum value of c^T x subject to Ax leq b and x in mathbb{Z}^n</p>
 
 <h3 id="variants">Variants</h3>
 
 <p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
 <ul>
-  <li>Variables restricted to ${0, 1}$</li>
+  <li>Variables restricted to {0, 1}</li>
   <li>Very common in practice</li>
 </ul>
 
@@ -108,27 +108,27 @@
 
 <p>Consider the ILP:</p>
 
-<p><strong>Maximize:</strong> $3x_1 + 2x_2$</p>
+<p><strong>Maximize:</strong> 3x₁ + 2x₁</p>
 
 <p><strong>Subject to:</strong></p>
 <ul>
-  <li>$2x_1 + x_2 \leq 6$</li>
-  <li>$x_1 + 2x_2 \leq 8$</li>
-  <li>$x_1, x_2 \geq 0$ and integer</li>
+  <li>2x₁ + x₁ leq 6</li>
+  <li>x₁ + 2x₁ leq 8</li>
+  <li>x₁, x₁ geq 0 and integer</li>
 </ul>
 
 <p><strong>Feasible integer solutions:</strong></p>
 <ul>
-  <li>$(0, 0)$: objective = 0</li>
-  <li>$(1, 0)$: objective = 3</li>
-  <li>$(2, 0)$: objective = 6</li>
-  <li>$(0, 1)$: objective = 2</li>
-  <li>$(1, 1)$: objective = 5</li>
-  <li>$(2, 1)$: objective = 8</li>
-  <li>$(3, 0)$: objective = 9 ✓ (optimal, satisfies constraints)</li>
+  <li>(0, 0): objective = 0</li>
+  <li>(1, 0): objective = 3</li>
+  <li>(2, 0): objective = 6</li>
+  <li>(0, 1): objective = 2</li>
+  <li>(1, 1): objective = 5</li>
+  <li>(2, 1): objective = 8</li>
+  <li>(3, 0): objective = 9 ✓ (optimal, satisfies constraints)</li>
 </ul>
 
-<p><strong>LP relaxation</strong> (allowing fractional values) might give $(2.67, 0.67)$ with objective $9.33$, but this is not integer.</p>
+<p><strong>LP relaxation</strong> (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.</p>
 
 <h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
 
@@ -136,16 +136,16 @@
 
 <p><strong>ILP ∈ NP:</strong></p>
 
-<p>Given a candidate solution (an integer vector $x$), we can verify in polynomial time:</p>
+<p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that $x$ has integer values: $O(n)$ time</li>
-  <li>Check that $Ax \leq b$: $O(mn)$ time (matrix-vector multiplication)</li>
-  <li>Check that $c^T x \geq k$: $O(n)$ time</li>
+  <li>Check that x has integer values: O(n) time</li>
+  <li>Check that Ax leq b: O(mn) time (matrix-vector multiplication)</li>
+  <li>Check that c^T x geq k: O(n) time</li>
 </ol>
 
-<p>Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ILP is in NP.</p>
+<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
 
-<p><strong>Note:</strong> The size of the solution $x$ might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
+<p><strong>Note:</strong> The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -153,59 +153,59 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
 
 <ol>
   <li><strong>Variables:</strong>
     <ul>
-      <li>For each Boolean variable $x_i$, create an integer variable $y_i \in {0, 1}$</li>
-      <li>$y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$</li>
+      <li>For each Boolean variable x_i, create an integer variable y_i in {0, 1}</li>
+      <li>y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE</li>
     </ul>
   </li>
   <li><strong>Clauses:</strong>
     <ul>
-      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:
+      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3):
         <ul>
-          <li>If literal is $x_i$, use $y_i$</li>
-          <li>If literal is $\neg x_i$, use $(1 - y_i)$</li>
-          <li>Constraint: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (at least one literal is true)</li>
+          <li>If literal is x_i, use y_i</li>
+          <li>If literal is ¬ x_i, use (1 - y_i)</li>
+          <li>Constraint: y_{l_1} + y_{l_2} + y_{l_3} geq 1 (at least one literal is true)</li>
         </ul>
       </li>
     </ul>
 
-    <p>Example: For clause $(x_1 \lor \neg x_2 \lor x_3)$:</p>
+    <p>Example: For clause (x₁  ∨  ¬ x₁  ∨  x₁):</p>
     <ul>
-      <li>Constraint: $y_1 + (1 - y_2) + y_3 \geq 1$</li>
-      <li>Simplifies to: $y_1 - y_2 + y_3 \geq 0$</li>
+      <li>Constraint: y_1 + (1 - y_2) + y_3 ≥ 1</li>
+      <li>Simplifies to: y_1 - y_2 + y_3 ≥ 0</li>
     </ul>
   </li>
   <li>
-    <p><strong>Objective:</strong> Maximize $\sum_{i=1}^n y_i$ (or any objective, since we’re just checking feasibility)</p>
+    <p><strong>Objective:</strong> Maximize ∑_{i=1}^n y_i (or any objective, since we’re just checking feasibility)</p>
   </li>
-  <li><strong>Bounds:</strong> $0 \leq y_i \leq 1$ for all $i$ (enforces binary variables)</li>
+  <li><strong>Bounds:</strong> 0 ≤ y_i ≤ 1 for all i (enforces binary variables)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, set $y_i = 1$ if $x_i = \text{TRUE}$, else $y_i = 0$</li>
+  <li>If \phi is satisfiable, set y_i = 1 if x_i = TRUE, else y_i = 0</li>
   <li>Each clause constraint is satisfied (at least one literal is 1)</li>
   <li>This gives a feasible ILP solution</li>
 </ul>
 
 <p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If ILP has feasible solution with $y_i \in {0,1}$, set $x_i = \text{TRUE}$ if $y_i = 1$, else $x_i = \text{FALSE}$</li>
-  <li>Since each clause constraint requires at least one $y_i = 1$ (or $(1-y_i) = 1$), each clause has at least one true literal</li>
+  <li>If ILP has feasible solution with y_i ∈ {0,1}, set x_i = TRUE if y_i = 1, else x_i = FALSE</li>
+  <li>Since each clause constraint requires at least one y_i = 1 (or (1-y_i) = 1), each clause has at least one true literal</li>
   <li>This gives a satisfying assignment</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Construction takes $O(mn)$ time (one constraint per clause)</li>
+  <li>Construction takes O(mn) time (one constraint per clause)</li>
 </ul>
 
 <p>Therefore, <strong>ILP is NP-complete</strong>.</p>
@@ -222,8 +222,8 @@
 
 <h3 id="key-difference">Key Difference</h3>
 
-<p><strong>LP:</strong> Variables $x \in \mathbb{R}^n$ (continuous)
-<strong>ILP:</strong> Variables $x \in \mathbb{Z}^n$ (integer)</p>
+<p><strong>LP:</strong> Variables x ∈ ℝ^n (continuous)
+<strong>ILP:</strong> Variables x ∈ ℤ^n (integer)</p>
 
 <p>This seemingly small restriction makes the problem NP-complete!</p>
 
@@ -238,10 +238,10 @@
 
 <p><strong>Example:</strong></p>
 <ul>
-  <li>ILP: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ integer</li>
-  <li>LP relaxation: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ (real)</li>
-  <li>LP solution: $(3, 0)$ with objective 9 (happens to be integer!)</li>
-  <li>If LP gave $(2.5, 1)$, we’d need to branch or add cuts</li>
+  <li>ILP: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 integer</li>
+  <li>LP relaxation: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 (real)</li>
+  <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
+  <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
 </ul>
 
 <h2 id="practical-implications">Practical Implications</h2>
@@ -264,7 +264,7 @@
 <ul>
   <li>Solve LP relaxation</li>
   <li>If solution is fractional, branch on a fractional variable</li>
-  <li>Create two subproblems: $x_i \leq \lfloor x_i^* \rfloor$ and $x_i \geq \lceil x_i^* \rceil$</li>
+  <li>Create two subproblems: x_i ≤ \lfloor x_i^* \rfloor and x_i ≥ \lceil x_i^* \rceil</li>
   <li>Recursively solve subproblems</li>
   <li>Prune branches that can’t improve best known solution</li>
 </ul>
@@ -351,7 +351,7 @@
 <p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
   <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
 </ul>
@@ -361,7 +361,7 @@
 <p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$ for storing constraints</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
   <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
   <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
 </ul>
@@ -371,7 +371,7 @@
 <p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
 </ul>
 
@@ -379,8 +379,8 @@
 
 <p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ using interior-point methods where $L$ is input size</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using interior-point methods where L is input size</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
 </ul>
 
@@ -388,8 +388,8 @@
 
 <p><strong>Totally Unimodular Matrices:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ - solve as LP, solution automatically integer</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
 </ul>
 
 <p><strong>Network Flow Problems:</strong></p>
@@ -401,7 +401,7 @@
 
 <p><strong>Techniques Used:</strong></p>
 <ul>
-  <li>Preprocessing: $O(mn)$ to simplify problem</li>
+  <li>Preprocessing: O(mn) to simplify problem</li>
   <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
   <li>Heuristics: Fast approximate solutions</li>
   <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
@@ -411,8 +411,8 @@
 
 <p><strong>Given a candidate integer solution:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn)$ - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows ILP is in NP</li>
 </ul>
 
@@ -465,7 +465,7 @@
     </ul>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ILP instance.</p>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ILP instance.</p>
   </li>
   <li>
     <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>

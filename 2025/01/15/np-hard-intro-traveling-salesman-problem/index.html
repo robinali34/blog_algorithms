@@ -69,22 +69,22 @@
     <table>
       <tbody>
         <tr>
-          <td>A complete undirected graph $G = (V, E)$ with $</td>
+          <td>A complete undirected graph G = (V, E) with</td>
           <td>V</td>
-          <td>= n$</td>
+          <td>= n</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Edge weights $w: E \to \mathbb{R}^+$ (distances/costs)</li>
-  <li>A bound $B$</li>
+  <li>Edge weights w: E → ℝ⁺ (distances/costs)</li>
+  <li>A bound B</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a Hamiltonian cycle (tour) with total weight $\leq B$, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a Hamiltonian cycle (tour) with total weight ≤ B, NO otherwise</p>
 
 <p><strong>TSP Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> Same as above (without $B$)</p>
+<p><strong>Input:</strong> Same as above (without B)</p>
 
 <p><strong>Output:</strong> The minimum weight of a Hamiltonian cycle, or the cycle itself</p>
 
@@ -92,7 +92,7 @@
 
 <p><strong>Metric TSP:</strong></p>
 <ul>
-  <li>Distances satisfy triangle inequality: $w(u,v) \leq w(u,w) + w(w,v)$</li>
+  <li>Distances satisfy triangle inequality: w(u,v) \leq w(u,w) + w(w,v)</li>
   <li>More structured, better approximation algorithms exist</li>
 </ul>
 
@@ -128,20 +128,20 @@ B---C---D
 
 <p>Distances:</p>
 <ul>
-  <li>$AB = 10$, $AC = 15$, $AD = 20$</li>
-  <li>$BC = 10$, $BD = 25$, $CD = 10$</li>
+  <li>AB = 10, AC = 15, AD = 20</li>
+  <li>BC = 10, BD = 25, CD = 10</li>
 </ul>
 
 <p><strong>Possible tours:</strong></p>
 <ul>
-  <li>$A \to B \to C \to D \to A$: $10 + 10 + 10 + 20 = 50$</li>
-  <li>$A \to B \to D \to C \to A$: $10 + 25 + 10 + 15 = 60$</li>
-  <li>$A \to C \to B \to D \to A$: $15 + 10 + 25 + 20 = 70$</li>
-  <li>$A \to C \to D \to B \to A$: $15 + 10 + 25 + 10 = 60$</li>
-  <li>$A \to D \to C \to B \to A$: $20 + 10 + 10 + 10 = 50$ (same as first, reversed)</li>
+  <li>A → B \to C \to D → A: 10 + 10 + 10 + 20 = 50</li>
+  <li>A → B \to D \to C → A: 10 + 25 + 10 + 15 = 60</li>
+  <li>A → C \to B \to D → A: 15 + 10 + 25 + 20 = 70</li>
+  <li>A → C \to D \to B → A: 15 + 10 + 25 + 10 = 60</li>
+  <li>A → D \to C \to B → A: 20 + 10 + 10 + 10 = 50 (same as first, reversed)</li>
 </ul>
 
-<p><strong>Optimal tour:</strong> $A \to B \to C \to D \to A$ (or reverse) with weight 50.</p>
+<p><strong>Optimal tour:</strong> A → B \to C \to D → A (or reverse) with weight 50.</p>
 
 <h2 id="why-tsp-is-in-np">Why TSP is in NP</h2>
 
@@ -151,14 +151,14 @@ B---C---D
 
 <p>Given a candidate solution (a sequence of vertices representing a tour), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the tour has exactly $n$ vertices: $O(n)$ time</li>
-  <li>Check that each vertex appears exactly once: $O(n)$ time</li>
-  <li>Check that it forms a cycle (returns to start): $O(1)$ time</li>
-  <li>Sum the edge weights: $O(n)$ time</li>
-  <li>Check if total weight $\leq B$: $O(1)$ time</li>
+  <li>Check that the tour has exactly n vertices: O(n) time</li>
+  <li>Check that each vertex appears exactly once: O(n) time</li>
+  <li>Check that it forms a cycle (returns to start): O(1) time</li>
+  <li>Sum the edge weights: O(n) time</li>
+  <li>Check if total weight ≤ B: O(1) time</li>
 </ol>
 
-<p>Total verification time: $O(n)$, which is polynomial in the input size. Therefore, TSP is in NP.</p>
+<p>Total verification time: O(n), which is polynomial in the input size. Therefore, TSP is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-hamiltonian-cycle">NP-Completeness: Reduction from Hamiltonian Cycle</h2>
 
@@ -168,29 +168,29 @@ B---C---D
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Hamiltonian Cycle instance: graph $G = (V, E)$</li>
-  <li>Create complete graph $G’$ with same vertex set $V$</li>
+  <li>Given a Hamiltonian Cycle instance: graph G = (V, E)</li>
+  <li>Create complete graph G’ with same vertex set V</li>
   <li>Set edge weights:
     <ul>
-      <li>If edge $(u,v) \in E$, set $w(u,v) = 1$</li>
-      <li>If edge $(u,v) \notin E$, set $w(u,v) = 2$ (or any value $&gt; n$)</li>
+      <li>If edge (u,v) ∈ E, set w(u,v) = 1</li>
+      <li>If edge (u,v) ∉ E, set w(u,v) = 2 (or any value &gt; n)</li>
     </ul>
   </li>
-  <li>Set bound $B = n$</li>
-  <li>Return TSP instance: graph $G’$ with weights and bound $B$</li>
+  <li>Set bound B = n</li>
+  <li>Return TSP instance: graph G’ with weights and bound B</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>If $G$ has a Hamiltonian cycle, then $G’$ has a tour of weight $n$ (all edges have weight 1)</li>
-  <li>If $G’$ has a tour of weight $\leq n$, it must use only edges of weight 1</li>
-  <li>These edges exist in $G$, so $G$ has a Hamiltonian cycle</li>
+  <li>If G has a Hamiltonian cycle, then G’ has a tour of weight n (all edges have weight 1)</li>
+  <li>If G’ has a tour of weight ≤ n, it must use only edges of weight 1</li>
+  <li>These edges exist in G, so G has a Hamiltonian cycle</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Creating $G’$ takes $O(n^2)$ time</li>
-  <li>Setting weights takes $O(n^2)$ time</li>
+  <li>Creating G’ takes O(n^2) time</li>
+  <li>Setting weights takes O(n^2) time</li>
 </ul>
 
 <p>Therefore, <strong>TSP is NP-complete</strong>.</p>
@@ -206,17 +206,17 @@ B---C---D
 
 <h2 id="dynamic-programming-solution">Dynamic Programming Solution</h2>
 
-<p>Despite being NP-complete, TSP has a <strong>pseudo-polynomial</strong> dynamic programming solution (exponential in $n$, but polynomial in the representation of weights if weights are small).</p>
+<p>Despite being NP-complete, TSP has a <strong>pseudo-polynomial</strong> dynamic programming solution (exponential in n, but polynomial in the representation of weights if weights are small).</p>
 
 <h3 id="dp-algorithm-held-karp-algorithm">DP Algorithm (Held-Karp Algorithm)</h3>
 
-<p><strong>Subproblem:</strong> $dp[mask][v] =$ minimum cost to visit all vertices in $mask$ ending at vertex $v$, starting from vertex $0$.</p>
+<p><strong>Subproblem:</strong> dp[mask][v] = minimum cost to visit all vertices in mask ending at vertex v, starting from vertex 0.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[2^0][0] = 0$ (at start, cost is 0)</li>
-  <li>Recurrence: $dp[mask][v] = \min_{u \in mask, u \neq v} {dp[mask \setminus {v}][u] + w(u,v)}$</li>
-  <li>Final answer: $\min_{v} {dp[2^n-1][v] + w(v,0)}$ (return to start)</li>
+  <li>Base case: dp[2^0][0] = 0 (at start, cost is 0)</li>
+  <li>Recurrence: dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
+  <li>Final answer: min_{v} {dp[2^n-1][v] + w(v,0)} (return to start)</li>
 </ul>
 
 <p><strong>Algorithm:</strong></p>
@@ -238,8 +238,8 @@ B---C---D
 15. return result
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$
-<strong>Space Complexity:</strong> $O(2^n \cdot n)$</p>
+<p><strong>Time Complexity:</strong> O(2^n \cdot n^2)
+<strong>Space Complexity:</strong> O(2^n \cdot n)</p>
 
 <p>This is the <strong>Held-Karp algorithm</strong>, one of the most efficient exact algorithms for TSP.</p>
 
@@ -272,7 +272,7 @@ B---C---D
 
 <p><strong>MST-Based Algorithm:</strong></p>
 <ol>
-  <li>Find MST $T$</li>
+  <li>Find MST T</li>
   <li>Double all edges to get Eulerian graph</li>
   <li>Find Eulerian tour</li>
   <li>Shortcut to get Hamiltonian cycle (skip already-visited vertices)</li>
@@ -282,8 +282,8 @@ B---C---D
 
 <p><strong>Why it works:</strong></p>
 <ul>
-  <li>MST weight $\leq$ optimal TSP tour (remove one edge from optimal tour to get spanning tree)</li>
-  <li>Doubled MST has weight $2 \cdot \text{MST} \leq 2 \cdot \text{OPT}$</li>
+  <li>MST weight ≤ optimal TSP tour (remove one edge from optimal tour to get spanning tree)</li>
+  <li>Doubled MST has weight 2 · \text{MST} \leq 2 \cdot OPT</li>
   <li>Shortcutting doesn’t increase cost (triangle inequality)</li>
 </ul>
 
@@ -295,8 +295,8 @@ B---C---D
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known exact algorithms are exponential</li>
-  <li><strong>Brute Force</strong>: Try all $(n-1)!/2$ tours - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: $O(2^n \cdot n^2)$ time (Held-Karp)</li>
+  <li><strong>Brute Force</strong>: Try all (n-1)!/2 tours - factorial time</li>
+  <li><strong>Dynamic Programming</strong>: O(2^n \cdot n^2) time (Held-Karp)</li>
   <li><strong>Branch-and-Bound</strong>: Practical for medium instances</li>
   <li><strong>Heuristics</strong>: Very effective in practice</li>
 </ol>
@@ -319,7 +319,7 @@ B---C---D
 
 <p><strong>Exact Algorithms:</strong></p>
 <ul>
-  <li><strong>Held-Karp DP</strong>: $O(2^n \cdot n^2)$ - best for small-medium instances</li>
+  <li><strong>Held-Karp DP</strong>: O(2^n \cdot n^2) - best for small-medium instances</li>
   <li><strong>Branch-and-Bound</strong>: Combine with LP relaxation</li>
   <li><strong>Cutting Planes</strong>: Add constraints to eliminate suboptimal tours</li>
   <li><strong>Concorde</strong>: State-of-the-art exact TSP solver</li>
@@ -345,22 +345,22 @@ B---C---D
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $(n-1)!/2$ tours (for symmetric TSP)</p>
+<p><strong>Algorithm:</strong> Try all (n-1)!/2 tours (for symmetric TSP)</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n! \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current tour</li>
-  <li><strong>Analysis:</strong> For each permutation, compute tour cost ($O(n)$ time)</li>
+  <li><strong>Time Complexity:</strong> O(n! \cdot n)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current tour</li>
+  <li><strong>Analysis:</strong> For each permutation, compute tour cost (O(n) time)</li>
 </ul>
 
 <h3 id="dynamic-programming-held-karp-algorithm">Dynamic Programming (Held-Karp Algorithm)</h3>
 
 <p><strong>Algorithm:</strong> Bitmask DP</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = minimum cost to visit all vertices in $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \min_{u \in mask, u \neq v} {dp[mask \setminus {v}][u] + w(u,v)}$</li>
-  <li><strong>Final Answer:</strong> $\min_v {dp[2^n-1][v] + w(v,0)}$</li>
+  <li><strong>Time Complexity:</strong> O(2^n \cdot n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n \cdot n)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = minimum cost to visit all vertices in mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
+  <li><strong>Final Answer:</strong> min_v {dp[2^n-1][v] + w(v,0)}</li>
 </ul>
 
 <h3 id="branch-and-bound">Branch-and-Bound</h3>
@@ -368,7 +368,7 @@ B---C---D
 <p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but practical for medium instances</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Bounds:</strong> Use LP relaxation or MST to get lower bounds</li>
 </ul>
 
@@ -376,15 +376,15 @@ B---C---D
 
 <p><strong>MST-Based 2-Approximation:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^2 \log n)$ for MST + Eulerian tour + shortcutting</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n^2 \log n) for MST + Eulerian tour + shortcutting</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation Ratio:</strong> 2</li>
 </ul>
 
 <p><strong>Christofides 1.5-Approximation:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^3)$ (MST + matching + Eulerian tour)</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n^3) (MST + matching + Eulerian tour)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation Ratio:</strong> 1.5</li>
 </ul>
 
@@ -392,15 +392,15 @@ B---C---D
 
 <p><strong>Nearest Neighbor:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n^2)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Quality:</strong> No guarantee, but often within 25% of optimal</li>
 </ul>
 
 <p><strong>2-Opt Local Search:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^2)$ per iteration, multiple iterations</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n^2) per iteration, multiple iterations</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Improvement:</strong> Can improve tours significantly</li>
 </ul>
 
@@ -408,8 +408,8 @@ B---C---D
 
 <p><strong>Given a candidate tour:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - compute sum of edge weights</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - compute sum of edge weights</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows TSP is in NP</li>
 </ul>
 
@@ -417,7 +417,7 @@ B---C---D
 
 <ol>
   <li><strong>TSP is NP-Complete</strong>: Proven by reduction from Hamiltonian Cycle</li>
-  <li><strong>Dynamic Programming</strong>: Held-Karp algorithm solves in $O(2^n \cdot n^2)$ time</li>
+  <li><strong>Dynamic Programming</strong>: Held-Karp algorithm solves in O(2^n \cdot n^2) time</li>
   <li><strong>Approximation</strong>: 1.5-approximation (Christofides) and 2-approximation (MST-based) for metric TSP</li>
   <li><strong>Practical Solvers</strong>: Modern solvers can handle instances with thousands of cities</li>
   <li><strong>Widespread Applications</strong>: TSP appears in many real-world optimization problems</li>
@@ -427,9 +427,9 @@ B---C---D
 
 <p><strong>Hamiltonian Cycle ≤ₚ TSP:</strong></p>
 <ul>
-  <li>Given Hamiltonian Cycle instance: graph $G$</li>
+  <li>Given Hamiltonian Cycle instance: graph G</li>
   <li>Create complete graph with weights: 1 if edge exists, 2 (or large) if not</li>
-  <li>Hamiltonian cycle exists ↔ TSP tour of weight $n$ exists</li>
+  <li>Hamiltonian cycle exists ↔ TSP tour of weight n exists</li>
 </ul>
 
 <p>The reduction is polynomial-time, establishing TSP as NP-complete.</p>
@@ -454,13 +454,13 @@ B---C---D
     <p><strong>Prove the reduction</strong>: Show that Hamiltonian Cycle reduces to TSP. Why do we set non-existent edges to weight 2 (or large)?</p>
   </li>
   <li>
-    <p><strong>DP implementation</strong>: Implement the Held-Karp algorithm for TSP. Test it on small instances (up to $n=15$ or so).</p>
+    <p><strong>DP implementation</strong>: Implement the Held-Karp algorithm for TSP. Test it on small instances (up to n=15 or so).</p>
   </li>
   <li>
     <p><strong>Approximation</strong>: Implement the MST-based 2-approximation algorithm. Test it on metric TSP instances and compare to optimal.</p>
   </li>
   <li>
-    <p><strong>Time complexity</strong>: Verify the $O(2^n \cdot n^2)$ time complexity of Held-Karp. Can you optimize the space complexity?</p>
+    <p><strong>Time complexity</strong>: Verify the O(2^n \cdot n^2) time complexity of Held-Karp. Can you optimize the space complexity?</p>
   </li>
   <li>
     <p><strong>Christofides</strong>: Research and implement the Christofides algorithm. Why does it achieve 1.5-approximation?</p>

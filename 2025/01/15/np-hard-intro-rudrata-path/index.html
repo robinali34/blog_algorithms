@@ -53,7 +53,7 @@
   <div class="post-content e-content" itemprop="articleBody">
     <h2 id="introduction">Introduction</h2>
 
-<p>The Rudrata Path Problem (also known as the Hamiltonian Path Problem) is a fundamental graph problem that asks whether a graph contains a path visiting every vertex exactly once. The Rudrata (s,t)-Path Problem is a variant that requires the path to start at a specific vertex $s$ and end at a specific vertex $t$. These problems are closely related to the Hamiltonian Cycle Problem and serve as excellent examples of NP-completeness in graph theory.</p>
+<p>The Rudrata Path Problem (also known as the Hamiltonian Path Problem) is a fundamental graph problem that asks whether a graph contains a path visiting every vertex exactly once. The Rudrata (s,t)-Path Problem is a variant that requires the path to start at a specific vertex s and end at a specific vertex t. These problems are closely related to the Hamiltonian Cycle Problem and serve as excellent examples of NP-completeness in graph theory.</p>
 
 <h2 id="what-is-a-rudrata-path">What is a Rudrata Path?</h2>
 
@@ -65,20 +65,20 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
+  <li>An undirected graph G = (V, E)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a Rudrata path (a path visiting every vertex exactly once), NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a Rudrata path (a path visiting every vertex exactly once), NO otherwise</p>
 
 <p><strong>Rudrata (s,t)-Path Decision Problem:</strong></p>
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>Two vertices $s, t \in V$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>Two vertices s, t ∈ V</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a Rudrata path starting at $s$ and ending at $t$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a Rudrata path starting at s and ending at t, NO otherwise</p>
 
 <h3 id="example">Example</h3>
 
@@ -91,15 +91,15 @@
 
 <p><strong>Rudrata Path:</strong></p>
 <ul>
-  <li>Path: $1 \to 4 \to 5 \to 2 \to 3 \to 6$ ✓ (visits all 6 vertices exactly once)</li>
-  <li>Path: $1 \to 2 \to 5 \to 4$ ✗ (doesn’t visit all vertices)</li>
-  <li>Path: $1 \to 2 \to 3 \to 2$ ✗ (visits vertex 2 twice)</li>
+  <li>Path: 1 → 4 → 5 → 2 → 3 → 6 ✓ (visits all 6 vertices exactly once)</li>
+  <li>Path: 1 → 2 → 5 → 4 ✗ (doesn’t visit all vertices)</li>
+  <li>Path: 1 → 2 → 3 → 2 ✗ (visits vertex 2 twice)</li>
 </ul>
 
 <p><strong>Rudrata (1,6)-Path:</strong></p>
 <ul>
-  <li>Path: $1 \to 4 \to 5 \to 2 \to 3 \to 6$ ✓ (starts at 1, ends at 6, visits all vertices)</li>
-  <li>Path: $1 \to 2 \to 5 \to 4 \to 3 \to 6$ ✓ (another valid (1,6)-path)</li>
+  <li>Path: 1 → 4 → 5 → 2 → 3 → 6 ✓ (starts at 1, ends at 6, visits all vertices)</li>
+  <li>Path: 1 → 2 → 5 → 4 → 3 → 6 ✓ (another valid (1,6)-path)</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
@@ -114,8 +114,8 @@
 </code></pre></div></div>
 
 <ul>
-  <li>Rudrata path: $1 \to 2 \to 4 \to 3$ (visits all 4 vertices)</li>
-  <li>Note: This graph also has a Hamiltonian cycle: $1 \to 2 \to 4 \to 3 \to 1$</li>
+  <li>Rudrata path: 1 → 2 → 4 → 3 (visits all 4 vertices)</li>
+  <li>Note: This graph also has a Hamiltonian cycle: 1 → 2 → 4 → 3 → 1</li>
 </ul>
 
 <h2 id="why-rudrata-path-is-in-np">Why Rudrata Path is in NP</h2>
@@ -130,11 +130,11 @@
     <table>
       <tbody>
         <tr>
-          <td>Check that the path has exactly $</td>
+          <td>Check that the path has exactly</td>
           <td>V</td>
-          <td>$ vertices: $O(</td>
+          <td>vertices: O(</td>
           <td>V</td>
-          <td>)$ time</td>
+          <td>) time</td>
         </tr>
       </tbody>
     </table>
@@ -143,9 +143,9 @@
     <table>
       <tbody>
         <tr>
-          <td>Check that each vertex appears exactly once: $O(</td>
+          <td>Check that each vertex appears exactly once: O(</td>
           <td>V</td>
-          <td>)$ time (use a set or array)</td>
+          <td>) time (use a set or array)</td>
         </tr>
       </tbody>
     </table>
@@ -154,11 +154,11 @@
     <table>
       <tbody>
         <tr>
-          <td>Check that consecutive vertices in the path are adjacent: $O(</td>
+          <td>Check that consecutive vertices in the path are adjacent: O(</td>
           <td>V</td>
-          <td>)$ time (check $</td>
+          <td>) time (check</td>
           <td>V</td>
-          <td>-1$ edges)</td>
+          <td>-1 edges)</td>
         </tr>
       </tbody>
     </table>
@@ -168,17 +168,17 @@
 <table>
   <tbody>
     <tr>
-      <td>Total verification time: $O(</td>
+      <td>Total verification time: O(</td>
       <td>V</td>
-      <td>)$, which is polynomial in the input size. Therefore, Rudrata Path is in NP.</td>
+      <td>), which is polynomial in the input size. Therefore, Rudrata Path is in NP.</td>
     </tr>
   </tbody>
 </table>
 
 <p>Similarly, <strong>Rudrata (s,t)-Path ∈ NP</strong> with the additional checks:</p>
 <ul>
-  <li>First vertex is $s$</li>
-  <li>Last vertex is $t$</li>
+  <li>First vertex is s</li>
+  <li>Last vertex is t</li>
 </ul>
 
 <h2 id="np-completeness-reduction-from-hamiltonian-cycle">NP-Completeness: Reduction from Hamiltonian Cycle</h2>
@@ -189,8 +189,8 @@
 
 <p><strong>Hamiltonian Cycle:</strong></p>
 <ul>
-  <li><strong>Input:</strong> An undirected graph $G = (V, E)$</li>
-  <li><strong>Output:</strong> YES if $G$ contains a cycle visiting every vertex exactly once, NO otherwise</li>
+  <li><strong>Input:</strong> An undirected graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G contains a cycle visiting every vertex exactly once, NO otherwise</li>
 </ul>
 
 <p>Hamiltonian Cycle is known to be NP-complete (can be proven by reduction from 3-SAT).</p>
@@ -199,33 +199,33 @@
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Hamiltonian Cycle instance: graph $G = (V, E)$</li>
-  <li>Pick an arbitrary vertex $v \in V$</li>
-  <li>Create graph $G’$ by:
+  <li>Given a Hamiltonian Cycle instance: graph G = (V, E)</li>
+  <li>Pick an arbitrary vertex v ∈ V</li>
+  <li>Create graph G’ by:
     <ul>
-      <li>Adding a new vertex $v’$ (copy of $v$)</li>
-      <li>Connecting $v’$ to all neighbors of $v$</li>
-      <li>Removing vertex $v$ (or equivalently, work with $G’$ having $v’$ instead)</li>
+      <li>Adding a new vertex v’ (copy of v)</li>
+      <li>Connecting v’ to all neighbors of v</li>
+      <li>Removing vertex v (or equivalently, work with G’ having v’ instead)</li>
     </ul>
   </li>
-  <li>Return Rudrata Path instance: graph $G’$</li>
+  <li>Return Rudrata Path instance: graph G’</li>
 </ol>
 
 <p><strong>Alternative Simpler Reduction:</strong></p>
 <ol>
-  <li>Given Hamiltonian Cycle instance: graph $G$</li>
-  <li>Pick an arbitrary edge $(u, v) \in E$</li>
-  <li>Create graph $G’$ by removing edge $(u, v)$ and adding two new vertices $s$ and $t$</li>
-  <li>Connect $s$ only to $u$ and $t$ only to $v$</li>
-  <li>Return Rudrata (s,t)-Path instance: graph $G’$ with start $s$ and end $t$</li>
+  <li>Given Hamiltonian Cycle instance: graph G</li>
+  <li>Pick an arbitrary edge (u, v) ∈ E</li>
+  <li>Create graph G’ by removing edge (u, v) and adding two new vertices s and t</li>
+  <li>Connect s only to u and t only to v</li>
+  <li>Return Rudrata (s,t)-Path instance: graph G’ with start s and end t</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>If $G$ has a Hamiltonian cycle, we can break it at edge $(u,v)$ to get a path from $u$ to $v$ visiting all original vertices</li>
-  <li>Add $s$ at the start and $t$ at the end to get a Rudrata (s,t)-path</li>
-  <li>If $G’$ has a Rudrata (s,t)-path, it must go $s \to u \to \ldots \to v \to t$</li>
-  <li>Removing $s$ and $t$ and adding edge $(u,v)$ gives a Hamiltonian cycle in $G$</li>
+  <li>If G has a Hamiltonian cycle, we can break it at edge (u,v) to get a path from u to v visiting all original vertices</li>
+  <li>Add s at the start and t at the end to get a Rudrata (s,t)-path</li>
+  <li>If G’ has a Rudrata (s,t)-path, it must go s → u → … → v → t</li>
+  <li>Removing s and t and adding edge (u,v) gives a Hamiltonian cycle in G</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
@@ -234,11 +234,11 @@
     <table>
       <tbody>
         <tr>
-          <td>The reduction takes $O(</td>
+          <td>The reduction takes O(</td>
           <td>V</td>
           <td>+</td>
           <td>E</td>
-          <td>)$ time</td>
+          <td>) time</td>
         </tr>
       </tbody>
     </table>
@@ -253,18 +253,18 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
 
 <p><strong>Key Idea:</strong> Create a graph where a Rudrata (s,t)-path corresponds to a satisfying assignment.</p>
 
 <ol>
-  <li><strong>For each variable $x_i$:</strong>
+  <li><strong>For each variable xᵢ:</strong>
     <ul>
-      <li>Create a “variable gadget”: a path with vertices representing choosing $x_i = \text{TRUE}$ or $x_i = \text{FALSE}$</li>
-      <li>Typically: vertices $v_{i,1}, v_{i,2}, \ldots, v_{i,k}$ where the path can go “left” (TRUE) or “right” (FALSE)</li>
+      <li>Create a “variable gadget”: a path with vertices representing choosing xᵢ = TRUE or xᵢ = FALSE</li>
+      <li>Typically: vertices vᵢ,₁, vᵢ,₂, …, vᵢ,ₖ where the path can go “left” (TRUE) or “right” (FALSE)</li>
     </ul>
   </li>
-  <li><strong>For each clause $C_j$:</strong>
+  <li><strong>For each clause Cⱼ:</strong>
     <ul>
       <li>Create a “clause gadget”: vertices that can be visited if the clause is satisfied</li>
       <li>Connect clause vertices to variable vertices corresponding to literals in the clause</li>
@@ -277,7 +277,7 @@
       <li>Ensure a Rudrata (s,t)-path visits all vertices exactly once</li>
     </ul>
   </li>
-  <li><strong>Set $s$ and $t$:</strong> Start and end vertices of the constructed graph</li>
+  <li><strong>Set s and t:</strong> Start and end vertices of the constructed graph</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
@@ -294,7 +294,7 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Rudrata (s,t)-Path exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, construct path through variable gadgets based on assignment</li>
+  <li>If φ is satisfiable, construct path through variable gadgets based on assignment</li>
   <li>Visit clause vertices for satisfied clauses</li>
   <li>This gives a valid Rudrata (s,t)-path</li>
 </ul>
@@ -312,18 +312,18 @@
 
 <p><strong>Rudrata (s,t)-Path ≤ₚ Rudrata Path:</strong></p>
 <ul>
-  <li>Given Rudrata (s,t)-Path instance: graph $G$, vertices $s$ and $t$</li>
-  <li>Add two new vertices $s’$ and $t’$</li>
-  <li>Connect $s’$ only to $s$ and $t’$ only to $t$</li>
+  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s and t</li>
+  <li>Add two new vertices s’ and t’</li>
+  <li>Connect s’ only to s and t’ only to t</li>
   <li>Return Rudrata Path instance: modified graph</li>
-  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must start at $s’$ and end at $t’$)</li>
+  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must start at s’ and end at t’)</li>
 </ul>
 
 <p><strong>Rudrata Path ≤ₚ Rudrata (s,t)-Path:</strong></p>
 <ul>
-  <li>Given Rudrata Path instance: graph $G$</li>
-  <li>Pick arbitrary vertices $s$ and $t$</li>
-  <li>Try all pairs $(s,t)$ or use a more clever reduction</li>
+  <li>Given Rudrata Path instance: graph G</li>
+  <li>Pick arbitrary vertices s and t</li>
+  <li>Try all pairs (s,t) or use a more clever reduction</li>
   <li>Actually, we can reduce by trying all pairs, but this is not polynomial</li>
   <li>Better: Add two vertices connected only to all original vertices, then require path between them</li>
 </ul>
@@ -346,21 +346,21 @@
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Try all $n!$ permutations of vertices - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using bitmask DP (similar to TSP)</li>
+  <li><strong>Brute Force</strong>: Try all n! permutations of vertices - factorial time</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2ⁿ · n²) time using bitmask DP (similar to TSP)</li>
   <li><strong>Backtracking</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
 <h3 id="dynamic-programming-solution">Dynamic Programming Solution</h3>
 
-<p><strong>Subproblem:</strong> $dp[mask][v] = \text{true}$ if there exists a path visiting all vertices in $mask$ ending at vertex $v$.</p>
+<p><strong>Subproblem:</strong> dp[mask][v] = true if there exists a path visiting all vertices in mask ending at vertex v.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[2^i][i] = \text{true}$ for all $i$ (path of length 1)</li>
-  <li>Recurrence: $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$
+  <li>Base case: dp[2ⁱ][i] = true for all i (path of length 1)</li>
+  <li>Recurrence: dp[mask][v] = ∨(u ∈ mask, (u,v) ∈ E) dp[mask \ {v}][u]
     <ul>
-      <li>Path ending at $v$ visiting vertices in $mask$ exists if there’s a neighbor $u$ such that path ending at $u$ visiting $mask \setminus {v}$ exists</li>
+      <li>Path ending at v visiting vertices in mask exists if there’s a neighbor u such that path ending at u visiting mask \ {v} exists</li>
     </ul>
   </li>
 </ul>
@@ -383,28 +383,28 @@
 14. return false
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$
-<strong>Space Complexity:</strong> $O(2^n \cdot n)$</p>
+<p><strong>Time Complexity:</strong> O(2ⁿ · n²)
+<strong>Space Complexity:</strong> O(2ⁿ · n)</p>
 
 <h2 id="runtime-analysis">Runtime Analysis</h2>
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $n!$ permutations of vertices</p>
+<p><strong>Algorithm:</strong> Try all n! permutations of vertices</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n! \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current path</li>
-  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid path ($O(n)$ checks)</li>
+  <li><strong>Time Complexity:</strong> O(n! · n)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current path</li>
+  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid path (O(n) checks)</li>
 </ul>
 
 <h3 id="dynamic-programming-held-karp-style">Dynamic Programming (Held-Karp Style)</h3>
 
 <p><strong>Algorithm:</strong> Bitmask DP as described above</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$ (can be optimized with careful implementation)</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if path exists visiting all vertices in $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
+  <li><strong>Time Complexity:</strong> O(2ⁿ · n²)</li>
+  <li><strong>Space Complexity:</strong> O(2ⁿ · n) (can be optimized with careful implementation)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if path exists visiting all vertices in mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = ∨(u ∈ mask, (u,v) ∈ E) dp[mask \ {v}][u]</li>
 </ul>
 
 <h3 id="backtracking">Backtracking</h3>
@@ -412,7 +412,7 @@
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop if current path can’t be extended to visit all vertices</li>
 </ul>
 
@@ -420,21 +420,21 @@
 
 <p><strong>Trees:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - any path covering all vertices works</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n) - any path covering all vertices works</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
 </ul>
 
 <p><strong>Complete Graphs:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(1)$ - any permutation works, trivial to find</li>
+  <li><strong>Time Complexity:</strong> O(1) - any permutation works, trivial to find</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
 <p><strong>Given a candidate path:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - verify all $n-1$ edges exist and all vertices appear once</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - verify all n-1 edges exist and all vertices appear once</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Rudrata Path is in NP</li>
 </ul>
 
@@ -469,7 +469,7 @@
   <li><strong>Rudrata Path is NP-Complete</strong>: Proven by reduction from Hamiltonian Cycle or directly from 3-SAT</li>
   <li><strong>Two Variants</strong>: Rudrata Path (any start/end) and Rudrata (s,t)-Path (fixed start/end) are polynomially equivalent</li>
   <li><strong>Hamiltonian Cycle Connection</strong>: Rudrata Path and Hamiltonian Cycle are closely related and polynomially equivalent</li>
-  <li><strong>Dynamic Programming</strong>: $O(2^n \cdot n^2)$ time solution using bitmask DP works for small graphs</li>
+  <li><strong>Dynamic Programming</strong>: O(2ⁿ · n²) time solution using bitmask DP works for small graphs</li>
   <li><strong>Practical Algorithms</strong>: Despite NP-completeness, DP and backtracking work well for many practical instances</li>
 </ol>
 
@@ -477,16 +477,16 @@
 
 <p><strong>Hamiltonian Cycle ≤ₚ Rudrata (s,t)-Path:</strong></p>
 <ul>
-  <li>Given Hamiltonian Cycle instance: graph $G$</li>
-  <li>Pick edge $(u,v)$, remove it, add vertices $s$ and $t$</li>
-  <li>Connect $s$ to $u$ and $t$ to $v$</li>
+  <li>Given Hamiltonian Cycle instance: graph G</li>
+  <li>Pick edge (u,v), remove it, add vertices s and t</li>
+  <li>Connect s to u and t to v</li>
   <li>Hamiltonian cycle exists ↔ Rudrata (s,t)-path exists</li>
 </ul>
 
 <p><strong>Rudrata (s,t)-Path ≤ₚ Rudrata Path:</strong></p>
 <ul>
-  <li>Add vertices $s’$ and $t’$ connected only to $s$ and $t$ respectively</li>
-  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must use $s’$ and $t’$)</li>
+  <li>Add vertices s’ and t’ connected only to s and t respectively</li>
+  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must use s’ and t’)</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Rudrata (s,t)-Path:</strong></p>
@@ -510,7 +510,7 @@
 
 <ol>
   <li>
-    <p><strong>Find a Rudrata path</strong>: For the graph with vertices ${1,2,3,4}$ and edges ${(1,2), (2,3), (3,4), (1,4)}$, find all Rudrata paths. How many are there?</p>
+    <p><strong>Find a Rudrata path</strong>: For the graph with vertices {1,2,3,4} and edges {(1,2), (2,3), (3,4), (1,4)}, find all Rudrata paths. How many are there?</p>
   </li>
   <li>
     <p><strong>Prove the reduction</strong>: Show that Hamiltonian Cycle reduces to Rudrata (s,t)-Path. Can you also show the reverse reduction?</p>
@@ -522,7 +522,7 @@
     <p><strong>Modify for (s,t)-path</strong>: Modify the DP algorithm to find a Rudrata (s,t)-path. What changes are needed?</p>
   </li>
   <li>
-    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the $O(2^n \cdot n^2)$ time complexity. What is the space complexity?</p>
+    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the O(2ⁿ · n²) time complexity. What is the space complexity?</p>
   </li>
   <li>
     <p><strong>Special cases</strong>: Prove that every tree has a Rudrata path. What about complete graphs?</p>

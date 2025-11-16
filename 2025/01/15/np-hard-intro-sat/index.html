@@ -63,10 +63,10 @@
 
 <p><strong>Input:</strong> A Boolean formula in Conjunctive Normal Form (CNF)</p>
 <ul>
-  <li>Variables: $x_1, x_2, \ldots, x_n$ (each can be TRUE or FALSE)</li>
-  <li>Literals: a variable or its negation (e.g., $x_1$ or $\neg x_1$)</li>
-  <li>Clauses: disjunctions of literals (e.g., $(x_1 \lor \neg x_2 \lor x_3)$)</li>
-  <li>Formula: conjunction of clauses (e.g., $(x_1 \lor \neg x_2) \land (\neg x_1 \lor x_3) \land (x_2 \lor \neg x_3)$)</li>
+  <li>Variables: x₁, x₁, …, x_n (each can be TRUE or FALSE)</li>
+  <li>Literals: a variable or its negation (e.g., x₁ or ¬ x₁)</li>
+  <li>Clauses: disjunctions of literals (e.g., (x₁  ∨  ¬ x₁  ∨  x₁))</li>
+  <li>Formula: conjunction of clauses (e.g., (x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁))</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists an assignment that satisfies all clauses, NO otherwise</p>
@@ -74,16 +74,16 @@
 <h3 id="example">Example</h3>
 
 <p>Consider the formula:
-\((x_1 \lor x_2) \land (\neg x_1 \lor x_3) \land (\neg x_2 \lor \neg x_3)\)</p>
+(x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁)</p>
 
 <p>Is this satisfiable?</p>
 
 <ul>
   <li>
-    <p>If $x_1 = \text{TRUE}$, then the first clause is satisfied. For the second clause $(\neg x_1 \lor x_3)$ to be satisfied, we need $x_3 = \text{TRUE}$. With $x_3 = \text{TRUE}$, the third clause $(\neg x_2 \lor \neg x_3)$ requires $x_2 = \text{FALSE}$. This assignment satisfies all clauses: $(x_1=\text{TRUE}, x_2=\text{FALSE}, x_3=\text{TRUE})$.</p>
+    <p>If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁  ∨  x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).</p>
   </li>
   <li>
-    <p>Alternatively, if $x_1 = \text{FALSE}$, then the first clause requires $x_2 = \text{TRUE}$. The second clause is automatically satisfied. The third clause $(\neg x_2 \lor \neg x_3)$ requires $x_3 = \text{FALSE}$. This also works: $(x_1=\text{FALSE}, x_2=\text{TRUE}, x_3=\text{FALSE})$.</p>
+    <p>Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).</p>
   </li>
 </ul>
 
@@ -156,7 +156,7 @@
 <p><strong>3-SAT</strong> is a restricted version of SAT where each clause contains exactly 3 literals.</p>
 
 <p><strong>Example:</strong>
-\((x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_4) \land (x_1 \lor \neg x_2 \lor x_4)\)</p>
+(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
 
 <h3 id="why-3-sat">Why 3-SAT?</h3>
 
@@ -221,19 +221,19 @@
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $2^n$ possible truth assignments</p>
+<p><strong>Algorithm:</strong> Try all 2ⁿ possible truth assignments</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot m)$ where $n$ is number of variables and $m$ is number of clauses</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current assignment</li>
-  <li><strong>Analysis:</strong> For each of $2^n$ assignments, evaluate $m$ clauses, each taking $O(1)$ time per clause</li>
+  <li><strong>Time Complexity:</strong> O(2^n · m) where n is number of variables and m is number of clauses</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current assignment</li>
+  <li><strong>Analysis:</strong> For each of 2ⁿ assignments, evaluate m clauses, each taking O(1) time per clause</li>
 </ul>
 
 <h3 id="backtracking-dpll-algorithm">Backtracking (DPLL Algorithm)</h3>
 
 <p><strong>Algorithm:</strong> Systematic search with early pruning</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n)$ worst-case, but much better in practice with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Time Complexity:</strong> O(2^n) worst-case, but much better in practice with pruning</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Improvements:</strong> Unit propagation and pure literal elimination reduce search space significantly</li>
 </ul>
 
@@ -242,11 +242,11 @@
 <p><strong>Conflict-Driven Clause Learning (CDCL):</strong></p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but very efficient in practice</li>
-  <li><strong>Space Complexity:</strong> $O(n + m + L)$ where $L$ is learned clauses</li>
+  <li><strong>Space Complexity:</strong> O(n + m + L) where L is learned clauses</li>
   <li><strong>Key Techniques:</strong>
     <ul>
-      <li>Unit propagation: $O(m)$ per decision</li>
-      <li>Conflict analysis: $O(n)$ per conflict</li>
+      <li>Unit propagation: O(m) per decision</li>
+      <li>Conflict analysis: O(n) per conflict</li>
       <li>Clause learning: Adds learned clauses to prevent same conflicts</li>
     </ul>
   </li>
@@ -257,8 +257,8 @@
 
 <p><strong>Algorithm:</strong> Build implication graph, check for strongly connected components</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n + m)$ using Kosaraju’s or Tarjan’s algorithm</li>
-  <li><strong>Space Complexity:</strong> $O(n + m)$</li>
+  <li><strong>Time Complexity:</strong> O(n + m) using Kosaraju’s or Tarjan’s algorithm</li>
+  <li><strong>Space Complexity:</strong> O(n + m)</li>
   <li><strong>Why Polynomial:</strong> 2-SAT has special structure that allows polynomial-time solution</li>
 </ul>
 
@@ -266,8 +266,8 @@
 
 <p><strong>Given a candidate assignment:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(m)$ - evaluate each clause once</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(m) - evaluate each clause once</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability is why SAT is in NP</li>
 </ul>
 
@@ -295,7 +295,7 @@
 <ol>
   <li>
     <p>Determine if the following 3-SAT instance is satisfiable:
-\((x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor \neg x_2 \lor \neg x_3)\)</p>
+(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁  ∨  ¬ x₁)</p>
   </li>
   <li>
     <p>Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?</p>

@@ -95,7 +95,7 @@
 
 <h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
 
-<p><strong>Problem:</strong> Given $n$ activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
+<p><strong>Problem:</strong> Given n activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
 
 <p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
 
@@ -118,8 +118,8 @@
   <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -129,7 +129,7 @@
 
 <h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
 
-<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity $W$ to maximize value. Items can be taken fractionally.</p>
+<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.</p>
 
 <p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
 
@@ -159,8 +159,8 @@
   <li>Value: 60 + 100 + 80 = 240</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -202,8 +202,8 @@
   <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(E \log E)$ (sorting) + $O(E \cdot \alpha(V))$ (Union-Find) = $O(E \log E)$
-<strong>Space Complexity:</strong> $O(V)$ for Union-Find</p>
+<p><strong>Time Complexity:</strong> O(E \log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E \log E)
+<strong>Space Complexity:</strong> O(V) for Union-Find</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -238,9 +238,9 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: $O(E \log V)$</li>
-  <li>With Fibonacci heap: $O(E + V \log V)$
-<strong>Space Complexity:</strong> $O(V)$</li>
+  <li>With binary heap: O(E \log V)</li>
+  <li>With Fibonacci heap: O(E + V \log V)
+<strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
 <h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
@@ -276,8 +276,8 @@
   </li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ where $n$ is number of characters
-<strong>Space Complexity:</strong> $O(n)$</p>
+<p><strong>Time Complexity:</strong> O(n \log n) where n is number of characters
+<strong>Space Complexity:</strong> O(n)</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -327,15 +327,15 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: $O((V+E) \log V)$</li>
-  <li>With Fibonacci heap: $O(E + V \log V)$
-<strong>Space Complexity:</strong> $O(V)$</li>
+  <li>With binary heap: O((V+E) \log V)</li>
+  <li>With Fibonacci heap: O(E + V \log V)
+<strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
   <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
-  <li>Optimal substructure: Shortest path to $v$ through $u$ contains shortest path to $u$</li>
+  <li>Optimal substructure: Shortest path to v through u contains shortest path to u</li>
 </ul>
 
 <p><strong>Note:</strong> Only works for non-negative edge weights!</p>
@@ -348,12 +348,12 @@
 
 <p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$</p>
+<p><strong>Time Complexity:</strong> O(n \log n)
+<strong>Space Complexity:</strong> O(1)</p>
 
 <h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
 
-<p><strong>Problem:</strong> Given a universe $U$ and collection of sets $S$, find minimum number of sets covering $U$.</p>
+<p><strong>Problem:</strong> Given a universe U and collection of sets S, find minimum number of sets covering U.</p>
 
 <p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
 
@@ -377,23 +377,23 @@
 <table>
   <tbody>
     <tr>
-      <td><strong>Time Complexity:</strong> $O(</td>
+      <td><strong>Time Complexity:</strong> O(</td>
       <td>U</td>
-      <td>\cdot</td>
+      <td>·</td>
       <td>S</td>
-      <td>)$</td>
+      <td>)</td>
     </tr>
     <tr>
-      <td><strong>Space Complexity:</strong> $O(</td>
+      <td><strong>Space Complexity:</strong> O(</td>
       <td>U</td>
-      <td>)$</td>
+      <td>)</td>
       <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Approximation Ratio:</strong> $H_n$ where $H_n = \sum_{i=1}^n 1/i \approx \ln n$ (harmonic number)</p>
+<p><strong>Approximation Ratio:</strong> H_n where H_n = sum_{i=1}^n 1/i approx ln n (harmonic number)</p>
 
 <p><strong>Why It’s an Approximation:</strong></p>
 <ul>
@@ -506,17 +506,17 @@
 
 <p><strong>Greedy Choice Property:</strong></p>
 <ul>
-  <li>Let $a_1$ be the activity that finishes earliest</li>
-  <li>Let $S$ be an optimal solution</li>
-  <li>If $S$ doesn’t include $a_1$, let $a_k$ be the first activity in $S$</li>
-  <li>Since $a_1$ finishes before $a_k$ starts, we can replace $a_k$ with $a_1$ in $S$</li>
-  <li>This gives another optimal solution containing $a_1$ ✓</li>
+  <li>Let a_1 be the activity that finishes earliest</li>
+  <li>Let S be an optimal solution</li>
+  <li>If S doesn’t include a_1, let a_k be the first activity in S</li>
+  <li>Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S</li>
+  <li>This gives another optimal solution containing a_1 ✓</li>
 </ul>
 
 <p><strong>Optimal Substructure:</strong></p>
 <ul>
-  <li>After selecting $a_1$, remaining problem: select activities starting after $a_1$ finishes</li>
-  <li>If $S’$ is optimal for remaining problem, then ${a_1} \cup S’$ is optimal for original ✓</li>
+  <li>After selecting a_1, remaining problem: select activities starting after a_1 finishes</li>
+  <li>If S’ is optimal for remaining problem, then {a_1} cup S’ is optimal for original ✓</li>
 </ul>
 
 <h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
@@ -540,8 +540,8 @@
     <tr>
       <td>Activity Selection</td>
       <td>Sort by finish time</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(1)$</td>
+      <td>O(n \log n)</td>
+      <td>O(1)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -552,8 +552,8 @@
     <tr>
       <td>Fractional Knapsack</td>
       <td>Sort by value/weight</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(1)$</td>
+      <td>O(n \log n)</td>
+      <td>O(1)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -564,8 +564,8 @@
     <tr>
       <td>MST (Kruskal)</td>
       <td>Sort edges, Union-Find</td>
-      <td>$O(E \log E)$</td>
-      <td>$O(V)$</td>
+      <td>O(E \log E)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -576,8 +576,8 @@
     <tr>
       <td>MST (Prim)</td>
       <td>Priority queue</td>
-      <td>$O(E \log V)$</td>
-      <td>$O(V)$</td>
+      <td>O(E \log V)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -588,8 +588,8 @@
     <tr>
       <td>Huffman Coding</td>
       <td>Min-heap</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(n)$</td>
+      <td>O(n \log n)</td>
+      <td>O(n)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -600,8 +600,8 @@
     <tr>
       <td>Dijkstra’s</td>
       <td>Priority queue</td>
-      <td>$O((V+E) \log V)$</td>
-      <td>$O(V)$</td>
+      <td>O((V+E) \log V)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -612,14 +612,14 @@
     <tr>
       <td>Set Cover</td>
       <td>Greedy selection</td>
-      <td>$O(</td>
+      <td>O(</td>
       <td>U</td>
-      <td>\cdot</td>
+      <td>·</td>
       <td>S</td>
-      <td>)$</td>
-      <td>$O(</td>
+      <td>)</td>
+      <td>O(</td>
       <td>U</td>
-      <td>)$</td>
+      <td>)</td>
     </tr>
   </tbody>
 </table>
@@ -629,7 +629,7 @@
 <ol>
   <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
   <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
-  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often $O(n \log n)$ or better)</li>
+  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n \log n) or better)</li>
   <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
   <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
   <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>

@@ -69,38 +69,37 @@
     <table>
       <tbody>
         <tr>
-          <td>Three disjoint sets $X$, $Y$, $Z$ with $</td>
+          <td>Three disjoint sets X, Y, Z with</td>
           <td>X</td>
           <td>=</td>
           <td>Y</td>
           <td>=</td>
           <td>Z</td>
-          <td>= n$</td>
+          <td>= n</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>A set $T \subseteq X \times Y \times Z$ of triples</li>
+  <li>A set T subseteq X times Y times Z of triples</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a subset $M \subseteq T$ such that:</p>
+<p><strong>Output:</strong> YES if there exists a subset M subseteq T such that:</p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>$</td>
           <td>M</td>
-          <td>= n$ (exactly $n$ triples)</td>
+          <td>= n (exactly n triples)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>All triples in $M$ are disjoint (no two share an element)</li>
-  <li>Every element in $X \cup Y \cup Z$ appears in exactly one triple of $M$</li>
+  <li>All triples in M are disjoint (no two share an element)</li>
+  <li>Every element in X cup Y cup Z appears in exactly one triple of M</li>
 </ul>
 
-<p>Such a set $M$ is called a <strong>perfect 3D matching</strong>.</p>
+<p>Such a set M is called a <strong>perfect 3D matching</strong>.</p>
 
 <p><strong>3D Matching Optimization Problem:</strong></p>
 
@@ -112,18 +111,18 @@
 
 <p>Consider:</p>
 <ul>
-  <li>$X = {x_1, x_2, x_3}$</li>
-  <li>$Y = {y_1, y_2, y_3}$</li>
-  <li>$Z = {z_1, z_2, z_3}$</li>
-  <li>$T = {(x_1, y_1, z_1), (x_1, y_2, z_2), (x_2, y_1, z_3), (x_2, y_3, z_1), (x_3, y_2, z_3), (x_3, y_3, z_2)}$</li>
+  <li>X = {x₁, x₁, x₁}</li>
+  <li>Y = {y_1, y_2, y_3}</li>
+  <li>Z = {z_1, z_2, z_3}</li>
+  <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}</li>
 </ul>
 
 <p><strong>Trying to find a perfect matching:</strong></p>
 <ul>
-  <li>If we pick $(x_1, y_1, z_1)$, we can’t use $(x_1, y_2, z_2)$ or $(x_2, y_1, z_3)$ (they share $x_1$ or $y_1$)</li>
-  <li>Try: $(x_1, y_1, z_1)$, $(x_2, y_3, z_1)$ ✗ (both use $z_1$)</li>
-  <li>Try: $(x_1, y_1, z_1)$, $(x_2, y_3, z_2)$ ✗ ($z_2$ not available, need to check)</li>
-  <li>Actually: $(x_1, y_1, z_1)$, $(x_2, y_3, z_2)$, $(x_3, y_2, z_3)$ ✓ (perfect matching!)</li>
+  <li>If we pick (x₁, y_1, z_1), we can’t use (x₁, y_2, z_2) or (x₁, y_1, z_3) (they share x₁ or y_1)</li>
+  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_1) ✗ (both use z_1)</li>
+  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_2) ✗ (z_2 not available, need to check)</li>
+  <li>Actually: (x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3) ✓ (perfect matching!)</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
@@ -140,7 +139,7 @@ Triples:
 (x3,y2,z3)  (x3,y3,z2)
 </code></pre></div></div>
 
-<p><strong>Perfect matching:</strong> ${(x_1, y_1, z_1), (x_2, y_3, z_2), (x_3, y_2, z_3)}$</p>
+<p><strong>Perfect matching:</strong> {(x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3)}</p>
 
 <h2 id="why-3d-matching-is-in-np">Why 3D Matching is in NP</h2>
 
@@ -148,24 +147,24 @@ Triples:
 
 <p><strong>3D Matching ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set $M$ of triples), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set M of triples), we can verify in polynomial time:</p>
 <ol>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Check that $</td>
+          <td>Check that</td>
           <td>M</td>
-          <td>= n$: $O(1)$ time</td>
+          <td>= n: O(1) time</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Check that all triples are disjoint: $O(n^2)$ time (compare all pairs)</li>
-  <li>Check that every element appears exactly once: $O(n)$ time (use arrays/sets to count occurrences)</li>
+  <li>Check that all triples are disjoint: O(n^2) time (compare all pairs)</li>
+  <li>Check that every element appears exactly once: O(n) time (use arrays/sets to count occurrences)</li>
 </ol>
 
-<p>Total verification time: $O(n^2)$, which is polynomial in the input size. Therefore, 3D Matching is in NP.</p>
+<p>Total verification time: O(n^2), which is polynomial in the input size. Therefore, 3D Matching is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -173,19 +172,19 @@ Triples:
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Create gadgets for variables and clauses, ensuring a perfect 3D matching corresponds to a satisfying assignment.</p>
 
 <ol>
-  <li><strong>For each variable $x_i$:</strong>
+  <li><strong>For each variable x_i:</strong>
     <ul>
       <li>Create a “variable gadget” with elements that can be matched in two ways (encoding TRUE/FALSE)</li>
-      <li>Typically: Create $2m$ elements in each of $X$, $Y$, $Z$ for variable $x_i$</li>
+      <li>Typically: Create 2m elements in each of X, Y, Z for variable x_i</li>
       <li>The matching can “go left” (TRUE) or “go right” (FALSE)</li>
     </ul>
   </li>
-  <li><strong>For each clause $C_j$:</strong>
+  <li><strong>For each clause C_j:</strong>
     <ul>
       <li>Create a “clause gadget” with elements that can be matched if the clause is satisfied</li>
       <li>Connect clause gadgets to variable gadgets based on which literals appear</li>
@@ -205,22 +204,22 @@ Triples:
 
 <h3 id="simplified-construction-sketch">Simplified Construction Sketch</h3>
 
-<p><strong>Variable Gadget for $x_i$:</strong></p>
+<p><strong>Variable Gadget for x_i:</strong></p>
 <ul>
   <li>Create elements that force a choice between TRUE and FALSE</li>
-  <li>If matching goes “TRUE path”, it encodes $x_i = \text{TRUE}$</li>
-  <li>If matching goes “FALSE path”, it encodes $x_i = \text{FALSE}$</li>
+  <li>If matching goes “TRUE path”, it encodes x_i = TRUE</li>
+  <li>If matching goes “FALSE path”, it encodes x_i = FALSE</li>
 </ul>
 
-<p><strong>Clause Gadget for $C_j = (l_1 \lor l_2 \lor l_3)$:</strong></p>
+<p><strong>Clause Gadget for C_j = (l_1  ∨  l_2  ∨  l_3):</strong></p>
 <ul>
   <li>Create elements that can be matched if at least one literal is true</li>
-  <li>Connect to variable gadgets: if variable $x_i$ is set to make literal true, clause gadget can be matched</li>
+  <li>Connect to variable gadgets: if variable x_i is set to make literal true, clause gadget can be matched</li>
 </ul>
 
 <p><strong>Key Constraint:</strong></p>
 <ul>
-  <li>A perfect matching must use exactly $n$ triples covering all elements</li>
+  <li>A perfect matching must use exactly n triples covering all elements</li>
   <li>This forces exactly one choice per variable and satisfaction of all clauses</li>
 </ul>
 
@@ -228,7 +227,7 @@ Triples:
 
 <p><strong>Forward Direction (3-SAT satisfiable → 3D Matching exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, construct matching:
+  <li>If \phi is satisfiable, construct matching:
     <ul>
       <li>For each variable, choose triples corresponding to its truth value</li>
       <li>For each clause, choose triples that match clause elements (possible because at least one literal is true)</li>
@@ -246,7 +245,7 @@ Triples:
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Construction creates $O(mn)$ elements and $O(mn)$ triples</li>
+  <li>Construction creates O(mn) elements and O(mn) triples</li>
   <li>This is polynomial in input size</li>
 </ul>
 
@@ -293,7 +292,7 @@ Triples:
 <ul>
   <li>Generalization to hypergraphs (edges can connect more than 2 vertices)</li>
   <li>3D Matching is 3-uniform hypergraph matching</li>
-  <li>$k$-dimensional matching is NP-complete for $k \geq 3$</li>
+  <li>k-dimensional matching is NP-complete for k ≥ 3</li>
 </ul>
 
 <h2 id="practical-implications">Practical Implications</h2>
@@ -329,7 +328,7 @@ Triples:
 <ul>
   <li>Formulate as 0-1 ILP:
     <ul>
-      <li>Variables: $x_t \in {0,1}$ for each triple $t$</li>
+      <li>Variables: x_t ∈ {0,1} for each triple t</li>
       <li>Constraints: For each element, sum of triples containing it equals 1</li>
       <li>Objective: Maximize number of triples (or just feasibility)</li>
     </ul>
@@ -377,17 +376,17 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(2^{</td>
+          <td><strong>Time Complexity:</strong> O(2^{</td>
           <td>T</td>
-          <td>} \cdot n)$ where $</td>
+          <td>} cdot n) where</td>
           <td>T</td>
-          <td>$ is number of triples</td>
+          <td>is number of triples</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current matching</li>
-  <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching ($O(n)$ to check disjointness)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current matching</li>
+  <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching (O(n) to check disjointness)</li>
 </ul>
 
 <h3 id="backtracking">Backtracking</h3>
@@ -395,7 +394,7 @@ Triples:
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop if current matching can’t be extended to perfect matching</li>
 </ul>
 
@@ -408,9 +407,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(</td>
+          <td><strong>Space Complexity:</strong> O(</td>
           <td>T</td>
-          <td>+ n)$ for storing variables and constraints</td>
+          <td>+ n) for storing variables and constraints</td>
         </tr>
       </tbody>
     </table>
@@ -419,9 +418,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Formulation:</strong> $O(</td>
+          <td><strong>Formulation:</strong> O(</td>
           <td>T</td>
-          <td>)$ variables, $O(n)$ constraints</td>
+          <td>) variables, O(n) constraints</td>
         </tr>
       </tbody>
     </table>
@@ -437,9 +436,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(\sqrt{n} \cdot</td>
+          <td><strong>Time Complexity:</strong> O(sqrt{n} cdot</td>
           <td>E</td>
-          <td>)$ using Hopcroft-Karp algorithm</td>
+          <td>) using Hopcroft-Karp algorithm</td>
         </tr>
       </tbody>
     </table>
@@ -448,9 +447,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(n +</td>
+          <td><strong>Space Complexity:</strong> O(n +</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
@@ -462,8 +461,8 @@ Triples:
 
 <p><strong>Given a candidate matching:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - verify all elements appear exactly once and triples are disjoint</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - verify all elements appear exactly once and triples are disjoint</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows 3D Matching is in NP</li>
 </ul>
 
@@ -503,8 +502,8 @@ Triples:
 <ol>
   <li><strong>Find a matching</strong>: For the 3D matching instance:
     <ul>
-      <li>$X = {x_1, x_2}$, $Y = {y_1, y_2}$, $Z = {z_1, z_2}$</li>
-      <li>$T = {(x_1, y_1, z_1), (x_1, y_2, z_2), (x_2, y_1, z_2), (x_2, y_2, z_1)}$
+      <li>X = {x₁, x₁}, Y = {y_1, y_2}, Z = {z_1, z_2}</li>
+      <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)}
 Does a perfect matching exist?</li>
     </ul>
   </li>
@@ -521,7 +520,7 @@ Does a perfect matching exist?</li>
     <p><strong>Algorithm design</strong>: Design a backtracking algorithm for 3D Matching. How can you prune the search space?</p>
   </li>
   <li>
-    <p><strong>Extension</strong>: Research $k$-dimensional matching. For what values of $k$ is it NP-complete? Polynomial-time?</p>
+    <p><strong>Extension</strong>: Research k-dimensional matching. For what values of k is it NP-complete? Polynomial-time?</p>
   </li>
   <li>
     <p><strong>Applications</strong>: Research one real-world application of 3D Matching. How is it formulated? What solving methods are used?</p>

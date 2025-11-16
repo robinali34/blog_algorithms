@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-16T22:46:28+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Greedy Algorithms: Theory and Examples</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/" rel="alternate" type="text/html" title="Greedy Algorithms: Theory and Examples" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-16T22:51:49+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Greedy Algorithms: Theory and Examples</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/" rel="alternate" type="text/html" title="Greedy Algorithms: Theory and Examples" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Greedy algorithms are a fundamental class of algorithms that make locally optimal choices at each step with the hope of finding a globally optimal solution. They are simple, intuitive, and often very efficient. However, greedy algorithms don’t always produce optimal solutions - understanding when they work and when they don’t is crucial for algorithm design.</p>
 
@@ -42,7 +42,7 @@
 
 <h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
 
-<p><strong>Problem:</strong> Given $n$ activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
+<p><strong>Problem:</strong> Given n activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
 
 <p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
 
@@ -65,8 +65,8 @@
   <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -76,7 +76,7 @@
 
 <h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
 
-<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity $W$ to maximize value. Items can be taken fractionally.</p>
+<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.</p>
 
 <p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
 
@@ -106,8 +106,8 @@
   <li>Value: 60 + 100 + 80 = 240</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -149,8 +149,8 @@
   <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(E \log E)$ (sorting) + $O(E \cdot \alpha(V))$ (Union-Find) = $O(E \log E)$
-<strong>Space Complexity:</strong> $O(V)$ for Union-Find</p>
+<p><strong>Time Complexity:</strong> O(E \log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E \log E)
+<strong>Space Complexity:</strong> O(V) for Union-Find</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -185,9 +185,9 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: $O(E \log V)$</li>
-  <li>With Fibonacci heap: $O(E + V \log V)$
-<strong>Space Complexity:</strong> $O(V)$</li>
+  <li>With binary heap: O(E \log V)</li>
+  <li>With Fibonacci heap: O(E + V \log V)
+<strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
 <h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
@@ -223,8 +223,8 @@
   </li>
 </ul>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$ where $n$ is number of characters
-<strong>Space Complexity:</strong> $O(n)$</p>
+<p><strong>Time Complexity:</strong> O(n \log n) where n is number of characters
+<strong>Space Complexity:</strong> O(n)</p>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
@@ -274,15 +274,15 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: $O((V+E) \log V)$</li>
-  <li>With Fibonacci heap: $O(E + V \log V)$
-<strong>Space Complexity:</strong> $O(V)$</li>
+  <li>With binary heap: O((V+E) \log V)</li>
+  <li>With Fibonacci heap: O(E + V \log V)
+<strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
 <p><strong>Why It Works:</strong></p>
 <ul>
   <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
-  <li>Optimal substructure: Shortest path to $v$ through $u$ contains shortest path to $u$</li>
+  <li>Optimal substructure: Shortest path to v through u contains shortest path to u</li>
 </ul>
 
 <p><strong>Note:</strong> Only works for non-negative edge weights!</p>
@@ -295,12 +295,12 @@
 
 <p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
 
-<p><strong>Time Complexity:</strong> $O(n \log n)$
-<strong>Space Complexity:</strong> $O(1)$</p>
+<p><strong>Time Complexity:</strong> O(n \log n)
+<strong>Space Complexity:</strong> O(1)</p>
 
 <h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
 
-<p><strong>Problem:</strong> Given a universe $U$ and collection of sets $S$, find minimum number of sets covering $U$.</p>
+<p><strong>Problem:</strong> Given a universe U and collection of sets S, find minimum number of sets covering U.</p>
 
 <p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
 
@@ -324,23 +324,23 @@
 <table>
   <tbody>
     <tr>
-      <td><strong>Time Complexity:</strong> $O(</td>
+      <td><strong>Time Complexity:</strong> O(</td>
       <td>U</td>
-      <td>\cdot</td>
+      <td>·</td>
       <td>S</td>
-      <td>)$</td>
+      <td>)</td>
     </tr>
     <tr>
-      <td><strong>Space Complexity:</strong> $O(</td>
+      <td><strong>Space Complexity:</strong> O(</td>
       <td>U</td>
-      <td>)$</td>
+      <td>)</td>
       <td> </td>
       <td> </td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Approximation Ratio:</strong> $H_n$ where $H_n = \sum_{i=1}^n 1/i \approx \ln n$ (harmonic number)</p>
+<p><strong>Approximation Ratio:</strong> H_n where H_n = sum_{i=1}^n 1/i approx ln n (harmonic number)</p>
 
 <p><strong>Why It’s an Approximation:</strong></p>
 <ul>
@@ -453,17 +453,17 @@
 
 <p><strong>Greedy Choice Property:</strong></p>
 <ul>
-  <li>Let $a_1$ be the activity that finishes earliest</li>
-  <li>Let $S$ be an optimal solution</li>
-  <li>If $S$ doesn’t include $a_1$, let $a_k$ be the first activity in $S$</li>
-  <li>Since $a_1$ finishes before $a_k$ starts, we can replace $a_k$ with $a_1$ in $S$</li>
-  <li>This gives another optimal solution containing $a_1$ ✓</li>
+  <li>Let a_1 be the activity that finishes earliest</li>
+  <li>Let S be an optimal solution</li>
+  <li>If S doesn’t include a_1, let a_k be the first activity in S</li>
+  <li>Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S</li>
+  <li>This gives another optimal solution containing a_1 ✓</li>
 </ul>
 
 <p><strong>Optimal Substructure:</strong></p>
 <ul>
-  <li>After selecting $a_1$, remaining problem: select activities starting after $a_1$ finishes</li>
-  <li>If $S’$ is optimal for remaining problem, then ${a_1} \cup S’$ is optimal for original ✓</li>
+  <li>After selecting a_1, remaining problem: select activities starting after a_1 finishes</li>
+  <li>If S’ is optimal for remaining problem, then {a_1} cup S’ is optimal for original ✓</li>
 </ul>
 
 <h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
@@ -487,8 +487,8 @@
     <tr>
       <td>Activity Selection</td>
       <td>Sort by finish time</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(1)$</td>
+      <td>O(n \log n)</td>
+      <td>O(1)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -499,8 +499,8 @@
     <tr>
       <td>Fractional Knapsack</td>
       <td>Sort by value/weight</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(1)$</td>
+      <td>O(n \log n)</td>
+      <td>O(1)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -511,8 +511,8 @@
     <tr>
       <td>MST (Kruskal)</td>
       <td>Sort edges, Union-Find</td>
-      <td>$O(E \log E)$</td>
-      <td>$O(V)$</td>
+      <td>O(E \log E)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -523,8 +523,8 @@
     <tr>
       <td>MST (Prim)</td>
       <td>Priority queue</td>
-      <td>$O(E \log V)$</td>
-      <td>$O(V)$</td>
+      <td>O(E \log V)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -535,8 +535,8 @@
     <tr>
       <td>Huffman Coding</td>
       <td>Min-heap</td>
-      <td>$O(n \log n)$</td>
-      <td>$O(n)$</td>
+      <td>O(n \log n)</td>
+      <td>O(n)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -547,8 +547,8 @@
     <tr>
       <td>Dijkstra’s</td>
       <td>Priority queue</td>
-      <td>$O((V+E) \log V)$</td>
-      <td>$O(V)$</td>
+      <td>O((V+E) \log V)</td>
+      <td>O(V)</td>
       <td> </td>
       <td> </td>
       <td> </td>
@@ -559,14 +559,14 @@
     <tr>
       <td>Set Cover</td>
       <td>Greedy selection</td>
-      <td>$O(</td>
+      <td>O(</td>
       <td>U</td>
-      <td>\cdot</td>
+      <td>·</td>
       <td>S</td>
-      <td>)$</td>
-      <td>$O(</td>
+      <td>)</td>
+      <td>O(</td>
       <td>U</td>
-      <td>)$</td>
+      <td>)</td>
     </tr>
   </tbody>
 </table>
@@ -576,7 +576,7 @@
 <ol>
   <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
   <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
-  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often $O(n \log n)$ or better)</li>
+  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n \log n) or better)</li>
   <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
   <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
   <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>
@@ -636,52 +636,52 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix $A \in \mathbb{R}^{m \times n}$ (constraint coefficients)</li>
-  <li>A vector $b \in \mathbb{R}^m$ (constraint bounds)</li>
-  <li>A vector $c \in \mathbb{R}^n$ (objective coefficients)</li>
+  <li>A matrix A in mathbb{R}^{m times n} (constraint coefficients)</li>
+  <li>A vector b in mathbb{R}^m (constraint bounds)</li>
+  <li>A vector c in mathbb{R}^n (objective coefficients)</li>
 </ul>
 
 <p><strong>Output:</strong></p>
 <ul>
-  <li>A vector $x \in \mathbb{R}^n$ that:
+  <li>A vector x in mathbb{R}^n that:
     <ul>
-      <li>Satisfies $Ax \leq b$ (or $Ax = b$, or $Ax \geq b$, or mixed)</li>
-      <li>Satisfies $x \geq 0$ (non-negativity constraints, if present)</li>
-      <li>Maximizes (or minimizes) $c^T x$</li>
+      <li>Satisfies Ax leq b (or Ax = b, or Ax geq b, or mixed)</li>
+      <li>Satisfies x geq 0 (non-negativity constraints, if present)</li>
+      <li>Maximizes (or minimizes) c^T x</li>
     </ul>
   </li>
 </ul>
 
 <p><strong>Standard Form:</strong></p>
 <ul>
-  <li>Maximize $c^T x$</li>
-  <li>Subject to $Ax \leq b$ and $x \geq 0$</li>
+  <li>Maximize c^T x</li>
+  <li>Subject to Ax leq b and x geq 0</li>
 </ul>
 
 <p><strong>Canonical Form:</strong></p>
 <ul>
-  <li>Maximize $c^T x$</li>
-  <li>Subject to $Ax = b$ and $x \geq 0$</li>
+  <li>Maximize c^T x</li>
+  <li>Subject to Ax = b and x geq 0</li>
 </ul>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the LP:</p>
 
-<p><strong>Maximize:</strong> $3x_1 + 2x_2$</p>
+<p><strong>Maximize:</strong> 3x₁ + 2x₁</p>
 
 <p><strong>Subject to:</strong></p>
 <ul>
-  <li>$2x_1 + x_2 \leq 6$</li>
-  <li>$x_1 + 2x_2 \leq 8$</li>
-  <li>$x_1, x_2 \geq 0$</li>
+  <li>2x₁ + x₁ leq 6</li>
+  <li>x₁ + 2x₁ leq 8</li>
+  <li>x₁, x₁ geq 0</li>
 </ul>
 
 <p><strong>Graphical Solution:</strong></p>
 <ul>
   <li>Feasible region is a polygon</li>
   <li>Optimal solution is at a vertex (corner point)</li>
-  <li>Optimal: $(x_1, x_2) = (4/3, 10/3)$ with objective value $32/3 \approx 10.67$</li>
+  <li>Optimal: (x₁, x₁) = (4/3, 10/3) with objective value 32/3 \approx 10.67</li>
 </ul>
 
 <p><strong>Key Insight:</strong> The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).</p>
@@ -703,13 +703,13 @@
 <p><strong>2. Ellipsoid Method (Khachiyan, 1979):</strong></p>
 <ul>
   <li>First polynomial-time algorithm for LP</li>
-  <li>$O(n^4 L)$ time where $L$ is input size</li>
+  <li>O(n^4 L) time where L is input size</li>
   <li>Not practical due to large constants</li>
 </ul>
 
 <p><strong>3. Interior-Point Methods (Karmarkar, 1984):</strong></p>
 <ul>
-  <li>Polynomial-time: $O(n^{3.5} L)$ time</li>
+  <li>Polynomial-time: O(n^{3.5} L) time</li>
   <li>Practical and widely used</li>
   <li>Modern implementations are very efficient</li>
 </ul>
@@ -738,14 +738,14 @@
 
 <p><strong>ILP for Vertex Cover:</strong></p>
 <ul>
-  <li>Variables: $x_v \in {0,1}$ for each vertex $v$</li>
-  <li>Constraints: $x_u + x_v \geq 1$ for each edge $(u,v)$</li>
-  <li>Objective: Minimize $\sum_v x_v$</li>
+  <li>Variables: x_v ∈ {0,1} for each vertex v</li>
+  <li>Constraints: x_u + x_v ≥ 1 for each edge (u,v)</li>
+  <li>Objective: Minimize sum_v x_v</li>
 </ul>
 
 <p><strong>LP Relaxation:</strong></p>
 <ul>
-  <li>Variables: $x_v \in [0,1]$ (continuous, not integer)</li>
+  <li>Variables: x_v in [0,1] (continuous, not integer)</li>
   <li>Same constraints and objective</li>
 </ul>
 
@@ -754,7 +754,7 @@
 <p><strong>2-Approximation Algorithm:</strong></p>
 <ol>
   <li>Solve LP relaxation</li>
-  <li>Round: Include vertex $v$ if $x_v \geq 1/2$</li>
+  <li>Round: Include vertex v if x_v geq 1/2</li>
   <li>This gives a 2-approximation for Vertex Cover!</li>
 </ol>
 
@@ -776,9 +776,9 @@
 
 <p><strong>LP Optimization ≤ₚ LP Feasibility:</strong></p>
 <ul>
-  <li>Given LP: maximize $c^T x$ subject to $Ax \leq b$, $x \geq 0$</li>
-  <li>Add constraint: $c^T x \geq k$ (where $k$ is a guess for optimal value)</li>
-  <li>Use binary search on $k$ to find optimal value</li>
+  <li>Given LP: maximize c^T x subject to Ax leq b, x geq 0</li>
+  <li>Add constraint: c^T x geq k (where k is a guess for optimal value)</li>
+  <li>Use binary search on k to find optimal value</li>
   <li>This reduces optimization to feasibility checking</li>
 </ul>
 
@@ -787,7 +787,7 @@
 <p><strong>General LP ≤ₚ Standard Form LP:</strong></p>
 <ul>
   <li>Convert inequalities to equations using slack variables</li>
-  <li>Convert unconstrained variables: $x = x^+ - x^-$ where $x^+, x^- \geq 0$</li>
+  <li>Convert unconstrained variables: x = x^+ - x^- where x^+, x^- geq 0</li>
   <li>Convert maximization to minimization: negate objective</li>
   <li>All conversions are polynomial-time</li>
 </ul>
@@ -798,18 +798,18 @@
 
 <p>Every LP has a <strong>dual</strong> LP:</p>
 
-<p><strong>Primal:</strong> Maximize $c^T x$ subject to $Ax \leq b$, $x \geq 0$</p>
+<p><strong>Primal:</strong> Maximize c^T x subject to Ax leq b, x geq 0</p>
 
-<p><strong>Dual:</strong> Minimize $b^T y$ subject to $A^T y \geq c$, $y \geq 0$</p>
+<p><strong>Dual:</strong> Minimize b^T y subject to A^T y geq c, y geq 0</p>
 
 <p><strong>Strong Duality:</strong> If both have feasible solutions, then:</p>
 <ul>
   <li>Primal optimal = Dual optimal</li>
 </ul>
 
-<p><strong>Weak Duality:</strong> For any feasible $x$ and $y$:</p>
+<p><strong>Weak Duality:</strong> For any feasible x and y:</p>
 <ul>
-  <li>$c^T x \leq b^T y$</li>
+  <li>c^T x leq b^T y</li>
 </ul>
 
 <h3 id="using-duality-in-reductions">Using Duality in Reductions</h3>
@@ -830,21 +830,20 @@
 
 <p><strong>Algorithm:</strong></p>
 <ol>
-  <li>Solve LP relaxation: minimize $\sum_v x_v$ subject to $x_u + x_v \geq 1$ for all edges</li>
-  <li>Round: $S = {v : x_v \geq 1/2}$</li>
-  <li>Return $S$ as vertex cover</li>
+  <li>Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v geq 1 for all edges</li>
+  <li>Round: S = {v : x_v geq 1/2}</li>
+  <li>Return S as vertex cover</li>
 </ol>
 
 <p><strong>Analysis:</strong></p>
 <ul>
-  <li>$S$ is a vertex cover (each edge has at least one endpoint with $x_v \geq 1/2$)</li>
+  <li>S is a vertex cover (each edge has at least one endpoint with x_v geq 1/2)</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>$</td>
           <td>S</td>
-          <td>= \sum_{v \in S} 1 \leq \sum_{v \in S} 2x_v \leq 2 \cdot \text{LP optimal} \leq 2 \cdot \text{ILP optimal}$</td>
+          <td>= sum_{v in S} 1 leq sum_{v in S} 2x_v leq 2 cdot text{LP optimal} leq 2 cdot text{ILP optimal}</td>
         </tr>
       </tbody>
     </table>
@@ -856,23 +855,23 @@
 
 <p><strong>Set Cover ILP:</strong></p>
 <ul>
-  <li>Variables: $x_S \in {0,1}$ for each set $S$</li>
-  <li>Constraints: $\sum_{S: e \in S} x_S \geq 1$ for each element $e$</li>
-  <li>Objective: Minimize $\sum_S x_S$</li>
+  <li>Variables: x_S in {0,1} for each set S</li>
+  <li>Constraints: sum_{S: e in S} x_S geq 1 for each element e</li>
+  <li>Objective: Minimize sum_S x_S</li>
 </ul>
 
 <p><strong>LP Relaxation + Rounding:</strong></p>
 <ul>
   <li>Solve LP relaxation</li>
   <li>Use randomized rounding or greedy rounding</li>
-  <li>Achieves $O(\log n)$ approximation (or better with specific techniques)</li>
+  <li>Achieves O(\log n) approximation (or better with specific techniques)</li>
 </ul>
 
 <h3 id="maximum-flow-lp-formulation">Maximum Flow: LP Formulation</h3>
 
 <p><strong>Max Flow as LP:</strong></p>
 <ul>
-  <li>Variables: flow $f_e$ on each edge $e$</li>
+  <li>Variables: flow f_e on each edge e</li>
   <li>Constraints: flow conservation, capacity constraints</li>
   <li>Objective: maximize flow from source to sink</li>
 </ul>
@@ -889,8 +888,8 @@
 <ul>
   <li>For 3-SAT instance, create LP:
     <ul>
-      <li>Variables: $x_i \in [0,1]$ for each Boolean variable</li>
-      <li>For clause $(l_1 \lor l_2 \lor l_3)$: constraint ensuring at least one literal is “true”</li>
+      <li>Variables: x_i in [0,1] for each Boolean variable</li>
+      <li>For clause (l_1  ∨  l_2  ∨  l_3): constraint ensuring at least one literal is “true”</li>
       <li>But LP doesn’t naturally encode Boolean logic…</li>
     </ul>
   </li>
@@ -912,7 +911,7 @@
 
 <p><strong>Example - Vertex Cover:</strong></p>
 <ul>
-  <li>Round $x_v \geq 1/2$ to 1, else 0</li>
+  <li>Round x_v ≥ 1/2 to 1, else 0</li>
   <li>Guarantees feasibility and approximation ratio</li>
 </ul>
 
@@ -920,7 +919,7 @@
 
 <p><strong>Example - Set Cover:</strong></p>
 <ul>
-  <li>Include set $S$ with probability proportional to $x_S^*$ (LP solution)</li>
+  <li>Include set S with probability proportional to x_S^* (LP solution)</li>
   <li>Expected cost equals LP cost</li>
   <li>May need derandomization</li>
 </ul>
@@ -992,17 +991,17 @@
 <p><strong>Algorithm:</strong> Move from vertex to vertex along edges</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case (Klee-Minty examples), but polynomial average-case</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$ for storing tableau</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing tableau</li>
   <li><strong>Practical Performance:</strong> Very efficient in practice, often faster than polynomial methods</li>
-  <li><strong>Iterations:</strong> Typically $O(m)$ to $O(m+n)$ iterations</li>
+  <li><strong>Iterations:</strong> Typically O(m) to O(m+n) iterations</li>
 </ul>
 
 <h3 id="ellipsoid-method">Ellipsoid Method</h3>
 
 <p><strong>Algorithm:</strong> Shrink ellipsoid containing feasible region</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^4L)$ where $L$ is input size (bit complexity)</li>
-  <li><strong>Space Complexity:</strong> $O(n^2)$</li>
+  <li><strong>Time Complexity:</strong> O(n^4L) where L is input size (bit complexity)</li>
+  <li><strong>Space Complexity:</strong> O(n^2)</li>
   <li><strong>Significance:</strong> First proven polynomial-time algorithm for LP</li>
   <li><strong>Practical Performance:</strong> Not used in practice due to large constants</li>
 </ul>
@@ -1011,18 +1010,18 @@
 
 <p><strong>Algorithm:</strong> Move through interior of feasible region</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ using path-following methods</li>
-  <li><strong>Space Complexity:</strong> $O(n^2)$ for storing matrices</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using path-following methods</li>
+  <li><strong>Space Complexity:</strong> O(n^2) for storing matrices</li>
   <li><strong>Practical Performance:</strong> Very efficient, widely used in modern solvers</li>
-  <li><strong>Iterations:</strong> Typically $O(\sqrt{n} \log(1/\epsilon))$ iterations for $\epsilon$-accuracy</li>
+  <li><strong>Iterations:</strong> Typically O(sqrt{n} log(1/epsilon)) iterations for \epsilon-accuracy</li>
 </ul>
 
 <h3 id="primal-dual-methods">Primal-Dual Methods</h3>
 
 <p><strong>Algorithm:</strong> Solve primal and dual simultaneously</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ similar to interior-point</li>
-  <li><strong>Space Complexity:</strong> $O(n^2)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) similar to interior-point</li>
+  <li><strong>Space Complexity:</strong> O(n^2)</li>
   <li><strong>Advantage:</strong> Can exploit structure better in some cases</li>
 </ul>
 
@@ -1030,8 +1029,8 @@
 
 <p><strong>Network Flow Problems:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^2m)$ using specialized algorithms (faster than general LP)</li>
-  <li><strong>Space Complexity:</strong> $O(n + m)$</li>
+  <li><strong>Time Complexity:</strong> O(n^2m) using specialized algorithms (faster than general LP)</li>
+  <li><strong>Space Complexity:</strong> O(n + m)</li>
 </ul>
 
 <p><strong>Transportation Problems:</strong></p>
@@ -1043,8 +1042,8 @@
 
 <p><strong>For ILP Relaxation:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ - solve as regular LP</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as regular LP</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Use:</strong> Provides bounds for branch-and-bound algorithms</li>
 </ul>
 
@@ -1053,7 +1052,7 @@
 <p><strong>Commercial Solvers (CPLEX, Gurobi):</strong></p>
 <ul>
   <li><strong>Time Complexity:</strong> Polynomial (interior-point or simplex)</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Practical Performance:</strong> Can solve instances with millions of variables and constraints</li>
   <li><strong>Techniques:</strong> Preprocessing, advanced pivoting, parallel processing</li>
 </ul>
@@ -1062,8 +1061,8 @@
 
 <p><strong>Given a candidate solution:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn)$ - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability is straightforward for LP</li>
 </ul>
 
@@ -1135,20 +1134,20 @@
   </li>
   <li><strong>Duality</strong>: Write the dual of the following LP:
     <ul>
-      <li>Maximize $3x_1 + 2x_2$</li>
-      <li>Subject to $2x_1 + x_2 \leq 6$, $x_1 + 2x_2 \leq 8$, $x_1, x_2 \geq 0$</li>
+      <li>Maximize 3x₁ + 2x₁</li>
+      <li>Subject to 2x₁ + x₁ ≤ 6, x₁ + 2x₁ ≤ 8, x₁, x₁ ≥ 0</li>
     </ul>
   </li>
   <li>
-    <p><strong>Rounding</strong>: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold $1/3$ instead of $1/2$?</p>
+    <p><strong>Rounding</strong>: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?</p>
   </li>
   <li>
     <p><strong>Reduction</strong>: Show how to reduce LP optimization to LP feasibility using binary search. What is the time complexity?</p>
   </li>
   <li><strong>Standard Form</strong>: Convert the following to standard form:
     <ul>
-      <li>Minimize $x_1 - 2x_2$</li>
-      <li>Subject to $x_1 + x_2 = 5$, $x_1 \geq 0$, $x_2$ unrestricted</li>
+      <li>Minimize x₁ - 2x₁</li>
+      <li>Subject to x₁ + x₁ = 5, x₁ ≥ 0, x₁ unrestricted</li>
     </ul>
   </li>
   <li>
@@ -1183,38 +1182,37 @@
     <table>
       <tbody>
         <tr>
-          <td>Three disjoint sets $X$, $Y$, $Z$ with $</td>
+          <td>Three disjoint sets X, Y, Z with</td>
           <td>X</td>
           <td>=</td>
           <td>Y</td>
           <td>=</td>
           <td>Z</td>
-          <td>= n$</td>
+          <td>= n</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>A set $T \subseteq X \times Y \times Z$ of triples</li>
+  <li>A set T subseteq X times Y times Z of triples</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a subset $M \subseteq T$ such that:</p>
+<p><strong>Output:</strong> YES if there exists a subset M subseteq T such that:</p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>$</td>
           <td>M</td>
-          <td>= n$ (exactly $n$ triples)</td>
+          <td>= n (exactly n triples)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>All triples in $M$ are disjoint (no two share an element)</li>
-  <li>Every element in $X \cup Y \cup Z$ appears in exactly one triple of $M$</li>
+  <li>All triples in M are disjoint (no two share an element)</li>
+  <li>Every element in X cup Y cup Z appears in exactly one triple of M</li>
 </ul>
 
-<p>Such a set $M$ is called a <strong>perfect 3D matching</strong>.</p>
+<p>Such a set M is called a <strong>perfect 3D matching</strong>.</p>
 
 <p><strong>3D Matching Optimization Problem:</strong></p>
 
@@ -1226,18 +1224,18 @@
 
 <p>Consider:</p>
 <ul>
-  <li>$X = {x_1, x_2, x_3}$</li>
-  <li>$Y = {y_1, y_2, y_3}$</li>
-  <li>$Z = {z_1, z_2, z_3}$</li>
-  <li>$T = {(x_1, y_1, z_1), (x_1, y_2, z_2), (x_2, y_1, z_3), (x_2, y_3, z_1), (x_3, y_2, z_3), (x_3, y_3, z_2)}$</li>
+  <li>X = {x₁, x₁, x₁}</li>
+  <li>Y = {y_1, y_2, y_3}</li>
+  <li>Z = {z_1, z_2, z_3}</li>
+  <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}</li>
 </ul>
 
 <p><strong>Trying to find a perfect matching:</strong></p>
 <ul>
-  <li>If we pick $(x_1, y_1, z_1)$, we can’t use $(x_1, y_2, z_2)$ or $(x_2, y_1, z_3)$ (they share $x_1$ or $y_1$)</li>
-  <li>Try: $(x_1, y_1, z_1)$, $(x_2, y_3, z_1)$ ✗ (both use $z_1$)</li>
-  <li>Try: $(x_1, y_1, z_1)$, $(x_2, y_3, z_2)$ ✗ ($z_2$ not available, need to check)</li>
-  <li>Actually: $(x_1, y_1, z_1)$, $(x_2, y_3, z_2)$, $(x_3, y_2, z_3)$ ✓ (perfect matching!)</li>
+  <li>If we pick (x₁, y_1, z_1), we can’t use (x₁, y_2, z_2) or (x₁, y_1, z_3) (they share x₁ or y_1)</li>
+  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_1) ✗ (both use z_1)</li>
+  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_2) ✗ (z_2 not available, need to check)</li>
+  <li>Actually: (x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3) ✓ (perfect matching!)</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
@@ -1254,7 +1252,7 @@ Triples:
 (x3,y2,z3)  (x3,y3,z2)
 </code></pre></div></div>
 
-<p><strong>Perfect matching:</strong> ${(x_1, y_1, z_1), (x_2, y_3, z_2), (x_3, y_2, z_3)}$</p>
+<p><strong>Perfect matching:</strong> {(x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3)}</p>
 
 <h2 id="why-3d-matching-is-in-np">Why 3D Matching is in NP</h2>
 
@@ -1262,24 +1260,24 @@ Triples:
 
 <p><strong>3D Matching ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set $M$ of triples), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set M of triples), we can verify in polynomial time:</p>
 <ol>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Check that $</td>
+          <td>Check that</td>
           <td>M</td>
-          <td>= n$: $O(1)$ time</td>
+          <td>= n: O(1) time</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Check that all triples are disjoint: $O(n^2)$ time (compare all pairs)</li>
-  <li>Check that every element appears exactly once: $O(n)$ time (use arrays/sets to count occurrences)</li>
+  <li>Check that all triples are disjoint: O(n^2) time (compare all pairs)</li>
+  <li>Check that every element appears exactly once: O(n) time (use arrays/sets to count occurrences)</li>
 </ol>
 
-<p>Total verification time: $O(n^2)$, which is polynomial in the input size. Therefore, 3D Matching is in NP.</p>
+<p>Total verification time: O(n^2), which is polynomial in the input size. Therefore, 3D Matching is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -1287,19 +1285,19 @@ Triples:
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Create gadgets for variables and clauses, ensuring a perfect 3D matching corresponds to a satisfying assignment.</p>
 
 <ol>
-  <li><strong>For each variable $x_i$:</strong>
+  <li><strong>For each variable x_i:</strong>
     <ul>
       <li>Create a “variable gadget” with elements that can be matched in two ways (encoding TRUE/FALSE)</li>
-      <li>Typically: Create $2m$ elements in each of $X$, $Y$, $Z$ for variable $x_i$</li>
+      <li>Typically: Create 2m elements in each of X, Y, Z for variable x_i</li>
       <li>The matching can “go left” (TRUE) or “go right” (FALSE)</li>
     </ul>
   </li>
-  <li><strong>For each clause $C_j$:</strong>
+  <li><strong>For each clause C_j:</strong>
     <ul>
       <li>Create a “clause gadget” with elements that can be matched if the clause is satisfied</li>
       <li>Connect clause gadgets to variable gadgets based on which literals appear</li>
@@ -1319,22 +1317,22 @@ Triples:
 
 <h3 id="simplified-construction-sketch">Simplified Construction Sketch</h3>
 
-<p><strong>Variable Gadget for $x_i$:</strong></p>
+<p><strong>Variable Gadget for x_i:</strong></p>
 <ul>
   <li>Create elements that force a choice between TRUE and FALSE</li>
-  <li>If matching goes “TRUE path”, it encodes $x_i = \text{TRUE}$</li>
-  <li>If matching goes “FALSE path”, it encodes $x_i = \text{FALSE}$</li>
+  <li>If matching goes “TRUE path”, it encodes x_i = TRUE</li>
+  <li>If matching goes “FALSE path”, it encodes x_i = FALSE</li>
 </ul>
 
-<p><strong>Clause Gadget for $C_j = (l_1 \lor l_2 \lor l_3)$:</strong></p>
+<p><strong>Clause Gadget for C_j = (l_1  ∨  l_2  ∨  l_3):</strong></p>
 <ul>
   <li>Create elements that can be matched if at least one literal is true</li>
-  <li>Connect to variable gadgets: if variable $x_i$ is set to make literal true, clause gadget can be matched</li>
+  <li>Connect to variable gadgets: if variable x_i is set to make literal true, clause gadget can be matched</li>
 </ul>
 
 <p><strong>Key Constraint:</strong></p>
 <ul>
-  <li>A perfect matching must use exactly $n$ triples covering all elements</li>
+  <li>A perfect matching must use exactly n triples covering all elements</li>
   <li>This forces exactly one choice per variable and satisfaction of all clauses</li>
 </ul>
 
@@ -1342,7 +1340,7 @@ Triples:
 
 <p><strong>Forward Direction (3-SAT satisfiable → 3D Matching exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, construct matching:
+  <li>If \phi is satisfiable, construct matching:
     <ul>
       <li>For each variable, choose triples corresponding to its truth value</li>
       <li>For each clause, choose triples that match clause elements (possible because at least one literal is true)</li>
@@ -1360,7 +1358,7 @@ Triples:
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Construction creates $O(mn)$ elements and $O(mn)$ triples</li>
+  <li>Construction creates O(mn) elements and O(mn) triples</li>
   <li>This is polynomial in input size</li>
 </ul>
 
@@ -1407,7 +1405,7 @@ Triples:
 <ul>
   <li>Generalization to hypergraphs (edges can connect more than 2 vertices)</li>
   <li>3D Matching is 3-uniform hypergraph matching</li>
-  <li>$k$-dimensional matching is NP-complete for $k \geq 3$</li>
+  <li>k-dimensional matching is NP-complete for k ≥ 3</li>
 </ul>
 
 <h2 id="practical-implications">Practical Implications</h2>
@@ -1443,7 +1441,7 @@ Triples:
 <ul>
   <li>Formulate as 0-1 ILP:
     <ul>
-      <li>Variables: $x_t \in {0,1}$ for each triple $t$</li>
+      <li>Variables: x_t ∈ {0,1} for each triple t</li>
       <li>Constraints: For each element, sum of triples containing it equals 1</li>
       <li>Objective: Maximize number of triples (or just feasibility)</li>
     </ul>
@@ -1491,17 +1489,17 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(2^{</td>
+          <td><strong>Time Complexity:</strong> O(2^{</td>
           <td>T</td>
-          <td>} \cdot n)$ where $</td>
+          <td>} cdot n) where</td>
           <td>T</td>
-          <td>$ is number of triples</td>
+          <td>is number of triples</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current matching</li>
-  <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching ($O(n)$ to check disjointness)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current matching</li>
+  <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching (O(n) to check disjointness)</li>
 </ul>
 
 <h3 id="backtracking">Backtracking</h3>
@@ -1509,7 +1507,7 @@ Triples:
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop if current matching can’t be extended to perfect matching</li>
 </ul>
 
@@ -1522,9 +1520,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(</td>
+          <td><strong>Space Complexity:</strong> O(</td>
           <td>T</td>
-          <td>+ n)$ for storing variables and constraints</td>
+          <td>+ n) for storing variables and constraints</td>
         </tr>
       </tbody>
     </table>
@@ -1533,9 +1531,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Formulation:</strong> $O(</td>
+          <td><strong>Formulation:</strong> O(</td>
           <td>T</td>
-          <td>)$ variables, $O(n)$ constraints</td>
+          <td>) variables, O(n) constraints</td>
         </tr>
       </tbody>
     </table>
@@ -1551,9 +1549,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> $O(\sqrt{n} \cdot</td>
+          <td><strong>Time Complexity:</strong> O(sqrt{n} cdot</td>
           <td>E</td>
-          <td>)$ using Hopcroft-Karp algorithm</td>
+          <td>) using Hopcroft-Karp algorithm</td>
         </tr>
       </tbody>
     </table>
@@ -1562,9 +1560,9 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Space Complexity:</strong> $O(n +</td>
+          <td><strong>Space Complexity:</strong> O(n +</td>
           <td>E</td>
-          <td>)$</td>
+          <td>)</td>
         </tr>
       </tbody>
     </table>
@@ -1576,8 +1574,8 @@ Triples:
 
 <p><strong>Given a candidate matching:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - verify all elements appear exactly once and triples are disjoint</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - verify all elements appear exactly once and triples are disjoint</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows 3D Matching is in NP</li>
 </ul>
 
@@ -1617,8 +1615,8 @@ Triples:
 <ol>
   <li><strong>Find a matching</strong>: For the 3D matching instance:
     <ul>
-      <li>$X = {x_1, x_2}$, $Y = {y_1, y_2}$, $Z = {z_1, z_2}$</li>
-      <li>$T = {(x_1, y_1, z_1), (x_1, y_2, z_2), (x_2, y_1, z_2), (x_2, y_2, z_1)}$
+      <li>X = {x₁, x₁}, Y = {y_1, y_2}, Z = {z_1, z_2}</li>
+      <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)}
 Does a perfect matching exist?</li>
     </ul>
   </li>
@@ -1635,7 +1633,7 @@ Does a perfect matching exist?</li>
     <p><strong>Algorithm design</strong>: Design a backtracking algorithm for 3D Matching. How can you prune the search space?</p>
   </li>
   <li>
-    <p><strong>Extension</strong>: Research $k$-dimensional matching. For what values of $k$ is it NP-complete? Polynomial-time?</p>
+    <p><strong>Extension</strong>: Research k-dimensional matching. For what values of k is it NP-complete? Polynomial-time?</p>
   </li>
   <li>
     <p><strong>Applications</strong>: Research one real-world application of 3D Matching. How is it formulated? What solving methods are used?</p>
@@ -1659,33 +1657,33 @@ Does a perfect matching exist?</li>
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>An integer $k$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>An integer k</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a clique of size at least $k$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a clique of size at least k, NO otherwise</p>
 
 <p><strong>Clique Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> An undirected graph $G = (V, E)$</p>
+<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
 
-<p><strong>Output:</strong> The size of the largest clique in $G$ (called the <strong>clique number</strong>, denoted $\omega(G)$)</p>
+<p><strong>Output:</strong> The size of the largest clique in G (called the <strong>clique number</strong>, denoted omega(G))</p>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the following graph:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |\ /|
+    | /|
     | X |
-    |/ \|
+    |/ |
     3---4
 </code></pre></div></div>
 
 <ul>
-  <li>Cliques of size 2: ${1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}$</li>
-  <li>Cliques of size 3: ${1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}$</li>
-  <li>Clique of size 4: ${1,2,3,4}$ (this is a 4-clique, also called a complete graph $K_4$)</li>
+  <li>Cliques of size 2: {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}</li>
+  <li>Cliques of size 3: {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}</li>
+  <li>Clique of size 4: {1,2,3,4} (this is a 4-clique, also called a complete graph K_4)</li>
 </ul>
 
 <p>So the clique number of this graph is 4.</p>
@@ -1701,7 +1699,7 @@ Does a perfect matching exist?</li>
         6
 </code></pre></div></div>
 
-<p>The vertices ${1, 2, 3}$ form a clique (all pairwise connected). The vertices ${4, 5, 6}$ do NOT form a clique because 5 and 6 are not connected.</p>
+<p>The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.</p>
 
 <h2 id="why-clique-is-in-np">Why Clique is in NP</h2>
 
@@ -1709,18 +1707,18 @@ Does a perfect matching exist?</li>
 
 <p><strong>Clique ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set of $k$ vertices), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has exactly $k$ vertices: $O(k)$ time</li>
-  <li>Check that every pair of vertices in the set is connected by an edge: $O(k^2)$ time (check all $\binom{k}{2} = \frac{k(k-1)}{2}$ pairs)</li>
+  <li>Check that the set has exactly k vertices: O(k) time</li>
+  <li>Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs)</li>
 </ol>
 
 <table>
   <tbody>
     <tr>
-      <td>Since $k \leq</td>
+      <td>Since k ≤</td>
       <td>V</td>
-      <td>$, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</td>
+      <td>, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</td>
     </tr>
   </tbody>
 </table>
@@ -1731,37 +1729,37 @@ Does a perfect matching exist?</li>
 
 <h3 id="reduction-strategy">Reduction Strategy</h3>
 
-<p>Given a 3-SAT instance with $m$ clauses, we construct a graph $G$ such that:</p>
+<p>Given a 3-SAT instance with m clauses, we construct a graph G such that:</p>
 <ul>
-  <li>The 3-SAT instance is satisfiable <strong>if and only if</strong> $G$ has a clique of size $m$</li>
+  <li>The 3-SAT instance is satisfiable <strong>if and only if</strong> G has a clique of size m</li>
 </ul>
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ where each clause $C_i$ has 3 literals:</p>
+<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:</p>
 
 <ol>
   <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
     <ul>
-      <li>Label vertices as $(i, j)$ where $i$ is the clause number and $j$ is the literal position</li>
-      <li>Example: For clause $C_1 = (x_1 \lor \neg x_2 \lor x_3)$, create vertices $(1,1)$ for $x_1$, $(1,2)$ for $\neg x_2$, and $(1,3)$ for $x_3$</li>
+      <li>Label vertices as (i, j) where i is the clause number and j is the literal position</li>
+      <li>Example: For clause C_1 = (x₁  ∨  ¬ x₁  ∨  x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁</li>
     </ul>
   </li>
-  <li><strong>Add edges</strong>: Connect two vertices $(i_1, j_1)$ and $(i_2, j_2)$ with an edge if:
+  <li><strong>Add edges</strong>: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
     <ul>
-      <li>They are in <strong>different clauses</strong> ($i_1 \neq i_2$)</li>
+      <li>They are in <strong>different clauses</strong> (i_1 neq i_2)</li>
       <li>The literals are <strong>not complementary</strong> (one is not the negation of the other)</li>
     </ul>
   </li>
-  <li><strong>Set $k = m$</strong>: We’re looking for a clique of size $m$ (one vertex per clause)</li>
+  <li><strong>Set k = m</strong>: We’re looking for a clique of size m (one vertex per clause)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>A clique of size $m$ means we pick one literal from each clause</li>
-  <li>Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both $x$ and $\neg x$</li>
+  <li>A clique of size m means we pick one literal from each clause</li>
+  <li>Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both x and ¬ x</li>
   <li>Therefore, a clique corresponds to a satisfying assignment</li>
 </ul>
 
@@ -1769,9 +1767,9 @@ Does a perfect matching exist?</li>
 
 <p><strong>Forward Direction (3-SAT satisfiable → Clique exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
+  <li>If phi is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
   <li>Pick the vertex corresponding to that true literal from each clause</li>
-  <li>These $m$ vertices form a clique because:
+  <li>These m vertices form a clique because:
     <ul>
       <li>They’re from different clauses (so edges exist by construction)</li>
       <li>They can’t be complementary (both can’t be true simultaneously)</li>
@@ -1781,11 +1779,11 @@ Does a perfect matching exist?</li>
 
 <p><strong>Reverse Direction (Clique exists → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If there’s a clique of size $m$, we have one vertex (literal) from each clause</li>
+  <li>If there’s a clique of size m, we have one vertex (literal) from each clause</li>
   <li>Set variables to make these literals true:
     <ul>
-      <li>If literal is $x_i$, set $x_i = \text{TRUE}$</li>
-      <li>If literal is $\neg x_i$, set $x_i = \text{FALSE}$</li>
+      <li>If literal is x_i, set x_i = TRUE</li>
+      <li>If literal is ¬ x_i, set x_i = FALSE</li>
     </ul>
   </li>
   <li>Since no complementary literals are in the clique, this assignment is consistent</li>
@@ -1795,27 +1793,27 @@ Does a perfect matching exist?</li>
 <h3 id="example-reduction">Example Reduction</h3>
 
 <p>Consider the 3-SAT instance:
-\(\phi = (x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3)\)</p>
+phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
 
 <p><strong>Step 1: Create vertices</strong></p>
 <ul>
-  <li>Clause 1: $(1,1)$ for $x_1$, $(1,2)$ for $x_2$, $(1,3)$ for $x_3$</li>
-  <li>Clause 2: $(2,1)$ for $\neg x_1$, $(2,2)$ for $x_2$, $(2,3)$ for $\neg x_3$</li>
-  <li>Clause 3: $(3,1)$ for $x_1$, $(3,2)$ for $\neg x_2$, $(3,3)$ for $x_3$</li>
+  <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
+  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
+  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
 </ul>
 
 <p><strong>Step 2: Add edges</strong></p>
 <ul>
   <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>For example: $(1,1)$ (represents $x_1$) connects to $(2,2)$ ($x_2$) and $(2,3)$ ($\neg x_3$) and $(3,1)$ ($x_1$) and $(3,2)$ ($\neg x_2$) and $(3,3)$ ($x_3$)</li>
-  <li>But $(1,1)$ does NOT connect to $(2,1)$ because $x_1$ and $\neg x_1$ are complementary</li>
-  <li>Similarly, $(1,3)$ does NOT connect to $(2,3)$ because $x_3$ and $\neg x_3$ are complementary</li>
+  <li>For example: (1,1) (represents x₁) connects to (2,2) (x₁) and (2,3) (¬ x₁) and (3,1) (x₁) and (3,2) (¬ x₁) and (3,3) (x₁)</li>
+  <li>But (1,1) does NOT connect to (2,1) because x₁ and ¬ x₁ are complementary</li>
+  <li>Similarly, (1,3) does NOT connect to (2,3) because x₁ and ¬ x₁ are complementary</li>
 </ul>
 
 <p><strong>Step 3: Find clique of size 3</strong></p>
 <ul>
-  <li>One possible clique: ${(1,2), (2,2), (3,3)}$ representing $x_2$ from clause 1, $x_2$ from clause 2, and $x_3$ from clause 3</li>
-  <li>This corresponds to assignment: $x_1 = \text{TRUE}$ (arbitrary), $x_2 = \text{TRUE}$, $x_3 = \text{TRUE}$</li>
+  <li>One possible clique: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3</li>
+  <li>This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE</li>
   <li>Verify: All clauses satisfied!</li>
 </ul>
 
@@ -1829,7 +1827,7 @@ Does a perfect matching exist?</li>
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$S$ is a clique in $G$ <strong>if and only if</strong> $S$ is an independent set in $\overline{G}$ (the complement graph)</li>
+  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in \overline{G} (the complement graph)</li>
   <li>Therefore, Clique and Independent Set are polynomially equivalent</li>
 </ul>
 
@@ -1839,17 +1837,17 @@ Does a perfect matching exist?</li>
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$S$ is an independent set <strong>if and only if</strong> $V \setminus S$ is a vertex cover</li>
+  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
   <li>This connects Clique to Vertex Cover through Independent Set</li>
 </ul>
 
 <h3 id="graph-coloring">Graph Coloring</h3>
 
-<p>The <strong>chromatic number</strong> $\chi(G)$ is the minimum number of colors needed to color vertices so no adjacent vertices share a color.</p>
+<p>The <strong>chromatic number</strong> \chi(G) is the minimum number of colors needed to color vertices so no adjacent vertices share a color.</p>
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$\omega(G) \leq \chi(G)$ (clique number is a lower bound for chromatic number)</li>
+  <li>omega(G) leq chi(G) (clique number is a lower bound for chromatic number)</li>
   <li>Finding the clique number helps bound the chromatic number</li>
 </ul>
 
@@ -1861,8 +1859,8 @@ Does a perfect matching exist?</li>
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Check all $\binom{n}{k}$ subsets of size $k$ - exponential in $k$</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using inclusion-exclusion or bitmask DP</li>
+  <li><strong>Brute Force</strong>: Check all \binom{n}{k} subsets of size k - exponential in k</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -1872,7 +1870,7 @@ Does a perfect matching exist?</li>
 
 <ul>
   <li><strong>No PTAS</strong>: Unless P = NP, there is no polynomial-time approximation scheme</li>
-  <li><strong>Hard to Approximate</strong>: Cannot be approximated within $n^{1-\epsilon}$ for any $\epsilon &gt; 0$ (unless P = NP)</li>
+  <li><strong>Hard to Approximate</strong>: Cannot be approximated within n^{1-\epsilon} for any \epsilon &gt; 0 (unless P = NP)</li>
   <li>This makes Clique one of the hardest problems to approximate</li>
 </ul>
 
@@ -1903,21 +1901,21 @@ Does a perfect matching exist?</li>
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Check all $\binom{n}{k}$ subsets of size $k$</p>
+<p><strong>Algorithm:</strong> Check all \binom{n}{k} subsets of size k</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(\binom{n}{k} \cdot k^2) = O(n^k \cdot k^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(k)$ for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, check all $\binom{k}{2}$ pairs of vertices for edges</li>
+  <li><strong>Time Complexity:</strong> O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)</li>
+  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
+  <li><strong>Analysis:</strong> For each subset, check all \binom{k}{2} pairs of vertices for edges</li>
 </ul>
 
 <h3 id="dynamic-programming">Dynamic Programming</h3>
 
 <p><strong>Algorithm:</strong> Use bitmask DP to track visited vertices</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if there exists a clique in vertices $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
+  <li><strong>Time Complexity:</strong> O(2^n cdot n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n cdot n)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists a clique in vertices mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∈ E} dp[mask \setminus {v}][u]</li>
 </ul>
 
 <h3 id="branch-and-bound">Branch-and-Bound</h3>
@@ -1925,25 +1923,25 @@ Does a perfect matching exist?</li>
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with good pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop exploring branches that can’t lead to clique of size $k$</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
+  <li><strong>Pruning:</strong> Stop exploring branches that can’t lead to clique of size k</li>
 </ul>
 
 <h3 id="bron-kerbosch-algorithm-maximum-clique">Bron-Kerbosch Algorithm (Maximum Clique)</h3>
 
 <p><strong>Algorithm:</strong> Recursive backtracking for finding all maximal cliques</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(3^{n/3})$ worst-case (tight bound)</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(3^{n/3}) worst-case (tight bound)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Practical Performance:</strong> Very efficient for sparse graphs</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
-<p><strong>Given a candidate clique of size $k$:</strong></p>
+<p><strong>Given a candidate clique of size k:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(k^2)$ - check all pairs</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Clique is in NP</li>
 </ul>
 
@@ -1961,16 +1959,16 @@ Does a perfect matching exist?</li>
 
 <p><strong>3-SAT ≤ₚ Clique:</strong></p>
 <ul>
-  <li>Given 3-SAT instance with $m$ clauses</li>
+  <li>Given 3-SAT instance with m clauses</li>
   <li>Create graph with vertices for each literal occurrence</li>
   <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>3-SAT satisfiable ↔ Graph has clique of size $m$</li>
+  <li>3-SAT satisfiable ↔ Graph has clique of size m</li>
 </ul>
 
 <p>This reduction is polynomial-time because:</p>
 <ul>
-  <li>Number of vertices: $3m$ (at most)</li>
-  <li>Number of edges: $O(m^2)$ (check all pairs)</li>
+  <li>Number of vertices: 3m (at most)</li>
+  <li>Number of edges: O(m^2) (check all pairs)</li>
   <li>Construction time: Polynomial in input size</li>
 </ul>
 
@@ -1988,11 +1986,11 @@ Does a perfect matching exist?</li>
 <ol>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-\((x_1 \lor x_2 \lor \neg x_3) \land (\neg x_1 \lor x_2 \lor x_3) \land (x_1 \lor \neg x_2 \lor x_3)\)
+(x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
 Find a clique of size 3 and determine the corresponding satisfying assignment.</p>
   </li>
   <li>
-    <p><strong>Prove the relationship</strong>: Show that $S$ is a clique in $G$ if and only if $S$ is an independent set in $\overline{G}$ (the complement graph).</p>
+    <p><strong>Prove the relationship</strong>: Show that S is a clique in G if and only if S is an independent set in overline{G} (the complement graph).</p>
   </li>
   <li>
     <p><strong>Reduction practice</strong>: Given that Clique is NP-complete, show that Independent Set is also NP-complete using the complement graph relationship.</p>
@@ -2021,37 +2019,37 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>An integer $k$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>An integer k</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains an independent set of size at least $k$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains an independent set of size at least k, NO otherwise</p>
 
 <p><strong>Independent Set Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> An undirected graph $G = (V, E)$</p>
+<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
 
-<p><strong>Output:</strong> The size of the largest independent set in $G$ (called the <strong>independence number</strong>, denoted $\alpha(G)$)</p>
+<p><strong>Output:</strong> The size of the largest independent set in G (called the <strong>independence number</strong>, denoted alpha(G))</p>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the following graph:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |\ /|
+    | /|
     | X |
-    |/ \|
+    |/ |
     3---4
 </code></pre></div></div>
 
 <ul>
-  <li>Independent sets of size 1: Any single vertex (e.g., ${1}, {2}, {3}, {4}$)</li>
-  <li>Independent sets of size 2: ${1, 4}, {2, 3}$ (vertices not connected)</li>
+  <li>Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})</li>
+  <li>Independent sets of size 2: {1, 4}, {2, 3} (vertices not connected)</li>
   <li>Independent sets of size 3: None (any three vertices will have at least one edge)</li>
-  <li>Maximum independent set: Size 2 (e.g., ${1, 4}$ or ${2, 3}$)</li>
+  <li>Maximum independent set: Size 2 (e.g., {1, 4} or {2, 3})</li>
 </ul>
 
-<p>So the independence number $\alpha(G) = 2$.</p>
+<p>So the independence number \alpha(G) = 2.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
@@ -2063,9 +2061,9 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 </code></pre></div></div>
 
 <ul>
-  <li>Independent sets: ${1, 3, 5}, {2, 4, 6}, {1, 6}, {2, 5}$, etc.</li>
-  <li>Maximum independent set: ${1, 3, 5}$ or ${2, 4, 6}$ (size 3)</li>
-  <li>Note: ${1, 2}$ is NOT an independent set because vertices 1 and 2 are adjacent</li>
+  <li>Independent sets: {1, 3, 5}, {2, 4, 6}, {1, 6}, {2, 5}, etc.</li>
+  <li>Maximum independent set: {1, 3, 5} or {2, 4, 6} (size 3)</li>
+  <li>Note: {1, 2} is NOT an independent set because vertices 1 and 2 are adjacent</li>
 </ul>
 
 <h2 id="why-independent-set-is-in-np">Why Independent Set is in NP</h2>
@@ -2074,18 +2072,18 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Independent Set ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a set of $k$ vertices), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has at least $k$ vertices: $O(k)$ time</li>
-  <li>Check that no two vertices in the set are adjacent: $O(k^2)$ time (check all $\binom{k}{2} = \frac{k(k-1)}{2}$ pairs, and for each pair, check if an edge exists in $O(1)$ time with an adjacency matrix or $O(\deg(v))$ with an adjacency list)</li>
+  <li>Check that the set has at least k vertices: O(k) time</li>
+  <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
 </ol>
 
 <table>
   <tbody>
     <tr>
-      <td>Since $k \leq</td>
+      <td>Since k ≤</td>
       <td>V</td>
-      <td>$, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</td>
+      <td>, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</td>
     </tr>
   </tbody>
 </table>
@@ -2096,26 +2094,26 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <h3 id="complement-graph">Complement Graph</h3>
 
-<p>Given a graph $G = (V, E)$, its <strong>complement graph</strong> $\overline{G} = (V, \overline{E})$ has:</p>
+<p>Given a graph G = (V, E), its <strong>complement graph</strong> \overline{G} = (V, \overline{E}) has:</p>
 <ul>
-  <li>The same vertex set $V$</li>
-  <li>An edge $(u, v) \in \overline{E}$ if and only if $(u, v) \notin E$</li>
+  <li>The same vertex set V</li>
+  <li>An edge (u, v) in overline{E} if and only if (u, v) notin E</li>
 </ul>
 
-<p>In other words, $\overline{G}$ has edges exactly where $G$ doesn’t have edges.</p>
+<p>In other words, overline{G} has edges exactly where G doesn’t have edges.</p>
 
 <h3 id="key-relationship">Key Relationship</h3>
 
 <p><strong>Fundamental Observation:</strong></p>
 <ul>
-  <li>$S$ is a <strong>clique</strong> in $G$ <strong>if and only if</strong> $S$ is an <strong>independent set</strong> in $\overline{G}$</li>
+  <li>S is a <strong>clique</strong> in G <strong>if and only if</strong> S is an <strong>independent set</strong> in overline{G}</li>
 </ul>
 
 <p><strong>Proof:</strong></p>
 <ul>
-  <li>If $S$ is a clique in $G$, then every pair of vertices in $S$ is connected by an edge in $G$</li>
-  <li>Therefore, no pair of vertices in $S$ is connected by an edge in $\overline{G}$</li>
-  <li>So $S$ is an independent set in $\overline{G}$</li>
+  <li>If S is a clique in G, then every pair of vertices in S is connected by an edge in G</li>
+  <li>Therefore, no pair of vertices in S is connected by an edge in overline{G}</li>
+  <li>So S is an independent set in overline{G}</li>
   <li>The reverse direction follows similarly</li>
 </ul>
 
@@ -2125,14 +2123,14 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Clique instance: graph $G$ and integer $k$</li>
-  <li>Construct the complement graph $\overline{G}$</li>
-  <li>Return Independent Set instance: graph $\overline{G}$ and integer $k$</li>
+  <li>Given a Clique instance: graph G and integer k</li>
+  <li>Construct the complement graph overline{G}</li>
+  <li>Return Independent Set instance: graph overline{G} and integer k</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>$G$ has a clique of size $k$ <strong>if and only if</strong> $\overline{G}$ has an independent set of size $k$</li>
+  <li>G has a clique of size k <strong>if and only if</strong> overline{G} has an independent set of size k</li>
   <li>This follows directly from the fundamental observation above</li>
 </ul>
 
@@ -2142,9 +2140,9 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
     <table>
       <tbody>
         <tr>
-          <td>Constructing $\overline{G}$ takes $O(</td>
+          <td>Constructing overline{G} takes O(</td>
           <td>V</td>
-          <td>^2)$ time (check all pairs of vertices)</td>
+          <td>^2) time (check all pairs of vertices)</td>
         </tr>
       </tbody>
     </table>
@@ -2160,30 +2158,30 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ where each clause $C_i$ has 3 literals:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:</p>
 
 <ol>
   <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
     <ul>
-      <li>Label vertices as $(i, j)$ where $i$ is the clause number and $j$ is the literal position</li>
+      <li>Label vertices as (i, j) where i is the clause number and j is the literal position</li>
     </ul>
   </li>
-  <li><strong>Add edges</strong>: Connect two vertices $(i_1, j_1)$ and $(i_2, j_2)$ with an edge if:
+  <li><strong>Add edges</strong>: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
     <ul>
-      <li>They are in the <strong>same clause</strong> ($i_1 = i_2$), OR</li>
+      <li>They are in the <strong>same clause</strong> (i_1 = i_2), OR</li>
       <li>The literals are <strong>complementary</strong> (one is the negation of the other)</li>
     </ul>
   </li>
-  <li><strong>Set $k = m$</strong>: We’re looking for an independent set of size $m$ (one vertex per clause)</li>
+  <li><strong>Set k = m</strong>: We’re looking for an independent set of size m (one vertex per clause)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>An independent set of size $m$ means we pick one literal from each clause</li>
+  <li>An independent set of size m means we pick one literal from each clause</li>
   <li>Since vertices in the same clause are connected, we can pick at most one per clause</li>
-  <li>Since complementary literals are connected, we never pick both $x$ and $\neg x$</li>
+  <li>Since complementary literals are connected, we never pick both x and ¬ x</li>
   <li>Therefore, an independent set corresponds to a satisfying assignment</li>
 </ul>
 
@@ -2191,9 +2189,9 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Forward Direction (3-SAT satisfiable → Independent Set exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
+  <li>If \phi is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
   <li>Pick the vertex corresponding to that true literal from each clause</li>
-  <li>These $m$ vertices form an independent set because:
+  <li>These m vertices form an independent set because:
     <ul>
       <li>They’re from different clauses (so no edges between them by construction)</li>
       <li>They can’t be complementary (both can’t be true simultaneously)</li>
@@ -2203,11 +2201,11 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Reverse Direction (Independent Set exists → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If there’s an independent set of size $m$, we have one vertex (literal) from each clause</li>
+  <li>If there’s an independent set of size m, we have one vertex (literal) from each clause</li>
   <li>Set variables to make these literals true:
     <ul>
-      <li>If literal is $x_i$, set $x_i = \text{TRUE}$</li>
-      <li>If literal is $\neg x_i$, set $x_i = \text{FALSE}$</li>
+      <li>If literal is x_i, set x_i = TRUE</li>
+      <li>If literal is ¬ x_i, set x_i = FALSE</li>
     </ul>
   </li>
   <li>Since no complementary literals are in the independent set, this assignment is consistent</li>
@@ -2217,25 +2215,25 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 <h3 id="example-reduction">Example Reduction</h3>
 
 <p>Consider the 3-SAT instance:
-\(\phi = (x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3)\)</p>
+phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
 
 <p><strong>Step 1: Create vertices</strong></p>
 <ul>
-  <li>Clause 1: $(1,1)$ for $x_1$, $(1,2)$ for $x_2$, $(1,3)$ for $x_3$</li>
-  <li>Clause 2: $(2,1)$ for $\neg x_1$, $(2,2)$ for $x_2$, $(2,3)$ for $\neg x_3$</li>
-  <li>Clause 3: $(3,1)$ for $x_1$, $(3,2)$ for $\neg x_2$, $(3,3)$ for $x_3$</li>
+  <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
+  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
+  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
 </ul>
 
 <p><strong>Step 2: Add edges</strong></p>
 <ul>
-  <li>Connect vertices in the same clause: $(1,1)-(1,2)$, $(1,1)-(1,3)$, $(1,2)-(1,3)$, etc.</li>
-  <li>Connect complementary literals: $(1,1)-(2,1)$ ($x_1$ and $\neg x_1$), $(1,3)-(2,3)$ ($x_3$ and $\neg x_3$), $(1,2)-(3,2)$ ($x_2$ and $\neg x_2$)</li>
+  <li>Connect vertices in the same clause: (1,1)-(1,2), (1,1)-(1,3), (1,2)-(1,3), etc.</li>
+  <li>Connect complementary literals: (1,1)-(2,1) (x₁ and ¬ x₁), (1,3)-(2,3) (x₁ and ¬ x₁), (1,2)-(3,2) (x₁ and ¬ x₁)</li>
 </ul>
 
 <p><strong>Step 3: Find independent set of size 3</strong></p>
 <ul>
-  <li>One possible independent set: ${(1,2), (2,2), (3,3)}$ representing $x_2$ from clause 1, $x_2$ from clause 2, and $x_3$ from clause 3</li>
-  <li>This corresponds to assignment: $x_1 = \text{TRUE}$ (arbitrary), $x_2 = \text{TRUE}$, $x_3 = \text{TRUE}$</li>
+  <li>One possible independent set: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3</li>
+  <li>This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE</li>
   <li>Verify: All clauses satisfied!</li>
 </ul>
 
@@ -2247,24 +2245,24 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p>As we’ve seen:</p>
 <ul>
-  <li>$S$ is a clique in $G$ <strong>if and only if</strong> $S$ is an independent set in $\overline{G}$</li>
+  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in \overline{G}</li>
   <li>This makes Clique and Independent Set polynomially equivalent</li>
 </ul>
 
 <h3 id="vertex-cover">Vertex Cover</h3>
 
-<p>A <strong>vertex cover</strong> is a set of vertices $C$ such that every edge has at least one endpoint in $C$.</p>
+<p>A <strong>vertex cover</strong> is a set of vertices C such that every edge has at least one endpoint in C.</p>
 
 <p><strong>Key Relationship:</strong></p>
 <ul>
-  <li>$S$ is an independent set <strong>if and only if</strong> $V \setminus S$ is a vertex cover</li>
+  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
 </ul>
 
 <p><strong>Proof:</strong></p>
 <ul>
-  <li>If $S$ is an independent set, then no edge has both endpoints in $S$</li>
-  <li>Therefore, every edge has at least one endpoint in $V \setminus S$</li>
-  <li>So $V \setminus S$ is a vertex cover</li>
+  <li>If S is an independent set, then no edge has both endpoints in S</li>
+  <li>Therefore, every edge has at least one endpoint in V \setminus S</li>
+  <li>So V \setminus S is a vertex cover</li>
   <li>The reverse direction follows similarly</li>
 </ul>
 
@@ -2274,9 +2272,8 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
     <table>
       <tbody>
         <tr>
-          <td>Maximum independent set size + Minimum vertex cover size = $</td>
+          <td>Maximum independent set size + Minimum vertex cover size =</td>
           <td>V</td>
-          <td>$</td>
         </tr>
       </tbody>
     </table>
@@ -2300,8 +2297,8 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Check all $2^n$ subsets of vertices - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using inclusion-exclusion or bitmask DP</li>
+  <li><strong>Brute Force</strong>: Check all 2ⁿ subsets of vertices - exponential</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -2310,8 +2307,8 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 <p>The Independent Set Problem has interesting approximation properties:</p>
 
 <ul>
-  <li><strong>Hard to Approximate</strong>: Cannot be approximated within $n^{1-\epsilon}$ for any $\epsilon &gt; 0$ (unless P = NP)</li>
-  <li><strong>Greedy Algorithm</strong>: A simple greedy algorithm achieves $O(n/\Delta)$ approximation where $\Delta$ is the maximum degree</li>
+  <li><strong>Hard to Approximate</strong>: Cannot be approximated within n^{1-\epsilon} for any \epsilon &gt; 0 (unless P = NP)</li>
+  <li><strong>Greedy Algorithm</strong>: A simple greedy algorithm achieves O(n/Delta) approximation where \Delta is the maximum degree</li>
   <li><strong>Better Approximations</strong>: For bounded-degree graphs, better approximation ratios are possible</li>
 </ul>
 
@@ -2344,34 +2341,34 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Check all $\binom{n}{k}$ subsets of size $k$</p>
+<p><strong>Algorithm:</strong> Check all \binom{n}{k} subsets of size k</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(\binom{n}{k} \cdot k^2) = O(n^k \cdot k^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(k)$ for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, verify no edges exist between vertices ($O(k^2)$ checks)</li>
+  <li><strong>Time Complexity:</strong> O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)</li>
+  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
+  <li><strong>Analysis:</strong> For each subset, verify no edges exist between vertices (O(k^2) checks)</li>
 </ul>
 
 <h3 id="dynamic-programming">Dynamic Programming</h3>
 
 <p><strong>Algorithm:</strong> Use bitmask DP similar to Clique</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if there exists an independent set in vertices $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \bigvee_{u \in mask, (u,v) \notin E} dp[mask \setminus {v}][u]$</li>
+  <li><strong>Time Complexity:</strong> O(2^n cdot n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n cdot n)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists an independent set in vertices mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∉ E} dp[mask \setminus {v}][u]</li>
 </ul>
 
 <h3 id="tree-dp-special-case">Tree DP (Special Case)</h3>
 
 <p><strong>Algorithm:</strong> For trees, use bottom-up DP</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
-  <li><strong>Subproblem:</strong> $dp[v][0/1]$ = maximum independent set in subtree rooted at $v$ (0 = don’t include $v$, 1 = include $v$)</li>
+  <li><strong>Time Complexity:</strong> O(n)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
+  <li><strong>Subproblem:</strong> dp[v][0/1] = maximum independent set in subtree rooted at v (0 = don’t include v, 1 = include v)</li>
   <li><strong>Recurrence:</strong>
     <ul>
-      <li>$dp[v][0] = \sum_{u \in children(v)} \max(dp[u][0], dp[u][1])$</li>
-      <li>$dp[v][1] = 1 + \sum_{u \in children(v)} dp[u][0]$</li>
+      <li>dp[v][0] = ∑_{u ∈ children(v)} \max(dp[u][0], dp[u][1])</li>
+      <li>dp[v][1] = 1 + ∑_{u ∈ children(v)} dp[u][0]</li>
     </ul>
   </li>
 </ul>
@@ -2381,16 +2378,16 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop if remaining vertices can’t form independent set of size $k$</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
+  <li><strong>Pruning:</strong> Stop if remaining vertices can’t form independent set of size k</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
-<p><strong>Given a candidate independent set of size $k$:</strong></p>
+<p><strong>Given a candidate independent set of size k:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(k^2)$ - check all pairs for absence of edges</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs for absence of edges</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Independent Set is in NP</li>
 </ul>
 
@@ -2408,18 +2405,18 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <p><strong>Clique ≤ₚ Independent Set:</strong></p>
 <ul>
-  <li>Given Clique instance: graph $G$ and integer $k$</li>
-  <li>Construct complement graph $\overline{G}$</li>
-  <li>Return Independent Set instance: graph $\overline{G}$ and integer $k$</li>
-  <li>$G$ has clique of size $k$ ↔ $\overline{G}$ has independent set of size $k$</li>
+  <li>Given Clique instance: graph G and integer k</li>
+  <li>Construct complement graph \overline{G}</li>
+  <li>Return Independent Set instance: graph \overline{G} and integer k</li>
+  <li>G has clique of size k ↔ \overline{G} has independent set of size k</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Independent Set:</strong></p>
 <ul>
-  <li>Given 3-SAT instance with $m$ clauses</li>
+  <li>Given 3-SAT instance with m clauses</li>
   <li>Create graph with vertices for each literal occurrence</li>
   <li>Connect vertices in same clause OR with complementary literals</li>
-  <li>3-SAT satisfiable ↔ Graph has independent set of size $m$</li>
+  <li>3-SAT satisfiable ↔ Graph has independent set of size m</li>
 </ul>
 
 <p>Both reductions are polynomial-time, establishing Independent Set as NP-complete.</p>
@@ -2437,22 +2434,22 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <ol>
   <li>
-    <p><strong>Prove the complement relationship</strong>: Show that $S$ is a clique in $G$ if and only if $S$ is an independent set in $\overline{G}$.</p>
+    <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in \overline{G}.</p>
   </li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph $G$, $\alpha(G) + \beta(G) =</td>
+          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) =</td>
           <td>V</td>
-          <td>$ where $\alpha(G)$ is the independence number and $\beta(G)$ is the vertex cover number.</td>
+          <td>where \alpha(G) is the independence number and beta(G) is the vertex cover number.</td>
         </tr>
       </tbody>
     </table>
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-\((x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3) \land (x_1 \lor x_2 \lor \neg x_3)\)
+(x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  x₁  ∨  ¬ x₁)
 Find an independent set of size 3 and determine the corresponding satisfying assignment.</p>
   </li>
   <li>
@@ -2480,31 +2477,31 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix $A \in \mathbb{Z}^{m \times n}$ (constraint coefficients)</li>
-  <li>A vector $b \in \mathbb{Z}^m$ (constraint bounds)</li>
-  <li>A vector $c \in \mathbb{Z}^n$ (objective coefficients)</li>
-  <li>An integer $k$ (target value)</li>
+  <li>A matrix A in mathbb{Z}^{m times n} (constraint coefficients)</li>
+  <li>A vector b in mathbb{Z}^m (constraint bounds)</li>
+  <li>A vector c in mathbb{Z}^n (objective coefficients)</li>
+  <li>An integer k (target value)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists an integer vector $x \in \mathbb{Z}^n$ such that:</p>
+<p><strong>Output:</strong> YES if there exists an integer vector x in mathbb{Z}^n such that:</p>
 <ul>
-  <li>$Ax \leq b$ (constraints satisfied)</li>
-  <li>$c^T x \geq k$ (objective value at least $k$)</li>
+  <li>Ax leq b (constraints satisfied)</li>
+  <li>c^T x geq k (objective value at least k)</li>
 </ul>
 
 <p>NO otherwise</p>
 
 <p><strong>ILP Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> Same as above (without $k$)</p>
+<p><strong>Input:</strong> Same as above (without k)</p>
 
-<p><strong>Output:</strong> The maximum value of $c^T x$ subject to $Ax \leq b$ and $x \in \mathbb{Z}^n$</p>
+<p><strong>Output:</strong> The maximum value of c^T x subject to Ax leq b and x in mathbb{Z}^n</p>
 
 <h3 id="variants">Variants</h3>
 
 <p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
 <ul>
-  <li>Variables restricted to ${0, 1}$</li>
+  <li>Variables restricted to {0, 1}</li>
   <li>Very common in practice</li>
 </ul>
 
@@ -2523,27 +2520,27 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p>Consider the ILP:</p>
 
-<p><strong>Maximize:</strong> $3x_1 + 2x_2$</p>
+<p><strong>Maximize:</strong> 3x₁ + 2x₁</p>
 
 <p><strong>Subject to:</strong></p>
 <ul>
-  <li>$2x_1 + x_2 \leq 6$</li>
-  <li>$x_1 + 2x_2 \leq 8$</li>
-  <li>$x_1, x_2 \geq 0$ and integer</li>
+  <li>2x₁ + x₁ leq 6</li>
+  <li>x₁ + 2x₁ leq 8</li>
+  <li>x₁, x₁ geq 0 and integer</li>
 </ul>
 
 <p><strong>Feasible integer solutions:</strong></p>
 <ul>
-  <li>$(0, 0)$: objective = 0</li>
-  <li>$(1, 0)$: objective = 3</li>
-  <li>$(2, 0)$: objective = 6</li>
-  <li>$(0, 1)$: objective = 2</li>
-  <li>$(1, 1)$: objective = 5</li>
-  <li>$(2, 1)$: objective = 8</li>
-  <li>$(3, 0)$: objective = 9 ✓ (optimal, satisfies constraints)</li>
+  <li>(0, 0): objective = 0</li>
+  <li>(1, 0): objective = 3</li>
+  <li>(2, 0): objective = 6</li>
+  <li>(0, 1): objective = 2</li>
+  <li>(1, 1): objective = 5</li>
+  <li>(2, 1): objective = 8</li>
+  <li>(3, 0): objective = 9 ✓ (optimal, satisfies constraints)</li>
 </ul>
 
-<p><strong>LP relaxation</strong> (allowing fractional values) might give $(2.67, 0.67)$ with objective $9.33$, but this is not integer.</p>
+<p><strong>LP relaxation</strong> (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.</p>
 
 <h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
 
@@ -2551,16 +2548,16 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>ILP ∈ NP:</strong></p>
 
-<p>Given a candidate solution (an integer vector $x$), we can verify in polynomial time:</p>
+<p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that $x$ has integer values: $O(n)$ time</li>
-  <li>Check that $Ax \leq b$: $O(mn)$ time (matrix-vector multiplication)</li>
-  <li>Check that $c^T x \geq k$: $O(n)$ time</li>
+  <li>Check that x has integer values: O(n) time</li>
+  <li>Check that Ax leq b: O(mn) time (matrix-vector multiplication)</li>
+  <li>Check that c^T x geq k: O(n) time</li>
 </ol>
 
-<p>Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ILP is in NP.</p>
+<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
 
-<p><strong>Note:</strong> The size of the solution $x$ might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
+<p><strong>Note:</strong> The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -2568,59 +2565,59 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
 
 <ol>
   <li><strong>Variables:</strong>
     <ul>
-      <li>For each Boolean variable $x_i$, create an integer variable $y_i \in {0, 1}$</li>
-      <li>$y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$</li>
+      <li>For each Boolean variable x_i, create an integer variable y_i in {0, 1}</li>
+      <li>y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE</li>
     </ul>
   </li>
   <li><strong>Clauses:</strong>
     <ul>
-      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:
+      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3):
         <ul>
-          <li>If literal is $x_i$, use $y_i$</li>
-          <li>If literal is $\neg x_i$, use $(1 - y_i)$</li>
-          <li>Constraint: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (at least one literal is true)</li>
+          <li>If literal is x_i, use y_i</li>
+          <li>If literal is ¬ x_i, use (1 - y_i)</li>
+          <li>Constraint: y_{l_1} + y_{l_2} + y_{l_3} geq 1 (at least one literal is true)</li>
         </ul>
       </li>
     </ul>
 
-    <p>Example: For clause $(x_1 \lor \neg x_2 \lor x_3)$:</p>
+    <p>Example: For clause (x₁  ∨  ¬ x₁  ∨  x₁):</p>
     <ul>
-      <li>Constraint: $y_1 + (1 - y_2) + y_3 \geq 1$</li>
-      <li>Simplifies to: $y_1 - y_2 + y_3 \geq 0$</li>
+      <li>Constraint: y_1 + (1 - y_2) + y_3 ≥ 1</li>
+      <li>Simplifies to: y_1 - y_2 + y_3 ≥ 0</li>
     </ul>
   </li>
   <li>
-    <p><strong>Objective:</strong> Maximize $\sum_{i=1}^n y_i$ (or any objective, since we’re just checking feasibility)</p>
+    <p><strong>Objective:</strong> Maximize ∑_{i=1}^n y_i (or any objective, since we’re just checking feasibility)</p>
   </li>
-  <li><strong>Bounds:</strong> $0 \leq y_i \leq 1$ for all $i$ (enforces binary variables)</li>
+  <li><strong>Bounds:</strong> 0 ≤ y_i ≤ 1 for all i (enforces binary variables)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, set $y_i = 1$ if $x_i = \text{TRUE}$, else $y_i = 0$</li>
+  <li>If \phi is satisfiable, set y_i = 1 if x_i = TRUE, else y_i = 0</li>
   <li>Each clause constraint is satisfied (at least one literal is 1)</li>
   <li>This gives a feasible ILP solution</li>
 </ul>
 
 <p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If ILP has feasible solution with $y_i \in {0,1}$, set $x_i = \text{TRUE}$ if $y_i = 1$, else $x_i = \text{FALSE}$</li>
-  <li>Since each clause constraint requires at least one $y_i = 1$ (or $(1-y_i) = 1$), each clause has at least one true literal</li>
+  <li>If ILP has feasible solution with y_i ∈ {0,1}, set x_i = TRUE if y_i = 1, else x_i = FALSE</li>
+  <li>Since each clause constraint requires at least one y_i = 1 (or (1-y_i) = 1), each clause has at least one true literal</li>
   <li>This gives a satisfying assignment</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Construction takes $O(mn)$ time (one constraint per clause)</li>
+  <li>Construction takes O(mn) time (one constraint per clause)</li>
 </ul>
 
 <p>Therefore, <strong>ILP is NP-complete</strong>.</p>
@@ -2637,8 +2634,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="key-difference">Key Difference</h3>
 
-<p><strong>LP:</strong> Variables $x \in \mathbb{R}^n$ (continuous)
-<strong>ILP:</strong> Variables $x \in \mathbb{Z}^n$ (integer)</p>
+<p><strong>LP:</strong> Variables x ∈ ℝ^n (continuous)
+<strong>ILP:</strong> Variables x ∈ ℤ^n (integer)</p>
 
 <p>This seemingly small restriction makes the problem NP-complete!</p>
 
@@ -2653,10 +2650,10 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Example:</strong></p>
 <ul>
-  <li>ILP: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ integer</li>
-  <li>LP relaxation: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ (real)</li>
-  <li>LP solution: $(3, 0)$ with objective 9 (happens to be integer!)</li>
-  <li>If LP gave $(2.5, 1)$, we’d need to branch or add cuts</li>
+  <li>ILP: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 integer</li>
+  <li>LP relaxation: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 (real)</li>
+  <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
+  <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
 </ul>
 
 <h2 id="practical-implications">Practical Implications</h2>
@@ -2679,7 +2676,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <ul>
   <li>Solve LP relaxation</li>
   <li>If solution is fractional, branch on a fractional variable</li>
-  <li>Create two subproblems: $x_i \leq \lfloor x_i^* \rfloor$ and $x_i \geq \lceil x_i^* \rceil$</li>
+  <li>Create two subproblems: x_i ≤ \lfloor x_i^* \rfloor and x_i ≥ \lceil x_i^* \rceil</li>
   <li>Recursively solve subproblems</li>
   <li>Prune branches that can’t improve best known solution</li>
 </ul>
@@ -2766,7 +2763,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
   <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
 </ul>
@@ -2776,7 +2773,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$ for storing constraints</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
   <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
   <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
 </ul>
@@ -2786,7 +2783,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
 </ul>
 
@@ -2794,8 +2791,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ using interior-point methods where $L$ is input size</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using interior-point methods where L is input size</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
   <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
 </ul>
 
@@ -2803,8 +2800,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Totally Unimodular Matrices:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ - solve as LP, solution automatically integer</li>
-  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
 </ul>
 
 <p><strong>Network Flow Problems:</strong></p>
@@ -2816,7 +2813,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Techniques Used:</strong></p>
 <ul>
-  <li>Preprocessing: $O(mn)$ to simplify problem</li>
+  <li>Preprocessing: O(mn) to simplify problem</li>
   <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
   <li>Heuristics: Fast approximate solutions</li>
   <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
@@ -2826,8 +2823,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Given a candidate integer solution:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(mn)$ - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows ILP is in NP</li>
 </ul>
 
@@ -2880,7 +2877,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     </ul>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ILP instance.</p>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ILP instance.</p>
   </li>
   <li>
     <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>
@@ -2920,16 +2917,16 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
+  <li>An undirected graph G = (V, E)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise</p>
 
 <p><strong>Rudrata Cycle Optimization Problem (TSP):</strong></p>
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A complete undirected graph $G = (V, E)$ with edge weights $w: E \to \mathbb{R}^+$</li>
+  <li>A complete undirected graph G = (V, E) with edge weights w: E to mathbb{R}^+</li>
 </ul>
 
 <p><strong>Output:</strong> The minimum weight Rudrata cycle (this is the Traveling Salesman Problem)</p>
@@ -2945,9 +2942,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Rudrata Cycle:</strong></p>
 <ul>
-  <li>Cycle: $1 \to 2 \to 5 \to 4 \to 1$ ✗ (doesn’t visit all vertices)</li>
-  <li>Cycle: $1 \to 2 \to 3 \to 6 \to 5 \to 4 \to 1$ ✓ (visits all 6 vertices exactly once)</li>
-  <li>Cycle: $1 \to 4 \to 5 \to 2 \to 1$ ✗ (doesn’t visit vertices 3 and 6)</li>
+  <li>Cycle: 1 to 2 to 5 to 4 to 1 ✗ (doesn’t visit all vertices)</li>
+  <li>Cycle: 1 to 2 to 3 to 6 to 5 to 4 to 1 ✓ (visits all 6 vertices exactly once)</li>
+  <li>Cycle: 1 to 4 to 5 to 2 to 1 ✗ (doesn’t visit vertices 3 and 6)</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
@@ -2962,8 +2959,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 </code></pre></div></div>
 
 <ul>
-  <li>Rudrata cycle: $1 \to 2 \to 4 \to 3 \to 1$ (visits all 4 vertices and returns to start)</li>
-  <li>This is a complete graph $K_4$, so it has many Hamiltonian cycles</li>
+  <li>Rudrata cycle: 1 to 2 to 4 to 3 to 1 (visits all 4 vertices and returns to start)</li>
+  <li>This is a complete graph K_4, so it has many Hamiltonian cycles</li>
 </ul>
 
 <h2 id="why-rudrata-cycle-is-in-np">Why Rudrata Cycle is in NP</h2>
@@ -2978,11 +2975,11 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that the cycle has exactly $</td>
+          <td>Check that the cycle has exactly</td>
           <td>V</td>
-          <td>$ vertices: $O(</td>
+          <td>vertices: O(</td>
           <td>V</td>
-          <td>)$ time</td>
+          <td>) time</td>
         </tr>
       </tbody>
     </table>
@@ -2991,9 +2988,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that each vertex appears exactly once: $O(</td>
+          <td>Check that each vertex appears exactly once: O(</td>
           <td>V</td>
-          <td>)$ time (use a set or array)</td>
+          <td>) time (use a set or array)</td>
         </tr>
       </tbody>
     </table>
@@ -3002,24 +2999,24 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that consecutive vertices in the cycle are adjacent: $O(</td>
+          <td>Check that consecutive vertices in the cycle are adjacent: O(</td>
           <td>V</td>
-          <td>)$ time (check $</td>
+          <td>) time (check</td>
           <td>V</td>
-          <td>$ edges, including the wrap-around edge from last to first)</td>
+          <td>edges, including the wrap-around edge from last to first)</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Check that the cycle returns to start: $O(1)$ time</li>
+  <li>Check that the cycle returns to start: O(1) time</li>
 </ol>
 
 <table>
   <tbody>
     <tr>
-      <td>Total verification time: $O(</td>
+      <td>Total verification time: O(</td>
       <td>V</td>
-      <td>)$, which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</td>
+      <td>), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</td>
     </tr>
   </tbody>
 </table>
@@ -3030,19 +3027,19 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Create a graph where a Rudrata cycle corresponds to a satisfying assignment.</p>
 
 <ol>
-  <li><strong>For each variable $x_i$:</strong>
+  <li><strong>For each variable x_i:</strong>
     <ul>
       <li>Create a “variable gadget”: a row of vertices representing the variable</li>
-      <li>Typically: vertices arranged horizontally, where going “left” means $x_i = \text{TRUE}$ and going “right” means $x_i = \text{FALSE}$</li>
-      <li>Example: For variable $x_i$, create vertices $v_{i,1}, v_{i,2}, \ldots, v_{i,k}$ where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)</li>
+      <li>Typically: vertices arranged horizontally, where going “left” means x_i = TRUE and going “right” means x_i = FALSE</li>
+      <li>Example: For variable x_i, create vertices v_{i,1}, v_{i,2}, …, v_{i,k} where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)</li>
     </ul>
   </li>
-  <li><strong>For each clause $C_j$:</strong>
+  <li><strong>For each clause C_j:</strong>
     <ul>
       <li>Create a “clause gadget”: vertices that can be visited if the clause is satisfied</li>
       <li>Connect clause vertices to variable vertices corresponding to literals in the clause</li>
@@ -3064,13 +3061,13 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Variable Gadget:</strong></p>
 <ul>
-  <li>For each variable $x_i$, create a horizontal chain of vertices</li>
+  <li>For each variable x_i, create a horizontal chain of vertices</li>
   <li>The cycle can traverse this chain in two ways (encoding TRUE/FALSE)</li>
 </ul>
 
 <p><strong>Clause Gadget:</strong></p>
 <ul>
-  <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create vertices connected to the variable gadgets</li>
+  <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create vertices connected to the variable gadgets</li>
   <li>If the cycle takes the path corresponding to a true literal, it can visit the clause vertex</li>
 </ul>
 
@@ -3078,7 +3075,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Forward Direction (3-SAT satisfiable → Rudrata Cycle exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, construct cycle through variable gadgets based on assignment</li>
+  <li>If \phi is satisfiable, construct cycle through variable gadgets based on assignment</li>
   <li>Visit clause vertices for satisfied clauses</li>
   <li>This gives a valid Rudrata cycle</li>
 </ul>
@@ -3107,8 +3104,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>TSP Decision Problem:</strong></p>
 <ul>
-  <li>Given complete graph with edge weights and bound $B$</li>
-  <li>Does there exist a Rudrata cycle with total weight $\leq B$?</li>
+  <li>Given complete graph with edge weights and bound B</li>
+  <li>Does there exist a Rudrata cycle with total weight ≤ B?</li>
 </ul>
 
 <p><strong>Relationship:</strong></p>
@@ -3118,9 +3115,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight $</td>
+          <td>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight</td>
           <td>V</td>
-          <td>$ exists</td>
+          <td>exists</td>
         </tr>
       </tbody>
     </table>
@@ -3151,20 +3148,20 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Try all $(n-1)!/2$ possible cycles (for undirected graphs) - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using bitmask DP (similar to TSP)</li>
+  <li><strong>Brute Force</strong>: Try all (n-1)!/2 possible cycles (for undirected graphs) - factorial time</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using bitmask DP (similar to TSP)</li>
   <li><strong>Backtracking</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
 <h3 id="dynamic-programming-solution">Dynamic Programming Solution</h3>
 
-<p><strong>Subproblem:</strong> $dp[mask][v] = \text{true}$ if there exists a path visiting all vertices in $mask$ ending at vertex $v$, and this path can be extended to a cycle.</p>
+<p><strong>Subproblem:</strong> dp[mask][v] = text{true} if there exists a path visiting all vertices in mask ending at vertex v, and this path can be extended to a cycle.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[2^i][i] = \text{true}$ for all $i$ (path of length 1)</li>
-  <li>Recurrence: $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
-  <li>Final check: For each $v$, check if $dp[2^n-1][v] = \text{true}$ and $(v, \text{start})$ is an edge</li>
+  <li>Base case: dp[2^i][i] = true for all i (path of length 1)</li>
+  <li>Recurrence: dp[mask][v] = bigvee_{u in mask, (u,v) in E} dp[mask setminus {v}][u]</li>
+  <li>Final check: For each v, check if dp[2^n-1][v] = true and (v, start) is an edge</li>
 </ul>
 
 <p><strong>Algorithm:</strong></p>
@@ -3185,27 +3182,27 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 14. return false
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$
-<strong>Space Complexity:</strong> $O(2^n \cdot n)$</p>
+<p><strong>Time Complexity:</strong> O(2^n · n^2)
+<strong>Space Complexity:</strong> O(2^n · n)</p>
 
 <h2 id="runtime-analysis">Runtime Analysis</h2>
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $(n-1)!/2$ possible cycles (for undirected graphs)</p>
+<p><strong>Algorithm:</strong> Try all (n-1)!/2 possible cycles (for undirected graphs)</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O((n-1)! \cdot n) = O(n!)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current cycle</li>
-  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid cycle ($O(n)$ checks including wrap-around)</li>
+  <li><strong>Time Complexity:</strong> O((n-1)! · n) = O(n!)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current cycle</li>
+  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid cycle (O(n) checks including wrap-around)</li>
 </ul>
 
 <h3 id="dynamic-programming-held-karp-algorithm">Dynamic Programming (Held-Karp Algorithm)</h3>
 
 <p><strong>Algorithm:</strong> Bitmask DP as described above</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if path exists visiting all vertices in $mask$ ending at $v$</li>
+  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if path exists visiting all vertices in mask ending at v</li>
   <li><strong>Final Check:</strong> Verify edge exists from last vertex to start vertex</li>
 </ul>
 
@@ -3214,7 +3211,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop if current path can’t form a cycle visiting all vertices</li>
 </ul>
 
@@ -3222,20 +3219,20 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Complete Graphs:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(1)$ - trivial, any cycle works</li>
+  <li><strong>Time Complexity:</strong> O(1) - trivial, any cycle works</li>
 </ul>
 
 <p><strong>Trees:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - check if tree has exactly $n-1$ edges (then no cycle possible unless $n=2$)</li>
+  <li><strong>Time Complexity:</strong> O(n) - check if tree has exactly n-1 edges (then no cycle possible unless n=2)</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
 <p><strong>Given a candidate cycle:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - verify all $n$ edges exist (including wrap-around)</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - verify all n edges exist (including wrap-around)</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Rudrata Cycle is in NP</li>
 </ul>
 
@@ -3259,8 +3256,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ul>
   <li><strong>Complete Graphs</strong>: Always has a Rudrata cycle (any permutation works)</li>
-  <li><strong>Dirac’s Theorem</strong>: If $\deg(v) \geq n/2$ for all vertices, then Hamiltonian cycle exists (but finding it is still hard)</li>
-  <li><strong>Ore’s Theorem</strong>: If $\deg(u) + \deg(v) \geq n$ for all non-adjacent $u,v$, then Hamiltonian cycle exists</li>
+  <li><strong>Dirac’s Theorem</strong>: If \deg(v) ≥ n/2 for all vertices, then Hamiltonian cycle exists (but finding it is still hard)</li>
+  <li><strong>Ore’s Theorem</strong>: If \deg(u) + \deg(v) ≥ n for all non-adjacent u,v, then Hamiltonian cycle exists</li>
   <li><strong>Grid Graphs</strong>: Can be solved efficiently for certain grid structures</li>
   <li><strong>Bounded Treewidth</strong>: Can be solved efficiently using tree decomposition</li>
 </ul>
@@ -3271,7 +3268,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
   <li><strong>Rudrata Cycle is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
   <li><strong>TSP Connection</strong>: Traveling Salesman Problem is essentially weighted Rudrata Cycle</li>
   <li><strong>Path vs Cycle</strong>: Rudrata Cycle and Rudrata Path are polynomially equivalent</li>
-  <li><strong>Dynamic Programming</strong>: $O(2^n \cdot n^2)$ time solution using bitmask DP works for small graphs</li>
+  <li><strong>Dynamic Programming</strong>: O(2^n cdot n^2) time solution using bitmask DP works for small graphs</li>
   <li><strong>Practical Algorithms</strong>: Despite NP-completeness, DP and heuristics work well for many practical instances</li>
 </ol>
 
@@ -3286,15 +3283,14 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Rudrata Cycle ≤ₚ TSP:</strong></p>
 <ul>
-  <li>Given Rudrata Cycle instance: graph $G$</li>
-  <li>Create complete graph $G’$ with edge weights: 1 if edge exists in $G$, $\infty$ otherwise</li>
+  <li>Given Rudrata Cycle instance: graph G</li>
+  <li>Create complete graph G’ with edge weights: 1 if edge exists in G, ∈fty otherwise</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Rudrata cycle exists ↔ TSP has solution of weight $</td>
+          <td>Rudrata cycle exists ↔ TSP has solution of weight</td>
           <td>V</td>
-          <td>$</td>
         </tr>
       </tbody>
     </table>
@@ -3323,7 +3319,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ol>
   <li>
-    <p><strong>Find all Rudrata cycles</strong>: For the complete graph $K_4$ with vertices ${1,2,3,4}$, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they’re rotations or reversals)</p>
+    <p><strong>Find all Rudrata cycles</strong>: For the complete graph K_4 with vertices {1,2,3,4}, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they’re rotations or reversals)</p>
   </li>
   <li>
     <p><strong>Prove the reduction</strong>: Show that Rudrata Cycle reduces to TSP. What edge weights should you use?</p>
@@ -3335,7 +3331,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <p><strong>Path to Cycle</strong>: Show that Rudrata Path reduces to Rudrata Cycle. How do you modify the graph?</p>
   </li>
   <li>
-    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the $O(2^n \cdot n^2)$ time complexity. Can you optimize the space complexity?</p>
+    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the O(2^n · n^2) time complexity. Can you optimize the space complexity?</p>
   </li>
   <li>
     <p><strong>Special cases</strong>: Research Dirac’s theorem. If a graph satisfies the conditions, does that mean we can find a Hamiltonian cycle in polynomial time?</p>
@@ -3352,7 +3348,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p>Understanding the Rudrata Cycle Problem provides crucial insight into cycle problems in graph theory and their connection to optimization problems like TSP. The relationship to 3-SAT demonstrates how logical constraints can be encoded as graph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP.]]></summary></entry><entry><title type="html">NP-Hard Introduction: Rudrata Path and Rudrata (s,t)-Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-path/" rel="alternate" type="text/html" title="NP-Hard Introduction: Rudrata Path and Rudrata (s,t)-Path" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
-<p>The Rudrata Path Problem (also known as the Hamiltonian Path Problem) is a fundamental graph problem that asks whether a graph contains a path visiting every vertex exactly once. The Rudrata (s,t)-Path Problem is a variant that requires the path to start at a specific vertex $s$ and end at a specific vertex $t$. These problems are closely related to the Hamiltonian Cycle Problem and serve as excellent examples of NP-completeness in graph theory.</p>
+<p>The Rudrata Path Problem (also known as the Hamiltonian Path Problem) is a fundamental graph problem that asks whether a graph contains a path visiting every vertex exactly once. The Rudrata (s,t)-Path Problem is a variant that requires the path to start at a specific vertex s and end at a specific vertex t. These problems are closely related to the Hamiltonian Cycle Problem and serve as excellent examples of NP-completeness in graph theory.</p>
 
 <h2 id="what-is-a-rudrata-path">What is a Rudrata Path?</h2>
 
@@ -3364,20 +3360,20 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
+  <li>An undirected graph G = (V, E)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a Rudrata path (a path visiting every vertex exactly once), NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a Rudrata path (a path visiting every vertex exactly once), NO otherwise</p>
 
 <p><strong>Rudrata (s,t)-Path Decision Problem:</strong></p>
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>An undirected graph $G = (V, E)$</li>
-  <li>Two vertices $s, t \in V$</li>
+  <li>An undirected graph G = (V, E)</li>
+  <li>Two vertices s, t ∈ V</li>
 </ul>
 
-<p><strong>Output:</strong> YES if $G$ contains a Rudrata path starting at $s$ and ending at $t$, NO otherwise</p>
+<p><strong>Output:</strong> YES if G contains a Rudrata path starting at s and ending at t, NO otherwise</p>
 
 <h3 id="example">Example</h3>
 
@@ -3390,15 +3386,15 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Rudrata Path:</strong></p>
 <ul>
-  <li>Path: $1 \to 4 \to 5 \to 2 \to 3 \to 6$ ✓ (visits all 6 vertices exactly once)</li>
-  <li>Path: $1 \to 2 \to 5 \to 4$ ✗ (doesn’t visit all vertices)</li>
-  <li>Path: $1 \to 2 \to 3 \to 2$ ✗ (visits vertex 2 twice)</li>
+  <li>Path: 1 → 4 → 5 → 2 → 3 → 6 ✓ (visits all 6 vertices exactly once)</li>
+  <li>Path: 1 → 2 → 5 → 4 ✗ (doesn’t visit all vertices)</li>
+  <li>Path: 1 → 2 → 3 → 2 ✗ (visits vertex 2 twice)</li>
 </ul>
 
 <p><strong>Rudrata (1,6)-Path:</strong></p>
 <ul>
-  <li>Path: $1 \to 4 \to 5 \to 2 \to 3 \to 6$ ✓ (starts at 1, ends at 6, visits all vertices)</li>
-  <li>Path: $1 \to 2 \to 5 \to 4 \to 3 \to 6$ ✓ (another valid (1,6)-path)</li>
+  <li>Path: 1 → 4 → 5 → 2 → 3 → 6 ✓ (starts at 1, ends at 6, visits all vertices)</li>
+  <li>Path: 1 → 2 → 5 → 4 → 3 → 6 ✓ (another valid (1,6)-path)</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
@@ -3413,8 +3409,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 </code></pre></div></div>
 
 <ul>
-  <li>Rudrata path: $1 \to 2 \to 4 \to 3$ (visits all 4 vertices)</li>
-  <li>Note: This graph also has a Hamiltonian cycle: $1 \to 2 \to 4 \to 3 \to 1$</li>
+  <li>Rudrata path: 1 → 2 → 4 → 3 (visits all 4 vertices)</li>
+  <li>Note: This graph also has a Hamiltonian cycle: 1 → 2 → 4 → 3 → 1</li>
 </ul>
 
 <h2 id="why-rudrata-path-is-in-np">Why Rudrata Path is in NP</h2>
@@ -3429,11 +3425,11 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that the path has exactly $</td>
+          <td>Check that the path has exactly</td>
           <td>V</td>
-          <td>$ vertices: $O(</td>
+          <td>vertices: O(</td>
           <td>V</td>
-          <td>)$ time</td>
+          <td>) time</td>
         </tr>
       </tbody>
     </table>
@@ -3442,9 +3438,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that each vertex appears exactly once: $O(</td>
+          <td>Check that each vertex appears exactly once: O(</td>
           <td>V</td>
-          <td>)$ time (use a set or array)</td>
+          <td>) time (use a set or array)</td>
         </tr>
       </tbody>
     </table>
@@ -3453,11 +3449,11 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>Check that consecutive vertices in the path are adjacent: $O(</td>
+          <td>Check that consecutive vertices in the path are adjacent: O(</td>
           <td>V</td>
-          <td>)$ time (check $</td>
+          <td>) time (check</td>
           <td>V</td>
-          <td>-1$ edges)</td>
+          <td>-1 edges)</td>
         </tr>
       </tbody>
     </table>
@@ -3467,17 +3463,17 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <table>
   <tbody>
     <tr>
-      <td>Total verification time: $O(</td>
+      <td>Total verification time: O(</td>
       <td>V</td>
-      <td>)$, which is polynomial in the input size. Therefore, Rudrata Path is in NP.</td>
+      <td>), which is polynomial in the input size. Therefore, Rudrata Path is in NP.</td>
     </tr>
   </tbody>
 </table>
 
 <p>Similarly, <strong>Rudrata (s,t)-Path ∈ NP</strong> with the additional checks:</p>
 <ul>
-  <li>First vertex is $s$</li>
-  <li>Last vertex is $t$</li>
+  <li>First vertex is s</li>
+  <li>Last vertex is t</li>
 </ul>
 
 <h2 id="np-completeness-reduction-from-hamiltonian-cycle">NP-Completeness: Reduction from Hamiltonian Cycle</h2>
@@ -3488,8 +3484,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Hamiltonian Cycle:</strong></p>
 <ul>
-  <li><strong>Input:</strong> An undirected graph $G = (V, E)$</li>
-  <li><strong>Output:</strong> YES if $G$ contains a cycle visiting every vertex exactly once, NO otherwise</li>
+  <li><strong>Input:</strong> An undirected graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G contains a cycle visiting every vertex exactly once, NO otherwise</li>
 </ul>
 
 <p>Hamiltonian Cycle is known to be NP-complete (can be proven by reduction from 3-SAT).</p>
@@ -3498,33 +3494,33 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Hamiltonian Cycle instance: graph $G = (V, E)$</li>
-  <li>Pick an arbitrary vertex $v \in V$</li>
-  <li>Create graph $G’$ by:
+  <li>Given a Hamiltonian Cycle instance: graph G = (V, E)</li>
+  <li>Pick an arbitrary vertex v ∈ V</li>
+  <li>Create graph G’ by:
     <ul>
-      <li>Adding a new vertex $v’$ (copy of $v$)</li>
-      <li>Connecting $v’$ to all neighbors of $v$</li>
-      <li>Removing vertex $v$ (or equivalently, work with $G’$ having $v’$ instead)</li>
+      <li>Adding a new vertex v’ (copy of v)</li>
+      <li>Connecting v’ to all neighbors of v</li>
+      <li>Removing vertex v (or equivalently, work with G’ having v’ instead)</li>
     </ul>
   </li>
-  <li>Return Rudrata Path instance: graph $G’$</li>
+  <li>Return Rudrata Path instance: graph G’</li>
 </ol>
 
 <p><strong>Alternative Simpler Reduction:</strong></p>
 <ol>
-  <li>Given Hamiltonian Cycle instance: graph $G$</li>
-  <li>Pick an arbitrary edge $(u, v) \in E$</li>
-  <li>Create graph $G’$ by removing edge $(u, v)$ and adding two new vertices $s$ and $t$</li>
-  <li>Connect $s$ only to $u$ and $t$ only to $v$</li>
-  <li>Return Rudrata (s,t)-Path instance: graph $G’$ with start $s$ and end $t$</li>
+  <li>Given Hamiltonian Cycle instance: graph G</li>
+  <li>Pick an arbitrary edge (u, v) ∈ E</li>
+  <li>Create graph G’ by removing edge (u, v) and adding two new vertices s and t</li>
+  <li>Connect s only to u and t only to v</li>
+  <li>Return Rudrata (s,t)-Path instance: graph G’ with start s and end t</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>If $G$ has a Hamiltonian cycle, we can break it at edge $(u,v)$ to get a path from $u$ to $v$ visiting all original vertices</li>
-  <li>Add $s$ at the start and $t$ at the end to get a Rudrata (s,t)-path</li>
-  <li>If $G’$ has a Rudrata (s,t)-path, it must go $s \to u \to \ldots \to v \to t$</li>
-  <li>Removing $s$ and $t$ and adding edge $(u,v)$ gives a Hamiltonian cycle in $G$</li>
+  <li>If G has a Hamiltonian cycle, we can break it at edge (u,v) to get a path from u to v visiting all original vertices</li>
+  <li>Add s at the start and t at the end to get a Rudrata (s,t)-path</li>
+  <li>If G’ has a Rudrata (s,t)-path, it must go s → u → … → v → t</li>
+  <li>Removing s and t and adding edge (u,v) gives a Hamiltonian cycle in G</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
@@ -3533,11 +3529,11 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <table>
       <tbody>
         <tr>
-          <td>The reduction takes $O(</td>
+          <td>The reduction takes O(</td>
           <td>V</td>
           <td>+</td>
           <td>E</td>
-          <td>)$ time</td>
+          <td>) time</td>
         </tr>
       </tbody>
     </table>
@@ -3552,18 +3548,18 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
 
 <p><strong>Key Idea:</strong> Create a graph where a Rudrata (s,t)-path corresponds to a satisfying assignment.</p>
 
 <ol>
-  <li><strong>For each variable $x_i$:</strong>
+  <li><strong>For each variable xᵢ:</strong>
     <ul>
-      <li>Create a “variable gadget”: a path with vertices representing choosing $x_i = \text{TRUE}$ or $x_i = \text{FALSE}$</li>
-      <li>Typically: vertices $v_{i,1}, v_{i,2}, \ldots, v_{i,k}$ where the path can go “left” (TRUE) or “right” (FALSE)</li>
+      <li>Create a “variable gadget”: a path with vertices representing choosing xᵢ = TRUE or xᵢ = FALSE</li>
+      <li>Typically: vertices vᵢ,₁, vᵢ,₂, …, vᵢ,ₖ where the path can go “left” (TRUE) or “right” (FALSE)</li>
     </ul>
   </li>
-  <li><strong>For each clause $C_j$:</strong>
+  <li><strong>For each clause Cⱼ:</strong>
     <ul>
       <li>Create a “clause gadget”: vertices that can be visited if the clause is satisfied</li>
       <li>Connect clause vertices to variable vertices corresponding to literals in the clause</li>
@@ -3576,7 +3572,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
       <li>Ensure a Rudrata (s,t)-path visits all vertices exactly once</li>
     </ul>
   </li>
-  <li><strong>Set $s$ and $t$:</strong> Start and end vertices of the constructed graph</li>
+  <li><strong>Set s and t:</strong> Start and end vertices of the constructed graph</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
@@ -3593,7 +3589,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Forward Direction (3-SAT satisfiable → Rudrata (s,t)-Path exists):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, construct path through variable gadgets based on assignment</li>
+  <li>If φ is satisfiable, construct path through variable gadgets based on assignment</li>
   <li>Visit clause vertices for satisfied clauses</li>
   <li>This gives a valid Rudrata (s,t)-path</li>
 </ul>
@@ -3611,18 +3607,18 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Rudrata (s,t)-Path ≤ₚ Rudrata Path:</strong></p>
 <ul>
-  <li>Given Rudrata (s,t)-Path instance: graph $G$, vertices $s$ and $t$</li>
-  <li>Add two new vertices $s’$ and $t’$</li>
-  <li>Connect $s’$ only to $s$ and $t’$ only to $t$</li>
+  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s and t</li>
+  <li>Add two new vertices s’ and t’</li>
+  <li>Connect s’ only to s and t’ only to t</li>
   <li>Return Rudrata Path instance: modified graph</li>
-  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must start at $s’$ and end at $t’$)</li>
+  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must start at s’ and end at t’)</li>
 </ul>
 
 <p><strong>Rudrata Path ≤ₚ Rudrata (s,t)-Path:</strong></p>
 <ul>
-  <li>Given Rudrata Path instance: graph $G$</li>
-  <li>Pick arbitrary vertices $s$ and $t$</li>
-  <li>Try all pairs $(s,t)$ or use a more clever reduction</li>
+  <li>Given Rudrata Path instance: graph G</li>
+  <li>Pick arbitrary vertices s and t</li>
+  <li>Try all pairs (s,t) or use a more clever reduction</li>
   <li>Actually, we can reduce by trying all pairs, but this is not polynomial</li>
   <li>Better: Add two vertices connected only to all original vertices, then require path between them</li>
 </ul>
@@ -3645,21 +3641,21 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Try all $n!$ permutations of vertices - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using bitmask DP (similar to TSP)</li>
+  <li><strong>Brute Force</strong>: Try all n! permutations of vertices - factorial time</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2ⁿ · n²) time using bitmask DP (similar to TSP)</li>
   <li><strong>Backtracking</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
 <h3 id="dynamic-programming-solution">Dynamic Programming Solution</h3>
 
-<p><strong>Subproblem:</strong> $dp[mask][v] = \text{true}$ if there exists a path visiting all vertices in $mask$ ending at vertex $v$.</p>
+<p><strong>Subproblem:</strong> dp[mask][v] = true if there exists a path visiting all vertices in mask ending at vertex v.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[2^i][i] = \text{true}$ for all $i$ (path of length 1)</li>
-  <li>Recurrence: $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$
+  <li>Base case: dp[2ⁱ][i] = true for all i (path of length 1)</li>
+  <li>Recurrence: dp[mask][v] = ∨(u ∈ mask, (u,v) ∈ E) dp[mask \ {v}][u]
     <ul>
-      <li>Path ending at $v$ visiting vertices in $mask$ exists if there’s a neighbor $u$ such that path ending at $u$ visiting $mask \setminus {v}$ exists</li>
+      <li>Path ending at v visiting vertices in mask exists if there’s a neighbor u such that path ending at u visiting mask \ {v} exists</li>
     </ul>
   </li>
 </ul>
@@ -3682,28 +3678,28 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 14. return false
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$
-<strong>Space Complexity:</strong> $O(2^n \cdot n)$</p>
+<p><strong>Time Complexity:</strong> O(2ⁿ · n²)
+<strong>Space Complexity:</strong> O(2ⁿ · n)</p>
 
 <h2 id="runtime-analysis">Runtime Analysis</h2>
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $n!$ permutations of vertices</p>
+<p><strong>Algorithm:</strong> Try all n! permutations of vertices</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n! \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current path</li>
-  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid path ($O(n)$ checks)</li>
+  <li><strong>Time Complexity:</strong> O(n! · n)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current path</li>
+  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid path (O(n) checks)</li>
 </ul>
 
 <h3 id="dynamic-programming-held-karp-style">Dynamic Programming (Held-Karp Style)</h3>
 
 <p><strong>Algorithm:</strong> Bitmask DP as described above</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$ (can be optimized with careful implementation)</li>
-  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if path exists visiting all vertices in $mask$ ending at $v$</li>
-  <li><strong>Recurrence:</strong> $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
+  <li><strong>Time Complexity:</strong> O(2ⁿ · n²)</li>
+  <li><strong>Space Complexity:</strong> O(2ⁿ · n) (can be optimized with careful implementation)</li>
+  <li><strong>Subproblem:</strong> dp[mask][v] = true if path exists visiting all vertices in mask ending at v</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = ∨(u ∈ mask, (u,v) ∈ E) dp[mask \ {v}][u]</li>
 </ul>
 
 <h3 id="backtracking">Backtracking</h3>
@@ -3711,7 +3707,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Algorithm:</strong> Systematic search with pruning</p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Pruning:</strong> Stop if current path can’t be extended to visit all vertices</li>
 </ul>
 
@@ -3719,21 +3715,21 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Trees:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - any path covering all vertices works</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n) - any path covering all vertices works</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
 </ul>
 
 <p><strong>Complete Graphs:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(1)$ - any permutation works, trivial to find</li>
+  <li><strong>Time Complexity:</strong> O(1) - any permutation works, trivial to find</li>
 </ul>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 
 <p><strong>Given a candidate path:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - verify all $n-1$ edges exist and all vertices appear once</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - verify all n-1 edges exist and all vertices appear once</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Rudrata Path is in NP</li>
 </ul>
 
@@ -3768,7 +3764,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
   <li><strong>Rudrata Path is NP-Complete</strong>: Proven by reduction from Hamiltonian Cycle or directly from 3-SAT</li>
   <li><strong>Two Variants</strong>: Rudrata Path (any start/end) and Rudrata (s,t)-Path (fixed start/end) are polynomially equivalent</li>
   <li><strong>Hamiltonian Cycle Connection</strong>: Rudrata Path and Hamiltonian Cycle are closely related and polynomially equivalent</li>
-  <li><strong>Dynamic Programming</strong>: $O(2^n \cdot n^2)$ time solution using bitmask DP works for small graphs</li>
+  <li><strong>Dynamic Programming</strong>: O(2ⁿ · n²) time solution using bitmask DP works for small graphs</li>
   <li><strong>Practical Algorithms</strong>: Despite NP-completeness, DP and backtracking work well for many practical instances</li>
 </ol>
 
@@ -3776,16 +3772,16 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Hamiltonian Cycle ≤ₚ Rudrata (s,t)-Path:</strong></p>
 <ul>
-  <li>Given Hamiltonian Cycle instance: graph $G$</li>
-  <li>Pick edge $(u,v)$, remove it, add vertices $s$ and $t$</li>
-  <li>Connect $s$ to $u$ and $t$ to $v$</li>
+  <li>Given Hamiltonian Cycle instance: graph G</li>
+  <li>Pick edge (u,v), remove it, add vertices s and t</li>
+  <li>Connect s to u and t to v</li>
   <li>Hamiltonian cycle exists ↔ Rudrata (s,t)-path exists</li>
 </ul>
 
 <p><strong>Rudrata (s,t)-Path ≤ₚ Rudrata Path:</strong></p>
 <ul>
-  <li>Add vertices $s’$ and $t’$ connected only to $s$ and $t$ respectively</li>
-  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must use $s’$ and $t’$)</li>
+  <li>Add vertices s’ and t’ connected only to s and t respectively</li>
+  <li>Rudrata (s,t)-path exists ↔ Rudrata path exists (must use s’ and t’)</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Rudrata (s,t)-Path:</strong></p>
@@ -3809,7 +3805,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ol>
   <li>
-    <p><strong>Find a Rudrata path</strong>: For the graph with vertices ${1,2,3,4}$ and edges ${(1,2), (2,3), (3,4), (1,4)}$, find all Rudrata paths. How many are there?</p>
+    <p><strong>Find a Rudrata path</strong>: For the graph with vertices {1,2,3,4} and edges {(1,2), (2,3), (3,4), (1,4)}, find all Rudrata paths. How many are there?</p>
   </li>
   <li>
     <p><strong>Prove the reduction</strong>: Show that Hamiltonian Cycle reduces to Rudrata (s,t)-Path. Can you also show the reverse reduction?</p>
@@ -3821,7 +3817,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
     <p><strong>Modify for (s,t)-path</strong>: Modify the DP algorithm to find a Rudrata (s,t)-path. What changes are needed?</p>
   </li>
   <li>
-    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the $O(2^n \cdot n^2)$ time complexity. What is the space complexity?</p>
+    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the O(2ⁿ · n²) time complexity. What is the space complexity?</p>
   </li>
   <li>
     <p><strong>Special cases</strong>: Prove that every tree has a Rudrata path. What about complete graphs?</p>
@@ -3848,10 +3844,10 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Input:</strong> A Boolean formula in Conjunctive Normal Form (CNF)</p>
 <ul>
-  <li>Variables: $x_1, x_2, \ldots, x_n$ (each can be TRUE or FALSE)</li>
-  <li>Literals: a variable or its negation (e.g., $x_1$ or $\neg x_1$)</li>
-  <li>Clauses: disjunctions of literals (e.g., $(x_1 \lor \neg x_2 \lor x_3)$)</li>
-  <li>Formula: conjunction of clauses (e.g., $(x_1 \lor \neg x_2) \land (\neg x_1 \lor x_3) \land (x_2 \lor \neg x_3)$)</li>
+  <li>Variables: x₁, x₁, …, x_n (each can be TRUE or FALSE)</li>
+  <li>Literals: a variable or its negation (e.g., x₁ or ¬ x₁)</li>
+  <li>Clauses: disjunctions of literals (e.g., (x₁  ∨  ¬ x₁  ∨  x₁))</li>
+  <li>Formula: conjunction of clauses (e.g., (x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁))</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists an assignment that satisfies all clauses, NO otherwise</p>
@@ -3859,16 +3855,16 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <h3 id="example">Example</h3>
 
 <p>Consider the formula:
-\((x_1 \lor x_2) \land (\neg x_1 \lor x_3) \land (\neg x_2 \lor \neg x_3)\)</p>
+(x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁)</p>
 
 <p>Is this satisfiable?</p>
 
 <ul>
   <li>
-    <p>If $x_1 = \text{TRUE}$, then the first clause is satisfied. For the second clause $(\neg x_1 \lor x_3)$ to be satisfied, we need $x_3 = \text{TRUE}$. With $x_3 = \text{TRUE}$, the third clause $(\neg x_2 \lor \neg x_3)$ requires $x_2 = \text{FALSE}$. This assignment satisfies all clauses: $(x_1=\text{TRUE}, x_2=\text{FALSE}, x_3=\text{TRUE})$.</p>
+    <p>If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁  ∨  x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).</p>
   </li>
   <li>
-    <p>Alternatively, if $x_1 = \text{FALSE}$, then the first clause requires $x_2 = \text{TRUE}$. The second clause is automatically satisfied. The third clause $(\neg x_2 \lor \neg x_3)$ requires $x_3 = \text{FALSE}$. This also works: $(x_1=\text{FALSE}, x_2=\text{TRUE}, x_3=\text{FALSE})$.</p>
+    <p>Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).</p>
   </li>
 </ul>
 
@@ -3941,7 +3937,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>3-SAT</strong> is a restricted version of SAT where each clause contains exactly 3 literals.</p>
 
 <p><strong>Example:</strong>
-\((x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_4) \land (x_1 \lor \neg x_2 \lor x_4)\)</p>
+(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
 
 <h3 id="why-3-sat">Why 3-SAT?</h3>
 
@@ -4006,19 +4002,19 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $2^n$ possible truth assignments</p>
+<p><strong>Algorithm:</strong> Try all 2ⁿ possible truth assignments</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot m)$ where $n$ is number of variables and $m$ is number of clauses</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current assignment</li>
-  <li><strong>Analysis:</strong> For each of $2^n$ assignments, evaluate $m$ clauses, each taking $O(1)$ time per clause</li>
+  <li><strong>Time Complexity:</strong> O(2^n · m) where n is number of variables and m is number of clauses</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current assignment</li>
+  <li><strong>Analysis:</strong> For each of 2ⁿ assignments, evaluate m clauses, each taking O(1) time per clause</li>
 </ul>
 
 <h3 id="backtracking-dpll-algorithm">Backtracking (DPLL Algorithm)</h3>
 
 <p><strong>Algorithm:</strong> Systematic search with early pruning</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n)$ worst-case, but much better in practice with pruning</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Time Complexity:</strong> O(2^n) worst-case, but much better in practice with pruning</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
   <li><strong>Improvements:</strong> Unit propagation and pure literal elimination reduce search space significantly</li>
 </ul>
 
@@ -4027,11 +4023,11 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <p><strong>Conflict-Driven Clause Learning (CDCL):</strong></p>
 <ul>
   <li><strong>Time Complexity:</strong> Exponential worst-case, but very efficient in practice</li>
-  <li><strong>Space Complexity:</strong> $O(n + m + L)$ where $L$ is learned clauses</li>
+  <li><strong>Space Complexity:</strong> O(n + m + L) where L is learned clauses</li>
   <li><strong>Key Techniques:</strong>
     <ul>
-      <li>Unit propagation: $O(m)$ per decision</li>
-      <li>Conflict analysis: $O(n)$ per conflict</li>
+      <li>Unit propagation: O(m) per decision</li>
+      <li>Conflict analysis: O(n) per conflict</li>
       <li>Clause learning: Adds learned clauses to prevent same conflicts</li>
     </ul>
   </li>
@@ -4042,8 +4038,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Algorithm:</strong> Build implication graph, check for strongly connected components</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n + m)$ using Kosaraju’s or Tarjan’s algorithm</li>
-  <li><strong>Space Complexity:</strong> $O(n + m)$</li>
+  <li><strong>Time Complexity:</strong> O(n + m) using Kosaraju’s or Tarjan’s algorithm</li>
+  <li><strong>Space Complexity:</strong> O(n + m)</li>
   <li><strong>Why Polynomial:</strong> 2-SAT has special structure that allows polynomial-time solution</li>
 </ul>
 
@@ -4051,8 +4047,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Given a candidate assignment:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(m)$ - evaluate each clause once</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(m) - evaluate each clause once</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability is why SAT is in NP</li>
 </ul>
 
@@ -4080,7 +4076,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <ol>
   <li>
     <p>Determine if the following 3-SAT instance is satisfiable:
-\((x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor \neg x_2 \lor \neg x_3)\)</p>
+(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁  ∨  ¬ x₁)</p>
   </li>
   <li>
     <p>Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?</p>
@@ -4109,43 +4105,43 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A set of integers $S = {a_1, a_2, \ldots, a_n}$</li>
-  <li>A target integer $t$</li>
+  <li>A set of integers S = {a_1, a_2, …, a_n}</li>
+  <li>A target integer t</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a subset $S’ \subseteq S$ such that $\sum_{a_i \in S’} a_i = t$, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a subset S’ subseteq S such that sum_{a_i in S’} a_i = t, NO otherwise</p>
 
 <p><strong>Subset Sum Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> A set of integers $S = {a_1, a_2, \ldots, a_n}$ and target $t$</p>
+<p><strong>Input:</strong> A set of integers S = {a_1, a_2, …, a_n} and target t</p>
 
-<p><strong>Output:</strong> The maximum sum $\leq t$ achievable by any subset, or the subset itself</p>
+<p><strong>Output:</strong> The maximum sum leq t achievable by any subset, or the subset itself</p>
 
 <h3 id="example">Example</h3>
 
-<p>Consider the set $S = {3, 34, 4, 12, 5, 2}$ and target $t = 9$.</p>
+<p>Consider the set S = {3, 34, 4, 12, 5, 2} and target t = 9.</p>
 
 <ul>
-  <li>Subset ${4, 5}$ sums to $4 + 5 = 9$ ✓</li>
-  <li>Subset ${3, 4, 2}$ sums to $3 + 4 + 2 = 9$ ✓</li>
-  <li>Subset ${12}$ sums to $12 &gt; 9$ ✗</li>
-  <li>Subset ${3, 5}$ sums to $8 &lt; 9$ ✗</li>
+  <li>Subset {4, 5} sums to 4 + 5 = 9 ✓</li>
+  <li>Subset {3, 4, 2} sums to 3 + 4 + 2 = 9 ✓</li>
+  <li>Subset {12} sums to 12 &gt; 9 ✗</li>
+  <li>Subset {3, 5} sums to 8 &lt; 9 ✗</li>
 </ul>
 
 <p>So the answer is YES - there exists a subset that sums to exactly 9.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
-<p>For $S = {2, 3, 7, 8, 10}$ and $t = 11$:</p>
+<p>For S = {2, 3, 7, 8, 10} and t = 11:</p>
 
 <ul>
-  <li>Try ${2, 3, 7} = 12$ (too large)</li>
-  <li>Try ${3, 8} = 11$ ✓ (found it!)</li>
-  <li>Try ${2, 3, 6}$ (6 not in set)</li>
-  <li>Try ${11}$ (11 not in set)</li>
+  <li>Try {2, 3, 7} = 12 (too large)</li>
+  <li>Try {3, 8} = 11 ✓ (found it!)</li>
+  <li>Try {2, 3, 6} (6 not in set)</li>
+  <li>Try {11} (11 not in set)</li>
 </ul>
 
-<p>Answer: YES, subset ${3, 8}$ sums to 11.</p>
+<p>Answer: YES, subset {3, 8} sums to 11.</p>
 
 <h2 id="why-subset-sum-is-in-np">Why Subset Sum is in NP</h2>
 
@@ -4153,14 +4149,14 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Subset Sum ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a subset $S’$), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a subset S’), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that $S’ \subseteq S$: $O(n)$ time</li>
-  <li>Sum the elements: $O(n)$ time</li>
-  <li>Check if sum equals $t$: $O(1)$ time</li>
+  <li>Check that S’ subseteq S: O(n) time</li>
+  <li>Sum the elements: O(n) time</li>
+  <li>Check if sum equals t: O(1) time</li>
 </ol>
 
-<p>Total verification time: $O(n)$, which is polynomial in the input size. Therefore, Subset Sum is in NP.</p>
+<p>Total verification time: O(n), which is polynomial in the input size. Therefore, Subset Sum is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-partition">NP-Completeness: Reduction from Partition</h2>
 
@@ -4170,8 +4166,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Partition Problem:</strong></p>
 <ul>
-  <li><strong>Input:</strong> A set of integers $A = {a_1, a_2, \ldots, a_n}$</li>
-  <li><strong>Output:</strong> YES if $A$ can be partitioned into two subsets with equal sum, NO otherwise</li>
+  <li><strong>Input:</strong> A set of integers A = {a_1, a_2, …, a_n}</li>
+  <li><strong>Output:</strong> YES if A can be partitioned into two subsets with equal sum, NO otherwise</li>
 </ul>
 
 <p>Partition is known to be NP-complete (can be proven by reduction from 3-SAT or Subset Sum itself).</p>
@@ -4180,22 +4176,22 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Partition instance: set $A = {a_1, a_2, \ldots, a_n}$</li>
-  <li>Compute $s = \sum_{i=1}^n a_i$ (total sum)</li>
-  <li>Return Subset Sum instance: set $A$ and target $t = s/2$</li>
+  <li>Given a Partition instance: set A = {a_1, a_2, …, a_n}</li>
+  <li>Compute s = sum_{i=1}^n a_i (total sum)</li>
+  <li>Return Subset Sum instance: set A and target t = s/2</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>If Partition has a solution, then $A$ can be split into two subsets each summing to $s/2$</li>
-  <li>Therefore, one of these subsets sums to $s/2$, so Subset Sum with target $s/2$ returns YES</li>
-  <li>If Subset Sum with target $s/2$ returns YES, then there’s a subset summing to $s/2$</li>
-  <li>The complement of this subset sums to $s - s/2 = s/2$, so Partition returns YES</li>
+  <li>If Partition has a solution, then A can be split into two subsets each summing to s/2</li>
+  <li>Therefore, one of these subsets sums to s/2, so Subset Sum with target s/2 returns YES</li>
+  <li>If Subset Sum with target s/2 returns YES, then there’s a subset summing to s/2</li>
+  <li>The complement of this subset sums to s - s/2 = s/2, so Partition returns YES</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Computing $s$ takes $O(n)$ time</li>
+  <li>Computing s takes O(n) time</li>
   <li>The reduction is trivial</li>
 </ul>
 
@@ -4207,53 +4203,53 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode the satisfiability constraints using numbers in base 10 (or any base &gt; number of clauses).</p>
 
 <ol>
   <li><strong>Create numbers:</strong>
     <ul>
-      <li>For each variable $x_i$, create two numbers: $v_i$ (for $x_i = \text{TRUE}$) and $\overline{v_i}$ (for $x_i = \text{FALSE}$)</li>
-      <li>Each number has $n + m$ digits:
+      <li>For each variable x_i, create two numbers: v_i (for x_i = TRUE) and overline{v_i} (for x_i = FALSE)</li>
+      <li>Each number has n + m digits:
         <ul>
-          <li>First $n$ digits: 1 in position $i$ (for variable $x_i$), 0 elsewhere</li>
-          <li>Last $m$ digits: 1 in position $j$ if the literal appears in clause $C_j$, 0 otherwise</li>
+          <li>First n digits: 1 in position i (for variable x_i), 0 elsewhere</li>
+          <li>Last m digits: 1 in position j if the literal appears in clause C_j, 0 otherwise</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><strong>Create target number $t$:</strong>
+  <li><strong>Create target number t:</strong>
     <ul>
-      <li>First $n$ digits: all 1’s (each variable must be assigned TRUE or FALSE)</li>
-      <li>Last $m$ digits: all 1’s (each clause must be satisfied)</li>
+      <li>First n digits: all 1’s (each variable must be assigned TRUE or FALSE)</li>
+      <li>Last m digits: all 1’s (each clause must be satisfied)</li>
     </ul>
   </li>
-  <li><strong>Set $S$:</strong> All $v_i$ and $\overline{v_i}$ numbers</li>
+  <li><strong>Set S:</strong> All v_i and overline{v_i} numbers</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>The first $n$ digits ensure we pick exactly one literal per variable (either $v_i$ or $\overline{v_i}$)</li>
-  <li>The last $m$ digits ensure each clause has at least one true literal</li>
-  <li>A subset summing to $t$ corresponds to a satisfying assignment</li>
+  <li>The first n digits ensure we pick exactly one literal per variable (either v_i or overline{v_i})</li>
+  <li>The last m digits ensure each clause has at least one true literal</li>
+  <li>A subset summing to t corresponds to a satisfying assignment</li>
 </ul>
 
 <p><strong>Formal Proof:</strong></p>
 
 <p><strong>Forward Direction (3-SAT satisfiable → Subset Sum solvable):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, pick $v_i$ if $x_i = \text{TRUE}$, else pick $\overline{v_i}$</li>
-  <li>Sum these numbers: first $n$ digits sum to all 1’s, last $m$ digits sum to at least all 1’s (each clause satisfied)</li>
-  <li>Add slack numbers (0-padded) if needed to reach exactly $t$</li>
+  <li>If phi is satisfiable, pick v_i if x_i = TRUE, else pick overline{v_i}</li>
+  <li>Sum these numbers: first n digits sum to all 1’s, last m digits sum to at least all 1’s (each clause satisfied)</li>
+  <li>Add slack numbers (0-padded) if needed to reach exactly t</li>
 </ul>
 
 <p><strong>Reverse Direction (Subset Sum solvable → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If subset sums to $t$, the first $n$ digits force exactly one choice per variable</li>
-  <li>The last $m$ digits being all 1’s means each clause has at least one true literal</li>
+  <li>If subset sums to t, the first n digits force exactly one choice per variable</li>
+  <li>The last m digits being all 1’s means each clause has at least one true literal</li>
   <li>This gives a satisfying assignment</li>
 </ul>
 
@@ -4263,15 +4259,15 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="dp-algorithm">DP Algorithm</h3>
 
-<p><strong>Subproblem:</strong> $dp[i][s] = \text{true}$ if there exists a subset of ${a_1, a_2, \ldots, a_i}$ that sums to exactly $s$.</p>
+<p><strong>Subproblem:</strong> dp[i][s] = true if there exists a subset of {a_1, a_2, …, a_i} that sums to exactly s.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[0][0] = \text{true}$, $dp[0][s] = \text{false}$ for $s &gt; 0$</li>
-  <li>Recurrence: $dp[i][s] = dp[i-1][s] \lor dp[i-1][s - a_i]$ (if $s \geq a_i$)
+  <li>Base case: dp[0][0] = text{true}, dp[0][s] = false for s &gt; 0</li>
+  <li>Recurrence: dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s - a_i] (if s geq a_i)
     <ul>
-      <li>Either don’t include $a_i$: $dp[i-1][s]$</li>
-      <li>Or include $a_i$: $dp[i-1][s - a_i]$</li>
+      <li>Either don’t include a_i: dp[i-1][s]</li>
+      <li>Or include a_i: dp[i-1][s - a_i]</li>
     </ul>
   </li>
 </ul>
@@ -4289,22 +4285,22 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 9. return dp[n][t]
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(n \cdot t)$
-<strong>Space Complexity:</strong> $O(n \cdot t)$ (can be optimized to $O(t)$ using 1D array)</p>
+<p><strong>Time Complexity:</strong> O(n · t)
+<strong>Space Complexity:</strong> O(n · t) (can be optimized to O(t) using 1D array)</p>
 
 <h3 id="why-pseudo-polynomial">Why “Pseudo-Polynomial”?</h3>
 
 <ul>
-  <li>The algorithm runs in $O(n \cdot t)$ time</li>
-  <li>If $t$ is exponential in $n$ (e.g., $t = 2^n$), then $O(n \cdot t) = O(n \cdot 2^n)$ is exponential</li>
-  <li>If $t$ is polynomial in $n$ (e.g., $t = n^2$), then $O(n \cdot t) = O(n^3)$ is polynomial</li>
-  <li>The complexity depends on the <strong>value</strong> of $t$, not just its <strong>representation size</strong></li>
-  <li>Since $t$ requires $\log t$ bits to represent, if $t$ is exponential, $\log t$ is polynomial, but $t$ itself is exponential</li>
+  <li>The algorithm runs in O(n · t) time</li>
+  <li>If t is exponential in n (e.g., t = 2^n), then O(n · t) = O(n · 2^n) is exponential</li>
+  <li>If t is polynomial in n (e.g., t = n^2), then O(n · t) = O(n^3) is polynomial</li>
+  <li>The complexity depends on the <strong>value</strong> of t, not just its <strong>representation size</strong></li>
+  <li>Since t requires log t bits to represent, if t is exponential, log t is polynomial, but t itself is exponential</li>
 </ul>
 
 <h3 id="space-optimization">Space Optimization</h3>
 
-<p>We can optimize space to $O(t)$:</p>
+<p>We can optimize space to O(t):</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: SubsetSumDPOptimized(S, t)
 1. Let dp[0..t] be a boolean array
@@ -4341,9 +4337,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Reduction:</strong></p>
 <ul>
-  <li>Subset Sum instance: $S = {a_1, \ldots, a_n}$, target $t$</li>
-  <li>Knapsack instance: $n$ items, item $i$ has weight $a_i$ and value $a_i$, capacity $t$, maximize value</li>
-  <li>Subset Sum solvable ↔ Knapsack optimal value = $t$</li>
+  <li>Subset Sum instance: S = {a_1, …, a_n}, target t</li>
+  <li>Knapsack instance: n items, item i has weight a_i and value a_i, capacity t, maximize value</li>
+  <li>Subset Sum solvable ↔ Knapsack optimal value = t</li>
 </ul>
 
 <h3 id="coin-change">Coin Change</h3>
@@ -4357,7 +4353,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="number-partitioning">Number Partitioning</h3>
 
-<p>Related to Partition, asking if numbers can be partitioned into $k$ equal-sum subsets.</p>
+<p>Related to Partition, asking if numbers can be partitioned into k equal-sum subsets.</p>
 
 <h2 id="practical-implications">Practical Implications</h2>
 
@@ -4389,29 +4385,29 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $2^n$ subsets</p>
+<p><strong>Algorithm:</strong> Try all 2ⁿ subsets</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, sum elements ($O(n)$ time)</li>
+  <li><strong>Time Complexity:</strong> O(2^n · n)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current subset</li>
+  <li><strong>Analysis:</strong> For each subset, sum elements (O(n) time)</li>
 </ul>
 
 <h3 id="dynamic-programming-pseudo-polynomial">Dynamic Programming (Pseudo-Polynomial)</h3>
 
-<p><strong>Algorithm:</strong> DP table $dp[i][s]$ = true if sum $s$ achievable with first $i$ elements</p>
+<p><strong>Algorithm:</strong> DP table dp[i][s] = true if sum s achievable with first i elements</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \cdot t)$ where $t$ is target sum</li>
-  <li><strong>Space Complexity:</strong> $O(n \cdot t)$ (can be optimized to $O(t)$)</li>
-  <li><strong>Subproblem:</strong> $dp[i][s] = dp[i-1][s] \lor dp[i-1][s-a_i]$ (if $s \geq a_i$)</li>
-  <li><strong>Why Pseudo-Polynomial:</strong> Depends on value of $t$, not just input size. If $t = 2^n$, then $O(n \cdot 2^n)$ is exponential.</li>
+  <li><strong>Time Complexity:</strong> O(n cdot t) where t is target sum</li>
+  <li><strong>Space Complexity:</strong> O(n cdot t) (can be optimized to O(t))</li>
+  <li><strong>Subproblem:</strong> dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s-a_i] (if s geq a_i)</li>
+  <li><strong>Why Pseudo-Polynomial:</strong> Depends on value of t, not just input size. If t = 2^n, then O(n · 2^n) is exponential.</li>
 </ul>
 
 <h3 id="space-optimized-dp">Space-Optimized DP</h3>
 
 <p><strong>Algorithm:</strong> Use 1D array, iterate backwards</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \cdot t)$</li>
-  <li><strong>Space Complexity:</strong> $O(t)$</li>
+  <li><strong>Time Complexity:</strong> O(n · t)</li>
+  <li><strong>Space Complexity:</strong> O(t)</li>
   <li><strong>Key:</strong> Iterate backwards to avoid using updated values in same iteration</li>
 </ul>
 
@@ -4419,17 +4415,17 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Algorithm:</strong> Split array in half, find all sums for each half, combine</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^{n/2} \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^{n/2})$</li>
-  <li><strong>Improvement:</strong> Reduces exponential factor from $2^n$ to $2^{n/2}$</li>
+  <li><strong>Time Complexity:</strong> O(2^{n/2} · n)</li>
+  <li><strong>Space Complexity:</strong> O(2^{n/2})</li>
+  <li><strong>Improvement:</strong> Reduces exponential factor from 2ⁿ to 2^{n/2}</li>
 </ul>
 
 <h3 id="approximation-algorithms">Approximation Algorithms</h3>
 
 <p><strong>Greedy Approach:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \log n)$ (sort first)</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n \log n) (sort first)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation:</strong> No guaranteed ratio, but works well in practice</li>
 </ul>
 
@@ -4437,8 +4433,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Given a candidate subset:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - sum elements and compare to target</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - sum elements and compare to target</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Subset Sum is in NP</li>
 </ul>
 
@@ -4446,7 +4442,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p>The dynamic programming solution is practical when:</p>
 <ul>
-  <li>Target $t$ is relatively small (e.g., $t \leq 10^6$)</li>
+  <li>Target t is relatively small (e.g., t leq 10^6)</li>
   <li>Numbers are bounded</li>
   <li>Need exact solutions (not approximations)</li>
 </ul>
@@ -4455,7 +4451,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p>The DP solution becomes impractical when:</p>
 <ul>
-  <li>Target $t$ is very large (exponential in $n$)</li>
+  <li>Target t is very large (exponential in n)</li>
   <li>Numbers are very large</li>
   <li>Need to handle floating-point numbers (requires different approach)</li>
 </ul>
@@ -4465,8 +4461,8 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 <ol>
   <li><strong>Subset Sum is NP-Complete</strong>: Proven by reduction from Partition or directly from 3-SAT</li>
   <li><strong>Weakly NP-Complete</strong>: Has a pseudo-polynomial time DP solution, distinguishing it from strongly NP-complete problems</li>
-  <li><strong>Dynamic Programming</strong>: $O(n \cdot t)$ time solution works well when target is bounded</li>
-  <li><strong>Space Optimization</strong>: Can reduce space from $O(n \cdot t)$ to $O(t)$ with careful iteration</li>
+  <li><strong>Dynamic Programming</strong>: O(n · t) time solution works well when target is bounded</li>
+  <li><strong>Space Optimization</strong>: Can reduce space from O(n · t) to O(t) with careful iteration</li>
   <li><strong>Related Problems</strong>: Connected to Partition, Knapsack, and Coin Change problems</li>
 </ol>
 
@@ -4474,9 +4470,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <p><strong>Partition ≤ₚ Subset Sum:</strong></p>
 <ul>
-  <li>Given Partition instance: set $A$ with sum $s$</li>
-  <li>Return Subset Sum instance: set $A$ and target $t = s/2$</li>
-  <li>Partition solvable ↔ Subset Sum with target $s/2$ solvable</li>
+  <li>Given Partition instance: set A with sum s</li>
+  <li>Return Subset Sum instance: set A and target t = s/2</li>
+  <li>Partition solvable ↔ Subset Sum with target s/2 solvable</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Subset Sum:</strong></p>
@@ -4500,7 +4496,7 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <ol>
   <li>
-    <p><strong>Solve by hand</strong>: For $S = {2, 3, 7, 8, 10}$ and $t = 11$, find a subset that sums to 11. How many such subsets exist?</p>
+    <p><strong>Solve by hand</strong>: For S = {2, 3, 7, 8, 10} and t = 11, find a subset that sums to 11. How many such subsets exist?</p>
   </li>
   <li>
     <p><strong>Prove the reduction</strong>: Show that Partition reduces to Subset Sum. Is the reverse reduction also possible?</p>
@@ -4513,9 +4509,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
   </li>
   <li><strong>Time complexity analysis</strong>: For the DP algorithm, what is the time complexity if:
     <ul>
-      <li>$t = O(n)$?</li>
-      <li>$t = O(2^n)$?</li>
-      <li>$t = O(n^2)$?</li>
+      <li>t = O(n)?</li>
+      <li>t = O(2^n)?</li>
+      <li>t = O(n^2)?</li>
     </ul>
   </li>
   <li>

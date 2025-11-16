@@ -65,43 +65,43 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A set of integers $S = {a_1, a_2, \ldots, a_n}$</li>
-  <li>A target integer $t$</li>
+  <li>A set of integers S = {a_1, a_2, …, a_n}</li>
+  <li>A target integer t</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a subset $S’ \subseteq S$ such that $\sum_{a_i \in S’} a_i = t$, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a subset S’ subseteq S such that sum_{a_i in S’} a_i = t, NO otherwise</p>
 
 <p><strong>Subset Sum Optimization Problem:</strong></p>
 
-<p><strong>Input:</strong> A set of integers $S = {a_1, a_2, \ldots, a_n}$ and target $t$</p>
+<p><strong>Input:</strong> A set of integers S = {a_1, a_2, …, a_n} and target t</p>
 
-<p><strong>Output:</strong> The maximum sum $\leq t$ achievable by any subset, or the subset itself</p>
+<p><strong>Output:</strong> The maximum sum leq t achievable by any subset, or the subset itself</p>
 
 <h3 id="example">Example</h3>
 
-<p>Consider the set $S = {3, 34, 4, 12, 5, 2}$ and target $t = 9$.</p>
+<p>Consider the set S = {3, 34, 4, 12, 5, 2} and target t = 9.</p>
 
 <ul>
-  <li>Subset ${4, 5}$ sums to $4 + 5 = 9$ ✓</li>
-  <li>Subset ${3, 4, 2}$ sums to $3 + 4 + 2 = 9$ ✓</li>
-  <li>Subset ${12}$ sums to $12 &gt; 9$ ✗</li>
-  <li>Subset ${3, 5}$ sums to $8 &lt; 9$ ✗</li>
+  <li>Subset {4, 5} sums to 4 + 5 = 9 ✓</li>
+  <li>Subset {3, 4, 2} sums to 3 + 4 + 2 = 9 ✓</li>
+  <li>Subset {12} sums to 12 &gt; 9 ✗</li>
+  <li>Subset {3, 5} sums to 8 &lt; 9 ✗</li>
 </ul>
 
 <p>So the answer is YES - there exists a subset that sums to exactly 9.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
-<p>For $S = {2, 3, 7, 8, 10}$ and $t = 11$:</p>
+<p>For S = {2, 3, 7, 8, 10} and t = 11:</p>
 
 <ul>
-  <li>Try ${2, 3, 7} = 12$ (too large)</li>
-  <li>Try ${3, 8} = 11$ ✓ (found it!)</li>
-  <li>Try ${2, 3, 6}$ (6 not in set)</li>
-  <li>Try ${11}$ (11 not in set)</li>
+  <li>Try {2, 3, 7} = 12 (too large)</li>
+  <li>Try {3, 8} = 11 ✓ (found it!)</li>
+  <li>Try {2, 3, 6} (6 not in set)</li>
+  <li>Try {11} (11 not in set)</li>
 </ul>
 
-<p>Answer: YES, subset ${3, 8}$ sums to 11.</p>
+<p>Answer: YES, subset {3, 8} sums to 11.</p>
 
 <h2 id="why-subset-sum-is-in-np">Why Subset Sum is in NP</h2>
 
@@ -109,14 +109,14 @@
 
 <p><strong>Subset Sum ∈ NP:</strong></p>
 
-<p>Given a candidate solution (a subset $S’$), we can verify in polynomial time:</p>
+<p>Given a candidate solution (a subset S’), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that $S’ \subseteq S$: $O(n)$ time</li>
-  <li>Sum the elements: $O(n)$ time</li>
-  <li>Check if sum equals $t$: $O(1)$ time</li>
+  <li>Check that S’ subseteq S: O(n) time</li>
+  <li>Sum the elements: O(n) time</li>
+  <li>Check if sum equals t: O(1) time</li>
 </ol>
 
-<p>Total verification time: $O(n)$, which is polynomial in the input size. Therefore, Subset Sum is in NP.</p>
+<p>Total verification time: O(n), which is polynomial in the input size. Therefore, Subset Sum is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-partition">NP-Completeness: Reduction from Partition</h2>
 
@@ -126,8 +126,8 @@
 
 <p><strong>Partition Problem:</strong></p>
 <ul>
-  <li><strong>Input:</strong> A set of integers $A = {a_1, a_2, \ldots, a_n}$</li>
-  <li><strong>Output:</strong> YES if $A$ can be partitioned into two subsets with equal sum, NO otherwise</li>
+  <li><strong>Input:</strong> A set of integers A = {a_1, a_2, …, a_n}</li>
+  <li><strong>Output:</strong> YES if A can be partitioned into two subsets with equal sum, NO otherwise</li>
 </ul>
 
 <p>Partition is known to be NP-complete (can be proven by reduction from 3-SAT or Subset Sum itself).</p>
@@ -136,22 +136,22 @@
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Partition instance: set $A = {a_1, a_2, \ldots, a_n}$</li>
-  <li>Compute $s = \sum_{i=1}^n a_i$ (total sum)</li>
-  <li>Return Subset Sum instance: set $A$ and target $t = s/2$</li>
+  <li>Given a Partition instance: set A = {a_1, a_2, …, a_n}</li>
+  <li>Compute s = sum_{i=1}^n a_i (total sum)</li>
+  <li>Return Subset Sum instance: set A and target t = s/2</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>If Partition has a solution, then $A$ can be split into two subsets each summing to $s/2$</li>
-  <li>Therefore, one of these subsets sums to $s/2$, so Subset Sum with target $s/2$ returns YES</li>
-  <li>If Subset Sum with target $s/2$ returns YES, then there’s a subset summing to $s/2$</li>
-  <li>The complement of this subset sums to $s - s/2 = s/2$, so Partition returns YES</li>
+  <li>If Partition has a solution, then A can be split into two subsets each summing to s/2</li>
+  <li>Therefore, one of these subsets sums to s/2, so Subset Sum with target s/2 returns YES</li>
+  <li>If Subset Sum with target s/2 returns YES, then there’s a subset summing to s/2</li>
+  <li>The complement of this subset sums to s - s/2 = s/2, so Partition returns YES</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Computing $s$ takes $O(n)$ time</li>
+  <li>Computing s takes O(n) time</li>
   <li>The reduction is trivial</li>
 </ul>
 
@@ -163,53 +163,53 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode the satisfiability constraints using numbers in base 10 (or any base &gt; number of clauses).</p>
 
 <ol>
   <li><strong>Create numbers:</strong>
     <ul>
-      <li>For each variable $x_i$, create two numbers: $v_i$ (for $x_i = \text{TRUE}$) and $\overline{v_i}$ (for $x_i = \text{FALSE}$)</li>
-      <li>Each number has $n + m$ digits:
+      <li>For each variable x_i, create two numbers: v_i (for x_i = TRUE) and overline{v_i} (for x_i = FALSE)</li>
+      <li>Each number has n + m digits:
         <ul>
-          <li>First $n$ digits: 1 in position $i$ (for variable $x_i$), 0 elsewhere</li>
-          <li>Last $m$ digits: 1 in position $j$ if the literal appears in clause $C_j$, 0 otherwise</li>
+          <li>First n digits: 1 in position i (for variable x_i), 0 elsewhere</li>
+          <li>Last m digits: 1 in position j if the literal appears in clause C_j, 0 otherwise</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li><strong>Create target number $t$:</strong>
+  <li><strong>Create target number t:</strong>
     <ul>
-      <li>First $n$ digits: all 1’s (each variable must be assigned TRUE or FALSE)</li>
-      <li>Last $m$ digits: all 1’s (each clause must be satisfied)</li>
+      <li>First n digits: all 1’s (each variable must be assigned TRUE or FALSE)</li>
+      <li>Last m digits: all 1’s (each clause must be satisfied)</li>
     </ul>
   </li>
-  <li><strong>Set $S$:</strong> All $v_i$ and $\overline{v_i}$ numbers</li>
+  <li><strong>Set S:</strong> All v_i and overline{v_i} numbers</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>The first $n$ digits ensure we pick exactly one literal per variable (either $v_i$ or $\overline{v_i}$)</li>
-  <li>The last $m$ digits ensure each clause has at least one true literal</li>
-  <li>A subset summing to $t$ corresponds to a satisfying assignment</li>
+  <li>The first n digits ensure we pick exactly one literal per variable (either v_i or overline{v_i})</li>
+  <li>The last m digits ensure each clause has at least one true literal</li>
+  <li>A subset summing to t corresponds to a satisfying assignment</li>
 </ul>
 
 <p><strong>Formal Proof:</strong></p>
 
 <p><strong>Forward Direction (3-SAT satisfiable → Subset Sum solvable):</strong></p>
 <ul>
-  <li>If $\phi$ is satisfiable, pick $v_i$ if $x_i = \text{TRUE}$, else pick $\overline{v_i}$</li>
-  <li>Sum these numbers: first $n$ digits sum to all 1’s, last $m$ digits sum to at least all 1’s (each clause satisfied)</li>
-  <li>Add slack numbers (0-padded) if needed to reach exactly $t$</li>
+  <li>If phi is satisfiable, pick v_i if x_i = TRUE, else pick overline{v_i}</li>
+  <li>Sum these numbers: first n digits sum to all 1’s, last m digits sum to at least all 1’s (each clause satisfied)</li>
+  <li>Add slack numbers (0-padded) if needed to reach exactly t</li>
 </ul>
 
 <p><strong>Reverse Direction (Subset Sum solvable → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If subset sums to $t$, the first $n$ digits force exactly one choice per variable</li>
-  <li>The last $m$ digits being all 1’s means each clause has at least one true literal</li>
+  <li>If subset sums to t, the first n digits force exactly one choice per variable</li>
+  <li>The last m digits being all 1’s means each clause has at least one true literal</li>
   <li>This gives a satisfying assignment</li>
 </ul>
 
@@ -219,15 +219,15 @@
 
 <h3 id="dp-algorithm">DP Algorithm</h3>
 
-<p><strong>Subproblem:</strong> $dp[i][s] = \text{true}$ if there exists a subset of ${a_1, a_2, \ldots, a_i}$ that sums to exactly $s$.</p>
+<p><strong>Subproblem:</strong> dp[i][s] = true if there exists a subset of {a_1, a_2, …, a_i} that sums to exactly s.</p>
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: $dp[0][0] = \text{true}$, $dp[0][s] = \text{false}$ for $s &gt; 0$</li>
-  <li>Recurrence: $dp[i][s] = dp[i-1][s] \lor dp[i-1][s - a_i]$ (if $s \geq a_i$)
+  <li>Base case: dp[0][0] = text{true}, dp[0][s] = false for s &gt; 0</li>
+  <li>Recurrence: dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s - a_i] (if s geq a_i)
     <ul>
-      <li>Either don’t include $a_i$: $dp[i-1][s]$</li>
-      <li>Or include $a_i$: $dp[i-1][s - a_i]$</li>
+      <li>Either don’t include a_i: dp[i-1][s]</li>
+      <li>Or include a_i: dp[i-1][s - a_i]</li>
     </ul>
   </li>
 </ul>
@@ -245,22 +245,22 @@
 9. return dp[n][t]
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> $O(n \cdot t)$
-<strong>Space Complexity:</strong> $O(n \cdot t)$ (can be optimized to $O(t)$ using 1D array)</p>
+<p><strong>Time Complexity:</strong> O(n · t)
+<strong>Space Complexity:</strong> O(n · t) (can be optimized to O(t) using 1D array)</p>
 
 <h3 id="why-pseudo-polynomial">Why “Pseudo-Polynomial”?</h3>
 
 <ul>
-  <li>The algorithm runs in $O(n \cdot t)$ time</li>
-  <li>If $t$ is exponential in $n$ (e.g., $t = 2^n$), then $O(n \cdot t) = O(n \cdot 2^n)$ is exponential</li>
-  <li>If $t$ is polynomial in $n$ (e.g., $t = n^2$), then $O(n \cdot t) = O(n^3)$ is polynomial</li>
-  <li>The complexity depends on the <strong>value</strong> of $t$, not just its <strong>representation size</strong></li>
-  <li>Since $t$ requires $\log t$ bits to represent, if $t$ is exponential, $\log t$ is polynomial, but $t$ itself is exponential</li>
+  <li>The algorithm runs in O(n · t) time</li>
+  <li>If t is exponential in n (e.g., t = 2^n), then O(n · t) = O(n · 2^n) is exponential</li>
+  <li>If t is polynomial in n (e.g., t = n^2), then O(n · t) = O(n^3) is polynomial</li>
+  <li>The complexity depends on the <strong>value</strong> of t, not just its <strong>representation size</strong></li>
+  <li>Since t requires log t bits to represent, if t is exponential, log t is polynomial, but t itself is exponential</li>
 </ul>
 
 <h3 id="space-optimization">Space Optimization</h3>
 
-<p>We can optimize space to $O(t)$:</p>
+<p>We can optimize space to O(t):</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: SubsetSumDPOptimized(S, t)
 1. Let dp[0..t] be a boolean array
@@ -297,9 +297,9 @@
 
 <p><strong>Reduction:</strong></p>
 <ul>
-  <li>Subset Sum instance: $S = {a_1, \ldots, a_n}$, target $t$</li>
-  <li>Knapsack instance: $n$ items, item $i$ has weight $a_i$ and value $a_i$, capacity $t$, maximize value</li>
-  <li>Subset Sum solvable ↔ Knapsack optimal value = $t$</li>
+  <li>Subset Sum instance: S = {a_1, …, a_n}, target t</li>
+  <li>Knapsack instance: n items, item i has weight a_i and value a_i, capacity t, maximize value</li>
+  <li>Subset Sum solvable ↔ Knapsack optimal value = t</li>
 </ul>
 
 <h3 id="coin-change">Coin Change</h3>
@@ -313,7 +313,7 @@
 
 <h3 id="number-partitioning">Number Partitioning</h3>
 
-<p>Related to Partition, asking if numbers can be partitioned into $k$ equal-sum subsets.</p>
+<p>Related to Partition, asking if numbers can be partitioned into k equal-sum subsets.</p>
 
 <h2 id="practical-implications">Practical Implications</h2>
 
@@ -345,29 +345,29 @@
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Try all $2^n$ subsets</p>
+<p><strong>Algorithm:</strong> Try all 2ⁿ subsets</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^n \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(n)$ for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, sum elements ($O(n)$ time)</li>
+  <li><strong>Time Complexity:</strong> O(2^n · n)</li>
+  <li><strong>Space Complexity:</strong> O(n) for storing current subset</li>
+  <li><strong>Analysis:</strong> For each subset, sum elements (O(n) time)</li>
 </ul>
 
 <h3 id="dynamic-programming-pseudo-polynomial">Dynamic Programming (Pseudo-Polynomial)</h3>
 
-<p><strong>Algorithm:</strong> DP table $dp[i][s]$ = true if sum $s$ achievable with first $i$ elements</p>
+<p><strong>Algorithm:</strong> DP table dp[i][s] = true if sum s achievable with first i elements</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \cdot t)$ where $t$ is target sum</li>
-  <li><strong>Space Complexity:</strong> $O(n \cdot t)$ (can be optimized to $O(t)$)</li>
-  <li><strong>Subproblem:</strong> $dp[i][s] = dp[i-1][s] \lor dp[i-1][s-a_i]$ (if $s \geq a_i$)</li>
-  <li><strong>Why Pseudo-Polynomial:</strong> Depends on value of $t$, not just input size. If $t = 2^n$, then $O(n \cdot 2^n)$ is exponential.</li>
+  <li><strong>Time Complexity:</strong> O(n cdot t) where t is target sum</li>
+  <li><strong>Space Complexity:</strong> O(n cdot t) (can be optimized to O(t))</li>
+  <li><strong>Subproblem:</strong> dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s-a_i] (if s geq a_i)</li>
+  <li><strong>Why Pseudo-Polynomial:</strong> Depends on value of t, not just input size. If t = 2^n, then O(n · 2^n) is exponential.</li>
 </ul>
 
 <h3 id="space-optimized-dp">Space-Optimized DP</h3>
 
 <p><strong>Algorithm:</strong> Use 1D array, iterate backwards</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \cdot t)$</li>
-  <li><strong>Space Complexity:</strong> $O(t)$</li>
+  <li><strong>Time Complexity:</strong> O(n · t)</li>
+  <li><strong>Space Complexity:</strong> O(t)</li>
   <li><strong>Key:</strong> Iterate backwards to avoid using updated values in same iteration</li>
 </ul>
 
@@ -375,17 +375,17 @@
 
 <p><strong>Algorithm:</strong> Split array in half, find all sums for each half, combine</p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(2^{n/2} \cdot n)$</li>
-  <li><strong>Space Complexity:</strong> $O(2^{n/2})$</li>
-  <li><strong>Improvement:</strong> Reduces exponential factor from $2^n$ to $2^{n/2}$</li>
+  <li><strong>Time Complexity:</strong> O(2^{n/2} · n)</li>
+  <li><strong>Space Complexity:</strong> O(2^{n/2})</li>
+  <li><strong>Improvement:</strong> Reduces exponential factor from 2ⁿ to 2^{n/2}</li>
 </ul>
 
 <h3 id="approximation-algorithms">Approximation Algorithms</h3>
 
 <p><strong>Greedy Approach:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n \log n)$ (sort first)</li>
-  <li><strong>Space Complexity:</strong> $O(n)$</li>
+  <li><strong>Time Complexity:</strong> O(n \log n) (sort first)</li>
+  <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation:</strong> No guaranteed ratio, but works well in practice</li>
 </ul>
 
@@ -393,8 +393,8 @@
 
 <p><strong>Given a candidate subset:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> $O(n)$ - sum elements and compare to target</li>
-  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li><strong>Time Complexity:</strong> O(n) - sum elements and compare to target</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Subset Sum is in NP</li>
 </ul>
 
@@ -402,7 +402,7 @@
 
 <p>The dynamic programming solution is practical when:</p>
 <ul>
-  <li>Target $t$ is relatively small (e.g., $t \leq 10^6$)</li>
+  <li>Target t is relatively small (e.g., t leq 10^6)</li>
   <li>Numbers are bounded</li>
   <li>Need exact solutions (not approximations)</li>
 </ul>
@@ -411,7 +411,7 @@
 
 <p>The DP solution becomes impractical when:</p>
 <ul>
-  <li>Target $t$ is very large (exponential in $n$)</li>
+  <li>Target t is very large (exponential in n)</li>
   <li>Numbers are very large</li>
   <li>Need to handle floating-point numbers (requires different approach)</li>
 </ul>
@@ -421,8 +421,8 @@
 <ol>
   <li><strong>Subset Sum is NP-Complete</strong>: Proven by reduction from Partition or directly from 3-SAT</li>
   <li><strong>Weakly NP-Complete</strong>: Has a pseudo-polynomial time DP solution, distinguishing it from strongly NP-complete problems</li>
-  <li><strong>Dynamic Programming</strong>: $O(n \cdot t)$ time solution works well when target is bounded</li>
-  <li><strong>Space Optimization</strong>: Can reduce space from $O(n \cdot t)$ to $O(t)$ with careful iteration</li>
+  <li><strong>Dynamic Programming</strong>: O(n · t) time solution works well when target is bounded</li>
+  <li><strong>Space Optimization</strong>: Can reduce space from O(n · t) to O(t) with careful iteration</li>
   <li><strong>Related Problems</strong>: Connected to Partition, Knapsack, and Coin Change problems</li>
 </ol>
 
@@ -430,9 +430,9 @@
 
 <p><strong>Partition ≤ₚ Subset Sum:</strong></p>
 <ul>
-  <li>Given Partition instance: set $A$ with sum $s$</li>
-  <li>Return Subset Sum instance: set $A$ and target $t = s/2$</li>
-  <li>Partition solvable ↔ Subset Sum with target $s/2$ solvable</li>
+  <li>Given Partition instance: set A with sum s</li>
+  <li>Return Subset Sum instance: set A and target t = s/2</li>
+  <li>Partition solvable ↔ Subset Sum with target s/2 solvable</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Subset Sum:</strong></p>
@@ -456,7 +456,7 @@
 
 <ol>
   <li>
-    <p><strong>Solve by hand</strong>: For $S = {2, 3, 7, 8, 10}$ and $t = 11$, find a subset that sums to 11. How many such subsets exist?</p>
+    <p><strong>Solve by hand</strong>: For S = {2, 3, 7, 8, 10} and t = 11, find a subset that sums to 11. How many such subsets exist?</p>
   </li>
   <li>
     <p><strong>Prove the reduction</strong>: Show that Partition reduces to Subset Sum. Is the reverse reduction also possible?</p>
@@ -469,9 +469,9 @@
   </li>
   <li><strong>Time complexity analysis</strong>: For the DP algorithm, what is the time complexity if:
     <ul>
-      <li>$t = O(n)$?</li>
-      <li>$t = O(2^n)$?</li>
-      <li>$t = O(n^2)$?</li>
+      <li>t = O(n)?</li>
+      <li>t = O(2^n)?</li>
+      <li>t = O(n^2)?</li>
     </ul>
   </li>
   <li>
