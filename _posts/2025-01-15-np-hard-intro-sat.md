@@ -17,23 +17,23 @@ The Boolean Satisfiability Problem asks: **Given a Boolean formula, is there an 
 ### Problem Definition
 
 **Input:** A Boolean formula in Conjunctive Normal Form (CNF)
-- Variables: x₁, x₁, …, x_n (each can be TRUE or FALSE)
+- Variables: x₁, x₂, …, x_n (each can be TRUE or FALSE)
 - Literals: a variable or its negation (e.g., x₁ or ¬ x₁)
-- Clauses: disjunctions of literals (e.g., (x₁  ∨  ¬ x₁  ∨  x₁))
-- Formula: conjunction of clauses (e.g., (x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁))
+- Clauses: disjunctions of literals (e.g., (x₁ ∨ ¬ x₁ ∨ x₁))
+- Formula: conjunction of clauses (e.g., (x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁))
 
 **Output:** YES if there exists an assignment that satisfies all clauses, NO otherwise
 
 ### Example
 
 Consider the formula:
-(x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁)
+(x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁)
 
 Is this satisfiable?
 
-- If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁  ∨  x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).
+- If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁ ∨ x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).
 
-- Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).
+- Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).
 
 So this formula is satisfiable.
 
@@ -87,7 +87,7 @@ The Cook-Levin theorem proves SAT is NP-complete by:
 **3-SAT** is a restricted version of SAT where each clause contains exactly 3 literals.
 
 **Example:**
-(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
+(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
 
 ### Why 3-SAT?
 
@@ -194,7 +194,7 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 ## Practice Problems
 
 1. Determine if the following 3-SAT instance is satisfiable:
-   (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁  ∨  ¬ x₁)
+   (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁ ∨ ¬ x₁)
 
 2. Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?
 

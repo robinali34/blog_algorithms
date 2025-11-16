@@ -19,39 +19,39 @@ Linear Programming asks: **Given linear constraints and a linear objective funct
 **Linear Programming (LP) Problem:**
 
 **Input:** 
-- A matrix A in mathbb{R}^{m times n} (constraint coefficients)
-- A vector b in mathbb{R}^m (constraint bounds)
-- A vector c in mathbb{R}^n (objective coefficients)
+- A matrix A ∈ ℝ^{m × n} (constraint coefficients)
+- A vector b ∈ ℝ^m (constraint bounds)
+- A vector c ∈ ℝ^n (objective coefficients)
 
 **Output:** 
-- A vector x in mathbb{R}^n that:
-  - Satisfies Ax leq b (or Ax = b, or Ax geq b, or mixed)
-  - Satisfies x geq 0 (non-negativity constraints, if present)
+- A vector x ∈ ℝ^n that:
+  - Satisfies Ax ≤ b (or Ax = b, or Ax ≥ b, or mixed)
+  - Satisfies x ≥ 0 (non-negativity constraints, if present)
   - Maximizes (or minimizes) c^T x
 
 **Standard Form:**
 - Maximize c^T x
-- Subject to Ax leq b and x geq 0
+- Subject to Ax ≤ b and x ≥ 0
 
 **Canonical Form:**
 - Maximize c^T x
-- Subject to Ax = b and x geq 0
+- Subject to Ax = b and x ≥ 0
 
 ### Example
 
 Consider the LP:
 
-**Maximize:** 3x₁ + 2x₁
+**Maximize:** 3x₁ + 2x₂
 
 **Subject to:**
-- 2x₁ + x₁ leq 6
-- x₁ + 2x₁ leq 8
-- x₁, x₁ geq 0
+- 2x₁ + x₂ ≤ 6
+- x₁ + 2x₂ ≤ 8
+- x₁, x₂ ≥ 0
 
 **Graphical Solution:**
 - Feasible region is a polygon
 - Optimal solution is at a vertex (corner point)
-- Optimal: (x₁, x₁) = (4/3, 10/3) with objective value 32/3 \approx 10.67
+- Optimal: (x₁, x₂) = (4/3, 10/3) with objective value 32/3 ≈ 10.67
 
 **Key Insight:** The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).
 
@@ -96,7 +96,7 @@ Given an Integer Linear Programming (ILP) problem:
 ### Example: Vertex Cover LP Relaxation
 
 **ILP for Vertex Cover:**
-- Variables: x_v ∈ \{0,1\} for each vertex v
+- Variables: x_v ∈ {0,1} for each vertex v
 - Constraints: x_u + x_v ≥ 1 for each edge (u,v)
 - Objective: Minimize sum_v x_v
 
@@ -108,7 +108,7 @@ Given an Integer Linear Programming (ILP) problem:
 
 **2-Approximation Algorithm:**
 1. Solve LP relaxation
-2. Round: Include vertex v if x_v geq 1/2
+2. Round: Include vertex v if x_v ≥ 1/2
 3. This gives a 2-approximation for Vertex Cover!
 
 ## Reductions Involving LP
@@ -126,8 +126,8 @@ Given an Integer Linear Programming (ILP) problem:
 ### Reduction: LP to Feasibility
 
 **LP Optimization ≤ₚ LP Feasibility:**
-- Given LP: maximize c^T x subject to Ax leq b, x geq 0
-- Add constraint: c^T x geq k (where k is a guess for optimal value)
+- Given LP: maximize c^T x subject to Ax ≤ b, x ≥ 0
+- Add constraint: c^T x ≥ k (where k is a guess for optimal value)
 - Use binary search on k to find optimal value
 - This reduces optimization to feasibility checking
 
@@ -135,7 +135,7 @@ Given an Integer Linear Programming (ILP) problem:
 
 **General LP ≤ₚ Standard Form LP:**
 - Convert inequalities to equations using slack variables
-- Convert unconstrained variables: x = x^+ - x^- where x^+, x^- geq 0
+- Convert unconstrained variables: x = x^+ - x^- where x^+, x^- ≥ 0
 - Convert maximization to minimization: negate objective
 - All conversions are polynomial-time
 
@@ -145,15 +145,15 @@ Given an Integer Linear Programming (ILP) problem:
 
 Every LP has a **dual** LP:
 
-**Primal:** Maximize c^T x subject to Ax leq b, x geq 0
+**Primal:** Maximize c^T x subject to Ax ≤ b, x ≥ 0
 
-**Dual:** Minimize b^T y subject to A^T y geq c, y geq 0
+**Dual:** Minimize b^T y subject to A^T y ≥ c, y ≥ 0
 
 **Strong Duality:** If both have feasible solutions, then:
 - Primal optimal = Dual optimal
 
 **Weak Duality:** For any feasible x and y:
-- c^T x leq b^T y
+- c^T x ≤ b^T y
 
 ### Using Duality in Reductions
 
@@ -170,26 +170,26 @@ LP relaxation is fundamental to many approximation algorithms.
 ### Vertex Cover: 2-Approximation
 
 **Algorithm:**
-1. Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v geq 1 for all edges
-2. Round: S = {v : x_v geq 1/2}
+1. Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v ≥ 1 for all edges
+2. Round: S = {v : x_v ≥ 1/2}
 3. Return S as vertex cover
 
 **Analysis:**
-- S is a vertex cover (each edge has at least one endpoint with x_v geq 1/2)
-- |S| = sum_{v in S} 1 leq sum_{v in S} 2x_v leq 2 cdot text{LP optimal} leq 2 cdot text{ILP optimal}
+- S is a vertex cover (each edge has at least one endpoint with x_v ≥ 1/2)
+- |S| = ∑_{v ∈ S} 1 ≤ ∑_{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal
 - Therefore, 2-approximation
 
 ### Set Cover: LP-Based Approximation
 
 **Set Cover ILP:**
-- Variables: x_S in {0,1} for each set S
-- Constraints: sum_{S: e in S} x_S geq 1 for each element e
+- Variables: x_S ∈ {0,1} for each set S
+- Constraints: ∑_{S: e ∈ S} x_S ≥ 1 for each element e
 - Objective: Minimize sum_S x_S
 
 **LP Relaxation + Rounding:**
 - Solve LP relaxation
 - Use randomized rounding or greedy rounding
-- Achieves O(\log n) approximation (or better with specific techniques)
+- Achieves O(log n) approximation (or better with specific techniques)
 
 ### Maximum Flow: LP Formulation
 
@@ -209,7 +209,7 @@ While LP is polynomial-time, we can reduce NP-complete problems to LP feasibilit
 **Reduction:**
 - For 3-SAT instance, create LP:
   - Variables: x_i in [0,1] for each Boolean variable
-  - For clause (l_1  ∨  l_2  ∨  l_3): constraint ensuring at least one literal is "true"
+  - For clause (l_1 ∨ l_2 ∨ l_3): constraint ensuring at least one literal is "true"
   - But LP doesn't naturally encode Boolean logic...
 
 **Better:** Reduce to ILP, then use LP relaxation
@@ -395,8 +395,8 @@ LP has countless applications:
 2. **LP Relaxation**: For a Vertex Cover instance, write the LP relaxation. What is the relationship between LP optimal and ILP optimal?
 
 3. **Duality**: Write the dual of the following LP:
-   - Maximize 3x₁ + 2x₁
-   - Subject to 2x₁ + x₁ ≤ 6, x₁ + 2x₁ ≤ 8, x₁, x₁ ≥ 0
+   - Maximize 3x₁ + 2x₂
+   - Subject to 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0
 
 4. **Rounding**: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?
 
@@ -404,7 +404,7 @@ LP has countless applications:
 
 6. **Standard Form**: Convert the following to standard form:
    - Minimize x₁ - 2x₁
-   - Subject to x₁ + x₁ = 5, x₁ ≥ 0, x₁ unrestricted
+   - Subject to x₁ + x₂ = 5, x₁ ≥ 0, x₁ unrestricted
 
 7. **Applications**: Research one real-world application of LP. How is it formulated? What solver is used?
 

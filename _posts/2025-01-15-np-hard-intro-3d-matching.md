@@ -20,7 +20,7 @@ A **3D matching** (also called **3-dimensional matching**) is a generalization o
 
 **Input:** 
 - Three disjoint sets X, Y, Z with |X| = |Y| = |Z| = n
-- A set T subseteq X times Y times Z of triples
+- A set T subseteq X × Y × Z of triples
 
 **Output:** YES if there exists a subset M subseteq T such that:
 - |M| = n (exactly n triples)
@@ -38,7 +38,7 @@ Such a set M is called a **perfect 3D matching**.
 ### Example
 
 Consider:
-- X = {x₁, x₁, x₁}
+- X = {x₁, x₂, x₁}
 - Y = {y_1, y_2, y_3}
 - Z = {z_1, z_2, z_3}
 - T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}
@@ -85,7 +85,7 @@ The standard proof that 3D Matching is NP-complete reduces from 3-SAT.
 
 ### Construction
 
-For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 **Key Idea:** Create gadgets for variables and clauses, ensuring a perfect 3D matching corresponds to a satisfying assignment.
 
@@ -110,7 +110,7 @@ For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁,
 - If matching goes "TRUE path", it encodes x_i = TRUE
 - If matching goes "FALSE path", it encodes x_i = FALSE
 
-**Clause Gadget for C_j = (l_1  ∨  l_2  ∨  l_3):**
+**Clause Gadget for C_j = (l_1 ∨ l_2 ∨ l_3):**
 - Create elements that can be matched if at least one literal is true
 - Connect to variable gadgets: if variable x_i is set to make literal true, clause gadget can be matched
 
@@ -121,7 +121,7 @@ For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁,
 ### Why This Works
 
 **Forward Direction (3-SAT satisfiable → 3D Matching exists):**
-- If \phi is satisfiable, construct matching:
+- If φ is satisfiable, construct matching:
   - For each variable, choose triples corresponding to its truth value
   - For each clause, choose triples that match clause elements (possible because at least one literal is true)
 - This gives a perfect 3D matching
@@ -196,7 +196,7 @@ The 3D Matching Problem is NP-complete, which means:
 
 **3. Integer Linear Programming:**
 - Formulate as 0-1 ILP:
-  - Variables: x_t ∈ \{0,1\} for each triple t
+  - Variables: x_t ∈ {0,1} for each triple t
   - Constraints: For each element, sum of triples containing it equals 1
   - Objective: Maximize number of triples (or just feasibility)
 - Use ILP solvers (CPLEX, Gurobi, etc.)
@@ -230,7 +230,7 @@ Some restricted versions of 3D Matching are tractable:
 ### Brute Force Approach
 
 **Algorithm:** Try all possible subsets of triples
-- **Time Complexity:** O(2^{|T|} cdot n) where |T| is number of triples
+- **Time Complexity:** O(2^{|T|} · n) where |T| is number of triples
 - **Space Complexity:** O(n) for storing current matching
 - **Analysis:** For each subset, verify it's a valid matching (O(n) to check disjointness)
 
@@ -252,7 +252,7 @@ Some restricted versions of 3D Matching are tractable:
 ### 2D Matching (Special Case)
 
 **Algorithm:** For bipartite matching, use augmenting paths
-- **Time Complexity:** O(sqrt{n} cdot |E|) using Hopcroft-Karp algorithm
+- **Time Complexity:** O(sqrt{n} · |E|) using Hopcroft-Karp algorithm
 - **Space Complexity:** O(n + |E|)
 - **Why Polynomial:** 2D matching has special structure allowing polynomial-time solution
 
@@ -291,8 +291,8 @@ The reduction is polynomial-time, establishing 3D Matching as NP-complete.
 ## Practice Problems
 
 1. **Find a matching**: For the 3D matching instance:
-   - X = \{x₁, x₁\}, Y = \{y_1, y_2\}, Z = \{z_1, z_2\}
-   - T = \{(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)\}
+   - X = {x₁, x₂}, Y = {y_1, y_2}, Z = {z_1, z_2}
+   - T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)}
    Does a perfect matching exist?
 
 2. **Prove the reduction**: Research the detailed construction for reducing 3-SAT to 3D Matching. What do the variable and clause gadgets look like?

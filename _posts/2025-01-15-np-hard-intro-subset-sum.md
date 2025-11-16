@@ -22,13 +22,13 @@ The Subset Sum Problem asks: **Given a set of integers and a target sum, does th
 - A set of integers S = {a_1, a_2, …, a_n}
 - A target integer t
 
-**Output:** YES if there exists a subset S' subseteq S such that sum_{a_i in S'} a_i = t, NO otherwise
+**Output:** YES if there exists a subset S' subseteq S such that ∑_{a_i ∈ S'} a_i = t, NO otherwise
 
 **Subset Sum Optimization Problem:**
 
 **Input:** A set of integers S = {a_1, a_2, …, a_n} and target t
 
-**Output:** The maximum sum leq t achievable by any subset, or the subset itself
+**Output:** The maximum sum ≤ t achievable by any subset, or the subset itself
 
 ### Example
 
@@ -81,7 +81,7 @@ Partition is known to be NP-complete (can be proven by reduction from 3-SAT or S
 
 **Reduction:**
 1. Given a Partition instance: set A = {a_1, a_2, …, a_n}
-2. Compute s = sum_{i=1}^n a_i (total sum)
+2. Compute s = ∑_{i=1}^n a_i (total sum)
 3. Return Subset Sum instance: set A and target t = s/2
 
 **Correctness:**
@@ -102,12 +102,12 @@ We can also prove Subset Sum is NP-complete by directly reducing from 3-SAT.
 
 ### Construction
 
-For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 **Key Idea:** Encode the satisfiability constraints using numbers in base 10 (or any base > number of clauses).
 
 1. **Create numbers:**
-   - For each variable x_i, create two numbers: v_i (for x_i = TRUE) and overline{v_i} (for x_i = FALSE)
+   - For each variable x_i, create two numbers: v_i (for x_i = TRUE) and ̅{v_i} (for x_i = FALSE)
    - Each number has n + m digits:
      - First n digits: 1 in position i (for variable x_i), 0 elsewhere
      - Last m digits: 1 in position j if the literal appears in clause C_j, 0 otherwise
@@ -116,19 +116,19 @@ For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁,
    - First n digits: all 1's (each variable must be assigned TRUE or FALSE)
    - Last m digits: all 1's (each clause must be satisfied)
 
-3. **Set S:** All v_i and overline{v_i} numbers
+3. **Set S:** All v_i and ̅{v_i} numbers
 
 ### Why This Works
 
 **Intuition:**
-- The first n digits ensure we pick exactly one literal per variable (either v_i or overline{v_i})
+- The first n digits ensure we pick exactly one literal per variable (either v_i or ̅{v_i})
 - The last m digits ensure each clause has at least one true literal
 - A subset summing to t corresponds to a satisfying assignment
 
 **Formal Proof:**
 
 **Forward Direction (3-SAT satisfiable → Subset Sum solvable):**
-- If phi is satisfiable, pick v_i if x_i = TRUE, else pick overline{v_i}
+- If φ is satisfiable, pick v_i if x_i = TRUE, else pick ̅{v_i}
 - Sum these numbers: first n digits sum to all 1's, last m digits sum to at least all 1's (each clause satisfied)
 - Add slack numbers (0-padded) if needed to reach exactly t
 
@@ -143,11 +143,11 @@ Despite being NP-complete, Subset Sum has a **pseudo-polynomial time** dynamic p
 
 ### DP Algorithm
 
-**Subproblem:** dp[i][s] = true if there exists a subset of \{a_1, a_2, …, a_i\} that sums to exactly s.
+**Subproblem:** dp[i][s] = true if there exists a subset of {a_1, a_2, …, a_i} that sums to exactly s.
 
 **Recurrence:**
-- Base case: dp[0][0] = text{true}, dp[0][s] = false for s > 0
-- Recurrence: dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s - a_i] (if s geq a_i)
+- Base case: dp[0][0] = true, dp[0][s] = false for s > 0
+- Recurrence: dp[i][s] = dp[i-1][s] ∨ dp[i-1][s - a_i] (if s ≥ a_i)
   - Either don't include a_i: dp[i-1][s]
   - Or include a_i: dp[i-1][s - a_i]
 
@@ -260,9 +260,9 @@ Subset Sum has numerous applications:
 ### Dynamic Programming (Pseudo-Polynomial)
 
 **Algorithm:** DP table dp[i][s] = true if sum s achievable with first i elements
-- **Time Complexity:** O(n cdot t) where t is target sum
-- **Space Complexity:** O(n cdot t) (can be optimized to O(t))
-- **Subproblem:** dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s-a_i] (if s geq a_i)
+- **Time Complexity:** O(n · t) where t is target sum
+- **Space Complexity:** O(n · t) (can be optimized to O(t))
+- **Subproblem:** dp[i][s] = dp[i-1][s] ∨ dp[i-1][s-a_i] (if s ≥ a_i)
 - **Why Pseudo-Polynomial:** Depends on value of t, not just input size. If t = 2^n, then O(n · 2^n) is exponential.
 
 ### Space-Optimized DP
@@ -282,7 +282,7 @@ Subset Sum has numerous applications:
 ### Approximation Algorithms
 
 **Greedy Approach:**
-- **Time Complexity:** O(n \log n) (sort first)
+- **Time Complexity:** O(n log n) (sort first)
 - **Space Complexity:** O(n)
 - **Approximation:** No guaranteed ratio, but works well in practice
 
@@ -296,7 +296,7 @@ Subset Sum has numerous applications:
 ### When DP Works Well
 
 The dynamic programming solution is practical when:
-- Target t is relatively small (e.g., t leq 10^6)
+- Target t is relatively small (e.g., t ≤ 10^6)
 - Numbers are bounded
 - Need exact solutions (not approximations)
 

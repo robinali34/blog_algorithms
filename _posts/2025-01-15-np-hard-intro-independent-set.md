@@ -42,10 +42,10 @@ Consider the following graph:
     3---4
 ```
 
-- Independent sets of size 1: Any single vertex (e.g., \{1\}, \{2\}, \{3\}, \{4\})
-- Independent sets of size 2: \{1, 4\}, \{2, 3\} (vertices not connected)
+- Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})
+- Independent sets of size 2: {1, 4}, {2, 3} (vertices not connected)
 - Independent sets of size 3: None (any three vertices will have at least one edge)
-- Maximum independent set: Size 2 (e.g., \{1, 4\} or \{2, 3\})
+- Maximum independent set: Size 2 (e.g., {1, 4} or {2, 3})
 
 So the independence number \alpha(G) = 2.
 
@@ -59,9 +59,9 @@ A graph with a maximum independent set highlighted:
     4---5---6
 ```
 
-- Independent sets: \{1, 3, 5\}, \{2, 4, 6\}, \{1, 6\}, \{2, 5\}, etc.
-- Maximum independent set: \{1, 3, 5\} or \{2, 4, 6\} (size 3)
-- Note: \{1, 2\} is NOT an independent set because vertices 1 and 2 are adjacent
+- Independent sets: {1, 3, 5}, {2, 4, 6}, {1, 6}, {2, 5}, etc.
+- Maximum independent set: {1, 3, 5} or {2, 4, 6} (size 3)
+- Note: {1, 2} is NOT an independent set because vertices 1 and 2 are adjacent
 
 ## Why Independent Set is in NP
 
@@ -71,7 +71,7 @@ To show that Independent Set is NP-complete, we first need to show it's in NP.
 
 Given a candidate solution (a set of k vertices), we can verify in polynomial time:
 1. Check that the set has at least k vertices: O(k) time
-2. Check that no two vertices in the set are adjacent: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)
+2. Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)
 
 Since k ≤ |V|, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.
 
@@ -81,21 +81,21 @@ The most elegant proof that Independent Set is NP-complete uses the relationship
 
 ### Complement Graph
 
-Given a graph G = (V, E), its **complement graph** \overline{G} = (V, \overline{E}) has:
+Given a graph G = (V, E), its **complement graph** G̅ = (V, E̅) has:
 - The same vertex set V
-- An edge (u, v) in overline{E} if and only if (u, v) notin E
+- An edge (u, v) ∈ E̅ if and only if (u, v) ∉ E
 
-In other words, overline{G} has edges exactly where G doesn't have edges.
+In other words, G̅ has edges exactly where G doesn't have edges.
 
 ### Key Relationship
 
 **Fundamental Observation:**
-- S is a **clique** in G **if and only if** S is an **independent set** in overline{G}
+- S is a **clique** in G **if and only if** S is an **independent set** in G̅
 
 **Proof:**
 - If S is a clique in G, then every pair of vertices in S is connected by an edge in G
-- Therefore, no pair of vertices in S is connected by an edge in overline{G}
-- So S is an independent set in overline{G}
+- Therefore, no pair of vertices in S is connected by an edge in G̅
+- So S is an independent set in G̅
 - The reverse direction follows similarly
 
 ### Reduction from Clique
@@ -104,15 +104,15 @@ Since we know **Clique is NP-complete**, we can reduce Clique to Independent Set
 
 **Reduction:**
 1. Given a Clique instance: graph G and integer k
-2. Construct the complement graph overline{G}
-3. Return Independent Set instance: graph overline{G} and integer k
+2. Construct the complement graph G̅
+3. Return Independent Set instance: graph G̅ and integer k
 
 **Correctness:**
-- G has a clique of size k **if and only if** overline{G} has an independent set of size k
+- G has a clique of size k **if and only if** G̅ has an independent set of size k
 - This follows directly from the fundamental observation above
 
 **Polynomial Time:**
-- Constructing overline{G} takes O(|V|^2) time (check all pairs of vertices)
+- Constructing G̅ takes O(|V|^2) time (check all pairs of vertices)
 - This is polynomial in the input size
 
 Therefore, **Independent Set is NP-complete**.
@@ -123,7 +123,7 @@ We can also prove Independent Set is NP-complete by directly reducing from 3-SAT
 
 ### Construction
 
-For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3 literals:
 
 1. **Create vertices**: For each literal occurrence in each clause, create a vertex
    - Label vertices as (i, j) where i is the clause number and j is the literal position
@@ -145,7 +145,7 @@ For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_
 **Formal Proof:**
 
 **Forward Direction (3-SAT satisfiable → Independent Set exists):**
-- If \phi is satisfiable, there exists an assignment that makes at least one literal true in each clause
+- If φ is satisfiable, there exists an assignment that makes at least one literal true in each clause
 - Pick the vertex corresponding to that true literal from each clause
 - These m vertices form an independent set because:
   - They're from different clauses (so no edges between them by construction)
@@ -162,7 +162,7 @@ For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_
 ### Example Reduction
 
 Consider the 3-SAT instance:
-phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
 
 **Step 1: Create vertices**
 - Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁
@@ -174,7 +174,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 - Connect complementary literals: (1,1)-(2,1) (x₁ and ¬ x₁), (1,3)-(2,3) (x₁ and ¬ x₁), (1,2)-(3,2) (x₁ and ¬ x₁)
 
 **Step 3: Find independent set of size 3**
-- One possible independent set: \{(1,2), (2,2), (3,3)\} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
+- One possible independent set: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
 - This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE
 - Verify: All clauses satisfied!
 
@@ -185,7 +185,7 @@ The Independent Set Problem is part of a fundamental trio of related NP-complete
 ### Clique
 
 As we've seen:
-- S is a clique in G **if and only if** S is an independent set in \overline{G}
+- S is a clique in G **if and only if** S is an independent set in G̅
 - This makes Clique and Independent Set polynomially equivalent
 
 ### Vertex Cover
@@ -219,7 +219,7 @@ The Independent Set Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known algorithms have exponential time complexity
 2. **Brute Force**: Check all 2ⁿ subsets of vertices - exponential
-3. **Dynamic Programming**: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP
+3. **Dynamic Programming**: Can solve in O(2^n · n^2) time using inclusion-exclusion or bitmask DP
 4. **Branch and Bound**: Practical for small instances, but still exponential worst-case
 
 ### Approximation
@@ -255,18 +255,18 @@ Some restricted versions of Independent Set are tractable:
 
 ### Brute Force Approach
 
-**Algorithm:** Check all \binom{n}{k} subsets of size k
-- **Time Complexity:** O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)
+**Algorithm:** Check all C(n,k) subsets of size k
+- **Time Complexity:** O(C(n,k) · k^2) = O(n^k · k^2)
 - **Space Complexity:** O(k) for storing current subset
 - **Analysis:** For each subset, verify no edges exist between vertices (O(k^2) checks)
 
 ### Dynamic Programming
 
 **Algorithm:** Use bitmask DP similar to Clique
-- **Time Complexity:** O(2^n cdot n^2)
-- **Space Complexity:** O(2^n cdot n)
+- **Time Complexity:** O(2^n · n^2)
+- **Space Complexity:** O(2^n · n)
 - **Subproblem:** dp[mask][v] = true if there exists an independent set in vertices mask ending at v
-- **Recurrence:** dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∉ E} dp[mask \setminus \{v\}][u]
+- **Recurrence:** dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∉ E} dp[mask \setminus {v}][u]
 
 ### Tree DP (Special Case)
 
@@ -304,9 +304,9 @@ Some restricted versions of Independent Set are tractable:
 
 **Clique ≤ₚ Independent Set:**
 - Given Clique instance: graph G and integer k
-- Construct complement graph \overline{G}
-- Return Independent Set instance: graph \overline{G} and integer k
-- G has clique of size k ↔ \overline{G} has independent set of size k
+- Construct complement graph G̅
+- Return Independent Set instance: graph G̅ and integer k
+- G has clique of size k ↔ G̅ has independent set of size k
 
 **3-SAT ≤ₚ Independent Set:**
 - Given 3-SAT instance with m clauses
@@ -325,12 +325,12 @@ Both reductions are polynomial-time, establishing Independent Set as NP-complete
 
 ## Practice Problems
 
-1. **Prove the complement relationship**: Show that S is a clique in G if and only if S is an independent set in \overline{G}.
+1. **Prove the complement relationship**: Show that S is a clique in G if and only if S is an independent set in G̅.
 
 2. **Prove Gallai's theorem**: Show that for any graph G, \alpha(G) + \beta(G) = |V| where \alpha(G) is the independence number and beta(G) is the vertex cover number.
 
 3. **Construct the graph** for the 3-SAT instance:
-   (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  x₁  ∨  ¬ x₁)
+   (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)
    Find an independent set of size 3 and determine the corresponding satisfying assignment.
 
 4. **Algorithm design**: Design a dynamic programming algorithm to find the maximum independent set in a tree. What is its time complexity?

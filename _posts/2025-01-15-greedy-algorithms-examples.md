@@ -42,7 +42,7 @@ Greedy algorithms fail when:
 
 ### Example 1: Activity Selection Problem
 
-**Problem:** Given n activities with start and finish times, select the maximum number of activities that don't overlap.
+**Problem:** Given n activities with start and finish ×, select the maximum number of activities that don't overlap.
 
 **Greedy Strategy:** Always pick the activity that finishes earliest.
 
@@ -64,7 +64,7 @@ Algorithm: ActivitySelection(activities)
 - Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)
 - Greedy selection: (1,4), (5,7), (8,9) = 3 activities
 
-**Time Complexity:** O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+**Time Complexity:** O(n log n) (sorting) + O(n) (selection) = O(n log n)
 **Space Complexity:** O(1) additional space
 
 **Why It Works:**
@@ -102,7 +102,7 @@ Algorithm: FractionalKnapsack(items, W)
 - Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)
 - Value: 60 + 100 + 80 = 240
 
-**Time Complexity:** O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+**Time Complexity:** O(n log n) (sorting) + O(n) (selection) = O(n log n)
 **Space Complexity:** O(1) additional space
 
 **Why It Works:**
@@ -143,7 +143,7 @@ Graph:
 - Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)
 - MST: (B,D), (A,B), (A,C) = weight 6
 
-**Time Complexity:** O(E \log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E \log E)
+**Time Complexity:** O(E log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E log E)
 **Space Complexity:** O(V) for Union-Find
 
 **Why It Works:**
@@ -177,8 +177,8 @@ Algorithm: PrimMST(G, start)
 ```
 
 **Time Complexity:** 
-- With binary heap: O(E \log V)
-- With Fibonacci heap: O(E + V \log V)
+- With binary heap: O(E log V)
+- With Fibonacci heap: O(E + V log V)
 **Space Complexity:** O(V)
 
 ### Example 5: Huffman Coding
@@ -210,7 +210,7 @@ Algorithm: HuffmanCoding(frequencies)
   4. Merge 26 + 29 = 55
   5. Merge a(45) + 55 = 100
 
-**Time Complexity:** O(n \log n) where n is number of characters
+**Time Complexity:** O(n log n) where n is number of characters
 **Space Complexity:** O(n)
 
 **Why It Works:**
@@ -258,8 +258,8 @@ Graph:
 - Result: A→B=1, A→C=3, A→D=3
 
 **Time Complexity:**
-- With binary heap: O((V+E) \log V)
-- With Fibonacci heap: O(E + V \log V)
+- With binary heap: O((V+E) log V)
+- With Fibonacci heap: O(E + V log V)
 **Space Complexity:** O(V)
 
 **Why It Works:**
@@ -276,7 +276,7 @@ Graph:
 
 **Algorithm:** Same as Activity Selection (they're equivalent problems).
 
-**Time Complexity:** O(n \log n)
+**Time Complexity:** O(n log n)
 **Space Complexity:** O(1)
 
 ### Example 8: Set Cover (Greedy Approximation)
@@ -306,7 +306,7 @@ Algorithm: GreedySetCover(U, S)
 **Time Complexity:** O(|U| · |S|)
 **Space Complexity:** O(|U|)
 
-**Approximation Ratio:** H_n where H_n = sum_{i=1}^n 1/i approx ln n (harmonic number)
+**Approximation Ratio:** H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)
 
 **Why It's an Approximation:**
 - Greedy doesn't always give optimal solution
@@ -388,19 +388,19 @@ To prove a greedy algorithm is correct:
 
 | Problem | Greedy Algorithm | Time Complexity | Space Complexity |
 |---------|------------------|-----------------|------------------|
-| Activity Selection | Sort by finish time | O(n \log n) | O(1) |
-| Fractional Knapsack | Sort by value/weight | O(n \log n) | O(1) |
-| MST (Kruskal) | Sort edges, Union-Find | O(E \log E) | O(V) |
-| MST (Prim) | Priority queue | O(E \log V) | O(V) |
-| Huffman Coding | Min-heap | O(n \log n) | O(n) |
-| Dijkstra's | Priority queue | O((V+E) \log V) | O(V) |
+| Activity Selection | Sort by finish time | O(n log n) | O(1) |
+| Fractional Knapsack | Sort by value/weight | O(n log n) | O(1) |
+| MST (Kruskal) | Sort edges, Union-Find | O(E log E) | O(V) |
+| MST (Prim) | Priority queue | O(E log V) | O(V) |
+| Huffman Coding | Min-heap | O(n log n) | O(n) |
+| Dijkstra's | Priority queue | O((V+E) log V) | O(V) |
 | Set Cover | Greedy selection | O(|U| · |S|) | O(|U|) |
 
 ## Key Takeaways
 
 1. **Greedy Choice Property:** The greedy choice must be part of some optimal solution
 2. **Optimal Substructure:** Optimal solutions contain optimal solutions to subproblems
-3. **Efficiency:** Greedy algorithms are usually efficient (often O(n \log n) or better)
+3. **Efficiency:** Greedy algorithms are usually efficient (often O(n log n) or better)
 4. **Not Always Optimal:** Greedy doesn't always give optimal solutions (e.g., 0-1 Knapsack)
 5. **Common Patterns:** Sorting + selection, priority queues, Union-Find
 6. **Proof Technique:** Show greedy choice property and optimal substructure

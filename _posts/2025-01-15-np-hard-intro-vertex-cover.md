@@ -126,7 +126,7 @@ We can also prove Vertex Cover is NP-complete by directly reducing from 3-SAT, s
 
 ### Construction
 
-For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 1. **Create vertices**: 
    - For each variable x_i, create two vertices: one for x_i and one for ¬ x_i
@@ -149,7 +149,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁
 **Formal Proof:**
 
 **Forward Direction (3-SAT satisfiable → Vertex Cover exists):**
-- If \phi is satisfiable, pick vertices corresponding to true literals
+- If φ is satisfiable, pick vertices corresponding to true literals
 - For each variable, pick the vertex corresponding to its truth value (n vertices)
 - For each clause, pick 2 vertices from its triangle that aren't already covered (2m vertices)
 - Total: n + 2m vertices covering all edges
@@ -158,7 +158,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁
 - A vertex cover of size n + 2m must include exactly one vertex from each variable pair (to cover those n edges)
 - It must include at least 2 vertices from each clause triangle (to cover those 3 edges)
 - The variable vertices selected give us a truth assignment
-- Since at least one literal per clause is true (otherwise we'd need 3 vertices from that clause), the assignment satisfies \phi
+- Since at least one literal per clause is true (otherwise we'd need 3 vertices from that clause), the assignment satisfies φ
 
 ## Relationship to Other Graph Problems
 
@@ -196,8 +196,8 @@ This is one of the most important theorems in graph theory and provides a polyno
 The Vertex Cover Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known algorithms have exponential time complexity for general graphs
-2. **Brute Force**: Check all \binom{n}{k} subsets of size k - exponential
-3. **Dynamic Programming**: Can solve in O(2^n cdot n^2) time using inclusion-exclusion
+2. **Brute Force**: Check all C(n,k) subsets of size k - exponential
+3. **Dynamic Programming**: Can solve in O(2^n · n^2) time using inclusion-exclusion
 4. **Branch and Bound**: Practical for small instances, but still exponential worst-case
 
 ### Approximation Algorithms
@@ -254,7 +254,7 @@ Some restricted versions of Vertex Cover are tractable:
 **Independent Set ≤ₚ Vertex Cover:**
 - Given Independent Set instance: graph G and integer k
 - Return Vertex Cover instance: graph G and integer |V| - k
-- G has independent set of size geq k ↔ G has vertex cover of size leq |V| - k
+- G has independent set of size ≥ k ↔ G has vertex cover of size ≤ |V| - k
 
 **3-SAT ≤ₚ Vertex Cover:**
 - Given 3-SAT instance with n variables and m clauses
@@ -284,14 +284,14 @@ Algorithm: GreedyVertexCover(G)
 
 **Why it works:**
 - For each edge we pick, the optimal cover must include at least one endpoint
-- We include both endpoints, so we're at most 2 times optimal
+- We include both endpoints, so we're at most 2 × optimal
 - The edges we pick form a matching (no two share an endpoint)
-- So if we pick k edges, optimal cover has size geq k, our cover has size 2k
+- So if we pick k edges, optimal cover has size ≥ k, our cover has size 2k
 
 ### LP-Based 2-Approximation
 
 Using linear programming relaxation:
-- Formulate as integer program: minimize sum_{v in V} x_v subject to x_u + x_v geq 1 for each edge (u,v)
+- Formulate as integer program: minimize ∑_{v ∈ V} x_v subject to x_u + x_v ≥ 1 for each edge (u,v)
 - Solve LP relaxation (allowing fractional values)
 - Round: include vertex v if x_v ≥ 1/2
 - This also gives a 2-approximation
@@ -301,17 +301,17 @@ Using linear programming relaxation:
 ### Brute Force Approach
 
 **Algorithm:** Check all subsets of vertices of size ≤ k
-- **Time Complexity:** O(sum_{i=0}^{k} binom{n}{i} cdot |E|) = O(n^k cdot |E|)
+- **Time Complexity:** O(∑_{i=0}^{k} C(n,i) · |E|) = O(n^k · |E|)
 - **Space Complexity:** O(k) for storing current subset
 - **Analysis:** For each subset, check if all edges are covered (O(|E|) time)
 
 ### Dynamic Programming
 
 **Algorithm:** Use bitmask DP
-- **Time Complexity:** O(2^n cdot |E|)
+- **Time Complexity:** O(2^n · |E|)
 - **Space Complexity:** O(2^n)
 - **Subproblem:** dp[mask] = minimum vertex cover for edges covered by vertices in mask
-- **Recurrence:** dp[mask] = min_{v ∉ mask} \{dp[mask \cup \{v\}] + 1\}
+- **Recurrence:** dp[mask] = min_{v ∉ mask} {dp[mask \cup {v}] + 1}
 
 ### Tree DP (Special Case)
 
@@ -321,22 +321,22 @@ Using linear programming relaxation:
 - **Subproblem:** dp[v][0/1] = minimum vertex cover in subtree rooted at v (0 = don't include v, 1 = include v)
 - **Recurrence:**
   - dp[v][0] = ∑_{u ∈ children(v)} dp[u][1] (must cover edges to children)
-  - dp[v][1] = 1 + sum_{u in children(v)} min(dp[u][0], dp[u][1])
+  - dp[v][1] = 1 + ∑_{u ∈ children(v)} min(dp[u][0], dp[u][1])
 
 ### Bipartite Graphs (König's Theorem)
 
 **Algorithm:** Find maximum matching, construct vertex cover
-- **Time Complexity:** O(sqrt{n} cdot |E|) using Hopcroft-Karp algorithm
+- **Time Complexity:** O(sqrt{n} · |E|) using Hopcroft-Karp algorithm
 - **Space Complexity:** O(n + |E|)
 - **Method:** Maximum matching size equals minimum vertex cover size in bipartite graphs
 
 ### Parameterized Algorithms (FPT)
 
 **Algorithm:** Branching on high-degree vertices
-- **Time Complexity:** O(2^k cdot (n + |E|)) where k is solution size
+- **Time Complexity:** O(2^k · (n + |E|)) where k is solution size
 - **Space Complexity:** O(n)
 - **Key Insight:** If vertex has degree > k, it must be in cover
-- **Recurrence:** T(k) = T(k-1) + T(k-\deg(v)) for vertex v
+- **Recurrence:** T(k) = T(k-1) + T(k-deg(v)) for vertex v
 
 ### Greedy 2-Approximation
 
@@ -371,10 +371,10 @@ Using linear programming relaxation:
 
 1. **Prove Gallai's theorem**: Show that for any graph G, alpha(G) + beta(G) = |V| where alpha(G) is the independence number and \beta(G) is the vertex cover number.
 
-2. **Prove the reduction**: Show that G has an independent set of size geq k if and only if G has a vertex cover of size leq |V| - k.
+2. **Prove the reduction**: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤ |V| - k.
 
 3. **Construct the graph** for the 3-SAT instance:
-   (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)
+   (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁)
    Determine the vertex cover size and corresponding satisfying assignment.
 
 4. **Algorithm design**: Design a dynamic programming algorithm to find the minimum vertex cover in a tree. What is its time complexity?

@@ -42,9 +42,9 @@ Consider the following graph:
     3---4
 ```
 
-- Cliques of size 2: \{1,2\}, \{1,3\}, \{1,4\}, \{2,3\}, \{2,4\}, \{3,4\}
-- Cliques of size 3: \{1,2,3\}, \{1,2,4\}, \{1,3,4\}, \{2,3,4\}
-- Clique of size 4: \{1,2,3,4\} (this is a 4-clique, also called a complete graph K_4)
+- Cliques of size 2: {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}
+- Cliques of size 3: {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}
+- Clique of size 4: {1,2,3,4} (this is a 4-clique, also called a complete graph K_4)
 
 So the clique number of this graph is 4.
 
@@ -60,7 +60,7 @@ A graph with a 3-clique highlighted:
         6
 ```
 
-The vertices \{1, 2, 3\} form a clique (all pairwise connected). The vertices \{4, 5, 6\} do NOT form a clique because 5 and 6 are not connected.
+The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.
 
 ## Why Clique is in NP
 
@@ -70,7 +70,7 @@ To show that Clique is NP-complete, we first need to show it's in NP.
 
 Given a candidate solution (a set of k vertices), we can verify in polynomial time:
 1. Check that the set has exactly k vertices: O(k) time
-2. Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs)
+2. Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs)
 
 Since k ≤ |V|, this verification takes polynomial time in the input size. Therefore, Clique is in NP.
 
@@ -85,11 +85,11 @@ Given a 3-SAT instance with m clauses, we construct a graph G such that:
 
 ### Construction
 
-For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3 literals:
 
 1. **Create vertices**: For each literal occurrence in each clause, create a vertex
    - Label vertices as (i, j) where i is the clause number and j is the literal position
-   - Example: For clause C_1 = (x₁  ∨  ¬ x₁  ∨  x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁
+   - Example: For clause C_1 = (x₁ ∨ ¬ x₁ ∨ x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁
 
 2. **Add edges**: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
    - They are in **different clauses** (i_1 neq i_2)
@@ -107,7 +107,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C
 **Formal Proof:**
 
 **Forward Direction (3-SAT satisfiable → Clique exists):**
-- If phi is satisfiable, there exists an assignment that makes at least one literal true in each clause
+- If φ is satisfiable, there exists an assignment that makes at least one literal true in each clause
 - Pick the vertex corresponding to that true literal from each clause
 - These m vertices form a clique because:
   - They're from different clauses (so edges exist by construction)
@@ -124,7 +124,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C
 ### Example Reduction
 
 Consider the 3-SAT instance:
-phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
 
 **Step 1: Create vertices**
 - Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁
@@ -138,7 +138,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 - Similarly, (1,3) does NOT connect to (2,3) because x₁ and ¬ x₁ are complementary
 
 **Step 3: Find clique of size 3**
-- One possible clique: \{(1,2), (2,2), (3,3)\} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
+- One possible clique: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
 - This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE
 - Verify: All clauses satisfied!
 
@@ -151,7 +151,7 @@ The Clique Problem is closely related to several other NP-complete problems:
 An **independent set** is a set of vertices where no two are adjacent (opposite of a clique).
 
 **Key Relationship:**
-- S is a clique in G **if and only if** S is an independent set in \overline{G} (the complement graph)
+- S is a clique in G **if and only if** S is an independent set in G̅ (the complement graph)
 - Therefore, Clique and Independent Set are polynomially equivalent
 
 ### Vertex Cover
@@ -167,7 +167,7 @@ A **vertex cover** is a set of vertices that covers all edges (every edge has at
 The **chromatic number** \chi(G) is the minimum number of colors needed to color vertices so no adjacent vertices share a color.
 
 **Key Relationship:**
-- omega(G) leq chi(G) (clique number is a lower bound for chromatic number)
+- omega(G) ≤ chi(G) (clique number is a lower bound for chromatic number)
 - Finding the clique number helps bound the chromatic number
 
 ## Practical Implications
@@ -177,8 +177,8 @@ The **chromatic number** \chi(G) is the minimum number of colors needed to color
 The Clique Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known algorithms have exponential time complexity
-2. **Brute Force**: Check all \binom{n}{k} subsets of size k - exponential in k
-3. **Dynamic Programming**: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP
+2. **Brute Force**: Check all C(n,k) subsets of size k - exponential in k
+3. **Dynamic Programming**: Can solve in O(2^n · n^2) time using inclusion-exclusion or bitmask DP
 4. **Branch and Bound**: Practical for small instances, but still exponential worst-case
 
 ### Approximation
@@ -212,18 +212,18 @@ Some restricted versions of Clique are tractable:
 
 ### Brute Force Approach
 
-**Algorithm:** Check all \binom{n}{k} subsets of size k
-- **Time Complexity:** O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)
+**Algorithm:** Check all C(n,k) subsets of size k
+- **Time Complexity:** O(C(n,k) · k^2) = O(n^k · k^2)
 - **Space Complexity:** O(k) for storing current subset
-- **Analysis:** For each subset, check all \binom{k}{2} pairs of vertices for edges
+- **Analysis:** For each subset, check all C(k,2) pairs of vertices for edges
 
 ### Dynamic Programming
 
 **Algorithm:** Use bitmask DP to track visited vertices
-- **Time Complexity:** O(2^n cdot n^2)
-- **Space Complexity:** O(2^n cdot n)
+- **Time Complexity:** O(2^n · n^2)
+- **Space Complexity:** O(2^n · n)
 - **Subproblem:** dp[mask][v] = true if there exists a clique in vertices mask ending at v
-- **Recurrence:** dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∈ E} dp[mask \setminus \{v\}][u]
+- **Recurrence:** dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∈ E} dp[mask \setminus {v}][u]
 
 ### Branch-and-Bound
 
@@ -277,10 +277,10 @@ This reduction is polynomial-time because:
 ## Practice Problems
 
 1. **Construct the graph** for the 3-SAT instance:
-   (x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
+   (x₁ ∨ x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
    Find a clique of size 3 and determine the corresponding satisfying assignment.
 
-2. **Prove the relationship**: Show that S is a clique in G if and only if S is an independent set in overline{G} (the complement graph).
+2. **Prove the relationship**: Show that S is a clique in G if and only if S is an independent set in G̅ (the complement graph).
 
 3. **Reduction practice**: Given that Clique is NP-complete, show that Independent Set is also NP-complete using the complement graph relationship.
 

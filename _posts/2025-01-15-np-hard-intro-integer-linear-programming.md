@@ -19,14 +19,14 @@ Integer Linear Programming asks: **Given linear constraints and a linear objecti
 **Integer Linear Programming (ILP) Decision Problem:**
 
 **Input:** 
-- A matrix A in mathbb{Z}^{m times n} (constraint coefficients)
-- A vector b in mathbb{Z}^m (constraint bounds)
-- A vector c in mathbb{Z}^n (objective coefficients)
+- A matrix A ∈ ℤ^(m×n) (constraint coefficients)
+- A vector b ∈ ℤ^m (constraint bounds)
+- A vector c ∈ ℤ^n (objective coefficients)
 - An integer k (target value)
 
-**Output:** YES if there exists an integer vector x in mathbb{Z}^n such that:
-- Ax leq b (constraints satisfied)
-- c^T x geq k (objective value at least k)
+**Output:** YES if there exists an integer vector x ∈ ℤ^n such that:
+- Ax ≤ b (constraints satisfied)
+- c^T x ≥ k (objective value at least k)
 
 NO otherwise
 
@@ -34,7 +34,7 @@ NO otherwise
 
 **Input:** Same as above (without k)
 
-**Output:** The maximum value of c^T x subject to Ax leq b and x in mathbb{Z}^n
+**Output:** The maximum value of c^T x subject to Ax ≤ b and x ∈ ℤ^n
 
 ### Variants
 
@@ -53,12 +53,12 @@ NO otherwise
 
 Consider the ILP:
 
-**Maximize:** 3x₁ + 2x₁
+**Maximize:** 3x₁ + 2x₂
 
 **Subject to:**
-- 2x₁ + x₁ leq 6
-- x₁ + 2x₁ leq 8
-- x₁, x₁ geq 0 and integer
+- 2x₁ + x₂ ≤ 6
+- x₁ + 2x₂ ≤ 8
+- x₁, x₂ ≥ 0 and integer
 
 **Feasible integer solutions:**
 - (0, 0): objective = 0
@@ -79,8 +79,8 @@ To show that ILP is NP-complete, we first need to show it's in NP.
 
 Given a candidate solution (an integer vector x), we can verify in polynomial time:
 1. Check that x has integer values: O(n) time
-2. Check that Ax leq b: O(mn) time (matrix-vector multiplication)
-3. Check that c^T x geq k: O(n) time
+2. Check that Ax ≤ b: O(mn) time (matrix-vector multiplication)
+3. Check that c^T x ≥ k: O(n) time
 
 Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.
 
@@ -92,38 +92,38 @@ The standard proof that ILP is NP-complete reduces from 3-SAT.
 
 ### Construction
 
-For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:
 
 **Key Idea:** Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.
 
 1. **Variables:**
-   - For each Boolean variable x_i, create an integer variable y_i in {0, 1}
-   - y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE
+   - For each Boolean variable xᵢ, create an integer variable yᵢ ∈ {0, 1}
+   - yᵢ = 1 means xᵢ = TRUE, yᵢ = 0 means xᵢ = FALSE
 
 2. **Clauses:**
-   - For each clause C_j = (l_1  ∨  l_2  ∨  l_3):
-     - If literal is x_i, use y_i
-     - If literal is ¬ x_i, use (1 - y_i)
-     - Constraint: y_{l_1} + y_{l_2} + y_{l_3} geq 1 (at least one literal is true)
+   - For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+     - If literal is xᵢ, use yᵢ
+     - If literal is ¬xᵢ, use (1 - yᵢ)
+     - Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)
    
-   Example: For clause (x₁  ∨  ¬ x₁  ∨  x₁):
-   - Constraint: y_1 + (1 - y_2) + y_3 ≥ 1
-   - Simplifies to: y_1 - y_2 + y_3 ≥ 0
+   Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):
+   - Constraint: y₁ + (1 - y₂) + y₃ ≥ 1
+   - Simplifies to: y₁ - y₂ + y₃ ≥ 0
 
-3. **Objective:** Maximize ∑_{i=1}^n y_i (or any objective, since we're just checking feasibility)
+3. **Objective:** Maximize ∑ᵢ₌₁ⁿ yᵢ (or any objective, since we're just checking feasibility)
 
-4. **Bounds:** 0 ≤ y_i ≤ 1 for all i (enforces binary variables)
+4. **Bounds:** 0 ≤ yᵢ ≤ 1 for all i (enforces binary variables)
 
 ### Why This Works
 
 **Forward Direction (3-SAT satisfiable → ILP feasible):**
-- If \phi is satisfiable, set y_i = 1 if x_i = TRUE, else y_i = 0
+- If φ is satisfiable, set yᵢ = 1 if xᵢ = TRUE, else yᵢ = 0
 - Each clause constraint is satisfied (at least one literal is 1)
 - This gives a feasible ILP solution
 
 **Reverse Direction (ILP feasible → 3-SAT satisfiable):**
-- If ILP has feasible solution with y_i ∈ \{0,1\}, set x_i = TRUE if y_i = 1, else x_i = FALSE
-- Since each clause constraint requires at least one y_i = 1 (or (1-y_i) = 1), each clause has at least one true literal
+- If ILP has feasible solution with yᵢ ∈ {0,1}, set xᵢ = TRUE if yᵢ = 1, else xᵢ = FALSE
+- Since each clause constraint requires at least one yᵢ = 1 (or (1-yᵢ) = 1), each clause has at least one true literal
 - This gives a satisfying assignment
 
 **Polynomial Time:**
@@ -154,8 +154,8 @@ A common technique for solving ILP:
 3. Otherwise, use branch-and-bound or cutting planes to find integer solution
 
 **Example:**
-- ILP: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 integer
-- LP relaxation: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 (real)
+- ILP: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 integer
+- LP relaxation: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 (real)
 - LP solution: (3, 0) with objective 9 (happens to be integer!)
 - If LP gave (2.5, 1), we'd need to branch or add cuts
 
@@ -176,7 +176,7 @@ Integer Linear Programming is NP-complete, which means:
 **1. Branch-and-Bound:**
 - Solve LP relaxation
 - If solution is fractional, branch on a fractional variable
-- Create two subproblems: x_i ≤ \lfloor x_i^* \rfloor and x_i ≥ \lceil x_i^* \rceil
+- Create two subproblems: xᵢ ≤ ⌊xᵢ*⌋ and xᵢ ≥ ⌈xᵢ*⌉
 - Recursively solve subproblems
 - Prune branches that can't improve best known solution
 
@@ -331,7 +331,7 @@ All reductions are polynomial-time, establishing ILP as NP-complete.
    - Total weight must be ≤ capacity
    - Each item can be selected at most once
 
-2. **Reduce 3-SAT to ILP**: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ILP instance.
+2. **Reduce 3-SAT to ILP**: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.
 
 3. **LP Relaxation**: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?
 

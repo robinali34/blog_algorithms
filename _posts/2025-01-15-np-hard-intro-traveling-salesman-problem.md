@@ -34,7 +34,7 @@ The Traveling Salesman Problem asks: **Given a complete graph with edge weights 
 ### Variants
 
 **Metric TSP:**
-- Distances satisfy triangle inequality: w(u,v) \leq w(u,w) + w(w,v)
+- Distances satisfy triangle inequality: w(u,v) ≤ w(u,w) + w(w,v)
 - More structured, better approximation algorithms exist
 
 **Euclidean TSP:**
@@ -67,13 +67,13 @@ Distances:
 - BC = 10, BD = 25, CD = 10
 
 **Possible tours:**
-- A → B \to C \to D → A: 10 + 10 + 10 + 20 = 50
-- A → B \to D \to C → A: 10 + 25 + 10 + 15 = 60
-- A → C \to B \to D → A: 15 + 10 + 25 + 20 = 70
-- A → C \to D \to B → A: 15 + 10 + 25 + 10 = 60
-- A → D \to C \to B → A: 20 + 10 + 10 + 10 = 50 (same as first, reversed)
+- A → B → C → D → A: 10 + 10 + 10 + 20 = 50
+- A → B → D → C → A: 10 + 25 + 10 + 15 = 60
+- A → C → B → D → A: 15 + 10 + 25 + 20 = 70
+- A → C → D → B → A: 15 + 10 + 25 + 10 = 60
+- A → D → C → B → A: 20 + 10 + 10 + 10 = 50 (same as first, reversed)
 
-**Optimal tour:** A → B \to C \to D → A (or reverse) with weight 50.
+**Optimal tour:** A → B → C → D → A (or reverse) with weight 50.
 
 ## Why TSP is in NP
 
@@ -133,8 +133,8 @@ Despite being NP-complete, TSP has a **pseudo-polynomial** dynamic programming s
 
 **Recurrence:**
 - Base case: dp[2^0][0] = 0 (at start, cost is 0)
-- Recurrence: dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ \{v\}][u] + w(u,v)}
-- Final answer: min_{v} \{dp[2^n-1][v] + w(v,0)} (return to start)
+- Recurrence: dp[mask][v] = min_{u ∈ mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}
+- Final answer: min_{v} {dp[2^n-1][v] + w(v,0)} (return to start)
 
 **Algorithm:**
 ```
@@ -156,8 +156,8 @@ Algorithm: TSP_DP(G, w)
 15. return result
 ```
 
-**Time Complexity:** O(2^n \cdot n^2)
-**Space Complexity:** O(2^n \cdot n)
+**Time Complexity:** O(2^n · n^2)
+**Space Complexity:** O(2^n · n)
 
 This is the **Held-Karp algorithm**, one of the most efficient exact algorithms for TSP.
 
@@ -194,7 +194,7 @@ Since TSP is NP-complete, approximation algorithms are important for practical a
 
 **Why it works:**
 - MST weight ≤ optimal TSP tour (remove one edge from optimal tour to get spanning tree)
-- Doubled MST has weight 2 · \text{MST} \leq 2 \cdot OPT
+- Doubled MST has weight 2 · MST ≤ 2 · OPT
 - Shortcutting doesn't increase cost (triangle inequality)
 
 ## Practical Implications
@@ -205,7 +205,7 @@ The Traveling Salesman Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known exact algorithms are exponential
 2. **Brute Force**: Try all (n-1)!/2 tours - factorial time
-3. **Dynamic Programming**: O(2^n \cdot n^2) time (Held-Karp)
+3. **Dynamic Programming**: O(2^n · n^2) time (Held-Karp)
 4. **Branch-and-Bound**: Practical for medium instances
 5. **Heuristics**: Very effective in practice
 
@@ -224,7 +224,7 @@ TSP has countless applications:
 ### Modern Solving Methods
 
 **Exact Algorithms:**
-- **Held-Karp DP**: O(2^n \cdot n^2) - best for small-medium instances
+- **Held-Karp DP**: O(2^n · n^2) - best for small-medium instances
 - **Branch-and-Bound**: Combine with LP relaxation
 - **Cutting Planes**: Add constraints to eliminate suboptimal tours
 - **Concorde**: State-of-the-art exact TSP solver
@@ -246,18 +246,18 @@ TSP has countless applications:
 ### Brute Force Approach
 
 **Algorithm:** Try all (n-1)!/2 tours (for symmetric TSP)
-- **Time Complexity:** O(n! \cdot n)
+- **Time Complexity:** O(n! · n)
 - **Space Complexity:** O(n) for storing current tour
 - **Analysis:** For each permutation, compute tour cost (O(n) time)
 
 ### Dynamic Programming (Held-Karp Algorithm)
 
 **Algorithm:** Bitmask DP
-- **Time Complexity:** O(2^n \cdot n^2)
-- **Space Complexity:** O(2^n \cdot n)
+- **Time Complexity:** O(2^n · n^2)
+- **Space Complexity:** O(2^n · n)
 - **Subproblem:** dp[mask][v] = minimum cost to visit all vertices in mask ending at v
-- **Recurrence:** dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ \{v\}][u] + w(u,v)}
-- **Final Answer:** min_v \{dp[2^n-1][v] + w(v,0)}
+- **Recurrence:** dp[mask][v] = min_{u ∈ mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}
+- **Final Answer:** min_v {dp[2^n-1][v] + w(v,0)}
 
 ### Branch-and-Bound
 
@@ -269,7 +269,7 @@ TSP has countless applications:
 ### Approximation Algorithms
 
 **MST-Based 2-Approximation:**
-- **Time Complexity:** O(n^2 \log n) for MST + Eulerian tour + shortcutting
+- **Time Complexity:** O(n^2 log n) for MST + Eulerian tour + shortcutting
 - **Space Complexity:** O(n)
 - **Approximation Ratio:** 2
 
@@ -300,7 +300,7 @@ TSP has countless applications:
 ## Key Takeaways
 
 1. **TSP is NP-Complete**: Proven by reduction from Hamiltonian Cycle
-2. **Dynamic Programming**: Held-Karp algorithm solves in O(2^n \cdot n^2) time
+2. **Dynamic Programming**: Held-Karp algorithm solves in O(2^n · n^2) time
 3. **Approximation**: 1.5-approximation (Christofides) and 2-approximation (MST-based) for metric TSP
 4. **Practical Solvers**: Modern solvers can handle instances with thousands of cities
 5. **Widespread Applications**: TSP appears in many real-world optimization problems
@@ -332,7 +332,7 @@ The reduction is polynomial-time, establishing TSP as NP-complete.
 
 4. **Approximation**: Implement the MST-based 2-approximation algorithm. Test it on metric TSP instances and compare to optimal.
 
-5. **Time complexity**: Verify the O(2^n \cdot n^2) time complexity of Held-Karp. Can you optimize the space complexity?
+5. **Time complexity**: Verify the O(2^n · n^2) time complexity of Held-Karp. Can you optimize the space complexity?
 
 6. **Christofides**: Research and implement the Christofides algorithm. Why does it achieve 1.5-approximation?
 

@@ -19,24 +19,24 @@ The Zero-One Equations Problem asks: **Given a system of linear equations over i
 **Zero-One Equations (ZOE) Decision Problem:**
 
 **Input:** 
-- A matrix A in mathbb{Z}^{m times n} (coefficient matrix)
-- A vector b in mathbb{Z}^m (right-hand side)
+- A matrix A ∈ ℤ^{m × n} (coefficient matrix)
+- A vector b ∈ ℤ^m (right-hand side)
 
-**Output:** YES if there exists a vector x in {0,1}^n such that Ax = b, NO otherwise
+**Output:** YES if there exists a vector x ∈ {0,1}^n such that Ax = b, NO otherwise
 
-**Note:** This is different from general linear equations (which can be solved in polynomial time) because we require x_i in {0,1} for all i.
+**Note:** This is different from general linear equations (which can be solved in polynomial time) because we require x_i ∈ {0,1} for all i.
 
 ### Example
 
 Consider the system:
 
 begin{align}
-x₁ + x₁ + x₁ &= 2 
-x₁ + x₁ &= 1 
-x₁ + x₁ &= 1
+x₁ + x₂ + x₁ &= 2 
+x₁ + x₂ &= 1 
+x₁ + x₂ &= 1
 end{align}
 
-where x₁, x₁, x₁ ∈ \{0,1\}.
+where x₁, x₂, x₁ ∈ {0,1}.
 
 **Trying solutions:**
 - (1, 1, 0): 1+1+0=2 ✓, 1+0=1 ✓, 1+0=1 ✓ (satisfies all equations!)
@@ -50,8 +50,8 @@ So (1, 1, 0) is a solution.
 
 For the system:
 begin{align}
-2x₁ + x₁ &= 2 
-x₁ + x₁ + x₁ &= 2
+2x₁ + x₂ &= 2 
+x₁ + x₂ + x₁ &= 2
 end{align}
 
 **Possible 0-1 solutions:**
@@ -68,7 +68,7 @@ To show that ZOE is NP-complete, we first need to show it's in NP.
 **ZOE ∈ NP:**
 
 Given a candidate solution (a 0-1 vector x), we can verify in polynomial time:
-1. Check that x ∈ \{0,1\}^n: O(n) time
+1. Check that x ∈ {0,1}^n: O(n) time
 2. Check that Ax = b: O(mn) time (matrix-vector multiplication and comparison)
 
 Total verification time: O(mn), which is polynomial in the input size. Therefore, ZOE is in NP.
@@ -79,7 +79,7 @@ The standard proof that ZOE is NP-complete reduces from 3-SAT.
 
 ### Construction
 
-For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 **Key Idea:** Encode Boolean variables as 0-1 variables and clauses as equations.
 
@@ -88,7 +88,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁
    - y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE
 
 2. **Clauses:**
-   - For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create an equation:
+   - For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create an equation:
      - If literal is x_i, use y_i
      - If literal is ¬ x_i, use (1 - y_i)
      - Equation: y_{l_1} + y_{l_2} + y_{l_3} = 1 (exactly one literal is true)
@@ -98,7 +98,7 @@ For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁
    **Correct approach:** Use inequality constraints or modify the encoding.
 
 3. **Better Construction:**
-   - For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create a **slack variable** s_j in {0,1}
+   - For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create a **slack variable** s_j ∈ {0,1}
    - Create equation: y_{l_1} + y_{l_2} + y_{l_3} + s_j = 1
    - This ensures at least one literal is true (if all literals are false, s_j must be 1, but then we need additional constraints)
    
@@ -111,8 +111,8 @@ Since we know **3-SAT ≤ₚ ILP** and **ILP can be reduced to ZOE**, we get:
 **3-SAT ≤ₚ ILP ≤ₚ ZOE**
 
 **ILP to ZOE Reduction:**
-- ILP constraints are inequalities: Ax leq b
-- Convert to equations using slack variables: Ax + s = b where s geq 0
+- ILP constraints are inequalities: Ax ≤ b
+- Convert to equations using slack variables: Ax + s = b where s ≥ 0
 - But we need binary variables...
 - Use binary expansion for integer variables
 - This shows ZOE is NP-complete
@@ -121,14 +121,14 @@ Since we know **3-SAT ≤ₚ ILP** and **ILP can be reduced to ZOE**, we get:
 
 For a 3-SAT instance, we can directly construct a ZOE instance:
 
-1. **For each variable x_i:** Create variable y_i in {0,1}
+1. **For each variable x_i:** Create variable y_i ∈ {0,1}
 
-2. **For each clause C_j = (l_1  ∨  l_2  ∨  l_3):**
+2. **For each clause C_j = (l_1 ∨ l_2 ∨ l_3):**
    - Create equation ensuring at least one literal is satisfied
    - Use: y_{l_1} + y_{l_2} + y_{l_3} ≥ 1 (but ZOE uses equations, not inequalities)
-   - Convert to equation: y_{l_1} + y_{l_2} + y_{l_3} - s_j = 1 where s_j ∈ \{0,1,2\} (slack)
+   - Convert to equation: y_{l_1} + y_{l_2} + y_{l_3} - s_j = 1 where s_j ∈ {0,1,2} (slack)
    - But s_j must be binary...
-   - Use binary representation: s_j = s_{j,1} + 2s_{j,2} where s_{j,1}, s_{j,2} ∈ \{0,1\}
+   - Use binary representation: s_j = s_{j,1} + 2s_{j,2} where s_{j,1}, s_{j,2} ∈ {0,1}
 
 This construction works but is complex. The key insight is that ZOE captures the essence of 0-1 constraint satisfaction.
 
@@ -179,7 +179,7 @@ The Zero-One Equations Problem is NP-complete, which means:
 
 **1. Brute Force:**
 - Enumerate all 2ⁿ assignments
-- Check each one: O(2^n cdot mn) time
+- Check each one: O(2^n · mn) time
 - Only feasible for small n
 
 **2. Backtracking:**
@@ -214,7 +214,7 @@ ZOE has numerous applications:
 ### Brute Force Approach
 
 **Algorithm:** Try all 2ⁿ possible 0-1 assignments
-- **Time Complexity:** O(2^n cdot mn)
+- **Time Complexity:** O(2^n · mn)
 - **Space Complexity:** O(n) for storing current assignment
 - **Analysis:** For each assignment, compute Ax and compare to b (O(mn) time)
 
@@ -287,13 +287,13 @@ All reductions are polynomial-time, establishing ZOE as NP-complete.
 
 1. **Solve by hand**: For the ZOE system:
    begin{align}
-   x₁ + x₁ &= 1 
-   x₁ + x₁ &= 1 
-   x₁ + x₁ &= 1
+   x₁ + x₂ &= 1 
+   x₁ + x₂ &= 1 
+   x₁ + x₂ &= 1
    end{align}
    Find all 0-1 solutions.
 
-2. **Reduce 3-SAT to ZOE**: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ZOE instance.
+2. **Reduce 3-SAT to ZOE**: For the 3-SAT instance (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.
 
 3. **Formulate as ZOE**: Convert the following to ZOE:
    - You have items, each can be selected (1) or not (0)

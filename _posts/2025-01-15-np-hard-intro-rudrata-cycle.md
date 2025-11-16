@@ -26,7 +26,7 @@ A **Rudrata cycle** (also called a **Hamiltonian cycle**) in an undirected graph
 **Rudrata Cycle Optimization Problem (TSP):**
 
 **Input:** 
-- A complete undirected graph G = (V, E) with edge weights w: E to mathbb{R}^+
+- A complete undirected graph G = (V, E) with edge weights w: E → ℝ⁺
 
 **Output:** The minimum weight Rudrata cycle (this is the Traveling Salesman Problem)
 
@@ -80,7 +80,7 @@ The standard proof that Rudrata Cycle is NP-complete reduces directly from 3-SAT
 
 ### Construction
 
-For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
+For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 **Key Idea:** Create a graph where a Rudrata cycle corresponds to a satisfying assignment.
 
@@ -108,13 +108,13 @@ A common construction uses:
 - The cycle can traverse this chain in two ways (encoding TRUE/FALSE)
 
 **Clause Gadget:**
-- For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create vertices connected to the variable gadgets
+- For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create vertices connected to the variable gadgets
 - If the cycle takes the path corresponding to a true literal, it can visit the clause vertex
 
 **Why This Works:**
 
 **Forward Direction (3-SAT satisfiable → Rudrata Cycle exists):**
-- If \phi is satisfiable, construct cycle through variable gadgets based on assignment
+- If φ is satisfiable, construct cycle through variable gadgets based on assignment
 - Visit clause vertices for satisfied clauses
 - This gives a valid Rudrata cycle
 
@@ -164,12 +164,12 @@ The Rudrata Cycle Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known algorithms have exponential time complexity
 2. **Brute Force**: Try all (n-1)!/2 possible cycles (for undirected graphs) - factorial time
-3. **Dynamic Programming**: Can solve in O(2^n cdot n^2) time using bitmask DP (similar to TSP)
+3. **Dynamic Programming**: Can solve in O(2^n · n^2) time using bitmask DP (similar to TSP)
 4. **Backtracking**: Practical for small instances, but still exponential worst-case
 
 ### Dynamic Programming Solution
 
-**Subproblem:** dp[mask][v] = text{true} if there exists a path visiting all vertices in mask ending at vertex v, and this path can be extended to a cycle.
+**Subproblem:** dp[mask][v] = true if there exists a path visiting all vertices in mask ending at vertex v, and this path can be extended to a cycle.
 
 **Recurrence:**
 - Base case: dp[2^i][i] = true for all i (path of length 1)
@@ -254,8 +254,8 @@ Rudrata Cycle has numerous applications:
 Some restricted versions of Rudrata Cycle are tractable:
 
 - **Complete Graphs**: Always has a Rudrata cycle (any permutation works)
-- **Dirac's Theorem**: If \deg(v) ≥ n/2 for all vertices, then Hamiltonian cycle exists (but finding it is still hard)
-- **Ore's Theorem**: If \deg(u) + \deg(v) ≥ n for all non-adjacent u,v, then Hamiltonian cycle exists
+- **Dirac's Theorem**: If deg(v) ≥ n/2 for all vertices, then Hamiltonian cycle exists (but finding it is still hard)
+- **Ore's Theorem**: If deg(u) + deg(v) ≥ n for all non-adjacent u,v, then Hamiltonian cycle exists
 - **Grid Graphs**: Can be solved efficiently for certain grid structures
 - **Bounded Treewidth**: Can be solved efficiently using tree decomposition
 
@@ -264,7 +264,7 @@ Some restricted versions of Rudrata Cycle are tractable:
 1. **Rudrata Cycle is NP-Complete**: Proven by reduction from 3-SAT
 2. **TSP Connection**: Traveling Salesman Problem is essentially weighted Rudrata Cycle
 3. **Path vs Cycle**: Rudrata Cycle and Rudrata Path are polynomially equivalent
-4. **Dynamic Programming**: O(2^n cdot n^2) time solution using bitmask DP works for small graphs
+4. **Dynamic Programming**: O(2^n · n^2) time solution using bitmask DP works for small graphs
 5. **Practical Algorithms**: Despite NP-completeness, DP and heuristics work well for many practical instances
 
 ## Reduction Summary
@@ -295,7 +295,7 @@ All reductions are polynomial-time, establishing Rudrata Cycle as NP-complete.
 
 ## Practice Problems
 
-1. **Find all Rudrata cycles**: For the complete graph K_4 with vertices \{1,2,3,4\}, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they're rotations or reversals)
+1. **Find all Rudrata cycles**: For the complete graph K_4 with vertices {1,2,3,4}, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they're rotations or reversals)
 
 2. **Prove the reduction**: Show that Rudrata Cycle reduces to TSP. What edge weights should you use?
 
