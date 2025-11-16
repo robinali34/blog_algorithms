@@ -50,8 +50,8 @@ A blog focused on CS6515 Graduate Algorithms course notes, study guides, and res
 
 This blog is automatically deployed to GitHub Pages when you push changes to the `main` branch. The deployment is handled by GitHub Actions.
 
-**Repository**: `blog_CS6515`  
-**Live URL**: `https://robinali34.github.io/blog_CS6515/`
+**Repository**: `blog_algorithms`  
+**Live URL**: `https://robinali34.github.io/blog_algorithms/`
 
 ## Customization
 

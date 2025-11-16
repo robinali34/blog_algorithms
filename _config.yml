@@ -1,8 +1,8 @@
 # Site settings
 title: "Robina Li"
 description: "CS6515 Blog - Graduate Algorithms course notes and resources"
-baseurl: "/blog_CS6515" # the subpath of your site, e.g. /blog_CS6515
-url: "https://robinali34.github.io/blog_CS6515/" # the base hostname & protocol for your site
+baseurl: "/blog_algorithms" # the subpath of your site, e.g. /blog_algorithms
+url: "https://robinali34.github.io/blog_algorithms/" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
@@ -15,7 +15,7 @@ permalink: /:year/:month/:day/:title/
 
 # Pagination
 paginate: 10
-paginate_path: "/blog_CS6515/posts/page:num/"
+paginate_path: "/blog_algorithms/posts/page:num/"
 
 # Defaults
 defaults:
