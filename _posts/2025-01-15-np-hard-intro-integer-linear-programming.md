@@ -2,7 +2,7 @@
 layout: post
 title: "NP-Hard Introduction: Integer Linear Programming (ILP)"
 date: 2025-01-15
-categories: [Algorithms, Complexity Theory, NP-Hard, Algorithms, Optimization]
+categories: [Algorithms, Complexity Theory, NP-Hard, Optimization]
 excerpt: "An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods."
 ---
 

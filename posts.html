@@ -19,44 +19,40 @@ permalink: /posts/
       
       <div class="category-hierarchy">
         <button class="filter-btn active" data-category="all" data-level="0">All</button>
+        <button class="filter-btn" data-category="algorithms" data-level="0">Algorithms</button>
         
-        <!-- Interview Preparation -->
+        <!-- Algorithm Types -->
         <div class="category-group">
-          <button class="category-parent" data-parent="interview-preparation">Interview Prep ▾</button>
-          <div class="category-children dropdown-panel" data-parent="interview-preparation">
-            <button class="filter-btn" data-category="interview preparation" data-level="1" data-parent="interview-preparation">All</button>
-            <button class="filter-btn" data-category="hiring manager interview" data-level="1" data-parent="interview-preparation">HM Interview</button>
-            <button class="filter-btn" data-category="technical interview" data-level="1" data-parent="interview-preparation">Technical</button>
-            <button class="filter-btn" data-category="behavioral interview" data-level="1" data-parent="interview-preparation">Behavioral</button>
-            <button class="filter-btn" data-category="system design" data-level="1" data-parent="interview-preparation">System Design</button>
+          <button class="category-parent" data-parent="algorithm-types">Algorithm Types ▾</button>
+          <div class="category-children dropdown-panel" data-parent="algorithm-types">
+            <button class="filter-btn" data-category="greedy algorithms" data-level="1" data-parent="algorithm-types">Greedy Algorithms</button>
+            <button class="filter-btn" data-category="dynamic programming" data-level="1" data-parent="algorithm-types">Dynamic Programming</button>
+            <button class="filter-btn" data-category="linear programming" data-level="1" data-parent="algorithm-types">Linear Programming</button>
           </div>
         </div>
         
-        <!-- Career Development -->
+        <!-- Complexity Theory -->
         <div class="category-group">
-          <button class="category-parent" data-parent="career">Career ▾</button>
-          <div class="category-children dropdown-panel" data-parent="career">
-            <button class="filter-btn" data-category="career" data-level="1" data-parent="career">All</button>
-            <button class="filter-btn" data-category="role breakdown" data-level="1" data-parent="career">Role Breakdown</button>
-            <button class="filter-btn" data-category="career development" data-level="1" data-parent="career">Development</button>
-            <button class="filter-btn" data-category="job search" data-level="1" data-parent="career">Job Search</button>
+          <button class="category-parent" data-parent="complexity">Complexity Theory ▾</button>
+          <div class="category-children dropdown-panel" data-parent="complexity">
+            <button class="filter-btn" data-category="complexity theory" data-level="1" data-parent="complexity">Complexity Theory</button>
+            <button class="filter-btn" data-category="np-hard" data-level="1" data-parent="complexity">NP-Hard</button>
           </div>
         </div>
         
-        <!-- Company-Specific -->
+        <!-- Domains -->
         <div class="category-group">
-          <button class="category-parent" data-parent="companies">Companies ▾</button>
-          <div class="category-children dropdown-panel" data-parent="companies">
-            <button class="filter-btn" data-category="roblox" data-level="1" data-parent="companies">Roblox</button>
-            <button class="filter-btn" data-category="meta" data-level="1" data-parent="companies">Meta</button>
-            <button class="filter-btn" data-category="google" data-level="1" data-parent="companies">Google</button>
-            <button class="filter-btn" data-category="amazon" data-level="1" data-parent="companies">Amazon</button>
+          <button class="category-parent" data-parent="domains">Domains ▾</button>
+          <div class="category-children dropdown-panel" data-parent="domains">
+            <button class="filter-btn" data-category="graph theory" data-level="1" data-parent="domains">Graph Theory</button>
+            <button class="filter-btn" data-category="optimization" data-level="1" data-parent="domains">Optimization</button>
+            <button class="filter-btn" data-category="linear algebra" data-level="1" data-parent="domains">Linear Algebra</button>
           </div>
         </div>
         
         <!-- Other Categories -->
         {%- assign all_categories = site.posts | map: 'categories' | flatten | uniq | sort -%}
-        {%- assign main_categories = "Interview Preparation,Interview Prep,Hiring Manager Interview,Technical Interview,Behavioral Interview,System Design,Career,Role Breakdown,Career Development,Job Search,Roblox,Meta,Google,Amazon" | split: "," -%}
+        {%- assign main_categories = "Algorithms,Greedy Algorithms,Dynamic Programming,Linear Programming,Complexity Theory,NP-Hard,Graph Theory,Optimization,Linear Algebra" | split: "," -%}
         {%- assign other_categories = "" | split: "" -%}
         {%- for category in all_categories -%}
           {%- assign is_main = false -%}

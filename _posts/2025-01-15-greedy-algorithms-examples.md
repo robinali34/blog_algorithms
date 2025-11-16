@@ -2,7 +2,7 @@
 layout: post
 title: "Greedy Algorithms: Theory and Examples"
 date: 2025-01-15
-categories: [Algorithms, Greedy Algorithms, Algorithms, Optimization]
+categories: [Algorithms, Greedy Algorithms, Optimization]
 excerpt: "An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work."
 ---
 
