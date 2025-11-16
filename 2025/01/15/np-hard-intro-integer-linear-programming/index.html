@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>NP-Hard Introduction: Integer Linear Programming (ILP) | Robina Li</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="NP-Hard Introduction: Integer Linear Programming (ILP)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods." />
+<meta property="og:description" content="An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods." />
+<link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/" />
+<meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/" />
+<meta property="og:site_name" content="Robina Li" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="NP-Hard Introduction: Integer Linear Programming (ILP)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-15T00:00:00+00:00","datePublished":"2025-01-15T00:00:00+00:00","description":"An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods.","headline":"NP-Hard Introduction: Integer Linear Programming (ILP)","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog_algorithms/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog_algorithms/">Robina Li</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/blog_algorithms/posts/">All Posts</a><a class="page-link" href="/blog_algorithms/about/">About</a></div>
+      </nav></div>
+</header>
+
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NP-Hard Introduction: Integer Linear Programming (ILP)</h1>
+    <div class="post-meta-wrapper">
+      <p class="post-meta">
+        <time class="dt-published" datetime="2025-01-15T00:00:00+00:00" itemprop="datePublished">Jan 15, 2025
+        </time></p><div class="post-categories"><span class="category-tag">Algorithms</span><span class="category-tag">Complexity Theory</span><span class="category-tag">NP-Hard</span><span class="category-tag">CS6515</span><span class="category-tag">Optimization</span></div></div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
+
+<p>Integer Linear Programming (ILP) is a fundamental optimization problem that extends Linear Programming by requiring variables to take integer values. While Linear Programming can be solved in polynomial time, ILP is NP-complete, making it one of the most important problems in optimization theory. ILP has widespread applications in operations research, scheduling, resource allocation, and many other domains.</p>
+
+<h2 id="what-is-integer-linear-programming">What is Integer Linear Programming?</h2>
+
+<p>Integer Linear Programming asks: <strong>Given linear constraints and a linear objective function, find integer values for variables that satisfy the constraints and optimize the objective.</strong></p>
+
+<h3 id="problem-definition">Problem Definition</h3>
+
+<p><strong>Integer Linear Programming (ILP) Decision Problem:</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A matrix $A \in \mathbb{Z}^{m \times n}$ (constraint coefficients)</li>
+  <li>A vector $b \in \mathbb{Z}^m$ (constraint bounds)</li>
+  <li>A vector $c \in \mathbb{Z}^n$ (objective coefficients)</li>
+  <li>An integer $k$ (target value)</li>
+</ul>
+
+<p><strong>Output:</strong> YES if there exists an integer vector $x \in \mathbb{Z}^n$ such that:</p>
+<ul>
+  <li>$Ax \leq b$ (constraints satisfied)</li>
+  <li>$c^T x \geq k$ (objective value at least $k$)</li>
+</ul>
+
+<p>NO otherwise</p>
+
+<p><strong>ILP Optimization Problem:</strong></p>
+
+<p><strong>Input:</strong> Same as above (without $k$)</p>
+
+<p><strong>Output:</strong> The maximum value of $c^T x$ subject to $Ax \leq b$ and $x \in \mathbb{Z}^n$</p>
+
+<h3 id="variants">Variants</h3>
+
+<p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
+<ul>
+  <li>Variables restricted to ${0, 1}$</li>
+  <li>Very common in practice</li>
+</ul>
+
+<p><strong>Mixed Integer Linear Programming (MILP):</strong></p>
+<ul>
+  <li>Some variables are integers, others are continuous</li>
+  <li>Combines ILP and LP</li>
+</ul>
+
+<p><strong>Unbounded ILP:</strong></p>
+<ul>
+  <li>Variables can be any integers (not necessarily non-negative)</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>Consider the ILP:</p>
+
+<p><strong>Maximize:</strong> $3x_1 + 2x_2$</p>
+
+<p><strong>Subject to:</strong></p>
+<ul>
+  <li>$2x_1 + x_2 \leq 6$</li>
+  <li>$x_1 + 2x_2 \leq 8$</li>
+  <li>$x_1, x_2 \geq 0$ and integer</li>
+</ul>
+
+<p><strong>Feasible integer solutions:</strong></p>
+<ul>
+  <li>$(0, 0)$: objective = 0</li>
+  <li>$(1, 0)$: objective = 3</li>
+  <li>$(2, 0)$: objective = 6</li>
+  <li>$(0, 1)$: objective = 2</li>
+  <li>$(1, 1)$: objective = 5</li>
+  <li>$(2, 1)$: objective = 8</li>
+  <li>$(3, 0)$: objective = 9 ✓ (optimal, satisfies constraints)</li>
+</ul>
+
+<p><strong>LP relaxation</strong> (allowing fractional values) might give $(2.67, 0.67)$ with objective $9.33$, but this is not integer.</p>
+
+<h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
+
+<p>To show that ILP is NP-complete, we first need to show it’s in NP.</p>
+
+<p><strong>ILP ∈ NP:</strong></p>
+
+<p>Given a candidate solution (an integer vector $x$), we can verify in polynomial time:</p>
+<ol>
+  <li>Check that $x$ has integer values: $O(n)$ time</li>
+  <li>Check that $Ax \leq b$: $O(mn)$ time (matrix-vector multiplication)</li>
+  <li>Check that $c^T x \geq k$: $O(n)$ time</li>
+</ol>
+
+<p>Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ILP is in NP.</p>
+
+<p><strong>Note:</strong> The size of the solution $x$ might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
+
+<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
+
+<p>The standard proof that ILP is NP-complete reduces from 3-SAT.</p>
+
+<h3 id="construction">Construction</h3>
+
+<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+
+<p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
+
+<ol>
+  <li><strong>Variables:</strong>
+    <ul>
+      <li>For each Boolean variable $x_i$, create an integer variable $y_i \in {0, 1}$</li>
+      <li>$y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$</li>
+    </ul>
+  </li>
+  <li><strong>Clauses:</strong>
+    <ul>
+      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:
+        <ul>
+          <li>If literal is $x_i$, use $y_i$</li>
+          <li>If literal is $\neg x_i$, use $(1 - y_i)$</li>
+          <li>Constraint: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (at least one literal is true)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>Example: For clause $(x_1 \lor \neg x_2 \lor x_3)$:</p>
+    <ul>
+      <li>Constraint: $y_1 + (1 - y_2) + y_3 \geq 1$</li>
+      <li>Simplifies to: $y_1 - y_2 + y_3 \geq 0$</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Objective:</strong> Maximize $\sum_{i=1}^n y_i$ (or any objective, since we’re just checking feasibility)</p>
+  </li>
+  <li><strong>Bounds:</strong> $0 \leq y_i \leq 1$ for all $i$ (enforces binary variables)</li>
+</ol>
+
+<h3 id="why-this-works">Why This Works</h3>
+
+<p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
+<ul>
+  <li>If $\phi$ is satisfiable, set $y_i = 1$ if $x_i = \text{TRUE}$, else $y_i = 0$</li>
+  <li>Each clause constraint is satisfied (at least one literal is 1)</li>
+  <li>This gives a feasible ILP solution</li>
+</ul>
+
+<p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
+<ul>
+  <li>If ILP has feasible solution with $y_i \in {0,1}$, set $x_i = \text{TRUE}$ if $y_i = 1$, else $x_i = \text{FALSE}$</li>
+  <li>Since each clause constraint requires at least one $y_i = 1$ (or $(1-y_i) = 1$), each clause has at least one true literal</li>
+  <li>This gives a satisfying assignment</li>
+</ul>
+
+<p><strong>Polynomial Time:</strong></p>
+<ul>
+  <li>Construction takes $O(mn)$ time (one constraint per clause)</li>
+</ul>
+
+<p>Therefore, <strong>ILP is NP-complete</strong>.</p>
+
+<h2 id="relationship-to-linear-programming">Relationship to Linear Programming</h2>
+
+<h3 id="linear-programming-lp">Linear Programming (LP)</h3>
+
+<p><strong>LP Decision Problem:</strong></p>
+<ul>
+  <li>Same as ILP but variables can be <strong>real numbers</strong> (not necessarily integers)</li>
+  <li><strong>Solvable in polynomial time</strong> using interior-point methods or simplex method (though simplex has exponential worst-case, it’s efficient in practice)</li>
+</ul>
+
+<h3 id="key-difference">Key Difference</h3>
+
+<p><strong>LP:</strong> Variables $x \in \mathbb{R}^n$ (continuous)
+<strong>ILP:</strong> Variables $x \in \mathbb{Z}^n$ (integer)</p>
+
+<p>This seemingly small restriction makes the problem NP-complete!</p>
+
+<h3 id="lp-relaxation">LP Relaxation</h3>
+
+<p>A common technique for solving ILP:</p>
+<ol>
+  <li>Solve the <strong>LP relaxation</strong> (allow fractional values)</li>
+  <li>If LP solution is integer, we’re done</li>
+  <li>Otherwise, use branch-and-bound or cutting planes to find integer solution</li>
+</ol>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>ILP: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ integer</li>
+  <li>LP relaxation: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ (real)</li>
+  <li>LP solution: $(3, 0)$ with objective 9 (happens to be integer!)</li>
+  <li>If LP gave $(2.5, 1)$, we’d need to branch or add cuts</li>
+</ul>
+
+<h2 id="practical-implications">Practical Implications</h2>
+
+<h3 id="why-ilp-is-hard">Why ILP is Hard</h3>
+
+<p>Integer Linear Programming is NP-complete, which means:</p>
+
+<ol>
+  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
+  <li><strong>Branch-and-Bound</strong>: Systematic search through solution space</li>
+  <li><strong>Cutting Planes</strong>: Add constraints to eliminate fractional solutions</li>
+  <li><strong>Branch-and-Cut</strong>: Combines branch-and-bound with cutting planes</li>
+  <li><strong>Heuristics</strong>: Various heuristics work well in practice</li>
+</ol>
+
+<h3 id="solving-methods">Solving Methods</h3>
+
+<p><strong>1. Branch-and-Bound:</strong></p>
+<ul>
+  <li>Solve LP relaxation</li>
+  <li>If solution is fractional, branch on a fractional variable</li>
+  <li>Create two subproblems: $x_i \leq \lfloor x_i^* \rfloor$ and $x_i \geq \lceil x_i^* \rceil$</li>
+  <li>Recursively solve subproblems</li>
+  <li>Prune branches that can’t improve best known solution</li>
+</ul>
+
+<p><strong>2. Cutting Planes:</strong></p>
+<ul>
+  <li>Solve LP relaxation</li>
+  <li>If solution is fractional, find a “cut” (constraint) that:
+    <ul>
+      <li>Is satisfied by all integer solutions</li>
+      <li>Is violated by current fractional solution</li>
+    </ul>
+  </li>
+  <li>Add cut and re-solve</li>
+  <li>Repeat until integer solution found</li>
+</ul>
+
+<p><strong>3. Branch-and-Cut:</strong></p>
+<ul>
+  <li>Combines both techniques</li>
+  <li>Most effective in practice</li>
+</ul>
+
+<p><strong>4. Special Cases:</strong></p>
+<ul>
+  <li><strong>Unimodular matrices</strong>: If constraint matrix is totally unimodular, LP solution is automatically integer</li>
+  <li><strong>Network flow problems</strong>: Often have integer solutions</li>
+  <li><strong>Assignment problems</strong>: Can be solved as LP (Hungarian algorithm)</li>
+</ul>
+
+<h3 id="real-world-applications">Real-World Applications</h3>
+
+<p>ILP has numerous applications:</p>
+
+<ol>
+  <li><strong>Scheduling</strong>: Job scheduling, course scheduling, employee scheduling</li>
+  <li><strong>Resource Allocation</strong>: Allocating resources optimally</li>
+  <li><strong>Network Design</strong>: Designing networks with capacity constraints</li>
+  <li><strong>Production Planning</strong>: Optimizing production schedules</li>
+  <li><strong>Facility Location</strong>: Choosing where to place facilities</li>
+  <li><strong>Cutting Stock</strong>: Optimizing material cutting</li>
+  <li><strong>Set Covering/Packing</strong>: Various covering and packing problems</li>
+  <li><strong>Vehicle Routing</strong>: Optimizing delivery routes</li>
+  <li><strong>Portfolio Optimization</strong>: With integer constraints</li>
+  <li><strong>Game Theory</strong>: Finding Nash equilibria in some games</li>
+</ol>
+
+<h3 id="modern-solvers">Modern Solvers</h3>
+
+<p>Despite NP-completeness, modern ILP solvers are very effective:</p>
+
+<ul>
+  <li><strong>CPLEX</strong>: Commercial solver (very powerful)</li>
+  <li><strong>Gurobi</strong>: Commercial solver (excellent performance)</li>
+  <li><strong>GLPK</strong>: Open-source solver</li>
+  <li><strong>CBC</strong>: Open-source solver from COIN-OR</li>
+  <li><strong>SCIP</strong>: Academic solver</li>
+</ul>
+
+<p>These solvers use sophisticated techniques:</p>
+<ul>
+  <li>Advanced preprocessing</li>
+  <li>Strong cutting planes</li>
+  <li>Efficient branch-and-bound</li>
+  <li>Parallel processing</li>
+  <li>Heuristics</li>
+</ul>
+
+<p>Many practical ILP instances can be solved efficiently, even though worst-case is exponential.</p>
+
+<h2 id="runtime-analysis">Runtime Analysis</h2>
+
+<h3 id="brute-force-approach">Brute Force Approach</h3>
+
+<p><strong>Algorithm:</strong> Try all possible integer assignments (exponential space)</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential in number of variables</li>
+  <li><strong>Space Complexity:</strong> Exponential</li>
+  <li><strong>Not Practical:</strong> Only feasible for very small instances</li>
+</ul>
+
+<h3 id="branch-and-bound">Branch-and-Bound</h3>
+
+<p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
+  <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
+</ul>
+
+<h3 id="cutting-planes">Cutting Planes</h3>
+
+<p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$ for storing constraints</li>
+  <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
+  <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
+</ul>
+
+<h3 id="branch-and-cut">Branch-and-Cut</h3>
+
+<p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
+</ul>
+
+<h3 id="lp-relaxation-1">LP Relaxation</h3>
+
+<p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ using interior-point methods where $L$ is input size</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+  <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
+</ul>
+
+<h3 id="special-cases">Special Cases</h3>
+
+<p><strong>Totally Unimodular Matrices:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(n^{3.5}L)$ - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+</ul>
+
+<p><strong>Network Flow Problems:</strong></p>
+<ul>
+  <li>Often have integer solutions when solved as LP</li>
+</ul>
+
+<h3 id="modern-solvers-cplex-gurobi">Modern Solvers (CPLEX, Gurobi)</h3>
+
+<p><strong>Techniques Used:</strong></p>
+<ul>
+  <li>Preprocessing: $O(mn)$ to simplify problem</li>
+  <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
+  <li>Heuristics: Fast approximate solutions</li>
+  <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
+</ul>
+
+<h3 id="verification-complexity">Verification Complexity</h3>
+
+<p><strong>Given a candidate integer solution:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(mn)$ - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li>This polynomial-time verifiability shows ILP is in NP</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>ILP is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
+  <li><strong>LP vs ILP</strong>: Linear Programming is polynomial-time, but requiring integer variables makes it NP-complete</li>
+  <li><strong>LP Relaxation</strong>: Solving the continuous relaxation is a key technique</li>
+  <li><strong>Solving Methods</strong>: Branch-and-bound, cutting planes, and branch-and-cut are standard approaches</li>
+  <li><strong>Practical Solvers</strong>: Modern solvers are very effective despite theoretical hardness</li>
+</ol>
+
+<h2 id="reduction-summary">Reduction Summary</h2>
+
+<p><strong>3-SAT ≤ₚ ILP:</strong></p>
+<ul>
+  <li>Encode Boolean variables as 0-1 integer variables</li>
+  <li>Encode clauses as linear constraints requiring at least one true literal</li>
+  <li>3-SAT satisfiable ↔ ILP feasible</li>
+</ul>
+
+<p><strong>ILP ≤ₚ 0-1 ILP:</strong></p>
+<ul>
+  <li>Can reduce general ILP to binary ILP using binary expansion</li>
+  <li>This shows 0-1 ILP is also NP-complete</li>
+</ul>
+
+<p>All reductions are polynomial-time, establishing ILP as NP-complete.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
+  <li><strong>Linear Programming</strong>: Understanding the polynomial-time LP algorithms</li>
+  <li><strong>Integer Programming</strong>: Books by Nemhauser &amp; Wolsey, or Schrijver</li>
+  <li><strong>Modern Solvers</strong>: Documentation for CPLEX, Gurobi, or other solvers</li>
+  <li><strong>Cutting Planes</strong>: Research on Gomory cuts, Chvátal-Gomory cuts, and other cutting plane methods</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li><strong>Formulate as ILP</strong>: Convert the following problem to ILP:
+    <ul>
+      <li>You have items with weights and values</li>
+      <li>You want to select items to maximize value</li>
+      <li>Total weight must be ≤ capacity</li>
+      <li>Each item can be selected at most once</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ILP instance.</p>
+  </li>
+  <li>
+    <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>
+  </li>
+  <li>
+    <p><strong>Branch-and-Bound</strong>: Trace through a branch-and-bound algorithm on a small ILP instance. Show the search tree.</p>
+  </li>
+  <li>
+    <p><strong>Unimodularity</strong>: Research what it means for a matrix to be totally unimodular. Why does this make ILP easier?</p>
+  </li>
+  <li><strong>Formulation practice</strong>: Formulate the following as ILP:
+    <ul>
+      <li>Set cover problem</li>
+      <li>Maximum independent set (in a graph)</li>
+      <li>Traveling salesman problem</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Solver comparison</strong>: Try solving the same ILP instance with different solvers (if available). Compare their performance.</p>
+  </li>
+  <li><strong>Cutting planes</strong>: Research Gomory cuts. How are they derived? Why do they work?</li>
+</ol>
+
+<hr />
+
+<p>Understanding Integer Linear Programming provides crucial insight into optimization problems and the dramatic impact that requiring integrality can have on problem complexity. The relationship to Linear Programming and the practical solving methods make ILP a cornerstone of operations research and optimization.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-navigation">
+      <a href="/blog_algorithms/posts/" class="back-to-posts">← Back to All Posts</a>
+    </div>
+  </footer><a class="u-url" href="/blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/" hidden></a>
+</article>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog_algorithms/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Robina Li</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Robina Li</li><li><a class="u-email" href="mailto:robinali34@gmail.com">robinali34@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><div class="social-links">
+  <ul class="social-media-list"><li><a href="https://github.com/robinali34"><svg class="svg-icon"><use xlink:href="/blog_algorithms/assets/minima-social-icons.svg#github"></use></svg> <span class="username">robinali34</span></a></li></ul>
+</div>
+
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>CS6515 Blog - Graduate Algorithms course notes and resources</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
+

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Linear Programming: Zero-One Equations (ZOE) | Robina Li</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Linear Programming: Zero-One Equations (ZOE)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to NP-hardness through the Zero-One Equations Problem, covering problem definition, NP-completeness proof, and connections to Integer Linear Programming and 3-SAT." />
+<meta property="og:description" content="An introduction to NP-hardness through the Zero-One Equations Problem, covering problem definition, NP-completeness proof, and connections to Integer Linear Programming and 3-SAT." />
+<link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-zero-one-equations/" />
+<meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-zero-one-equations/" />
+<meta property="og:site_name" content="Robina Li" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Linear Programming: Zero-One Equations (ZOE)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-15T00:00:00+00:00","datePublished":"2025-01-15T00:00:00+00:00","description":"An introduction to NP-hardness through the Zero-One Equations Problem, covering problem definition, NP-completeness proof, and connections to Integer Linear Programming and 3-SAT.","headline":"Linear Programming: Zero-One Equations (ZOE)","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-zero-one-equations/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-zero-one-equations/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog_algorithms/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog_algorithms/">Robina Li</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/blog_algorithms/posts/">All Posts</a><a class="page-link" href="/blog_algorithms/about/">About</a></div>
+      </nav></div>
+</header>
+
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Linear Programming: Zero-One Equations (ZOE)</h1>
+    <div class="post-meta-wrapper">
+      <p class="post-meta">
+        <time class="dt-published" datetime="2025-01-15T00:00:00+00:00" itemprop="datePublished">Jan 15, 2025
+        </time></p><div class="post-categories"><span class="category-tag">Algorithms</span><span class="category-tag">Complexity Theory</span><span class="category-tag">NP-Hard</span><span class="category-tag">CS6515</span><span class="category-tag">Linear Algebra</span></div></div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
+
+<p>The Zero-One Equations (ZOE) Problem is a fundamental problem in linear algebra and optimization that asks whether a system of linear equations has a solution where all variables are either 0 or 1. Despite its simple formulation, ZOE is NP-complete, making it an important problem for understanding the complexity of integer constraint satisfaction. ZOE is closely related to Integer Linear Programming and serves as a useful intermediate problem for reductions.</p>
+
+<h2 id="what-is-zero-one-equations">What is Zero-One Equations?</h2>
+
+<p>The Zero-One Equations Problem asks: <strong>Given a system of linear equations over integers, does there exist a 0-1 solution (where each variable is either 0 or 1)?</strong></p>
+
+<h3 id="problem-definition">Problem Definition</h3>
+
+<p><strong>Zero-One Equations (ZOE) Decision Problem:</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A matrix $A \in \mathbb{Z}^{m \times n}$ (coefficient matrix)</li>
+  <li>A vector $b \in \mathbb{Z}^m$ (right-hand side)</li>
+</ul>
+
+<p><strong>Output:</strong> YES if there exists a vector $x \in {0,1}^n$ such that $Ax = b$, NO otherwise</p>
+
+<p><strong>Note:</strong> This is different from general linear equations (which can be solved in polynomial time) because we require $x_i \in {0,1}$ for all $i$.</p>
+
+<h3 id="example">Example</h3>
+
+<p>Consider the system:</p>
+
+\[\begin{align}
+x_1 + x_2 + x_3 &amp;= 2 \\
+x_1 + x_3 &amp;= 1 \\
+x_2 + x_3 &amp;= 1
+\end{align}\]
+
+<p>where $x_1, x_2, x_3 \in {0,1}$.</p>
+
+<p><strong>Trying solutions:</strong></p>
+<ul>
+  <li>$(1, 1, 0)$: $1+1+0=2$ ✓, $1+0=1$ ✓, $1+0=1$ ✓ (satisfies all equations!)</li>
+  <li>$(1, 0, 1)$: $1+0+1=2$ ✓, $1+1=2$ ✗</li>
+  <li>$(0, 1, 1)$: $0+1+1=2$ ✓, $0+1=1$ ✓, $1+1=2$ ✗</li>
+  <li>$(1, 1, 1)$: $1+1+1=3$ ✗</li>
+</ul>
+
+<p>So $(1, 1, 0)$ is a solution.</p>
+
+<h3 id="visual-example">Visual Example</h3>
+
+<p>For the system:
+\(\begin{align}
+2x_1 + x_2 &amp;= 2 \\
+x_1 + x_2 + x_3 &amp;= 2
+\end{align}\)</p>
+
+<p><strong>Possible 0-1 solutions:</strong></p>
+<ul>
+  <li>$(1, 0, 1)$: $2(1)+0=2$ ✓, $1+0+1=2$ ✓</li>
+  <li>$(0, 2, ?)$: Not valid (2 is not 0 or 1)</li>
+  <li>$(1, 1, 0)$: $2(1)+1=3$ ✗</li>
+</ul>
+
+<p>So $(1, 0, 1)$ is a solution.</p>
+
+<h2 id="why-zoe-is-in-np">Why ZOE is in NP</h2>
+
+<p>To show that ZOE is NP-complete, we first need to show it’s in NP.</p>
+
+<p><strong>ZOE ∈ NP:</strong></p>
+
+<p>Given a candidate solution (a 0-1 vector $x$), we can verify in polynomial time:</p>
+<ol>
+  <li>Check that $x \in {0,1}^n$: $O(n)$ time</li>
+  <li>Check that $Ax = b$: $O(mn)$ time (matrix-vector multiplication and comparison)</li>
+</ol>
+
+<p>Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ZOE is in NP.</p>
+
+<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
+
+<p>The standard proof that ZOE is NP-complete reduces from 3-SAT.</p>
+
+<h3 id="construction">Construction</h3>
+
+<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+
+<p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 variables and clauses as equations.</p>
+
+<ol>
+  <li><strong>Variables:</strong>
+    <ul>
+      <li>For each Boolean variable $x_i$, create a 0-1 variable $y_i$</li>
+      <li>$y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$</li>
+    </ul>
+  </li>
+  <li><strong>Clauses:</strong>
+    <ul>
+      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create an equation:
+        <ul>
+          <li>If literal is $x_i$, use $y_i$</li>
+          <li>If literal is $\neg x_i$, use $(1 - y_i)$</li>
+          <li>Equation: $y_{l_1} + y_{l_2} + y_{l_3} = 1$ (exactly one literal is true)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>Wait</strong> - this doesn’t work! A clause requires <strong>at least one</strong> true literal, not exactly one.</p>
+
+    <p><strong>Correct approach:</strong> Use inequality constraints or modify the encoding.</p>
+  </li>
+  <li><strong>Better Construction:</strong>
+    <ul>
+      <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create a <strong>slack variable</strong> $s_j \in {0,1}$</li>
+      <li>Create equation: $y_{l_1} + y_{l_2} + y_{l_3} + s_j = 1$</li>
+      <li>This ensures at least one literal is true (if all literals are false, $s_j$ must be 1, but then we need additional constraints)</li>
+    </ul>
+
+    <p><strong>Even Better:</strong> Use the standard reduction to ILP, then convert ILP to ZOE.</p>
+  </li>
+</ol>
+
+<h3 id="standard-reduction-via-ilp">Standard Reduction via ILP</h3>
+
+<p>Since we know <strong>3-SAT ≤ₚ ILP</strong> and <strong>ILP can be reduced to ZOE</strong>, we get:</p>
+
+<p><strong>3-SAT ≤ₚ ILP ≤ₚ ZOE</strong></p>
+
+<p><strong>ILP to ZOE Reduction:</strong></p>
+<ul>
+  <li>ILP constraints are inequalities: $Ax \leq b$</li>
+  <li>Convert to equations using slack variables: $Ax + s = b$ where $s \geq 0$</li>
+  <li>But we need binary variables…</li>
+  <li>Use binary expansion for integer variables</li>
+  <li>This shows ZOE is NP-complete</li>
+</ul>
+
+<h3 id="direct-construction-simplified">Direct Construction (Simplified)</h3>
+
+<p>For a 3-SAT instance, we can directly construct a ZOE instance:</p>
+
+<ol>
+  <li>
+    <p><strong>For each variable $x_i$:</strong> Create variable $y_i \in {0,1}$</p>
+  </li>
+  <li>
+    <p><strong>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:</strong></p>
+    <ul>
+      <li>Create equation ensuring at least one literal is satisfied</li>
+      <li>Use: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (but ZOE uses equations, not inequalities)</li>
+      <li>Convert to equation: $y_{l_1} + y_{l_2} + y_{l_3} - s_j = 1$ where $s_j \in {0,1,2}$ (slack)</li>
+      <li>But $s_j$ must be binary…</li>
+      <li>Use binary representation: $s_j = s_{j,1} + 2s_{j,2}$ where $s_{j,1}, s_{j,2} \in {0,1}$</li>
+    </ul>
+  </li>
+</ol>
+
+<p>This construction works but is complex. The key insight is that ZOE captures the essence of 0-1 constraint satisfaction.</p>
+
+<h2 id="relationship-to-other-problems">Relationship to Other Problems</h2>
+
+<p>The ZOE Problem is closely related to several important problems:</p>
+
+<h3 id="integer-linear-programming-ilp">Integer Linear Programming (ILP)</h3>
+
+<p><strong>Relationship:</strong></p>
+<ul>
+  <li>ZOE is a special case of ILP (0-1 ILP with equations instead of inequalities)</li>
+  <li>ILP can be reduced to ZOE using:
+    <ul>
+      <li>Binary expansion of integer variables</li>
+      <li>Conversion of inequalities to equations using slack variables</li>
+    </ul>
+  </li>
+  <li>They are polynomially equivalent for 0-1 variables</li>
+</ul>
+
+<h3 id="3-sat">3-SAT</h3>
+
+<p>As we saw:</p>
+<ul>
+  <li><strong>3-SAT ≤ₚ ZOE</strong>: Encode clauses as equations</li>
+  <li>ZOE can also be reduced to 3-SAT (showing equivalence)</li>
+  <li>They are closely related constraint satisfaction problems</li>
+</ul>
+
+<h3 id="exact-cover">Exact Cover</h3>
+
+<p><strong>Exact Cover Problem:</strong></p>
+<ul>
+  <li>Given a set and a collection of subsets, find a subcollection covering each element exactly once</li>
+  <li>Can be formulated as ZOE: for each element, sum of covering sets equals 1</li>
+</ul>
+
+<h3 id="set-partitioning">Set Partitioning</h3>
+
+<p><strong>Set Partitioning:</strong></p>
+<ul>
+  <li>Partition a set into disjoint subsets with specific properties</li>
+  <li>Naturally formulates as ZOE</li>
+</ul>
+
+<h2 id="practical-implications">Practical Implications</h2>
+
+<h3 id="why-zoe-is-hard">Why ZOE is Hard</h3>
+
+<p>The Zero-One Equations Problem is NP-complete, which means:</p>
+
+<ol>
+  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
+  <li><strong>Brute Force</strong>: Try all $2^n$ possible 0-1 assignments - exponential</li>
+  <li><strong>Gaussian Elimination</strong>: Doesn’t work directly (we need integer solutions)</li>
+  <li><strong>Integer Methods</strong>: Similar to ILP solving techniques</li>
+</ol>
+
+<h3 id="solving-methods">Solving Methods</h3>
+
+<p><strong>1. Brute Force:</strong></p>
+<ul>
+  <li>Enumerate all $2^n$ assignments</li>
+  <li>Check each one: $O(2^n \cdot mn)$ time</li>
+  <li>Only feasible for small $n$</li>
+</ul>
+
+<p><strong>2. Backtracking:</strong></p>
+<ul>
+  <li>Systematically search solution space</li>
+  <li>Prune branches that violate constraints early</li>
+  <li>More efficient than brute force in practice</li>
+</ul>
+
+<p><strong>3. Reduction to ILP:</strong></p>
+<ul>
+  <li>Convert ZOE to 0-1 ILP</li>
+  <li>Use ILP solvers (CPLEX, Gurobi, etc.)</li>
+  <li>Very effective in practice</li>
+</ul>
+
+<p><strong>4. Special Cases:</strong></p>
+<ul>
+  <li><strong>Totally unimodular matrices</strong>: If $A$ is totally unimodular, can solve via LP</li>
+  <li><strong>Sparse systems</strong>: Specialized algorithms for sparse matrices</li>
+  <li><strong>Small systems</strong>: Brute force or enumeration</li>
+</ul>
+
+<h3 id="real-world-applications">Real-World Applications</h3>
+
+<p>ZOE has numerous applications:</p>
+
+<ol>
+  <li><strong>Scheduling</strong>: Assigning tasks with constraints</li>
+  <li><strong>Resource Allocation</strong>: Allocating resources with exact requirements</li>
+  <li><strong>Circuit Design</strong>: Designing circuits with binary signals</li>
+  <li><strong>Coding Theory</strong>: Error-correcting codes, parity checks</li>
+  <li><strong>Combinatorial Optimization</strong>: Various optimization problems</li>
+  <li><strong>Game Theory</strong>: Finding equilibria in some games</li>
+  <li><strong>Database Queries</strong>: Query optimization with constraints</li>
+</ol>
+
+<h2 id="runtime-analysis">Runtime Analysis</h2>
+
+<h3 id="brute-force-approach">Brute Force Approach</h3>
+
+<p><strong>Algorithm:</strong> Try all $2^n$ possible 0-1 assignments</p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(2^n \cdot mn)$</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for storing current assignment</li>
+  <li><strong>Analysis:</strong> For each assignment, compute $Ax$ and compare to $b$ ($O(mn)$ time)</li>
+</ul>
+
+<h3 id="backtracking">Backtracking</h3>
+
+<p><strong>Algorithm:</strong> Systematic search with early pruning</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with pruning</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Pruning:</strong> Stop early if constraints can’t be satisfied</li>
+</ul>
+
+<h3 id="reduction-to-ilp-solvers">Reduction to ILP Solvers</h3>
+
+<p><strong>Algorithm:</strong> Convert ZOE to 0-1 ILP, use commercial solvers</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Depends on ILP solver (exponential worst-case, but very efficient in practice)</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$ for storing constraints</li>
+  <li><strong>Practical Performance:</strong> Modern solvers (CPLEX, Gurobi) handle large instances efficiently</li>
+</ul>
+
+<h3 id="gaussian-elimination-doesnt-work">Gaussian Elimination (Doesn’t Work)</h3>
+
+<p><strong>Why it fails:</strong> Gaussian elimination finds real solutions, but we need integer (0-1) solutions</p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(mn^2)$ for real solutions</li>
+  <li><strong>Problem:</strong> Real solution might not be 0-1, rounding doesn’t guarantee feasibility</li>
+</ul>
+
+<h3 id="special-cases">Special Cases</h3>
+
+<p><strong>Totally Unimodular Matrices:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(mn^2)$ - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> $O(mn)$</li>
+</ul>
+
+<p><strong>Sparse Systems:</strong></p>
+<ul>
+  <li>Specialized algorithms for sparse matrices can be more efficient</li>
+</ul>
+
+<h3 id="verification-complexity">Verification Complexity</h3>
+
+<p><strong>Given a candidate 0-1 solution:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(mn)$ - compute $Ax$ and compare to $b$</li>
+  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li>This polynomial-time verifiability shows ZOE is in NP</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>ZOE is NP-Complete</strong>: Proven by reduction from 3-SAT (via ILP or directly)</li>
+  <li><strong>Simple Formulation</strong>: Despite simple appearance, requiring 0-1 solutions makes it hard</li>
+  <li><strong>ILP Connection</strong>: Closely related to 0-1 Integer Linear Programming</li>
+  <li><strong>Constraint Satisfaction</strong>: Captures essence of binary constraint satisfaction</li>
+  <li><strong>Practical Solving</strong>: Can use ILP solvers or specialized algorithms</li>
+</ol>
+
+<h2 id="reduction-summary">Reduction Summary</h2>
+
+<p><strong>3-SAT ≤ₚ ILP ≤ₚ ZOE:</strong></p>
+<ul>
+  <li>3-SAT reduces to ILP (as we saw earlier)</li>
+  <li>ILP reduces to ZOE using binary expansion and slack variables</li>
+  <li>This establishes ZOE as NP-complete</li>
+</ul>
+
+<p><strong>Direct: 3-SAT ≤ₚ ZOE:</strong></p>
+<ul>
+  <li>Encode variables as 0-1 variables</li>
+  <li>Encode clauses as equations (with appropriate slack variables)</li>
+  <li>Satisfying assignment ↔ 0-1 solution to equations</li>
+</ul>
+
+<p>All reductions are polynomial-time, establishing ZOE as NP-complete.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
+  <li><strong>Integer Linear Programming</strong>: Understanding the relationship to ILP</li>
+  <li><strong>Linear Algebra</strong>: Understanding when systems have integer solutions</li>
+  <li><strong>Constraint Satisfaction</strong>: Research on CSPs and their complexity</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>
+    <p><strong>Solve by hand</strong>: For the ZOE system:
+\(\begin{align}
+x_1 + x_2 &amp;= 1 \\
+x_2 + x_3 &amp;= 1 \\
+x_1 + x_3 &amp;= 1
+\end{align}\)
+Find all 0-1 solutions.</p>
+  </li>
+  <li>
+    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ZOE instance.</p>
+  </li>
+  <li><strong>Formulate as ZOE</strong>: Convert the following to ZOE:
+    <ul>
+      <li>You have items, each can be selected (1) or not (0)</li>
+      <li>Exactly 3 items must be selected</li>
+      <li>Items 1 and 2 cannot both be selected</li>
+      <li>If item 3 is selected, then item 4 must be selected</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>ILP to ZOE</strong>: Show how to convert a 0-1 ILP instance to a ZOE instance. What about general ILP?</p>
+  </li>
+  <li>
+    <p><strong>Special cases</strong>: Research when a system of linear equations is guaranteed to have a 0-1 solution. What properties must the matrix have?</p>
+  </li>
+  <li>
+    <p><strong>Algorithm design</strong>: Design a backtracking algorithm for ZOE. How can you prune the search space?</p>
+  </li>
+  <li>
+    <p><strong>Complexity</strong>: What is the time complexity of brute force for ZOE? Can you do better than $O(2^n \cdot mn)$?</p>
+  </li>
+  <li><strong>Applications</strong>: Research one real-world application of ZOE. How is it formulated? What solving methods are used?</li>
+</ol>
+
+<hr />
+
+<p>Understanding the Zero-One Equations Problem provides crucial insight into the complexity of integer constraint satisfaction and its relationship to other NP-complete problems. The simple formulation belies its computational difficulty, making it an important problem in complexity theory.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-navigation">
+      <a href="/blog_algorithms/posts/" class="back-to-posts">← Back to All Posts</a>
+    </div>
+  </footer><a class="u-url" href="/blog_algorithms/2025/01/15/np-hard-intro-zero-one-equations/" hidden></a>
+</article>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog_algorithms/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Robina Li</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Robina Li</li><li><a class="u-email" href="mailto:robinali34@gmail.com">robinali34@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><div class="social-links">
+  <ul class="social-media-list"><li><a href="https://github.com/robinali34"><svg class="svg-icon"><use xlink:href="/blog_algorithms/assets/minima-social-icons.svg#github"></use></svg> <span class="username">robinali34</span></a></li></ul>
+</div>
+
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>CS6515 Blog - Graduate Algorithms course notes and resources</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
+

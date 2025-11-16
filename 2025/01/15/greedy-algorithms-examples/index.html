@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Greedy Algorithms: Theory and Examples | Robina Li</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Greedy Algorithms: Theory and Examples" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work." />
+<meta property="og:description" content="An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work." />
+<link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/" />
+<meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/" />
+<meta property="og:site_name" content="Robina Li" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Greedy Algorithms: Theory and Examples" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-15T00:00:00+00:00","datePublished":"2025-01-15T00:00:00+00:00","description":"An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work.","headline":"Greedy Algorithms: Theory and Examples","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog_algorithms/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog_algorithms/">Robina Li</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/blog_algorithms/posts/">All Posts</a><a class="page-link" href="/blog_algorithms/about/">About</a></div>
+      </nav></div>
+</header>
+
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Greedy Algorithms: Theory and Examples</h1>
+    <div class="post-meta-wrapper">
+      <p class="post-meta">
+        <time class="dt-published" datetime="2025-01-15T00:00:00+00:00" itemprop="datePublished">Jan 15, 2025
+        </time></p><div class="post-categories"><span class="category-tag">Algorithms</span><span class="category-tag">Greedy Algorithms</span><span class="category-tag">CS6515</span><span class="category-tag">Optimization</span></div></div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
+
+<p>Greedy algorithms are a fundamental class of algorithms that make locally optimal choices at each step with the hope of finding a globally optimal solution. They are simple, intuitive, and often very efficient. However, greedy algorithms don’t always produce optimal solutions - understanding when they work and when they don’t is crucial for algorithm design.</p>
+
+<h2 id="what-is-a-greedy-algorithm">What is a Greedy Algorithm?</h2>
+
+<p>A <strong>greedy algorithm</strong> makes the choice that looks best at the moment, without considering future consequences. At each step, it:</p>
+<ol>
+  <li>Makes a locally optimal choice</li>
+  <li>Never reconsiders previous choices</li>
+  <li>Hopes this leads to a globally optimal solution</li>
+</ol>
+
+<h3 id="key-characteristics">Key Characteristics</h3>
+
+<ul>
+  <li><strong>Greedy Choice Property:</strong> A globally optimal solution can be arrived at by making a locally optimal (greedy) choice</li>
+  <li><strong>Optimal Substructure:</strong> An optimal solution contains optimal solutions to subproblems</li>
+  <li><strong>No Backtracking:</strong> Once a choice is made, it’s never reconsidered</li>
+</ul>
+
+<h2 id="when-do-greedy-algorithms-work">When Do Greedy Algorithms Work?</h2>
+
+<p>Greedy algorithms work when:</p>
+
+<ol>
+  <li><strong>Greedy Choice Property:</strong> The greedy choice is always part of some optimal solution</li>
+  <li><strong>Optimal Substructure:</strong> After making the greedy choice, the remaining problem is similar to the original</li>
+  <li><strong>Problem Structure:</strong> The problem has a structure that allows local optimization to lead to global optimization</li>
+</ol>
+
+<h3 id="when-they-dont-work">When They Don’t Work</h3>
+
+<p>Greedy algorithms fail when:</p>
+<ul>
+  <li>Local optima don’t lead to global optima</li>
+  <li>The problem requires considering future consequences</li>
+  <li>The greedy choice property doesn’t hold</li>
+</ul>
+
+<h2 id="classic-examples">Classic Examples</h2>
+
+<h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
+
+<p><strong>Problem:</strong> Given $n$ activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
+
+<p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: ActivitySelection(activities)
+1. Sort activities by finish time
+2. selected = [activities[0]]
+3. last_finish = activities[0].finish
+4. for i = 1 to n-1:
+5.     if activities[i].start &gt;= last_finish:
+6.         selected.append(activities[i])
+7.         last_finish = activities[i].finish
+8. return selected
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Activities: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
+  <li>Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
+  <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
+<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: If an optimal solution doesn’t include the earliest-finishing activity, we can replace the first activity in the optimal solution with the earliest-finishing one without reducing the count</li>
+  <li>Optimal substructure: After selecting an activity, the problem reduces to selecting activities from those that start after it finishes</li>
+</ul>
+
+<h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
+
+<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity $W$ to maximize value. Items can be taken fractionally.</p>
+
+<p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: FractionalKnapsack(items, W)
+1. Sort items by value/weight ratio (descending)
+2. total_value = 0
+3. remaining_capacity = W
+4. for each item in sorted_items:
+5.     if remaining_capacity &gt;= item.weight:
+6.         take entire item
+7.         total_value += item.value
+8.         remaining_capacity -= item.weight
+9.     else:
+10.        take fraction: remaining_capacity / item.weight
+11.        total_value += item.value * (remaining_capacity / item.weight)
+12.        break
+13. return total_value
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Items: (weight=10, value=60), (weight=20, value=100), (weight=30, value=120)</li>
+  <li>Capacity: 50</li>
+  <li>Ratios: 6, 5, 4</li>
+  <li>Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)</li>
+  <li>Value: 60 + 100 + 80 = 240</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
+<strong>Space Complexity:</strong> $O(1)$ additional space</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: Taking the highest value-to-weight ratio maximizes value per unit capacity</li>
+  <li>Optimal substructure: After taking some items, the remaining problem is similar with reduced capacity</li>
+</ul>
+
+<p><strong>Note:</strong> This works for fractional knapsack, but NOT for 0-1 knapsack (where items must be taken whole).</p>
+
+<h3 id="example-3-minimum-spanning-tree-kruskals-algorithm">Example 3: Minimum Spanning Tree (Kruskal’s Algorithm)</h3>
+
+<p><strong>Problem:</strong> Find the minimum-weight spanning tree of a connected, weighted graph.</p>
+
+<p><strong>Greedy Strategy:</strong> Always add the minimum-weight edge that doesn’t create a cycle.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: KruskalMST(G)
+1. Sort edges by weight
+2. Initialize Union-Find data structure
+3. MST = []
+4. for each edge (u,v) in sorted_edges:
+5.     if Find(u) != Find(v):  // Not in same component
+6.         MST.append((u,v))
+7.         Union(u,v)
+8. return MST
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
+    A---2---B
+    |\     /|
+    | 3   1 |
+    4|     \|5
+    C---6---D
+</code></pre></div></div>
+
+<ul>
+  <li>Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)</li>
+  <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> $O(E \log E)$ (sorting) + $O(E \cdot \alpha(V))$ (Union-Find) = $O(E \log E)$
+<strong>Space Complexity:</strong> $O(V)$ for Union-Find</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The minimum-weight edge across a cut is always in some MST</li>
+  <li>Optimal substructure: After adding an edge, the remaining problem is finding MST of the reduced graph</li>
+</ul>
+
+<h3 id="example-4-minimum-spanning-tree-prims-algorithm">Example 4: Minimum Spanning Tree (Prim’s Algorithm)</h3>
+
+<p><strong>Problem:</strong> Same as Kruskal’s - find MST.</p>
+
+<p><strong>Greedy Strategy:</strong> Start from arbitrary vertex, always add minimum-weight edge connecting tree to new vertex.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: PrimMST(G, start)
+1. Initialize priority queue with (start, 0)
+2. visited = set()
+3. MST = []
+4. while priority queue not empty:
+5.     u = extract_min()
+6.     if u not visited:
+7.         visited.add(u)
+8.         if u != start:
+9.             MST.append((parent[u], u))
+10.        for each neighbor v of u:
+11.            if v not visited and weight(u,v) &lt; key[v]:
+12.                key[v] = weight(u,v)
+13.                parent[v] = u
+14.                insert/update (v, key[v]) in priority queue
+15. return MST
+</code></pre></div></div>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>With binary heap: $O(E \log V)$</li>
+  <li>With Fibonacci heap: $O(E + V \log V)$
+<strong>Space Complexity:</strong> $O(V)$</li>
+</ul>
+
+<h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
+
+<p><strong>Problem:</strong> Given character frequencies, construct a prefix-free binary code minimizing expected code length.</p>
+
+<p><strong>Greedy Strategy:</strong> Repeatedly merge the two least frequent characters/nodes.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: HuffmanCoding(frequencies)
+1. Create min-heap of nodes (character, frequency)
+2. while heap.size() &gt; 1:
+3.     left = extract_min()
+4.     right = extract_min()
+5.     merged = new Node(left.freq + right.freq)
+6.     merged.left = left
+7.     merged.right = right
+8.     insert(merged)
+9. return root of tree
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Characters: a(45%), b(13%), c(12%), d(16%), e(9%), f(5%)</li>
+  <li>Build tree by repeatedly merging least frequent:
+    <ol>
+      <li>Merge f(5) + e(9) = 14</li>
+      <li>Merge c(12) + 14 = 26</li>
+      <li>Merge b(13) + d(16) = 29</li>
+      <li>Merge 26 + 29 = 55</li>
+      <li>Merge a(45) + 55 = 100</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>Time Complexity:</strong> $O(n \log n)$ where $n$ is number of characters
+<strong>Space Complexity:</strong> $O(n)$</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The two least frequent characters should have the longest codes</li>
+  <li>Optimal substructure: After merging, the problem reduces to coding the merged node plus remaining characters</li>
+</ul>
+
+<h3 id="example-6-dijkstras-algorithm-shortest-paths">Example 6: Dijkstra’s Algorithm (Shortest Paths)</h3>
+
+<p><strong>Problem:</strong> Find shortest paths from a source vertex to all other vertices in a weighted graph (non-negative weights).</p>
+
+<p><strong>Greedy Strategy:</strong> Always relax the vertex with minimum distance that hasn’t been processed.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: Dijkstra(G, source)
+1. Initialize distances: dist[source] = 0, dist[v] = ∞ for v ≠ source
+2. Initialize priority queue with (source, 0)
+3. visited = set()
+4. while priority queue not empty:
+5.     u = extract_min()
+6.     if u in visited: continue
+7.     visited.add(u)
+8.     for each neighbor v of u:
+9.         if dist[u] + weight(u,v) &lt; dist[v]:
+10.            dist[v] = dist[u] + weight(u,v)
+11.            insert/update (v, dist[v]) in priority queue
+12. return dist[]
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
+    A---1---B
+    |\     /|
+    | 4   2 |
+    3|     \|1
+    C---5---D
+</code></pre></div></div>
+
+<ul>
+  <li>Source: A</li>
+  <li>Process A: dist[B]=1, dist[C]=3, dist[D]=4</li>
+  <li>Process B: dist[D]=min(4,1+2)=3</li>
+  <li>Process C: no updates</li>
+  <li>Process D: done</li>
+  <li>Result: A→B=1, A→C=3, A→D=3</li>
+</ul>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>With binary heap: $O((V+E) \log V)$</li>
+  <li>With Fibonacci heap: $O(E + V \log V)$
+<strong>Space Complexity:</strong> $O(V)$</li>
+</ul>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
+  <li>Optimal substructure: Shortest path to $v$ through $u$ contains shortest path to $u$</li>
+</ul>
+
+<p><strong>Note:</strong> Only works for non-negative edge weights!</p>
+
+<h3 id="example-7-interval-scheduling">Example 7: Interval Scheduling</h3>
+
+<p><strong>Problem:</strong> Schedule maximum number of non-overlapping intervals.</p>
+
+<p><strong>Greedy Strategy:</strong> Sort by finish time, always pick the interval that finishes earliest and doesn’t conflict.</p>
+
+<p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
+
+<p><strong>Time Complexity:</strong> $O(n \log n)$
+<strong>Space Complexity:</strong> $O(1)$</p>
+
+<h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
+
+<p><strong>Problem:</strong> Given a universe $U$ and collection of sets $S$, find minimum number of sets covering $U$.</p>
+
+<p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: GreedySetCover(U, S)
+1. covered = set()
+2. selected = []
+3. while covered != U:
+4.     best_set = None
+5.     best_new = 0
+6.     for set s in S:
+7.         new = |s - covered|
+8.         if new &gt; best_new:
+9.             best_new = new
+10.            best_set = s
+11.     selected.append(best_set)
+12.     covered = covered ∪ best_set
+13. return selected
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Time Complexity:</strong> $O(</td>
+      <td>U</td>
+      <td>\cdot</td>
+      <td>S</td>
+      <td>)$</td>
+    </tr>
+    <tr>
+      <td><strong>Space Complexity:</strong> $O(</td>
+      <td>U</td>
+      <td>)$</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Approximation Ratio:</strong> $H_n$ where $H_n = \sum_{i=1}^n 1/i \approx \ln n$ (harmonic number)</p>
+
+<p><strong>Why It’s an Approximation:</strong></p>
+<ul>
+  <li>Greedy doesn’t always give optimal solution</li>
+  <li>But provides good approximation guarantee</li>
+</ul>
+
+<h2 id="greedy-vs-dynamic-programming">Greedy vs Dynamic Programming</h2>
+
+<h3 id="key-differences">Key Differences</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Greedy</th>
+      <th>Dynamic Programming</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Choices</td>
+      <td>Makes choice and never reconsiders</td>
+      <td>Considers all choices</td>
+    </tr>
+    <tr>
+      <td>Subproblems</td>
+      <td>Usually one subproblem</td>
+      <td>Multiple overlapping subproblems</td>
+    </tr>
+    <tr>
+      <td>Optimality</td>
+      <td>May not be optimal</td>
+      <td>Always optimal</td>
+    </tr>
+    <tr>
+      <td>Efficiency</td>
+      <td>Usually faster</td>
+      <td>May be slower</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="when-to-use-greedy">When to Use Greedy</h3>
+
+<ul>
+  <li>Problem has greedy choice property</li>
+  <li>Optimal substructure holds</li>
+  <li>Need fast algorithm (greedy is usually efficient)</li>
+  <li>Approximation is acceptable (if exact solution not needed)</li>
+</ul>
+
+<h3 id="when-to-use-dp">When to Use DP</h3>
+
+<ul>
+  <li>Need optimal solution</li>
+  <li>Greedy choice property doesn’t hold</li>
+  <li>Overlapping subproblems</li>
+  <li>Problem requires considering all possibilities</li>
+</ul>
+
+<h2 id="common-greedy-patterns">Common Greedy Patterns</h2>
+
+<h3 id="1-sorting--greedy-selection">1. Sorting + Greedy Selection</h3>
+
+<p>Many greedy algorithms:</p>
+<ol>
+  <li>Sort input by some criterion</li>
+  <li>Process in sorted order, making greedy choices</li>
+</ol>
+
+<p>Examples: Activity Selection, Fractional Knapsack, Interval Scheduling</p>
+
+<h3 id="2-priority-queue-based">2. Priority Queue Based</h3>
+
+<p>Use priority queue to always process “best” option:</p>
+<ul>
+  <li>Dijkstra’s: process closest unvisited vertex</li>
+  <li>Prim’s: process minimum edge to tree</li>
+  <li>Huffman: merge least frequent nodes</li>
+</ul>
+
+<h3 id="3-union-find-based">3. Union-Find Based</h3>
+
+<p>Use Union-Find to track connected components:</p>
+<ul>
+  <li>Kruskal’s MST: avoid cycles by checking connectivity</li>
+</ul>
+
+<h2 id="proving-greedy-correctness">Proving Greedy Correctness</h2>
+
+<p>To prove a greedy algorithm is correct:</p>
+
+<ol>
+  <li><strong>Show Greedy Choice Property:</strong>
+    <ul>
+      <li>Prove that a greedy choice is always part of some optimal solution</li>
+      <li>Usually done by showing we can modify any optimal solution to include the greedy choice</li>
+    </ul>
+  </li>
+  <li><strong>Show Optimal Substructure:</strong>
+    <ul>
+      <li>Prove that after making the greedy choice, the remaining problem is similar</li>
+      <li>Show that optimal solution contains optimal solutions to subproblems</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="example-proof-activity-selection">Example Proof: Activity Selection</h3>
+
+<p><strong>Greedy Choice Property:</strong></p>
+<ul>
+  <li>Let $a_1$ be the activity that finishes earliest</li>
+  <li>Let $S$ be an optimal solution</li>
+  <li>If $S$ doesn’t include $a_1$, let $a_k$ be the first activity in $S$</li>
+  <li>Since $a_1$ finishes before $a_k$ starts, we can replace $a_k$ with $a_1$ in $S$</li>
+  <li>This gives another optimal solution containing $a_1$ ✓</li>
+</ul>
+
+<p><strong>Optimal Substructure:</strong></p>
+<ul>
+  <li>After selecting $a_1$, remaining problem: select activities starting after $a_1$ finishes</li>
+  <li>If $S’$ is optimal for remaining problem, then ${a_1} \cup S’$ is optimal for original ✓</li>
+</ul>
+
+<h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Greedy Algorithm</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Activity Selection</td>
+      <td>Sort by finish time</td>
+      <td>$O(n \log n)$</td>
+      <td>$O(1)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Fractional Knapsack</td>
+      <td>Sort by value/weight</td>
+      <td>$O(n \log n)$</td>
+      <td>$O(1)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MST (Kruskal)</td>
+      <td>Sort edges, Union-Find</td>
+      <td>$O(E \log E)$</td>
+      <td>$O(V)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MST (Prim)</td>
+      <td>Priority queue</td>
+      <td>$O(E \log V)$</td>
+      <td>$O(V)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Huffman Coding</td>
+      <td>Min-heap</td>
+      <td>$O(n \log n)$</td>
+      <td>$O(n)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Dijkstra’s</td>
+      <td>Priority queue</td>
+      <td>$O((V+E) \log V)$</td>
+      <td>$O(V)$</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Set Cover</td>
+      <td>Greedy selection</td>
+      <td>$O(</td>
+      <td>U</td>
+      <td>\cdot</td>
+      <td>S</td>
+      <td>)$</td>
+      <td>$O(</td>
+      <td>U</td>
+      <td>)$</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
+  <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
+  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often $O(n \log n)$ or better)</li>
+  <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
+  <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
+  <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>
+</ol>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>CLRS:</strong> “Introduction to Algorithms” - Comprehensive coverage of greedy algorithms</li>
+  <li><strong>Kleinberg &amp; Tardos:</strong> “Algorithm Design” - Greedy algorithms with proofs</li>
+  <li><strong>Greedy vs DP:</strong> Understanding when to use each approach</li>
+  <li><strong>Approximation Algorithms:</strong> Greedy algorithms for NP-hard problems</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>
+    <p><strong>Activity Selection:</strong> Implement the greedy algorithm and prove its correctness.</p>
+  </li>
+  <li>
+    <p><strong>Fractional vs 0-1 Knapsack:</strong> Why does greedy work for fractional but not 0-1? Give a counterexample.</p>
+  </li>
+  <li>
+    <p><strong>MST Algorithms:</strong> Compare Kruskal’s and Prim’s algorithms. When is each better?</p>
+  </li>
+  <li>
+    <p><strong>Dijkstra’s Limitation:</strong> Why doesn’t Dijkstra’s work with negative weights? Give an example.</p>
+  </li>
+  <li>
+    <p><strong>Huffman Coding:</strong> Construct Huffman tree for frequencies: a(40), b(30), c(20), d(10). What are the codes?</p>
+  </li>
+  <li>
+    <p><strong>Set Cover:</strong> Design a greedy algorithm for weighted set cover (sets have costs). What approximation ratio does it achieve?</p>
+  </li>
+  <li>
+    <p><strong>Interval Coloring:</strong> Given intervals, color them with minimum colors so overlapping intervals have different colors. Design a greedy algorithm.</p>
+  </li>
+  <li>
+    <p><strong>Job Scheduling:</strong> Given jobs with deadlines and profits, schedule to maximize profit. Design a greedy algorithm.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>Understanding greedy algorithms is essential for algorithm design. They provide elegant, efficient solutions to many optimization problems when the greedy choice property and optimal substructure hold.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-navigation">
+      <a href="/blog_algorithms/posts/" class="back-to-posts">← Back to All Posts</a>
+    </div>
+  </footer><a class="u-url" href="/blog_algorithms/2025/01/15/greedy-algorithms-examples/" hidden></a>
+</article>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog_algorithms/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Robina Li</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Robina Li</li><li><a class="u-email" href="mailto:robinali34@gmail.com">robinali34@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><div class="social-links">
+  <ul class="social-media-list"><li><a href="https://github.com/robinali34"><svg class="svg-icon"><use xlink:href="/blog_algorithms/assets/minima-social-icons.svg#github"></use></svg> <span class="username">robinali34</span></a></li></ul>
+</div>
+
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>CS6515 Blog - Graduate Algorithms course notes and resources</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
+

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>NP-Hard Introduction: Rudrata Cycle | Robina Li</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="NP-Hard Introduction: Rudrata Cycle" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP." />
+<meta property="og:description" content="An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP." />
+<link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/" />
+<meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/" />
+<meta property="og:site_name" content="Robina Li" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="NP-Hard Introduction: Rudrata Cycle" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-15T00:00:00+00:00","datePublished":"2025-01-15T00:00:00+00:00","description":"An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP.","headline":"NP-Hard Introduction: Rudrata Cycle","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog_algorithms/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
+
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog_algorithms/">Robina Li</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          <a class="page-link" href="/blog_algorithms/posts/">All Posts</a><a class="page-link" href="/blog_algorithms/about/">About</a></div>
+      </nav></div>
+</header>
+
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NP-Hard Introduction: Rudrata Cycle</h1>
+    <div class="post-meta-wrapper">
+      <p class="post-meta">
+        <time class="dt-published" datetime="2025-01-15T00:00:00+00:00" itemprop="datePublished">Jan 15, 2025
+        </time></p><div class="post-categories"><span class="category-tag">Algorithms</span><span class="category-tag">Complexity Theory</span><span class="category-tag">NP-Hard</span><span class="category-tag">CS6515</span><span class="category-tag">Graph Theory</span></div></div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="introduction">Introduction</h2>
+
+<p>The Rudrata Cycle Problem (also known as the Hamiltonian Cycle Problem) is one of the most fundamental graph problems in computer science. It asks whether a graph contains a cycle that visits each vertex exactly once. This problem is closely related to the Traveling Salesman Problem (TSP) and serves as a cornerstone for understanding NP-completeness in graph theory. The problem is named after Sir William Rowan Hamilton, who studied it in the context of the Icosian game.</p>
+
+<h2 id="what-is-a-rudrata-cycle">What is a Rudrata Cycle?</h2>
+
+<p>A <strong>Rudrata cycle</strong> (also called a <strong>Hamiltonian cycle</strong>) in an undirected graph is a cycle that visits each vertex exactly once and returns to the starting vertex. Unlike an Eulerian cycle (which visits each edge exactly once), a Hamiltonian cycle visits each vertex exactly once.</p>
+
+<h3 id="problem-definition">Problem Definition</h3>
+
+<p><strong>Rudrata Cycle Decision Problem:</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>An undirected graph $G = (V, E)$</li>
+</ul>
+
+<p><strong>Output:</strong> YES if $G$ contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise</p>
+
+<p><strong>Rudrata Cycle Optimization Problem (TSP):</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A complete undirected graph $G = (V, E)$ with edge weights $w: E \to \mathbb{R}^+$</li>
+</ul>
+
+<p><strong>Output:</strong> The minimum weight Rudrata cycle (this is the Traveling Salesman Problem)</p>
+
+<h3 id="example">Example</h3>
+
+<p>Consider the following graph:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2---3
+    |   |   |
+    4---5---6
+</code></pre></div></div>
+
+<p><strong>Rudrata Cycle:</strong></p>
+<ul>
+  <li>Cycle: $1 \to 2 \to 5 \to 4 \to 1$ ✗ (doesn’t visit all vertices)</li>
+  <li>Cycle: $1 \to 2 \to 3 \to 6 \to 5 \to 4 \to 1$ ✓ (visits all 6 vertices exactly once)</li>
+  <li>Cycle: $1 \to 4 \to 5 \to 2 \to 1$ ✗ (doesn’t visit vertices 3 and 6)</li>
+</ul>
+
+<h3 id="visual-example">Visual Example</h3>
+
+<p>A graph with a Rudrata cycle highlighted:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
+    |\ /|
+    | X |
+    |/ \|
+    3---4
+</code></pre></div></div>
+
+<ul>
+  <li>Rudrata cycle: $1 \to 2 \to 4 \to 3 \to 1$ (visits all 4 vertices and returns to start)</li>
+  <li>This is a complete graph $K_4$, so it has many Hamiltonian cycles</li>
+</ul>
+
+<h2 id="why-rudrata-cycle-is-in-np">Why Rudrata Cycle is in NP</h2>
+
+<p>To show that Rudrata Cycle is NP-complete, we first need to show it’s in NP.</p>
+
+<p><strong>Rudrata Cycle ∈ NP:</strong></p>
+
+<p>Given a candidate solution (a sequence of vertices representing a cycle), we can verify in polynomial time:</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that the cycle has exactly $</td>
+          <td>V</td>
+          <td>$ vertices: $O(</td>
+          <td>V</td>
+          <td>)$ time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that each vertex appears exactly once: $O(</td>
+          <td>V</td>
+          <td>)$ time (use a set or array)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that consecutive vertices in the cycle are adjacent: $O(</td>
+          <td>V</td>
+          <td>)$ time (check $</td>
+          <td>V</td>
+          <td>$ edges, including the wrap-around edge from last to first)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Check that the cycle returns to start: $O(1)$ time</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Total verification time: $O(</td>
+      <td>V</td>
+      <td>)$, which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
+
+<p>The standard proof that Rudrata Cycle is NP-complete reduces directly from 3-SAT.</p>
+
+<h3 id="construction">Construction</h3>
+
+<p>For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:</p>
+
+<p><strong>Key Idea:</strong> Create a graph where a Rudrata cycle corresponds to a satisfying assignment.</p>
+
+<ol>
+  <li><strong>For each variable $x_i$:</strong>
+    <ul>
+      <li>Create a “variable gadget”: a row of vertices representing the variable</li>
+      <li>Typically: vertices arranged horizontally, where going “left” means $x_i = \text{TRUE}$ and going “right” means $x_i = \text{FALSE}$</li>
+      <li>Example: For variable $x_i$, create vertices $v_{i,1}, v_{i,2}, \ldots, v_{i,k}$ where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)</li>
+    </ul>
+  </li>
+  <li><strong>For each clause $C_j$:</strong>
+    <ul>
+      <li>Create a “clause gadget”: vertices that can be visited if the clause is satisfied</li>
+      <li>Connect clause vertices to variable vertices corresponding to literals in the clause</li>
+      <li>The cycle must visit clause vertices, which is only possible if at least one literal is true</li>
+    </ul>
+  </li>
+  <li><strong>Connect gadgets:</strong>
+    <ul>
+      <li>Chain variable gadgets together in sequence</li>
+      <li>Connect clause gadgets to appropriate variable positions</li>
+      <li>Ensure a Rudrata cycle visits all vertices exactly once</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="simplified-construction-example">Simplified Construction Example</h3>
+
+<p>A common construction uses:</p>
+
+<p><strong>Variable Gadget:</strong></p>
+<ul>
+  <li>For each variable $x_i$, create a horizontal chain of vertices</li>
+  <li>The cycle can traverse this chain in two ways (encoding TRUE/FALSE)</li>
+</ul>
+
+<p><strong>Clause Gadget:</strong></p>
+<ul>
+  <li>For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create vertices connected to the variable gadgets</li>
+  <li>If the cycle takes the path corresponding to a true literal, it can visit the clause vertex</li>
+</ul>
+
+<p><strong>Why This Works:</strong></p>
+
+<p><strong>Forward Direction (3-SAT satisfiable → Rudrata Cycle exists):</strong></p>
+<ul>
+  <li>If $\phi$ is satisfiable, construct cycle through variable gadgets based on assignment</li>
+  <li>Visit clause vertices for satisfied clauses</li>
+  <li>This gives a valid Rudrata cycle</li>
+</ul>
+
+<p><strong>Reverse Direction (Rudrata Cycle exists → 3-SAT satisfiable):</strong></p>
+<ul>
+  <li>Extract truth assignment from cycle’s path through variable gadgets</li>
+  <li>Since all clause vertices are visited, each clause has at least one true literal</li>
+  <li>This gives a satisfying assignment</li>
+</ul>
+
+<h2 id="relationship-to-other-problems">Relationship to Other Problems</h2>
+
+<p>The Rudrata Cycle Problem is closely related to several important problems:</p>
+
+<h3 id="rudrata-path">Rudrata Path</h3>
+
+<p>As we saw in the previous post:</p>
+<ul>
+  <li><strong>Rudrata Cycle ≤ₚ Rudrata Path</strong>: Break cycle into path</li>
+  <li><strong>Rudrata Path ≤ₚ Rudrata Cycle</strong>: Connect path ends to form cycle</li>
+  <li>They are polynomially equivalent</li>
+</ul>
+
+<h3 id="traveling-salesman-problem-tsp">Traveling Salesman Problem (TSP)</h3>
+
+<p><strong>TSP Decision Problem:</strong></p>
+<ul>
+  <li>Given complete graph with edge weights and bound $B$</li>
+  <li>Does there exist a Rudrata cycle with total weight $\leq B$?</li>
+</ul>
+
+<p><strong>Relationship:</strong></p>
+<ul>
+  <li>TSP is a weighted version of Rudrata Cycle</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight $</td>
+          <td>V</td>
+          <td>$ exists</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>TSP reduces to Rudrata Cycle: use unweighted version</li>
+  <li>They are essentially the same problem</li>
+</ul>
+
+<h3 id="eulerian-cycle">Eulerian Cycle</h3>
+
+<p><strong>Eulerian Cycle:</strong></p>
+<ul>
+  <li>Visits each <strong>edge</strong> exactly once (vs. Hamiltonian cycle visits each <strong>vertex</strong> exactly once)</li>
+</ul>
+
+<p><strong>Key Difference:</strong></p>
+<ul>
+  <li>Eulerian cycle: polynomial-time solvable (check degrees, use Fleury’s or Hierholzer’s algorithm)</li>
+  <li>Hamiltonian cycle: NP-complete</li>
+  <li>This demonstrates how a small change in problem statement can dramatically affect complexity</li>
+</ul>
+
+<h2 id="practical-implications">Practical Implications</h2>
+
+<h3 id="why-rudrata-cycle-is-hard">Why Rudrata Cycle is Hard</h3>
+
+<p>The Rudrata Cycle Problem is NP-complete, which means:</p>
+
+<ol>
+  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
+  <li><strong>Brute Force</strong>: Try all $(n-1)!/2$ possible cycles (for undirected graphs) - factorial time</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in $O(2^n \cdot n^2)$ time using bitmask DP (similar to TSP)</li>
+  <li><strong>Backtracking</strong>: Practical for small instances, but still exponential worst-case</li>
+</ol>
+
+<h3 id="dynamic-programming-solution">Dynamic Programming Solution</h3>
+
+<p><strong>Subproblem:</strong> $dp[mask][v] = \text{true}$ if there exists a path visiting all vertices in $mask$ ending at vertex $v$, and this path can be extended to a cycle.</p>
+
+<p><strong>Recurrence:</strong></p>
+<ul>
+  <li>Base case: $dp[2^i][i] = \text{true}$ for all $i$ (path of length 1)</li>
+  <li>Recurrence: $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus {v}][u]$</li>
+  <li>Final check: For each $v$, check if $dp[2^n-1][v] = \text{true}$ and $(v, \text{start})$ is an edge</li>
+</ul>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: RudrataCycleDP(G)
+1. n = |V|
+2. Let dp[0..2^n-1][0..n-1] be a boolean array
+3. for i = 0 to n-1:
+4.     dp[2^i][i] = true
+5. for mask = 1 to 2^n - 1:
+6.     for v = 0 to n-1:
+7.         if v in mask:
+8.             for each neighbor u of v:
+9.                 if u in mask:
+10.                    dp[mask][v] = dp[mask][v] OR dp[mask - 2^v][u]
+11. for v = 0 to n-1:
+12.     if dp[2^n - 1][v] AND (v, start) is an edge:
+13.         return true
+14. return false
+</code></pre></div></div>
+
+<p><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$
+<strong>Space Complexity:</strong> $O(2^n \cdot n)$</p>
+
+<h2 id="runtime-analysis">Runtime Analysis</h2>
+
+<h3 id="brute-force-approach">Brute Force Approach</h3>
+
+<p><strong>Algorithm:</strong> Try all $(n-1)!/2$ possible cycles (for undirected graphs)</p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O((n-1)! \cdot n) = O(n!)$</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for storing current cycle</li>
+  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid cycle ($O(n)$ checks including wrap-around)</li>
+</ul>
+
+<h3 id="dynamic-programming-held-karp-algorithm">Dynamic Programming (Held-Karp Algorithm)</h3>
+
+<p><strong>Algorithm:</strong> Bitmask DP as described above</p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(2^n \cdot n^2)$</li>
+  <li><strong>Space Complexity:</strong> $O(2^n \cdot n)$</li>
+  <li><strong>Subproblem:</strong> $dp[mask][v]$ = true if path exists visiting all vertices in $mask$ ending at $v$</li>
+  <li><strong>Final Check:</strong> Verify edge exists from last vertex to start vertex</li>
+</ul>
+
+<h3 id="backtracking">Backtracking</h3>
+
+<p><strong>Algorithm:</strong> Systematic search with pruning</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
+  <li><strong>Space Complexity:</strong> $O(n)$ for recursion stack</li>
+  <li><strong>Pruning:</strong> Stop if current path can’t form a cycle visiting all vertices</li>
+</ul>
+
+<h3 id="special-cases">Special Cases</h3>
+
+<p><strong>Complete Graphs:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(1)$ - trivial, any cycle works</li>
+</ul>
+
+<p><strong>Trees:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(n)$ - check if tree has exactly $n-1$ edges (then no cycle possible unless $n=2$)</li>
+</ul>
+
+<h3 id="verification-complexity">Verification Complexity</h3>
+
+<p><strong>Given a candidate cycle:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> $O(n)$ - verify all $n$ edges exist (including wrap-around)</li>
+  <li><strong>Space Complexity:</strong> $O(1)$ additional space</li>
+  <li>This polynomial-time verifiability shows Rudrata Cycle is in NP</li>
+</ul>
+
+<h3 id="real-world-applications">Real-World Applications</h3>
+
+<p>Rudrata Cycle has numerous applications:</p>
+
+<ol>
+  <li><strong>Route Planning</strong>: Finding routes that visit all locations and return to start (TSP)</li>
+  <li><strong>Circuit Design</strong>: Designing circuits that visit all components</li>
+  <li><strong>DNA Sequencing</strong>: Finding cycles in overlap graphs</li>
+  <li><strong>Network Analysis</strong>: Analyzing connectivity and designing network topologies</li>
+  <li><strong>Game Theory</strong>: Solving puzzles and games</li>
+  <li><strong>Scheduling</strong>: Sequencing tasks with return constraints</li>
+  <li><strong>Logistics</strong>: Vehicle routing, delivery optimization</li>
+</ol>
+
+<h3 id="special-cases-1">Special Cases</h3>
+
+<p>Some restricted versions of Rudrata Cycle are tractable:</p>
+
+<ul>
+  <li><strong>Complete Graphs</strong>: Always has a Rudrata cycle (any permutation works)</li>
+  <li><strong>Dirac’s Theorem</strong>: If $\deg(v) \geq n/2$ for all vertices, then Hamiltonian cycle exists (but finding it is still hard)</li>
+  <li><strong>Ore’s Theorem</strong>: If $\deg(u) + \deg(v) \geq n$ for all non-adjacent $u,v$, then Hamiltonian cycle exists</li>
+  <li><strong>Grid Graphs</strong>: Can be solved efficiently for certain grid structures</li>
+  <li><strong>Bounded Treewidth</strong>: Can be solved efficiently using tree decomposition</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Rudrata Cycle is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
+  <li><strong>TSP Connection</strong>: Traveling Salesman Problem is essentially weighted Rudrata Cycle</li>
+  <li><strong>Path vs Cycle</strong>: Rudrata Cycle and Rudrata Path are polynomially equivalent</li>
+  <li><strong>Dynamic Programming</strong>: $O(2^n \cdot n^2)$ time solution using bitmask DP works for small graphs</li>
+  <li><strong>Practical Algorithms</strong>: Despite NP-completeness, DP and heuristics work well for many practical instances</li>
+</ol>
+
+<h2 id="reduction-summary">Reduction Summary</h2>
+
+<p><strong>3-SAT ≤ₚ Rudrata Cycle:</strong></p>
+<ul>
+  <li>Construct graph with variable and clause gadgets</li>
+  <li>Satisfying assignment ↔ Rudrata cycle</li>
+  <li>The construction ensures cycle visits all vertices exactly once</li>
+</ul>
+
+<p><strong>Rudrata Cycle ≤ₚ TSP:</strong></p>
+<ul>
+  <li>Given Rudrata Cycle instance: graph $G$</li>
+  <li>Create complete graph $G’$ with edge weights: 1 if edge exists in $G$, $\infty$ otherwise</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Rudrata cycle exists ↔ TSP has solution of weight $</td>
+          <td>V</td>
+          <td>$</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>TSP ≤ₚ Rudrata Cycle:</strong></p>
+<ul>
+  <li>Given TSP instance, ask if unweighted version has Hamiltonian cycle</li>
+  <li>They are essentially equivalent</li>
+</ul>
+
+<p>All reductions are polynomial-time, establishing Rudrata Cycle as NP-complete.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
+  <li><strong>Hamilton’s Icosian Game</strong>: Historical context of the problem</li>
+  <li><strong>TSP</strong>: Understanding the relationship to Traveling Salesman Problem</li>
+  <li><strong>Dynamic Programming</strong>: CLRS covers bitmask DP techniques for TSP</li>
+  <li><strong>Graph Theory</strong>: Dirac’s and Ore’s theorems provide sufficient conditions</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>
+    <p><strong>Find all Rudrata cycles</strong>: For the complete graph $K_4$ with vertices ${1,2,3,4}$, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they’re rotations or reversals)</p>
+  </li>
+  <li>
+    <p><strong>Prove the reduction</strong>: Show that Rudrata Cycle reduces to TSP. What edge weights should you use?</p>
+  </li>
+  <li>
+    <p><strong>DP implementation</strong>: Implement the dynamic programming algorithm for Rudrata Cycle. Test it on small graphs and analyze its performance.</p>
+  </li>
+  <li>
+    <p><strong>Path to Cycle</strong>: Show that Rudrata Path reduces to Rudrata Cycle. How do you modify the graph?</p>
+  </li>
+  <li>
+    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the $O(2^n \cdot n^2)$ time complexity. Can you optimize the space complexity?</p>
+  </li>
+  <li>
+    <p><strong>Special cases</strong>: Research Dirac’s theorem. If a graph satisfies the conditions, does that mean we can find a Hamiltonian cycle in polynomial time?</p>
+  </li>
+  <li>
+    <p><strong>Eulerian vs Hamiltonian</strong>: Explain the key difference between Eulerian cycles and Hamiltonian cycles. Why is one polynomial-time and the other NP-complete?</p>
+  </li>
+  <li>
+    <p><strong>Extension</strong>: Research approximation algorithms for TSP. What approximation ratios can be achieved? What about metric TSP?</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>Understanding the Rudrata Cycle Problem provides crucial insight into cycle problems in graph theory and their connection to optimization problems like TSP. The relationship to 3-SAT demonstrates how logical constraints can be encoded as graph structures.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-navigation">
+      <a href="/blog_algorithms/posts/" class="back-to-posts">← Back to All Posts</a>
+    </div>
+  </footer><a class="u-url" href="/blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/" hidden></a>
+</article>
+
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog_algorithms/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Robina Li</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Robina Li</li><li><a class="u-email" href="mailto:robinali34@gmail.com">robinali34@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><div class="social-links">
+  <ul class="social-media-list"><li><a href="https://github.com/robinali34"><svg class="svg-icon"><use xlink:href="/blog_algorithms/assets/minima-social-icons.svg#github"></use></svg> <span class="username">robinali34</span></a></li></ul>
+</div>
+
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>CS6515 Blog - Graduate Algorithms course notes and resources</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
+
