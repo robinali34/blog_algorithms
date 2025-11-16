@@ -65,16 +65,16 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix A in mathbb{Z}^{m times n} (constraint coefficients)</li>
-  <li>A vector b in mathbb{Z}^m (constraint bounds)</li>
-  <li>A vector c in mathbb{Z}^n (objective coefficients)</li>
+  <li>A matrix A ∈ ℤ^(m×n) (constraint coefficients)</li>
+  <li>A vector b ∈ ℤ^m (constraint bounds)</li>
+  <li>A vector c ∈ ℤ^n (objective coefficients)</li>
   <li>An integer k (target value)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists an integer vector x in mathbb{Z}^n such that:</p>
+<p><strong>Output:</strong> YES if there exists an integer vector x ∈ ℤ^n such that:</p>
 <ul>
-  <li>Ax leq b (constraints satisfied)</li>
-  <li>c^T x geq k (objective value at least k)</li>
+  <li>Ax ≤ b (constraints satisfied)</li>
+  <li>c^T x ≥ k (objective value at least k)</li>
 </ul>
 
 <p>NO otherwise</p>
@@ -83,7 +83,7 @@
 
 <p><strong>Input:</strong> Same as above (without k)</p>
 
-<p><strong>Output:</strong> The maximum value of c^T x subject to Ax leq b and x in mathbb{Z}^n</p>
+<p><strong>Output:</strong> The maximum value of c^T x subject to Ax ≤ b and x ∈ ℤ^n</p>
 
 <h3 id="variants">Variants</h3>
 
@@ -108,13 +108,13 @@
 
 <p>Consider the ILP:</p>
 
-<p><strong>Maximize:</strong> 3x₁ + 2x₁</p>
+<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
 
 <p><strong>Subject to:</strong></p>
 <ul>
-  <li>2x₁ + x₁ leq 6</li>
-  <li>x₁ + 2x₁ leq 8</li>
-  <li>x₁, x₁ geq 0 and integer</li>
+  <li>2x₁ + x₂ ≤ 6</li>
+  <li>x₁ + 2x₂ ≤ 8</li>
+  <li>x₁, x₂ ≥ 0 and integer</li>
 </ul>
 
 <p><strong>Feasible integer solutions:</strong></p>
@@ -139,8 +139,8 @@
 <p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
 <ol>
   <li>Check that x has integer values: O(n) time</li>
-  <li>Check that Ax leq b: O(mn) time (matrix-vector multiplication)</li>
-  <li>Check that c^T x geq k: O(n) time</li>
+  <li>Check that Ax ≤ b: O(mn) time (matrix-vector multiplication)</li>
+  <li>Check that c^T x ≥ k: O(n) time</li>
 </ol>
 
 <p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
@@ -153,53 +153,53 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
+<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
 
 <p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
 
 <ol>
   <li><strong>Variables:</strong>
     <ul>
-      <li>For each Boolean variable x_i, create an integer variable y_i in {0, 1}</li>
-      <li>y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE</li>
+      <li>For each Boolean variable xᵢ, create an integer variable yᵢ ∈ {0, 1}</li>
+      <li>yᵢ = 1 means xᵢ = TRUE, yᵢ = 0 means xᵢ = FALSE</li>
     </ul>
   </li>
   <li><strong>Clauses:</strong>
     <ul>
-      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3):
+      <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
         <ul>
-          <li>If literal is x_i, use y_i</li>
-          <li>If literal is ¬ x_i, use (1 - y_i)</li>
-          <li>Constraint: y_{l_1} + y_{l_2} + y_{l_3} geq 1 (at least one literal is true)</li>
+          <li>If literal is xᵢ, use yᵢ</li>
+          <li>If literal is ¬xᵢ, use (1 - yᵢ)</li>
+          <li>Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)</li>
         </ul>
       </li>
     </ul>
 
-    <p>Example: For clause (x₁  ∨  ¬ x₁  ∨  x₁):</p>
+    <p>Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):</p>
     <ul>
-      <li>Constraint: y_1 + (1 - y_2) + y_3 ≥ 1</li>
-      <li>Simplifies to: y_1 - y_2 + y_3 ≥ 0</li>
+      <li>Constraint: y₁ + (1 - y₂) + y₃ ≥ 1</li>
+      <li>Simplifies to: y₁ - y₂ + y₃ ≥ 0</li>
     </ul>
   </li>
   <li>
-    <p><strong>Objective:</strong> Maximize ∑_{i=1}^n y_i (or any objective, since we’re just checking feasibility)</p>
+    <p><strong>Objective:</strong> Maximize ∑ᵢ₌₁ⁿ yᵢ (or any objective, since we’re just checking feasibility)</p>
   </li>
-  <li><strong>Bounds:</strong> 0 ≤ y_i ≤ 1 for all i (enforces binary variables)</li>
+  <li><strong>Bounds:</strong> 0 ≤ yᵢ ≤ 1 for all i (enforces binary variables)</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
 <ul>
-  <li>If \phi is satisfiable, set y_i = 1 if x_i = TRUE, else y_i = 0</li>
+  <li>If φ is satisfiable, set yᵢ = 1 if xᵢ = TRUE, else yᵢ = 0</li>
   <li>Each clause constraint is satisfied (at least one literal is 1)</li>
   <li>This gives a feasible ILP solution</li>
 </ul>
 
 <p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
 <ul>
-  <li>If ILP has feasible solution with y_i ∈ {0,1}, set x_i = TRUE if y_i = 1, else x_i = FALSE</li>
-  <li>Since each clause constraint requires at least one y_i = 1 (or (1-y_i) = 1), each clause has at least one true literal</li>
+  <li>If ILP has feasible solution with yᵢ ∈ {0,1}, set xᵢ = TRUE if yᵢ = 1, else xᵢ = FALSE</li>
+  <li>Since each clause constraint requires at least one yᵢ = 1 (or (1-yᵢ) = 1), each clause has at least one true literal</li>
   <li>This gives a satisfying assignment</li>
 </ul>
 
@@ -238,8 +238,8 @@
 
 <p><strong>Example:</strong></p>
 <ul>
-  <li>ILP: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 integer</li>
-  <li>LP relaxation: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 (real)</li>
+  <li>ILP: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 integer</li>
+  <li>LP relaxation: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 (real)</li>
   <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
   <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
 </ul>
@@ -264,7 +264,7 @@
 <ul>
   <li>Solve LP relaxation</li>
   <li>If solution is fractional, branch on a fractional variable</li>
-  <li>Create two subproblems: x_i ≤ \lfloor x_i^* \rfloor and x_i ≥ \lceil x_i^* \rceil</li>
+  <li>Create two subproblems: xᵢ ≤ ⌊xᵢ<em>⌋ and xᵢ ≥ ⌈xᵢ</em>⌉</li>
   <li>Recursively solve subproblems</li>
   <li>Prune branches that can’t improve best known solution</li>
 </ul>
@@ -465,7 +465,7 @@
     </ul>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ILP instance.</p>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
   </li>
   <li>
     <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>

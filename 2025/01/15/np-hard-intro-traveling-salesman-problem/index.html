@@ -92,7 +92,7 @@
 
 <p><strong>Metric TSP:</strong></p>
 <ul>
-  <li>Distances satisfy triangle inequality: w(u,v) \leq w(u,w) + w(w,v)</li>
+  <li>Distances satisfy triangle inequality: w(u,v) ≤ w(u,w) + w(w,v)</li>
   <li>More structured, better approximation algorithms exist</li>
 </ul>
 
@@ -134,14 +134,14 @@ B---C---D
 
 <p><strong>Possible tours:</strong></p>
 <ul>
-  <li>A → B \to C \to D → A: 10 + 10 + 10 + 20 = 50</li>
-  <li>A → B \to D \to C → A: 10 + 25 + 10 + 15 = 60</li>
-  <li>A → C \to B \to D → A: 15 + 10 + 25 + 20 = 70</li>
-  <li>A → C \to D \to B → A: 15 + 10 + 25 + 10 = 60</li>
-  <li>A → D \to C \to B → A: 20 + 10 + 10 + 10 = 50 (same as first, reversed)</li>
+  <li>A → B → C → D → A: 10 + 10 + 10 + 20 = 50</li>
+  <li>A → B → D → C → A: 10 + 25 + 10 + 15 = 60</li>
+  <li>A → C → B → D → A: 15 + 10 + 25 + 20 = 70</li>
+  <li>A → C → D → B → A: 15 + 10 + 25 + 10 = 60</li>
+  <li>A → D → C → B → A: 20 + 10 + 10 + 10 = 50 (same as first, reversed)</li>
 </ul>
 
-<p><strong>Optimal tour:</strong> A → B \to C \to D → A (or reverse) with weight 50.</p>
+<p><strong>Optimal tour:</strong> A → B → C → D → A (or reverse) with weight 50.</p>
 
 <h2 id="why-tsp-is-in-np">Why TSP is in NP</h2>
 
@@ -215,7 +215,7 @@ B---C---D
 <p><strong>Recurrence:</strong></p>
 <ul>
   <li>Base case: dp[2^0][0] = 0 (at start, cost is 0)</li>
-  <li>Recurrence: dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
+  <li>Recurrence: dp[mask][v] = min_{u ∈ mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
   <li>Final answer: min_{v} {dp[2^n-1][v] + w(v,0)} (return to start)</li>
 </ul>
 
@@ -238,8 +238,8 @@ B---C---D
 15. return result
 </code></pre></div></div>
 
-<p><strong>Time Complexity:</strong> O(2^n \cdot n^2)
-<strong>Space Complexity:</strong> O(2^n \cdot n)</p>
+<p><strong>Time Complexity:</strong> O(2^n · n^2)
+<strong>Space Complexity:</strong> O(2^n · n)</p>
 
 <p>This is the <strong>Held-Karp algorithm</strong>, one of the most efficient exact algorithms for TSP.</p>
 
@@ -283,7 +283,7 @@ B---C---D
 <p><strong>Why it works:</strong></p>
 <ul>
   <li>MST weight ≤ optimal TSP tour (remove one edge from optimal tour to get spanning tree)</li>
-  <li>Doubled MST has weight 2 · \text{MST} \leq 2 \cdot OPT</li>
+  <li>Doubled MST has weight 2 · MST ≤ 2 · OPT</li>
   <li>Shortcutting doesn’t increase cost (triangle inequality)</li>
 </ul>
 
@@ -296,7 +296,7 @@ B---C---D
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known exact algorithms are exponential</li>
   <li><strong>Brute Force</strong>: Try all (n-1)!/2 tours - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: O(2^n \cdot n^2) time (Held-Karp)</li>
+  <li><strong>Dynamic Programming</strong>: O(2^n · n^2) time (Held-Karp)</li>
   <li><strong>Branch-and-Bound</strong>: Practical for medium instances</li>
   <li><strong>Heuristics</strong>: Very effective in practice</li>
 </ol>
@@ -319,7 +319,7 @@ B---C---D
 
 <p><strong>Exact Algorithms:</strong></p>
 <ul>
-  <li><strong>Held-Karp DP</strong>: O(2^n \cdot n^2) - best for small-medium instances</li>
+  <li><strong>Held-Karp DP</strong>: O(2^n · n^2) - best for small-medium instances</li>
   <li><strong>Branch-and-Bound</strong>: Combine with LP relaxation</li>
   <li><strong>Cutting Planes</strong>: Add constraints to eliminate suboptimal tours</li>
   <li><strong>Concorde</strong>: State-of-the-art exact TSP solver</li>
@@ -347,7 +347,7 @@ B---C---D
 
 <p><strong>Algorithm:</strong> Try all (n-1)!/2 tours (for symmetric TSP)</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n! \cdot n)</li>
+  <li><strong>Time Complexity:</strong> O(n! · n)</li>
   <li><strong>Space Complexity:</strong> O(n) for storing current tour</li>
   <li><strong>Analysis:</strong> For each permutation, compute tour cost (O(n) time)</li>
 </ul>
@@ -356,10 +356,10 @@ B---C---D
 
 <p><strong>Algorithm:</strong> Bitmask DP</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(2^n \cdot n^2)</li>
-  <li><strong>Space Complexity:</strong> O(2^n \cdot n)</li>
+  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
   <li><strong>Subproblem:</strong> dp[mask][v] = minimum cost to visit all vertices in mask ending at v</li>
-  <li><strong>Recurrence:</strong> dp[mask][v] = min_{u \in mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
+  <li><strong>Recurrence:</strong> dp[mask][v] = min_{u ∈ mask, u \neq v} {dp[mask \ {v}][u] + w(u,v)}</li>
   <li><strong>Final Answer:</strong> min_v {dp[2^n-1][v] + w(v,0)}</li>
 </ul>
 
@@ -376,7 +376,7 @@ B---C---D
 
 <p><strong>MST-Based 2-Approximation:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n^2 \log n) for MST + Eulerian tour + shortcutting</li>
+  <li><strong>Time Complexity:</strong> O(n^2 log n) for MST + Eulerian tour + shortcutting</li>
   <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation Ratio:</strong> 2</li>
 </ul>
@@ -417,7 +417,7 @@ B---C---D
 
 <ol>
   <li><strong>TSP is NP-Complete</strong>: Proven by reduction from Hamiltonian Cycle</li>
-  <li><strong>Dynamic Programming</strong>: Held-Karp algorithm solves in O(2^n \cdot n^2) time</li>
+  <li><strong>Dynamic Programming</strong>: Held-Karp algorithm solves in O(2^n · n^2) time</li>
   <li><strong>Approximation</strong>: 1.5-approximation (Christofides) and 2-approximation (MST-based) for metric TSP</li>
   <li><strong>Practical Solvers</strong>: Modern solvers can handle instances with thousands of cities</li>
   <li><strong>Widespread Applications</strong>: TSP appears in many real-world optimization problems</li>
@@ -460,7 +460,7 @@ B---C---D
     <p><strong>Approximation</strong>: Implement the MST-based 2-approximation algorithm. Test it on metric TSP instances and compare to optimal.</p>
   </li>
   <li>
-    <p><strong>Time complexity</strong>: Verify the O(2^n \cdot n^2) time complexity of Held-Karp. Can you optimize the space complexity?</p>
+    <p><strong>Time complexity</strong>: Verify the O(2^n · n^2) time complexity of Held-Karp. Can you optimize the space complexity?</p>
   </li>
   <li>
     <p><strong>Christofides</strong>: Research and implement the Christofides algorithm. Why does it achieve 1.5-approximation?</p>

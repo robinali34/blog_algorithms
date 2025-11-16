@@ -95,7 +95,7 @@
 
 <h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
 
-<p><strong>Problem:</strong> Given n activities with start and finish times, select the maximum number of activities that don’t overlap.</p>
+<p><strong>Problem:</strong> Given n activities with start and finish ×, select the maximum number of activities that don’t overlap.</p>
 
 <p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
 
@@ -118,7 +118,7 @@
   <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
 <strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
@@ -159,7 +159,7 @@
   <li>Value: 60 + 100 + 80 = 240</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
 <strong>Space Complexity:</strong> O(1) additional space</p>
 
 <p><strong>Why It Works:</strong></p>
@@ -202,7 +202,7 @@
   <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
 </ul>
 
-<p><strong>Time Complexity:</strong> O(E \log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E \log E)
+<p><strong>Time Complexity:</strong> O(E log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E log E)
 <strong>Space Complexity:</strong> O(V) for Union-Find</p>
 
 <p><strong>Why It Works:</strong></p>
@@ -238,8 +238,8 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: O(E \log V)</li>
-  <li>With Fibonacci heap: O(E + V \log V)
+  <li>With binary heap: O(E log V)</li>
+  <li>With Fibonacci heap: O(E + V log V)
 <strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
@@ -276,7 +276,7 @@
   </li>
 </ul>
 
-<p><strong>Time Complexity:</strong> O(n \log n) where n is number of characters
+<p><strong>Time Complexity:</strong> O(n log n) where n is number of characters
 <strong>Space Complexity:</strong> O(n)</p>
 
 <p><strong>Why It Works:</strong></p>
@@ -327,8 +327,8 @@
 
 <p><strong>Time Complexity:</strong></p>
 <ul>
-  <li>With binary heap: O((V+E) \log V)</li>
-  <li>With Fibonacci heap: O(E + V \log V)
+  <li>With binary heap: O((V+E) log V)</li>
+  <li>With Fibonacci heap: O(E + V log V)
 <strong>Space Complexity:</strong> O(V)</li>
 </ul>
 
@@ -348,7 +348,7 @@
 
 <p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
 
-<p><strong>Time Complexity:</strong> O(n \log n)
+<p><strong>Time Complexity:</strong> O(n log n)
 <strong>Space Complexity:</strong> O(1)</p>
 
 <h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
@@ -393,7 +393,7 @@
   </tbody>
 </table>
 
-<p><strong>Approximation Ratio:</strong> H_n where H_n = sum_{i=1}^n 1/i approx ln n (harmonic number)</p>
+<p><strong>Approximation Ratio:</strong> H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)</p>
 
 <p><strong>Why It’s an Approximation:</strong></p>
 <ul>
@@ -540,7 +540,7 @@
     <tr>
       <td>Activity Selection</td>
       <td>Sort by finish time</td>
-      <td>O(n \log n)</td>
+      <td>O(n log n)</td>
       <td>O(1)</td>
       <td> </td>
       <td> </td>
@@ -552,7 +552,7 @@
     <tr>
       <td>Fractional Knapsack</td>
       <td>Sort by value/weight</td>
-      <td>O(n \log n)</td>
+      <td>O(n log n)</td>
       <td>O(1)</td>
       <td> </td>
       <td> </td>
@@ -564,7 +564,7 @@
     <tr>
       <td>MST (Kruskal)</td>
       <td>Sort edges, Union-Find</td>
-      <td>O(E \log E)</td>
+      <td>O(E log E)</td>
       <td>O(V)</td>
       <td> </td>
       <td> </td>
@@ -576,7 +576,7 @@
     <tr>
       <td>MST (Prim)</td>
       <td>Priority queue</td>
-      <td>O(E \log V)</td>
+      <td>O(E log V)</td>
       <td>O(V)</td>
       <td> </td>
       <td> </td>
@@ -588,7 +588,7 @@
     <tr>
       <td>Huffman Coding</td>
       <td>Min-heap</td>
-      <td>O(n \log n)</td>
+      <td>O(n log n)</td>
       <td>O(n)</td>
       <td> </td>
       <td> </td>
@@ -600,7 +600,7 @@
     <tr>
       <td>Dijkstra’s</td>
       <td>Priority queue</td>
-      <td>O((V+E) \log V)</td>
+      <td>O((V+E) log V)</td>
       <td>O(V)</td>
       <td> </td>
       <td> </td>
@@ -629,7 +629,7 @@
 <ol>
   <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
   <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
-  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n \log n) or better)</li>
+  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n log n) or better)</li>
   <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
   <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
   <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>

@@ -69,13 +69,13 @@
   <li>A target integer t</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a subset S’ subseteq S such that sum_{a_i in S’} a_i = t, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a subset S’ subseteq S such that ∑_{a_i ∈ S’} a_i = t, NO otherwise</p>
 
 <p><strong>Subset Sum Optimization Problem:</strong></p>
 
 <p><strong>Input:</strong> A set of integers S = {a_1, a_2, …, a_n} and target t</p>
 
-<p><strong>Output:</strong> The maximum sum leq t achievable by any subset, or the subset itself</p>
+<p><strong>Output:</strong> The maximum sum ≤ t achievable by any subset, or the subset itself</p>
 
 <h3 id="example">Example</h3>
 
@@ -137,7 +137,7 @@
 <p><strong>Reduction:</strong></p>
 <ol>
   <li>Given a Partition instance: set A = {a_1, a_2, …, a_n}</li>
-  <li>Compute s = sum_{i=1}^n a_i (total sum)</li>
+  <li>Compute s = ∑_{i=1}^n a_i (total sum)</li>
   <li>Return Subset Sum instance: set A and target t = s/2</li>
 </ol>
 
@@ -163,14 +163,14 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
+<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode the satisfiability constraints using numbers in base 10 (or any base &gt; number of clauses).</p>
 
 <ol>
   <li><strong>Create numbers:</strong>
     <ul>
-      <li>For each variable x_i, create two numbers: v_i (for x_i = TRUE) and overline{v_i} (for x_i = FALSE)</li>
+      <li>For each variable x_i, create two numbers: v_i (for x_i = TRUE) and ̅{v_i} (for x_i = FALSE)</li>
       <li>Each number has n + m digits:
         <ul>
           <li>First n digits: 1 in position i (for variable x_i), 0 elsewhere</li>
@@ -185,14 +185,14 @@
       <li>Last m digits: all 1’s (each clause must be satisfied)</li>
     </ul>
   </li>
-  <li><strong>Set S:</strong> All v_i and overline{v_i} numbers</li>
+  <li><strong>Set S:</strong> All v_i and ̅{v_i} numbers</li>
 </ol>
 
 <h3 id="why-this-works">Why This Works</h3>
 
 <p><strong>Intuition:</strong></p>
 <ul>
-  <li>The first n digits ensure we pick exactly one literal per variable (either v_i or overline{v_i})</li>
+  <li>The first n digits ensure we pick exactly one literal per variable (either v_i or ̅{v_i})</li>
   <li>The last m digits ensure each clause has at least one true literal</li>
   <li>A subset summing to t corresponds to a satisfying assignment</li>
 </ul>
@@ -201,7 +201,7 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Subset Sum solvable):</strong></p>
 <ul>
-  <li>If phi is satisfiable, pick v_i if x_i = TRUE, else pick overline{v_i}</li>
+  <li>If φ is satisfiable, pick v_i if x_i = TRUE, else pick ̅{v_i}</li>
   <li>Sum these numbers: first n digits sum to all 1’s, last m digits sum to at least all 1’s (each clause satisfied)</li>
   <li>Add slack numbers (0-padded) if needed to reach exactly t</li>
 </ul>
@@ -223,8 +223,8 @@
 
 <p><strong>Recurrence:</strong></p>
 <ul>
-  <li>Base case: dp[0][0] = text{true}, dp[0][s] = false for s &gt; 0</li>
-  <li>Recurrence: dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s - a_i] (if s geq a_i)
+  <li>Base case: dp[0][0] = true, dp[0][s] = false for s &gt; 0</li>
+  <li>Recurrence: dp[i][s] = dp[i-1][s] ∨ dp[i-1][s - a_i] (if s ≥ a_i)
     <ul>
       <li>Either don’t include a_i: dp[i-1][s]</li>
       <li>Or include a_i: dp[i-1][s - a_i]</li>
@@ -356,9 +356,9 @@
 
 <p><strong>Algorithm:</strong> DP table dp[i][s] = true if sum s achievable with first i elements</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n cdot t) where t is target sum</li>
-  <li><strong>Space Complexity:</strong> O(n cdot t) (can be optimized to O(t))</li>
-  <li><strong>Subproblem:</strong> dp[i][s] = dp[i-1][s]  ∨  dp[i-1][s-a_i] (if s geq a_i)</li>
+  <li><strong>Time Complexity:</strong> O(n · t) where t is target sum</li>
+  <li><strong>Space Complexity:</strong> O(n · t) (can be optimized to O(t))</li>
+  <li><strong>Subproblem:</strong> dp[i][s] = dp[i-1][s] ∨ dp[i-1][s-a_i] (if s ≥ a_i)</li>
   <li><strong>Why Pseudo-Polynomial:</strong> Depends on value of t, not just input size. If t = 2^n, then O(n · 2^n) is exponential.</li>
 </ul>
 
@@ -384,7 +384,7 @@
 
 <p><strong>Greedy Approach:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n \log n) (sort first)</li>
+  <li><strong>Time Complexity:</strong> O(n log n) (sort first)</li>
   <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation:</strong> No guaranteed ratio, but works well in practice</li>
 </ul>
@@ -402,7 +402,7 @@
 
 <p>The dynamic programming solution is practical when:</p>
 <ul>
-  <li>Target t is relatively small (e.g., t leq 10^6)</li>
+  <li>Target t is relatively small (e.g., t ≤ 10^6)</li>
   <li>Numbers are bounded</li>
   <li>Need exact solutions (not approximations)</li>
 </ul>

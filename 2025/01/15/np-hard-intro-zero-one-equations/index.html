@@ -65,25 +65,25 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix A in mathbb{Z}^{m times n} (coefficient matrix)</li>
-  <li>A vector b in mathbb{Z}^m (right-hand side)</li>
+  <li>A matrix A ∈ ℤ^{m × n} (coefficient matrix)</li>
+  <li>A vector b ∈ ℤ^m (right-hand side)</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists a vector x in {0,1}^n such that Ax = b, NO otherwise</p>
+<p><strong>Output:</strong> YES if there exists a vector x ∈ {0,1}^n such that Ax = b, NO otherwise</p>
 
-<p><strong>Note:</strong> This is different from general linear equations (which can be solved in polynomial time) because we require x_i in {0,1} for all i.</p>
+<p><strong>Note:</strong> This is different from general linear equations (which can be solved in polynomial time) because we require x_i ∈ {0,1} for all i.</p>
 
 <h3 id="example">Example</h3>
 
 <p>Consider the system:</p>
 
 <p>begin{align}
-x₁ + x₁ + x₁ &amp;= 2 
-x₁ + x₁ &amp;= 1 
-x₁ + x₁ &amp;= 1
+x₁ + x₂ + x₁ &amp;= 2 
+x₁ + x₂ &amp;= 1 
+x₁ + x₂ &amp;= 1
 end{align}</p>
 
-<p>where x₁, x₁, x₁ ∈ {0,1}.</p>
+<p>where x₁, x₂, x₁ ∈ {0,1}.</p>
 
 <p><strong>Trying solutions:</strong></p>
 <ul>
@@ -99,8 +99,8 @@ end{align}</p>
 
 <p>For the system:
 begin{align}
-2x₁ + x₁ &amp;= 2 
-x₁ + x₁ + x₁ &amp;= 2
+2x₁ + x₂ &amp;= 2 
+x₁ + x₂ + x₁ &amp;= 2
 end{align}</p>
 
 <p><strong>Possible 0-1 solutions:</strong></p>
@@ -132,7 +132,7 @@ end{align}</p>
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
+<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 variables and clauses as equations.</p>
 
@@ -145,7 +145,7 @@ end{align}</p>
   </li>
   <li><strong>Clauses:</strong>
     <ul>
-      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create an equation:
+      <li>For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create an equation:
         <ul>
           <li>If literal is x_i, use y_i</li>
           <li>If literal is ¬ x_i, use (1 - y_i)</li>
@@ -160,7 +160,7 @@ end{align}</p>
   </li>
   <li><strong>Better Construction:</strong>
     <ul>
-      <li>For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create a <strong>slack variable</strong> s_j in {0,1}</li>
+      <li>For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create a <strong>slack variable</strong> s_j ∈ {0,1}</li>
       <li>Create equation: y_{l_1} + y_{l_2} + y_{l_3} + s_j = 1</li>
       <li>This ensures at least one literal is true (if all literals are false, s_j must be 1, but then we need additional constraints)</li>
     </ul>
@@ -177,8 +177,8 @@ end{align}</p>
 
 <p><strong>ILP to ZOE Reduction:</strong></p>
 <ul>
-  <li>ILP constraints are inequalities: Ax leq b</li>
-  <li>Convert to equations using slack variables: Ax + s = b where s geq 0</li>
+  <li>ILP constraints are inequalities: Ax ≤ b</li>
+  <li>Convert to equations using slack variables: Ax + s = b where s ≥ 0</li>
   <li>But we need binary variables…</li>
   <li>Use binary expansion for integer variables</li>
   <li>This shows ZOE is NP-complete</li>
@@ -190,10 +190,10 @@ end{align}</p>
 
 <ol>
   <li>
-    <p><strong>For each variable x_i:</strong> Create variable y_i in {0,1}</p>
+    <p><strong>For each variable x_i:</strong> Create variable y_i ∈ {0,1}</p>
   </li>
   <li>
-    <p><strong>For each clause C_j = (l_1  ∨  l_2  ∨  l_3):</strong></p>
+    <p><strong>For each clause C_j = (l_1 ∨ l_2 ∨ l_3):</strong></p>
     <ul>
       <li>Create equation ensuring at least one literal is satisfied</li>
       <li>Use: y_{l_1} + y_{l_2} + y_{l_3} ≥ 1 (but ZOE uses equations, not inequalities)</li>
@@ -267,7 +267,7 @@ end{align}</p>
 <p><strong>1. Brute Force:</strong></p>
 <ul>
   <li>Enumerate all 2ⁿ assignments</li>
-  <li>Check each one: O(2^n cdot mn) time</li>
+  <li>Check each one: O(2^n · mn) time</li>
   <li>Only feasible for small n</li>
 </ul>
 
@@ -312,7 +312,7 @@ end{align}</p>
 
 <p><strong>Algorithm:</strong> Try all 2ⁿ possible 0-1 assignments</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(2^n cdot mn)</li>
+  <li><strong>Time Complexity:</strong> O(2^n · mn)</li>
   <li><strong>Space Complexity:</strong> O(n) for storing current assignment</li>
   <li><strong>Analysis:</strong> For each assignment, compute Ax and compare to b (O(mn) time)</li>
 </ul>
@@ -408,14 +408,14 @@ end{align}</p>
   <li>
     <p><strong>Solve by hand</strong>: For the ZOE system:
 begin{align}
-x₁ + x₁ &amp;= 1 
-x₁ + x₁ &amp;= 1 
-x₁ + x₁ &amp;= 1
+x₁ + x₂ &amp;= 1 
+x₁ + x₂ &amp;= 1 
+x₁ + x₂ &amp;= 1
 end{align}
 Find all 0-1 solutions.</p>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ZOE instance.</p>
+    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.</p>
   </li>
   <li><strong>Formulate as ZOE</strong>: Convert the following to ZOE:
     <ul>

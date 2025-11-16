@@ -121,7 +121,7 @@
 <p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
   <li>Check that the set has at least k vertices: O(k) time</li>
-  <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all \binom{k}{2} = \frac{k(k-1)}{2} pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
+  <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
 </ol>
 
 <table>
@@ -140,26 +140,26 @@
 
 <h3 id="complement-graph">Complement Graph</h3>
 
-<p>Given a graph G = (V, E), its <strong>complement graph</strong> \overline{G} = (V, \overline{E}) has:</p>
+<p>Given a graph G = (V, E), its <strong>complement graph</strong> G̅ = (V, E̅) has:</p>
 <ul>
   <li>The same vertex set V</li>
-  <li>An edge (u, v) in overline{E} if and only if (u, v) notin E</li>
+  <li>An edge (u, v) ∈ E̅ if and only if (u, v) ∉ E</li>
 </ul>
 
-<p>In other words, overline{G} has edges exactly where G doesn’t have edges.</p>
+<p>In other words, G̅ has edges exactly where G doesn’t have edges.</p>
 
 <h3 id="key-relationship">Key Relationship</h3>
 
 <p><strong>Fundamental Observation:</strong></p>
 <ul>
-  <li>S is a <strong>clique</strong> in G <strong>if and only if</strong> S is an <strong>independent set</strong> in overline{G}</li>
+  <li>S is a <strong>clique</strong> in G <strong>if and only if</strong> S is an <strong>independent set</strong> in G̅</li>
 </ul>
 
 <p><strong>Proof:</strong></p>
 <ul>
   <li>If S is a clique in G, then every pair of vertices in S is connected by an edge in G</li>
-  <li>Therefore, no pair of vertices in S is connected by an edge in overline{G}</li>
-  <li>So S is an independent set in overline{G}</li>
+  <li>Therefore, no pair of vertices in S is connected by an edge in G̅</li>
+  <li>So S is an independent set in G̅</li>
   <li>The reverse direction follows similarly</li>
 </ul>
 
@@ -170,13 +170,13 @@
 <p><strong>Reduction:</strong></p>
 <ol>
   <li>Given a Clique instance: graph G and integer k</li>
-  <li>Construct the complement graph overline{G}</li>
-  <li>Return Independent Set instance: graph overline{G} and integer k</li>
+  <li>Construct the complement graph G̅</li>
+  <li>Return Independent Set instance: graph G̅ and integer k</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>G has a clique of size k <strong>if and only if</strong> overline{G} has an independent set of size k</li>
+  <li>G has a clique of size k <strong>if and only if</strong> G̅ has an independent set of size k</li>
   <li>This follows directly from the fundamental observation above</li>
 </ul>
 
@@ -186,7 +186,7 @@
     <table>
       <tbody>
         <tr>
-          <td>Constructing overline{G} takes O(</td>
+          <td>Constructing G̅ takes O(</td>
           <td>V</td>
           <td>^2) time (check all pairs of vertices)</td>
         </tr>
@@ -204,7 +204,7 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m where each clause C_i has 3 literals:</p>
+<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3 literals:</p>
 
 <ol>
   <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
@@ -235,7 +235,7 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Independent Set exists):</strong></p>
 <ul>
-  <li>If \phi is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
+  <li>If φ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
   <li>Pick the vertex corresponding to that true literal from each clause</li>
   <li>These m vertices form an independent set because:
     <ul>
@@ -261,7 +261,7 @@
 <h3 id="example-reduction">Example Reduction</h3>
 
 <p>Consider the 3-SAT instance:
-phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
 
 <p><strong>Step 1: Create vertices</strong></p>
 <ul>
@@ -291,7 +291,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 
 <p>As we’ve seen:</p>
 <ul>
-  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in \overline{G}</li>
+  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in G̅</li>
   <li>This makes Clique and Independent Set polynomially equivalent</li>
 </ul>
 
@@ -344,7 +344,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
   <li><strong>Brute Force</strong>: Check all 2ⁿ subsets of vertices - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion or bitmask DP</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n · n^2) time using inclusion-exclusion or bitmask DP</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -387,9 +387,9 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 
 <h3 id="brute-force-approach">Brute Force Approach</h3>
 
-<p><strong>Algorithm:</strong> Check all \binom{n}{k} subsets of size k</p>
+<p><strong>Algorithm:</strong> Check all C(n,k) subsets of size k</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(binom{n}{k} cdot k^2) = O(n^k cdot k^2)</li>
+  <li><strong>Time Complexity:</strong> O(C(n,k) · k^2) = O(n^k · k^2)</li>
   <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
   <li><strong>Analysis:</strong> For each subset, verify no edges exist between vertices (O(k^2) checks)</li>
 </ul>
@@ -398,8 +398,8 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 
 <p><strong>Algorithm:</strong> Use bitmask DP similar to Clique</p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(2^n cdot n^2)</li>
-  <li><strong>Space Complexity:</strong> O(2^n cdot n)</li>
+  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
+  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
   <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists an independent set in vertices mask ending at v</li>
   <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∉ E} dp[mask \setminus {v}][u]</li>
 </ul>
@@ -452,9 +452,9 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 <p><strong>Clique ≤ₚ Independent Set:</strong></p>
 <ul>
   <li>Given Clique instance: graph G and integer k</li>
-  <li>Construct complement graph \overline{G}</li>
-  <li>Return Independent Set instance: graph \overline{G} and integer k</li>
-  <li>G has clique of size k ↔ \overline{G} has independent set of size k</li>
+  <li>Construct complement graph G̅</li>
+  <li>Return Independent Set instance: graph G̅ and integer k</li>
+  <li>G has clique of size k ↔ G̅ has independent set of size k</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Independent Set:</strong></p>
@@ -480,7 +480,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
 
 <ol>
   <li>
-    <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in \overline{G}.</p>
+    <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in G̅.</p>
   </li>
   <li>
     <table>
@@ -495,7 +495,7 @@ phi = (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)  ∧  (x₁  ∨  x₁  ∨  ¬ x₁)
+(x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)
 Find an independent set of size 3 and determine the corresponding satisfying assignment.</p>
   </li>
   <li>

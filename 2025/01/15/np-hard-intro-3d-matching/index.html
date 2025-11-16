@@ -80,7 +80,7 @@
       </tbody>
     </table>
   </li>
-  <li>A set T subseteq X times Y times Z of triples</li>
+  <li>A set T subseteq X × Y × Z of triples</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists a subset M subseteq T such that:</p>
@@ -111,7 +111,7 @@
 
 <p>Consider:</p>
 <ul>
-  <li>X = {x₁, x₁, x₁}</li>
+  <li>X = {x₁, x₂, x₁}</li>
   <li>Y = {y_1, y_2, y_3}</li>
   <li>Z = {z_1, z_2, z_3}</li>
   <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}</li>
@@ -172,7 +172,7 @@ Triples:
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
+<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
 
 <p><strong>Key Idea:</strong> Create gadgets for variables and clauses, ensuring a perfect 3D matching corresponds to a satisfying assignment.</p>
 
@@ -211,7 +211,7 @@ Triples:
   <li>If matching goes “FALSE path”, it encodes x_i = FALSE</li>
 </ul>
 
-<p><strong>Clause Gadget for C_j = (l_1  ∨  l_2  ∨  l_3):</strong></p>
+<p><strong>Clause Gadget for C_j = (l_1 ∨ l_2 ∨ l_3):</strong></p>
 <ul>
   <li>Create elements that can be matched if at least one literal is true</li>
   <li>Connect to variable gadgets: if variable x_i is set to make literal true, clause gadget can be matched</li>
@@ -227,7 +227,7 @@ Triples:
 
 <p><strong>Forward Direction (3-SAT satisfiable → 3D Matching exists):</strong></p>
 <ul>
-  <li>If \phi is satisfiable, construct matching:
+  <li>If φ is satisfiable, construct matching:
     <ul>
       <li>For each variable, choose triples corresponding to its truth value</li>
       <li>For each clause, choose triples that match clause elements (possible because at least one literal is true)</li>
@@ -378,7 +378,7 @@ Triples:
         <tr>
           <td><strong>Time Complexity:</strong> O(2^{</td>
           <td>T</td>
-          <td>} cdot n) where</td>
+          <td>} · n) where</td>
           <td>T</td>
           <td>is number of triples</td>
         </tr>
@@ -436,7 +436,7 @@ Triples:
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> O(sqrt{n} cdot</td>
+          <td><strong>Time Complexity:</strong> O(sqrt{n} ·</td>
           <td>E</td>
           <td>) using Hopcroft-Karp algorithm</td>
         </tr>
@@ -502,7 +502,7 @@ Triples:
 <ol>
   <li><strong>Find a matching</strong>: For the 3D matching instance:
     <ul>
-      <li>X = {x₁, x₁}, Y = {y_1, y_2}, Z = {z_1, z_2}</li>
+      <li>X = {x₁, x₂}, Y = {y_1, y_2}, Z = {z_1, z_2}</li>
       <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)}
 Does a perfect matching exist?</li>
     </ul>

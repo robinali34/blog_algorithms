@@ -63,10 +63,10 @@
 
 <p><strong>Input:</strong> A Boolean formula in Conjunctive Normal Form (CNF)</p>
 <ul>
-  <li>Variables: x₁, x₁, …, x_n (each can be TRUE or FALSE)</li>
+  <li>Variables: x₁, x₂, …, x_n (each can be TRUE or FALSE)</li>
   <li>Literals: a variable or its negation (e.g., x₁ or ¬ x₁)</li>
-  <li>Clauses: disjunctions of literals (e.g., (x₁  ∨  ¬ x₁  ∨  x₁))</li>
-  <li>Formula: conjunction of clauses (e.g., (x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁))</li>
+  <li>Clauses: disjunctions of literals (e.g., (x₁ ∨ ¬ x₁ ∨ x₁))</li>
+  <li>Formula: conjunction of clauses (e.g., (x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁))</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists an assignment that satisfies all clauses, NO otherwise</p>
@@ -74,16 +74,16 @@
 <h3 id="example">Example</h3>
 
 <p>Consider the formula:
-(x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁)</p>
+(x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁)</p>
 
 <p>Is this satisfiable?</p>
 
 <ul>
   <li>
-    <p>If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁  ∨  x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).</p>
+    <p>If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁ ∨ x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).</p>
   </li>
   <li>
-    <p>Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).</p>
+    <p>Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).</p>
   </li>
 </ul>
 
@@ -156,7 +156,7 @@
 <p><strong>3-SAT</strong> is a restricted version of SAT where each clause contains exactly 3 literals.</p>
 
 <p><strong>Example:</strong>
-(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)</p>
+(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
 
 <h3 id="why-3-sat">Why 3-SAT?</h3>
 
@@ -295,7 +295,7 @@
 <ol>
   <li>
     <p>Determine if the following 3-SAT instance is satisfiable:
-(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁  ∨  ¬ x₁)</p>
+(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁ ∨ ¬ x₁)</p>
   </li>
   <li>
     <p>Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?</p>

@@ -263,7 +263,7 @@
 
 <h3 id="construction">Construction</h3>
 
-<p>For a 3-SAT formula \phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:</p>
+<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
 
 <ol>
   <li><strong>Create vertices</strong>:
@@ -295,7 +295,7 @@
 
 <p><strong>Forward Direction (3-SAT satisfiable → Vertex Cover exists):</strong></p>
 <ul>
-  <li>If \phi is satisfiable, pick vertices corresponding to true literals</li>
+  <li>If φ is satisfiable, pick vertices corresponding to true literals</li>
   <li>For each variable, pick the vertex corresponding to its truth value (n vertices)</li>
   <li>For each clause, pick 2 vertices from its triangle that aren’t already covered (2m vertices)</li>
   <li>Total: n + 2m vertices covering all edges</li>
@@ -306,7 +306,7 @@
   <li>A vertex cover of size n + 2m must include exactly one vertex from each variable pair (to cover those n edges)</li>
   <li>It must include at least 2 vertices from each clause triangle (to cover those 3 edges)</li>
   <li>The variable vertices selected give us a truth assignment</li>
-  <li>Since at least one literal per clause is true (otherwise we’d need 3 vertices from that clause), the assignment satisfies \phi</li>
+  <li>Since at least one literal per clause is true (otherwise we’d need 3 vertices from that clause), the assignment satisfies φ</li>
 </ul>
 
 <h2 id="relationship-to-other-graph-problems">Relationship to Other Graph Problems</h2>
@@ -362,8 +362,8 @@
 
 <ol>
   <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity for general graphs</li>
-  <li><strong>Brute Force</strong>: Check all \binom{n}{k} subsets of size k - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n cdot n^2) time using inclusion-exclusion</li>
+  <li><strong>Brute Force</strong>: Check all C(n,k) subsets of size k - exponential</li>
+  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n · n^2) time using inclusion-exclusion</li>
   <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
 </ol>
 
@@ -461,7 +461,7 @@
     <table>
       <tbody>
         <tr>
-          <td>G has independent set of size geq k ↔ G has vertex cover of size leq</td>
+          <td>G has independent set of size ≥ k ↔ G has vertex cover of size ≤</td>
           <td>V</td>
           <td>- k</td>
         </tr>
@@ -508,16 +508,16 @@
 <p><strong>Why it works:</strong></p>
 <ul>
   <li>For each edge we pick, the optimal cover must include at least one endpoint</li>
-  <li>We include both endpoints, so we’re at most 2 times optimal</li>
+  <li>We include both endpoints, so we’re at most 2 × optimal</li>
   <li>The edges we pick form a matching (no two share an endpoint)</li>
-  <li>So if we pick k edges, optimal cover has size geq k, our cover has size 2k</li>
+  <li>So if we pick k edges, optimal cover has size ≥ k, our cover has size 2k</li>
 </ul>
 
 <h3 id="lp-based-2-approximation">LP-Based 2-Approximation</h3>
 
 <p>Using linear programming relaxation:</p>
 <ul>
-  <li>Formulate as integer program: minimize sum_{v in V} x_v subject to x_u + x_v geq 1 for each edge (u,v)</li>
+  <li>Formulate as integer program: minimize ∑_{v ∈ V} x_v subject to x_u + x_v ≥ 1 for each edge (u,v)</li>
   <li>Solve LP relaxation (allowing fractional values)</li>
   <li>Round: include vertex v if x_v ≥ 1/2</li>
   <li>This also gives a 2-approximation</li>
@@ -533,9 +533,9 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> O(sum_{i=0}^{k} binom{n}{i} cdot</td>
+          <td><strong>Time Complexity:</strong> O(∑_{i=0}^{k} C(n,i) ·</td>
           <td>E</td>
-          <td>) = O(n^k cdot</td>
+          <td>) = O(n^k ·</td>
           <td>E</td>
           <td>)</td>
         </tr>
@@ -564,7 +564,7 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> O(2^n cdot</td>
+          <td><strong>Time Complexity:</strong> O(2^n ·</td>
           <td>E</td>
           <td>)</td>
         </tr>
@@ -586,7 +586,7 @@
   <li><strong>Recurrence:</strong>
     <ul>
       <li>dp[v][0] = ∑_{u ∈ children(v)} dp[u][1] (must cover edges to children)</li>
-      <li>dp[v][1] = 1 + sum_{u in children(v)} min(dp[u][0], dp[u][1])</li>
+      <li>dp[v][1] = 1 + ∑_{u ∈ children(v)} min(dp[u][0], dp[u][1])</li>
     </ul>
   </li>
 </ul>
@@ -599,7 +599,7 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> O(sqrt{n} cdot</td>
+          <td><strong>Time Complexity:</strong> O(sqrt{n} ·</td>
           <td>E</td>
           <td>) using Hopcroft-Karp algorithm</td>
         </tr>
@@ -628,7 +628,7 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Time Complexity:</strong> O(2^k cdot (n +</td>
+          <td><strong>Time Complexity:</strong> O(2^k · (n +</td>
           <td>E</td>
           <td>)) where k is solution size</td>
         </tr>
@@ -637,7 +637,7 @@
   </li>
   <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Key Insight:</strong> If vertex has degree &gt; k, it must be in cover</li>
-  <li><strong>Recurrence:</strong> T(k) = T(k-1) + T(k-\deg(v)) for vertex v</li>
+  <li><strong>Recurrence:</strong> T(k) = T(k-1) + T(k-deg(v)) for vertex v</li>
 </ul>
 
 <h3 id="greedy-2-approximation-1">Greedy 2-Approximation</h3>
@@ -725,7 +725,7 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>Prove the reduction</strong>: Show that G has an independent set of size geq k if and only if G has a vertex cover of size leq</td>
+          <td><strong>Prove the reduction</strong>: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤</td>
           <td>V</td>
           <td>- k.</td>
         </tr>
@@ -734,7 +734,7 @@
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁)
+(x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁)
 Determine the vertex cover size and corresponding satisfying assignment.</p>
   </li>
   <li>
