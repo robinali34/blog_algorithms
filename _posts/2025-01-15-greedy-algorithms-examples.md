@@ -42,7 +42,7 @@ Greedy algorithms fail when:
 
 ### Example 1: Activity Selection Problem
 
-**Problem:** Given $n$ activities with start and finish times, select the maximum number of activities that don't overlap.
+**Problem:** Given n activities with start and finish times, select the maximum number of activities that don't overlap.
 
 **Greedy Strategy:** Always pick the activity that finishes earliest.
 
@@ -64,8 +64,8 @@ Algorithm: ActivitySelection(activities)
 - Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)
 - Greedy selection: (1,4), (5,7), (8,9) = 3 activities
 
-**Time Complexity:** $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-**Space Complexity:** $O(1)$ additional space
+**Time Complexity:** O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+**Space Complexity:** O(1) additional space
 
 **Why It Works:**
 - Greedy choice property: If an optimal solution doesn't include the earliest-finishing activity, we can replace the first activity in the optimal solution with the earliest-finishing one without reducing the count
@@ -73,7 +73,7 @@ Algorithm: ActivitySelection(activities)
 
 ### Example 2: Fractional Knapsack
 
-**Problem:** Given items with weights and values, fill a knapsack of capacity $W$ to maximize value. Items can be taken fractionally.
+**Problem:** Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.
 
 **Greedy Strategy:** Always take the item with highest value-to-weight ratio.
 
@@ -102,8 +102,8 @@ Algorithm: FractionalKnapsack(items, W)
 - Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)
 - Value: 60 + 100 + 80 = 240
 
-**Time Complexity:** $O(n \log n)$ (sorting) + $O(n)$ (selection) = $O(n \log n)$
-**Space Complexity:** $O(1)$ additional space
+**Time Complexity:** O(n \log n) (sorting) + O(n) (selection) = O(n \log n)
+**Space Complexity:** O(1) additional space
 
 **Why It Works:**
 - Greedy choice property: Taking the highest value-to-weight ratio maximizes value per unit capacity
@@ -143,8 +143,8 @@ Graph:
 - Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)
 - MST: (B,D), (A,B), (A,C) = weight 6
 
-**Time Complexity:** $O(E \log E)$ (sorting) + $O(E \cdot \alpha(V))$ (Union-Find) = $O(E \log E)$
-**Space Complexity:** $O(V)$ for Union-Find
+**Time Complexity:** O(E \log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E \log E)
+**Space Complexity:** O(V) for Union-Find
 
 **Why It Works:**
 - Greedy choice property: The minimum-weight edge across a cut is always in some MST
@@ -177,9 +177,9 @@ Algorithm: PrimMST(G, start)
 ```
 
 **Time Complexity:** 
-- With binary heap: $O(E \log V)$
-- With Fibonacci heap: $O(E + V \log V)$
-**Space Complexity:** $O(V)$
+- With binary heap: O(E \log V)
+- With Fibonacci heap: O(E + V \log V)
+**Space Complexity:** O(V)
 
 ### Example 5: Huffman Coding
 
@@ -210,8 +210,8 @@ Algorithm: HuffmanCoding(frequencies)
   4. Merge 26 + 29 = 55
   5. Merge a(45) + 55 = 100
 
-**Time Complexity:** $O(n \log n)$ where $n$ is number of characters
-**Space Complexity:** $O(n)$
+**Time Complexity:** O(n \log n) where n is number of characters
+**Space Complexity:** O(n)
 
 **Why It Works:**
 - Greedy choice property: The two least frequent characters should have the longest codes
@@ -258,13 +258,13 @@ Graph:
 - Result: A→B=1, A→C=3, A→D=3
 
 **Time Complexity:**
-- With binary heap: $O((V+E) \log V)$
-- With Fibonacci heap: $O(E + V \log V)$
-**Space Complexity:** $O(V)$
+- With binary heap: O((V+E) \log V)
+- With Fibonacci heap: O(E + V \log V)
+**Space Complexity:** O(V)
 
 **Why It Works:**
 - Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined
-- Optimal substructure: Shortest path to $v$ through $u$ contains shortest path to $u$
+- Optimal substructure: Shortest path to v through u contains shortest path to u
 
 **Note:** Only works for non-negative edge weights!
 
@@ -276,12 +276,12 @@ Graph:
 
 **Algorithm:** Same as Activity Selection (they're equivalent problems).
 
-**Time Complexity:** $O(n \log n)$
-**Space Complexity:** $O(1)$
+**Time Complexity:** O(n \log n)
+**Space Complexity:** O(1)
 
 ### Example 8: Set Cover (Greedy Approximation)
 
-**Problem:** Given a universe $U$ and collection of sets $S$, find minimum number of sets covering $U$.
+**Problem:** Given a universe U and collection of sets S, find minimum number of sets covering U.
 
 **Greedy Strategy:** Repeatedly pick the set covering the most uncovered elements.
 
@@ -303,10 +303,10 @@ Algorithm: GreedySetCover(U, S)
 13. return selected
 ```
 
-**Time Complexity:** $O(|U| \cdot |S|)$
-**Space Complexity:** $O(|U|)$
+**Time Complexity:** O(|U| · |S|)
+**Space Complexity:** O(|U|)
 
-**Approximation Ratio:** $H_n$ where $H_n = \sum_{i=1}^n 1/i \approx \ln n$ (harmonic number)
+**Approximation Ratio:** H_n where H_n = sum_{i=1}^n 1/i approx ln n (harmonic number)
 
 **Why It's an Approximation:**
 - Greedy doesn't always give optimal solution
@@ -374,33 +374,33 @@ To prove a greedy algorithm is correct:
 ### Example Proof: Activity Selection
 
 **Greedy Choice Property:**
-- Let $a_1$ be the activity that finishes earliest
-- Let $S$ be an optimal solution
-- If $S$ doesn't include $a_1$, let $a_k$ be the first activity in $S$
-- Since $a_1$ finishes before $a_k$ starts, we can replace $a_k$ with $a_1$ in $S$
-- This gives another optimal solution containing $a_1$ ✓
+- Let a_1 be the activity that finishes earliest
+- Let S be an optimal solution
+- If S doesn't include a_1, let a_k be the first activity in S
+- Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S
+- This gives another optimal solution containing a_1 ✓
 
 **Optimal Substructure:**
-- After selecting $a_1$, remaining problem: select activities starting after $a_1$ finishes
-- If $S'$ is optimal for remaining problem, then $\{a_1\} \cup S'$ is optimal for original ✓
+- After selecting a_1, remaining problem: select activities starting after a_1 finishes
+- If S' is optimal for remaining problem, then {a_1} cup S' is optimal for original ✓
 
 ## Runtime Analysis Summary
 
 | Problem | Greedy Algorithm | Time Complexity | Space Complexity |
 |---------|------------------|-----------------|------------------|
-| Activity Selection | Sort by finish time | $O(n \log n)$ | $O(1)$ |
-| Fractional Knapsack | Sort by value/weight | $O(n \log n)$ | $O(1)$ |
-| MST (Kruskal) | Sort edges, Union-Find | $O(E \log E)$ | $O(V)$ |
-| MST (Prim) | Priority queue | $O(E \log V)$ | $O(V)$ |
-| Huffman Coding | Min-heap | $O(n \log n)$ | $O(n)$ |
-| Dijkstra's | Priority queue | $O((V+E) \log V)$ | $O(V)$ |
-| Set Cover | Greedy selection | $O(|U| \cdot |S|)$ | $O(|U|)$ |
+| Activity Selection | Sort by finish time | O(n \log n) | O(1) |
+| Fractional Knapsack | Sort by value/weight | O(n \log n) | O(1) |
+| MST (Kruskal) | Sort edges, Union-Find | O(E \log E) | O(V) |
+| MST (Prim) | Priority queue | O(E \log V) | O(V) |
+| Huffman Coding | Min-heap | O(n \log n) | O(n) |
+| Dijkstra's | Priority queue | O((V+E) \log V) | O(V) |
+| Set Cover | Greedy selection | O(|U| · |S|) | O(|U|) |
 
 ## Key Takeaways
 
 1. **Greedy Choice Property:** The greedy choice must be part of some optimal solution
 2. **Optimal Substructure:** Optimal solutions contain optimal solutions to subproblems
-3. **Efficiency:** Greedy algorithms are usually efficient (often $O(n \log n)$ or better)
+3. **Efficiency:** Greedy algorithms are usually efficient (often O(n \log n) or better)
 4. **Not Always Optimal:** Greedy doesn't always give optimal solutions (e.g., 0-1 Knapsack)
 5. **Common Patterns:** Sorting + selection, priority queues, Union-Find
 6. **Proof Technique:** Show greedy choice property and optimal substructure

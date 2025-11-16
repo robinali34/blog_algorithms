@@ -19,39 +19,39 @@ Linear Programming asks: **Given linear constraints and a linear objective funct
 **Linear Programming (LP) Problem:**
 
 **Input:** 
-- A matrix $A \in \mathbb{R}^{m \times n}$ (constraint coefficients)
-- A vector $b \in \mathbb{R}^m$ (constraint bounds)
-- A vector $c \in \mathbb{R}^n$ (objective coefficients)
+- A matrix A in mathbb{R}^{m times n} (constraint coefficients)
+- A vector b in mathbb{R}^m (constraint bounds)
+- A vector c in mathbb{R}^n (objective coefficients)
 
 **Output:** 
-- A vector $x \in \mathbb{R}^n$ that:
-  - Satisfies $Ax \leq b$ (or $Ax = b$, or $Ax \geq b$, or mixed)
-  - Satisfies $x \geq 0$ (non-negativity constraints, if present)
-  - Maximizes (or minimizes) $c^T x$
+- A vector x in mathbb{R}^n that:
+  - Satisfies Ax leq b (or Ax = b, or Ax geq b, or mixed)
+  - Satisfies x geq 0 (non-negativity constraints, if present)
+  - Maximizes (or minimizes) c^T x
 
 **Standard Form:**
-- Maximize $c^T x$
-- Subject to $Ax \leq b$ and $x \geq 0$
+- Maximize c^T x
+- Subject to Ax leq b and x geq 0
 
 **Canonical Form:**
-- Maximize $c^T x$
-- Subject to $Ax = b$ and $x \geq 0$
+- Maximize c^T x
+- Subject to Ax = b and x geq 0
 
 ### Example
 
 Consider the LP:
 
-**Maximize:** $3x_1 + 2x_2$
+**Maximize:** 3x₁ + 2x₁
 
 **Subject to:**
-- $2x_1 + x_2 \leq 6$
-- $x_1 + 2x_2 \leq 8$
-- $x_1, x_2 \geq 0$
+- 2x₁ + x₁ leq 6
+- x₁ + 2x₁ leq 8
+- x₁, x₁ geq 0
 
 **Graphical Solution:**
 - Feasible region is a polygon
 - Optimal solution is at a vertex (corner point)
-- Optimal: $(x_1, x_2) = (4/3, 10/3)$ with objective value $32/3 \approx 10.67$
+- Optimal: (x₁, x₁) = (4/3, 10/3) with objective value 32/3 \approx 10.67
 
 **Key Insight:** The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).
 
@@ -69,11 +69,11 @@ Unlike Integer Linear Programming, **Linear Programming is solvable in polynomia
 
 **2. Ellipsoid Method (Khachiyan, 1979):**
 - First polynomial-time algorithm for LP
-- $O(n^4 L)$ time where $L$ is input size
+- O(n^4 L) time where L is input size
 - Not practical due to large constants
 
 **3. Interior-Point Methods (Karmarkar, 1984):**
-- Polynomial-time: $O(n^{3.5} L)$ time
+- Polynomial-time: O(n^{3.5} L) time
 - Practical and widely used
 - Modern implementations are very efficient
 
@@ -96,19 +96,19 @@ Given an Integer Linear Programming (ILP) problem:
 ### Example: Vertex Cover LP Relaxation
 
 **ILP for Vertex Cover:**
-- Variables: $x_v \in \{0,1\}$ for each vertex $v$
-- Constraints: $x_u + x_v \geq 1$ for each edge $(u,v)$
-- Objective: Minimize $\sum_v x_v$
+- Variables: x_v ∈ \{0,1\} for each vertex v
+- Constraints: x_u + x_v ≥ 1 for each edge (u,v)
+- Objective: Minimize sum_v x_v
 
 **LP Relaxation:**
-- Variables: $x_v \in [0,1]$ (continuous, not integer)
+- Variables: x_v in [0,1] (continuous, not integer)
 - Same constraints and objective
 
 **Result:** LP optimal ≤ ILP optimal (since we relaxed constraints)
 
 **2-Approximation Algorithm:**
 1. Solve LP relaxation
-2. Round: Include vertex $v$ if $x_v \geq 1/2$
+2. Round: Include vertex v if x_v geq 1/2
 3. This gives a 2-approximation for Vertex Cover!
 
 ## Reductions Involving LP
@@ -126,16 +126,16 @@ Given an Integer Linear Programming (ILP) problem:
 ### Reduction: LP to Feasibility
 
 **LP Optimization ≤ₚ LP Feasibility:**
-- Given LP: maximize $c^T x$ subject to $Ax \leq b$, $x \geq 0$
-- Add constraint: $c^T x \geq k$ (where $k$ is a guess for optimal value)
-- Use binary search on $k$ to find optimal value
+- Given LP: maximize c^T x subject to Ax leq b, x geq 0
+- Add constraint: c^T x geq k (where k is a guess for optimal value)
+- Use binary search on k to find optimal value
 - This reduces optimization to feasibility checking
 
 ### Reduction: General LP to Standard Form
 
 **General LP ≤ₚ Standard Form LP:**
 - Convert inequalities to equations using slack variables
-- Convert unconstrained variables: $x = x^+ - x^-$ where $x^+, x^- \geq 0$
+- Convert unconstrained variables: x = x^+ - x^- where x^+, x^- geq 0
 - Convert maximization to minimization: negate objective
 - All conversions are polynomial-time
 
@@ -145,15 +145,15 @@ Given an Integer Linear Programming (ILP) problem:
 
 Every LP has a **dual** LP:
 
-**Primal:** Maximize $c^T x$ subject to $Ax \leq b$, $x \geq 0$
+**Primal:** Maximize c^T x subject to Ax leq b, x geq 0
 
-**Dual:** Minimize $b^T y$ subject to $A^T y \geq c$, $y \geq 0$
+**Dual:** Minimize b^T y subject to A^T y geq c, y geq 0
 
 **Strong Duality:** If both have feasible solutions, then:
 - Primal optimal = Dual optimal
 
-**Weak Duality:** For any feasible $x$ and $y$:
-- $c^T x \leq b^T y$
+**Weak Duality:** For any feasible x and y:
+- c^T x leq b^T y
 
 ### Using Duality in Reductions
 
@@ -170,31 +170,31 @@ LP relaxation is fundamental to many approximation algorithms.
 ### Vertex Cover: 2-Approximation
 
 **Algorithm:**
-1. Solve LP relaxation: minimize $\sum_v x_v$ subject to $x_u + x_v \geq 1$ for all edges
-2. Round: $S = \{v : x_v \geq 1/2\}$
-3. Return $S$ as vertex cover
+1. Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v geq 1 for all edges
+2. Round: S = {v : x_v geq 1/2}
+3. Return S as vertex cover
 
 **Analysis:**
-- $S$ is a vertex cover (each edge has at least one endpoint with $x_v \geq 1/2$)
-- $|S| = \sum_{v \in S} 1 \leq \sum_{v \in S} 2x_v \leq 2 \cdot \text{LP optimal} \leq 2 \cdot \text{ILP optimal}$
+- S is a vertex cover (each edge has at least one endpoint with x_v geq 1/2)
+- |S| = sum_{v in S} 1 leq sum_{v in S} 2x_v leq 2 cdot text{LP optimal} leq 2 cdot text{ILP optimal}
 - Therefore, 2-approximation
 
 ### Set Cover: LP-Based Approximation
 
 **Set Cover ILP:**
-- Variables: $x_S \in \{0,1\}$ for each set $S$
-- Constraints: $\sum_{S: e \in S} x_S \geq 1$ for each element $e$
-- Objective: Minimize $\sum_S x_S$
+- Variables: x_S in {0,1} for each set S
+- Constraints: sum_{S: e in S} x_S geq 1 for each element e
+- Objective: Minimize sum_S x_S
 
 **LP Relaxation + Rounding:**
 - Solve LP relaxation
 - Use randomized rounding or greedy rounding
-- Achieves $O(\log n)$ approximation (or better with specific techniques)
+- Achieves O(\log n) approximation (or better with specific techniques)
 
 ### Maximum Flow: LP Formulation
 
 **Max Flow as LP:**
-- Variables: flow $f_e$ on each edge $e$
+- Variables: flow f_e on each edge e
 - Constraints: flow conservation, capacity constraints
 - Objective: maximize flow from source to sink
 
@@ -208,8 +208,8 @@ While LP is polynomial-time, we can reduce NP-complete problems to LP feasibilit
 
 **Reduction:**
 - For 3-SAT instance, create LP:
-  - Variables: $x_i \in [0,1]$ for each Boolean variable
-  - For clause $(l_1 \lor l_2 \lor l_3)$: constraint ensuring at least one literal is "true"
+  - Variables: x_i in [0,1] for each Boolean variable
+  - For clause (l_1  ∨  l_2  ∨  l_3): constraint ensuring at least one literal is "true"
   - But LP doesn't naturally encode Boolean logic...
 
 **Better:** Reduce to ILP, then use LP relaxation
@@ -225,13 +225,13 @@ Various rounding techniques convert LP solutions to integer solutions:
 ### Deterministic Rounding
 
 **Example - Vertex Cover:**
-- Round $x_v \geq 1/2$ to 1, else 0
+- Round x_v ≥ 1/2 to 1, else 0
 - Guarantees feasibility and approximation ratio
 
 ### Randomized Rounding
 
 **Example - Set Cover:**
-- Include set $S$ with probability proportional to $x_S^*$ (LP solution)
+- Include set S with probability proportional to x_S^* (LP solution)
 - Expected cost equals LP cost
 - May need derandomization
 
@@ -289,38 +289,38 @@ LP has countless applications:
 
 **Algorithm:** Move from vertex to vertex along edges
 - **Time Complexity:** Exponential worst-case (Klee-Minty examples), but polynomial average-case
-- **Space Complexity:** $O(mn)$ for storing tableau
+- **Space Complexity:** O(mn) for storing tableau
 - **Practical Performance:** Very efficient in practice, often faster than polynomial methods
-- **Iterations:** Typically $O(m)$ to $O(m+n)$ iterations
+- **Iterations:** Typically O(m) to O(m+n) iterations
 
 ### Ellipsoid Method
 
 **Algorithm:** Shrink ellipsoid containing feasible region
-- **Time Complexity:** $O(n^4L)$ where $L$ is input size (bit complexity)
-- **Space Complexity:** $O(n^2)$
+- **Time Complexity:** O(n^4L) where L is input size (bit complexity)
+- **Space Complexity:** O(n^2)
 - **Significance:** First proven polynomial-time algorithm for LP
 - **Practical Performance:** Not used in practice due to large constants
 
 ### Interior-Point Methods
 
 **Algorithm:** Move through interior of feasible region
-- **Time Complexity:** $O(n^{3.5}L)$ using path-following methods
-- **Space Complexity:** $O(n^2)$ for storing matrices
+- **Time Complexity:** O(n^{3.5}L) using path-following methods
+- **Space Complexity:** O(n^2) for storing matrices
 - **Practical Performance:** Very efficient, widely used in modern solvers
-- **Iterations:** Typically $O(\sqrt{n} \log(1/\epsilon))$ iterations for $\epsilon$-accuracy
+- **Iterations:** Typically O(sqrt{n} log(1/epsilon)) iterations for \epsilon-accuracy
 
 ### Primal-Dual Methods
 
 **Algorithm:** Solve primal and dual simultaneously
-- **Time Complexity:** $O(n^{3.5}L)$ similar to interior-point
-- **Space Complexity:** $O(n^2)$
+- **Time Complexity:** O(n^{3.5}L) similar to interior-point
+- **Space Complexity:** O(n^2)
 - **Advantage:** Can exploit structure better in some cases
 
 ### Special Cases
 
 **Network Flow Problems:**
-- **Time Complexity:** $O(n^2m)$ using specialized algorithms (faster than general LP)
-- **Space Complexity:** $O(n + m)$
+- **Time Complexity:** O(n^2m) using specialized algorithms (faster than general LP)
+- **Space Complexity:** O(n + m)
 
 **Transportation Problems:**
 - Specialized algorithms can be more efficient than general LP
@@ -328,23 +328,23 @@ LP has countless applications:
 ### LP Relaxation Runtime
 
 **For ILP Relaxation:**
-- **Time Complexity:** $O(n^{3.5}L)$ - solve as regular LP
-- **Space Complexity:** $O(mn)$
+- **Time Complexity:** O(n^{3.5}L) - solve as regular LP
+- **Space Complexity:** O(mn)
 - **Use:** Provides bounds for branch-and-bound algorithms
 
 ### Modern Solvers
 
 **Commercial Solvers (CPLEX, Gurobi):**
 - **Time Complexity:** Polynomial (interior-point or simplex)
-- **Space Complexity:** $O(mn)$
+- **Space Complexity:** O(mn)
 - **Practical Performance:** Can solve instances with millions of variables and constraints
 - **Techniques:** Preprocessing, advanced pivoting, parallel processing
 
 ### Verification Complexity
 
 **Given a candidate solution:**
-- **Time Complexity:** $O(mn)$ - verify all constraints satisfied
-- **Space Complexity:** $O(1)$ additional space
+- **Time Complexity:** O(mn) - verify all constraints satisfied
+- **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability is straightforward for LP
 
 ## Key Takeaways
@@ -395,16 +395,16 @@ LP has countless applications:
 2. **LP Relaxation**: For a Vertex Cover instance, write the LP relaxation. What is the relationship between LP optimal and ILP optimal?
 
 3. **Duality**: Write the dual of the following LP:
-   - Maximize $3x_1 + 2x_2$
-   - Subject to $2x_1 + x_2 \leq 6$, $x_1 + 2x_2 \leq 8$, $x_1, x_2 \geq 0$
+   - Maximize 3x₁ + 2x₁
+   - Subject to 2x₁ + x₁ ≤ 6, x₁ + 2x₁ ≤ 8, x₁, x₁ ≥ 0
 
-4. **Rounding**: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold $1/3$ instead of $1/2$?
+4. **Rounding**: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?
 
 5. **Reduction**: Show how to reduce LP optimization to LP feasibility using binary search. What is the time complexity?
 
 6. **Standard Form**: Convert the following to standard form:
-   - Minimize $x_1 - 2x_2$
-   - Subject to $x_1 + x_2 = 5$, $x_1 \geq 0$, $x_2$ unrestricted
+   - Minimize x₁ - 2x₁
+   - Subject to x₁ + x₁ = 5, x₁ ≥ 0, x₁ unrestricted
 
 7. **Applications**: Research one real-world application of LP. How is it formulated? What solver is used?
 

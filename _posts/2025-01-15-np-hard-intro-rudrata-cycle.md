@@ -19,14 +19,14 @@ A **Rudrata cycle** (also called a **Hamiltonian cycle**) in an undirected graph
 **Rudrata Cycle Decision Problem:**
 
 **Input:** 
-- An undirected graph $G = (V, E)$
+- An undirected graph G = (V, E)
 
-**Output:** YES if $G$ contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise
+**Output:** YES if G contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise
 
 **Rudrata Cycle Optimization Problem (TSP):**
 
 **Input:** 
-- A complete undirected graph $G = (V, E)$ with edge weights $w: E \to \mathbb{R}^+$
+- A complete undirected graph G = (V, E) with edge weights w: E to mathbb{R}^+
 
 **Output:** The minimum weight Rudrata cycle (this is the Traveling Salesman Problem)
 
@@ -41,9 +41,9 @@ Consider the following graph:
 ```
 
 **Rudrata Cycle:**
-- Cycle: $1 \to 2 \to 5 \to 4 \to 1$ ✗ (doesn't visit all vertices)
-- Cycle: $1 \to 2 \to 3 \to 6 \to 5 \to 4 \to 1$ ✓ (visits all 6 vertices exactly once)
-- Cycle: $1 \to 4 \to 5 \to 2 \to 1$ ✗ (doesn't visit vertices 3 and 6)
+- Cycle: 1 to 2 to 5 to 4 to 1 ✗ (doesn't visit all vertices)
+- Cycle: 1 to 2 to 3 to 6 to 5 to 4 to 1 ✓ (visits all 6 vertices exactly once)
+- Cycle: 1 to 4 to 5 to 2 to 1 ✗ (doesn't visit vertices 3 and 6)
 
 ### Visual Example
 
@@ -57,8 +57,8 @@ A graph with a Rudrata cycle highlighted:
     3---4
 ```
 
-- Rudrata cycle: $1 \to 2 \to 4 \to 3 \to 1$ (visits all 4 vertices and returns to start)
-- This is a complete graph $K_4$, so it has many Hamiltonian cycles
+- Rudrata cycle: 1 to 2 to 4 to 3 to 1 (visits all 4 vertices and returns to start)
+- This is a complete graph K_4, so it has many Hamiltonian cycles
 
 ## Why Rudrata Cycle is in NP
 
@@ -67,12 +67,12 @@ To show that Rudrata Cycle is NP-complete, we first need to show it's in NP.
 **Rudrata Cycle ∈ NP:**
 
 Given a candidate solution (a sequence of vertices representing a cycle), we can verify in polynomial time:
-1. Check that the cycle has exactly $|V|$ vertices: $O(|V|)$ time
-2. Check that each vertex appears exactly once: $O(|V|)$ time (use a set or array)
-3. Check that consecutive vertices in the cycle are adjacent: $O(|V|)$ time (check $|V|$ edges, including the wrap-around edge from last to first)
-4. Check that the cycle returns to start: $O(1)$ time
+1. Check that the cycle has exactly |V| vertices: O(|V|) time
+2. Check that each vertex appears exactly once: O(|V|) time (use a set or array)
+3. Check that consecutive vertices in the cycle are adjacent: O(|V|) time (check |V| edges, including the wrap-around edge from last to first)
+4. Check that the cycle returns to start: O(1) time
 
-Total verification time: $O(|V|)$, which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.
+Total verification time: O(|V|), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.
 
 ## NP-Completeness: Reduction from 3-SAT
 
@@ -80,16 +80,16 @@ The standard proof that Rudrata Cycle is NP-complete reduces directly from 3-SAT
 
 ### Construction
 
-For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:
+For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
 
 **Key Idea:** Create a graph where a Rudrata cycle corresponds to a satisfying assignment.
 
-1. **For each variable $x_i$:**
+1. **For each variable x_i:**
    - Create a "variable gadget": a row of vertices representing the variable
-   - Typically: vertices arranged horizontally, where going "left" means $x_i = \text{TRUE}$ and going "right" means $x_i = \text{FALSE}$
-   - Example: For variable $x_i$, create vertices $v_{i,1}, v_{i,2}, \ldots, v_{i,k}$ where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)
+   - Typically: vertices arranged horizontally, where going "left" means x_i = TRUE and going "right" means x_i = FALSE
+   - Example: For variable x_i, create vertices v_{i,1}, v_{i,2}, …, v_{i,k} where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)
 
-2. **For each clause $C_j$:**
+2. **For each clause C_j:**
    - Create a "clause gadget": vertices that can be visited if the clause is satisfied
    - Connect clause vertices to variable vertices corresponding to literals in the clause
    - The cycle must visit clause vertices, which is only possible if at least one literal is true
@@ -104,17 +104,17 @@ For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables
 A common construction uses:
 
 **Variable Gadget:**
-- For each variable $x_i$, create a horizontal chain of vertices
+- For each variable x_i, create a horizontal chain of vertices
 - The cycle can traverse this chain in two ways (encoding TRUE/FALSE)
 
 **Clause Gadget:**
-- For each clause $C_j = (l_1 \lor l_2 \lor l_3)$, create vertices connected to the variable gadgets
+- For each clause C_j = (l_1  ∨  l_2  ∨  l_3), create vertices connected to the variable gadgets
 - If the cycle takes the path corresponding to a true literal, it can visit the clause vertex
 
 **Why This Works:**
 
 **Forward Direction (3-SAT satisfiable → Rudrata Cycle exists):**
-- If $\phi$ is satisfiable, construct cycle through variable gadgets based on assignment
+- If \phi is satisfiable, construct cycle through variable gadgets based on assignment
 - Visit clause vertices for satisfied clauses
 - This gives a valid Rudrata cycle
 
@@ -137,12 +137,12 @@ As we saw in the previous post:
 ### Traveling Salesman Problem (TSP)
 
 **TSP Decision Problem:**
-- Given complete graph with edge weights and bound $B$
-- Does there exist a Rudrata cycle with total weight $\leq B$?
+- Given complete graph with edge weights and bound B
+- Does there exist a Rudrata cycle with total weight ≤ B?
 
 **Relationship:**
 - TSP is a weighted version of Rudrata Cycle
-- Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight $|V|$ exists
+- Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight |V| exists
 - TSP reduces to Rudrata Cycle: use unweighted version
 - They are essentially the same problem
 
@@ -163,18 +163,18 @@ As we saw in the previous post:
 The Rudrata Cycle Problem is NP-complete, which means:
 
 1. **No Known Polynomial-Time Algorithm**: Best known algorithms have exponential time complexity
-2. **Brute Force**: Try all $(n-1)!/2$ possible cycles (for undirected graphs) - factorial time
-3. **Dynamic Programming**: Can solve in $O(2^n \cdot n^2)$ time using bitmask DP (similar to TSP)
+2. **Brute Force**: Try all (n-1)!/2 possible cycles (for undirected graphs) - factorial time
+3. **Dynamic Programming**: Can solve in O(2^n cdot n^2) time using bitmask DP (similar to TSP)
 4. **Backtracking**: Practical for small instances, but still exponential worst-case
 
 ### Dynamic Programming Solution
 
-**Subproblem:** $dp[mask][v] = \text{true}$ if there exists a path visiting all vertices in $mask$ ending at vertex $v$, and this path can be extended to a cycle.
+**Subproblem:** dp[mask][v] = text{true} if there exists a path visiting all vertices in mask ending at vertex v, and this path can be extended to a cycle.
 
 **Recurrence:**
-- Base case: $dp[2^i][i] = \text{true}$ for all $i$ (path of length 1)
-- Recurrence: $dp[mask][v] = \bigvee_{u \in mask, (u,v) \in E} dp[mask \setminus \{v\}][u]$
-- Final check: For each $v$, check if $dp[2^n-1][v] = \text{true}$ and $(v, \text{start})$ is an edge
+- Base case: dp[2^i][i] = true for all i (path of length 1)
+- Recurrence: dp[mask][v] = bigvee_{u in mask, (u,v) in E} dp[mask setminus {v}][u]
+- Final check: For each v, check if dp[2^n-1][v] = true and (v, start) is an edge
 
 **Algorithm:**
 ```
@@ -195,46 +195,46 @@ Algorithm: RudrataCycleDP(G)
 14. return false
 ```
 
-**Time Complexity:** $O(2^n \cdot n^2)$
-**Space Complexity:** $O(2^n \cdot n)$
+**Time Complexity:** O(2^n · n^2)
+**Space Complexity:** O(2^n · n)
 
 ## Runtime Analysis
 
 ### Brute Force Approach
 
-**Algorithm:** Try all $(n-1)!/2$ possible cycles (for undirected graphs)
-- **Time Complexity:** $O((n-1)! \cdot n) = O(n!)$
-- **Space Complexity:** $O(n)$ for storing current cycle
-- **Analysis:** For each permutation, verify it forms a valid cycle ($O(n)$ checks including wrap-around)
+**Algorithm:** Try all (n-1)!/2 possible cycles (for undirected graphs)
+- **Time Complexity:** O((n-1)! · n) = O(n!)
+- **Space Complexity:** O(n) for storing current cycle
+- **Analysis:** For each permutation, verify it forms a valid cycle (O(n) checks including wrap-around)
 
 ### Dynamic Programming (Held-Karp Algorithm)
 
 **Algorithm:** Bitmask DP as described above
-- **Time Complexity:** $O(2^n \cdot n^2)$
-- **Space Complexity:** $O(2^n \cdot n)$
-- **Subproblem:** $dp[mask][v]$ = true if path exists visiting all vertices in $mask$ ending at $v$
+- **Time Complexity:** O(2^n · n^2)
+- **Space Complexity:** O(2^n · n)
+- **Subproblem:** dp[mask][v] = true if path exists visiting all vertices in mask ending at v
 - **Final Check:** Verify edge exists from last vertex to start vertex
 
 ### Backtracking
 
 **Algorithm:** Systematic search with pruning
 - **Time Complexity:** Exponential worst-case, improved with pruning
-- **Space Complexity:** $O(n)$ for recursion stack
+- **Space Complexity:** O(n) for recursion stack
 - **Pruning:** Stop if current path can't form a cycle visiting all vertices
 
 ### Special Cases
 
 **Complete Graphs:**
-- **Time Complexity:** $O(1)$ - trivial, any cycle works
+- **Time Complexity:** O(1) - trivial, any cycle works
 
 **Trees:**
-- **Time Complexity:** $O(n)$ - check if tree has exactly $n-1$ edges (then no cycle possible unless $n=2$)
+- **Time Complexity:** O(n) - check if tree has exactly n-1 edges (then no cycle possible unless n=2)
 
 ### Verification Complexity
 
 **Given a candidate cycle:**
-- **Time Complexity:** $O(n)$ - verify all $n$ edges exist (including wrap-around)
-- **Space Complexity:** $O(1)$ additional space
+- **Time Complexity:** O(n) - verify all n edges exist (including wrap-around)
+- **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability shows Rudrata Cycle is in NP
 
 ### Real-World Applications
@@ -254,8 +254,8 @@ Rudrata Cycle has numerous applications:
 Some restricted versions of Rudrata Cycle are tractable:
 
 - **Complete Graphs**: Always has a Rudrata cycle (any permutation works)
-- **Dirac's Theorem**: If $\deg(v) \geq n/2$ for all vertices, then Hamiltonian cycle exists (but finding it is still hard)
-- **Ore's Theorem**: If $\deg(u) + \deg(v) \geq n$ for all non-adjacent $u,v$, then Hamiltonian cycle exists
+- **Dirac's Theorem**: If \deg(v) ≥ n/2 for all vertices, then Hamiltonian cycle exists (but finding it is still hard)
+- **Ore's Theorem**: If \deg(u) + \deg(v) ≥ n for all non-adjacent u,v, then Hamiltonian cycle exists
 - **Grid Graphs**: Can be solved efficiently for certain grid structures
 - **Bounded Treewidth**: Can be solved efficiently using tree decomposition
 
@@ -264,7 +264,7 @@ Some restricted versions of Rudrata Cycle are tractable:
 1. **Rudrata Cycle is NP-Complete**: Proven by reduction from 3-SAT
 2. **TSP Connection**: Traveling Salesman Problem is essentially weighted Rudrata Cycle
 3. **Path vs Cycle**: Rudrata Cycle and Rudrata Path are polynomially equivalent
-4. **Dynamic Programming**: $O(2^n \cdot n^2)$ time solution using bitmask DP works for small graphs
+4. **Dynamic Programming**: O(2^n cdot n^2) time solution using bitmask DP works for small graphs
 5. **Practical Algorithms**: Despite NP-completeness, DP and heuristics work well for many practical instances
 
 ## Reduction Summary
@@ -275,9 +275,9 @@ Some restricted versions of Rudrata Cycle are tractable:
 - The construction ensures cycle visits all vertices exactly once
 
 **Rudrata Cycle ≤ₚ TSP:**
-- Given Rudrata Cycle instance: graph $G$
-- Create complete graph $G'$ with edge weights: 1 if edge exists in $G$, $\infty$ otherwise
-- Rudrata cycle exists ↔ TSP has solution of weight $|V|$
+- Given Rudrata Cycle instance: graph G
+- Create complete graph G' with edge weights: 1 if edge exists in G, ∈fty otherwise
+- Rudrata cycle exists ↔ TSP has solution of weight |V|
 
 **TSP ≤ₚ Rudrata Cycle:**
 - Given TSP instance, ask if unweighted version has Hamiltonian cycle
@@ -295,7 +295,7 @@ All reductions are polynomial-time, establishing Rudrata Cycle as NP-complete.
 
 ## Practice Problems
 
-1. **Find all Rudrata cycles**: For the complete graph $K_4$ with vertices $\{1,2,3,4\}$, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they're rotations or reversals)
+1. **Find all Rudrata cycles**: For the complete graph K_4 with vertices \{1,2,3,4\}, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they're rotations or reversals)
 
 2. **Prove the reduction**: Show that Rudrata Cycle reduces to TSP. What edge weights should you use?
 
@@ -303,7 +303,7 @@ All reductions are polynomial-time, establishing Rudrata Cycle as NP-complete.
 
 4. **Path to Cycle**: Show that Rudrata Path reduces to Rudrata Cycle. How do you modify the graph?
 
-5. **Time complexity analysis**: For the DP algorithm, verify the $O(2^n \cdot n^2)$ time complexity. Can you optimize the space complexity?
+5. **Time complexity analysis**: For the DP algorithm, verify the O(2^n · n^2) time complexity. Can you optimize the space complexity?
 
 6. **Special cases**: Research Dirac's theorem. If a graph satisfies the conditions, does that mean we can find a Hamiltonian cycle in polynomial time?
 

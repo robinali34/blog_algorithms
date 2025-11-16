@@ -19,27 +19,27 @@ Integer Linear Programming asks: **Given linear constraints and a linear objecti
 **Integer Linear Programming (ILP) Decision Problem:**
 
 **Input:** 
-- A matrix $A \in \mathbb{Z}^{m \times n}$ (constraint coefficients)
-- A vector $b \in \mathbb{Z}^m$ (constraint bounds)
-- A vector $c \in \mathbb{Z}^n$ (objective coefficients)
-- An integer $k$ (target value)
+- A matrix A in mathbb{Z}^{m times n} (constraint coefficients)
+- A vector b in mathbb{Z}^m (constraint bounds)
+- A vector c in mathbb{Z}^n (objective coefficients)
+- An integer k (target value)
 
-**Output:** YES if there exists an integer vector $x \in \mathbb{Z}^n$ such that:
-- $Ax \leq b$ (constraints satisfied)
-- $c^T x \geq k$ (objective value at least $k$)
+**Output:** YES if there exists an integer vector x in mathbb{Z}^n such that:
+- Ax leq b (constraints satisfied)
+- c^T x geq k (objective value at least k)
 
 NO otherwise
 
 **ILP Optimization Problem:**
 
-**Input:** Same as above (without $k$)
+**Input:** Same as above (without k)
 
-**Output:** The maximum value of $c^T x$ subject to $Ax \leq b$ and $x \in \mathbb{Z}^n$
+**Output:** The maximum value of c^T x subject to Ax leq b and x in mathbb{Z}^n
 
 ### Variants
 
 **0-1 Integer Programming (Binary ILP):**
-- Variables restricted to $\{0, 1\}$
+- Variables restricted to {0, 1}
 - Very common in practice
 
 **Mixed Integer Linear Programming (MILP):**
@@ -53,23 +53,23 @@ NO otherwise
 
 Consider the ILP:
 
-**Maximize:** $3x_1 + 2x_2$
+**Maximize:** 3x₁ + 2x₁
 
 **Subject to:**
-- $2x_1 + x_2 \leq 6$
-- $x_1 + 2x_2 \leq 8$
-- $x_1, x_2 \geq 0$ and integer
+- 2x₁ + x₁ leq 6
+- x₁ + 2x₁ leq 8
+- x₁, x₁ geq 0 and integer
 
 **Feasible integer solutions:**
-- $(0, 0)$: objective = 0
-- $(1, 0)$: objective = 3
-- $(2, 0)$: objective = 6
-- $(0, 1)$: objective = 2
-- $(1, 1)$: objective = 5
-- $(2, 1)$: objective = 8
-- $(3, 0)$: objective = 9 ✓ (optimal, satisfies constraints)
+- (0, 0): objective = 0
+- (1, 0): objective = 3
+- (2, 0): objective = 6
+- (0, 1): objective = 2
+- (1, 1): objective = 5
+- (2, 1): objective = 8
+- (3, 0): objective = 9 ✓ (optimal, satisfies constraints)
 
-**LP relaxation** (allowing fractional values) might give $(2.67, 0.67)$ with objective $9.33$, but this is not integer.
+**LP relaxation** (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.
 
 ## Why ILP is in NP
 
@@ -77,14 +77,14 @@ To show that ILP is NP-complete, we first need to show it's in NP.
 
 **ILP ∈ NP:**
 
-Given a candidate solution (an integer vector $x$), we can verify in polynomial time:
-1. Check that $x$ has integer values: $O(n)$ time
-2. Check that $Ax \leq b$: $O(mn)$ time (matrix-vector multiplication)
-3. Check that $c^T x \geq k$: $O(n)$ time
+Given a candidate solution (an integer vector x), we can verify in polynomial time:
+1. Check that x has integer values: O(n) time
+2. Check that Ax leq b: O(mn) time (matrix-vector multiplication)
+3. Check that c^T x geq k: O(n) time
 
-Total verification time: $O(mn)$, which is polynomial in the input size. Therefore, ILP is in NP.
+Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.
 
-**Note:** The size of the solution $x$ might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.
+**Note:** The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.
 
 ## NP-Completeness: Reduction from 3-SAT
 
@@ -92,42 +92,42 @@ The standard proof that ILP is NP-complete reduces from 3-SAT.
 
 ### Construction
 
-For a 3-SAT formula $\phi = C_1 \land C_2 \land \ldots \land C_m$ with variables $x_1, x_2, \ldots, x_n$:
+For a 3-SAT formula phi = C_1  ∧  C_2  ∧  …  ∧  C_m with variables x₁, x₁, …, x_n:
 
 **Key Idea:** Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.
 
 1. **Variables:**
-   - For each Boolean variable $x_i$, create an integer variable $y_i \in \{0, 1\}$
-   - $y_i = 1$ means $x_i = \text{TRUE}$, $y_i = 0$ means $x_i = \text{FALSE}$
+   - For each Boolean variable x_i, create an integer variable y_i in {0, 1}
+   - y_i = 1 means x_i = TRUE, y_i = 0 means x_i = FALSE
 
 2. **Clauses:**
-   - For each clause $C_j = (l_1 \lor l_2 \lor l_3)$:
-     - If literal is $x_i$, use $y_i$
-     - If literal is $\neg x_i$, use $(1 - y_i)$
-     - Constraint: $y_{l_1} + y_{l_2} + y_{l_3} \geq 1$ (at least one literal is true)
+   - For each clause C_j = (l_1  ∨  l_2  ∨  l_3):
+     - If literal is x_i, use y_i
+     - If literal is ¬ x_i, use (1 - y_i)
+     - Constraint: y_{l_1} + y_{l_2} + y_{l_3} geq 1 (at least one literal is true)
    
-   Example: For clause $(x_1 \lor \neg x_2 \lor x_3)$:
-   - Constraint: $y_1 + (1 - y_2) + y_3 \geq 1$
-   - Simplifies to: $y_1 - y_2 + y_3 \geq 0$
+   Example: For clause (x₁  ∨  ¬ x₁  ∨  x₁):
+   - Constraint: y_1 + (1 - y_2) + y_3 ≥ 1
+   - Simplifies to: y_1 - y_2 + y_3 ≥ 0
 
-3. **Objective:** Maximize $\sum_{i=1}^n y_i$ (or any objective, since we're just checking feasibility)
+3. **Objective:** Maximize ∑_{i=1}^n y_i (or any objective, since we're just checking feasibility)
 
-4. **Bounds:** $0 \leq y_i \leq 1$ for all $i$ (enforces binary variables)
+4. **Bounds:** 0 ≤ y_i ≤ 1 for all i (enforces binary variables)
 
 ### Why This Works
 
 **Forward Direction (3-SAT satisfiable → ILP feasible):**
-- If $\phi$ is satisfiable, set $y_i = 1$ if $x_i = \text{TRUE}$, else $y_i = 0$
+- If \phi is satisfiable, set y_i = 1 if x_i = TRUE, else y_i = 0
 - Each clause constraint is satisfied (at least one literal is 1)
 - This gives a feasible ILP solution
 
 **Reverse Direction (ILP feasible → 3-SAT satisfiable):**
-- If ILP has feasible solution with $y_i \in \{0,1\}$, set $x_i = \text{TRUE}$ if $y_i = 1$, else $x_i = \text{FALSE}$
-- Since each clause constraint requires at least one $y_i = 1$ (or $(1-y_i) = 1$), each clause has at least one true literal
+- If ILP has feasible solution with y_i ∈ \{0,1\}, set x_i = TRUE if y_i = 1, else x_i = FALSE
+- Since each clause constraint requires at least one y_i = 1 (or (1-y_i) = 1), each clause has at least one true literal
 - This gives a satisfying assignment
 
 **Polynomial Time:**
-- Construction takes $O(mn)$ time (one constraint per clause)
+- Construction takes O(mn) time (one constraint per clause)
 
 Therefore, **ILP is NP-complete**.
 
@@ -141,8 +141,8 @@ Therefore, **ILP is NP-complete**.
 
 ### Key Difference
 
-**LP:** Variables $x \in \mathbb{R}^n$ (continuous)
-**ILP:** Variables $x \in \mathbb{Z}^n$ (integer)
+**LP:** Variables x ∈ ℝ^n (continuous)
+**ILP:** Variables x ∈ ℤ^n (integer)
 
 This seemingly small restriction makes the problem NP-complete!
 
@@ -154,10 +154,10 @@ A common technique for solving ILP:
 3. Otherwise, use branch-and-bound or cutting planes to find integer solution
 
 **Example:**
-- ILP: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ integer
-- LP relaxation: maximize $3x_1 + 2x_2$ subject to $2x_1 + x_2 \leq 6$, $x_1, x_2 \geq 0$ (real)
-- LP solution: $(3, 0)$ with objective 9 (happens to be integer!)
-- If LP gave $(2.5, 1)$, we'd need to branch or add cuts
+- ILP: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 integer
+- LP relaxation: maximize 3x₁ + 2x₁ subject to 2x₁ + x₁ ≤ 6, x₁, x₁ ≥ 0 (real)
+- LP solution: (3, 0) with objective 9 (happens to be integer!)
+- If LP gave (2.5, 1), we'd need to branch or add cuts
 
 ## Practical Implications
 
@@ -176,7 +176,7 @@ Integer Linear Programming is NP-complete, which means:
 **1. Branch-and-Bound:**
 - Solve LP relaxation
 - If solution is fractional, branch on a fractional variable
-- Create two subproblems: $x_i \leq \lfloor x_i^* \rfloor$ and $x_i \geq \lceil x_i^* \rceil$
+- Create two subproblems: x_i ≤ \lfloor x_i^* \rfloor and x_i ≥ \lceil x_i^* \rceil
 - Recursively solve subproblems
 - Prune branches that can't improve best known solution
 
@@ -244,7 +244,7 @@ Many practical ILP instances can be solved efficiently, even though worst-case i
 
 **Algorithm:** Systematic search with LP relaxation bounds
 - **Time Complexity:** Exponential worst-case, but much better in practice
-- **Space Complexity:** $O(n)$ for recursion stack
+- **Space Complexity:** O(n) for recursion stack
 - **Key:** Use LP relaxation to get bounds, prune branches that can't improve best solution
 - **Practical Performance:** Very effective for many real-world instances
 
@@ -252,7 +252,7 @@ Many practical ILP instances can be solved efficiently, even though worst-case i
 
 **Algorithm:** Solve LP relaxation, add cuts, repeat
 - **Time Complexity:** Exponential worst-case (may need exponential number of cuts)
-- **Space Complexity:** $O(mn)$ for storing constraints
+- **Space Complexity:** O(mn) for storing constraints
 - **Cuts:** Gomory cuts, Chvátal-Gomory cuts, etc.
 - **Practical Performance:** Often converges quickly in practice
 
@@ -260,21 +260,21 @@ Many practical ILP instances can be solved efficiently, even though worst-case i
 
 **Algorithm:** Combine branch-and-bound with cutting planes
 - **Time Complexity:** Exponential worst-case, but state-of-the-art approach
-- **Space Complexity:** $O(mn)$
+- **Space Complexity:** O(mn)
 - **Practical Performance:** Most effective method, used by modern solvers
 
 ### LP Relaxation
 
 **Algorithm:** Solve continuous relaxation (ignore integrality)
-- **Time Complexity:** $O(n^{3.5}L)$ using interior-point methods where $L$ is input size
-- **Space Complexity:** $O(mn)$
+- **Time Complexity:** O(n^{3.5}L) using interior-point methods where L is input size
+- **Space Complexity:** O(mn)
 - **Use:** Provides bounds for branch-and-bound, sometimes gives integer solution
 
 ### Special Cases
 
 **Totally Unimodular Matrices:**
-- **Time Complexity:** $O(n^{3.5}L)$ - solve as LP, solution automatically integer
-- **Space Complexity:** $O(mn)$
+- **Time Complexity:** O(n^{3.5}L) - solve as LP, solution automatically integer
+- **Space Complexity:** O(mn)
 
 **Network Flow Problems:**
 - Often have integer solutions when solved as LP
@@ -282,7 +282,7 @@ Many practical ILP instances can be solved efficiently, even though worst-case i
 ### Modern Solvers (CPLEX, Gurobi)
 
 **Techniques Used:**
-- Preprocessing: $O(mn)$ to simplify problem
+- Preprocessing: O(mn) to simplify problem
 - Branch-and-cut: Exponential worst-case, but very efficient in practice
 - Heuristics: Fast approximate solutions
 - **Practical Performance:** Can solve instances with thousands of variables and constraints
@@ -290,8 +290,8 @@ Many practical ILP instances can be solved efficiently, even though worst-case i
 ### Verification Complexity
 
 **Given a candidate integer solution:**
-- **Time Complexity:** $O(mn)$ - verify all constraints satisfied
-- **Space Complexity:** $O(1)$ additional space
+- **Time Complexity:** O(mn) - verify all constraints satisfied
+- **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability shows ILP is in NP
 
 ## Key Takeaways
@@ -331,7 +331,7 @@ All reductions are polynomial-time, establishing ILP as NP-complete.
    - Total weight must be ≤ capacity
    - Each item can be selected at most once
 
-2. **Reduce 3-SAT to ILP**: For the 3-SAT instance $(x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor x_3)$, construct the corresponding ILP instance.
+2. **Reduce 3-SAT to ILP**: For the 3-SAT instance (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  x₁), construct the corresponding ILP instance.
 
 3. **LP Relaxation**: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?
 

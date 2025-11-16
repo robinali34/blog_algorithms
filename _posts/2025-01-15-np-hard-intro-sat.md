@@ -17,23 +17,23 @@ The Boolean Satisfiability Problem asks: **Given a Boolean formula, is there an 
 ### Problem Definition
 
 **Input:** A Boolean formula in Conjunctive Normal Form (CNF)
-- Variables: $x_1, x_2, \ldots, x_n$ (each can be TRUE or FALSE)
-- Literals: a variable or its negation (e.g., $x_1$ or $\neg x_1$)
-- Clauses: disjunctions of literals (e.g., $(x_1 \lor \neg x_2 \lor x_3)$)
-- Formula: conjunction of clauses (e.g., $(x_1 \lor \neg x_2) \land (\neg x_1 \lor x_3) \land (x_2 \lor \neg x_3)$)
+- Variables: x₁, x₁, …, x_n (each can be TRUE or FALSE)
+- Literals: a variable or its negation (e.g., x₁ or ¬ x₁)
+- Clauses: disjunctions of literals (e.g., (x₁  ∨  ¬ x₁  ∨  x₁))
+- Formula: conjunction of clauses (e.g., (x₁  ∨  ¬ x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (x₁  ∨  ¬ x₁))
 
 **Output:** YES if there exists an assignment that satisfies all clauses, NO otherwise
 
 ### Example
 
 Consider the formula:
-$$(x_1 \lor x_2) \land (\neg x_1 \lor x_3) \land (\neg x_2 \lor \neg x_3)$$
+(x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁)
 
 Is this satisfiable?
 
-- If $x_1 = \text{TRUE}$, then the first clause is satisfied. For the second clause $(\neg x_1 \lor x_3)$ to be satisfied, we need $x_3 = \text{TRUE}$. With $x_3 = \text{TRUE}$, the third clause $(\neg x_2 \lor \neg x_3)$ requires $x_2 = \text{FALSE}$. This assignment satisfies all clauses: $(x_1=\text{TRUE}, x_2=\text{FALSE}, x_3=\text{TRUE})$.
+- If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁  ∨  x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).
 
-- Alternatively, if $x_1 = \text{FALSE}$, then the first clause requires $x_2 = \text{TRUE}$. The second clause is automatically satisfied. The third clause $(\neg x_2 \lor \neg x_3)$ requires $x_3 = \text{FALSE}$. This also works: $(x_1=\text{FALSE}, x_2=\text{TRUE}, x_3=\text{FALSE})$.
+- Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁  ∨  ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).
 
 So this formula is satisfiable.
 
@@ -87,7 +87,7 @@ The Cook-Levin theorem proves SAT is NP-complete by:
 **3-SAT** is a restricted version of SAT where each clause contains exactly 3 literals.
 
 **Example:**
-$$(x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_4) \land (x_1 \lor \neg x_2 \lor x_4)$$
+(x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)
 
 ### Why 3-SAT?
 
@@ -139,41 +139,41 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 
 ### Brute Force Approach
 
-**Algorithm:** Try all $2^n$ possible truth assignments
-- **Time Complexity:** $O(2^n \cdot m)$ where $n$ is number of variables and $m$ is number of clauses
-- **Space Complexity:** $O(n)$ for storing current assignment
-- **Analysis:** For each of $2^n$ assignments, evaluate $m$ clauses, each taking $O(1)$ time per clause
+**Algorithm:** Try all 2ⁿ possible truth assignments
+- **Time Complexity:** O(2^n · m) where n is number of variables and m is number of clauses
+- **Space Complexity:** O(n) for storing current assignment
+- **Analysis:** For each of 2ⁿ assignments, evaluate m clauses, each taking O(1) time per clause
 
 ### Backtracking (DPLL Algorithm)
 
 **Algorithm:** Systematic search with early pruning
-- **Time Complexity:** $O(2^n)$ worst-case, but much better in practice with pruning
-- **Space Complexity:** $O(n)$ for recursion stack
+- **Time Complexity:** O(2^n) worst-case, but much better in practice with pruning
+- **Space Complexity:** O(n) for recursion stack
 - **Improvements:** Unit propagation and pure literal elimination reduce search space significantly
 
 ### Modern SAT Solvers (CDCL)
 
 **Conflict-Driven Clause Learning (CDCL):**
 - **Time Complexity:** Exponential worst-case, but very efficient in practice
-- **Space Complexity:** $O(n + m + L)$ where $L$ is learned clauses
+- **Space Complexity:** O(n + m + L) where L is learned clauses
 - **Key Techniques:**
-  - Unit propagation: $O(m)$ per decision
-  - Conflict analysis: $O(n)$ per conflict
+  - Unit propagation: O(m) per decision
+  - Conflict analysis: O(n) per conflict
   - Clause learning: Adds learned clauses to prevent same conflicts
 - **Practical Performance:** Can solve instances with millions of variables and clauses
 
 ### 2-SAT Special Case
 
 **Algorithm:** Build implication graph, check for strongly connected components
-- **Time Complexity:** $O(n + m)$ using Kosaraju's or Tarjan's algorithm
-- **Space Complexity:** $O(n + m)$
+- **Time Complexity:** O(n + m) using Kosaraju's or Tarjan's algorithm
+- **Space Complexity:** O(n + m)
 - **Why Polynomial:** 2-SAT has special structure that allows polynomial-time solution
 
 ### Verification Complexity
 
 **Given a candidate assignment:**
-- **Time Complexity:** $O(m)$ - evaluate each clause once
-- **Space Complexity:** $O(1)$ additional space
+- **Time Complexity:** O(m) - evaluate each clause once
+- **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability is why SAT is in NP
 
 ## Key Takeaways
@@ -194,7 +194,7 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 ## Practice Problems
 
 1. Determine if the following 3-SAT instance is satisfiable:
-   $$(x_1 \lor x_2 \lor x_3) \land (\neg x_1 \lor x_2 \lor \neg x_3) \land (x_1 \lor \neg x_2 \lor x_3) \land (\neg x_1 \lor \neg x_2 \lor \neg x_3)$$
+   (x₁  ∨  x₁  ∨  x₁)  ∧  (¬ x₁  ∨  x₁  ∨  ¬ x₁)  ∧  (x₁  ∨  ¬ x₁  ∨  x₁)  ∧  (¬ x₁  ∨  ¬ x₁  ∨  ¬ x₁)
 
 2. Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?
 
