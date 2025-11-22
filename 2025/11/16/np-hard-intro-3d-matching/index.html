@@ -80,36 +80,13 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Three disjoint sets X, Y, Z with</td>
-          <td>X</td>
-          <td>=</td>
-          <td>Y</td>
-          <td>=</td>
-          <td>Z</td>
-          <td>= n</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Three disjoint sets X, Y, Z with <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> = n</li>
   <li>A set T subseteq X × Y × Z of triples</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists a subset M subseteq T such that:</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>= n (exactly n triples)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|M|</code> = n (exactly n triples)</li>
   <li>All triples in M are disjoint (no two share an element)</li>
   <li>Every element in X cup Y cup Z appears in exactly one triple of M</li>
 </ul>
@@ -164,17 +141,7 @@ Triples:
 
 <p>Given a candidate solution (a set M of triples), we can verify in polynomial time:</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>M</td>
-          <td>= n: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|M|</code> = n: O(1) time</li>
   <li>Check that all triples are disjoint: O(n^2) time (compare all pairs)</li>
   <li>Check that every element appears exactly once: O(n) time (use arrays/sets to count occurrences)</li>
 </ol>
@@ -387,19 +354,7 @@ Triples:
 
 <p><strong>Algorithm:</strong> Try all possible subsets of triples</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(2^{</td>
-          <td>T</td>
-          <td>} · n) where</td>
-          <td>T</td>
-          <td>is number of triples</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(2^{<code class="language-plaintext highlighter-rouge">|T|</code>} · n) where <code class="language-plaintext highlighter-rouge">|T|</code> is number of triples</li>
   <li><strong>Space Complexity:</strong> O(n) for storing current matching</li>
   <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching (O(n) to check disjointness)</li>
 </ul>
@@ -418,28 +373,8 @@ Triples:
 <p><strong>Algorithm:</strong> Formulate as 0-1 ILP, use solver</p>
 <ul>
   <li><strong>Time Complexity:</strong> Depends on ILP solver (exponential worst-case, efficient in practice)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(</td>
-          <td>T</td>
-          <td>+ n) for storing variables and constraints</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Formulation:</strong> O(</td>
-          <td>T</td>
-          <td>) variables, O(n) constraints</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Space Complexity:</strong> O(<code class="language-plaintext highlighter-rouge">|T|</code> + n) for storing variables and constraints</li>
+  <li><strong>Formulation:</strong> O(<code class="language-plaintext highlighter-rouge">|T|</code>) variables, O(n) constraints</li>
   <li><strong>Practical Performance:</strong> Modern solvers handle moderate-sized instances well</li>
 </ul>
 
@@ -447,28 +382,8 @@ Triples:
 
 <p><strong>Algorithm:</strong> For bipartite matching, use augmenting paths</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(sqrt{n} ·</td>
-          <td>E</td>
-          <td>) using Hopcroft-Karp algorithm</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(n +</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(sqrt{n} · <code class="language-plaintext highlighter-rouge">|E|</code>) using Hopcroft-Karp algorithm</li>
+  <li><strong>Space Complexity:</strong> O(n + <code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Why Polynomial:</strong> 2D matching has special structure allowing polynomial-time solution</li>
 </ul>
 

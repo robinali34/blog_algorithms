@@ -136,30 +136,10 @@
 <p>Given a candidate solution (a set of at most k vertices), we can verify in polynomial time:</p>
 <ol>
   <li>Check that the set has at most k vertices: O(k) time</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that every edge has at least one endpoint in the set: O(</td>
-          <td>E</td>
-          <td>) time (iterate through all edges and check if at least one endpoint is in the cover)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that every edge has at least one endpoint in the set: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time (iterate through all edges and check if at least one endpoint is in the cover)</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Since k ≤</td>
-      <td>V</td>
-      <td>and we need to check</td>
-      <td>E</td>
-      <td>edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Since k ≤ <code class="language-plaintext highlighter-rouge">|V|</code> and we need to check <code class="language-plaintext highlighter-rouge">|E|</code> edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-independent-set">NP-Completeness: Reduction from Independent Set</h2>
 
@@ -190,16 +170,7 @@
 
 <p><strong>Corollary (Gallai’s Theorem):</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For any graph G, \alpha(G) + \beta(G) =</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>For any graph G, \alpha(G) + \beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code></li>
   <li>Where \alpha(G) is the independence number and beta(G) is the vertex cover number</li>
 </ul>
 
@@ -210,56 +181,16 @@
 <p><strong>Reduction:</strong></p>
 <ol>
   <li>Given an Independent Set instance: graph G and integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Vertex Cover instance: graph G and integer</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Vertex Cover instance: graph G and integer <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>G has an independent set of size at least k <strong>if and only if</strong> G has a vertex cover of size at most</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>G has an independent set of size at least k <strong>if and only if</strong> G has a vertex cover of size at most <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
   <li>This follows directly from Gallai’s theorem:
     <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>If maximum independent set has size ≥ k, then minimum vertex cover has size ≤</td>
-              <td>V</td>
-              <td>- k</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>If minimum vertex cover has size ≤</td>
-              <td>V</td>
-              <td>- k, then maximum independent set has size ≥ k</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>If maximum independent set has size ≥ k, then minimum vertex cover has size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+      <li>If minimum vertex cover has size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k, then maximum independent set has size ≥ k</li>
     </ul>
   </li>
 </ul>
@@ -333,17 +264,7 @@
 <p>As we’ve seen:</p>
 <ul>
   <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>\alpha(G) + \beta(G) =</td>
-          <td>V</td>
-          <td>(Gallai’s theorem)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>\alpha(G) + \beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code> (Gallai’s theorem)</li>
   <li>This makes Vertex Cover and Independent Set polynomially equivalent</li>
 </ul>
 
@@ -440,17 +361,7 @@
 
 <ol>
   <li><strong>Vertex Cover is NP-Complete</strong>: Proven by reduction from Independent Set (via Gallai’s theorem) or directly from 3-SAT</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Gallai’s Theorem</strong>: The relationship alpha(G) + beta(G) =</td>
-          <td>V</td>
-          <td>is fundamental and elegant</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Gallai’s Theorem</strong>: The relationship alpha(G) + beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code> is fundamental and elegant</li>
   <li><strong>König’s Theorem</strong>: In bipartite graphs, vertex cover equals maximum matching size - providing a polynomial-time algorithm</li>
   <li><strong>2-Approximation</strong>: Vertex Cover has a simple 2-approximation algorithm, and this is optimal for general graphs</li>
   <li><strong>Practical Algorithms</strong>: Despite NP-completeness, approximation algorithms and special-case algorithms make Vertex Cover tractable in practice</li>
@@ -461,28 +372,8 @@
 <p><strong>Independent Set ≤ₚ Vertex Cover:</strong></p>
 <ul>
   <li>Given Independent Set instance: graph G and integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Vertex Cover instance: graph G and integer</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>G has independent set of size ≥ k ↔ G has vertex cover of size ≤</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Vertex Cover instance: graph G and integer <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+  <li>G has independent set of size ≥ k ↔ G has vertex cover of size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Vertex Cover:</strong></p>
@@ -508,15 +399,7 @@
 7. return C
 </code></pre></div></div>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Time Complexity:</strong> O(</td>
-      <td>E</td>
-      <td>)</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Time Complexity:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>)</p>
 
 <p><strong>Approximation Ratio:</strong> 2 (at most twice the optimal)</p>
 
@@ -544,48 +427,16 @@
 
 <p><strong>Algorithm:</strong> Check all subsets of vertices of size ≤ k</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(∑_{i=0}^{k} C(n,i) ·</td>
-          <td>E</td>
-          <td>) = O(n^k ·</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(∑_{i=0}^{k} C(n,i) · <code class="language-plaintext highlighter-rouge">|E|</code>) = O(n^k · <code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Analysis:</strong> For each subset, check if all edges are covered (O(</td>
-          <td>E</td>
-          <td>) time)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Analysis:</strong> For each subset, check if all edges are covered (O(<code class="language-plaintext highlighter-rouge">|E|</code>) time)</li>
 </ul>
 
 <h3 id="dynamic-programming">Dynamic Programming</h3>
 
 <p><strong>Algorithm:</strong> Use bitmask DP</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(2^n ·</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(2^n · <code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Space Complexity:</strong> O(2^n)</li>
   <li><strong>Subproblem:</strong> dp[mask] = minimum vertex cover for edges covered by vertices in mask</li>
   <li><strong>Recurrence:</strong> dp[mask] = min_{v ∉ mask} {dp[mask \cup {v}] + 1}</li>
@@ -610,28 +461,8 @@
 
 <p><strong>Algorithm:</strong> Find maximum matching, construct vertex cover</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(sqrt{n} ·</td>
-          <td>E</td>
-          <td>) using Hopcroft-Karp algorithm</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(n +</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(sqrt{n} · <code class="language-plaintext highlighter-rouge">|E|</code>) using Hopcroft-Karp algorithm</li>
+  <li><strong>Space Complexity:</strong> O(n + <code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Method:</strong> Maximum matching size equals minimum vertex cover size in bipartite graphs</li>
 </ul>
 
@@ -639,17 +470,7 @@
 
 <p><strong>Algorithm:</strong> Branching on high-degree vertices</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(2^k · (n +</td>
-          <td>E</td>
-          <td>)) where k is solution size</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(2^k · (n + <code class="language-plaintext highlighter-rouge">|E|</code>)) where k is solution size</li>
   <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Key Insight:</strong> If vertex has degree &gt; k, it must be in cover</li>
   <li><strong>Recurrence:</strong> T(k) = T(k-1) + T(k-deg(v)) for vertex v</li>
@@ -659,17 +480,7 @@
 
 <p><strong>Algorithm:</strong> Repeatedly pick uncovered edge, add both endpoints</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Space Complexity:</strong> O(n)</li>
   <li><strong>Approximation Ratio:</strong> 2</li>
 </ul>
@@ -679,17 +490,7 @@
 <p><strong>Algorithm:</strong> Solve LP relaxation, round</p>
 <ul>
   <li><strong>Time Complexity:</strong> O(LP solver time) = O(n^{3.5}L) using interior-point methods</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(n +</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Space Complexity:</strong> O(n + <code class="language-plaintext highlighter-rouge">|E|</code>)</li>
   <li><strong>Approximation Ratio:</strong> 2</li>
 </ul>
 
@@ -697,17 +498,7 @@
 
 <p><strong>Given a candidate vertex cover of size k:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(</td>
-          <td>E</td>
-          <td>) - check each edge has at least one endpoint in cover</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Time Complexity:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>) - check each edge has at least one endpoint in cover</li>
   <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Vertex Cover is in NP</li>
 </ul>
@@ -726,26 +517,10 @@
 
 <ol>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, alpha(G) + beta(G) =</td>
-          <td>V</td>
-          <td>where alpha(G) is the independence number and \beta(G) is the vertex cover number.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, alpha(G) + beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code> where alpha(G) is the independence number and \beta(G) is the vertex cover number.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Prove the reduction</strong>: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤</td>
-          <td>V</td>
-          <td>- k.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p><strong>Prove the reduction</strong>: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
@@ -761,7 +536,9 @@ Determine the vertex cover size and corresponding satisfying assignment.</p>
   <li>
     <p><strong>König’s theorem</strong>: Research and explain König’s theorem. How does it provide a polynomial-time algorithm for Vertex Cover in bipartite graphs?</p>
   </li>
-  <li><strong>Parameterized complexity</strong>: Research why Vertex Cover is FPT (Fixed-Parameter Tractable) with respect to the solution size k. What is the time complexity?</li>
+  <li>
+    <p><strong>Parameterized complexity</strong>: Research why Vertex Cover is FPT (Fixed-Parameter Tractable) with respect to the solution size k. What is the time complexity?</p>
+  </li>
 </ol>
 
 <hr />

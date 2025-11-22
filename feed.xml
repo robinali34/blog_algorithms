@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T23:39:13+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: Rudrata (s,t)-Path to White and Gold Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/" rel="alternate" type="text/html" title="Reduction: Rudrata (s,t)-Path to White and Gold Path" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T23:43:07+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: Rudrata (s,t)-Path to White and Gold Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/" rel="alternate" type="text/html" title="Reduction: Rudrata (s,t)-Path to White and Gold Path" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>This post provides a detailed proof that the White and Gold Path problem is NP-complete by reducing from Rudrata (s,t)-Path. The reduction uses vertex coloring constraints to enforce that a path visits all vertices, demonstrating how color ordering constraints can encode Hamiltonian path requirements.</p>
 
@@ -2676,48 +2676,18 @@ Given a candidate solution (set S of N+4 vertices):</p>
 <p><strong>Key Insight:</strong> Use the complement relationship with Independent Set</p>
 <ul>
   <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Independent set of size ≥ k ↔ Vertex cover of size ≤</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Independent set of size ≥ k ↔ Vertex cover of size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ul>
 
 <p><strong>Reduction:</strong></p>
 <ol>
   <li>Reduce 3-SAT to Independent Set (as above) to get graph G and k = n + m</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Vertex Cover instance: graph G, k’ =</td>
-          <td>V</td>
-          <td>- (n + m)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Vertex Cover instance: graph G, k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size</td>
-          <td>V</td>
-          <td>- (n + m) exists</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m) exists</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong> O(n + m)</p>
@@ -3038,17 +3008,7 @@ Given a candidate solution (set S of N+4 vertices):</p>
 <p><strong>3-SAT ≤ₚ Vertex Cover:</strong></p>
 <ul>
   <li>Via Independent Set complement relationship</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>k =</td>
-          <td>V</td>
-          <td>- (n + m)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>k = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Clique:</strong></p>
@@ -3492,17 +3452,7 @@ Given a candidate solution (set S of N+4 vertices):</p>
       <li>G has independent set of size k ↔ G̅ has clique of size k</li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Polynomial time:</strong> Creating complement graph takes O(</td>
-          <td>V</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Polynomial time:</strong> Creating complement graph takes O(<code class="language-plaintext highlighter-rouge">|V|</code>²) time</li>
 </ol>
 
 <p><strong>Therefore, Clique is NP-complete.</strong></p>
@@ -3528,19 +3478,7 @@ Given a candidate solution (set S of N+4 vertices):</p>
       <li>G has vertex cover of size k ↔ Sets cover universe with k sets</li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Polynomial time:</strong> O(</td>
-          <td>V</td>
-          <td>+</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Polynomial time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code> + <code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
 </ol>
 
 <p><strong>Therefore, Set Cover is NP-complete.</strong></p>
@@ -3581,39 +3519,11 @@ Given a candidate solution (set S of N+4 vertices):</p>
       <li>Given Rudrata Cycle instance: graph G = (V, E)</li>
       <li>Create complete graph G’ with same vertices</li>
       <li>Set edge weights: w(u,v) = 1 if (u,v) ∈ E, else w(u,v) = 2</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Set bound B =</td>
-              <td>V</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>G has Hamiltonian cycle ↔ G’ has TSP tour of weight</td>
-              <td>V</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Set bound B = <code class="language-plaintext highlighter-rouge">|V|</code></li>
+      <li>G has Hamiltonian cycle ↔ G’ has TSP tour of weight <code class="language-plaintext highlighter-rouge">|V|</code></li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Polynomial time:</strong> O(</td>
-          <td>V</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Polynomial time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code>²) time</li>
 </ol>
 
 <p><strong>Therefore, TSP is NP-complete.</strong></p>

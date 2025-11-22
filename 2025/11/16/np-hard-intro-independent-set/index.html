@@ -139,15 +139,7 @@
   <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Since k ≤</td>
-      <td>V</td>
-      <td>, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</td>
-    </tr>
-  </tbody>
-</table>
+<p>Since k ≤ <code class="language-plaintext highlighter-rouge">|V|</code>, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-clique">NP-Completeness: Reduction from Clique</h2>
 
@@ -197,17 +189,7 @@
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Constructing G̅ takes O(</td>
-          <td>V</td>
-          <td>^2) time (check all pairs of vertices)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Constructing G̅ takes O(<code class="language-plaintext highlighter-rouge">|V|</code>^2) time (check all pairs of vertices)</li>
   <li>This is polynomial in the input size</li>
 </ul>
 
@@ -329,16 +311,7 @@
 
 <p><strong>Corollary:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Maximum independent set size + Minimum vertex cover size =</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Maximum independent set size + Minimum vertex cover size = <code class="language-plaintext highlighter-rouge">|V|</code></li>
   <li>This is known as <strong>Gallai’s theorem</strong></li>
 </ul>
 
@@ -498,15 +471,7 @@
     <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in G̅.</p>
   </li>
   <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) =</td>
-          <td>V</td>
-          <td>where \alpha(G) is the independence number and beta(G) is the vertex cover number.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code> where \alpha(G) is the independence number and beta(G) is the vertex cover number.</p>
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
@@ -519,7 +484,9 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
   <li>
     <p><strong>Reduction practice</strong>: Given that Independent Set is NP-complete, show that Vertex Cover is also NP-complete using the complement relationship.</p>
   </li>
-  <li><strong>Greedy algorithm</strong>: Analyze the greedy algorithm for Independent Set that repeatedly picks a vertex of minimum degree and removes it and its neighbors. What approximation ratio does it achieve?</li>
+  <li>
+    <p><strong>Greedy algorithm</strong>: Analyze the greedy algorithm for Independent Set that repeatedly picks a vertex of minimum degree and removes it and its neighbors. What approximation ratio does it achieve?</p>
+  </li>
 </ol>
 
 <hr />
