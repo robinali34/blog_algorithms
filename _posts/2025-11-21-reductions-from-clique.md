@@ -22,6 +22,14 @@ Clique is a fundamental graph problem proven NP-complete. This post provides det
 
 ## Q1: How do you reduce Clique to Independent Set?
 
+**Answer:** Use complement graph.
+
+**Key Insight:** 
+- S is a clique in G ↔ S is an independent set in G̅ (complement graph)
+- Complement graph reverses edge relationships
+
+**Hint:** The complement graph G̅ has edges exactly where G doesn't. This transforms "all pairs connected" into "no pairs connected".
+
 ### 1. NP-Completeness Proof of Independent Set: Solution Validation
 
 **Independent Set Problem:**

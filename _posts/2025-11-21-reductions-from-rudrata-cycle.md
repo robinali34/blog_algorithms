@@ -22,6 +22,15 @@ Rudrata Cycle (Hamiltonian Cycle) is a fundamental cycle problem proven NP-compl
 
 ## Q1: How do you reduce Rudrata Cycle to Traveling Salesman Problem?
 
+**Answer:** Convert cycle to tour with edge weights.
+
+**Key Insight:** 
+- Hamiltonian cycle is a tour visiting all vertices
+- Assign weight 1 to existing edges, weight 2 to non-existing edges
+- Target weight equals number of vertices
+
+**Hint:** Make the complete graph, but penalize edges that don't exist in the original graph. A Hamiltonian cycle will use only weight-1 edges, giving total weight equal to the number of vertices.
+
 ### 1. NP-Completeness Proof of TSP: Solution Validation
 
 **TSP Problem:**

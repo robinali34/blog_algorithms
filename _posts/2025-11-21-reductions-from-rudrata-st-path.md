@@ -22,6 +22,15 @@ Rudrata (s,t)-Path (Hamiltonian (s,t)-Path) is a constrained path problem proven
 
 ## Q1: How do you reduce Rudrata (s,t)-Path to Rudrata Path?
 
+**Answer:** Remove endpoint constraints (if graph allows).
+
+**Key Insight:** 
+- Hamiltonian (s,t)-path is a special case of Hamiltonian path
+- If Hamiltonian path exists, may be able to reorder to start at s and end at t
+- Reduction works if endpoints can be adjusted
+
+**Hint:** This reduction is conditional - it works if the graph structure allows reordering. For unconditional reduction, better to reduce from Rudrata Cycle by removing an edge.
+
 ### 1. NP-Completeness Proof of Rudrata Path: Solution Validation
 
 **Rudrata Path Problem:**

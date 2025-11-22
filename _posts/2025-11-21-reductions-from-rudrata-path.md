@@ -22,6 +22,15 @@ Rudrata Path (Hamiltonian Path) is a fundamental path problem proven NP-complete
 
 ## Q1: How do you reduce Rudrata Path to Rudrata (s,t)-Path?
 
+**Answer:** Add start and end vertices.
+
+**Key Insight:** 
+- Add universal start vertex s connected to all vertices
+- Add universal end vertex t connected from all vertices
+- Hamiltonian path can start/end anywhere ↔ Hamiltonian (s,t)-path exists
+
+**Hint:** By connecting s to all vertices and all vertices to t, any Hamiltonian path can be extended to start at s and end at t. This removes the constraint on path endpoints.
+
 ### 1. NP-Completeness Proof of Rudrata (s,t)-Path: Solution Validation
 
 **Rudrata (s,t)-Path Problem:**

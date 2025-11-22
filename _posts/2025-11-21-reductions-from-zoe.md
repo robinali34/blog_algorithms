@@ -22,6 +22,15 @@ Zero-One Equations (ZOE) is a matrix equation problem proven NP-complete by redu
 
 ## Q1: How do you reduce ZOE to 3D Matching?
 
+**Answer:** Encode equations as matching constraints.
+
+**Key Insight:** 
+- Encode variables as elements in one set
+- Encode equations as elements in another set
+- Use triples to represent variable-equation-value relationships
+
+**Hint:** Think of matching as assigning values to variables. Each triple (variable, equation, value) represents a contribution to an equation. Perfect matching ensures all equations are satisfied.
+
 ### 1. NP-Completeness Proof of 3D Matching: Solution Validation
 
 **3D Matching Problem:**

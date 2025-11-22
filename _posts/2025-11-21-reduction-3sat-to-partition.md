@@ -49,6 +49,10 @@ Given a candidate solution (partition S₁, S₂):
 
 ## 2. Reduce 3-SAT to Partition
 
+**Key Insight:** Use base representation to encode variable assignments and clause satisfaction using numbers. The partition requirement (equal sums) enforces that all variables are assigned and all clauses are satisfied.
+
+**Hint:** Think of numbers as having multiple "digits" - some digits encode variable assignments (ensuring exactly one per variable), others encode clause satisfaction (ensuring at least one literal per clause). Slack numbers provide flexibility to achieve the target sum.
+
 ### 2.1 Input Conversion
 
 Given a 3-SAT instance with n variables and m clauses, we construct a Partition instance.

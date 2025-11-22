@@ -25,6 +25,15 @@ SAT (Boolean Satisfiability) is the first problem proven NP-complete by the Cook
 
 ## Q1: How do you reduce SAT to 3-SAT?
 
+**Answer:** Convert each clause with k > 3 literals into multiple 3-literal clauses.
+
+**Key Insight:** 
+- Introduce new variables to break long clauses into 3-literal clauses
+- New variables can be set to satisfy intermediate clauses
+- Original clause satisfiable ↔ at least one new clause satisfiable
+
+**Hint:** For a clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) with k > 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ ... The new variables yᵢ act as "switches" that can be set to propagate satisfaction.
+
 ### 1. NP-Completeness Proof of 3-SAT: Solution Validation
 
 **3-SAT Problem:**
@@ -119,6 +128,15 @@ Given a SAT instance: formula φ in CNF with clauses C₁, C₂, ..., C_m.
 ---
 
 ## Q2: How do you reduce SAT to Integer Linear Programming?
+
+**Answer:** Encode Boolean variables as 0-1 ILP variables and clauses as constraints.
+
+**Key Insight:** 
+- Map Boolean variables to 0-1 ILP variables
+- Encode clause satisfaction as linear inequality: sum of literals ≥ 1
+- Use (1 - xᵢ) for negated literals
+
+**Hint:** Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ ¬x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.
 
 ### 1. NP-Completeness Proof of ILP: Solution Validation
 

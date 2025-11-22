@@ -22,6 +22,15 @@ Integer Linear Programming (ILP) is a fundamental optimization problem proven NP
 
 ## Q1: How do you reduce ILP to 0-1 ILP?
 
+**Answer:** Use binary expansion of integer variables.
+
+**Key Insight:** 
+- Represent each integer variable as sum of powers of 2 times binary variables
+- Binary expansion preserves integer values
+- Constraints can be converted using binary representation
+
+**Hint:** For variable xᵢ ≤ M, use ⌈log₂(M+1)⌉ binary variables. Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}. This allows encoding any integer up to M using binary digits.
+
 ### 1. NP-Completeness Proof of 0-1 ILP: Solution Validation
 
 **0-1 ILP Problem:**

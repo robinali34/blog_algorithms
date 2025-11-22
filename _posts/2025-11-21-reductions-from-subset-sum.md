@@ -20,6 +20,15 @@ Subset Sum is a fundamental number problem proven NP-complete by reduction from 
 
 ## Q1: How do you reduce Subset Sum to Partition?
 
+**Answer:** Add balancing elements to create equal partition.
+
+**Key Insight:** 
+- If subset sums to t, add elements that force equal partition
+- Add elements 2T - t and T + t where T is total sum
+- These balance the partition
+
+**Hint:** The key is to add two elements that, together with the subset and its complement, create equal sums. If one partition has the subset (sum t) and 2T-t, the other has the complement (sum T-t) and T+t, both sum to 2T.
+
 ### 1. NP-Completeness Proof of Partition: Solution Validation
 
 **Partition Problem:**

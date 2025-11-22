@@ -22,6 +22,15 @@ Traveling Salesman Problem (TSP) is a fundamental routing problem proven NP-comp
 
 ## Q1: How do you reduce TSP to Hamiltonian Cycle?
 
+**Answer:** Filter edges by weight threshold.
+
+**Key Insight:** 
+- TSP tour uses only edges with weight ≤ B
+- Create graph with only edges satisfying weight constraint
+- Hamiltonian cycle in filtered graph ↔ TSP tour
+
+**Hint:** Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ |V| exists if and only if Hamiltonian cycle exists (using only weight-1 edges).
+
 ### 1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation
 
 **Hamiltonian Cycle Problem:**
