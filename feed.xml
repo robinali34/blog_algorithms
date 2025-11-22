@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T23:43:07+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: Rudrata (s,t)-Path to White and Gold Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/" rel="alternate" type="text/html" title="Reduction: Rudrata (s,t)-Path to White and Gold Path" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T23:55:29+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: Rudrata (s,t)-Path to White and Gold Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/" rel="alternate" type="text/html" title="Reduction: Rudrata (s,t)-Path to White and Gold Path" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>This post provides a detailed proof that the White and Gold Path problem is NP-complete by reducing from Rudrata (s,t)-Path. The reduction uses vertex coloring constraints to enforce that a path visits all vertices, demonstrating how color ordering constraints can encode Hamiltonian path requirements.</p>
 
@@ -390,7 +390,350 @@ Given a candidate solution (ordered list of vertices P representing a path):</p>
 
 <hr />
 
-<p>This reduction demonstrates how color ordering constraints can encode Hamiltonian path requirements, showing that White and Gold Path is NP-complete.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce Rudrata (s,t)-Path to White and Gold Path, proving that the White and Gold Path problem is NP-complete.]]></summary></entry><entry><title type="html">Reduction: Vertex Cover to Flower-Search</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/" rel="alternate" type="text/html" title="Reduction: Vertex Cover to Flower-Search" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>This reduction demonstrates how color ordering constraints can encode Hamiltonian path requirements, showing that White and Gold Path is NP-complete.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce Rudrata (s,t)-Path to White and Gold Path, proving that the White and Gold Path problem is NP-complete.]]></summary></entry><entry><title type="html">Reduction: SAT to Circuit Design</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-sat-to-circuit-design/" rel="alternate" type="text/html" title="Reduction: SAT to Circuit Design" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-sat-to-circuit-design</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-sat-to-circuit-design/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>This post provides a detailed proof that the Circuit Design problem is NP-complete by reducing from SAT. The reduction demonstrates how Boolean satisfiability constraints can be encoded as circuit design requirements, showing the fundamental connection between logical formulas and circuit structures.</p>
+
+<h2 id="problem-definitions">Problem Definitions</h2>
+
+<h3 id="circuit-design-problem">Circuit Design Problem</h3>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A Boolean formula φ (or Boolean function specification)</li>
+  <li>An integer k (maximum circuit size/complexity)</li>
+</ul>
+
+<p><strong>Output:</strong> YES if there exists a Boolean circuit of size at most k that computes φ AND outputs TRUE for at least one input assignment, NO otherwise</p>
+
+<p><strong>Circuit Structure:</strong></p>
+<ul>
+  <li>A Boolean circuit consists of:
+    <ul>
+      <li>Input gates (variables x₁, …, x_n)</li>
+      <li>Logic gates (AND, OR, NOT)</li>
+      <li>One output gate</li>
+    </ul>
+  </li>
+  <li>Circuit size: Total number of gates (excluding input gates)</li>
+  <li>The circuit computes a Boolean function f: {0,1}ⁿ → {0,1}</li>
+</ul>
+
+<p><strong>Problem Variant:</strong></p>
+<ul>
+  <li>Given formula φ and size k, does there exist a circuit of size ≤ k that:
+    <ol>
+      <li>Computes φ (outputs φ(x) for input x)</li>
+      <li>Outputs TRUE for at least one input x</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="sat-problem">SAT Problem</h3>
+
+<p><strong>Input:</strong> A Boolean formula φ in CNF (Conjunctive Normal Form)</p>
+
+<p><strong>Output:</strong> YES if φ is satisfiable, NO otherwise</p>
+
+<p><strong>SAT:</strong> The problem of determining whether there exists a truth assignment to variables that makes the formula TRUE.</p>
+
+<h2 id="1-np-completeness-proof-of-circuit-design-solution-validation">1. NP-Completeness Proof of Circuit Design: Solution Validation</h2>
+
+<h3 id="circuit-design--np">Circuit Design ∈ NP</h3>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (circuit C):</p>
+<ol>
+  <li>Check that circuit C has size ≤ k: O(k) time</li>
+  <li>Check that C is a valid circuit structure:
+    <ul>
+      <li>Verify gates are properly connected: O(k) time</li>
+      <li>Verify no cycles (circuit is acyclic): O(k) time</li>
+    </ul>
+  </li>
+  <li>Evaluate circuit C on all input combinations to verify it computes the desired function:
+    <ul>
+      <li>For each of 2ⁿ input combinations: O(k) time to evaluate</li>
+      <li>Total: O(2ⁿ · k) time</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Total Time:</strong> O(2ⁿ · k), which is exponential in n but polynomial in the size of the circuit specification (if given as truth table or formula).</p>
+
+<p><strong>Note:</strong> If the function is specified as a Boolean formula φ of size m:</p>
+<ul>
+  <li>We can verify that C computes φ by checking equivalence: O(m · k) time</li>
+  <li>We can check if C outputs TRUE for some input by evaluating on all inputs or using a SAT solver on the circuit</li>
+  <li>This verification is polynomial in the size of φ and k</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Circuit Design ∈ NP.</p>
+
+<h2 id="2-reduce-sat-to-circuit-design">2. Reduce SAT to Circuit Design</h2>
+
+<p><strong>Key Insight:</strong> A Boolean formula φ is satisfiable if and only if there exists a circuit that computes φ (which always exists - the formula itself is a circuit). The key is to encode the satisfiability question as a circuit design problem with size constraints.</p>
+
+<p><strong>Hint:</strong> Convert the SAT formula into a circuit design problem where we ask: “Does there exist a circuit of a certain size that outputs TRUE for at least one input?” This is equivalent to asking if the formula is satisfiable.</p>
+
+<h3 id="21-input-conversion">2.1 Input Conversion</h3>
+
+<p>Given a SAT instance: Boolean formula φ in CNF with variables x₁, x₂, …, x_n and clauses C₁, C₂, …, C_m.</p>
+
+<p><strong>Construction:</strong></p>
+
+<p><strong>Step 1: Convert Formula to Circuit Specification</strong></p>
+<ul>
+  <li>The formula φ naturally corresponds to a Boolean circuit:
+    <ul>
+      <li>Each variable xᵢ is an input</li>
+      <li>Each clause Cⱼ = (l₁ ∨ l₂ ∨ … ∨ lₖ) is an OR gate</li>
+      <li>The overall formula φ = C₁ ∧ C₂ ∧ … ∧ C_m is an AND of clauses</li>
+    </ul>
+  </li>
+  <li>This gives us a circuit structure that computes φ</li>
+</ul>
+
+<p><strong>Step 2: Formulate Circuit Design Problem</strong></p>
+<ul>
+  <li><strong>Input variables:</strong> x₁, x₂, …, x_n</li>
+  <li><strong>Desired function:</strong> The circuit should compute φ</li>
+  <li><strong>Size constraint:</strong> Set k = m + n (number of clauses + number of variables)
+    <ul>
+      <li>This allows the natural circuit representation:
+        <ul>
+          <li>n input gates (variables)</li>
+          <li>m OR gates (one per clause)</li>
+          <li>1 AND gate (combining clauses)</li>
+          <li>Total: n + m + 1 gates</li>
+        </ul>
+      </li>
+      <li>Actually, we need to be more careful about gate counting</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Refined Construction:</strong></p>
+
+<p><strong>Circuit Structure:</strong></p>
+<ul>
+  <li>For each variable xᵢ: input gate</li>
+  <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ … ∨ lₖ):
+    <ul>
+      <li>Create OR gate computing l₁ ∨ l₂ ∨ … ∨ lₖ</li>
+      <li>This requires k-1 OR gates for a clause with k literals</li>
+    </ul>
+  </li>
+  <li>Create AND gate combining all clause outputs</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Total gates: n (inputs) + ∑ⱼ (</td>
+          <td>Cⱼ</td>
+          <td>- 1) (OR gates) + 1 (final AND) = n + m’ + 1 where m’ is total literals</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Simplified Approach:</strong></p>
+<ul>
+  <li>Set k = n + m + 1 (sufficient for the natural circuit)</li>
+  <li>Or set k large enough to allow the formula’s circuit representation</li>
+</ul>
+
+<p><strong>Key Property:</strong></p>
+<ul>
+  <li>φ is satisfiable ↔ There exists a circuit of size ≤ k computing φ that outputs TRUE for at least one input</li>
+  <li>The natural circuit for φ has size ≤ k (by construction)</li>
+  <li>If φ is satisfiable, this circuit outputs TRUE for satisfying assignments</li>
+  <li>If φ is unsatisfiable, any circuit computing φ outputs FALSE for all inputs</li>
+</ul>
+
+<p><strong>Final Construction:</strong></p>
+<ul>
+  <li><strong>Input variables:</strong> x₁, x₂, …, x_n (same as SAT instance)</li>
+  <li><strong>Desired function:</strong> Circuit should compute φ(x₁, …, x_n)</li>
+  <li><strong>Size bound:</strong> k = n + m + L + 1 where:
+    <ul>
+      <li>n = number of variables</li>
+      <li>m = number of clauses</li>
+      <li>L = total number of literals across all clauses</li>
+      <li>+1 for final AND gate</li>
+    </ul>
+  </li>
+  <li>Return Circuit Design instance: inputs x₁, …, x_n, function φ, size bound k</li>
+</ul>
+
+<h3 id="22-output-conversion">2.2 Output Conversion</h3>
+
+<p><strong>Given:</strong> Circuit Design solution (circuit C of size ≤ k computing φ)</p>
+
+<p><strong>Extract SAT Solution:</strong></p>
+<ul>
+  <li>Evaluate circuit C to find an input assignment that makes output TRUE</li>
+  <li>Since C computes φ, if C outputs TRUE for some input, then φ is satisfiable</li>
+  <li>Return the input assignment (x₁, …, x_n) that makes C output TRUE</li>
+</ul>
+
+<p><strong>Verify SAT:</strong></p>
+<ul>
+  <li>The assignment makes circuit C output TRUE</li>
+  <li>Since C computes φ, the assignment satisfies φ</li>
+  <li>Therefore, φ is satisfiable</li>
+</ul>
+
+<h2 id="3-correctness-justification">3. Correctness Justification</h2>
+
+<h3 id="31-if-sat-has-a-solution-then-circuit-design-has-a-solution">3.1 If SAT has a solution, then Circuit Design has a solution</h3>
+
+<p><strong>Given:</strong> SAT instance φ is satisfiable with assignment A: (x₁ = a₁, …, x_n = a_n).</p>
+
+<p><strong>Construct Circuit:</strong></p>
+<ul>
+  <li>Build the natural circuit for φ:
+    <ul>
+      <li>Input gates: x₁, …, x_n</li>
+      <li>For each clause Cⱼ, create OR gate computing the clause</li>
+      <li>Create AND gate combining all clause outputs</li>
+    </ul>
+  </li>
+  <li>This circuit computes φ</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Circuit size: n + ∑ⱼ (</td>
+          <td>Cⱼ</td>
+          <td>- 1) + 1 ≤ k (by construction of k)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Verify Circuit:</strong></p>
+<ul>
+  <li>Circuit C computes φ (by construction)</li>
+  <li>Circuit size ≤ k (by construction)</li>
+  <li>Circuit outputs TRUE for assignment A (since A satisfies φ)</li>
+  <li>Therefore, circuit C is a valid solution</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Circuit Design has a solution.</p>
+
+<h3 id="32a-if-sat-does-not-have-a-solution-then-circuit-design-has-no-solution">3.2a If SAT does not have a solution, then Circuit Design has no solution</h3>
+
+<p><strong>Given:</strong> SAT instance φ is unsatisfiable.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+
+<p>Assume Circuit Design has solution (circuit C of size ≤ k computing φ).</p>
+
+<p><strong>Evaluate Circuit:</strong></p>
+<ul>
+  <li>Circuit C computes φ</li>
+  <li>For any input assignment, evaluate C</li>
+  <li>Since φ is unsatisfiable, C outputs FALSE for all inputs</li>
+  <li>But a circuit that always outputs FALSE can be represented by a constant FALSE gate (size 1)</li>
+  <li>However, we require the circuit to compute φ, not just output FALSE</li>
+  <li>Actually, if φ is unsatisfiable, then φ is equivalent to FALSE</li>
+  <li>A circuit computing FALSE has size 1 (just a FALSE constant)</li>
+  <li>But wait: we need the circuit to compute the specific formula φ, not just its value</li>
+</ul>
+
+<p><strong>Refined Argument:</strong></p>
+<ul>
+  <li>If φ is unsatisfiable, then φ is logically equivalent to FALSE</li>
+  <li>However, the circuit design problem asks: “Does there exist a circuit computing φ?”</li>
+  <li>The answer is YES (we can always build a circuit for any formula)</li>
+  <li><strong>Key Insight:</strong> We need to modify the problem to ask: “Does there exist a circuit that outputs TRUE for at least one input?”</li>
+  <li>Or: “Does there exist a circuit of size ≤ k that computes φ AND outputs TRUE for some input?”</li>
+</ul>
+
+<p><strong>Corrected Problem Formulation:</strong></p>
+<ul>
+  <li>Circuit Design Problem (Modified): Given formula φ and size k, does there exist a circuit of size ≤ k that computes φ AND outputs TRUE for at least one input assignment?</li>
+</ul>
+
+<p><strong>With This Formulation:</strong></p>
+<ul>
+  <li>If φ is unsatisfiable, no circuit computing φ can output TRUE</li>
+  <li>Therefore, Circuit Design has no solution</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Circuit Design has no solution (with proper problem formulation).</p>
+
+<h3 id="32b-if-circuit-design-has-a-solution-then-sat-has-a-solution">3.2b If Circuit Design has a solution, then SAT has a solution</h3>
+
+<p><strong>Given:</strong> Circuit Design instance has solution (circuit C of size ≤ k computing φ).</p>
+
+<p><strong>Extract SAT Solution:</strong></p>
+<ul>
+  <li>Circuit C computes φ</li>
+  <li>Since C is a solution, it must output TRUE for at least one input (or we can find such an input)</li>
+  <li>Evaluate C on all 2ⁿ inputs (or use a satisfiability checker on C)</li>
+  <li>Find an input assignment A = (x₁ = a₁, …, x_n = a_n) that makes C output TRUE</li>
+  <li>Since C computes φ, assignment A satisfies φ</li>
+</ul>
+
+<p><strong>Verify SAT:</strong></p>
+<ul>
+  <li>Assignment A makes circuit C output TRUE</li>
+  <li>Since C computes φ, A satisfies φ</li>
+  <li>Therefore, φ is satisfiable</li>
+</ul>
+
+<p><strong>Conclusion:</strong> SAT has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n + m + L) to construct circuit specification, where L is total literals.</p>
+
+<p><strong>Therefore, Circuit Design is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="key-insights">Key Insights</h2>
+
+<ol>
+  <li><strong>Formula as Circuit:</strong> Every Boolean formula naturally corresponds to a Boolean circuit</li>
+  <li><strong>Satisfiability as Circuit Evaluation:</strong> Formula satisfiability is equivalent to finding an input that makes the circuit output TRUE</li>
+  <li><strong>Size Constraints:</strong> The size bound k ensures the problem is non-trivial</li>
+  <li><strong>Polynomial Reduction:</strong> Converting formula to circuit specification is polynomial-time</li>
+</ol>
+
+<h2 id="construction-summary">Construction Summary</h2>
+
+<p>Given SAT instance φ in CNF:</p>
+<ul>
+  <li>Use same variables as inputs</li>
+  <li>Specify desired function as φ</li>
+  <li>Set size bound k = n + m + L + 1 (sufficient for natural circuit)</li>
+  <li>Circuit Design asks: “Does there exist a circuit of size ≤ k computing φ that outputs TRUE for some input?”</li>
+  <li>This is equivalent to: “Is φ satisfiable?”</li>
+</ul>
+
+<h2 id="practice-questions">Practice Questions</h2>
+
+<ol>
+  <li>
+    <p><strong>Modify the problem:</strong> What if we ask for a circuit of exactly size k? How does the reduction change?</p>
+  </li>
+  <li>
+    <p><strong>Alternative formulation:</strong> Consider Circuit Design as: “Given truth table, does there exist a circuit of size ≤ k?” How would you reduce SAT to this?</p>
+  </li>
+  <li>
+    <p><strong>Circuit minimization:</strong> What if we ask for the minimum-size circuit? Is this still NP-complete?</p>
+  </li>
+  <li>
+    <p><strong>Complexity:</strong> Analyze the exact polynomial time complexity of the reduction.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>This reduction demonstrates the fundamental connection between Boolean satisfiability and circuit design, showing that Circuit Design is NP-complete.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce SAT to Circuit Design, proving that the Circuit Design problem is NP-complete.]]></summary></entry><entry><title type="html">Reduction: Vertex Cover to Flower-Search</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/" rel="alternate" type="text/html" title="Reduction: Vertex Cover to Flower-Search" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>This post provides a detailed proof that the Flower-Search problem is NP-complete by reducing from Vertex Cover. The reduction encodes vertex cover constraints into the flower structure, demonstrating how graph structure problems can be used to prove NP-completeness.</p>
 
@@ -5255,237 +5598,4 @@ Given a candidate solution (subset S’):</p>
 
 <hr />
 
-<p>3-SAT reductions form the foundation of NP-completeness proofs, and following this template ensures rigorous proofs.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from 3-SAT to prove other problems are NP-complete, with full correctness justifications following the standard template.]]></summary></entry><entry><title type="html">Reductions from Clique: Detailed Proofs</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique/" rel="alternate" type="text/html" title="Reductions from Clique: Detailed Proofs" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Clique is a fundamental graph problem proven NP-complete. This post provides detailed proofs following the standard template for reducing from Clique to prove other problems are NP-complete.</p>
-
-<h2 id="problem-definition-clique">Problem Definition: Clique</h2>
-
-<p><strong>Clique Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has a clique of size ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>Clique:</strong> A subset of vertices where every pair is connected by an edge.</p>
-
-<hr />
-
-<h2 id="q1-how-do-you-reduce-clique-to-independent-set">Q1: How do you reduce Clique to Independent Set?</h2>
-
-<p><strong>Answer:</strong> Use complement graph.</p>
-
-<p><strong>Key Insight:</strong></p>
-<ul>
-  <li>S is a clique in G ↔ S is an independent set in G̅ (complement graph)</li>
-  <li>Complement graph reverses edge relationships</li>
-</ul>
-
-<p><strong>Hint:</strong> The complement graph G̅ has edges exactly where G doesn’t. This transforms “all pairs connected” into “no pairs connected”.</p>
-
-<h3 id="1-np-completeness-proof-of-independent-set-solution-validation">1. NP-Completeness Proof of Independent Set: Solution Validation</h3>
-
-<p><strong>Independent Set Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has an independent set of size ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>Independent Set ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (set S of vertices):</p>
-<ol>
-  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
-  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
-  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
-  <li>If no edges found, return YES; else return NO</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Independent Set ∈ NP.</p>
-
-<h3 id="2-reduce-clique-to-independent-set">2. Reduce Clique to Independent Set</h3>
-
-<h4 id="21-input-conversion">2.1 Input Conversion</h4>
-
-<p>Given a Clique instance: graph G = (V, E), integer k.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>Create complement graph G̅ = (V, E̅) where:
-    <ul>
-      <li>V(G̅) = V(G)</li>
-      <li>E̅ = {(u, v) : u, v ∈ V, u ≠ v, (u, v) ∉ E}</li>
-    </ul>
-  </li>
-  <li>Return Independent Set instance: graph G̅, integer k</li>
-</ul>
-
-<p><strong>Key Property:</strong> S is clique in G ↔ S is independent set in G̅</p>
-
-<h4 id="22-output-conversion">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Independent Set solution S of size k in G̅</p>
-
-<p><strong>Extract Clique:</strong></p>
-<ul>
-  <li>S is independent set in G̅ ↔ S is clique in G</li>
-  <li>Return S as clique</li>
-</ul>
-
-<h3 id="3-correctness-justification">3. Correctness Justification</h3>
-
-<h4 id="31-if-clique-has-a-solution-then-independent-set-has-a-solution">3.1 If Clique has a solution, then Independent Set has a solution</h4>
-
-<p><strong>Given:</strong> Clique instance has solution S of size k in G.</p>
-
-<p><strong>Construct Independent Set:</strong></p>
-<ul>
-  <li>S is clique in G</li>
-  <li>By definition of complement graph: S is independent set in G̅</li>
-  <li>Therefore, S is independent set of size k in G̅</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
-
-<h4 id="32a-if-clique-does-not-have-a-solution-then-independent-set-has-no-solution">3.2a If Clique does not have a solution, then Independent Set has no solution</h4>
-
-<p><strong>Given:</strong> Clique instance has no solution of size k in G.</p>
-
-<p><strong>Proof by Contradiction:</strong></p>
-<ul>
-  <li>Assume Independent Set has solution S of size k in G̅</li>
-  <li>Then S is clique of size k in G</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Independent Set has no solution.</p>
-
-<h4 id="32b-if-independent-set-has-a-solution-then-clique-has-a-solution">3.2b If Independent Set has a solution, then Clique has a solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has solution S of size k in G̅.</p>
-
-<p><strong>Extract Clique:</strong></p>
-<ul>
-  <li>S is independent set in G̅ ↔ S is clique in G</li>
-  <li>Therefore, S is clique of size k in G</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Clique has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(n²) to create complement graph.</p>
-
-<p><strong>Therefore, Independent Set is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="q2-how-do-you-reduce-clique-to-subgraph-isomorphism">Q2: How do you reduce Clique to Subgraph Isomorphism?</h2>
-
-<h3 id="1-np-completeness-proof-of-subgraph-isomorphism-solution-validation">1. NP-Completeness Proof of Subgraph Isomorphism: Solution Validation</h3>
-
-<p><strong>Subgraph Isomorphism Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graphs G and H</li>
-  <li><strong>Output:</strong> YES if H is isomorphic to a subgraph of G, NO otherwise</li>
-</ul>
-
-<p><strong>Subgraph Isomorphism ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (mapping f: V(H) → V(G)):</p>
-<ol>
-  <li>Check that f is injective: O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>²) time</li>
-  <li>For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(<code class="language-plaintext highlighter-rouge">|E(H)|</code>) time</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>² + <code class="language-plaintext highlighter-rouge">|E(H)|</code>), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Subgraph Isomorphism ∈ NP.</p>
-
-<h3 id="2-reduce-clique-to-subgraph-isomorphism">2. Reduce Clique to Subgraph Isomorphism</h3>
-
-<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
-
-<p>Given a Clique instance: graph G = (V, E), integer k.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>Create complete graph Kₖ (clique of size k)</li>
-  <li>Return Subgraph Isomorphism instance: graph G, pattern H = Kₖ</li>
-</ul>
-
-<p><strong>Key Property:</strong> Clique of size k in G ↔ Kₖ is subgraph of G</p>
-
-<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Subgraph Isomorphism solution (mapping f: V(Kₖ) → V(G))</p>
-
-<p><strong>Extract Clique:</strong></p>
-<ul>
-  <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
-  <li>S is clique in G (Kₖ is complete graph)</li>
-</ul>
-
-<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
-
-<h4 id="31-if-clique-has-a-solution-then-subgraph-isomorphism-has-a-solution">3.1 If Clique has a solution, then Subgraph Isomorphism has a solution</h4>
-
-<p><strong>Given:</strong> Clique instance has solution S of size k in G.</p>
-
-<p><strong>Construct Mapping:</strong></p>
-<ul>
-  <li>S is clique of size k</li>
-  <li>Create bijection f: V(Kₖ) → S</li>
-  <li>For each edge (u, v) in Kₖ, (f(u), f(v)) is edge in G (since S is clique)</li>
-  <li>Therefore, Kₖ is isomorphic to subgraph induced by S</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Subgraph Isomorphism has a solution.</p>
-
-<h4 id="32a-if-clique-does-not-have-a-solution-then-subgraph-isomorphism-has-no-solution">3.2a If Clique does not have a solution, then Subgraph Isomorphism has no solution</h4>
-
-<p><strong>Given:</strong> Clique instance has no solution of size k in G.</p>
-
-<p><strong>Proof:</strong></p>
-<ul>
-  <li>If Kₖ is subgraph of G, then vertices of Kₖ form clique of size k</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Subgraph Isomorphism has no solution.</p>
-
-<h4 id="32b-if-subgraph-isomorphism-has-a-solution-then-clique-has-a-solution">3.2b If Subgraph Isomorphism has a solution, then Clique has a solution</h4>
-
-<p><strong>Given:</strong> Subgraph Isomorphism instance has solution (mapping f: V(Kₖ) → V(G)).</p>
-
-<p><strong>Extract Clique:</strong></p>
-<ul>
-  <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
-  <li>Since Kₖ is complete, all pairs in S are connected</li>
-  <li>S is clique of size k</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Clique has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(1) (trivial reduction).</p>
-
-<p><strong>Therefore, Subgraph Isomorphism is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Complement Graph:</strong> Powerful tool for reductions</li>
-  <li><strong>Subgraph Structure:</strong> Clique is complete subgraph</li>
-  <li><strong>Restriction:</strong> Many problems generalize Clique</li>
-  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
-</ol>
-
-<hr />
-
-<p>Clique reductions demonstrate the power of complement relationships and subgraph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from Clique to prove other problems are NP-complete, with full correctness justifications.]]></summary></entry></feed>
+<p>3-SAT reductions form the foundation of NP-completeness proofs, and following this template ensures rigorous proofs.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from 3-SAT to prove other problems are NP-complete, with full correctness justifications following the standard template.]]></summary></entry></feed>
