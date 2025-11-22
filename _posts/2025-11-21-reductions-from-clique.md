@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Reductions from Clique: Common Questions and Answers"
+title: "Reductions from Clique: Detailed Proofs"
 date: 2025-11-21
 categories: [Algorithms, Complexity Theory, NP-Hard]
-excerpt: "A comprehensive guide to reducing from Clique to prove other problems are NP-complete, with common reduction questions and detailed answers."
+excerpt: "Comprehensive detailed proofs showing how to reduce from Clique to prove other problems are NP-complete, with full correctness justifications."
 ---
 
 ## Introduction
 
-Clique is a fundamental graph problem that's NP-complete. This post provides answers to common reduction questions when using Clique to prove other problems are NP-complete.
+Clique is a fundamental graph problem proven NP-complete. This post provides detailed proofs following the standard template for reducing from Clique to prove other problems are NP-complete.
 
 ## Problem Definition: Clique
 
@@ -18,109 +18,180 @@ Clique is a fundamental graph problem that's NP-complete. This post provides ans
 
 **Clique:** A subset of vertices where every pair is connected by an edge.
 
-## Common Reduction Questions
+---
 
-### Q1: How do you reduce Clique to Independent Set?
+## Q1: How do you reduce Clique to Independent Set?
 
-**Answer:** Use complement graph.
+### 1. NP-Completeness Proof of Independent Set: Solution Validation
 
-**Reduction:**
-- Given Clique instance: graph G, integer k
-- Create complement graph G̅ (edge exists in G̅ ↔ edge doesn't exist in G)
-- Return Independent Set: graph G̅, integer k
+**Independent Set Problem:**
+- **Input:** Graph G = (V, E) and integer k
+- **Output:** YES if G has an independent set of size ≥ k, NO otherwise
 
-**Correctness:**
-- Clique of size k in G ↔ Independent set of size k in G̅
-- No edges in G̅ ↔ all edges in G
+**Independent Set ∈ NP:**
 
-**Time:** O(n²) to create complement
+**Verification Algorithm:**
+Given a candidate solution (set S of vertices):
+1. Check that S ⊆ V: O(|S|) time
+2. Check that |S| ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+4. If no edges found, return YES; else return NO
 
-### Q2: How do you reduce Clique to Vertex Cover?
+**Total Time:** O(|S|²), which is polynomial.
 
-**Answer:** Use complement graph + complement relationship.
+**Conclusion:** Independent Set ∈ NP.
 
-**Reduction:**
-- Reduce Clique to Independent Set → graph G̅, k
-- Return Vertex Cover: graph G̅, k' = |V| - k
+### 2. Reduce Clique to Independent Set
 
-**Correctness:**
-- Clique of size k in G ↔ Independent set of size k in G̅ ↔ Vertex cover of size |V| - k in G̅
+#### 2.1 Input Conversion
 
-**Time:** O(n²)
+Given a Clique instance: graph G = (V, E), integer k.
 
-### Q3: How do you reduce Clique to Subgraph Isomorphism?
+**Construction:**
+- Create complement graph G̅ = (V, E̅) where:
+  - V(G̅) = V(G)
+  - E̅ = {(u, v) : u, v ∈ V, u ≠ v, (u, v) ∉ E}
+- Return Independent Set instance: graph G̅, integer k
 
-**Answer:** Check if complete graph Kₖ is subgraph of G.
+**Key Property:** S is clique in G ↔ S is independent set in G̅
 
-**Reduction:**
-- Given Clique instance: graph G, integer k
-- Create complete graph Kₖ (clique of size k)
-- Return Subgraph Isomorphism: graph G, pattern Kₖ
+#### 2.2 Output Conversion
 
-**Correctness:**
-- Clique of size k in G ↔ Kₖ is subgraph of G
+**Given:** Independent Set solution S of size k in G̅
 
-**Time:** O(1) (trivial reduction)
+**Extract Clique:**
+- S is independent set in G̅ ↔ S is clique in G
+- Return S as clique
 
-### Q4: How do you reduce Clique to Maximum Common Subgraph?
+### 3. Correctness Justification
 
-**Answer:** Find common subgraph with another complete graph.
+#### 3.1 If Clique has a solution, then Independent Set has a solution
 
-**Reduction:**
-- Given Clique instance: graph G, integer k
-- Create complete graph Kₖ
-- Return Maximum Common Subgraph: graphs G and Kₖ, target size k
+**Given:** Clique instance has solution S of size k in G.
 
-**Correctness:**
-- Clique of size k in G ↔ Common subgraph of size k exists
+**Construct Independent Set:**
+- S is clique in G
+- By definition of complement graph: S is independent set in G̅
+- Therefore, S is independent set of size k in G̅
 
-**Time:** O(1)
+**Conclusion:** Independent Set has a solution.
 
-### Q5: How do you reduce Clique to Dense Subgraph?
+#### 3.2a If Clique does not have a solution, then Independent Set has no solution
 
-**Answer:** Clique is special case of dense subgraph.
+**Given:** Clique instance has no solution of size k in G.
 
-**Reduction:**
-- Given Clique instance: graph G, integer k
-- Return Dense Subgraph: graph G, size k, density threshold = 1.0 (complete)
+**Proof by Contradiction:**
+- Assume Independent Set has solution S of size k in G̅
+- Then S is clique of size k in G
+- Contradiction
 
-**Correctness:**
-- Clique of size k ↔ Dense subgraph with density 1.0
+**Conclusion:** Independent Set has no solution.
 
-**Time:** O(1)
+#### 3.2b If Independent Set has a solution, then Clique has a solution
 
-## Reduction Patterns from Clique
+**Given:** Independent Set instance has solution S of size k in G̅.
 
-### Pattern 1: Complement Graph
-- **Use when:** Target problem is complement of clique-like structure
-- **Examples:** Independent Set, Vertex Cover
-- **Key:** Complement graph preserves structure
+**Extract Clique:**
+- S is independent set in G̅ ↔ S is clique in G
+- Therefore, S is clique of size k in G
 
-### Pattern 2: Subgraph Problems
-- **Use when:** Target problem involves finding subgraphs
-- **Examples:** Subgraph Isomorphism, Maximum Common Subgraph
-- **Key:** Clique is complete subgraph
+**Conclusion:** Clique has a solution.
 
-### Pattern 3: Restriction
-- **Use when:** Target problem is generalization
-- **Examples:** Dense Subgraph, k-Clique
-- **Key:** Clique is special case
+**Polynomial Time:** O(n²) to create complement graph.
 
-## Key Takeaways
-
-1. **Complement graph:** Powerful tool for graph reductions
-2. **Complete subgraphs:** Clique represents perfect connectivity
-3. **Subgraph problems:** Many reduce from Clique
-4. **Restriction:** Clique is special case of many problems
-
-## Practice Problems
-
-1. Reduce Clique to k-Clique (fixed k)
-2. Reduce Clique to Maximum Clique
-3. Reduce Clique to Clique Cover
-4. Reduce Clique to Partition into Cliques
+**Therefore, Independent Set is NP-complete.**
 
 ---
 
-Clique reductions often use complement graphs and subgraph relationships.
+## Q2: How do you reduce Clique to Subgraph Isomorphism?
 
+### 1. NP-Completeness Proof of Subgraph Isomorphism: Solution Validation
+
+**Subgraph Isomorphism Problem:**
+- **Input:** Graphs G and H
+- **Output:** YES if H is isomorphic to a subgraph of G, NO otherwise
+
+**Subgraph Isomorphism ∈ NP:**
+
+**Verification Algorithm:**
+Given a candidate solution (mapping f: V(H) → V(G)):
+1. Check that f is injective: O(|V(H)|²) time
+2. For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(|E(H)|) time
+
+**Total Time:** O(|V(H)|² + |E(H)|), which is polynomial.
+
+**Conclusion:** Subgraph Isomorphism ∈ NP.
+
+### 2. Reduce Clique to Subgraph Isomorphism
+
+#### 2.1 Input Conversion
+
+Given a Clique instance: graph G = (V, E), integer k.
+
+**Construction:**
+- Create complete graph Kₖ (clique of size k)
+- Return Subgraph Isomorphism instance: graph G, pattern H = Kₖ
+
+**Key Property:** Clique of size k in G ↔ Kₖ is subgraph of G
+
+#### 2.2 Output Conversion
+
+**Given:** Subgraph Isomorphism solution (mapping f: V(Kₖ) → V(G))
+
+**Extract Clique:**
+- S = {f(v) : v ∈ V(Kₖ)}
+- |S| = k
+- S is clique in G (Kₖ is complete graph)
+
+### 3. Correctness Justification
+
+#### 3.1 If Clique has a solution, then Subgraph Isomorphism has a solution
+
+**Given:** Clique instance has solution S of size k in G.
+
+**Construct Mapping:**
+- S is clique of size k
+- Create bijection f: V(Kₖ) → S
+- For each edge (u, v) in Kₖ, (f(u), f(v)) is edge in G (since S is clique)
+- Therefore, Kₖ is isomorphic to subgraph induced by S
+
+**Conclusion:** Subgraph Isomorphism has a solution.
+
+#### 3.2a If Clique does not have a solution, then Subgraph Isomorphism has no solution
+
+**Given:** Clique instance has no solution of size k in G.
+
+**Proof:**
+- If Kₖ is subgraph of G, then vertices of Kₖ form clique of size k
+- Contradiction
+
+**Conclusion:** Subgraph Isomorphism has no solution.
+
+#### 3.2b If Subgraph Isomorphism has a solution, then Clique has a solution
+
+**Given:** Subgraph Isomorphism instance has solution (mapping f: V(Kₖ) → V(G)).
+
+**Extract Clique:**
+- S = {f(v) : v ∈ V(Kₖ)}
+- |S| = k
+- Since Kₖ is complete, all pairs in S are connected
+- S is clique of size k
+
+**Conclusion:** Clique has a solution.
+
+**Polynomial Time:** O(1) (trivial reduction).
+
+**Therefore, Subgraph Isomorphism is NP-complete.**
+
+---
+
+## Key Takeaways
+
+1. **Complement Graph:** Powerful tool for reductions
+2. **Subgraph Structure:** Clique is complete subgraph
+3. **Restriction:** Many problems generalize Clique
+4. **Template Structure:** All reductions follow rigorous format
+
+---
+
+Clique reductions demonstrate the power of complement relationships and subgraph structures.
