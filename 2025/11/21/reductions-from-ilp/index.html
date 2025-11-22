@@ -84,6 +84,17 @@
 
 <h2 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h2>
 
+<p><strong>Answer:</strong> Use binary expansion of integer variables.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Represent each integer variable as sum of powers of 2 times binary variables</li>
+  <li>Binary expansion preserves integer values</li>
+  <li>Constraints can be converted using binary representation</li>
+</ul>
+
+<p><strong>Hint:</strong> For variable xᵢ ≤ M, use ⌈log₂(M+1)⌉ binary variables. Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}. This allows encoding any integer up to M using binary digits.</p>
+
 <h3 id="1-np-completeness-proof-of-0-1-ilp-solution-validation">1. NP-Completeness Proof of 0-1 ILP: Solution Validation</h3>
 
 <p><strong>0-1 ILP Problem:</strong></p>

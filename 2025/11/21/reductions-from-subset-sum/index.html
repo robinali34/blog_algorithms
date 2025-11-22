@@ -82,6 +82,17 @@
 
 <h2 id="q1-how-do-you-reduce-subset-sum-to-partition">Q1: How do you reduce Subset Sum to Partition?</h2>
 
+<p><strong>Answer:</strong> Add balancing elements to create equal partition.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>If subset sums to t, add elements that force equal partition</li>
+  <li>Add elements 2T - t and T + t where T is total sum</li>
+  <li>These balance the partition</li>
+</ul>
+
+<p><strong>Hint:</strong> The key is to add two elements that, together with the subset and its complement, create equal sums. If one partition has the subset (sum t) and 2T-t, the other has the complement (sum T-t) and T+t, both sum to 2T.</p>
+
 <h3 id="1-np-completeness-proof-of-partition-solution-validation">1. NP-Completeness Proof of Partition: Solution Validation</h3>
 
 <p><strong>Partition Problem:</strong></p>

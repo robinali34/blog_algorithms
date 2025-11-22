@@ -84,6 +84,17 @@
 
 <h2 id="q1-how-do-you-reduce-rudrata-path-to-rudrata-st-path">Q1: How do you reduce Rudrata Path to Rudrata (s,t)-Path?</h2>
 
+<p><strong>Answer:</strong> Add start and end vertices.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Add universal start vertex s connected to all vertices</li>
+  <li>Add universal end vertex t connected from all vertices</li>
+  <li>Hamiltonian path can start/end anywhere ↔ Hamiltonian (s,t)-path exists</li>
+</ul>
+
+<p><strong>Hint:</strong> By connecting s to all vertices and all vertices to t, any Hamiltonian path can be extended to start at s and end at t. This removes the constraint on path endpoints.</p>
+
 <h3 id="1-np-completeness-proof-of-rudrata-st-path-solution-validation">1. NP-Completeness Proof of Rudrata (s,t)-Path: Solution Validation</h3>
 
 <p><strong>Rudrata (s,t)-Path Problem:</strong></p>

@@ -84,6 +84,17 @@
 
 <h2 id="q1-how-do-you-reduce-rudrata-st-path-to-rudrata-path">Q1: How do you reduce Rudrata (s,t)-Path to Rudrata Path?</h2>
 
+<p><strong>Answer:</strong> Remove endpoint constraints (if graph allows).</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Hamiltonian (s,t)-path is a special case of Hamiltonian path</li>
+  <li>If Hamiltonian path exists, may be able to reorder to start at s and end at t</li>
+  <li>Reduction works if endpoints can be adjusted</li>
+</ul>
+
+<p><strong>Hint:</strong> This reduction is conditional - it works if the graph structure allows reordering. For unconditional reduction, better to reduce from Rudrata Cycle by removing an edge.</p>
+
 <h3 id="1-np-completeness-proof-of-rudrata-path-solution-validation">1. NP-Completeness Proof of Rudrata Path: Solution Validation</h3>
 
 <p><strong>Rudrata Path Problem:</strong></p>

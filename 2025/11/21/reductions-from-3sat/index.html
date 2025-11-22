@@ -89,6 +89,17 @@
 
 <h2 id="q1-how-do-you-reduce-3-sat-to-independent-set">Q1: How do you reduce 3-SAT to Independent Set?</h2>
 
+<p><strong>Answer:</strong> Create variable gadgets (pairs) and clause gadgets (triangles).</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Variable gadgets ensure exactly one assignment per variable</li>
+  <li>Clause gadgets ensure at least one literal per clause is satisfied</li>
+  <li>Connections enforce consistency between variable assignments and clause satisfaction</li>
+</ul>
+
+<p><strong>Hint:</strong> Think of independent set as selecting non-conflicting choices. Variable pairs represent mutually exclusive choices (TRUE vs FALSE), and clause triangles represent selecting at least one satisfying literal.</p>
+
 <h3 id="1-np-completeness-proof-of-independent-set-solution-validation">1. NP-Completeness Proof of Independent Set: Solution Validation</h3>
 
 <p><strong>Independent Set Problem:</strong></p>
@@ -367,6 +378,27 @@ Given a candidate solution (set S of vertices):</p>
 
 <h2 id="q2-how-do-you-reduce-3-sat-to-vertex-cover">Q2: How do you reduce 3-SAT to Vertex Cover?</h2>
 
+<p><strong>Answer:</strong> Use complement relationship with Independent Set.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set ↔ V \ S is a vertex cover</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Can reduce via Independent Set reduction</li>
+</ul>
+
+<p><strong>Hint:</strong> After reducing 3-SAT to Independent Set, use the complement set relationship. This is a simple transformation that doesn’t require redesigning gadgets.</p>
+
 <h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
 
 <p><strong>Vertex Cover Problem:</strong></p>
@@ -570,6 +602,16 @@ Given a candidate solution (set S of vertices):</p>
 
 <h2 id="q3-how-do-you-reduce-3-sat-to-clique">Q3: How do you reduce 3-SAT to Clique?</h2>
 
+<p><strong>Answer:</strong> Use complement graph of Independent Set reduction.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is a clique in G ↔ S is an independent set in G̅ (complement graph)</li>
+  <li>Can reduce via Independent Set and complement graph</li>
+</ul>
+
+<p><strong>Hint:</strong> After reducing 3-SAT to Independent Set, take the complement graph. This transforms “no edges” constraints into “all edges” constraints.</p>
+
 <h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
 
 <p><strong>Clique Problem:</strong></p>
@@ -710,6 +752,17 @@ Given a candidate solution (set S of vertices):</p>
 <hr />
 
 <h2 id="q4-how-do-you-reduce-3-sat-to-subset-sum">Q4: How do you reduce 3-SAT to Subset Sum?</h2>
+
+<p><strong>Answer:</strong> Use base representation to encode constraints.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Use numbers with digits encoding variable assignments and clause satisfaction</li>
+  <li>Variable digits ensure exactly one assignment per variable</li>
+  <li>Clause digits ensure at least one literal per clause is satisfied</li>
+</ul>
+
+<p><strong>Hint:</strong> Think of numbers in a large base (e.g., base 10 or larger). Each digit position represents a constraint. Variable digits enforce mutual exclusivity, clause digits enforce satisfaction.</p>
 
 <h3 id="1-np-completeness-proof-of-subset-sum-solution-validation">1. NP-Completeness Proof of Subset Sum: Solution Validation</h3>
 
@@ -920,6 +973,40 @@ Given a candidate solution (subset S’):</p>
 
 <hr />
 
+<h2 id="reduction-patterns-and-hints">Reduction Patterns and Hints</h2>
+
+<h3 id="pattern-1-graph-problems">Pattern 1: Graph Problems</h3>
+<ul>
+  <li><strong>Variable gadgets:</strong> Pairs of vertices (TRUE/FALSE)</li>
+  <li><strong>Clause gadgets:</strong> Triangles or other structures</li>
+  <li><strong>Key:</strong> Use edges to enforce constraints</li>
+  <li><strong>Examples:</strong> Independent Set, Vertex Cover, Clique</li>
+</ul>
+
+<h3 id="pattern-2-number-problems">Pattern 2: Number Problems</h3>
+<ul>
+  <li><strong>Base representation:</strong> Digits encode constraints</li>
+  <li><strong>Variable encoding:</strong> Numbers represent assignments</li>
+  <li><strong>Key:</strong> Use large base to avoid digit overflow</li>
+  <li><strong>Examples:</strong> Subset Sum, Partition</li>
+</ul>
+
+<h3 id="pattern-3-set-problems">Pattern 3: Set Problems</h3>
+<ul>
+  <li><strong>Universe:</strong> Clauses or elements</li>
+  <li><strong>Sets:</strong> Variable assignments or choices</li>
+  <li><strong>Key:</strong> Covering structure matches clause satisfaction</li>
+  <li><strong>Examples:</strong> Set Cover, Exact Cover, 3D Matching</li>
+</ul>
+
+<h3 id="pattern-4-constraint-problems">Pattern 4: Constraint Problems</h3>
+<ul>
+  <li><strong>Variables:</strong> Direct mapping</li>
+  <li><strong>Constraints:</strong> Clause requirements</li>
+  <li><strong>Key:</strong> Linear constraints encode Boolean logic</li>
+  <li><strong>Examples:</strong> ILP, ZOE, Graph Coloring</li>
+</ul>
+
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
@@ -927,6 +1014,7 @@ Given a candidate solution (subset S’):</p>
   <li><strong>Gadget Design:</strong> Variable gadgets + clause gadgets are common patterns</li>
   <li><strong>Polynomial Time:</strong> All reductions are polynomial-time</li>
   <li><strong>Correctness:</strong> Both directions must be proven</li>
+  <li><strong>Hints:</strong> Use complement relationships, base representations, and set encodings</li>
 </ol>
 
 <hr />

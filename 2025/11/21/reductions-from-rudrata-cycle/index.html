@@ -84,6 +84,17 @@
 
 <h2 id="q1-how-do-you-reduce-rudrata-cycle-to-traveling-salesman-problem">Q1: How do you reduce Rudrata Cycle to Traveling Salesman Problem?</h2>
 
+<p><strong>Answer:</strong> Convert cycle to tour with edge weights.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Hamiltonian cycle is a tour visiting all vertices</li>
+  <li>Assign weight 1 to existing edges, weight 2 to non-existing edges</li>
+  <li>Target weight equals number of vertices</li>
+</ul>
+
+<p><strong>Hint:</strong> Make the complete graph, but penalize edges that don’t exist in the original graph. A Hamiltonian cycle will use only weight-1 edges, giving total weight equal to the number of vertices.</p>
+
 <h3 id="1-np-completeness-proof-of-tsp-solution-validation">1. NP-Completeness Proof of TSP: Solution Validation</h3>
 
 <p><strong>TSP Problem:</strong></p>

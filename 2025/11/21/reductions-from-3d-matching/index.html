@@ -84,6 +84,29 @@
 
 <h2 id="q1-how-do-you-reduce-3d-matching-to-set-cover">Q1: How do you reduce 3D Matching to Set Cover?</h2>
 
+<p><strong>Answer:</strong> Encode triples as sets covering elements.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Each triple covers three elements (one from each set X, Y, Z)</li>
+  <li>Perfect matching covers all elements exactly once</li>
+  <li>Set cover allows covering elements multiple times, but perfect matching ensures exactly once</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size</td>
+      <td>X</td>
+      <td>=</td>
+      <td>Y</td>
+      <td>=</td>
+      <td>Z</td>
+      <td>, where each element is covered exactly once.</td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="1-np-completeness-proof-of-set-cover-solution-validation">1. NP-Completeness Proof of Set Cover: Solution Validation</h3>
 
 <p><strong>Set Cover Problem:</strong></p>

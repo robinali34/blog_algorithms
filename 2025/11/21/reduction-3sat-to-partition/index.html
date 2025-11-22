@@ -115,6 +115,10 @@ Given a candidate solution (partition S₁, S₂):</p>
 
 <h2 id="2-reduce-3-sat-to-partition">2. Reduce 3-SAT to Partition</h2>
 
+<p><strong>Key Insight:</strong> Use base representation to encode variable assignments and clause satisfaction using numbers. The partition requirement (equal sums) enforces that all variables are assigned and all clauses are satisfied.</p>
+
+<p><strong>Hint:</strong> Think of numbers as having multiple “digits” - some digits encode variable assignments (ensuring exactly one per variable), others encode clause satisfaction (ensuring at least one literal per clause). Slack numbers provide flexibility to achieve the target sum.</p>
+
 <h3 id="21-input-conversion">2.1 Input Conversion</h3>
 
 <p>Given a 3-SAT instance with n variables and m clauses, we construct a Partition instance.</p>

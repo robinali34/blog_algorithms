@@ -84,6 +84,16 @@
 
 <h2 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h2>
 
+<p><strong>Answer:</strong> Use complement graph.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set in G ↔ S is a clique in G̅ (complement graph)</li>
+  <li>Complement graph reverses edge relationships</li>
+</ul>
+
+<p><strong>Hint:</strong> The complement graph G̅ has an edge (u,v) if and only if G does not have edge (u,v). This transforms “no edges” into “all edges”.</p>
+
 <h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
 
 <p><strong>Clique Problem:</strong></p>
@@ -223,6 +233,26 @@ Given a candidate solution (set S of vertices):</p>
 <hr />
 
 <h2 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h2>
+
+<p><strong>Answer:</strong> Use complement relationship.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set ↔ V \ S is a vertex cover</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Hint:</strong> If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.</p>
 
 <h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
 
@@ -682,6 +712,29 @@ Given a candidate solution (partition S, V \ S):</p>
 
 <hr />
 
+<h2 id="reduction-patterns-and-hints">Reduction Patterns and Hints</h2>
+
+<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
+<ul>
+  <li><strong>Key Insight:</strong> S is independent set ↔ S is clique in complement graph</li>
+  <li><strong>Hint:</strong> Create complement graph G̅ where edges exist where G doesn’t</li>
+  <li><strong>Example:</strong> Independent Set → Clique</li>
+</ul>
+
+<h3 id="pattern-2-complement-set">Pattern 2: Complement Set</h3>
+<ul>
+  <li><strong>Key Insight:</strong> S is independent set ↔ V \ S is vertex cover</li>
+  <li><strong>Hint:</strong> Use set complement relationship</li>
+  <li><strong>Example:</strong> Independent Set → Vertex Cover</li>
+</ul>
+
+<h3 id="pattern-3-partitioncut">Pattern 3: Partition/Cut</h3>
+<ul>
+  <li><strong>Key Insight:</strong> Independent set forms one side of partition</li>
+  <li><strong>Hint:</strong> Use independent set as one partition in cut problems</li>
+  <li><strong>Example:</strong> Independent Set → Maximum Cut</li>
+</ul>
+
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
@@ -689,6 +742,7 @@ Given a candidate solution (partition S, V \ S):</p>
   <li><strong>Complement Set:</strong> Natural for Vertex Cover reductions</li>
   <li><strong>Partition Structure:</strong> Useful for Cut problems</li>
   <li><strong>Template Structure:</strong> All reductions follow the same rigorous format</li>
+  <li><strong>Hints:</strong> Look for complement relationships and partition structures</li>
 </ol>
 
 <hr />

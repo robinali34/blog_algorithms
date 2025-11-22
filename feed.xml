@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:15:44+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:20:56+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
@@ -3363,6 +3363,10 @@ Given a candidate solution (partition S₁, S₂):</p>
 
 <h2 id="2-reduce-3-sat-to-partition">2. Reduce 3-SAT to Partition</h2>
 
+<p><strong>Key Insight:</strong> Use base representation to encode variable assignments and clause satisfaction using numbers. The partition requirement (equal sums) enforces that all variables are assigned and all clauses are satisfied.</p>
+
+<p><strong>Hint:</strong> Think of numbers as having multiple “digits” - some digits encode variable assignments (ensuring exactly one per variable), others encode clause satisfaction (ensuring at least one literal per clause). Slack numbers provide flexibility to achieve the target sum.</p>
+
 <h3 id="21-input-conversion">2.1 Input Conversion</h3>
 
 <p>Given a 3-SAT instance with n variables and m clauses, we construct a Partition instance.</p>
@@ -3676,6 +3680,29 @@ Given a candidate solution (partition S₁, S₂):</p>
 <hr />
 
 <h2 id="q1-how-do-you-reduce-3d-matching-to-set-cover">Q1: How do you reduce 3D Matching to Set Cover?</h2>
+
+<p><strong>Answer:</strong> Encode triples as sets covering elements.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Each triple covers three elements (one from each set X, Y, Z)</li>
+  <li>Perfect matching covers all elements exactly once</li>
+  <li>Set cover allows covering elements multiple times, but perfect matching ensures exactly once</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size</td>
+      <td>X</td>
+      <td>=</td>
+      <td>Y</td>
+      <td>=</td>
+      <td>Z</td>
+      <td>, where each element is covered exactly once.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="1-np-completeness-proof-of-set-cover-solution-validation">1. NP-Completeness Proof of Set Cover: Solution Validation</h3>
 
@@ -4127,6 +4154,17 @@ Given a candidate solution (subcollection C’):</p>
 
 <h2 id="q1-how-do-you-reduce-3-sat-to-independent-set">Q1: How do you reduce 3-SAT to Independent Set?</h2>
 
+<p><strong>Answer:</strong> Create variable gadgets (pairs) and clause gadgets (triangles).</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Variable gadgets ensure exactly one assignment per variable</li>
+  <li>Clause gadgets ensure at least one literal per clause is satisfied</li>
+  <li>Connections enforce consistency between variable assignments and clause satisfaction</li>
+</ul>
+
+<p><strong>Hint:</strong> Think of independent set as selecting non-conflicting choices. Variable pairs represent mutually exclusive choices (TRUE vs FALSE), and clause triangles represent selecting at least one satisfying literal.</p>
+
 <h3 id="1-np-completeness-proof-of-independent-set-solution-validation">1. NP-Completeness Proof of Independent Set: Solution Validation</h3>
 
 <p><strong>Independent Set Problem:</strong></p>
@@ -4405,6 +4443,27 @@ Given a candidate solution (set S of vertices):</p>
 
 <h2 id="q2-how-do-you-reduce-3-sat-to-vertex-cover">Q2: How do you reduce 3-SAT to Vertex Cover?</h2>
 
+<p><strong>Answer:</strong> Use complement relationship with Independent Set.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set ↔ V \ S is a vertex cover</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Can reduce via Independent Set reduction</li>
+</ul>
+
+<p><strong>Hint:</strong> After reducing 3-SAT to Independent Set, use the complement set relationship. This is a simple transformation that doesn’t require redesigning gadgets.</p>
+
 <h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
 
 <p><strong>Vertex Cover Problem:</strong></p>
@@ -4608,6 +4667,16 @@ Given a candidate solution (set S of vertices):</p>
 
 <h2 id="q3-how-do-you-reduce-3-sat-to-clique">Q3: How do you reduce 3-SAT to Clique?</h2>
 
+<p><strong>Answer:</strong> Use complement graph of Independent Set reduction.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is a clique in G ↔ S is an independent set in G̅ (complement graph)</li>
+  <li>Can reduce via Independent Set and complement graph</li>
+</ul>
+
+<p><strong>Hint:</strong> After reducing 3-SAT to Independent Set, take the complement graph. This transforms “no edges” constraints into “all edges” constraints.</p>
+
 <h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
 
 <p><strong>Clique Problem:</strong></p>
@@ -4748,6 +4817,17 @@ Given a candidate solution (set S of vertices):</p>
 <hr />
 
 <h2 id="q4-how-do-you-reduce-3-sat-to-subset-sum">Q4: How do you reduce 3-SAT to Subset Sum?</h2>
+
+<p><strong>Answer:</strong> Use base representation to encode constraints.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Use numbers with digits encoding variable assignments and clause satisfaction</li>
+  <li>Variable digits ensure exactly one assignment per variable</li>
+  <li>Clause digits ensure at least one literal per clause is satisfied</li>
+</ul>
+
+<p><strong>Hint:</strong> Think of numbers in a large base (e.g., base 10 or larger). Each digit position represents a constraint. Variable digits enforce mutual exclusivity, clause digits enforce satisfaction.</p>
 
 <h3 id="1-np-completeness-proof-of-subset-sum-solution-validation">1. NP-Completeness Proof of Subset Sum: Solution Validation</h3>
 
@@ -4958,6 +5038,40 @@ Given a candidate solution (subset S’):</p>
 
 <hr />
 
+<h2 id="reduction-patterns-and-hints">Reduction Patterns and Hints</h2>
+
+<h3 id="pattern-1-graph-problems">Pattern 1: Graph Problems</h3>
+<ul>
+  <li><strong>Variable gadgets:</strong> Pairs of vertices (TRUE/FALSE)</li>
+  <li><strong>Clause gadgets:</strong> Triangles or other structures</li>
+  <li><strong>Key:</strong> Use edges to enforce constraints</li>
+  <li><strong>Examples:</strong> Independent Set, Vertex Cover, Clique</li>
+</ul>
+
+<h3 id="pattern-2-number-problems">Pattern 2: Number Problems</h3>
+<ul>
+  <li><strong>Base representation:</strong> Digits encode constraints</li>
+  <li><strong>Variable encoding:</strong> Numbers represent assignments</li>
+  <li><strong>Key:</strong> Use large base to avoid digit overflow</li>
+  <li><strong>Examples:</strong> Subset Sum, Partition</li>
+</ul>
+
+<h3 id="pattern-3-set-problems">Pattern 3: Set Problems</h3>
+<ul>
+  <li><strong>Universe:</strong> Clauses or elements</li>
+  <li><strong>Sets:</strong> Variable assignments or choices</li>
+  <li><strong>Key:</strong> Covering structure matches clause satisfaction</li>
+  <li><strong>Examples:</strong> Set Cover, Exact Cover, 3D Matching</li>
+</ul>
+
+<h3 id="pattern-4-constraint-problems">Pattern 4: Constraint Problems</h3>
+<ul>
+  <li><strong>Variables:</strong> Direct mapping</li>
+  <li><strong>Constraints:</strong> Clause requirements</li>
+  <li><strong>Key:</strong> Linear constraints encode Boolean logic</li>
+  <li><strong>Examples:</strong> ILP, ZOE, Graph Coloring</li>
+</ul>
+
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
@@ -4965,6 +5079,7 @@ Given a candidate solution (subset S’):</p>
   <li><strong>Gadget Design:</strong> Variable gadgets + clause gadgets are common patterns</li>
   <li><strong>Polynomial Time:</strong> All reductions are polynomial-time</li>
   <li><strong>Correctness:</strong> Both directions must be proven</li>
+  <li><strong>Hints:</strong> Use complement relationships, base representations, and set encodings</li>
 </ol>
 
 <hr />
@@ -4986,6 +5101,16 @@ Given a candidate solution (subset S’):</p>
 <hr />
 
 <h2 id="q1-how-do-you-reduce-clique-to-independent-set">Q1: How do you reduce Clique to Independent Set?</h2>
+
+<p><strong>Answer:</strong> Use complement graph.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is a clique in G ↔ S is an independent set in G̅ (complement graph)</li>
+  <li>Complement graph reverses edge relationships</li>
+</ul>
+
+<p><strong>Hint:</strong> The complement graph G̅ has edges exactly where G doesn’t. This transforms “all pairs connected” into “no pairs connected”.</p>
 
 <h3 id="1-np-completeness-proof-of-independent-set-solution-validation">1. NP-Completeness Proof of Independent Set: Solution Validation</h3>
 
@@ -5296,6 +5421,17 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 
 <h2 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h2>
 
+<p><strong>Answer:</strong> Use binary expansion of integer variables.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Represent each integer variable as sum of powers of 2 times binary variables</li>
+  <li>Binary expansion preserves integer values</li>
+  <li>Constraints can be converted using binary representation</li>
+</ul>
+
+<p><strong>Hint:</strong> For variable xᵢ ≤ M, use ⌈log₂(M+1)⌉ binary variables. Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}. This allows encoding any integer up to M using binary digits.</p>
+
 <h3 id="1-np-completeness-proof-of-0-1-ilp-solution-validation">1. NP-Completeness Proof of 0-1 ILP: Solution Validation</h3>
 
 <p><strong>0-1 ILP Problem:</strong></p>
@@ -5558,6 +5694,16 @@ Given a candidate solution (subset of items):</p>
 
 <h2 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h2>
 
+<p><strong>Answer:</strong> Use complement graph.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set in G ↔ S is a clique in G̅ (complement graph)</li>
+  <li>Complement graph reverses edge relationships</li>
+</ul>
+
+<p><strong>Hint:</strong> The complement graph G̅ has an edge (u,v) if and only if G does not have edge (u,v). This transforms “no edges” into “all edges”.</p>
+
 <h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
 
 <p><strong>Clique Problem:</strong></p>
@@ -5697,6 +5843,26 @@ Given a candidate solution (set S of vertices):</p>
 <hr />
 
 <h2 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h2>
+
+<p><strong>Answer:</strong> Use complement relationship.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>S is an independent set ↔ V \ S is a vertex cover</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Hint:</strong> If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.</p>
 
 <h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
 
@@ -6156,6 +6322,29 @@ Given a candidate solution (partition S, V \ S):</p>
 
 <hr />
 
+<h2 id="reduction-patterns-and-hints">Reduction Patterns and Hints</h2>
+
+<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
+<ul>
+  <li><strong>Key Insight:</strong> S is independent set ↔ S is clique in complement graph</li>
+  <li><strong>Hint:</strong> Create complement graph G̅ where edges exist where G doesn’t</li>
+  <li><strong>Example:</strong> Independent Set → Clique</li>
+</ul>
+
+<h3 id="pattern-2-complement-set">Pattern 2: Complement Set</h3>
+<ul>
+  <li><strong>Key Insight:</strong> S is independent set ↔ V \ S is vertex cover</li>
+  <li><strong>Hint:</strong> Use set complement relationship</li>
+  <li><strong>Example:</strong> Independent Set → Vertex Cover</li>
+</ul>
+
+<h3 id="pattern-3-partitioncut">Pattern 3: Partition/Cut</h3>
+<ul>
+  <li><strong>Key Insight:</strong> Independent set forms one side of partition</li>
+  <li><strong>Hint:</strong> Use independent set as one partition in cut problems</li>
+  <li><strong>Example:</strong> Independent Set → Maximum Cut</li>
+</ul>
+
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
@@ -6163,6 +6352,7 @@ Given a candidate solution (partition S, V \ S):</p>
   <li><strong>Complement Set:</strong> Natural for Vertex Cover reductions</li>
   <li><strong>Partition Structure:</strong> Useful for Cut problems</li>
   <li><strong>Template Structure:</strong> All reductions follow the same rigorous format</li>
+  <li><strong>Hints:</strong> Look for complement relationships and partition structures</li>
 </ol>
 
 <hr />

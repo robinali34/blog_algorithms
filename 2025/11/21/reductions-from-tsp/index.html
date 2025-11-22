@@ -84,6 +84,25 @@
 
 <h2 id="q1-how-do-you-reduce-tsp-to-hamiltonian-cycle">Q1: How do you reduce TSP to Hamiltonian Cycle?</h2>
 
+<p><strong>Answer:</strong> Filter edges by weight threshold.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>TSP tour uses only edges with weight ≤ B</li>
+  <li>Create graph with only edges satisfying weight constraint</li>
+  <li>Hamiltonian cycle in filtered graph ↔ TSP tour</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Hint:</strong> Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤</td>
+      <td>V</td>
+      <td>exists if and only if Hamiltonian cycle exists (using only weight-1 edges).</td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="1-np-completeness-proof-of-hamiltonian-cycle-solution-validation">1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation</h3>
 
 <p><strong>Hamiltonian Cycle Problem:</strong></p>

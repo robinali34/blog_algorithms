@@ -89,6 +89,17 @@
 
 <h2 id="q1-how-do-you-reduce-sat-to-3-sat">Q1: How do you reduce SAT to 3-SAT?</h2>
 
+<p><strong>Answer:</strong> Convert each clause with k &gt; 3 literals into multiple 3-literal clauses.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Introduce new variables to break long clauses into 3-literal clauses</li>
+  <li>New variables can be set to satisfy intermediate clauses</li>
+  <li>Original clause satisfiable ↔ at least one new clause satisfiable</li>
+</ul>
+
+<p><strong>Hint:</strong> For a clause (l₁ ∨ l₂ ∨ … ∨ lₖ) with k &gt; 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ … The new variables yᵢ act as “switches” that can be set to propagate satisfaction.</p>
+
 <h3 id="1-np-completeness-proof-of-3-sat-solution-validation">1. NP-Completeness Proof of 3-SAT: Solution Validation</h3>
 
 <p><strong>3-SAT Problem:</strong></p>
@@ -216,6 +227,17 @@ Given a candidate solution (assignment A):</p>
 <hr />
 
 <h2 id="q2-how-do-you-reduce-sat-to-integer-linear-programming">Q2: How do you reduce SAT to Integer Linear Programming?</h2>
+
+<p><strong>Answer:</strong> Encode Boolean variables as 0-1 ILP variables and clauses as constraints.</p>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>Map Boolean variables to 0-1 ILP variables</li>
+  <li>Encode clause satisfaction as linear inequality: sum of literals ≥ 1</li>
+  <li>Use (1 - xᵢ) for negated literals</li>
+</ul>
+
+<p><strong>Hint:</strong> Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ ¬x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.</p>
 
 <h3 id="1-np-completeness-proof-of-ilp-solution-validation">1. NP-Completeness Proof of ILP: Solution Validation</h3>
 
