@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Hard Introduction: The Subset Sum Problem"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, NP-Hard, Dynamic Programming]
 excerpt: "An introduction to NP-hardness through the Subset Sum Problem, covering problem definition, NP-completeness proof, pseudo-polynomial dynamic programming solution, and connections to Partition and Knapsack problems."
 ---

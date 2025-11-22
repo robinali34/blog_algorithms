@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Complete Reduction Examples: How to Prove NP-Completeness"
-date: 2025-01-15
+date: 2025-11-21
 categories: [Algorithms, Complexity Theory, NP-Hard]
 excerpt: "A comprehensive guide to proving NP-completeness through reductions, with step-by-step examples showing how to reduce from known NP-complete problems (like 3-SAT) to prove new problems are NP-complete."
 ---

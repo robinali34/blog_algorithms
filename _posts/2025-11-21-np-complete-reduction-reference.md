@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Complete Reduction Reference: Using Known Problems to Prove NP-Completeness"
-date: 2025-01-15
+date: 2025-11-21
 categories: [Algorithms, Complexity Theory, NP-Hard]
 excerpt: "A comprehensive reference guide showing how to use known NP-complete problems (SAT, 3-SAT, Clique, Independent Set, Vertex Cover, Subset Sum, Rudrata Path/Cycle, ILP, ZOE, 3D Matching, TSP) to prove new problems are NP-complete through reductions."
 ---

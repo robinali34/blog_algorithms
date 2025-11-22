@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Hard Introduction: Rudrata Cycle"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, NP-Hard, Graph Theory]
 excerpt: "An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP."
 ---

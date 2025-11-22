@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Hard Introduction: The Clique Problem"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, NP-Hard, Graph Theory]
 excerpt: "An introduction to NP-hardness through the Clique Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to other graph problems."
 ---

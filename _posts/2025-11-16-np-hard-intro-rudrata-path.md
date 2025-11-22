@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Hard Introduction: Rudrata Path and Rudrata (s,t)-Path"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, NP-Hard, Graph Theory]
 excerpt: "An introduction to NP-hardness through the Rudrata Path and Rudrata (s,t)-Path problems, covering problem definitions, NP-completeness proofs, and connections to Hamiltonian Cycle."
 ---

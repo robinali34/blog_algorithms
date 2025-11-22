@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NP-Hard Introduction: Traveling Salesman Problem (TSP)"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, NP-Hard, Graph Theory, Optimization]
 excerpt: "An introduction to NP-hardness through the Traveling Salesman Problem (TSP), covering problem definition, NP-completeness proof, dynamic programming solution, approximation algorithms, and practical applications."
 ---

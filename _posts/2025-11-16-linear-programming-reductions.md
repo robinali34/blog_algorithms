@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Linear Programming: Reductions"
-date: 2025-01-15
+date: 2025-11-16
 categories: [Algorithms, Complexity Theory, Linear Programming, Optimization]
 excerpt: "An introduction to Linear Programming, its polynomial-time solvability, and how it relates to reductions in complexity theory, including LP relaxations, duality, and reductions to/from LP."
 ---
