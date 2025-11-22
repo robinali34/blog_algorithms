@@ -72,11 +72,11 @@ To show that Rudrata Path is NP-complete, we first need to show it's in NP.
 **Rudrata Path ∈ NP:**
 
 Given a candidate solution (a sequence of vertices representing a path), we can verify in polynomial time:
-1. Check that the path has exactly |V| vertices: O(|V|) time
-2. Check that each vertex appears exactly once: O(|V|) time (use a set or array)
-3. Check that consecutive vertices in the path are adjacent: O(|V|) time (check |V|-1 edges)
+1. Check that the path has exactly `|V|` vertices: O(`|V|`) time
+2. Check that each vertex appears exactly once: O(`|V|`) time (use a set or array)
+3. Check that consecutive vertices in the path are adjacent: O(`|V|`) time (check `|V|`-1 edges)
 
-Total verification time: O(|V|), which is polynomial in the input size. Therefore, Rudrata Path is in NP.
+Total verification time: O(`|V|`), which is polynomial in the input size. Therefore, Rudrata Path is in NP.
 
 Similarly, **Rudrata (s,t)-Path ∈ NP** with the additional checks:
 - First vertex is s
@@ -119,7 +119,7 @@ Hamiltonian Cycle is known to be NP-complete (can be proven by reduction from 3-
 - Removing s and t and adding edge (u,v) gives a Hamiltonian cycle in G
 
 **Polynomial Time:**
-- The reduction takes O(|V| + |E|) time
+- The reduction takes O(`|V|` + `|E|`) time
 
 Therefore, **Rudrata Path and Rudrata (s,t)-Path are NP-complete**.
 
@@ -217,7 +217,7 @@ The Rudrata Path Problem is NP-complete, which means:
 **Algorithm:**
 ```
 Algorithm: RudrataPathDP(G)
-1. n = |V|
+1. n = `|V|`
 2. Let dp[0..2^n-1][0..n-1] be a boolean array
 3. for i = 0 to n-1:
 4.     dp[2^i][i] = true

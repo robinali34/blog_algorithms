@@ -72,7 +72,7 @@ Given a candidate solution (a set of k vertices), we can verify in polynomial ti
 1. Check that the set has exactly k vertices: O(k) time
 2. Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs)
 
-Since k ≤ |V|, this verification takes polynomial time in the input size. Therefore, Clique is in NP.
+Since k ≤ `|V|`, this verification takes polynomial time in the input size. Therefore, Clique is in NP.
 
 ## NP-Completeness: Reduction from 3-SAT
 

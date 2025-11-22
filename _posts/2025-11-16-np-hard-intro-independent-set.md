@@ -73,7 +73,7 @@ Given a candidate solution (a set of k vertices), we can verify in polynomial ti
 1. Check that the set has at least k vertices: O(k) time
 2. Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)
 
-Since k ≤ |V|, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.
+Since k ≤ `|V|`, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.
 
 ## NP-Completeness: Reduction from Clique
 
@@ -112,7 +112,7 @@ Since we know **Clique is NP-complete**, we can reduce Clique to Independent Set
 - This follows directly from the fundamental observation above
 
 **Polynomial Time:**
-- Constructing G̅ takes O(|V|^2) time (check all pairs of vertices)
+- Constructing G̅ takes O(`|V|`^2) time (check all pairs of vertices)
 - This is polynomial in the input size
 
 Therefore, **Independent Set is NP-complete**.
@@ -202,7 +202,7 @@ A **vertex cover** is a set of vertices C such that every edge has at least one 
 - The reverse direction follows similarly
 
 **Corollary:**
-- Maximum independent set size + Minimum vertex cover size = |V|
+- Maximum independent set size + Minimum vertex cover size = `|V|`
 - This is known as **Gallai's theorem**
 
 ### Maximum Matching
@@ -327,7 +327,7 @@ Both reductions are polynomial-time, establishing Independent Set as NP-complete
 
 1. **Prove the complement relationship**: Show that S is a clique in G if and only if S is an independent set in G̅.
 
-2. **Prove Gallai's theorem**: Show that for any graph G, \alpha(G) + \beta(G) = |V| where \alpha(G) is the independence number and beta(G) is the vertex cover number.
+2. **Prove Gallai's theorem**: Show that for any graph G, \alpha(G) + \beta(G) = `|V|` where \alpha(G) is the independence number and beta(G) is the vertex cover number.
 
 3. **Construct the graph** for the 3-SAT instance:
    (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)

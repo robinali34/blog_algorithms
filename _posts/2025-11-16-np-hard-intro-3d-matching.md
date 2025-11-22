@@ -19,11 +19,11 @@ A **3D matching** (also called **3-dimensional matching**) is a generalization o
 **3D Matching Decision Problem:**
 
 **Input:** 
-- Three disjoint sets X, Y, Z with |X| = |Y| = |Z| = n
+- Three disjoint sets X, Y, Z with `|X|` = `|Y|` = `|Z|` = n
 - A set T subseteq X × Y × Z of triples
 
 **Output:** YES if there exists a subset M subseteq T such that:
-- |M| = n (exactly n triples)
+- `|M|` = n (exactly n triples)
 - All triples in M are disjoint (no two share an element)
 - Every element in X cup Y cup Z appears in exactly one triple of M
 
@@ -73,7 +73,7 @@ To show that 3D Matching is NP-complete, we first need to show it's in NP.
 **3D Matching ∈ NP:**
 
 Given a candidate solution (a set M of triples), we can verify in polynomial time:
-1. Check that |M| = n: O(1) time
+1. Check that `|M|` = n: O(1) time
 2. Check that all triples are disjoint: O(n^2) time (compare all pairs)
 3. Check that every element appears exactly once: O(n) time (use arrays/sets to count occurrences)
 
@@ -230,7 +230,7 @@ Some restricted versions of 3D Matching are tractable:
 ### Brute Force Approach
 
 **Algorithm:** Try all possible subsets of triples
-- **Time Complexity:** O(2^{|T|} · n) where |T| is number of triples
+- **Time Complexity:** O(2^{`|T|`} · n) where `|T|` is number of triples
 - **Space Complexity:** O(n) for storing current matching
 - **Analysis:** For each subset, verify it's a valid matching (O(n) to check disjointness)
 
@@ -245,15 +245,15 @@ Some restricted versions of 3D Matching are tractable:
 
 **Algorithm:** Formulate as 0-1 ILP, use solver
 - **Time Complexity:** Depends on ILP solver (exponential worst-case, efficient in practice)
-- **Space Complexity:** O(|T| + n) for storing variables and constraints
-- **Formulation:** O(|T|) variables, O(n) constraints
+- **Space Complexity:** O(`|T|` + n) for storing variables and constraints
+- **Formulation:** O(`|T|`) variables, O(n) constraints
 - **Practical Performance:** Modern solvers handle moderate-sized instances well
 
 ### 2D Matching (Special Case)
 
 **Algorithm:** For bipartite matching, use augmenting paths
-- **Time Complexity:** O(sqrt{n} · |E|) using Hopcroft-Karp algorithm
-- **Space Complexity:** O(n + |E|)
+- **Time Complexity:** O(sqrt{n} · `|E|`) using Hopcroft-Karp algorithm
+- **Space Complexity:** O(n + `|E|`)
 - **Why Polynomial:** 2D matching has special structure allowing polynomial-time solution
 
 ### Verification Complexity

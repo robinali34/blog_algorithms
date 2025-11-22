@@ -303,8 +303,8 @@ Algorithm: GreedySetCover(U, S)
 13. return selected
 ```
 
-**Time Complexity:** O(|U| · |S|)
-**Space Complexity:** O(|U|)
+**Time Complexity:** O(`|U|` · `|S|`)
+**Space Complexity:** O(`|U|`)
 
 **Approximation Ratio:** H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)
 
@@ -394,7 +394,7 @@ To prove a greedy algorithm is correct:
 | MST (Prim) | Priority queue | O(E log V) | O(V) |
 | Huffman Coding | Min-heap | O(n log n) | O(n) |
 | Dijkstra's | Priority queue | O((V+E) log V) | O(V) |
-| Set Cover | Greedy selection | O(|U| · |S|) | O(|U|) |
+| Set Cover | Greedy selection | O(`|U|` · `|S|`) | O(`|U|`) |
 
 ## Key Takeaways
 

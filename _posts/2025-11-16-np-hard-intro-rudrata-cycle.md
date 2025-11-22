@@ -67,12 +67,12 @@ To show that Rudrata Cycle is NP-complete, we first need to show it's in NP.
 **Rudrata Cycle ∈ NP:**
 
 Given a candidate solution (a sequence of vertices representing a cycle), we can verify in polynomial time:
-1. Check that the cycle has exactly |V| vertices: O(|V|) time
-2. Check that each vertex appears exactly once: O(|V|) time (use a set or array)
-3. Check that consecutive vertices in the cycle are adjacent: O(|V|) time (check |V| edges, including the wrap-around edge from last to first)
+1. Check that the cycle has exactly `|V|` vertices: O(`|V|`) time
+2. Check that each vertex appears exactly once: O(`|V|`) time (use a set or array)
+3. Check that consecutive vertices in the cycle are adjacent: O(`|V|`) time (check `|V|` edges, including the wrap-around edge from last to first)
 4. Check that the cycle returns to start: O(1) time
 
-Total verification time: O(|V|), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.
+Total verification time: O(`|V|`), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.
 
 ## NP-Completeness: Reduction from 3-SAT
 
@@ -142,7 +142,7 @@ As we saw in the previous post:
 
 **Relationship:**
 - TSP is a weighted version of Rudrata Cycle
-- Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight |V| exists
+- Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight `|V|` exists
 - TSP reduces to Rudrata Cycle: use unweighted version
 - They are essentially the same problem
 
@@ -179,7 +179,7 @@ The Rudrata Cycle Problem is NP-complete, which means:
 **Algorithm:**
 ```
 Algorithm: RudrataCycleDP(G)
-1. n = |V|
+1. n = `|V|`
 2. Let dp[0..2^n-1][0..n-1] be a boolean array
 3. for i = 0 to n-1:
 4.     dp[2^i][i] = true
@@ -277,7 +277,7 @@ Some restricted versions of Rudrata Cycle are tractable:
 **Rudrata Cycle ≤ₚ TSP:**
 - Given Rudrata Cycle instance: graph G
 - Create complete graph G' with edge weights: 1 if edge exists in G, ∈fty otherwise
-- Rudrata cycle exists ↔ TSP has solution of weight |V|
+- Rudrata cycle exists ↔ TSP has solution of weight `|V|`
 
 **TSP ≤ₚ Rudrata Cycle:**
 - Given TSP instance, ask if unweighted version has Hamiltonian cycle

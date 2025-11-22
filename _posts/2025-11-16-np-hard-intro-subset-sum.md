@@ -154,7 +154,7 @@ Despite being NP-complete, Subset Sum has a **pseudo-polynomial time** dynamic p
 **Algorithm:**
 ```
 Algorithm: SubsetSumDP(S, t)
-1. n = |S|
+1. n = `|S|`
 2. Let dp[0..n][0..t] be a 2D boolean array
 3. dp[0][0] = true
 4. for i = 1 to n:

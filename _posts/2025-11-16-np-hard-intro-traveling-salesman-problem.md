@@ -19,7 +19,7 @@ The Traveling Salesman Problem asks: **Given a complete graph with edge weights 
 **TSP Decision Problem:**
 
 **Input:** 
-- A complete undirected graph G = (V, E) with |V| = n
+- A complete undirected graph G = (V, E) with `|V|` = n
 - Edge weights w: E → ℝ⁺ (distances/costs)
 - A bound B
 
@@ -139,7 +139,7 @@ Despite being NP-complete, TSP has a **pseudo-polynomial** dynamic programming s
 **Algorithm:**
 ```
 Algorithm: TSP_DP(G, w)
-1. n = |V|
+1. n = `|V|`
 2. Let dp[0..2^n-1][0..n-1] be a 2D array
 3. dp[2^0][0] = 0
 4. for mask = 1 to 2^n - 1:

@@ -118,14 +118,14 @@ Therefore, **Independent Set is NP-complete**.
 
 **Key Insight:** Use the complement relationship with Independent Set
 - S is an independent set ↔ V \ S is a vertex cover
-- Independent set of size ≥ k ↔ Vertex cover of size ≤ |V| - k
+- Independent set of size ≥ k ↔ Vertex cover of size ≤ `|V|` - k
 
 **Reduction:**
 1. Reduce 3-SAT to Independent Set (as above) to get graph G and k = n + m
-2. Return Vertex Cover instance: graph G, k' = |V| - (n + m)
+2. Return Vertex Cover instance: graph G, k' = `|V|` - (n + m)
 
 **Correctness:**
-- 3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size |V| - (n + m) exists
+- 3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size `|V|` - (n + m) exists
 
 **Polynomial Time:** O(n + m)
 
@@ -363,7 +363,7 @@ Once you prove one problem NP-complete, you can reduce from it:
 
 **3-SAT ≤ₚ Vertex Cover:**
 - Via Independent Set complement relationship
-- k = |V| - (n + m)
+- k = `|V|` - (n + m)
 
 **3-SAT ≤ₚ Clique:**
 - Via complement graph of Independent Set

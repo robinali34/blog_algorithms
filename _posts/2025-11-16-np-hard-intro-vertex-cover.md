@@ -71,9 +71,9 @@ To show that Vertex Cover is NP-complete, we first need to show it's in NP.
 
 Given a candidate solution (a set of at most k vertices), we can verify in polynomial time:
 1. Check that the set has at most k vertices: O(k) time
-2. Check that every edge has at least one endpoint in the set: O(|E|) time (iterate through all edges and check if at least one endpoint is in the cover)
+2. Check that every edge has at least one endpoint in the set: O(`|E|`) time (iterate through all edges and check if at least one endpoint is in the cover)
 
-Since k ≤ |V| and we need to check |E| edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.
+Since k ≤ `|V|` and we need to check `|E|` edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.
 
 ## NP-Completeness: Reduction from Independent Set
 
@@ -97,7 +97,7 @@ The most elegant proof that Vertex Cover is NP-complete uses the fundamental rel
 - So V \setminus C is an independent set
 
 **Corollary (Gallai's Theorem):**
-- For any graph G, \alpha(G) + \beta(G) = |V|
+- For any graph G, \alpha(G) + \beta(G) = `|V|`
 - Where \alpha(G) is the independence number and beta(G) is the vertex cover number
 
 ### Reduction from Independent Set
@@ -106,13 +106,13 @@ Since we know **Independent Set is NP-complete**, we can reduce Independent Set 
 
 **Reduction:**
 1. Given an Independent Set instance: graph G and integer k
-2. Return Vertex Cover instance: graph G and integer |V| - k
+2. Return Vertex Cover instance: graph G and integer `|V|` - k
 
 **Correctness:**
-- G has an independent set of size at least k **if and only if** G has a vertex cover of size at most |V| - k
+- G has an independent set of size at least k **if and only if** G has a vertex cover of size at most `|V|` - k
 - This follows directly from Gallai's theorem:
-  - If maximum independent set has size ≥ k, then minimum vertex cover has size ≤ |V| - k
-  - If minimum vertex cover has size ≤ |V| - k, then maximum independent set has size ≥ k
+  - If maximum independent set has size ≥ k, then minimum vertex cover has size ≤ `|V|` - k
+  - If minimum vertex cover has size ≤ `|V|` - k, then maximum independent set has size ≥ k
 
 **Polynomial Time:**
 - The reduction is trivial (just changing the parameter)
@@ -168,7 +168,7 @@ The Vertex Cover Problem is part of a fundamental trio of related NP-complete pr
 
 As we've seen:
 - S is an independent set **if and only if** V \setminus S is a vertex cover
-- \alpha(G) + \beta(G) = |V| (Gallai's theorem)
+- \alpha(G) + \beta(G) = `|V|` (Gallai's theorem)
 - This makes Vertex Cover and Independent Set polynomially equivalent
 
 ### Clique
@@ -244,7 +244,7 @@ Some restricted versions of Vertex Cover are tractable:
 ## Key Takeaways
 
 1. **Vertex Cover is NP-Complete**: Proven by reduction from Independent Set (via Gallai's theorem) or directly from 3-SAT
-2. **Gallai's Theorem**: The relationship alpha(G) + beta(G) = |V| is fundamental and elegant
+2. **Gallai's Theorem**: The relationship alpha(G) + beta(G) = `|V|` is fundamental and elegant
 3. **König's Theorem**: In bipartite graphs, vertex cover equals maximum matching size - providing a polynomial-time algorithm
 4. **2-Approximation**: Vertex Cover has a simple 2-approximation algorithm, and this is optimal for general graphs
 5. **Practical Algorithms**: Despite NP-completeness, approximation algorithms and special-case algorithms make Vertex Cover tractable in practice
@@ -253,8 +253,8 @@ Some restricted versions of Vertex Cover are tractable:
 
 **Independent Set ≤ₚ Vertex Cover:**
 - Given Independent Set instance: graph G and integer k
-- Return Vertex Cover instance: graph G and integer |V| - k
-- G has independent set of size ≥ k ↔ G has vertex cover of size ≤ |V| - k
+- Return Vertex Cover instance: graph G and integer `|V|` - k
+- G has independent set of size ≥ k ↔ G has vertex cover of size ≤ `|V|` - k
 
 **3-SAT ≤ₚ Vertex Cover:**
 - Given 3-SAT instance with n variables and m clauses
@@ -278,7 +278,7 @@ Algorithm: GreedyVertexCover(G)
 7. return C
 ```
 
-**Time Complexity:** O(|E|)
+**Time Complexity:** O(`|E|`)
 
 **Approximation Ratio:** 2 (at most twice the optimal)
 
@@ -301,14 +301,14 @@ Using linear programming relaxation:
 ### Brute Force Approach
 
 **Algorithm:** Check all subsets of vertices of size ≤ k
-- **Time Complexity:** O(∑_{i=0}^{k} C(n,i) · |E|) = O(n^k · |E|)
+- **Time Complexity:** O(∑_{i=0}^{k} C(n,i) · `|E|`) = O(n^k · `|E|`)
 - **Space Complexity:** O(k) for storing current subset
-- **Analysis:** For each subset, check if all edges are covered (O(|E|) time)
+- **Analysis:** For each subset, check if all edges are covered (O(`|E|`) time)
 
 ### Dynamic Programming
 
 **Algorithm:** Use bitmask DP
-- **Time Complexity:** O(2^n · |E|)
+- **Time Complexity:** O(2^n · `|E|`)
 - **Space Complexity:** O(2^n)
 - **Subproblem:** dp[mask] = minimum vertex cover for edges covered by vertices in mask
 - **Recurrence:** dp[mask] = min_{v ∉ mask} {dp[mask \cup {v}] + 1}
@@ -326,14 +326,14 @@ Using linear programming relaxation:
 ### Bipartite Graphs (König's Theorem)
 
 **Algorithm:** Find maximum matching, construct vertex cover
-- **Time Complexity:** O(sqrt{n} · |E|) using Hopcroft-Karp algorithm
-- **Space Complexity:** O(n + |E|)
+- **Time Complexity:** O(sqrt{n} · `|E|`) using Hopcroft-Karp algorithm
+- **Space Complexity:** O(n + `|E|`)
 - **Method:** Maximum matching size equals minimum vertex cover size in bipartite graphs
 
 ### Parameterized Algorithms (FPT)
 
 **Algorithm:** Branching on high-degree vertices
-- **Time Complexity:** O(2^k · (n + |E|)) where k is solution size
+- **Time Complexity:** O(2^k · (n + `|E|`)) where k is solution size
 - **Space Complexity:** O(n)
 - **Key Insight:** If vertex has degree > k, it must be in cover
 - **Recurrence:** T(k) = T(k-1) + T(k-deg(v)) for vertex v
@@ -341,7 +341,7 @@ Using linear programming relaxation:
 ### Greedy 2-Approximation
 
 **Algorithm:** Repeatedly pick uncovered edge, add both endpoints
-- **Time Complexity:** O(|E|)
+- **Time Complexity:** O(`|E|`)
 - **Space Complexity:** O(n)
 - **Approximation Ratio:** 2
 
@@ -349,13 +349,13 @@ Using linear programming relaxation:
 
 **Algorithm:** Solve LP relaxation, round
 - **Time Complexity:** O(LP solver time) = O(n^{3.5}L) using interior-point methods
-- **Space Complexity:** O(n + |E|)
+- **Space Complexity:** O(n + `|E|`)
 - **Approximation Ratio:** 2
 
 ### Verification Complexity
 
 **Given a candidate vertex cover of size k:**
-- **Time Complexity:** O(|E|) - check each edge has at least one endpoint in cover
+- **Time Complexity:** O(`|E|`) - check each edge has at least one endpoint in cover
 - **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability shows Vertex Cover is in NP
 
@@ -369,9 +369,9 @@ Using linear programming relaxation:
 
 ## Practice Problems
 
-1. **Prove Gallai's theorem**: Show that for any graph G, alpha(G) + beta(G) = |V| where alpha(G) is the independence number and \beta(G) is the vertex cover number.
+1. **Prove Gallai's theorem**: Show that for any graph G, alpha(G) + beta(G) = `|V|` where alpha(G) is the independence number and \beta(G) is the vertex cover number.
 
-2. **Prove the reduction**: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤ |V| - k.
+2. **Prove the reduction**: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤ `|V|` - k.
 
 3. **Construct the graph** for the 3-SAT instance:
    (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁)

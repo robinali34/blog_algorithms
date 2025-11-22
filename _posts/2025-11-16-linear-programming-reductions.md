@@ -176,7 +176,7 @@ LP relaxation is fundamental to many approximation algorithms.
 
 **Analysis:**
 - S is a vertex cover (each edge has at least one endpoint with x_v ≥ 1/2)
-- |S| = ∑_{v ∈ S} 1 ≤ ∑_{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal
+- `|S|` = ∑_{v ∈ S} 1 ≤ ∑_{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal
 - Therefore, 2-approximation
 
 ### Set Cover: LP-Based Approximation
