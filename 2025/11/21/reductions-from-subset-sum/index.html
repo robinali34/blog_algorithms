@@ -106,62 +106,14 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (partition S₁, S₂):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S₁ ∪ S₂ = A: O(</td>
-          <td>A</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S₁ ∩ S₂ = ∅: O(</td>
-          <td>A</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Compute sum₁ = ∑_{a ∈ S₁} a: O(</td>
-          <td>A</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Compute sum₂ = ∑_{a ∈ S₂} a: O(</td>
-          <td>A</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S₁ ∪ S₂ = A: O(<code class="language-plaintext highlighter-rouge">|A|</code>) time</li>
+  <li>Check that S₁ ∩ S₂ = ∅: O(<code class="language-plaintext highlighter-rouge">|A|</code>) time</li>
+  <li>Compute sum₁ = ∑_{a ∈ S₁} a: O(<code class="language-plaintext highlighter-rouge">|A|</code>) time</li>
+  <li>Compute sum₂ = ∑_{a ∈ S₂} a: O(<code class="language-plaintext highlighter-rouge">|A|</code>) time</li>
   <li>Check if sum₁ = sum₂: O(1) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>A</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|A|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Partition ∈ NP.</p>
 

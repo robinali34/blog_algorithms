@@ -108,60 +108,12 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (matching M):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that M ⊆ T: O(</td>
-          <td>M</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that all elements in X, Y, Z are covered: O(</td>
-          <td>X</td>
-          <td>+</td>
-          <td>Y</td>
-          <td>+</td>
-          <td>Z</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that no element appears twice: O(</td>
-          <td>M</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that M ⊆ T: O(<code class="language-plaintext highlighter-rouge">|M|</code>) time</li>
+  <li>Check that all elements in X, Y, Z are covered: O(<code class="language-plaintext highlighter-rouge">|X|</code> + <code class="language-plaintext highlighter-rouge">|Y|</code> + <code class="language-plaintext highlighter-rouge">|Z|</code>) time</li>
+  <li>Check that no element appears twice: O(<code class="language-plaintext highlighter-rouge">|M|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>X</td>
-      <td>+</td>
-      <td>Y</td>
-      <td>+</td>
-      <td>Z</td>
-      <td>+</td>
-      <td>M</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|X|</code> + <code class="language-plaintext highlighter-rouge">|Y|</code> + <code class="language-plaintext highlighter-rouge">|Z|</code> + <code class="language-plaintext highlighter-rouge">|M|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> 3D Matching ∈ NP.</p>
 
@@ -318,43 +270,11 @@ Given a candidate solution (matching M):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that each element appears exactly once: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that each element appears exactly once: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Exact Cover ∈ NP.</p>
 

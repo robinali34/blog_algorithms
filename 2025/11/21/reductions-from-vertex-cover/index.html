@@ -100,17 +100,7 @@
 <p><strong>Set Cover Problem:</strong></p>
 <ul>
   <li><strong>Input:</strong> Universe U, collection C of subsets of U, integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with</td>
-          <td>C’</td>
-          <td>≤ k covering U, NO otherwise</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U, NO otherwise</li>
 </ul>
 
 <p><strong>Set Cover ∈ NP:</strong></p>
@@ -118,54 +108,12 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>C’</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that ∪_{S ∈ C’} S = U: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k: O(1) time</li>
+  <li>Check that ∪_{S ∈ C’} S = U: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Set Cover ∈ NP.</p>
 
@@ -187,31 +135,12 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = {v ∈ V : Sᵥ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
   <li>S is vertex cover (each edge covered by at least one set Sᵥ)</li>
 </ul>
 
@@ -224,18 +153,7 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Construct Set Cover:</strong></p>
 <ul>
   <li>C’ = {Sᵥ : v ∈ S}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C’</td>
-          <td>=</td>
-          <td>S</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|C'|</code> = <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k</li>
   <li>For each edge e = (u, v) ∈ E:
     <ul>
       <li>Since S is vertex cover, at least one of u, v ∈ S</li>
@@ -262,31 +180,12 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="32b-if-set-cover-has-a-solution-then-vertex-cover-has-a-solution">3.2b If Set Cover has a solution, then Vertex Cover has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U.</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = {v ∈ V : Sᵥ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
   <li>For each edge e ∈ E:
     <ul>
       <li>Since C’ covers U, e is in some set Sᵥ ∈ C’</li>
@@ -310,17 +209,7 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Hitting Set Problem:</strong></p>
 <ul>
   <li><strong>Input:</strong> Collection C of subsets of universe U, integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Output:</strong> YES if there exists set H ⊆ U with</td>
-          <td>H</td>
-          <td>≤ k hitting all sets in C, NO otherwise</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Output:</strong> YES if there exists set H ⊆ U with <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k hitting all sets in C, NO otherwise</li>
 </ul>
 
 <p><strong>Hitting Set ∈ NP:</strong></p>
@@ -328,54 +217,12 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set H):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that H ⊆ U: O(</td>
-          <td>H</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>H</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each set S ∈ C, check if S ∩ H ≠ ∅: O(</td>
-          <td>C</td>
-          <td>·</td>
-          <td>U</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that H ⊆ U: O(<code class="language-plaintext highlighter-rouge">|H|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k: O(1) time</li>
+  <li>For each set S ∈ C, check if S ∩ H ≠ ∅: O(<code class="language-plaintext highlighter-rouge">|C|</code> · <code class="language-plaintext highlighter-rouge">|U|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>C</td>
-      <td>·</td>
-      <td>U</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|C|</code> · <code class="language-plaintext highlighter-rouge">|U|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Hitting Set ∈ NP.</p>
 
@@ -396,31 +243,12 @@ Given a candidate solution (set H):</p>
 
 <h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Hitting Set solution H ⊆ U with</td>
-      <td>H</td>
-      <td>≤ k hitting all sets</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Hitting Set solution H ⊆ U with <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k hitting all sets</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = H</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>H</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k</li>
   <li>S is vertex cover (each edge e has Sₑ ∩ H ≠ ∅)</li>
 </ul>
 
@@ -433,18 +261,7 @@ Given a candidate solution (set H):</p>
 <p><strong>Construct Hitting Set:</strong></p>
 <ul>
   <li>H = S</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>H</td>
-          <td>=</td>
-          <td>S</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|H|</code> = <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k</li>
   <li>For each edge e = (u, v) ∈ E:
     <ul>
       <li>Since S is vertex cover, at least one of u, v ∈ S</li>
@@ -471,31 +288,12 @@ Given a candidate solution (set H):</p>
 
 <h4 id="32b-if-hitting-set-has-a-solution-then-vertex-cover-has-a-solution">3.2b If Hitting Set has a solution, then Vertex Cover has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Hitting Set instance has solution H ⊆ U with</td>
-      <td>H</td>
-      <td>≤ k hitting all sets.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Hitting Set instance has solution H ⊆ U with <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k hitting all sets.</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = H</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>H</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|H|</code> ≤ k</li>
   <li>For each edge e = (u, v) ∈ E:
     <ul>
       <li>Since H hits Sₑ, Sₑ ∩ H ≠ ∅</li>
@@ -528,50 +326,12 @@ Given a candidate solution (set H):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Independent Set ∈ NP.</p>
 
@@ -583,48 +343,19 @@ Given a candidate solution (set S of vertices):</p>
 
 <p><strong>Construction:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Independent Set instance: graph G, integer k’ =</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Independent Set instance: graph G, integer k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ul>
 
 <p><strong>Key Property:</strong> S is vertex cover ↔ V \ S is independent set</p>
 
 <h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Independent Set solution S’ of size k’ =</td>
-      <td>V</td>
-      <td>- k</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Independent Set solution S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- k’ = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
   <li>S is vertex cover (complement of independent set)</li>
 </ul>
 
@@ -637,22 +368,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construct Independent Set:</strong></p>
 <ul>
   <li>S’ = V \ S</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S’</td>
-          <td>=</td>
-          <td>V</td>
-          <td>-</td>
-          <td>S</td>
-          <td>≥</td>
-          <td>V</td>
-          <td>- k = k’</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S|</code> ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - k = k’</li>
   <li>S’ is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -673,35 +389,12 @@ Given a candidate solution (set S of vertices):</p>
 
 <h4 id="32b-if-independent-set-has-a-solution-then-vertex-cover-has-a-solution">3.2b If Independent Set has a solution, then Vertex Cover has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Independent Set instance has solution S’ of size ≥ k’ =</td>
-      <td>V</td>
-      <td>- k.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Independent Set instance has solution S’ of size ≥ k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>V</td>
-          <td>-</td>
-          <td>S’</td>
-          <td>≤</td>
-          <td>V</td>
-          <td>- k’ = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
   <li>S is vertex cover (complement of independent set)</li>
 </ul>
 

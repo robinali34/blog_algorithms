@@ -93,36 +93,14 @@
   <li>Set cover allows covering elements multiple times, but perfect matching ensures exactly once</li>
 </ul>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size</td>
-      <td>X</td>
-      <td>=</td>
-      <td>Y</td>
-      <td>=</td>
-      <td>Z</td>
-      <td>, where each element is covered exactly once.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code>, where each element is covered exactly once.</p>
 
 <h3 id="1-np-completeness-proof-of-set-cover-solution-validation">1. NP-Completeness Proof of Set Cover: Solution Validation</h3>
 
 <p><strong>Set Cover Problem:</strong></p>
 <ul>
   <li><strong>Input:</strong> Universe U, collection C of subsets of U, integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with</td>
-          <td>C’</td>
-          <td>≤ k covering U, NO otherwise</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U, NO otherwise</li>
 </ul>
 
 <p><strong>Set Cover ∈ NP:</strong></p>
@@ -130,54 +108,12 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>C’</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that ∪_{S ∈ C’} S = U: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k: O(1) time</li>
+  <li>Check that ∪_{S ∈ C’} S = U: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Set Cover ∈ NP.</p>
 
@@ -192,21 +128,7 @@ Given a candidate solution (subcollection C’):</p>
   <li>Universe U = X ∪ Y ∪ Z (all elements)</li>
   <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
   <li>Collection C = {Sₜ : t ∈ T}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Target k =</td>
-          <td>X</td>
-          <td>=</td>
-          <td>Y</td>
-          <td>=</td>
-          <td>Z</td>
-          <td>(assuming equal sizes)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Target k = <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> (assuming equal sizes)</li>
   <li>Return Set Cover instance: universe U, collection C, integer k</li>
 </ul>
 
@@ -214,46 +136,13 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U</p>
 
 <p><strong>Extract Matching:</strong></p>
 <ul>
   <li>M = {t ∈ T : Sₜ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Since</td>
-          <td>X</td>
-          <td>=</td>
-          <td>Y</td>
-          <td>=</td>
-          <td>Z</td>
-          <td>= k and each set covers 3 elements, need exactly k sets</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|M|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
+  <li>Since <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> = k and each set covers 3 elements, need exactly k sets</li>
   <li>M is perfect 3D matching</li>
 </ul>
 
@@ -266,18 +155,7 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Construct Set Cover:</strong></p>
 <ul>
   <li>C’ = {Sₜ : t ∈ M}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C’</td>
-          <td>=</td>
-          <td>M</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|C'|</code> = <code class="language-plaintext highlighter-rouge">|M|</code> = k</li>
   <li>Since M covers all elements:
     <ul>
       <li>Each x ∈ X appears in exactly one triple t ∈ M</li>
@@ -299,21 +177,7 @@ Given a candidate solution (subcollection C’):</p>
   <li>If Set Cover has solution C’ of size k:
     <ul>
       <li>Then M = {t : Sₜ ∈ C’} is matching of size k</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Since</td>
-              <td>X</td>
-              <td>=</td>
-              <td>Y</td>
-              <td>=</td>
-              <td>Z</td>
-              <td>= k, M covers all elements</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Since <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> = k, M covers all elements</li>
       <li>M is perfect matching</li>
       <li>Contradiction</li>
     </ul>
@@ -324,41 +188,13 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="32b-if-set-cover-has-a-solution-then-3d-matching-has-a-solution">3.2b If Set Cover has a solution, then 3D Matching has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U.</p>
 
 <p><strong>Extract Matching:</strong></p>
 <ul>
   <li>M = {t ∈ T : Sₜ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Since C’ covers U and</td>
-          <td>U</td>
-          <td>= 3k:</td>
-        </tr>
-      </tbody>
-    </table>
+  <li><code class="language-plaintext highlighter-rouge">|M|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
+  <li>Since C’ covers U and <code class="language-plaintext highlighter-rouge">|U|</code> = 3k:
     <ul>
       <li>Need at least k sets (each covers 3 elements)</li>
       <li>Have at most k sets</li>
@@ -370,15 +206,7 @@ Given a candidate solution (subcollection C’):</p>
 
 <p><strong>Conclusion:</strong> 3D Matching has a solution.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Polynomial Time:</strong> O(</td>
-      <td>T</td>
-      <td>) to create sets.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Polynomial Time:</strong> O(<code class="language-plaintext highlighter-rouge">|T|</code>) to create sets.</p>
 
 <p><strong>Therefore, Set Cover is NP-complete.</strong></p>
 
@@ -399,43 +227,11 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that each element appears exactly once: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that each element appears exactly once: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Exact Cover ∈ NP.</p>
 

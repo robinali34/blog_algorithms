@@ -107,51 +107,13 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
   <li>If no edges found, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Independent Set ∈ NP.</p>
 
@@ -245,41 +207,11 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that f is injective: O(</td>
-          <td>V(H)</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(</td>
-          <td>E(H)</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that f is injective: O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>²) time</li>
+  <li>For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(<code class="language-plaintext highlighter-rouge">|E(H)|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>V(H)</td>
-      <td>² +</td>
-      <td>E(H)</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>² + <code class="language-plaintext highlighter-rouge">|E(H)|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Subgraph Isomorphism ∈ NP.</p>
 
@@ -304,16 +236,7 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <p><strong>Extract Clique:</strong></p>
 <ul>
   <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
   <li>S is clique in G (Kₖ is complete graph)</li>
 </ul>
 
@@ -352,16 +275,7 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <p><strong>Extract Clique:</strong></p>
 <ul>
   <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
   <li>Since Kₖ is complete, all pairs in S are connected</li>
   <li>S is clique of size k</li>
 </ul>

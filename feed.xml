@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:20:56+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:25:18+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
@@ -3690,36 +3690,14 @@ Given a candidate solution (partition S₁, S₂):</p>
   <li>Set cover allows covering elements multiple times, but perfect matching ensures exactly once</li>
 </ul>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size</td>
-      <td>X</td>
-      <td>=</td>
-      <td>Y</td>
-      <td>=</td>
-      <td>Z</td>
-      <td>, where each element is covered exactly once.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Hint:</strong> Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code>, where each element is covered exactly once.</p>
 
 <h3 id="1-np-completeness-proof-of-set-cover-solution-validation">1. NP-Completeness Proof of Set Cover: Solution Validation</h3>
 
 <p><strong>Set Cover Problem:</strong></p>
 <ul>
   <li><strong>Input:</strong> Universe U, collection C of subsets of U, integer k</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with</td>
-          <td>C’</td>
-          <td>≤ k covering U, NO otherwise</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U, NO otherwise</li>
 </ul>
 
 <p><strong>Set Cover ∈ NP:</strong></p>
@@ -3727,54 +3705,12 @@ Given a candidate solution (partition S₁, S₂):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>C’</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that ∪_{S ∈ C’} S = U: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k: O(1) time</li>
+  <li>Check that ∪_{S ∈ C’} S = U: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Set Cover ∈ NP.</p>
 
@@ -3789,21 +3725,7 @@ Given a candidate solution (subcollection C’):</p>
   <li>Universe U = X ∪ Y ∪ Z (all elements)</li>
   <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
   <li>Collection C = {Sₜ : t ∈ T}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Target k =</td>
-          <td>X</td>
-          <td>=</td>
-          <td>Y</td>
-          <td>=</td>
-          <td>Z</td>
-          <td>(assuming equal sizes)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Target k = <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> (assuming equal sizes)</li>
   <li>Return Set Cover instance: universe U, collection C, integer k</li>
 </ul>
 
@@ -3811,46 +3733,13 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U</p>
 
 <p><strong>Extract Matching:</strong></p>
 <ul>
   <li>M = {t ∈ T : Sₜ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Since</td>
-          <td>X</td>
-          <td>=</td>
-          <td>Y</td>
-          <td>=</td>
-          <td>Z</td>
-          <td>= k and each set covers 3 elements, need exactly k sets</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|M|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
+  <li>Since <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> = k and each set covers 3 elements, need exactly k sets</li>
   <li>M is perfect 3D matching</li>
 </ul>
 
@@ -3863,18 +3752,7 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Construct Set Cover:</strong></p>
 <ul>
   <li>C’ = {Sₜ : t ∈ M}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C’</td>
-          <td>=</td>
-          <td>M</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|C'|</code> = <code class="language-plaintext highlighter-rouge">|M|</code> = k</li>
   <li>Since M covers all elements:
     <ul>
       <li>Each x ∈ X appears in exactly one triple t ∈ M</li>
@@ -3896,21 +3774,7 @@ Given a candidate solution (subcollection C’):</p>
   <li>If Set Cover has solution C’ of size k:
     <ul>
       <li>Then M = {t : Sₜ ∈ C’} is matching of size k</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Since</td>
-              <td>X</td>
-              <td>=</td>
-              <td>Y</td>
-              <td>=</td>
-              <td>Z</td>
-              <td>= k, M covers all elements</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Since <code class="language-plaintext highlighter-rouge">|X|</code> = <code class="language-plaintext highlighter-rouge">|Y|</code> = <code class="language-plaintext highlighter-rouge">|Z|</code> = k, M covers all elements</li>
       <li>M is perfect matching</li>
       <li>Contradiction</li>
     </ul>
@@ -3921,41 +3785,13 @@ Given a candidate solution (subcollection C’):</p>
 
 <h4 id="32b-if-set-cover-has-a-solution-then-3d-matching-has-a-solution">3.2b If Set Cover has a solution, then 3D Matching has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with</td>
-      <td>C’</td>
-      <td>≤ k covering U.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k covering U.</p>
 
 <p><strong>Extract Matching:</strong></p>
 <ul>
   <li>M = {t ∈ T : Sₜ ∈ C’}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>=</td>
-          <td>C’</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Since C’ covers U and</td>
-          <td>U</td>
-          <td>= 3k:</td>
-        </tr>
-      </tbody>
-    </table>
+  <li><code class="language-plaintext highlighter-rouge">|M|</code> = <code class="language-plaintext highlighter-rouge">|C'|</code> ≤ k</li>
+  <li>Since C’ covers U and <code class="language-plaintext highlighter-rouge">|U|</code> = 3k:
     <ul>
       <li>Need at least k sets (each covers 3 elements)</li>
       <li>Have at most k sets</li>
@@ -3967,15 +3803,7 @@ Given a candidate solution (subcollection C’):</p>
 
 <p><strong>Conclusion:</strong> 3D Matching has a solution.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Polynomial Time:</strong> O(</td>
-      <td>T</td>
-      <td>) to create sets.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Polynomial Time:</strong> O(<code class="language-plaintext highlighter-rouge">|T|</code>) to create sets.</p>
 
 <p><strong>Therefore, Set Cover is NP-complete.</strong></p>
 
@@ -3996,43 +3824,11 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subcollection C’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that C’ ⊆ C: O(</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that each element appears exactly once: O(</td>
-          <td>U</td>
-          <td>·</td>
-          <td>C’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that C’ ⊆ C: O(<code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
+  <li>Check that each element appears exactly once: O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>C’</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|U|</code> · <code class="language-plaintext highlighter-rouge">|C'|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Exact Cover ∈ NP.</p>
 
@@ -4178,53 +3974,13 @@ Given a candidate solution (subcollection C’):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
   <li>If no edges found, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²) ≤ O(</td>
-      <td>V</td>
-      <td>²), which is polynomial in input size.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(<code class="language-plaintext highlighter-rouge">|V|</code>²), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Independent Set ∈ NP.</p>
 
@@ -4278,26 +4034,8 @@ Given a candidate solution (set S of vertices):</p>
 
 <p><strong>Graph G:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V</td>
-          <td>= 2n + 3m vertices</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>E</td>
-          <td>= n + 3m + 3m = n + 6m edges</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|V|</code> = 2n + 3m vertices</li>
+  <li><code class="language-plaintext highlighter-rouge">|E|</code> = n + 3m + 3m = n + 6m edges</li>
 </ul>
 
 <h4 id="22-output-conversion">2.2 Output Conversion</h4>
@@ -4448,17 +4186,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Key Insight:</strong></p>
 <ul>
   <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Independent set of size k ↔ Vertex cover of size</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Independent set of size k ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
   <li>Can reduce via Independent Set reduction</li>
 </ul>
 
@@ -4477,51 +4205,13 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k: O(1) time</li>
+  <li>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
   <li>If all edges covered, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>E</td>
-      <td>), which is polynomial in input size.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Vertex Cover ∈ NP.</p>
 
@@ -4538,63 +4228,18 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construction:</strong></p>
 <ul>
   <li>Given 3-SAT instance, construct Independent Set instance as in Q1</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Vertex Cover instance: graph G, k’ =</td>
-          <td>V</td>
-          <td>- (n + m)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Where</td>
-          <td>V</td>
-          <td>= 2n + 3m</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Vertex Cover instance: graph G, k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</li>
+  <li>Where <code class="language-plaintext highlighter-rouge">|V|</code> = 2n + 3m</li>
 </ul>
 
 <h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Vertex Cover S’ of size k’ =</td>
-      <td>V</td>
-      <td>- (n + m)</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Vertex Cover S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>V</td>
-          <td>-</td>
-          <td>S’</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- (</td>
-          <td>V</td>
-          <td>- (n + m)) = n + m</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - (<code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)) = n + m</li>
   <li>S is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -4614,18 +4259,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construct Vertex Cover:</strong></p>
 <ul>
   <li>S’ = V \ S</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S’</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- (n + m) = k’</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m) = k’</li>
   <li>S’ is vertex cover (complement of independent set)</li>
 </ul>
 
@@ -4690,53 +4324,13 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
   <li>If all pairs connected, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²) ≤ O(</td>
-      <td>V</td>
-      <td>²), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(<code class="language-plaintext highlighter-rouge">|V|</code>²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Clique ∈ NP.</p>
 
@@ -4842,42 +4436,12 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (subset S’):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S’ ⊆ S: O(</td>
-          <td>S’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Sum elements in S’: O(</td>
-          <td>S’</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S’ ⊆ S: O(<code class="language-plaintext highlighter-rouge">|S'|</code>) time</li>
+  <li>Sum elements in S’: O(<code class="language-plaintext highlighter-rouge">|S'|</code>) time</li>
   <li>Check if sum equals t: O(1) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S’</td>
-      <td>) ≤ O(</td>
-      <td>S</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S'|</code>) ≤ O(<code class="language-plaintext highlighter-rouge">|S|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Subset Sum ∈ NP.</p>
 
@@ -5125,51 +4689,13 @@ Given a candidate solution (subset S’):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
   <li>If no edges found, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Independent Set ∈ NP.</p>
 
@@ -5263,41 +4789,11 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that f is injective: O(</td>
-          <td>V(H)</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(</td>
-          <td>E(H)</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that f is injective: O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>²) time</li>
+  <li>For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(<code class="language-plaintext highlighter-rouge">|E(H)|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>V(H)</td>
-      <td>² +</td>
-      <td>E(H)</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V(H)|</code>² + <code class="language-plaintext highlighter-rouge">|E(H)|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Subgraph Isomorphism ∈ NP.</p>
 
@@ -5322,16 +4818,7 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <p><strong>Extract Clique:</strong></p>
 <ul>
   <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
   <li>S is clique in G (Kₖ is complete graph)</li>
 </ul>
 
@@ -5370,16 +4857,7 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 <p><strong>Extract Clique:</strong></p>
 <ul>
   <li>S = {f(v) : v ∈ V(Kₖ)}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = k</li>
   <li>Since Kₖ is complete, all pairs in S are connected</li>
   <li>S is clique of size k</li>
 </ul>
@@ -5717,53 +5195,13 @@ Given a candidate solution (subset of items):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≥ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
-          <td>S</td>
-          <td>²) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
+  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
   <li>If all pairs connected, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>S</td>
-      <td>²) ≤ O(</td>
-      <td>V</td>
-      <td>²), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(<code class="language-plaintext highlighter-rouge">|V|</code>²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Clique ∈ NP.</p>
 
@@ -5849,17 +5287,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Key Insight:</strong></p>
 <ul>
   <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Independent set of size k ↔ Vertex cover of size</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Independent set of size k ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ul>
 
 <p><strong>Hint:</strong> If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.</p>
@@ -5877,51 +5305,13 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k: O(1) time</li>
+  <li>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
   <li>If all edges covered, return YES; else return NO</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>E</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Vertex Cover ∈ NP.</p>
 
@@ -5933,54 +5323,19 @@ Given a candidate solution (set S of vertices):</p>
 
 <p><strong>Construction:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Vertex Cover instance: graph G, integer k’ =</td>
-          <td>V</td>
-          <td>- k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Vertex Cover instance: graph G, integer k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
 </ul>
 
 <p><strong>Key Property:</strong> S is independent set ↔ V \ S is vertex cover</p>
 
 <h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Vertex Cover S’ of size k’ =</td>
-      <td>V</td>
-      <td>- k</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Vertex Cover S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>V</td>
-          <td>-</td>
-          <td>S’</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- (</td>
-          <td>V</td>
-          <td>- k) = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - (<code class="language-plaintext highlighter-rouge">|V|</code> - k) = k</li>
   <li>S is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -5993,18 +5348,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construct Vertex Cover:</strong></p>
 <ul>
   <li>S’ = V \ S</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S’</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- k = k’</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k = k’</li>
   <li>S’ is vertex cover (complement of independent set)</li>
 </ul>
 
@@ -6036,31 +5380,12 @@ Given a candidate solution (set S of vertices):</p>
 
 <h4 id="32b-if-vertex-cover-has-a-solution-then-independent-set-has-a-solution">3.2b If Vertex Cover has a solution, then Independent Set has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ =</td>
-      <td>V</td>
-      <td>- k.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>=</td>
-          <td>V</td>
-          <td>- k’ = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
   <li>S is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -6098,40 +5423,12 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (partition S, V \ S):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that S ⊆ V: O(</td>
-          <td>S</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Count edges crossing cut: O(</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
+  <li>Count edges crossing cut: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
   <li>Check if count ≥ k: O(1) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>E</td>
-      <td>), which is polynomial.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Maximum Cut ∈ NP.</p>
 
@@ -6144,57 +5441,19 @@ Given a candidate solution (partition S, V \ S):</p>
 <p><strong>Construction:</strong></p>
 <ul>
   <li>Create complete graph G’ = (V, E’) where E’ contains all possible edges</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Maximum Cut instance: graph G’, target = k(</td>
-          <td>V</td>
-          <td>- k)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Return Maximum Cut instance: graph G’, target = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
 </ul>
 
 <p><strong>Key Idea:</strong> Independent set of size k → Cut with k vertices on one side, no edges within that side</p>
 
 <h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(</td>
-      <td>V</td>
-      <td>- k) edges crossing</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>If</td>
-          <td>S</td>
-          <td>= k, return S as independent set</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>If</td>
-          <td>V \ S</td>
-          <td>= k, return V \ S as independent set</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>If <code class="language-plaintext highlighter-rouge">|S|</code> = k, return S as independent set</li>
+  <li>If <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k, return V \ S as independent set</li>
   <li>Otherwise, need refinement</li>
 </ul>
 
@@ -6207,21 +5466,7 @@ Given a candidate solution (partition S, V \ S):</p>
 <p><strong>Construct Cut:</strong></p>
 <ul>
   <li>Partition: (S, V \ S)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Number of crossing edges =</td>
-          <td>S</td>
-          <td>·</td>
-          <td>V \ S</td>
-          <td>= k(</td>
-          <td>V</td>
-          <td>- k)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Number of crossing edges = <code class="language-plaintext highlighter-rouge">|S|</code> · <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
   <li>Since S is independent set, no edges within S</li>
   <li>All edges incident to S cross the cut</li>
 </ul>
@@ -6234,83 +5479,26 @@ Given a candidate solution (partition S, V \ S):</p>
 
 <p><strong>Proof:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>For any partition (S, V \ S) with</td>
-          <td>S</td>
-          <td>= k:</td>
-        </tr>
-      </tbody>
-    </table>
+  <li>For any partition (S, V \ S) with <code class="language-plaintext highlighter-rouge">|S|</code> = k:
     <ul>
       <li>If S is not independent set, there are edges within S</li>
       <li>These edges don’t cross the cut</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Maximum crossing edges &lt; k(</td>
-              <td>V</td>
-              <td>- k)</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Maximum crossing edges &lt; k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Similar argument for</td>
-          <td>V \ S</td>
-          <td>= k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Similar argument for <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Maximum Cut has no solution.</p>
 
 <h4 id="32b-if-maximum-cut-has-a-solution-then-independent-set-has-a-solution">3.2b If Maximum Cut has a solution, then Independent Set has a solution</h4>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(</td>
-      <td>V</td>
-      <td>- k) edges crossing.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing.</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>If</td>
-          <td>S</td>
-          <td>= k and no edges within S, return S</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>If</td>
-          <td>V \ S</td>
-          <td>= k and no edges within V \ S, return V \ S</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>If <code class="language-plaintext highlighter-rouge">|S|</code> = k and no edges within S, return S</li>
+  <li>If <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k and no edges within V \ S, return V \ S</li>
   <li>Otherwise, refine partition</li>
 </ul>
 

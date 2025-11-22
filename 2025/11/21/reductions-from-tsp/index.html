@@ -93,15 +93,7 @@
   <li>Hamiltonian cycle in filtered graph ↔ TSP tour</li>
 </ul>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Hint:</strong> Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤</td>
-      <td>V</td>
-      <td>exists if and only if Hamiltonian cycle exists (using only weight-1 edges).</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Hint:</strong> Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> exists if and only if Hamiltonian cycle exists (using only weight-1 edges).</p>
 
 <h3 id="1-np-completeness-proof-of-hamiltonian-cycle-solution-validation">1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation</h3>
 
@@ -152,17 +144,7 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <ul>
   <li>C is cycle visiting all vertices</li>
   <li>All edges in C have weight ≤ B (by construction)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Total weight ≤</td>
-          <td>V</td>
-          <td>· B (but actually ≤ B if weights are appropriate)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Total weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B (but actually ≤ B if weights are appropriate)</li>
   <li>Return C as TSP tour</li>
 </ul>
 
@@ -191,31 +173,9 @@ Given a candidate solution (cycle - sequence of vertices):</p>
   <li>If Hamiltonian cycle exists in G’:
     <ul>
       <li>All edges have weight ≤ B</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Cycle is TSP tour with weight ≤</td>
-              <td>V</td>
-              <td>· (max weight ≤ B)</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Cycle is TSP tour with weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · (max weight ≤ B)</li>
       <li>But need to ensure total ≤ B</li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>If all edges ≤ B and cycle has</td>
-              <td>V</td>
-              <td>edges, total ≤</td>
-              <td>V</td>
-              <td>· B</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>If all edges ≤ B and cycle has <code class="language-plaintext highlighter-rouge">|V|</code> edges, total ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B</li>
       <li>Need refinement: use binary weights (1 if ≤ B, 2 if &gt; B)</li>
     </ul>
   </li>
@@ -224,27 +184,8 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <p><strong>Refined Construction:</strong></p>
 <ul>
   <li>Set weights: w’(u, v) = 1 if w(u, v) ≤ B, else w’(u, v) = 2</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Bound B’ =</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Then: TSP tour weight ≤</td>
-          <td>V</td>
-          <td>↔ All edges have weight 1 ↔ Hamiltonian cycle exists</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Bound B’ = <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Then: TSP tour weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> ↔ All edges have weight 1 ↔ Hamiltonian cycle exists</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Hamiltonian Cycle has no solution.</p>
@@ -257,28 +198,8 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <ul>
   <li>C visits all vertices exactly once</li>
   <li>All edges in C are in G’, so have weight ≤ B (by construction)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Total weight ≤</td>
-          <td>V</td>
-          <td>· B</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>With refined construction (binary weights), total weight =</td>
-          <td>V</td>
-          <td>≤ B’</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Total weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B</li>
+  <li>With refined construction (binary weights), total weight = <code class="language-plaintext highlighter-rouge">|V|</code> ≤ B’</li>
 </ul>
 
 <p><strong>Conclusion:</strong> TSP has a solution.</p>
