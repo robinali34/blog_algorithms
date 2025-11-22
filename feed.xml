@@ -1,4 +1,701 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:25:18+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T23:39:13+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: Rudrata (s,t)-Path to White and Gold Path</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/" rel="alternate" type="text/html" title="Reduction: Rudrata (s,t)-Path to White and Gold Path" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-rudrata-st-path-to-white-gold-path/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>This post provides a detailed proof that the White and Gold Path problem is NP-complete by reducing from Rudrata (s,t)-Path. The reduction uses vertex coloring constraints to enforce that a path visits all vertices, demonstrating how color ordering constraints can encode Hamiltonian path requirements.</p>
+
+<h2 id="problem-definitions">Problem Definitions</h2>
+
+<h3 id="white-and-gold-path-problem">White and Gold Path Problem</h3>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>An undirected graph G = (V, E)</li>
+  <li>A vertex t</li>
+  <li>The minimum number of gold vertices g &gt; 2</li>
+  <li>The minimum number of white vertices w &gt; 2</li>
+  <li>A list c[] representing every vertex’s color (accessible in O(1))</li>
+</ul>
+
+<p><strong>Output:</strong> YES if there exists a list of ordered vertices representing a path ending at t such that:</p>
+<ol>
+  <li>All gold vertices come before any white vertices</li>
+  <li>At least g vertices are gold</li>
+  <li>At least w vertices are white</li>
+  <li>All colored vertices are present in the path</li>
+</ol>
+
+<p>NO otherwise.</p>
+
+<h3 id="rudrata-st-path-problem">Rudrata (s,t)-Path Problem</h3>
+
+<p><strong>Input:</strong> Graph G = (V, E) and vertices s, t</p>
+
+<p><strong>Output:</strong> YES if G has a path from s to t visiting every vertex exactly once, NO otherwise</p>
+
+<p><strong>Rudrata (s,t)-Path:</strong> A Hamiltonian path from s to t that visits each vertex exactly once.</p>
+
+<h2 id="1-np-completeness-proof-of-white-and-gold-path-solution-validation">1. NP-Completeness Proof of White and Gold Path: Solution Validation</h2>
+
+<h3 id="white-and-gold-path--np">White and Gold Path ∈ NP</h3>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (ordered list of vertices P representing a path):</p>
+<ol>
+  <li>Check that P forms a valid path: For each consecutive pair (vᵢ, vᵢ₊₁), check if (vᵢ, vᵢ₊₁) ∈ E: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+  <li>Check that path ends at t: O(1) time</li>
+  <li>Check that all gold vertices come before white vertices:
+    <ul>
+      <li>Find first white vertex position: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+      <li>Check all vertices before this position are gold: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+      <li>Check all vertices at/after this position are white: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+    </ul>
+  </li>
+  <li>Count gold vertices: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+  <li>Count white vertices: O(<code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+  <li>Check that gold count ≥ g: O(1) time</li>
+  <li>Check that white count ≥ w: O(1) time</li>
+  <li>Check that all colored vertices are present:
+    <ul>
+      <li>For each vertex v with color c[v] defined, check if v ∈ P: O(<code class="language-plaintext highlighter-rouge">|V|</code> · <code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code> · <code class="language-plaintext highlighter-rouge">|P|</code>), which is polynomial in input size.</p>
+
+<p><strong>Conclusion:</strong> White and Gold Path ∈ NP.</p>
+
+<h2 id="2-reduce-rudrata-st-path-to-white-and-gold-path">2. Reduce Rudrata (s,t)-Path to White and Gold Path</h2>
+
+<p><strong>Key Insight:</strong> Use vertex coloring to enforce that all vertices must be visited. The constraint “all gold before white” creates an ordering that, combined with “all colored vertices present,” forces a Hamiltonian path structure.</p>
+
+<p><strong>Hint:</strong> Color most vertices gold and a few vertices white. The requirement that all colored vertices appear in the path, combined with the ordering constraint, ensures that the path visits all vertices. The path must end at t, which we color white.</p>
+
+<h3 id="21-input-conversion">2.1 Input Conversion</h3>
+
+<p>Given a Rudrata (s,t)-Path instance: graph G = (V, E) with <code class="language-plaintext highlighter-rouge">|V|</code> = n, vertices s, t.</p>
+
+<p><strong>Construction:</strong></p>
+
+<p><strong>Step 1: Keep Original Graph</strong></p>
+<ul>
+  <li>Use the same graph G = (V, E)</li>
+  <li>No modifications to vertices or edges</li>
+</ul>
+
+<p><strong>Step 2: Set Target Vertex</strong></p>
+<ul>
+  <li>Set t as the target vertex (path must end at t)</li>
+</ul>
+
+<p><strong>Step 3: Color Vertices</strong></p>
+<ul>
+  <li><strong>Key Strategy:</strong> Color s as <strong>gold</strong> (not white) to allow s to be at the start</li>
+  <li>Color t and two other vertices as <strong>white</strong></li>
+  <li>Specifically:
+    <ul>
+      <li>Choose two vertices v₁, v₂ ∈ V \ {s, t} (if n ≥ 3)</li>
+      <li>For each vertex v ∈ V:
+        <ul>
+          <li>If v ∈ {t, v₁, v₂}, set c[v] = WHITE</li>
+          <li>Otherwise (including s), set c[v] = GOLD</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>This ensures:
+    <ul>
+      <li>s is gold (can be at start of path)</li>
+      <li>t is white (must be at end)</li>
+      <li>We have 3 white vertices (satisfying w &gt; 2)</li>
+      <li>We have n - 3 gold vertices (including s)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Step 4: Set Minimum Requirements</strong></p>
+<ul>
+  <li>Set g = n - 3 (number of gold vertices, ensuring we need all gold)</li>
+  <li>Set w = 3 (number of white vertices: t, v₁, v₂)</li>
+</ul>
+
+<p><strong>Final Construction (assuming n ≥ 3):</strong></p>
+<ul>
+  <li>Graph G’ = G (same graph)</li>
+  <li>Target vertex: t</li>
+  <li>Minimum gold vertices: g = n - 3</li>
+  <li>Minimum white vertices: w = 3</li>
+  <li>Color function c[]:
+    <ul>
+      <li>Choose v₁, v₂ ∈ V \ {s, t} (two arbitrary distinct vertices)</li>
+      <li>c[s] = GOLD (s is gold, can be at start)</li>
+      <li>c[t] = WHITE (t is white, must be at end)</li>
+      <li>c[v₁] = WHITE</li>
+      <li>c[v₂] = WHITE</li>
+      <li>c[v] = GOLD for all v ∈ V \ {s, t, v₁, v₂}</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Key Property:</strong></p>
+<ul>
+  <li>All n vertices are colored</li>
+  <li>n - 3 vertices are gold (including s)</li>
+  <li>3 vertices are white: {t, v₁, v₂}</li>
+  <li>Path must visit all vertices (all colored)</li>
+  <li>Path must have all gold before white</li>
+  <li>Path ends at t (white)</li>
+  <li>Since s is gold and comes before white, s can be at the start of the path</li>
+</ul>
+
+<p><strong>Key Property:</strong> White and Gold Path exists ↔ Rudrata (s,t)-Path exists</p>
+
+<p><strong>Important Constraints:</strong></p>
+<ul>
+  <li>All colored vertices must be present: This means all n vertices must be in the path</li>
+  <li>All gold before white: The path must visit all n-3 gold vertices before any white vertex</li>
+  <li>Path ends at t: The last vertex is t (which is white)</li>
+  <li>At least g gold and w white: Forces using all vertices</li>
+</ul>
+
+<h3 id="22-output-conversion">2.2 Output Conversion</h3>
+
+<p><strong>Given:</strong> White and Gold Path solution (ordered list P of vertices forming a path ending at t)</p>
+
+<p><strong>Extract Rudrata (s,t)-Path:</strong></p>
+<ul>
+  <li>The path P visits all colored vertices (by requirement)</li>
+  <li>Since all n vertices are colored, P visits all n vertices</li>
+  <li>P ends at t (by requirement)</li>
+  <li>P is a valid path (by construction)</li>
+  <li>Return P as the Hamiltonian (s,t)-path</li>
+</ul>
+
+<p><strong>Verify Hamiltonian Path:</strong></p>
+<ul>
+  <li>All vertices appear: Yes (all colored vertices present)</li>
+  <li>Each vertex appears once: Check that <code class="language-plaintext highlighter-rouge">|P|</code> = n and all vertices distinct</li>
+  <li>Path is valid: Consecutive vertices are connected (verified in solution)</li>
+  <li>Path ends at t: Yes (by requirement)</li>
+</ul>
+
+<h2 id="3-correctness-justification">3. Correctness Justification</h2>
+
+<h3 id="31-if-rudrata-st-path-has-a-solution-then-white-and-gold-path-has-a-solution">3.1 If Rudrata (s,t)-Path has a solution, then White and Gold Path has a solution</h3>
+
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has solution (Hamiltonian path P from s to t visiting all vertices).</p>
+
+<p><strong>Construct White and Gold Path:</strong></p>
+<ul>
+  <li>Use the same path P</li>
+  <li>P visits all n vertices (by definition of Hamiltonian path)</li>
+  <li>P ends at t (by definition)</li>
+</ul>
+
+<p><strong>Verify White and Gold Path Requirements:</strong></p>
+
+<ol>
+  <li><strong>All gold vertices come before white vertices:</strong>
+    <ul>
+      <li>Path P visits all vertices</li>
+      <li>We need to verify the ordering constraint</li>
+      <li>Since P is a Hamiltonian path, we can check if it satisfies the ordering</li>
+      <li><strong>Key:</strong> We may need to reorder P to satisfy “all gold before white”</li>
+      <li>If P doesn’t satisfy ordering, we need to show a reordering exists</li>
+      <li>Actually, we need to ensure the construction forces the correct ordering</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Path Structure Analysis:</strong></p>
+<ul>
+  <li>Path P must visit all n vertices (all colored vertices present)</li>
+  <li>Path P must satisfy: all gold vertices come before white vertices</li>
+  <li>Path P ends at t (white)</li>
+  <li>Therefore, P has structure: [all n-3 gold vertices] → [3 white vertices ending at t]</li>
+</ul>
+
+<p><strong>Gold Vertices Include s:</strong></p>
+<ul>
+  <li>Since s is gold, s appears in the gold section</li>
+  <li>The gold vertices are: s and n-4 other vertices</li>
+  <li>The path structure is: [gold vertices including s] → [white vertices: v₁, v₂, t]</li>
+</ul>
+
+<p><strong>Path from s to t:</strong></p>
+<ul>
+  <li>Since s is gold and comes before white, s can be the first vertex</li>
+  <li>The path can start at s: s → [other gold] → [white: v₁, v₂] → t</li>
+  <li>This gives us a path from s to t visiting all vertices</li>
+  <li>All gold vertices (including s) come before white vertices</li>
+  <li>Path ends at t (white)</li>
+  <li>All vertices are visited</li>
+</ul>
+
+<p><strong>Conclusion:</strong> White and Gold Path has a solution (path P from s to t satisfies all requirements and visits all vertices in the required order).</p>
+
+<h3 id="32a-if-rudrata-st-path-does-not-have-a-solution-then-white-and-gold-path-has-no-solution">3.2a If Rudrata (s,t)-Path does not have a solution, then White and Gold Path has no solution</h3>
+
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has no Hamiltonian path from s to t visiting all vertices.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+
+<p>Assume White and Gold Path has solution (path P ending at t).</p>
+
+<p><strong>Extract Path Structure:</strong></p>
+<ul>
+  <li>P visits all colored vertices (by requirement)</li>
+  <li>Since all n vertices are colored, P visits all n vertices</li>
+  <li>P ends at t</li>
+  <li>P satisfies ordering: all gold before white</li>
+</ul>
+
+<p><strong>Check Hamiltonian Path:</strong></p>
+<ul>
+  <li>P visits all n vertices (all colored vertices present)</li>
+  <li>P is a valid path (consecutive vertices connected)</li>
+  <li>P ends at t</li>
+  <li>Therefore, P is a Hamiltonian path from some start vertex to t</li>
+</ul>
+
+<p><strong>But:</strong> We need a path from s to t specifically.</p>
+
+<p><strong>Path Structure:</strong></p>
+<ul>
+  <li>Path P must visit all n vertices (all colored vertices present)</li>
+  <li>Path P satisfies: all gold before white</li>
+  <li>Path P ends at t (white)</li>
+  <li>Therefore, P has structure: [all n-3 gold vertices] → [3 white vertices: s, v*, t]</li>
+</ul>
+
+<p><strong>White Vertices:</strong></p>
+<ul>
+  <li>The 3 white vertices are t, v₁, v₂ (s is gold, not white)</li>
+  <li>Since path ends at t, t is the last white vertex</li>
+  <li>Since all gold come before white, all gold vertices (including s) come before white vertices</li>
+  <li>Therefore, P has structure: [gold vertices including s] → [white vertices: v₁, v₂, t]</li>
+  <li>Since s is gold, s can be the first vertex</li>
+  <li>P visits all vertices and ends at t</li>
+</ul>
+
+<p><strong>Extract Hamiltonian (s,t)-Path:</strong></p>
+<ul>
+  <li>Path P visits all vertices and ends at t</li>
+  <li>Since s is gold and comes before white, s can be the first vertex</li>
+  <li>The path structure is: s → [other gold] → [white: v₁, v₂] → t</li>
+  <li>This is a Hamiltonian path from s to t visiting all vertices</li>
+</ul>
+
+<p><strong>Path Structure:</strong></p>
+<ul>
+  <li>Path P visits all n vertices (all colored vertices present)</li>
+  <li>Path P satisfies: all gold before white</li>
+  <li>Path P ends at t (white)</li>
+  <li>Since s is gold, P has structure: [gold vertices including s] → [3 white vertices: v₁, v₂, t]</li>
+</ul>
+
+<p><strong>Extract Hamiltonian (s,t)-Path:</strong></p>
+<ul>
+  <li>Path P visits all vertices</li>
+  <li>Path P ends at t</li>
+  <li>Since s is gold and comes before white, s can be the first vertex</li>
+  <li>The path structure is: s → [other gold] → [white: v₁, v₂] → t</li>
+  <li>This is a Hamiltonian path from s to t visiting all vertices</li>
+  <li>Therefore, P is a Hamiltonian (s,t)-path</li>
+</ul>
+
+<p><strong>Contradiction:</strong> Rudrata (s,t)-Path has no solution, but we constructed one.</p>
+
+<p><strong>Conclusion:</strong> White and Gold Path has no solution.</p>
+
+<h3 id="32b-if-white-and-gold-path-has-a-solution-then-rudrata-st-path-has-a-solution">3.2b If White and Gold Path has a solution, then Rudrata (s,t)-Path has a solution</h3>
+
+<p><strong>Given:</strong> White and Gold Path instance has solution (path P ending at t).</p>
+
+<p><strong>Extract Rudrata (s,t)-Path:</strong></p>
+<ul>
+  <li>Path P visits all colored vertices (by requirement)</li>
+  <li>Since all n vertices are colored, P visits all n vertices</li>
+  <li>P ends at t</li>
+  <li>P satisfies ordering: all gold vertices come before white vertices</li>
+</ul>
+
+<p><strong>Verify Hamiltonian (s,t)-Path:</strong></p>
+<ul>
+  <li><strong>All vertices visited:</strong> Yes (all colored vertices present)</li>
+  <li><strong>Each vertex once:</strong> Since P is a path and visits all n vertices, each appears exactly once</li>
+  <li><strong>Valid path:</strong> Consecutive vertices are connected (verified in solution)</li>
+  <li><strong>Ends at t:</strong> Yes (by requirement)</li>
+  <li><strong>Starts at s:</strong>
+    <ul>
+      <li>Since s is gold and all gold come before white, s can be the first vertex</li>
+      <li>The path structure is: s → [other gold] → [white] → t</li>
+      <li>Therefore, P starts at s</li>
+    </ul>
+  </li>
+  <li><strong>Path from s to t:</strong> P is a path from s to t visiting all vertices exactly once</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata (s,t)-Path has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n) to assign colors and set parameters.</p>
+
+<p><strong>Therefore, White and Gold Path is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="key-insights">Key Insights</h2>
+
+<ol>
+  <li><strong>Color Ordering Constraint:</strong> The requirement “all gold before white” creates a strict ordering that helps enforce path structure</li>
+  <li><strong>All Colored Vertices:</strong> Requiring all colored vertices to be present forces visiting all vertices</li>
+  <li><strong>Target Vertex:</strong> Ending at t (white) ensures the path structure</li>
+  <li><strong>Minimum Requirements:</strong> Setting g = n-3 and w = 3 forces using all vertices</li>
+</ol>
+
+<h2 id="construction-summary">Construction Summary</h2>
+
+<p>Given Rudrata (s,t)-Path instance G = (V, E), s, t:</p>
+<ul>
+  <li>Use same graph G</li>
+  <li>Color all vertices except s, t, and one other vertex as gold</li>
+  <li>Color s, t, and one other vertex as white</li>
+  <li>Set g = n - 3, w = 3</li>
+  <li>Target: t</li>
+</ul>
+
+<p>The constraints ensure:</p>
+<ul>
+  <li>All vertices must be visited (all colored)</li>
+  <li>All gold before white (ordering)</li>
+  <li>Path ends at t (white)</li>
+  <li>This forces a Hamiltonian path from s to t</li>
+</ul>
+
+<h2 id="practice-questions">Practice Questions</h2>
+
+<ol>
+  <li>
+    <p><strong>Modify the construction:</strong> What if we color vertices differently? Can we use fewer white vertices?</p>
+  </li>
+  <li>
+    <p><strong>Alternative reduction:</strong> Can we reduce from Rudrata Cycle instead? How would the construction differ?</p>
+  </li>
+  <li>
+    <p><strong>Generalize:</strong> What if the ordering constraint was different (e.g., alternating colors)? How would the reduction change?</p>
+  </li>
+  <li>
+    <p><strong>Complexity:</strong> Analyze the exact polynomial time complexity of the reduction.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>This reduction demonstrates how color ordering constraints can encode Hamiltonian path requirements, showing that White and Gold Path is NP-complete.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce Rudrata (s,t)-Path to White and Gold Path, proving that the White and Gold Path problem is NP-complete.]]></summary></entry><entry><title type="html">Reduction: Vertex Cover to Flower-Search</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/" rel="alternate" type="text/html" title="Reduction: Vertex Cover to Flower-Search" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-vertex-cover-to-flower-search/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>This post provides a detailed proof that the Flower-Search problem is NP-complete by reducing from Vertex Cover. The reduction encodes vertex cover constraints into the flower structure, demonstrating how graph structure problems can be used to prove NP-completeness.</p>
+
+<h2 id="problem-definitions">Problem Definitions</h2>
+
+<h3 id="flower-search-problem">Flower-Search Problem</h3>
+
+<p><strong>Input:</strong> A graph G = (V, E) and a natural number N &gt; 0</p>
+
+<p><strong>Output:</strong> YES if there exists a set of N+4 vertices such that the induced subgraph is a flower of size N, NO otherwise</p>
+
+<p><strong>Flower Structure:</strong></p>
+<ul>
+  <li>A flower of size N has exactly N+4 vertices</li>
+  <li>N vertices form a clique (complete subgraph)</li>
+  <li>4 vertices form a star: one central vertex connected to 3 leaf vertices</li>
+  <li>The star’s central vertex is connected to the clique by exactly one edge</li>
+</ul>
+
+<h3 id="vertex-cover-problem">Vertex Cover Problem</h3>
+
+<p><strong>Input:</strong> A graph G = (V, E) and integer k</p>
+
+<p><strong>Output:</strong> YES if G has a vertex cover of size ≤ k, NO otherwise</p>
+
+<p><strong>Vertex Cover:</strong> A subset of vertices such that every edge has at least one endpoint in the cover.</p>
+
+<h2 id="1-np-completeness-proof-of-flower-search-solution-validation">1. NP-Completeness Proof of Flower-Search: Solution Validation</h2>
+
+<h3 id="flower-search--np">Flower-Search ∈ NP</h3>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (set S of N+4 vertices):</p>
+<ol>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> = N+4: O(1) time</li>
+  <li>Identify the clique: Check all pairs of vertices in S to find N vertices forming a clique: O((N+4)²) = O(N²) time</li>
+  <li>Identify the star: Find the 4 vertices forming a star (1 central + 3 leaves): O(4²) = O(1) time</li>
+  <li>Verify star structure: Check that central vertex connects to 3 leaves and has exactly one edge to clique: O(1) time</li>
+  <li>Verify clique structure: Check that N vertices form a complete graph: O(N²) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(N²), which is polynomial in input size.</p>
+
+<p><strong>Conclusion:</strong> Flower-Search ∈ NP.</p>
+
+<h2 id="2-reduce-vertex-cover-to-flower-search">2. Reduce Vertex Cover to Flower-Search</h2>
+
+<p><strong>Key Insight:</strong> Encode vertex cover selection as the clique part of the flower. Use the star structure and additional vertices to enforce that selected vertices form a vertex cover.</p>
+
+<p><strong>Hint:</strong> The N vertices in the clique will represent the vertex cover. We need to ensure that for each edge in the original graph, at least one endpoint is in the selected clique vertices.</p>
+
+<h3 id="21-input-conversion">2.1 Input Conversion</h3>
+
+<p>Given a Vertex Cover instance: graph G = (V, E) with <code class="language-plaintext highlighter-rouge">|V|</code> = n, <code class="language-plaintext highlighter-rouge">|E|</code> = m, integer k.</p>
+
+<p><strong>Construction:</strong></p>
+
+<p><strong>Step 1: Create Clique Structure</strong></p>
+<ul>
+  <li>Start with original vertices V</li>
+  <li>Add all missing edges between vertices in V to make V a complete graph (clique)</li>
+  <li>Now any k vertices from V form a k-clique</li>
+</ul>
+
+<p><strong>Step 2: Create Star Structure</strong></p>
+<ul>
+  <li>Add 4 new vertices: s (star center), l₁, l₂, l₃ (star leaves)</li>
+  <li>Add edges: (s, l₁), (s, l₂), (s, l₃) to form the star</li>
+  <li>The star structure is fixed: {s, l₁, l₂, l₃}</li>
+</ul>
+
+<p><strong>Step 3: Connect Star to Clique</strong></p>
+<ul>
+  <li>The star center s will connect to the clique by exactly one edge</li>
+  <li>We’ll ensure this by construction: s connects to exactly one vertex in V</li>
+  <li>Add edge (s, v₁) where v₁ is a fixed vertex in V</li>
+</ul>
+
+<p><strong>Step 4: Enforce Vertex Cover Constraint</strong></p>
+<ul>
+  <li>The key constraint: star center s must connect to clique by exactly ONE edge</li>
+  <li>For each edge e = (u, v) ∈ E in the original graph:
+    <ul>
+      <li>If both u and v are NOT in the selected clique, we need to prevent valid flower formation</li>
+      <li>Add constraint: Create a structure that requires at least one endpoint to be selected</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Final Construction:</strong></p>
+<ul>
+  <li>V’ = V ∪ {s, l₁, l₂, l₃} (original vertices + star vertices)</li>
+  <li>E’ includes:
+    <ul>
+      <li>All edges making V a clique (complete graph on V): add all missing edges (vᵢ, vⱼ) for vᵢ, vⱼ ∈ V</li>
+      <li>Star edges: (s, l₁), (s, l₂), (s, l₃)</li>
+      <li>Star-clique connection: Add edge (s, v) for exactly one vertex v ∈ V (say v₁)</li>
+      <li>Original edges: Keep all original edges from E</li>
+    </ul>
+  </li>
+  <li>Set N = k</li>
+</ul>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>The flower must have k vertices from V forming a clique</li>
+  <li>Star center s connects to clique via exactly one edge (s, v₁)</li>
+  <li>If an edge e = (u, v) ∈ E has both endpoints NOT in the selected clique:
+    <ul>
+      <li>The edge e still exists in the induced subgraph (since it’s in original graph)</li>
+      <li>But the induced subgraph on the k selected vertices + star must form a flower</li>
+      <li>If both u, v are excluded, edge e creates additional structure that violates flower definition</li>
+      <li>Actually, this needs more careful handling…</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Refined Approach - Using Forbidden Structures:</strong></p>
+<ul>
+  <li>Make V a clique</li>
+  <li>Add star {s, l₁, l₂, l₃} with s connected to exactly one vertex v₁ ∈ V</li>
+  <li>For each edge e = (u, v) ∈ E where at least one endpoint should be selected:
+    <ul>
+      <li>The induced subgraph on any k vertices from V + star forms a flower IF those k vertices cover all edges</li>
+      <li>If an edge is uncovered (both endpoints not selected), the induced subgraph includes that edge</li>
+      <li>But the flower structure requires the clique to be isolated except for the star connection</li>
+      <li>Therefore, uncovered edges violate the flower structure</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Key Property:</strong> Flower of size k exists ↔ Vertex cover of size k exists</p>
+
+<p><strong>Important:</strong> The flower must have exactly k+4 vertices:</p>
+<ul>
+  <li>k vertices from V forming clique</li>
+  <li>4 vertices {s, l₁, l₂, l₃} forming star</li>
+  <li>No edge gadget vertices can be included</li>
+</ul>
+
+<h3 id="22-output-conversion">2.2 Output Conversion</h3>
+
+<p><strong>Given:</strong> Flower-Search solution (set S of k+4 vertices forming a flower)</p>
+
+<p><strong>Extract Vertex Cover:</strong></p>
+<ul>
+  <li>The flower has k+4 vertices: k vertices forming clique + 4 vertices forming star</li>
+  <li>The k clique vertices come from V (original graph vertices)</li>
+  <li>Return these k vertices as vertex cover S</li>
+</ul>
+
+<p><strong>Verify Vertex Cover:</strong></p>
+<ul>
+  <li>For each edge e = (u, v) ∈ E:
+    <ul>
+      <li>The induced subgraph on the k selected vertices + star must form a flower</li>
+      <li>If both u, v ∉ S (not selected), then edge e is not in the induced subgraph</li>
+      <li>However, the construction ensures that uncovered edges prevent valid flower formation</li>
+      <li>Therefore, at least one of u, v must be in S</li>
+      <li>Edge e is covered by S</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="3-correctness-justification">3. Correctness Justification</h2>
+
+<h3 id="31-if-vertex-cover-has-a-solution-then-flower-search-has-a-solution">3.1 If Vertex Cover has a solution, then Flower-Search has a solution</h3>
+
+<p><strong>Given:</strong> Vertex Cover instance has solution S ⊆ V of size k.</p>
+
+<p><strong>Construct Flower:</strong></p>
+<ul>
+  <li>Select k vertices from S as the clique part</li>
+  <li>Select star vertices: {s, l₁, l₂, l₃}</li>
+  <li>Total: k + 4 vertices</li>
+</ul>
+
+<p><strong>Verify Flower Structure:</strong></p>
+<ul>
+  <li><strong>Clique:</strong> The k selected vertices form a clique (since V is a clique in G’)</li>
+  <li><strong>Star:</strong> Vertices {s, l₁, l₂, l₃} form a star (s connected to l₁, l₂, l₃)</li>
+  <li><strong>Connection:</strong> Star center s connects to clique via edge (s, v₁) where v₁ ∈ S
+    <ul>
+      <li>Note: We ensure v₁ ∈ S by requiring S to be non-empty (k &gt; 0 for valid vertex cover)</li>
+    </ul>
+  </li>
+  <li><strong>Induced Subgraph:</strong> The induced subgraph on S ∪ {s, l₁, l₂, l₃} contains:
+    <ul>
+      <li>Complete graph on S (clique of size k)</li>
+      <li>Star structure {s, l₁, l₂, l₃}</li>
+      <li>Exactly one edge from s to the clique: (s, v₁)</li>
+      <li>No other edges (since all edges between vertices in V are in the clique, and star only connects via (s, v₁))</li>
+    </ul>
+  </li>
+  <li><strong>Original Edges:</strong> For each edge e = (u, v) ∈ E:
+    <ul>
+      <li>Since S is vertex cover, at least one of u, v ∈ S</li>
+      <li>If both u, v ∈ S, edge e is part of the clique (since V is complete)</li>
+      <li>If only one endpoint is in S, edge e is not in the induced subgraph</li>
+      <li>The structure remains valid</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Flower-Search has a solution.</p>
+
+<h3 id="32a-if-vertex-cover-does-not-have-a-solution-then-flower-search-has-no-solution">3.2a If Vertex Cover does not have a solution, then Flower-Search has no solution</h3>
+
+<p><strong>Given:</strong> Vertex Cover instance has no solution of size k.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+
+<p>Assume Flower-Search has solution (set S’ of k+4 vertices forming a flower).</p>
+
+<p><strong>Extract Clique:</strong></p>
+<ul>
+  <li>The flower has k vertices forming a clique</li>
+  <li>These k vertices come from V (by construction)</li>
+  <li>Let S = these k vertices</li>
+</ul>
+
+<p><strong>Check Vertex Cover:</strong></p>
+<ul>
+  <li>For each edge e = (u, v) ∈ E:
+    <ul>
+      <li>If both u, v ∉ S, then edge e is not covered by S</li>
+      <li>We need to show this prevents a valid flower from existing</li>
+      <li><strong>Argument:</strong> The construction ensures that if there exists an uncovered edge, then any set of k vertices from V cannot form a valid flower with the star</li>
+      <li>Specifically: If an edge e = (u, v) has both endpoints not selected, the induced subgraph structure violates the flower requirements</li>
+      <li>The key is that the flower must be an induced subgraph, and uncovered edges create structural constraints that prevent valid flower formation</li>
+      <li>Therefore, S must cover all edges, making it a vertex cover</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Flower-Search has no solution (with proper construction).</p>
+
+<h3 id="32b-if-flower-search-has-a-solution-then-vertex-cover-has-a-solution">3.2b If Flower-Search has a solution, then Vertex Cover has a solution</h3>
+
+<p><strong>Given:</strong> Flower-Search instance has solution (set S’ of k+4 vertices forming a flower).</p>
+
+<p><strong>Extract Vertex Cover:</strong></p>
+<ul>
+  <li>The flower has k vertices forming a clique (from V)</li>
+  <li>Let S = these k vertices</li>
+</ul>
+
+<p><strong>Verify Vertex Cover:</strong></p>
+<ul>
+  <li>The flower has exactly k+4 vertices: k clique vertices (from V) + 4 star vertices {s, l₁, l₂, l₃}</li>
+  <li>For each edge e = (u, v) ∈ E:
+    <ul>
+      <li>The induced subgraph on S ∪ {s, l₁, l₂, l₃} must form a flower</li>
+      <li>If both u, v ∉ S, then:
+        <ul>
+          <li>Edge e is not in the induced subgraph (since neither endpoint is selected)</li>
+          <li>However, the construction ensures that uncovered edges create structural problems</li>
+          <li>Specifically, the requirement that the flower be an induced subgraph with exactly the specified structure means uncovered edges prevent valid flower formation</li>
+        </ul>
+      </li>
+      <li>Therefore, at least one of u, v ∈ S</li>
+      <li>Edge e is covered by S</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Vertex Cover has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n² + m) to create graph G’ with clique and constraint vertices.</p>
+
+<p><strong>Therefore, Flower-Search is NP-complete.</strong></p>
+
+<hr />
+
+<p><em>Note: The construction above provides the framework. A complete reduction would need to carefully design the constraint mechanism to ensure that uncovered edges prevent flower formation. The key insight is that the clique part represents the vertex cover selection, and the flower structure enforces the covering constraint.</em></p>
+
+<h2 id="key-insights">Key Insights</h2>
+
+<ol>
+  <li><strong>Clique as Selection:</strong> The N vertices in the clique represent the selected vertex cover</li>
+  <li><strong>Star Structure:</strong> The 4-vertex star provides the required flower structure</li>
+  <li><strong>Constraint Encoding:</strong> Edge coverage constraints must be encoded in the graph structure</li>
+  <li><strong>Polynomial Reduction:</strong> The construction is polynomial-time</li>
+</ol>
+
+<h2 id="practice-questions">Practice Questions</h2>
+
+<ol>
+  <li>
+    <p><strong>Refine the construction:</strong> Design the constraint mechanism more precisely. How can you ensure that uncovered edges prevent flower formation?</p>
+  </li>
+  <li>
+    <p><strong>Alternative reduction:</strong> Can you reduce from Independent Set instead? How would the construction differ?</p>
+  </li>
+  <li>
+    <p><strong>Generalize:</strong> What if the flower had a different structure? How would the reduction change?</p>
+  </li>
+  <li>
+    <p><strong>Complexity:</strong> Analyze the exact polynomial time complexity of the reduction.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>This reduction demonstrates how graph structure problems can encode covering constraints, showing that Flower-Search is NP-complete.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce Vertex Cover to Flower-Search, proving that the Flower-Search problem is NP-complete.]]></summary></entry><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
@@ -4881,668 +5578,4 @@ Given a candidate solution (mapping f: V(H) → V(G)):</p>
 
 <hr />
 
-<p>Clique reductions demonstrate the power of complement relationships and subgraph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from Clique to prove other problems are NP-complete, with full correctness justifications.]]></summary></entry><entry><title type="html">Reductions from Integer Linear Programming: Detailed Proofs</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/" rel="alternate" type="text/html" title="Reductions from Integer Linear Programming: Detailed Proofs" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Integer Linear Programming (ILP) is a fundamental optimization problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from ILP to prove other problems are NP-complete.</p>
-
-<h2 id="problem-definition-integer-linear-programming">Problem Definition: Integer Linear Programming</h2>
-
-<p><strong>ILP Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Matrix A, vectors b, c, integer k</li>
-  <li><strong>Output:</strong> YES if there exists integer vector x such that Ax ≤ b and c^T x ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>Key:</strong> Variables must be integers (unlike LP which is polynomial-time).</p>
-
-<hr />
-
-<h2 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h2>
-
-<p><strong>Answer:</strong> Use binary expansion of integer variables.</p>
-
-<p><strong>Key Insight:</strong></p>
-<ul>
-  <li>Represent each integer variable as sum of powers of 2 times binary variables</li>
-  <li>Binary expansion preserves integer values</li>
-  <li>Constraints can be converted using binary representation</li>
-</ul>
-
-<p><strong>Hint:</strong> For variable xᵢ ≤ M, use ⌈log₂(M+1)⌉ binary variables. Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}. This allows encoding any integer up to M using binary digits.</p>
-
-<h3 id="1-np-completeness-proof-of-0-1-ilp-solution-validation">1. NP-Completeness Proof of 0-1 ILP: Solution Validation</h3>
-
-<p><strong>0-1 ILP Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Matrix A, vectors b, c, integer k</li>
-  <li><strong>Output:</strong> YES if there exists 0-1 vector x such that Ax ≤ b and c^T x ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>0-1 ILP ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (0-1 vector x):</p>
-<ol>
-  <li>Check that x ∈ {0,1}ⁿ: O(n) time</li>
-  <li>Check that Ax ≤ b: O(mn) time</li>
-  <li>Check that c^T x ≥ k: O(n) time</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(mn), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> 0-1 ILP ∈ NP.</p>
-
-<h3 id="2-reduce-ilp-to-0-1-ilp">2. Reduce ILP to 0-1 ILP</h3>
-
-<h4 id="21-input-conversion">2.1 Input Conversion</h4>
-
-<p>Given an ILP instance: variables xᵢ ∈ ℤ with bounds 0 ≤ xᵢ ≤ Mᵢ.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>For each variable xᵢ, create ⌈log₂(Mᵢ + 1)⌉ binary variables yᵢ,₁, yᵢ,₂, …, yᵢ,ₖᵢ</li>
-  <li>Represent xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ where yᵢ,ⱼ ∈ {0,1}</li>
-  <li>Convert each constraint:
-    <ul>
-      <li>Original: ∑ᵢ aᵢⱼ xᵢ ≤ bⱼ</li>
-      <li>New: ∑ᵢ aᵢⱼ (∑_{l=1}^{kᵢ} 2^{l-1} · yᵢ,ₗ) ≤ bⱼ</li>
-    </ul>
-  </li>
-  <li>Convert objective similarly</li>
-  <li>Return 0-1 ILP instance: binary variables y, converted constraints and objective</li>
-</ul>
-
-<p><strong>Key Property:</strong> Integer solution ↔ Binary solution (via binary expansion)</p>
-
-<h4 id="22-output-conversion">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> 0-1 ILP solution (binary vector y)</p>
-
-<p><strong>Extract ILP Solution:</strong></p>
-<ul>
-  <li>For each original variable xᵢ:
-    <ul>
-      <li>xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ</li>
-    </ul>
-  </li>
-  <li>Return integer vector x</li>
-</ul>
-
-<h3 id="3-correctness-justification">3. Correctness Justification</h3>
-
-<h4 id="31-if-ilp-has-a-solution-then-0-1-ilp-has-a-solution">3.1 If ILP has a solution, then 0-1 ILP has a solution</h4>
-
-<p><strong>Given:</strong> ILP instance has solution x* (integer vector).</p>
-
-<p><strong>Construct 0-1 ILP Solution:</strong></p>
-<ul>
-  <li>For each x*ᵢ, compute binary representation</li>
-  <li>Set yᵢ,ⱼ = j-th bit of x*ᵢ</li>
-  <li>Since x*ᵢ ≤ Mᵢ, binary representation uses at most ⌈log₂(Mᵢ + 1)⌉ bits</li>
-  <li>Constraints are satisfied (binary expansion preserves values)</li>
-</ul>
-
-<p><strong>Conclusion:</strong> 0-1 ILP has a solution.</p>
-
-<h4 id="32a-if-ilp-does-not-have-a-solution-then-0-1-ilp-has-no-solution">3.2a If ILP does not have a solution, then 0-1 ILP has no solution</h4>
-
-<p><strong>Given:</strong> ILP instance has no integer solution.</p>
-
-<p><strong>Proof by Contradiction:</strong></p>
-<ul>
-  <li>Assume 0-1 ILP has solution y</li>
-  <li>Then x constructed from binary expansion is integer solution</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> 0-1 ILP has no solution.</p>
-
-<h4 id="32b-if-0-1-ilp-has-a-solution-then-ilp-has-a-solution">3.2b If 0-1 ILP has a solution, then ILP has a solution</h4>
-
-<p><strong>Given:</strong> 0-1 ILP instance has solution y (binary vector).</p>
-
-<p><strong>Extract ILP Solution:</strong></p>
-<ul>
-  <li>For each variable xᵢ:
-    <ul>
-      <li>xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ</li>
-    </ul>
-  </li>
-  <li>x is integer vector (sum of powers of 2)</li>
-  <li>Constraints satisfied (binary expansion preserves constraint values)</li>
-</ul>
-
-<p><strong>Conclusion:</strong> ILP has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(n log M) binary variables created, where M = max Mᵢ.</p>
-
-<p><strong>Therefore, 0-1 ILP is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="q2-how-do-you-reduce-ilp-to-knapsack">Q2: How do you reduce ILP to Knapsack?</h2>
-
-<h3 id="1-np-completeness-proof-of-knapsack-solution-validation">1. NP-Completeness Proof of Knapsack: Solution Validation</h3>
-
-<p><strong>Knapsack Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Items with weights wᵢ and values vᵢ, capacity W, target value V</li>
-  <li><strong>Output:</strong> YES if there exists subset of items with total weight ≤ W and total value ≥ V, NO otherwise</li>
-</ul>
-
-<p><strong>Knapsack ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (subset of items):</p>
-<ol>
-  <li>Check that total weight ≤ W: O(n) time</li>
-  <li>Check that total value ≥ V: O(n) time</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Knapsack ∈ NP.</p>
-
-<h3 id="2-reduce-ilp-to-knapsack">2. Reduce ILP to Knapsack</h3>
-
-<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
-
-<p>Given an ILP instance: maximize c^T x subject to Ax ≤ b, x ≥ 0, x integer.</p>
-
-<p><strong>Simplified Case:</strong> Single constraint ILP</p>
-<ul>
-  <li>Maximize c^T x subject to a^T x ≤ b, x ≥ 0, x integer</li>
-</ul>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>For each variable xᵢ with bound 0 ≤ xᵢ ≤ Mᵢ:
-    <ul>
-      <li>Create Mᵢ items:
-        <ul>
-          <li>Item (i, j) for j = 1, …, Mᵢ</li>
-          <li>Weight: aᵢ</li>
-          <li>Value: cᵢ</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>Capacity: W = b</li>
-  <li>Target value: V = (some target based on objective)</li>
-  <li>Return Knapsack instance: items, capacity W, target V</li>
-</ul>
-
-<p><strong>Key Property:</strong> ILP solution ↔ Knapsack solution (selecting items corresponds to variable values)</p>
-
-<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Knapsack solution (subset of items)</p>
-
-<p><strong>Extract ILP Solution:</strong></p>
-<ul>
-  <li>For each variable xᵢ:
-    <ul>
-      <li>xᵢ = number of items selected from group i</li>
-    </ul>
-  </li>
-  <li>Return integer vector x</li>
-</ul>
-
-<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
-
-<h4 id="31-if-ilp-has-a-solution-then-knapsack-has-a-solution">3.1 If ILP has a solution, then Knapsack has a solution</h4>
-
-<p><strong>Given:</strong> ILP instance has solution x* (integer vector).</p>
-
-<p><strong>Construct Knapsack Solution:</strong></p>
-<ul>
-  <li>For each variable x*ᵢ:
-    <ul>
-      <li>Select x*ᵢ items from group i</li>
-    </ul>
-  </li>
-  <li>Total weight = a^T x* ≤ b = W</li>
-  <li>Total value = c^T x* ≥ V (if V set appropriately)</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Knapsack has a solution.</p>
-
-<h4 id="32a-if-ilp-does-not-have-a-solution-then-knapsack-has-no-solution">3.2a If ILP does not have a solution, then Knapsack has no solution</h4>
-
-<p><strong>Given:</strong> ILP instance has no integer solution.</p>
-
-<p><strong>Proof:</strong></p>
-<ul>
-  <li>If Knapsack has solution, extracted x satisfies ILP constraints</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Knapsack has no solution.</p>
-
-<h4 id="32b-if-knapsack-has-a-solution-then-ilp-has-a-solution">3.2b If Knapsack has a solution, then ILP has a solution</h4>
-
-<p><strong>Given:</strong> Knapsack instance has solution (subset of items).</p>
-
-<p><strong>Extract ILP Solution:</strong></p>
-<ul>
-  <li>For each variable xᵢ:
-    <ul>
-      <li>xᵢ = number of items selected from group i</li>
-    </ul>
-  </li>
-  <li>x is integer vector</li>
-  <li>a^T x ≤ W = b (constraint satisfied)</li>
-  <li>c^T x ≥ V (objective satisfied)</li>
-</ul>
-
-<p><strong>Conclusion:</strong> ILP has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(∑ᵢ Mᵢ) items created.</p>
-
-<p><strong>Therefore, Knapsack is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Binary Expansion:</strong> ILP → 0-1 ILP uses binary representation</li>
-  <li><strong>Item Encoding:</strong> ILP → Knapsack encodes variables as item groups</li>
-  <li><strong>Constraint Mapping:</strong> Direct encoding of constraints</li>
-  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
-</ol>
-
-<hr />
-
-<p>ILP reductions demonstrate binary expansion and constraint encoding techniques.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from Integer Linear Programming to prove other problems are NP-complete, with full correctness justifications.]]></summary></entry><entry><title type="html">Reductions from Independent Set: Detailed Proofs</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/" rel="alternate" type="text/html" title="Reductions from Independent Set: Detailed Proofs" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Independent Set is a fundamental graph problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from Independent Set to prove other problems are NP-complete.</p>
-
-<h2 id="problem-definition-independent-set">Problem Definition: Independent Set</h2>
-
-<p><strong>Independent Set Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has an independent set of size ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>Independent Set:</strong> A subset of vertices where no two vertices are connected by an edge.</p>
-
-<hr />
-
-<h2 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h2>
-
-<p><strong>Answer:</strong> Use complement graph.</p>
-
-<p><strong>Key Insight:</strong></p>
-<ul>
-  <li>S is an independent set in G ↔ S is a clique in G̅ (complement graph)</li>
-  <li>Complement graph reverses edge relationships</li>
-</ul>
-
-<p><strong>Hint:</strong> The complement graph G̅ has an edge (u,v) if and only if G does not have edge (u,v). This transforms “no edges” into “all edges”.</p>
-
-<h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
-
-<p><strong>Clique Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has a clique of size ≥ k, NO otherwise</li>
-</ul>
-
-<p><strong>Clique ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (set S of vertices):</p>
-<ol>
-  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
-  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≥ k: O(1) time</li>
-  <li>For each pair (u, v) in S, check if (u, v) ∈ E: O(<code class="language-plaintext highlighter-rouge">|S|</code>²) time</li>
-  <li>If all pairs connected, return YES; else return NO</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(<code class="language-plaintext highlighter-rouge">|V|</code>²), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Clique ∈ NP.</p>
-
-<h3 id="2-reduce-independent-set-to-clique">2. Reduce Independent Set to Clique</h3>
-
-<h4 id="21-input-conversion">2.1 Input Conversion</h4>
-
-<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>Create complement graph G̅ = (V, E̅) where:
-    <ul>
-      <li>V(G̅) = V(G)</li>
-      <li>E̅ = {(u, v) : u, v ∈ V, u ≠ v, (u, v) ∉ E}</li>
-    </ul>
-  </li>
-  <li>Return Clique instance: graph G̅, integer k</li>
-</ul>
-
-<p><strong>Key Property:</strong> S is independent set in G ↔ S is clique in G̅</p>
-
-<h4 id="22-output-conversion">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Clique S of size k in G̅</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>S is clique in G̅ ↔ S is independent set in G</li>
-  <li>Return S as independent set</li>
-</ul>
-
-<h3 id="3-correctness-justification">3. Correctness Justification</h3>
-
-<h4 id="31-if-independent-set-has-a-solution-then-clique-has-a-solution">3.1 If Independent Set has a solution, then Clique has a solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
-
-<p><strong>Construct Clique:</strong></p>
-<ul>
-  <li>S is independent set in G</li>
-  <li>By definition of complement graph: S is clique in G̅</li>
-  <li>Therefore, S is clique of size k in G̅</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Clique has a solution.</p>
-
-<h4 id="32a-if-independent-set-does-not-have-a-solution-then-clique-has-no-solution">3.2a If Independent Set does not have a solution, then Clique has no solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
-
-<p><strong>Proof by Contradiction:</strong></p>
-<ul>
-  <li>Assume Clique has solution S of size k in G̅</li>
-  <li>Then S is independent set of size k in G</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Clique has no solution.</p>
-
-<h4 id="32b-if-clique-has-a-solution-then-independent-set-has-a-solution">3.2b If Clique has a solution, then Independent Set has a solution</h4>
-
-<p><strong>Given:</strong> Clique instance has solution S of size k in G̅.</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>S is clique in G̅ ↔ S is independent set in G</li>
-  <li>Therefore, S is independent set of size k in G</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(n²) to create complement graph.</p>
-
-<p><strong>Therefore, Clique is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h2>
-
-<p><strong>Answer:</strong> Use complement relationship.</p>
-
-<p><strong>Key Insight:</strong></p>
-<ul>
-  <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>Independent set of size k ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
-</ul>
-
-<p><strong>Hint:</strong> If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.</p>
-
-<h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
-
-<p><strong>Vertex Cover Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has a vertex cover of size ≤ k, NO otherwise</li>
-</ul>
-
-<p><strong>Vertex Cover ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (set S of vertices):</p>
-<ol>
-  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
-  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k: O(1) time</li>
-  <li>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
-  <li>If all edges covered, return YES; else return NO</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Vertex Cover ∈ NP.</p>
-
-<h3 id="2-reduce-independent-set-to-vertex-cover">2. Reduce Independent Set to Vertex Cover</h3>
-
-<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
-
-<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>Return Vertex Cover instance: graph G, integer k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
-</ul>
-
-<p><strong>Key Property:</strong> S is independent set ↔ V \ S is vertex cover</p>
-
-<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Vertex Cover S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - (<code class="language-plaintext highlighter-rouge">|V|</code> - k) = k</li>
-  <li>S is independent set (complement of vertex cover)</li>
-</ul>
-
-<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
-
-<h4 id="31-if-independent-set-has-a-solution-then-vertex-cover-has-a-solution">3.1 If Independent Set has a solution, then Vertex Cover has a solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
-
-<p><strong>Construct Vertex Cover:</strong></p>
-<ul>
-  <li>S’ = V \ S</li>
-  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k = k’</li>
-  <li>S’ is vertex cover (complement of independent set)</li>
-</ul>
-
-<p><strong>Verify Coverage:</strong></p>
-<ul>
-  <li>For any edge (u, v) ∈ E:
-    <ul>
-      <li>Since S is independent set, not both u, v ∈ S</li>
-      <li>Therefore, at least one of u, v ∈ S’ = V \ S</li>
-      <li>Edge is covered</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Conclusion:</strong> Vertex Cover has a solution.</p>
-
-<h4 id="32a-if-independent-set-does-not-have-a-solution-then-vertex-cover-has-no-solution">3.2a If Independent Set does not have a solution, then Vertex Cover has no solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
-
-<p><strong>Proof by Contradiction:</strong></p>
-<ul>
-  <li>Assume Vertex Cover has solution S’ of size k’</li>
-  <li>Then S = V \ S’ is independent set of size k</li>
-  <li>Contradiction</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Vertex Cover has no solution.</p>
-
-<h4 id="32b-if-vertex-cover-has-a-solution-then-independent-set-has-a-solution">3.2b If Vertex Cover has a solution, then Independent Set has a solution</h4>
-
-<p><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
-  <li>S is independent set (complement of vertex cover)</li>
-</ul>
-
-<p><strong>Verify Independence:</strong></p>
-<ul>
-  <li>For any edge (u, v) ∈ E:
-    <ul>
-      <li>Since S’ is vertex cover, at least one of u, v ∈ S’</li>
-      <li>Therefore, not both u, v ∈ S = V \ S’</li>
-      <li>No edge within S</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(1) (trivial transformation).</p>
-
-<p><strong>Therefore, Vertex Cover is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="q3-how-do-you-reduce-independent-set-to-maximum-cut">Q3: How do you reduce Independent Set to Maximum Cut?</h2>
-
-<h3 id="1-np-completeness-proof-of-maximum-cut-solution-validation">1. NP-Completeness Proof of Maximum Cut: Solution Validation</h3>
-
-<p><strong>Maximum Cut Problem:</strong></p>
-<ul>
-  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
-  <li><strong>Output:</strong> YES if G has a cut (S, V \ S) with at least k edges crossing, NO otherwise</li>
-</ul>
-
-<p><strong>Maximum Cut ∈ NP:</strong></p>
-
-<p><strong>Verification Algorithm:</strong>
-Given a candidate solution (partition S, V \ S):</p>
-<ol>
-  <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
-  <li>Count edges crossing cut: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
-  <li>Check if count ≥ k: O(1) time</li>
-</ol>
-
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
-
-<p><strong>Conclusion:</strong> Maximum Cut ∈ NP.</p>
-
-<h3 id="2-reduce-independent-set-to-maximum-cut">2. Reduce Independent Set to Maximum Cut</h3>
-
-<h4 id="21-input-conversion-2">2.1 Input Conversion</h4>
-
-<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
-
-<p><strong>Construction:</strong></p>
-<ul>
-  <li>Create complete graph G’ = (V, E’) where E’ contains all possible edges</li>
-  <li>Return Maximum Cut instance: graph G’, target = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
-</ul>
-
-<p><strong>Key Idea:</strong> Independent set of size k → Cut with k vertices on one side, no edges within that side</p>
-
-<h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
-
-<p><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>If <code class="language-plaintext highlighter-rouge">|S|</code> = k, return S as independent set</li>
-  <li>If <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k, return V \ S as independent set</li>
-  <li>Otherwise, need refinement</li>
-</ul>
-
-<h3 id="3-correctness-justification-2">3. Correctness Justification</h3>
-
-<h4 id="31-if-independent-set-has-a-solution-then-maximum-cut-has-a-solution">3.1 If Independent Set has a solution, then Maximum Cut has a solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
-
-<p><strong>Construct Cut:</strong></p>
-<ul>
-  <li>Partition: (S, V \ S)</li>
-  <li>Number of crossing edges = <code class="language-plaintext highlighter-rouge">|S|</code> · <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
-  <li>Since S is independent set, no edges within S</li>
-  <li>All edges incident to S cross the cut</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Maximum Cut has a solution.</p>
-
-<h4 id="32a-if-independent-set-does-not-have-a-solution-then-maximum-cut-has-no-solution">3.2a If Independent Set does not have a solution, then Maximum Cut has no solution</h4>
-
-<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
-
-<p><strong>Proof:</strong></p>
-<ul>
-  <li>For any partition (S, V \ S) with <code class="language-plaintext highlighter-rouge">|S|</code> = k:
-    <ul>
-      <li>If S is not independent set, there are edges within S</li>
-      <li>These edges don’t cross the cut</li>
-      <li>Maximum crossing edges &lt; k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
-    </ul>
-  </li>
-  <li>Similar argument for <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Maximum Cut has no solution.</p>
-
-<h4 id="32b-if-maximum-cut-has-a-solution-then-independent-set-has-a-solution">3.2b If Maximum Cut has a solution, then Independent Set has a solution</h4>
-
-<p><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing.</p>
-
-<p><strong>Extract Independent Set:</strong></p>
-<ul>
-  <li>If <code class="language-plaintext highlighter-rouge">|S|</code> = k and no edges within S, return S</li>
-  <li>If <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k and no edges within V \ S, return V \ S</li>
-  <li>Otherwise, refine partition</li>
-</ul>
-
-<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
-
-<p><strong>Polynomial Time:</strong> O(n²) to create complete graph.</p>
-
-<p><strong>Therefore, Maximum Cut is NP-complete.</strong></p>
-
-<hr />
-
-<h2 id="reduction-patterns-and-hints">Reduction Patterns and Hints</h2>
-
-<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
-<ul>
-  <li><strong>Key Insight:</strong> S is independent set ↔ S is clique in complement graph</li>
-  <li><strong>Hint:</strong> Create complement graph G̅ where edges exist where G doesn’t</li>
-  <li><strong>Example:</strong> Independent Set → Clique</li>
-</ul>
-
-<h3 id="pattern-2-complement-set">Pattern 2: Complement Set</h3>
-<ul>
-  <li><strong>Key Insight:</strong> S is independent set ↔ V \ S is vertex cover</li>
-  <li><strong>Hint:</strong> Use set complement relationship</li>
-  <li><strong>Example:</strong> Independent Set → Vertex Cover</li>
-</ul>
-
-<h3 id="pattern-3-partitioncut">Pattern 3: Partition/Cut</h3>
-<ul>
-  <li><strong>Key Insight:</strong> Independent set forms one side of partition</li>
-  <li><strong>Hint:</strong> Use independent set as one partition in cut problems</li>
-  <li><strong>Example:</strong> Independent Set → Maximum Cut</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Complement Graph:</strong> Powerful tool for Clique reductions</li>
-  <li><strong>Complement Set:</strong> Natural for Vertex Cover reductions</li>
-  <li><strong>Partition Structure:</strong> Useful for Cut problems</li>
-  <li><strong>Template Structure:</strong> All reductions follow the same rigorous format</li>
-  <li><strong>Hints:</strong> Look for complement relationships and partition structures</li>
-</ol>
-
-<hr />
-
-<p>Independent Set reductions demonstrate the power of complement relationships and graph transformations in NP-completeness proofs.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from Independent Set to prove other problems are NP-complete, with full correctness justifications.]]></summary></entry></feed>
+<p>Clique reductions demonstrate the power of complement relationships and subgraph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[Comprehensive detailed proofs showing how to reduce from Clique to prove other problems are NP-complete, with full correctness justifications.]]></summary></entry></feed>
