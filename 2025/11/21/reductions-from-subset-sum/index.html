@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Subset Sum: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Subset Sum: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Subset Sum: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Subset Sum: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Subset Sum to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Subset Sum to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Subset Sum to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Subset Sum to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Subset Sum: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Subset Sum: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Subset Sum to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Subset Sum: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Subset Sum to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Subset Sum: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-subset-sum/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Subset Sum: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Subset Sum: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Subset Sum is a fundamental number problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using Subset Sum to prove other problems are NP-complete.</p>
+<p>Subset Sum is a fundamental number problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from Subset Sum to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-subset-sum">Problem Definition: Subset Sum</h2>
 
@@ -78,171 +78,300 @@
   <li><strong>Output:</strong> YES if there exists subset S’ ⊆ S with sum exactly t, NO otherwise</li>
 </ul>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-subset-sum-to-partition">Q1: How do you reduce Subset Sum to Partition?</h3>
+<h2 id="q1-how-do-you-reduce-subset-sum-to-partition">Q1: How do you reduce Subset Sum to Partition?</h2>
 
-<p><strong>Answer:</strong> Add balancing elements to create equal partition.</p>
+<h3 id="1-np-completeness-proof-of-partition-solution-validation">1. NP-Completeness Proof of Partition: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Partition Problem:</strong></p>
 <ul>
-  <li>Given Subset Sum instance: set S, target t</li>
-  <li>Compute T = sum of all elements in S</li>
-  <li>Create set S’ = S ∪ {2T - t, T + t}</li>
-  <li>Return Partition: set S’</li>
+  <li><strong>Input:</strong> Set A of integers</li>
+  <li><strong>Output:</strong> YES if A can be partitioned into two subsets with equal sum, NO otherwise</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Partition ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (partition S₁, S₂):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that S₁ ∪ S₂ = A: O(</td>
+          <td>A</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that S₁ ∩ S₂ = ∅: O(</td>
+          <td>A</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Compute sum₁ = ∑_{a ∈ S₁} a: O(</td>
+          <td>A</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Compute sum₂ = ∑_{a ∈ S₂} a: O(</td>
+          <td>A</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Check if sum₁ = sum₂: O(1) time</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>A</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Partition ∈ NP.</p>
+
+<h3 id="2-reduce-subset-sum-to-partition">2. Reduce Subset Sum to Partition</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a Subset Sum instance: set S = {a₁, a₂, …, a_n}, target t.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>Subset summing to t exists ↔ Partition exists</li>
-  <li>If subset sums to t, partition: {subset, 2T-t} and {complement, T+t}</li>
-  <li>Both partitions sum to 2T</li>
+  <li>Compute T = ∑_{i=1}^n aᵢ (total sum)</li>
+  <li>Create set A = S ∪ {2T - t, T + t}</li>
+  <li>Return Partition instance: set A</li>
 </ul>
 
-<p><strong>Time:</strong> O(n)</p>
+<p><strong>Key Property:</strong> Subset summing to t ↔ Partition exists</p>
 
-<h3 id="q2-how-do-you-reduce-subset-sum-to-knapsack">Q2: How do you reduce Subset Sum to Knapsack?</h3>
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<p><strong>Answer:</strong> Subset Sum is special case of Knapsack.</p>
+<p><strong>Given:</strong> Partition solution (S₁, S₂) with sum(S₁) = sum(S₂)</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Extract Subset Sum:</strong></p>
 <ul>
-  <li>Given Subset Sum instance: set S, target t</li>
-  <li>Create Knapsack instance:
+  <li>Total sum of A = T + (2T - t) + (T + t) = 4T</li>
+  <li>Each partition sums to 2T</li>
+  <li>If {2T - t, T + t} are in different partitions:
     <ul>
-      <li>Items: Each element aᵢ ∈ S becomes item with weight wᵢ = aᵢ, value vᵢ = aᵢ</li>
-      <li>Capacity: t</li>
-      <li>Target value: t</li>
+      <li>One partition has subset from S summing to t</li>
+      <li>Return that subset</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-subset-sum-has-a-solution-then-partition-has-a-solution">3.1 If Subset Sum has a solution, then Partition has a solution</h4>
+
+<p><strong>Given:</strong> Subset Sum instance has solution S’ ⊆ S with sum(S’) = t.</p>
+
+<p><strong>Construct Partition:</strong></p>
 <ul>
-  <li>Subset summing to t ↔ Knapsack solution with value t and weight t</li>
-</ul>
-
-<p><strong>Time:</strong> O(n)</p>
-
-<h3 id="q3-how-do-you-reduce-subset-sum-to-bin-packing">Q3: How do you reduce Subset Sum to Bin Packing?</h3>
-
-<p><strong>Answer:</strong> Encode subset sum as bin packing with two bins.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Subset Sum instance: set S, target t</li>
-  <li>Compute T = sum(S)</li>
-  <li>Create Bin Packing instance:
+  <li>Let S’’ = S \ S’</li>
+  <li>sum(S’’) = T - t</li>
+  <li>Partition:
     <ul>
-      <li>Items: Elements of S</li>
-      <li>Bin capacity: max(t, T - t)</li>
-      <li>Number of bins: 2</li>
+      <li>S₁ = S’ ∪ {2T - t}</li>
+      <li>S₂ = S’’ ∪ {T + t}</li>
     </ul>
   </li>
+  <li>sum(S₁) = t + (2T - t) = 2T</li>
+  <li>sum(S₂) = (T - t) + (T + t) = 2T</li>
+  <li>Therefore, partition exists</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> Partition has a solution.</p>
+
+<h4 id="32a-if-subset-sum-does-not-have-a-solution-then-partition-has-no-solution">3.2a If Subset Sum does not have a solution, then Partition has no solution</h4>
+
+<p><strong>Given:</strong> Subset Sum instance has no solution summing to t.</p>
+
+<p><strong>Proof:</strong></p>
 <ul>
-  <li>Subset summing to t ↔ Items fit in 2 bins</li>
-  <li>One bin has sum t, other has sum T - t</li>
-</ul>
-
-<p><strong>Time:</strong> O(n)</p>
-
-<h3 id="q4-how-do-you-reduce-subset-sum-to-scheduling">Q4: How do you reduce Subset Sum to Scheduling?</h3>
-
-<p><strong>Answer:</strong> Encode subset sum as job scheduling with deadlines.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Subset Sum instance: set S, target t</li>
-  <li>Create Scheduling instance:
+  <li>Total sum of A = 4T</li>
+  <li>Each partition must sum to 2T</li>
+  <li>If partition exists, then:
     <ul>
-      <li>Jobs: Each element aᵢ becomes job with processing time aᵢ</li>
-      <li>Deadline: t</li>
-      <li>Target: Schedule jobs to meet deadline</li>
+      <li>One partition contains {2T - t} and subset from S summing to t</li>
+      <li>Other partition contains {T + t} and remaining subset</li>
     </ul>
   </li>
+  <li>But no subset sums to t, contradiction</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> Partition has no solution.</p>
+
+<h4 id="32b-if-partition-has-a-solution-then-subset-sum-has-a-solution">3.2b If Partition has a solution, then Subset Sum has a solution</h4>
+
+<p><strong>Given:</strong> Partition instance has solution (S₁, S₂) with sum(S₁) = sum(S₂) = 2T.</p>
+
+<p><strong>Extract Subset:</strong></p>
 <ul>
-  <li>Subset summing to t ↔ Jobs can be scheduled to finish by t</li>
+  <li>Since sum(A) = 4T, each partition sums to 2T</li>
+  <li>Elements {2T - t, T + t} must be in different partitions (they sum to 3T - t + t = 3T &gt; 2T)</li>
+  <li>Without loss of generality, assume 2T - t ∈ S₁, T + t ∈ S₂</li>
+  <li>Then S₁ \ {2T - t} ⊆ S and sums to 2T - (2T - t) = t</li>
+  <li>Therefore, subset summing to t exists</li>
 </ul>
 
-<p><strong>Time:</strong> O(n)</p>
+<p><strong>Conclusion:</strong> Subset Sum has a solution.</p>
 
-<h3 id="q5-how-do-you-reduce-subset-sum-to-number-partitioning">Q5: How do you reduce Subset Sum to Number Partitioning?</h3>
+<p><strong>Polynomial Time:</strong> O(n) to compute sum and add elements.</p>
 
-<p><strong>Answer:</strong> Subset Sum is related to Partition (see Q1).</p>
+<p><strong>Therefore, Partition is NP-complete.</strong></p>
 
-<p><strong>Reduction:</strong></p>
+<hr />
+
+<h2 id="q2-how-do-you-reduce-subset-sum-to-knapsack">Q2: How do you reduce Subset Sum to Knapsack?</h2>
+
+<h3 id="1-np-completeness-proof-of-knapsack-solution-validation">1. NP-Completeness Proof of Knapsack: Solution Validation</h3>
+
+<p><strong>Knapsack Problem:</strong></p>
 <ul>
-  <li>Use Partition reduction (Q1)</li>
-  <li>Partition is special case of Number Partitioning</li>
+  <li><strong>Input:</strong> Items with weights wᵢ and values vᵢ, capacity W, target value V</li>
+  <li><strong>Output:</strong> YES if there exists subset of items with total weight ≤ W and total value ≥ V, NO otherwise</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Knapsack ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (subset of items):</p>
+<ol>
+  <li>Check that total weight ≤ W: O(n) time</li>
+  <li>Check that total value ≥ V: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Knapsack ∈ NP.</p>
+
+<h3 id="2-reduce-subset-sum-to-knapsack">2. Reduce Subset Sum to Knapsack</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a Subset Sum instance: set S = {a₁, a₂, …, a_n}, target t.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>Subset Sum → Partition → Number Partitioning</li>
+  <li>Create n items:
+    <ul>
+      <li>Item i: weight wᵢ = aᵢ, value vᵢ = aᵢ</li>
+    </ul>
+  </li>
+  <li>Capacity W = t</li>
+  <li>Target value V = t</li>
+  <li>Return Knapsack instance: items, capacity W, target V</li>
 </ul>
 
-<p><strong>Time:</strong> O(n)</p>
+<p><strong>Key Property:</strong> Subset summing to t ↔ Knapsack solution with weight = value = t</p>
 
-<h2 id="reduction-patterns-from-subset-sum">Reduction Patterns from Subset Sum</h2>
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<h3 id="pattern-1-restriction">Pattern 1: Restriction</h3>
+<p><strong>Given:</strong> Knapsack solution (subset of items) with total weight ≤ t and total value ≥ t</p>
+
+<p><strong>Extract Subset:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem is generalization</li>
-  <li><strong>Examples:</strong> Knapsack, Bin Packing</li>
-  <li><strong>Key:</strong> Subset Sum is special case</li>
+  <li>Since weights = values, total weight = total value</li>
+  <li>If total weight = t, return corresponding subset</li>
+  <li>If total weight &lt; t, cannot achieve value t (since values = weights)</li>
 </ul>
 
-<h3 id="pattern-2-balancing">Pattern 2: Balancing</h3>
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-subset-sum-has-a-solution-then-knapsack-has-a-solution">3.1 If Subset Sum has a solution, then Knapsack has a solution</h4>
+
+<p><strong>Given:</strong> Subset Sum instance has solution S’ ⊆ S with sum(S’) = t.</p>
+
+<p><strong>Construct Knapsack Solution:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem requires equal partitions</li>
-  <li><strong>Examples:</strong> Partition</li>
-  <li><strong>Key:</strong> Add balancing elements</li>
+  <li>Select items corresponding to S’</li>
+  <li>Total weight = sum(S’) = t ≤ W</li>
+  <li>Total value = sum(S’) = t ≥ V</li>
+  <li>Therefore, Knapsack solution exists</li>
 </ul>
 
-<h3 id="pattern-3-scheduling">Pattern 3: Scheduling</h3>
+<p><strong>Conclusion:</strong> Knapsack has a solution.</p>
+
+<h4 id="32a-if-subset-sum-does-not-have-a-solution-then-knapsack-has-no-solution">3.2a If Subset Sum does not have a solution, then Knapsack has no solution</h4>
+
+<p><strong>Given:</strong> Subset Sum instance has no solution summing to t.</p>
+
+<p><strong>Proof:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem involves time/resources</li>
-  <li><strong>Examples:</strong> Scheduling, Resource Allocation</li>
-  <li><strong>Key:</strong> Numbers represent time/resource requirements</li>
+  <li>To achieve value V = t, need total value = t</li>
+  <li>Since values = weights, need total weight = t</li>
+  <li>But no subset sums to t, contradiction</li>
 </ul>
+
+<p><strong>Conclusion:</strong> Knapsack has no solution.</p>
+
+<h4 id="32b-if-knapsack-has-a-solution-then-subset-sum-has-a-solution">3.2b If Knapsack has a solution, then Subset Sum has a solution</h4>
+
+<p><strong>Given:</strong> Knapsack instance has solution with total weight ≤ t and total value ≥ t.</p>
+
+<p><strong>Extract Subset:</strong></p>
+<ul>
+  <li>Since weights = values, total weight = total value</li>
+  <li>To have total value ≥ t and total weight ≤ t, must have total weight = total value = t</li>
+  <li>Corresponding subset sums to t</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Subset Sum has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n) to create items.</p>
+
+<p><strong>Therefore, Knapsack is NP-complete.</strong></p>
+
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Restriction:</strong> Many problems generalize Subset Sum</li>
-  <li><strong>Balancing:</strong> Partition reductions use balancing</li>
-  <li><strong>Scheduling:</strong> Numbers encode time/resource constraints</li>
-  <li><strong>Pseudo-polynomial:</strong> Has DP solution, but still NP-complete</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce Subset Sum to 0-1 Knapsack</li>
-  <li>Reduce Subset Sum to Multiple Knapsack</li>
-  <li>Reduce Subset Sum to Job Scheduling with Precedence</li>
+  <li><strong>Balancing Elements:</strong> Partition reductions add balancing numbers</li>
+  <li><strong>Restriction:</strong> Knapsack generalizes Subset Sum</li>
+  <li><strong>Weight-Value Equality:</strong> Simplifies reductions</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>Subset Sum reductions often use restriction and balancing techniques.</p>
-
+<p>Subset Sum reductions demonstrate balancing techniques and restriction relationships.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from SAT: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -255,27 +384,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -285,22 +414,22 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Integer Linear Programming: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Integer Linear Programming: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Integer Linear Programming: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Integer Linear Programming: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Integer Linear Programming to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Integer Linear Programming to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Integer Linear Programming to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Integer Linear Programming to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Integer Linear Programming: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Integer Linear Programming: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Integer Linear Programming to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Integer Linear Programming: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Integer Linear Programming to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Integer Linear Programming: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Integer Linear Programming: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Integer Linear Programming: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Integer Linear Programming (ILP) is a fundamental optimization problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using ILP to prove other problems are NP-complete.</p>
+<p>Integer Linear Programming (ILP) is a fundamental optimization problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from ILP to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-integer-linear-programming">Problem Definition: Integer Linear Programming</h2>
 
@@ -80,171 +80,265 @@
 
 <p><strong>Key:</strong> Variables must be integers (unlike LP which is polynomial-time).</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h3>
+<h2 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h2>
 
-<p><strong>Answer:</strong> Use binary expansion of integer variables.</p>
+<h3 id="1-np-completeness-proof-of-0-1-ilp-solution-validation">1. NP-Completeness Proof of 0-1 ILP: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>0-1 ILP Problem:</strong></p>
 <ul>
-  <li>Given ILP instance with variables xᵢ ∈ ℤ, bounds xᵢ ≤ M</li>
-  <li>For each xᵢ, create ⌈log₂(M+1)⌉ binary variables</li>
-  <li>Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}</li>
-  <li>Convert constraints using binary representation</li>
+  <li><strong>Input:</strong> Matrix A, vectors b, c, integer k</li>
+  <li><strong>Output:</strong> YES if there exists 0-1 vector x such that Ax ≤ b and c^T x ≥ k, NO otherwise</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>0-1 ILP ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (0-1 vector x):</p>
+<ol>
+  <li>Check that x ∈ {0,1}ⁿ: O(n) time</li>
+  <li>Check that Ax ≤ b: O(mn) time</li>
+  <li>Check that c^T x ≥ k: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(mn), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> 0-1 ILP ∈ NP.</p>
+
+<h3 id="2-reduce-ilp-to-0-1-ilp">2. Reduce ILP to 0-1 ILP</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given an ILP instance: variables xᵢ ∈ ℤ with bounds 0 ≤ xᵢ ≤ Mᵢ.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>ILP feasible ↔ 0-1 ILP feasible</li>
-  <li>Binary expansion preserves integer values</li>
-</ul>
-
-<p><strong>Time:</strong> O(n log M)</p>
-
-<h3 id="q2-how-do-you-reduce-ilp-to-knapsack">Q2: How do you reduce ILP to Knapsack?</h3>
-
-<p><strong>Answer:</strong> Encode ILP constraints as knapsack constraints.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ILP instance: maximize c^T x subject to Ax ≤ b, x ≥ 0, x integer</li>
-  <li>Create Knapsack instance:
+  <li>For each variable xᵢ, create ⌈log₂(Mᵢ + 1)⌉ binary variables yᵢ,₁, yᵢ,₂, …, yᵢ,ₖᵢ</li>
+  <li>Represent xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ where yᵢ,ⱼ ∈ {0,1}</li>
+  <li>Convert each constraint:
     <ul>
-      <li>Items: Each variable xᵢ becomes item</li>
-      <li>Weights: Constraint coefficients</li>
-      <li>Values: Objective coefficients</li>
-      <li>Capacity: Constraint bounds</li>
+      <li>Original: ∑ᵢ aᵢⱼ xᵢ ≤ bⱼ</li>
+      <li>New: ∑ᵢ aᵢⱼ (∑_{l=1}^{kᵢ} 2^{l-1} · yᵢ,ₗ) ≤ bⱼ</li>
     </ul>
   </li>
+  <li>Convert objective similarly</li>
+  <li>Return 0-1 ILP instance: binary variables y, converted constraints and objective</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Key Property:</strong> Integer solution ↔ Binary solution (via binary expansion)</p>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> 0-1 ILP solution (binary vector y)</p>
+
+<p><strong>Extract ILP Solution:</strong></p>
 <ul>
-  <li>ILP feasible ↔ Knapsack has solution</li>
-  <li>Constraints become capacity limits</li>
-</ul>
-
-<p><strong>Time:</strong> O(nm)</p>
-
-<h3 id="q3-how-do-you-reduce-ilp-to-set-cover">Q3: How do you reduce ILP to Set Cover?</h3>
-
-<p><strong>Answer:</strong> Encode ILP as covering problem.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ILP instance with 0-1 variables</li>
-  <li>Universe: All constraints</li>
-  <li>Sets: Variable assignments satisfying constraints</li>
-  <li>Target: Cover all constraints</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>ILP feasible ↔ Set Cover exists</li>
-  <li>Variables cover constraints</li>
-</ul>
-
-<p><strong>Time:</strong> O(2ⁿ · m) (exponential, but reduction is valid)</p>
-
-<h3 id="q4-how-do-you-reduce-ilp-to-scheduling">Q4: How do you reduce ILP to Scheduling?</h3>
-
-<p><strong>Answer:</strong> Encode ILP constraints as scheduling constraints.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ILP instance</li>
-  <li>Jobs: Variables become jobs</li>
-  <li>Resources: Constraints become resource limits</li>
-  <li>Time: Objective becomes makespan</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>ILP feasible ↔ Scheduling feasible</li>
-  <li>Constraints become resource/time limits</li>
-</ul>
-
-<p><strong>Time:</strong> O(nm)</p>
-
-<h3 id="q5-how-do-you-reduce-ilp-to-network-flow">Q5: How do you reduce ILP to Network Flow?</h3>
-
-<p><strong>Answer:</strong> Special ILP structures map to flow problems.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ILP with special structure (e.g., transportation problem)</li>
-  <li>Create flow network:
+  <li>For each original variable xᵢ:
     <ul>
-      <li>Nodes: Variables/constraints</li>
-      <li>Edges: Variable-constraint relationships</li>
-      <li>Capacities: Constraint bounds</li>
+      <li>xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ</li>
     </ul>
   </li>
+  <li>Return integer vector x</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-ilp-has-a-solution-then-0-1-ilp-has-a-solution">3.1 If ILP has a solution, then 0-1 ILP has a solution</h4>
+
+<p><strong>Given:</strong> ILP instance has solution x* (integer vector).</p>
+
+<p><strong>Construct 0-1 ILP Solution:</strong></p>
 <ul>
-  <li>ILP feasible ↔ Flow exists</li>
-  <li>Flow conservation ↔ Constraint satisfaction</li>
+  <li>For each x*ᵢ, compute binary representation</li>
+  <li>Set yᵢ,ⱼ = j-th bit of x*ᵢ</li>
+  <li>Since x*ᵢ ≤ Mᵢ, binary representation uses at most ⌈log₂(Mᵢ + 1)⌉ bits</li>
+  <li>Constraints are satisfied (binary expansion preserves values)</li>
 </ul>
 
-<p><strong>Time:</strong> O(nm)</p>
+<p><strong>Conclusion:</strong> 0-1 ILP has a solution.</p>
 
-<h2 id="reduction-patterns-from-ilp">Reduction Patterns from ILP</h2>
+<h4 id="32a-if-ilp-does-not-have-a-solution-then-0-1-ilp-has-no-solution">3.2a If ILP does not have a solution, then 0-1 ILP has no solution</h4>
 
-<h3 id="pattern-1-binary-expansion">Pattern 1: Binary Expansion</h3>
+<p><strong>Given:</strong> ILP instance has no integer solution.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem requires binary variables</li>
-  <li><strong>Examples:</strong> 0-1 ILP</li>
-  <li><strong>Key:</strong> Expand integers in binary</li>
+  <li>Assume 0-1 ILP has solution y</li>
+  <li>Then x constructed from binary expansion is integer solution</li>
+  <li>Contradiction</li>
 </ul>
 
-<h3 id="pattern-2-constraint-encoding">Pattern 2: Constraint Encoding</h3>
+<p><strong>Conclusion:</strong> 0-1 ILP has no solution.</p>
+
+<h4 id="32b-if-0-1-ilp-has-a-solution-then-ilp-has-a-solution">3.2b If 0-1 ILP has a solution, then ILP has a solution</h4>
+
+<p><strong>Given:</strong> 0-1 ILP instance has solution y (binary vector).</p>
+
+<p><strong>Extract ILP Solution:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem has similar constraints</li>
-  <li><strong>Examples:</strong> Knapsack, Scheduling</li>
-  <li><strong>Key:</strong> Map constraints directly</li>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>xᵢ = ∑_{j=1}^{kᵢ} 2^{j-1} · yᵢ,ⱼ</li>
+    </ul>
+  </li>
+  <li>x is integer vector (sum of powers of 2)</li>
+  <li>Constraints satisfied (binary expansion preserves constraint values)</li>
 </ul>
 
-<h3 id="pattern-3-special-structures">Pattern 3: Special Structures</h3>
+<p><strong>Conclusion:</strong> ILP has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n log M) binary variables created, where M = max Mᵢ.</p>
+
+<p><strong>Therefore, 0-1 ILP is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-ilp-to-knapsack">Q2: How do you reduce ILP to Knapsack?</h2>
+
+<h3 id="1-np-completeness-proof-of-knapsack-solution-validation">1. NP-Completeness Proof of Knapsack: Solution Validation</h3>
+
+<p><strong>Knapsack Problem:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> ILP has special form</li>
-  <li><strong>Examples:</strong> Network Flow, Transportation</li>
-  <li><strong>Key:</strong> Exploit problem structure</li>
+  <li><strong>Input:</strong> Items with weights wᵢ and values vᵢ, capacity W, target value V</li>
+  <li><strong>Output:</strong> YES if there exists subset of items with total weight ≤ W and total value ≥ V, NO otherwise</li>
 </ul>
+
+<p><strong>Knapsack ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (subset of items):</p>
+<ol>
+  <li>Check that total weight ≤ W: O(n) time</li>
+  <li>Check that total value ≥ V: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Knapsack ∈ NP.</p>
+
+<h3 id="2-reduce-ilp-to-knapsack">2. Reduce ILP to Knapsack</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given an ILP instance: maximize c^T x subject to Ax ≤ b, x ≥ 0, x integer.</p>
+
+<p><strong>Simplified Case:</strong> Single constraint ILP</p>
+<ul>
+  <li>Maximize c^T x subject to a^T x ≤ b, x ≥ 0, x integer</li>
+</ul>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>For each variable xᵢ with bound 0 ≤ xᵢ ≤ Mᵢ:
+    <ul>
+      <li>Create Mᵢ items:
+        <ul>
+          <li>Item (i, j) for j = 1, …, Mᵢ</li>
+          <li>Weight: aᵢ</li>
+          <li>Value: cᵢ</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Capacity: W = b</li>
+  <li>Target value: V = (some target based on objective)</li>
+  <li>Return Knapsack instance: items, capacity W, target V</li>
+</ul>
+
+<p><strong>Key Property:</strong> ILP solution ↔ Knapsack solution (selecting items corresponds to variable values)</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Knapsack solution (subset of items)</p>
+
+<p><strong>Extract ILP Solution:</strong></p>
+<ul>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>xᵢ = number of items selected from group i</li>
+    </ul>
+  </li>
+  <li>Return integer vector x</li>
+</ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-ilp-has-a-solution-then-knapsack-has-a-solution">3.1 If ILP has a solution, then Knapsack has a solution</h4>
+
+<p><strong>Given:</strong> ILP instance has solution x* (integer vector).</p>
+
+<p><strong>Construct Knapsack Solution:</strong></p>
+<ul>
+  <li>For each variable x*ᵢ:
+    <ul>
+      <li>Select x*ᵢ items from group i</li>
+    </ul>
+  </li>
+  <li>Total weight = a^T x* ≤ b = W</li>
+  <li>Total value = c^T x* ≥ V (if V set appropriately)</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Knapsack has a solution.</p>
+
+<h4 id="32a-if-ilp-does-not-have-a-solution-then-knapsack-has-no-solution">3.2a If ILP does not have a solution, then Knapsack has no solution</h4>
+
+<p><strong>Given:</strong> ILP instance has no integer solution.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Knapsack has solution, extracted x satisfies ILP constraints</li>
+  <li>Contradiction</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Knapsack has no solution.</p>
+
+<h4 id="32b-if-knapsack-has-a-solution-then-ilp-has-a-solution">3.2b If Knapsack has a solution, then ILP has a solution</h4>
+
+<p><strong>Given:</strong> Knapsack instance has solution (subset of items).</p>
+
+<p><strong>Extract ILP Solution:</strong></p>
+<ul>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>xᵢ = number of items selected from group i</li>
+    </ul>
+  </li>
+  <li>x is integer vector</li>
+  <li>a^T x ≤ W = b (constraint satisfied)</li>
+  <li>c^T x ≥ V (objective satisfied)</li>
+</ul>
+
+<p><strong>Conclusion:</strong> ILP has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(∑ᵢ Mᵢ) items created.</p>
+
+<p><strong>Therefore, Knapsack is NP-complete.</strong></p>
+
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Binary expansion:</strong> Convert to 0-1 ILP</li>
-  <li><strong>Constraint mapping:</strong> Direct encoding to similar problems</li>
-  <li><strong>Special structures:</strong> Exploit problem-specific structure</li>
-  <li><strong>Generalization:</strong> ILP generalizes many problems</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce ILP to Multiple Knapsack</li>
-  <li>Reduce ILP to Resource Allocation</li>
-  <li>Reduce ILP to Assignment Problem</li>
+  <li><strong>Binary Expansion:</strong> ILP → 0-1 ILP uses binary representation</li>
+  <li><strong>Item Encoding:</strong> ILP → Knapsack encodes variables as item groups</li>
+  <li><strong>Constraint Mapping:</strong> Direct encoding of constraints</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>ILP reductions often use binary expansion and constraint encoding techniques.</p>
-
+<p>ILP reductions demonstrate binary expansion and constraint encoding techniques.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-clique/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Clique: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Clique: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-independent-set/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from Independent Set: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Independent Set: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -257,27 +351,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -287,27 +381,27 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

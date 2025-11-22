@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from 3D Matching: Common Questions and Answers | Robina Li</title>
+<title>Reductions from 3D Matching: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from 3D Matching: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from 3D Matching: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from 3D Matching to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from 3D Matching to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from 3D Matching to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from 3D Matching to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from 3D Matching: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from 3D Matching: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from 3D Matching to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from 3D Matching: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from 3D Matching to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from 3D Matching: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from 3D Matching: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from 3D Matching: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>3D Matching is a fundamental matching problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using 3D Matching to prove other problems are NP-complete.</p>
+<p>3D Matching is a fundamental matching problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from 3D Matching to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-3d-matching">Problem Definition: 3D Matching</h2>
 
@@ -80,204 +80,438 @@
 
 <p><strong>Perfect 3D Matching:</strong> A set of triples covering each element exactly once.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-3d-matching-to-set-cover">Q1: How do you reduce 3D Matching to Set Cover?</h3>
+<h2 id="q1-how-do-you-reduce-3d-matching-to-set-cover">Q1: How do you reduce 3D Matching to Set Cover?</h2>
 
-<p><strong>Answer:</strong> Encode triples as sets covering elements.</p>
+<h3 id="1-np-completeness-proof-of-set-cover-solution-validation">1. NP-Completeness Proof of Set Cover: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Set Cover Problem:</strong></p>
 <ul>
-  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
-  <li>Universe U = X ∪ Y ∪ Z (all elements)</li>
-  <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
+  <li><strong>Input:</strong> Universe U, collection C of subsets of U, integer k</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Set Cover: universe U, sets {Sₜ : t ∈ T}, target =</td>
+          <td><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C with</td>
+          <td>C’</td>
+          <td>≤ k covering U, NO otherwise</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Set Cover ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (subcollection C’):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that C’ ⊆ C: O(</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that</td>
+          <td>C’</td>
+          <td>≤ k: O(1) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that ∪_{S ∈ C’} S = U: O(</td>
+          <td>U</td>
+          <td>·</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>U</td>
+      <td>·</td>
+      <td>C’</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Set Cover ∈ NP.</p>
+
+<h3 id="2-reduce-3d-matching-to-set-cover">2. Reduce 3D Matching to Set Cover</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Universe U = X ∪ Y ∪ Z (all elements)</li>
+  <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
+  <li>Collection C = {Sₜ : t ∈ T}</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Target k =</td>
           <td>X</td>
           <td>=</td>
           <td>Y</td>
           <td>=</td>
           <td>Z</td>
+          <td>(assuming equal sizes)</td>
         </tr>
       </tbody>
     </table>
   </li>
+  <li>Return Set Cover instance: universe U, collection C, integer k</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Key Property:</strong> Perfect 3D matching ↔ Set cover of size k</p>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> Set Cover solution C’ ⊆ C with</td>
+      <td>C’</td>
+      <td>≤ k covering U</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Matching:</strong></p>
 <ul>
+  <li>M = {t ∈ T : Sₜ ∈ C’}</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Perfect 3D matching ↔ Set cover of size</td>
-          <td>X</td>
+          <td>M</td>
+          <td>=</td>
+          <td>C’</td>
+          <td>≤ k</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Matching covers all elements ↔ Sets cover universe</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Since</td>
+          <td>X</td>
+          <td>=</td>
+          <td>Y</td>
+          <td>=</td>
+          <td>Z</td>
+          <td>= k and each set covers 3 elements, need exactly k sets</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>M is perfect 3D matching</li>
 </ul>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Time:</strong> O(</td>
-      <td>T</td>
-      <td>)</td>
-    </tr>
-  </tbody>
-</table>
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
 
-<h3 id="q2-how-do-you-reduce-3d-matching-to-exact-cover">Q2: How do you reduce 3D Matching to Exact Cover?</h3>
+<h4 id="31-if-3d-matching-has-a-solution-then-set-cover-has-a-solution">3.1 If 3D Matching has a solution, then Set Cover has a solution</h4>
 
-<p><strong>Answer:</strong> 3D Matching is special case of Exact Cover.</p>
+<p><strong>Given:</strong> 3D Matching instance has solution M ⊆ T (perfect matching).</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Construct Set Cover:</strong></p>
 <ul>
-  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
-  <li>Universe U = X ∪ Y ∪ Z</li>
-  <li>Sets: Each triple t becomes set Sₜ = {x, y, z}</li>
-  <li>Return Exact Cover: universe U, sets {Sₜ : t ∈ T}</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Perfect 3D matching ↔ Exact cover</li>
-  <li>Each element covered exactly once</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q3-how-do-you-reduce-3d-matching-to-set-partitioning">Q3: How do you reduce 3D Matching to Set Partitioning?</h3>
-
-<p><strong>Answer:</strong> Partition triples to cover all elements.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
-  <li>Universe U = X ∪ Y ∪ Z</li>
-  <li>Sets: Each triple t becomes set Sₜ</li>
-  <li>Return Set Partitioning: universe U, sets {Sₜ : t ∈ T}</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Perfect 3D matching ↔ Set partition</li>
-  <li>Partition covers all elements exactly once</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q4-how-do-you-reduce-3d-matching-to-assignment-problem">Q4: How do you reduce 3D Matching to Assignment Problem?</h3>
-
-<p><strong>Answer:</strong> Encode as three-dimensional assignment.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
-  <li>Create Assignment Problem:
+  <li>C’ = {Sₜ : t ∈ M}</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>C’</td>
+          <td>=</td>
+          <td>M</td>
+          <td>= k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Since M covers all elements:
     <ul>
-      <li>Three sets: X, Y, Z</li>
-      <li>Assignments: Triples t = (x, y, z)</li>
-      <li>Cost: 0 if t ∈ T, ∞ otherwise</li>
-      <li>Target: Assign all elements</li>
+      <li>Each x ∈ X appears in exactly one triple t ∈ M</li>
+      <li>Each y ∈ Y appears in exactly one triple t ∈ M</li>
+      <li>Each z ∈ Z appears in exactly one triple t ∈ M</li>
+    </ul>
+  </li>
+  <li>Therefore, C’ covers all elements in U</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Set Cover has a solution.</p>
+
+<h4 id="32a-if-3d-matching-does-not-have-a-solution-then-set-cover-has-no-solution">3.2a If 3D Matching does not have a solution, then Set Cover has no solution</h4>
+
+<p><strong>Given:</strong> 3D Matching instance has no perfect matching.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Set Cover has solution C’ of size k:
+    <ul>
+      <li>Then M = {t : Sₜ ∈ C’} is matching of size k</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Since</td>
+              <td>X</td>
+              <td>=</td>
+              <td>Y</td>
+              <td>=</td>
+              <td>Z</td>
+              <td>= k, M covers all elements</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>M is perfect matching</li>
+      <li>Contradiction</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Perfect 3D matching ↔ Assignment covering all elements</li>
-</ul>
+<p><strong>Conclusion:</strong> Set Cover has no solution.</p>
+
+<h4 id="32b-if-set-cover-has-a-solution-then-3d-matching-has-a-solution">3.2b If Set Cover has a solution, then 3D Matching has a solution</h4>
 
 <table>
   <tbody>
     <tr>
-      <td><strong>Time:</strong> O(</td>
-      <td>T</td>
-      <td>)</td>
+      <td><strong>Given:</strong> Set Cover instance has solution C’ ⊆ C with</td>
+      <td>C’</td>
+      <td>≤ k covering U.</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="q5-how-do-you-reduce-3d-matching-to-bipartite-matching">Q5: How do you reduce 3D Matching to Bipartite Matching?</h3>
-
-<p><strong>Answer:</strong> Cannot directly (3D is harder than 2D).</p>
-
-<p><strong>Note:</strong> 3D Matching is NP-complete, but Bipartite Matching is polynomial-time. However, can reduce to weighted matching.</p>
-
-<p><strong>Reduction (to Weighted Matching):</strong></p>
+<p><strong>Extract Matching:</strong></p>
 <ul>
-  <li>Given 3D Matching instance</li>
-  <li>Create bipartite graph: X on left, Y×Z on right</li>
-  <li>Edges: (x, (y,z)) if (x,y,z) ∈ T</li>
-  <li>Weight: 1 for each edge</li>
-  <li>Return: Maximum weight matching covering all of X</li>
+  <li>M = {t ∈ T : Sₜ ∈ C’}</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>M</td>
+          <td>=</td>
+          <td>C’</td>
+          <td>≤ k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Since C’ covers U and</td>
+          <td>U</td>
+          <td>= 3k:</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>Need at least k sets (each covers 3 elements)</li>
+      <li>Have at most k sets</li>
+      <li>Therefore, exactly k sets, each covering 3 distinct elements</li>
+    </ul>
+  </li>
+  <li>M is perfect 3D matching</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Perfect 3D matching ↔ Perfect bipartite matching</li>
-</ul>
+<p><strong>Conclusion:</strong> 3D Matching has a solution.</p>
 
 <table>
   <tbody>
     <tr>
-      <td><strong>Time:</strong> O(</td>
+      <td><strong>Polynomial Time:</strong> O(</td>
       <td>T</td>
-      <td>)</td>
+      <td>) to create sets.</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="reduction-patterns-from-3d-matching">Reduction Patterns from 3D Matching</h2>
+<p><strong>Therefore, Set Cover is NP-complete.</strong></p>
 
-<h3 id="pattern-1-covering-problems">Pattern 1: Covering Problems</h3>
+<hr />
+
+<h2 id="q2-how-do-you-reduce-3d-matching-to-exact-cover">Q2: How do you reduce 3D Matching to Exact Cover?</h2>
+
+<h3 id="1-np-completeness-proof-of-exact-cover-solution-validation">1. NP-Completeness Proof of Exact Cover: Solution Validation</h3>
+
+<p><strong>Exact Cover Problem:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem involves covering</li>
-  <li><strong>Examples:</strong> Set Cover, Exact Cover</li>
-  <li><strong>Key:</strong> Triples cover elements</li>
+  <li><strong>Input:</strong> Universe U and collection C of subsets of U</li>
+  <li><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C covering each element exactly once, NO otherwise</li>
 </ul>
 
-<h3 id="pattern-2-partitioning">Pattern 2: Partitioning</h3>
+<p><strong>Exact Cover ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (subcollection C’):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that C’ ⊆ C: O(</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that each element appears exactly once: O(</td>
+          <td>U</td>
+          <td>·</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>U</td>
+      <td>·</td>
+      <td>C’</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Exact Cover ∈ NP.</p>
+
+<h3 id="2-reduce-3d-matching-to-exact-cover">2. Reduce 3D Matching to Exact Cover</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem partitions elements</li>
-  <li><strong>Examples:</strong> Set Partitioning</li>
-  <li><strong>Key:</strong> Each element exactly once</li>
+  <li>Universe U = X ∪ Y ∪ Z</li>
+  <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
+  <li>Collection C = {Sₜ : t ∈ T}</li>
+  <li>Return Exact Cover instance: universe U, collection C</li>
 </ul>
 
-<h3 id="pattern-3-assignment">Pattern 3: Assignment</h3>
+<p><strong>Key Property:</strong> Perfect 3D matching ↔ Exact cover</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Exact Cover solution C’ ⊆ C</p>
+
+<p><strong>Extract Matching:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem assigns elements</li>
-  <li><strong>Examples:</strong> Assignment Problem</li>
-  <li><strong>Key:</strong> Three-way assignment</li>
+  <li>M = {t ∈ T : Sₜ ∈ C’}</li>
+  <li>M is perfect 3D matching (each element covered exactly once)</li>
 </ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-3d-matching-has-a-solution-then-exact-cover-has-a-solution">3.1 If 3D Matching has a solution, then Exact Cover has a solution</h4>
+
+<p><strong>Given:</strong> 3D Matching instance has solution M ⊆ T (perfect matching).</p>
+
+<p><strong>Construct Exact Cover:</strong></p>
+<ul>
+  <li>C’ = {Sₜ : t ∈ M}</li>
+  <li>Since M is perfect matching:
+    <ul>
+      <li>Each element in X appears in exactly one triple t ∈ M</li>
+      <li>Each element in Y appears in exactly one triple t ∈ M</li>
+      <li>Each element in Z appears in exactly one triple t ∈ M</li>
+    </ul>
+  </li>
+  <li>Therefore, C’ covers each element exactly once</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Exact Cover has a solution.</p>
+
+<h4 id="32a-if-3d-matching-does-not-have-a-solution-then-exact-cover-has-no-solution">3.2a If 3D Matching does not have a solution, then Exact Cover has no solution</h4>
+
+<p><strong>Given:</strong> 3D Matching instance has no perfect matching.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+<ul>
+  <li>Assume Exact Cover has solution C’</li>
+  <li>Then M = {t : Sₜ ∈ C’} is perfect matching</li>
+  <li>Contradiction</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Exact Cover has no solution.</p>
+
+<h4 id="32b-if-exact-cover-has-a-solution-then-3d-matching-has-a-solution">3.2b If Exact Cover has a solution, then 3D Matching has a solution</h4>
+
+<p><strong>Given:</strong> Exact Cover instance has solution C’ ⊆ C.</p>
+
+<p><strong>Extract Matching:</strong></p>
+<ul>
+  <li>M = {t ∈ T : Sₜ ∈ C’}</li>
+  <li>Since C’ covers each element exactly once:
+    <ul>
+      <li>M covers all elements</li>
+      <li>Each element appears in exactly one triple</li>
+      <li>M is perfect 3D matching</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> 3D Matching has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(1) (trivial reduction).</p>
+
+<p><strong>Therefore, Exact Cover is NP-complete.</strong></p>
+
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Covering structure:</strong> Natural for covering problems</li>
-  <li><strong>Exact coverage:</strong> Each element exactly once</li>
-  <li><strong>Triple structure:</strong> Three sets make it harder than 2D</li>
-  <li><strong>Partitioning:</strong> Perfect matching = partition</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce 3D Matching to Hitting Set</li>
-  <li>Reduce 3D Matching to Set Packing</li>
-  <li>Reduce 3D Matching to Resource Allocation</li>
+  <li><strong>Set Encoding:</strong> 3D Matching → Set Cover encodes triples as sets</li>
+  <li><strong>Exact Coverage:</strong> Perfect matching ensures exact coverage</li>
+  <li><strong>Triple Structure:</strong> Three sets make matching harder than 2D</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>3D Matching reductions often use covering and partitioning structures.</p>
-
+<p>3D Matching reductions demonstrate covering structures and exact coverage patterns.</p>
 
         </div>
 
@@ -287,7 +521,7 @@
                 <span class="post-nav-title">Reduction: 3-SAT to Partition</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-3sat/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from 3-SAT: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from 3-SAT: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -300,27 +534,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -330,27 +564,27 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

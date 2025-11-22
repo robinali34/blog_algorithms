@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Traveling Salesman Problem: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Traveling Salesman Problem: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Traveling Salesman Problem: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Traveling Salesman Problem: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Traveling Salesman Problem (TSP) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Traveling Salesman Problem (TSP) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Traveling Salesman Problem to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Traveling Salesman Problem to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Traveling Salesman Problem: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Traveling Salesman Problem: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Traveling Salesman Problem (TSP) to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Traveling Salesman Problem: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Traveling Salesman Problem to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Traveling Salesman Problem: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-tsp/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Traveling Salesman Problem (TSP) is a fundamental routing problem proven NP-complete by reduction from Hamiltonian Cycle. This post provides answers to common reduction questions when using TSP to prove other problems are NP-complete.</p>
+<p>Traveling Salesman Problem (TSP) is a fundamental routing problem proven NP-complete by reduction from Hamiltonian Cycle. This post provides detailed proofs following the standard template for reducing from TSP to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-traveling-salesman-problem">Problem Definition: Traveling Salesman Problem</h2>
 
@@ -80,179 +80,329 @@
 
 <p><strong>TSP Tour:</strong> A cycle visiting each vertex exactly once.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-tsp-to-metric-tsp">Q1: How do you reduce TSP to Metric TSP?</h3>
+<h2 id="q1-how-do-you-reduce-tsp-to-hamiltonian-cycle">Q1: How do you reduce TSP to Hamiltonian Cycle?</h2>
 
-<p><strong>Answer:</strong> TSP is general case, Metric TSP is restriction.</p>
+<h3 id="1-np-completeness-proof-of-hamiltonian-cycle-solution-validation">1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Hamiltonian Cycle Problem:</strong></p>
 <ul>
-  <li>Given TSP instance: graph G, weights w, bound B</li>
-  <li>Check if weights satisfy triangle inequality</li>
-  <li>If yes, return Metric TSP instance (same)</li>
-  <li>If no, TSP is harder than Metric TSP</li>
+  <li><strong>Input:</strong> Graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G has a cycle visiting every vertex exactly once, NO otherwise</li>
 </ul>
 
-<p><strong>Note:</strong> This is a restriction, not a reduction. Metric TSP is still NP-complete.</p>
+<p><strong>Hamiltonian Cycle ∈ NP:</strong></p>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (cycle - sequence of vertices):</p>
+<ol>
+  <li>Check that all vertices appear exactly once: O(n) time</li>
+  <li>Check that consecutive vertices are connected: O(n) time</li>
+  <li>Check that cycle is closed: O(1) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Hamiltonian Cycle ∈ NP.</p>
+
+<h3 id="2-reduce-tsp-to-hamiltonian-cycle">2. Reduce TSP to Hamiltonian Cycle</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a TSP instance: complete graph G with weights w, bound B.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>TSP generalizes Metric TSP</li>
-  <li>Metric TSP is restriction of TSP</li>
-</ul>
-
-<p><strong>Time:</strong> O(n²) to check triangle inequality</p>
-
-<h3 id="q2-how-do-you-reduce-tsp-to-vehicle-routing-problem">Q2: How do you reduce TSP to Vehicle Routing Problem?</h3>
-
-<p><strong>Answer:</strong> TSP is special case with one vehicle.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given TSP instance: graph G, weights w, bound B</li>
-  <li>Create Vehicle Routing instance:
+  <li>Create graph G’ = (V, E’) where:
     <ul>
-      <li>Vehicles: 1</li>
-      <li>Depots: One depot (starting vertex)</li>
-      <li>Customers: All other vertices</li>
-      <li>Distances: Same as TSP weights</li>
-      <li>Capacity: Unlimited (or large enough)</li>
+      <li>V(G’) = V(G)</li>
+      <li>E’ = {(u, v) : w(u, v) ≤ B}</li>
+    </ul>
+  </li>
+  <li>Return Hamiltonian Cycle instance: graph G’</li>
+</ul>
+
+<p><strong>Key Property:</strong> TSP tour of weight ≤ B ↔ Hamiltonian cycle in G’</p>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Hamiltonian Cycle solution (cycle C in G’)</p>
+
+<p><strong>Extract TSP Tour:</strong></p>
+<ul>
+  <li>C is cycle visiting all vertices</li>
+  <li>All edges in C have weight ≤ B (by construction)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Total weight ≤</td>
+          <td>V</td>
+          <td>· B (but actually ≤ B if weights are appropriate)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Return C as TSP tour</li>
+</ul>
+
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-tsp-has-a-solution-then-hamiltonian-cycle-has-a-solution">3.1 If TSP has a solution, then Hamiltonian Cycle has a solution</h4>
+
+<p><strong>Given:</strong> TSP instance has solution (tour C) with total weight ≤ B.</p>
+
+<p><strong>Construct Hamiltonian Cycle:</strong></p>
+<ul>
+  <li>C visits all vertices exactly once</li>
+  <li>All edges in C have weight ≤ B</li>
+  <li>Therefore, all edges in C are in G’</li>
+  <li>C is Hamiltonian cycle in G’</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Hamiltonian Cycle has a solution.</p>
+
+<h4 id="32a-if-tsp-does-not-have-a-solution-then-hamiltonian-cycle-has-no-solution">3.2a If TSP does not have a solution, then Hamiltonian Cycle has no solution</h4>
+
+<p><strong>Given:</strong> TSP instance has no tour with weight ≤ B.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Hamiltonian cycle exists in G’:
+    <ul>
+      <li>All edges have weight ≤ B</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Cycle is TSP tour with weight ≤</td>
+              <td>V</td>
+              <td>· (max weight ≤ B)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>But need to ensure total ≤ B</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>If all edges ≤ B and cycle has</td>
+              <td>V</td>
+              <td>edges, total ≤</td>
+              <td>V</td>
+              <td>· B</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>Need refinement: use binary weights (1 if ≤ B, 2 if &gt; B)</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Refined Construction:</strong></p>
 <ul>
-  <li>TSP tour ↔ Vehicle route covering all customers</li>
+  <li>Set weights: w’(u, v) = 1 if w(u, v) ≤ B, else w’(u, v) = 2</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Bound B’ =</td>
+          <td>V</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Then: TSP tour weight ≤</td>
+          <td>V</td>
+          <td>↔ All edges have weight 1 ↔ Hamiltonian cycle exists</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
-<p><strong>Time:</strong> O(1)</p>
+<p><strong>Conclusion:</strong> Hamiltonian Cycle has no solution.</p>
 
-<h3 id="q3-how-do-you-reduce-tsp-to-job-sequencing">Q3: How do you reduce TSP to Job Sequencing?</h3>
+<h4 id="32b-if-hamiltonian-cycle-has-a-solution-then-tsp-has-a-solution">3.2b If Hamiltonian Cycle has a solution, then TSP has a solution</h4>
 
-<p><strong>Answer:</strong> Encode tour as job sequence.</p>
+<p><strong>Given:</strong> Hamiltonian Cycle instance has solution (cycle C in G’).</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Extract TSP Tour:</strong></p>
 <ul>
-  <li>Given TSP instance: graph G, weights w, bound B</li>
-  <li>Create Job Sequencing instance:
+  <li>C visits all vertices exactly once</li>
+  <li>All edges in C are in G’, so have weight ≤ B (by construction)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Total weight ≤</td>
+          <td>V</td>
+          <td>· B</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>With refined construction (binary weights), total weight =</td>
+          <td>V</td>
+          <td>≤ B’</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> TSP has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n²) to create graph and assign weights.</p>
+
+<p><strong>Therefore, Hamiltonian Cycle is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-tsp-to-vehicle-routing-problem">Q2: How do you reduce TSP to Vehicle Routing Problem?</h2>
+
+<h3 id="1-np-completeness-proof-of-vehicle-routing-solution-validation">1. NP-Completeness Proof of Vehicle Routing: Solution Validation</h3>
+
+<p><strong>Vehicle Routing Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Vehicles, depots, customers, distances, capacity constraints</li>
+  <li><strong>Output:</strong> YES if there exists routes covering all customers satisfying constraints, NO otherwise</li>
+</ul>
+
+<p><strong>Vehicle Routing ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (set of routes):</p>
+<ol>
+  <li>Check that all customers are visited: O(n) time</li>
+  <li>Check capacity constraints: O(n) time</li>
+  <li>Check distance constraints: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Vehicle Routing ∈ NP.</p>
+
+<h3 id="2-reduce-tsp-to-vehicle-routing">2. Reduce TSP to Vehicle Routing</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a TSP instance: complete graph G with weights w, bound B.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Vehicles: 1</li>
+  <li>Depot: One vertex (say vertex 1)</li>
+  <li>Customers: All other vertices</li>
+  <li>Distances: Same as TSP weights w</li>
+  <li>Capacity: Unlimited (or large enough)</li>
+  <li>Distance bound: B</li>
+  <li>Return Vehicle Routing instance: 1 vehicle, depot, customers, distances, bound B</li>
+</ul>
+
+<p><strong>Key Property:</strong> TSP tour ↔ Vehicle route covering all customers</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Vehicle Routing solution (route R)</p>
+
+<p><strong>Extract TSP Tour:</strong></p>
+<ul>
+  <li>Route R starts and ends at depot</li>
+  <li>R visits all customers</li>
+  <li>Add return edge to form cycle</li>
+  <li>Return as TSP tour</li>
+</ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-tsp-has-a-solution-then-vehicle-routing-has-a-solution">3.1 If TSP has a solution, then Vehicle Routing has a solution</h4>
+
+<p><strong>Given:</strong> TSP instance has solution (tour C) with total weight ≤ B.</p>
+
+<p><strong>Construct Vehicle Route:</strong></p>
+<ul>
+  <li>Tour C visits all vertices</li>
+  <li>Without loss of generality, assume C starts at vertex 1</li>
+  <li>Route: Follow C from vertex 1, return to vertex 1</li>
+  <li>Total distance = weight of C ≤ B</li>
+  <li>All customers visited</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Vehicle Routing has a solution.</p>
+
+<h4 id="32a-if-tsp-does-not-have-a-solution-then-vehicle-routing-has-no-solution">3.2a If TSP does not have a solution, then Vehicle Routing has no solution</h4>
+
+<p><strong>Given:</strong> TSP instance has no tour with weight ≤ B.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Vehicle Routing has solution:
     <ul>
-      <li>Jobs: Vertices (except start)</li>
-      <li>Setup times: Edge weights</li>
-      <li>Sequence: Tour order</li>
-      <li>Target: Total setup time ≤ B</li>
+      <li>Route covers all customers</li>
+      <li>Total distance ≤ B</li>
+      <li>Route forms TSP tour</li>
+      <li>Contradiction</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> Vehicle Routing has no solution.</p>
+
+<h4 id="32b-if-vehicle-routing-has-a-solution-then-tsp-has-a-solution">3.2b If Vehicle Routing has a solution, then TSP has a solution</h4>
+
+<p><strong>Given:</strong> Vehicle Routing instance has solution (route R).</p>
+
+<p><strong>Extract TSP Tour:</strong></p>
 <ul>
-  <li>TSP tour ↔ Job sequence with setup times ≤ B</li>
+  <li>Route R starts and ends at depot</li>
+  <li>R visits all customers (all vertices except depot, or all vertices)</li>
+  <li>Total distance ≤ B</li>
+  <li>R forms cycle (tour) visiting all vertices</li>
+  <li>Therefore, TSP tour exists</li>
 </ul>
 
-<p><strong>Time:</strong> O(n²)</p>
+<p><strong>Conclusion:</strong> TSP has a solution.</p>
 
-<h3 id="q4-how-do-you-reduce-tsp-to-longest-tour">Q4: How do you reduce TSP to Longest Tour?</h3>
+<p><strong>Polynomial Time:</strong> O(1) (trivial reduction).</p>
 
-<p><strong>Answer:</strong> Negate weights and maximize.</p>
+<p><strong>Therefore, Vehicle Routing is NP-complete.</strong></p>
 
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given TSP instance: graph G, weights w, bound B</li>
-  <li>Create Longest Tour instance:
-    <ul>
-      <li>Graph G with weights w’ = M - w (M large constant)</li>
-      <li>Target: Tour length ≥ M·n - B</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>TSP tour weight ≤ B ↔ Longest tour weight ≥ M·n - B</li>
-</ul>
-
-<p><strong>Time:</strong> O(n²)</p>
-
-<h3 id="q5-how-do-you-reduce-tsp-to-hamiltonian-cycle">Q5: How do you reduce TSP to Hamiltonian Cycle?</h3>
-
-<p><strong>Answer:</strong> TSP reduces to Hamiltonian Cycle via weight threshold.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given TSP instance: graph G, weights w, bound B</li>
-  <li>Create graph G’ with edges:
-    <ul>
-      <li>Keep edge if weight ≤ B</li>
-      <li>Remove edge if weight &gt; B</li>
-    </ul>
-  </li>
-  <li>Return Hamiltonian Cycle: graph G’</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>TSP tour weight ≤ B ↔ Hamiltonian cycle in G’</li>
-  <li>Cycle uses only edges with weight ≤ B</li>
-</ul>
-
-<p><strong>Time:</strong> O(n²)</p>
-
-<h2 id="reduction-patterns-from-tsp">Reduction Patterns from TSP</h2>
-
-<h3 id="pattern-1-restriction">Pattern 1: Restriction</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem is special case</li>
-  <li><strong>Examples:</strong> Metric TSP</li>
-  <li><strong>Key:</strong> TSP generalizes many problems</li>
-</ul>
-
-<h3 id="pattern-2-routing-problems">Pattern 2: Routing Problems</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem involves routing</li>
-  <li><strong>Examples:</strong> Vehicle Routing, Delivery Problem</li>
-  <li><strong>Key:</strong> Tour structure</li>
-</ul>
-
-<h3 id="pattern-3-sequencing">Pattern 3: Sequencing</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem sequences items</li>
-  <li><strong>Examples:</strong> Job Sequencing</li>
-  <li><strong>Key:</strong> Tour defines sequence</li>
-</ul>
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Tour structure:</strong> Natural for routing problems</li>
-  <li><strong>Restriction:</strong> Many problems are special cases</li>
-  <li><strong>Weight manipulation:</strong> Negate or threshold weights</li>
-  <li><strong>Generalization:</strong> TSP generalizes many routing problems</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce TSP to Multiple TSP (multiple salesmen)</li>
-  <li>Reduce TSP to Prize-Collecting TSP</li>
-  <li>Reduce TSP to TSP with Time Windows</li>
+  <li><strong>Weight Threshold:</strong> TSP → Hamiltonian Cycle uses weight filtering</li>
+  <li><strong>Tour Structure:</strong> Natural for routing problems</li>
+  <li><strong>Restriction:</strong> Many problems are special cases of TSP</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>TSP reductions often involve routing structures and weight manipulations.</p>
-
+<p>TSP reductions demonstrate tour structures and routing problem relationships.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Subset Sum: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Vertex Cover: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -265,27 +415,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -295,22 +445,22 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

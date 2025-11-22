@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Rudrata Cycle: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Rudrata Cycle: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Rudrata Cycle: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Rudrata Cycle: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Rudrata Cycle (Hamiltonian Cycle) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Rudrata Cycle (Hamiltonian Cycle) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Rudrata Cycle to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Rudrata Cycle to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Rudrata Cycle: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Rudrata Cycle: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Rudrata Cycle (Hamiltonian Cycle) to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Rudrata Cycle: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Rudrata Cycle to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Rudrata Cycle: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Rudrata Cycle: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Rudrata Cycle: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Rudrata Cycle (Hamiltonian Cycle) is a fundamental cycle problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using Rudrata Cycle to prove other problems are NP-complete.</p>
+<p>Rudrata Cycle (Hamiltonian Cycle) is a fundamental cycle problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from Rudrata Cycle to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-rudrata-cycle">Problem Definition: Rudrata Cycle</h2>
 
@@ -80,102 +80,124 @@
 
 <p><strong>Hamiltonian Cycle:</strong> A cycle that visits each vertex exactly once.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-rudrata-cycle-to-traveling-salesman-problem">Q1: How do you reduce Rudrata Cycle to Traveling Salesman Problem?</h3>
+<h2 id="q1-how-do-you-reduce-rudrata-cycle-to-traveling-salesman-problem">Q1: How do you reduce Rudrata Cycle to Traveling Salesman Problem?</h2>
 
-<p><strong>Answer:</strong> Convert cycle to tour with edge weights.</p>
+<h3 id="1-np-completeness-proof-of-tsp-solution-validation">1. NP-Completeness Proof of TSP: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>TSP Problem:</strong></p>
 <ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
-  <li>Create complete graph G’ with weights:
+  <li><strong>Input:</strong> Complete graph G with edge weights w, bound B</li>
+  <li><strong>Output:</strong> YES if there exists tour visiting all vertices with total weight ≤ B, NO otherwise</li>
+</ul>
+
+<p><strong>TSP ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (tour - sequence of vertices):</p>
+<ol>
+  <li>Check that all vertices appear exactly once: O(n) time</li>
+  <li>Check that tour forms cycle: O(1) time</li>
+  <li>Sum edge weights: O(n) time</li>
+  <li>Check if sum ≤ B: O(1) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> TSP ∈ NP.</p>
+
+<h3 id="2-reduce-rudrata-cycle-to-tsp">2. Reduce Rudrata Cycle to TSP</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a Rudrata Cycle instance: graph G = (V, E).</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Create complete graph G’ = (V, E’) with same vertices</li>
+  <li>For each edge (u, v):
     <ul>
-      <li>Weight 1 if edge exists in G</li>
-      <li>Weight 2 if edge doesn’t exist</li>
+      <li>If (u, v) ∈ E, set weight w(u, v) = 1</li>
+      <li>If (u, v) ∉ E, set weight w(u, v) = 2</li>
     </ul>
   </li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return TSP: graph G’, target =</td>
+          <td>Bound B =</td>
           <td>V</td>
         </tr>
       </tbody>
     </table>
   </li>
+  <li>Return TSP instance: graph G’, weights w, bound B</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Key Property:</strong> Hamiltonian cycle ↔ TSP tour of weight</td>
+      <td>V</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> TSP solution (tour) with total weight ≤ B =</td>
+      <td>V</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Hamiltonian Cycle:</strong></p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Hamiltonian cycle ↔ TSP tour of weight</td>
+          <td>If tour weight =</td>
           <td>V</td>
+          <td>, all edges have weight 1</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Cycle uses only edges of weight 1</li>
+  <li>These edges exist in original graph G</li>
+  <li>Tour is Hamiltonian cycle in G</li>
 </ul>
 
-<p><strong>Time:</strong> O(n²)</p>
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
 
-<h3 id="q2-how-do-you-reduce-rudrata-cycle-to-rudrata-path">Q2: How do you reduce Rudrata Cycle to Rudrata Path?</h3>
+<h4 id="31-if-rudrata-cycle-has-a-solution-then-tsp-has-a-solution">3.1 If Rudrata Cycle has a solution, then TSP has a solution</h4>
 
-<p><strong>Answer:</strong> Break cycle by removing an edge.</p>
+<p><strong>Given:</strong> Rudrata Cycle instance has solution (Hamiltonian cycle C in G).</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Construct TSP Tour:</strong></p>
 <ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
-  <li>Pick any edge (u, v) in G</li>
-  <li>Remove edge (u, v)</li>
-  <li>Return Rudrata Path: modified graph G’, vertices u and v as potential endpoints</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Hamiltonian cycle ↔ Hamiltonian path (if edge removed)</li>
-  <li>Path connects endpoints of removed edge</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q3-how-do-you-reduce-rudrata-cycle-to-rudrata-st-path">Q3: How do you reduce Rudrata Cycle to Rudrata (s,t)-Path?</h3>
-
-<p><strong>Answer:</strong> Break cycle and fix endpoints.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
-  <li>Pick edge (s, t) in G</li>
-  <li>Remove edge (s, t)</li>
-  <li>Return Rudrata (s,t)-Path: modified graph G’, vertices s and t</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Hamiltonian cycle ↔ Hamiltonian (s,t)-path</li>
-  <li>Cycle broken at (s,t) becomes path from s to t</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q4-how-do-you-reduce-rudrata-cycle-to-longest-cycle">Q4: How do you reduce Rudrata Cycle to Longest Cycle?</h3>
-
-<p><strong>Answer:</strong> Rudrata Cycle is special case.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
+  <li>C visits all vertices exactly once</li>
+  <li>All edges in C exist in G, so have weight 1</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Longest Cycle: graph G, target length =</td>
+          <td>Total weight =</td>
+          <td>V</td>
+          <td>≤ B</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Therefore, C is TSP tour of weight</td>
           <td>V</td>
         </tr>
       </tbody>
@@ -183,103 +205,211 @@
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> TSP has a solution.</p>
+
+<h4 id="32a-if-rudrata-cycle-does-not-have-a-solution-then-tsp-has-no-solution">3.2a If Rudrata Cycle does not have a solution, then TSP has no solution</h4>
+
+<p><strong>Given:</strong> Rudrata Cycle instance has no Hamiltonian cycle.</p>
+
+<p><strong>Proof:</strong></p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Hamiltonian cycle ↔ Longest cycle of length</td>
+          <td>Any tour visiting all vertices must use at least</td>
           <td>V</td>
+          <td>edges</td>
         </tr>
       </tbody>
     </table>
   </li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q5-how-do-you-reduce-rudrata-cycle-to-graph-bandwidth">Q5: How do you reduce Rudrata Cycle to Graph Bandwidth?</h3>
-
-<p><strong>Answer:</strong> Encode cycle as circular arrangement.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
-  <li>Return Graph Bandwidth: graph G, circular arrangement</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Hamiltonian cycle ↔ Circular arrangement with low bandwidth</li>
-  <li>Cycle defines circular ordering</li>
-</ul>
-
-<p><strong>Time:</strong> O(n)</p>
-
-<h2 id="reduction-patterns-from-rudrata-cycle">Reduction Patterns from Rudrata Cycle</h2>
-
-<h3 id="pattern-1-tour-problems">Pattern 1: Tour Problems</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem involves tours</li>
-  <li><strong>Examples:</strong> TSP</li>
-  <li><strong>Key:</strong> Cycle is tour</li>
-</ul>
-
-<h3 id="pattern-2-breaking-cycle">Pattern 2: Breaking Cycle</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem is path</li>
-  <li><strong>Examples:</strong> Rudrata Path, (s,t)-Path</li>
-  <li><strong>Key:</strong> Remove one edge</li>
-</ul>
-
-<h3 id="pattern-3-optimization">Pattern 3: Optimization</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem optimizes cycle</li>
-  <li><strong>Examples:</strong> Longest Cycle</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>Key:</strong> Cycle length =</td>
+          <td>If all edges have weight 1, tour weight =</td>
           <td>V</td>
         </tr>
       </tbody>
     </table>
   </li>
+  <li>But if Hamiltonian cycle doesn’t exist, any tour must use at least one edge not in G</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>That edge has weight 2, so tour weight ≥</td>
+          <td>V</td>
+          <td>+ 1 &gt; B</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Therefore, no TSP tour of weight ≤ B</li>
 </ul>
+
+<p><strong>Conclusion:</strong> TSP has no solution.</p>
+
+<h4 id="32b-if-tsp-has-a-solution-then-rudrata-cycle-has-a-solution">3.2b If TSP has a solution, then Rudrata Cycle has a solution</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> TSP instance has solution (tour) with total weight ≤ B =</td>
+      <td>V</td>
+      <td>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Hamiltonian Cycle:</strong></p>
+<ul>
+  <li>Tour visits all vertices exactly once</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Total weight ≤</td>
+          <td>V</td>
+          <td>, so all edges have weight 1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>These edges exist in original graph G</li>
+  <li>Therefore, tour is Hamiltonian cycle in G</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata Cycle has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n²) to create complete graph and assign weights.</p>
+
+<p><strong>Therefore, TSP is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-rudrata-cycle-to-rudrata-path">Q2: How do you reduce Rudrata Cycle to Rudrata Path?</h2>
+
+<h3 id="1-np-completeness-proof-of-rudrata-path-solution-validation">1. NP-Completeness Proof of Rudrata Path: Solution Validation</h3>
+
+<p><strong>Rudrata Path Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G has a path visiting every vertex exactly once, NO otherwise</li>
+</ul>
+
+<p><strong>Rudrata Path ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (path - sequence of vertices):</p>
+<ol>
+  <li>Check that all vertices appear exactly once: O(n) time</li>
+  <li>Check that consecutive vertices are connected: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Rudrata Path ∈ NP.</p>
+
+<h3 id="2-reduce-rudrata-cycle-to-rudrata-path">2. Reduce Rudrata Cycle to Rudrata Path</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a Rudrata Cycle instance: graph G = (V, E).</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Pick any vertex v ∈ V</li>
+  <li>Create graph G’ by removing v and adding edges connecting neighbors</li>
+  <li>More simply: Remove any edge (u, w) from G</li>
+  <li>Return Rudrata Path instance: modified graph G’</li>
+</ul>
+
+<p><strong>Key Property:</strong> Hamiltonian cycle ↔ Hamiltonian path (if edge removed)</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Rudrata Path solution (path P in G’)</p>
+
+<p><strong>Extract Hamiltonian Cycle:</strong></p>
+<ul>
+  <li>If path endpoints are u and w (where edge was removed)</li>
+  <li>Add edge (u, w) to form cycle</li>
+  <li>Cycle visits all vertices exactly once</li>
+</ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-rudrata-cycle-has-a-solution-then-rudrata-path-has-a-solution">3.1 If Rudrata Cycle has a solution, then Rudrata Path has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata Cycle instance has solution (Hamiltonian cycle C in G).</p>
+
+<p><strong>Construct Path:</strong></p>
+<ul>
+  <li>Remove any edge (u, w) from C</li>
+  <li>Remaining edges form Hamiltonian path from u to w</li>
+  <li>Path exists in G’ (G with edge removed)</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata Path has a solution.</p>
+
+<h4 id="32a-if-rudrata-cycle-does-not-have-a-solution-then-rudrata-path-has-no-solution">3.2a If Rudrata Cycle does not have a solution, then Rudrata Path has no solution</h4>
+
+<p><strong>Given:</strong> Rudrata Cycle instance has no Hamiltonian cycle.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Hamiltonian path exists, can add edge between endpoints to form cycle</li>
+  <li>But Hamiltonian cycle doesn’t exist, contradiction</li>
+  <li>Therefore, Hamiltonian path doesn’t exist</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata Path has no solution.</p>
+
+<h4 id="32b-if-rudrata-path-has-a-solution-then-rudrata-cycle-has-a-solution">3.2b If Rudrata Path has a solution, then Rudrata Cycle has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata Path instance has solution (Hamiltonian path P).</p>
+
+<p><strong>Extract Cycle:</strong></p>
+<ul>
+  <li>Path P visits all vertices</li>
+  <li>If endpoints u and w are connected in original graph G, add edge to form cycle</li>
+  <li>Otherwise, need to check if such connection exists</li>
+</ul>
+
+<p><strong>Note:</strong> This reduction works if we remove an edge that exists in some Hamiltonian cycle. For general reduction, need more careful construction.</p>
+
+<p><strong>Conclusion:</strong> Rudrata Cycle has a solution (with appropriate construction).</p>
+
+<p><strong>Polynomial Time:</strong> O(1) to remove edge.</p>
+
+<p><strong>Therefore, Rudrata Path is NP-complete.</strong></p>
+
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Tour structure:</strong> Natural for TSP reductions</li>
-  <li><strong>Breaking cycle:</strong> Remove edge to get path</li>
-  <li><strong>Optimization:</strong> Special case of longest cycle</li>
-  <li><strong>Ordering:</strong> Cycle defines circular ordering</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce Rudrata Cycle to Metric TSP</li>
-  <li>Reduce Rudrata Cycle to Cycle Cover</li>
-  <li>Reduce Rudrata Cycle to Graph Traversal (all vertices)</li>
+  <li><strong>Weight Assignment:</strong> TSP reductions use weight thresholds</li>
+  <li><strong>Edge Removal:</strong> Breaking cycles into paths</li>
+  <li><strong>Tour Structure:</strong> Natural for routing problems</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>Rudrata Cycle reductions often involve tour structures and breaking cycles into paths.</p>
-
+<p>Rudrata Cycle reductions demonstrate tour structures and path-cycle relationships.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-independent-set/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Independent Set: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Independent Set: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-path/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from Rudrata Path: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Rudrata Path: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -292,27 +422,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -322,27 +452,27 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

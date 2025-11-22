@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Independent Set: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Independent Set: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Independent Set: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Independent Set: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Independent Set to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Independent Set to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Independent Set to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Independent Set to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Independent Set: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Independent Set: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Independent Set to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Independent Set: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Independent Set to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Independent Set: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Independent Set: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Independent Set: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Independent Set is a fundamental graph problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using Independent Set to prove other problems are NP-complete.</p>
+<p>Independent Set is a fundamental graph problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from Independent Set to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-independent-set">Problem Definition: Independent Set</h2>
 
@@ -80,39 +80,224 @@
 
 <p><strong>Independent Set:</strong> A subset of vertices where no two vertices are connected by an edge.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h3>
+<h2 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h2>
 
-<p><strong>Answer:</strong> Use complement graph.</p>
+<h3 id="1-np-completeness-proof-of-clique-solution-validation">1. NP-Completeness Proof of Clique: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Clique Problem:</strong></p>
 <ul>
-  <li>Given Independent Set instance: graph G, integer k</li>
-  <li>Create complement graph G̅</li>
-  <li>Return Clique: graph G̅, integer k</li>
+  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
+  <li><strong>Output:</strong> YES if G has a clique of size ≥ k, NO otherwise</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Independent set of size k in G ↔ Clique of size k in G̅</li>
-  <li>No edges in G ↔ all edges in G̅</li>
-</ul>
+<p><strong>Clique ∈ NP:</strong></p>
 
-<p><strong>Time:</strong> O(n²)</p>
-
-<h3 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h3>
-
-<p><strong>Answer:</strong> Use complement relationship.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Independent Set instance: graph G, integer k</li>
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (set S of vertices):</p>
+<ol>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Vertex Cover: graph G, k’ =</td>
+          <td>Check that S ⊆ V: O(</td>
+          <td>S</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that</td>
+          <td>S</td>
+          <td>≥ k: O(1) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>For each pair (u, v) in S, check if (u, v) ∈ E: O(</td>
+          <td>S</td>
+          <td>²) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>If all pairs connected, return YES; else return NO</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>S</td>
+      <td>²) ≤ O(</td>
+      <td>V</td>
+      <td>²), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Clique ∈ NP.</p>
+
+<h3 id="2-reduce-independent-set-to-clique">2. Reduce Independent Set to Clique</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Create complement graph G̅ = (V, E̅) where:
+    <ul>
+      <li>V(G̅) = V(G)</li>
+      <li>E̅ = {(u, v) : u, v ∈ V, u ≠ v, (u, v) ∉ E}</li>
+    </ul>
+  </li>
+  <li>Return Clique instance: graph G̅, integer k</li>
+</ul>
+
+<p><strong>Key Property:</strong> S is independent set in G ↔ S is clique in G̅</p>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Clique S of size k in G̅</p>
+
+<p><strong>Extract Independent Set:</strong></p>
+<ul>
+  <li>S is clique in G̅ ↔ S is independent set in G</li>
+  <li>Return S as independent set</li>
+</ul>
+
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-independent-set-has-a-solution-then-clique-has-a-solution">3.1 If Independent Set has a solution, then Clique has a solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
+
+<p><strong>Construct Clique:</strong></p>
+<ul>
+  <li>S is independent set in G</li>
+  <li>By definition of complement graph: S is clique in G̅</li>
+  <li>Therefore, S is clique of size k in G̅</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Clique has a solution.</p>
+
+<h4 id="32a-if-independent-set-does-not-have-a-solution-then-clique-has-no-solution">3.2a If Independent Set does not have a solution, then Clique has no solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+<ul>
+  <li>Assume Clique has solution S of size k in G̅</li>
+  <li>Then S is independent set of size k in G</li>
+  <li>Contradiction</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Clique has no solution.</p>
+
+<h4 id="32b-if-clique-has-a-solution-then-independent-set-has-a-solution">3.2b If Clique has a solution, then Independent Set has a solution</h4>
+
+<p><strong>Given:</strong> Clique instance has solution S of size k in G̅.</p>
+
+<p><strong>Extract Independent Set:</strong></p>
+<ul>
+  <li>S is clique in G̅ ↔ S is independent set in G</li>
+  <li>Therefore, S is independent set of size k in G</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(n²) to create complement graph.</p>
+
+<p><strong>Therefore, Clique is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h2>
+
+<h3 id="1-np-completeness-proof-of-vertex-cover-solution-validation">1. NP-Completeness Proof of Vertex Cover: Solution Validation</h3>
+
+<p><strong>Vertex Cover Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
+  <li><strong>Output:</strong> YES if G has a vertex cover of size ≤ k, NO otherwise</li>
+</ul>
+
+<p><strong>Vertex Cover ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (set S of vertices):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that S ⊆ V: O(</td>
+          <td>S</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that</td>
+          <td>S</td>
+          <td>≤ k: O(1) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(</td>
+          <td>E</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>If all edges covered, return YES; else return NO</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>E</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Vertex Cover ∈ NP.</p>
+
+<h3 id="2-reduce-independent-set-to-vertex-cover">2. Reduce Independent Set to Vertex Cover</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Vertex Cover instance: graph G, integer k’ =</td>
           <td>V</td>
           <td>- k</td>
         </tr>
@@ -121,152 +306,404 @@
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Key Property:</strong> S is independent set ↔ V \ S is vertex cover</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> Vertex Cover S’ of size k’ =</td>
+      <td>V</td>
+      <td>- k</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Independent Set:</strong></p>
+<ul>
+  <li>S = V \ S’</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>S</td>
+          <td>=</td>
+          <td>V</td>
+          <td>-</td>
+          <td>S’</td>
+          <td>=</td>
+          <td>V</td>
+          <td>- (</td>
+          <td>V</td>
+          <td>- k) = k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>S is independent set (complement of vertex cover)</li>
+</ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-independent-set-has-a-solution-then-vertex-cover-has-a-solution">3.1 If Independent Set has a solution, then Vertex Cover has a solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
+
+<p><strong>Construct Vertex Cover:</strong></p>
+<ul>
+  <li>S’ = V \ S</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>S’</td>
+          <td>=</td>
+          <td>V</td>
+          <td>- k = k’</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>S’ is vertex cover (complement of independent set)</li>
+</ul>
+
+<p><strong>Verify Coverage:</strong></p>
+<ul>
+  <li>For any edge (u, v) ∈ E:
+    <ul>
+      <li>Since S is independent set, not both u, v ∈ S</li>
+      <li>Therefore, at least one of u, v ∈ S’ = V \ S</li>
+      <li>Edge is covered</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Vertex Cover has a solution.</p>
+
+<h4 id="32a-if-independent-set-does-not-have-a-solution-then-vertex-cover-has-no-solution">3.2a If Independent Set does not have a solution, then Vertex Cover has no solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+<ul>
+  <li>Assume Vertex Cover has solution S’ of size k’</li>
+  <li>Then S = V \ S’ is independent set of size k</li>
+  <li>Contradiction</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Vertex Cover has no solution.</p>
+
+<h4 id="32b-if-vertex-cover-has-a-solution-then-independent-set-has-a-solution">3.2b If Vertex Cover has a solution, then Independent Set has a solution</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ =</td>
+      <td>V</td>
+      <td>- k.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Independent Set:</strong></p>
+<ul>
+  <li>S = V \ S’</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>S</td>
+          <td>=</td>
+          <td>V</td>
+          <td>- k’ = k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>S is independent set (complement of vertex cover)</li>
+</ul>
+
+<p><strong>Verify Independence:</strong></p>
+<ul>
+  <li>For any edge (u, v) ∈ E:
+    <ul>
+      <li>Since S’ is vertex cover, at least one of u, v ∈ S’</li>
+      <li>Therefore, not both u, v ∈ S = V \ S’</li>
+      <li>No edge within S</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(1) (trivial transformation).</p>
+
+<p><strong>Therefore, Vertex Cover is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q3-how-do-you-reduce-independent-set-to-maximum-cut">Q3: How do you reduce Independent Set to Maximum Cut?</h2>
+
+<h3 id="1-np-completeness-proof-of-maximum-cut-solution-validation">1. NP-Completeness Proof of Maximum Cut: Solution Validation</h3>
+
+<p><strong>Maximum Cut Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
+  <li><strong>Output:</strong> YES if G has a cut (S, V \ S) with at least k edges crossing, NO otherwise</li>
+</ul>
+
+<p><strong>Maximum Cut ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (partition S, V \ S):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that S ⊆ V: O(</td>
+          <td>S</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Count edges crossing cut: O(</td>
+          <td>E</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Check if count ≥ k: O(1) time</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>E</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> Maximum Cut ∈ NP.</p>
+
+<h3 id="2-reduce-independent-set-to-maximum-cut">2. Reduce Independent Set to Maximum Cut</h3>
+
+<h4 id="21-input-conversion-2">2.1 Input Conversion</h4>
+
+<p>Given an Independent Set instance: graph G = (V, E), integer k.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Create complete graph G’ = (V, E’) where E’ contains all possible edges</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Maximum Cut instance: graph G’, target = k(</td>
+          <td>V</td>
+          <td>- k)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Key Idea:</strong> Independent set of size k → Cut with k vertices on one side, no edges within that side</p>
+
+<h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(</td>
+      <td>V</td>
+      <td>- k) edges crossing</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Independent set of size k ↔ Vertex cover of size</td>
-          <td>V</td>
-          <td>- k</td>
+          <td>If</td>
+          <td>S</td>
+          <td>= k, return S as independent set</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>S is independent set ↔ V \ S is vertex cover</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q3-how-do-you-reduce-independent-set-to-maximum-cut">Q3: How do you reduce Independent Set to Maximum Cut?</h3>
-
-<p><strong>Answer:</strong> Encode independent set as one side of cut.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Independent Set instance: graph G, integer k</li>
-  <li>Create graph G’ by adding edges if needed</li>
-  <li>Return Maximum Cut: graph G’, target cut size</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Independent set of size k ↔ Cut with k vertices on one side, no edges within</li>
-</ul>
-
-<p><strong>Time:</strong> O(n + m)</p>
-
-<h3 id="q4-how-do-you-reduce-independent-set-to-graph-coloring">Q4: How do you reduce Independent Set to Graph Coloring?</h3>
-
-<p><strong>Answer:</strong> Use independent sets as color classes.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Independent Set instance: graph G, integer k</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Return Graph Coloring: graph G, number of colors =</td>
-          <td>V</td>
-          <td>- k + 1</td>
+          <td>If</td>
+          <td>V \ S</td>
+          <td>= k, return V \ S as independent set</td>
         </tr>
       </tbody>
     </table>
   </li>
+  <li>Otherwise, need refinement</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<h3 id="3-correctness-justification-2">3. Correctness Justification</h3>
+
+<h4 id="31-if-independent-set-has-a-solution-then-maximum-cut-has-a-solution">3.1 If Independent Set has a solution, then Maximum Cut has a solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has solution S of size k in G.</p>
+
+<p><strong>Construct Cut:</strong></p>
+<ul>
+  <li>Partition: (S, V \ S)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Number of crossing edges =</td>
+          <td>S</td>
+          <td>·</td>
+          <td>V \ S</td>
+          <td>= k(</td>
+          <td>V</td>
+          <td>- k)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Since S is independent set, no edges within S</li>
+  <li>All edges incident to S cross the cut</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Maximum Cut has a solution.</p>
+
+<h4 id="32a-if-independent-set-does-not-have-a-solution-then-maximum-cut-has-no-solution">3.2a If Independent Set does not have a solution, then Maximum Cut has no solution</h4>
+
+<p><strong>Given:</strong> Independent Set instance has no solution of size k in G.</p>
+
+<p><strong>Proof:</strong></p>
 <ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Independent set of size k ↔ Can color with</td>
-          <td>V</td>
-          <td>- k + 1 colors</td>
+          <td>For any partition (S, V \ S) with</td>
+          <td>S</td>
+          <td>= k:</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>If S is not independent set, there are edges within S</li>
+      <li>These edges don’t cross the cut</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Maximum crossing edges &lt; k(</td>
+              <td>V</td>
+              <td>- k)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Similar argument for</td>
+          <td>V \ S</td>
+          <td>= k</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>Large independent set ↔ Few colors needed</li>
 </ul>
 
-<p><strong>Time:</strong> O(1)</p>
+<p><strong>Conclusion:</strong> Maximum Cut has no solution.</p>
 
-<h3 id="q5-how-do-you-reduce-independent-set-to-dominating-set">Q5: How do you reduce Independent Set to Dominating Set?</h3>
+<h4 id="32b-if-maximum-cut-has-a-solution-then-independent-set-has-a-solution">3.2b If Maximum Cut has a solution, then Independent Set has a solution</h4>
 
-<p><strong>Answer:</strong> Independent set + neighbors form dominating set.</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(</td>
+      <td>V</td>
+      <td>- k) edges crossing.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Extract Independent Set:</strong></p>
 <ul>
-  <li>Given Independent Set instance: graph G, integer k</li>
-  <li>Return Dominating Set: graph G, k’ = k + (some function of neighbors)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>If</td>
+          <td>S</td>
+          <td>= k and no edges within S, return S</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>If</td>
+          <td>V \ S</td>
+          <td>= k and no edges within V \ S, return V \ S</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Otherwise, refine partition</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Independent set of size k → Can extend to dominating set</li>
-  <li>Requires careful construction</li>
-</ul>
+<p><strong>Conclusion:</strong> Independent Set has a solution.</p>
 
-<p><strong>Time:</strong> O(n + m)</p>
+<p><strong>Polynomial Time:</strong> O(n²) to create complete graph.</p>
 
-<h2 id="reduction-patterns-from-independent-set">Reduction Patterns from Independent Set</h2>
+<p><strong>Therefore, Maximum Cut is NP-complete.</strong></p>
 
-<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem is complement structure</li>
-  <li><strong>Examples:</strong> Clique</li>
-  <li><strong>Key:</strong> Complement preserves no-edge property</li>
-</ul>
-
-<h3 id="pattern-2-complement-set">Pattern 2: Complement Set</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem uses complement vertices</li>
-  <li><strong>Examples:</strong> Vertex Cover</li>
-  <li><strong>Key:</strong> V \ S relationship</li>
-</ul>
-
-<h3 id="pattern-3-partitioncut">Pattern 3: Partition/Cut</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem partitions vertices</li>
-  <li><strong>Examples:</strong> Maximum Cut, Graph Partitioning</li>
-  <li><strong>Key:</strong> Independent set forms one partition</li>
-</ul>
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Complement graph:</strong> Clique reductions</li>
-  <li><strong>Complement set:</strong> Vertex cover reductions</li>
-  <li><strong>Partition problems:</strong> Cuts and colorings</li>
-  <li><strong>Selection problems:</strong> Many reduce from IS</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce Independent Set to Set Packing</li>
-  <li>Reduce Independent Set to Maximum Weight Independent Set</li>
-  <li>Reduce Independent Set to Clique Cover</li>
+  <li><strong>Complement Graph:</strong> Powerful tool for Clique reductions</li>
+  <li><strong>Complement Set:</strong> Natural for Vertex Cover reductions</li>
+  <li><strong>Partition Structure:</strong> Useful for Cut problems</li>
+  <li><strong>Template Structure:</strong> All reductions follow the same rigorous format</li>
 </ol>
 
 <hr />
 
-<p>Independent Set reductions often use complement relationships and graph transformations.</p>
-
+<p>Independent Set reductions demonstrate the power of complement relationships and graph transformations in NP-completeness proofs.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-ilp/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Integer Linear Programming: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Integer Linear Programming: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-cycle/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from Rudrata Cycle: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Rudrata Cycle: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -279,27 +716,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -309,27 +746,27 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

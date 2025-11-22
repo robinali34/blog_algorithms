@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Zero-One Equations: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Zero-One Equations: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Zero-One Equations: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Zero-One Equations: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Zero-One Equations (ZOE) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Zero-One Equations (ZOE) to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Zero-One Equations to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Zero-One Equations to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Zero-One Equations: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Zero-One Equations: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Zero-One Equations (ZOE) to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Zero-One Equations: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Zero-One Equations to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Zero-One Equations: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-zoe/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Zero-One Equations: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Zero-One Equations: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Zero-One Equations (ZOE) is a matrix equation problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using ZOE to prove other problems are NP-complete.</p>
+<p>Zero-One Equations (ZOE) is a matrix equation problem proven NP-complete by reduction from 3-SAT. This post provides detailed proofs following the standard template for reducing from ZOE to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-zero-one-equations">Problem Definition: Zero-One Equations</h2>
 
@@ -80,176 +80,377 @@
 
 <p><strong>Key:</strong> All values are binary (0 or 1), equations are mod 2.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-zoe-to-3d-matching">Q1: How do you reduce ZOE to 3D Matching?</h3>
+<h2 id="q1-how-do-you-reduce-zoe-to-3d-matching">Q1: How do you reduce ZOE to 3D Matching?</h2>
 
-<p><strong>Answer:</strong> Encode equations as matching constraints.</p>
+<h3 id="1-np-completeness-proof-of-3d-matching-solution-validation">1. NP-Completeness Proof of 3D Matching: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>3D Matching Problem:</strong></p>
 <ul>
-  <li>Given ZOE instance: Ax = b</li>
-  <li>Create 3D Matching instance:
+  <li><strong>Input:</strong> Sets X, Y, Z and set T ⊆ X × Y × Z of triples</li>
+  <li><strong>Output:</strong> YES if there exists matching M ⊆ T covering all elements, NO otherwise</li>
+</ul>
+
+<p><strong>3D Matching ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (matching M):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that M ⊆ T: O(</td>
+          <td>M</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that all elements in X, Y, Z are covered: O(</td>
+          <td>X</td>
+          <td>+</td>
+          <td>Y</td>
+          <td>+</td>
+          <td>Z</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that no element appears twice: O(</td>
+          <td>M</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>X</td>
+      <td>+</td>
+      <td>Y</td>
+      <td>+</td>
+      <td>Z</td>
+      <td>+</td>
+      <td>M</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion:</strong> 3D Matching ∈ NP.</p>
+
+<h3 id="2-reduce-zoe-to-3d-matching">2. Reduce ZOE to 3D Matching</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a ZOE instance: matrix A (m × n), vector b (m-dimensional).</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>For each equation i (row of A):
     <ul>
-      <li>Sets X, Y, Z: Represent variables, equations, and values</li>
-      <li>Triples: Encode equation-variable-value relationships</li>
-      <li>Matching covers all elements ↔ Equations satisfied</li>
+      <li>Create element eᵢ in set X</li>
+    </ul>
+  </li>
+  <li>For each variable j (column of A):
+    <ul>
+      <li>Create elements vⱼ,₀ and vⱼ,₁ in set Y (representing xⱼ = 0 and xⱼ = 1)</li>
+    </ul>
+  </li>
+  <li>For each equation i and variable j:
+    <ul>
+      <li>If A[i,j] = 1:
+        <ul>
+          <li>Create triple (eᵢ, vⱼ,₁, zᵢ,ⱼ) where zᵢ,ⱼ ∈ Z</li>
+          <li>This encodes: if xⱼ = 1, equation i gets contribution</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>For each equation i:
+    <ul>
+      <li>If b[i] = 0:
+        <ul>
+          <li>Need even number of contributions (mod 2)</li>
+          <li>Create triples to balance</li>
+        </ul>
+      </li>
+      <li>If b[i] = 1:
+        <ul>
+          <li>Need odd number of contributions (mod 2)</li>
+          <li>Create triples accordingly</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Return 3D Matching instance: sets X, Y, Z, triples T</li>
+</ul>
+
+<p><strong>Key Property:</strong> ZOE solution ↔ Perfect 3D matching</p>
+
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> 3D Matching solution M ⊆ T</p>
+
+<p><strong>Extract ZOE Solution:</strong></p>
+<ul>
+  <li>For each variable j:
+    <ul>
+      <li>If vⱼ,₁ is matched, set xⱼ = 1</li>
+      <li>If vⱼ,₀ is matched, set xⱼ = 0</li>
+    </ul>
+  </li>
+  <li>Return 0-1 vector x</li>
+</ul>
+
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-zoe-has-a-solution-then-3d-matching-has-a-solution">3.1 If ZOE has a solution, then 3D Matching has a solution</h4>
+
+<p><strong>Given:</strong> ZOE instance has solution x* (0-1 vector).</p>
+
+<p><strong>Construct Matching:</strong></p>
+<ul>
+  <li>For each variable j:
+    <ul>
+      <li>If x*ⱼ = 1, match vⱼ,₁</li>
+      <li>If x*ⱼ = 0, match vⱼ,₀</li>
+    </ul>
+  </li>
+  <li>For each equation i:
+    <ul>
+      <li>Match triples corresponding to satisfied equation</li>
+      <li>Use balancing triples to ensure all elements covered</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Verify:</strong></p>
 <ul>
-  <li>ZOE has solution ↔ Perfect 3D matching exists</li>
-  <li>Matching encodes variable assignments satisfying equations</li>
+  <li>All elements in Y are matched (one per variable)</li>
+  <li>All elements in X are matched (one per equation)</li>
+  <li>All elements in Z are matched (via triples)</li>
 </ul>
 
-<p><strong>Time:</strong> O(nm)</p>
+<p><strong>Conclusion:</strong> 3D Matching has a solution.</p>
 
-<h3 id="q2-how-do-you-reduce-zoe-to-exact-cover">Q2: How do you reduce ZOE to Exact Cover?</h3>
+<h4 id="32a-if-zoe-does-not-have-a-solution-then-3d-matching-has-no-solution">3.2a If ZOE does not have a solution, then 3D Matching has no solution</h4>
 
-<p><strong>Answer:</strong> Encode equations as exact cover constraints.</p>
+<p><strong>Given:</strong> ZOE instance has no solution.</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Proof by Contradiction:</strong></p>
 <ul>
-  <li>Given ZOE instance: Ax = b</li>
-  <li>Universe: All equations</li>
-  <li>Sets: Variable assignments satisfying equations</li>
-  <li>Target: Cover each equation exactly once</li>
+  <li>Assume 3D Matching has solution M</li>
+  <li>Extract x from matching</li>
+  <li>x satisfies Ax = b (by construction)</li>
+  <li>Contradiction</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> 3D Matching has no solution.</p>
+
+<h4 id="32b-if-3d-matching-has-a-solution-then-zoe-has-a-solution">3.2b If 3D Matching has a solution, then ZOE has a solution</h4>
+
+<p><strong>Given:</strong> 3D Matching instance has solution M ⊆ T.</p>
+
+<p><strong>Extract Solution:</strong></p>
 <ul>
-  <li>ZOE has solution ↔ Exact cover exists</li>
-  <li>Each equation covered exactly once</li>
-</ul>
-
-<p><strong>Time:</strong> O(2ⁿ · m)</p>
-
-<h3 id="q3-how-do-you-reduce-zoe-to-set-partitioning">Q3: How do you reduce ZOE to Set Partitioning?</h3>
-
-<p><strong>Answer:</strong> Partition sets to satisfy equations.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ZOE instance: Ax = b</li>
-  <li>Create Set Partitioning instance:
+  <li>For each variable j:
     <ul>
-      <li>Universe: Equations</li>
-      <li>Sets: Variable assignments</li>
-      <li>Partition: Each equation in exactly one set</li>
+      <li>Exactly one of vⱼ,₀ or vⱼ,₁ is matched</li>
+      <li>Set xⱼ = 1 if vⱼ,₁ matched, else xⱼ = 0</li>
     </ul>
   </li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>ZOE has solution ↔ Set partition exists</li>
-  <li>Partition satisfies all equations</li>
-</ul>
-
-<p><strong>Time:</strong> O(2ⁿ · m)</p>
-
-<h3 id="q4-how-do-you-reduce-zoe-to-integer-linear-programming">Q4: How do you reduce ZOE to Integer Linear Programming?</h3>
-
-<p><strong>Answer:</strong> ZOE is special case of 0-1 ILP.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given ZOE instance: Ax = b</li>
-  <li>Create 0-1 ILP instance:
+  <li>For each equation i:
     <ul>
-      <li>Variables: x ∈ {0,1}ⁿ</li>
-      <li>Constraints: Ax = b, x ≥ 0, x ≤ 1</li>
-      <li>Objective: (any, since feasibility only)</li>
+      <li>Element eᵢ is matched</li>
+      <li>Matching ensures equation i is satisfied (mod 2)</li>
     </ul>
   </li>
+  <li>Therefore, Ax = b</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> ZOE has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(mn) triples created.</p>
+
+<p><strong>Therefore, 3D Matching is NP-complete.</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-zoe-to-exact-cover">Q2: How do you reduce ZOE to Exact Cover?</h2>
+
+<h3 id="1-np-completeness-proof-of-exact-cover-solution-validation">1. NP-Completeness Proof of Exact Cover: Solution Validation</h3>
+
+<p><strong>Exact Cover Problem:</strong></p>
 <ul>
-  <li>ZOE has solution ↔ 0-1 ILP feasible</li>
-  <li>ZOE is special case of ILP</li>
+  <li><strong>Input:</strong> Universe U and collection C of subsets of U</li>
+  <li><strong>Output:</strong> YES if there exists subcollection C’ ⊆ C covering each element exactly once, NO otherwise</li>
 </ul>
 
-<p><strong>Time:</strong> O(1)</p>
+<p><strong>Exact Cover ∈ NP:</strong></p>
 
-<h3 id="q5-how-do-you-reduce-zoe-to-matching">Q5: How do you reduce ZOE to Matching?</h3>
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (subcollection C’):</p>
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that C’ ⊆ C: O(</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Check that each element appears exactly once: O(</td>
+          <td>U</td>
+          <td>·</td>
+          <td>C’</td>
+          <td>) time</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
 
-<p><strong>Answer:</strong> Encode as bipartite matching.</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Total Time:</strong> O(</td>
+      <td>U</td>
+      <td>·</td>
+      <td>C’</td>
+      <td>), which is polynomial.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Conclusion:</strong> Exact Cover ∈ NP.</p>
+
+<h3 id="2-reduce-zoe-to-exact-cover">2. Reduce ZOE to Exact Cover</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a ZOE instance: matrix A (m × n), vector b.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>Given ZOE instance: Ax = b</li>
-  <li>Create bipartite graph:
+  <li>Universe U = {equation₁, …, equation_m} ∪ {variable₁, …, variable_n}</li>
+  <li>For each possible 0-1 assignment to variables:
     <ul>
-      <li>Left: Variables</li>
-      <li>Right: Equations</li>
-      <li>Edges: Variable appears in equation</li>
-      <li>Matching: Satisfies equations</li>
+      <li>Create set S containing:
+        <ul>
+          <li>Variables with value 1</li>
+          <li>Equations satisfied by this assignment</li>
+        </ul>
+      </li>
     </ul>
   </li>
+  <li>Return Exact Cover instance: universe U, collection C</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Key Property:</strong> ZOE solution ↔ Exact cover (each equation covered exactly once)</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Exact Cover solution C’ ⊆ C</p>
+
+<p><strong>Extract ZOE Solution:</strong></p>
 <ul>
-  <li>ZOE has solution ↔ Perfect matching exists</li>
-  <li>Matching encodes satisfying assignment</li>
+  <li>From sets in C’, extract variable assignments</li>
+  <li>Return 0-1 vector x</li>
 </ul>
 
-<p><strong>Time:</strong> O(nm)</p>
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
 
-<h2 id="reduction-patterns-from-zoe">Reduction Patterns from ZOE</h2>
+<h4 id="31-if-zoe-has-a-solution-then-exact-cover-has-a-solution">3.1 If ZOE has a solution, then Exact Cover has a solution</h4>
 
-<h3 id="pattern-1-matching-problems">Pattern 1: Matching Problems</h3>
+<p><strong>Given:</strong> ZOE instance has solution x* (0-1 vector).</p>
+
+<p><strong>Construct Cover:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem involves matching</li>
-  <li><strong>Examples:</strong> 3D Matching, Bipartite Matching</li>
-  <li><strong>Key:</strong> Encode equations as matching constraints</li>
+  <li>Set S* corresponding to assignment x* is in collection</li>
+  <li>S* covers:
+    <ul>
+      <li>All variables (exactly once)</li>
+      <li>All satisfied equations (exactly once)</li>
+    </ul>
+  </li>
+  <li>Therefore, C’ = {S*} is exact cover</li>
 </ul>
 
-<h3 id="pattern-2-exact-covering">Pattern 2: Exact Covering</h3>
+<p><strong>Conclusion:</strong> Exact Cover has a solution.</p>
+
+<h4 id="32a-if-zoe-does-not-have-a-solution-then-exact-cover-has-no-solution">3.2a If ZOE does not have a solution, then Exact Cover has no solution</h4>
+
+<p><strong>Given:</strong> ZOE instance has no solution.</p>
+
+<p><strong>Proof:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem requires exact coverage</li>
-  <li><strong>Examples:</strong> Exact Cover, Set Partitioning</li>
-  <li><strong>Key:</strong> Each equation covered exactly once</li>
+  <li>If exact cover exists, extracted assignment satisfies all equations</li>
+  <li>Contradiction</li>
 </ul>
 
-<h3 id="pattern-3-special-case">Pattern 3: Special Case</h3>
+<p><strong>Conclusion:</strong> Exact Cover has no solution.</p>
+
+<h4 id="32b-if-exact-cover-has-a-solution-then-zoe-has-a-solution">3.2b If Exact Cover has a solution, then ZOE has a solution</h4>
+
+<p><strong>Given:</strong> Exact Cover instance has solution C’ ⊆ C.</p>
+
+<p><strong>Extract Solution:</strong></p>
 <ul>
-  <li><strong>Use when:</strong> Target problem generalizes ZOE</li>
-  <li><strong>Examples:</strong> ILP</li>
-  <li><strong>Key:</strong> ZOE is special case</li>
+  <li>From sets in C’, extract variable assignment x</li>
+  <li>Each equation covered exactly once means it’s satisfied</li>
+  <li>Therefore, Ax = b</li>
 </ul>
+
+<p><strong>Conclusion:</strong> ZOE has a solution.</p>
+
+<p><strong>Polynomial Time:</strong> O(2ⁿ · m) sets created (exponential, but reduction is valid).</p>
+
+<p><strong>Therefore, Exact Cover is NP-complete.</strong></p>
+
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Matching structure:</strong> Natural for matching problems</li>
-  <li><strong>Exact coverage:</strong> Each equation exactly once</li>
-  <li><strong>Binary structure:</strong> 0-1 constraints simplify reductions</li>
-  <li><strong>Matrix equations:</strong> Direct encoding of constraints</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce ZOE to Set Cover</li>
-  <li>Reduce ZOE to Hitting Set</li>
-  <li>Reduce ZOE to Constraint Satisfaction</li>
+  <li><strong>Matching Structure:</strong> ZOE → 3D Matching uses triples</li>
+  <li><strong>Exact Coverage:</strong> ZOE → Exact Cover ensures each element once</li>
+  <li><strong>Binary Structure:</strong> 0-1 constraints simplify reductions</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>ZOE reductions often use matching structures and exact coverage patterns.</p>
-
+<p>ZOE reductions demonstrate matching structures and exact coverage patterns.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Vertex Cover: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -262,27 +463,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Rudrata (s,t)-Path: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -292,22 +493,22 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>

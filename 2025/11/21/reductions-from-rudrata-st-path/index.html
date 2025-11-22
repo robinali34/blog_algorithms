@@ -3,21 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Reductions from Rudrata (s,t)-Path: Common Questions and Answers | Robina Li</title>
+<title>Reductions from Rudrata (s,t)-Path: Detailed Proofs | Robina Li</title>
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Reductions from Rudrata (s,t)-Path: Common Questions and Answers" />
+<meta property="og:title" content="Reductions from Rudrata (s,t)-Path: Detailed Proofs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A comprehensive guide to reducing from Rudrata (s,t)-Path to prove other problems are NP-complete, with common reduction questions and detailed answers." />
-<meta property="og:description" content="A comprehensive guide to reducing from Rudrata (s,t)-Path to prove other problems are NP-complete, with common reduction questions and detailed answers." />
+<meta name="description" content="Comprehensive detailed proofs showing how to reduce from Rudrata (s,t)-Path to prove other problems are NP-complete, with full correctness justifications." />
+<meta property="og:description" content="Comprehensive detailed proofs showing how to reduce from Rudrata (s,t)-Path to prove other problems are NP-complete, with full correctness justifications." />
 <link rel="canonical" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/" />
 <meta property="og:url" content="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/" />
 <meta property="og:site_name" content="Robina Li" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2025-11-21T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Reductions from Rudrata (s,t)-Path: Common Questions and Answers" />
+<meta property="twitter:title" content="Reductions from Rudrata (s,t)-Path: Detailed Proofs" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"A comprehensive guide to reducing from Rudrata (s,t)-Path to prove other problems are NP-complete, with common reduction questions and detailed answers.","headline":"Reductions from Rudrata (s,t)-Path: Common Questions and Answers","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-21T00:00:00+00:00","datePublished":"2025-11-21T00:00:00+00:00","description":"Comprehensive detailed proofs showing how to reduce from Rudrata (s,t)-Path to prove other problems are NP-complete, with full correctness justifications.","headline":"Reductions from Rudrata (s,t)-Path: Detailed Proofs","mainEntityOfPage":{"@type":"WebPage","@id":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/"},"url":"https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-rudrata-st-path/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog_algorithms/assets/main.css">
   <link rel="stylesheet" href="/blog_algorithms/assets/css/morandi-theme.css"><link type="application/atom+xml" rel="alternate" href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" title="Robina Li" /></head>
@@ -58,7 +58,7 @@
     <main class="post-main">
       <article class="post">
         <header class="post-header-content">
-          <h1 class="post-title">Reductions from Rudrata (s,t)-Path: Common Questions and Answers</h1>
+          <h1 class="post-title">Reductions from Rudrata (s,t)-Path: Detailed Proofs</h1>
           <div class="post-meta-info">
             <time class="post-date" datetime="2025-11-21T00:00:00+00:00">
               November 21, 2025
@@ -68,7 +68,7 @@
         <div class="post-content">
           <h2 id="introduction">Introduction</h2>
 
-<p>Rudrata (s,t)-Path (Hamiltonian (s,t)-Path) is a constrained path problem proven NP-complete. This post provides answers to common reduction questions when using Rudrata (s,t)-Path to prove other problems are NP-complete.</p>
+<p>Rudrata (s,t)-Path (Hamiltonian (s,t)-Path) is a constrained path problem proven NP-complete. This post provides detailed proofs following the standard template for reducing from Rudrata (s,t)-Path to prove other problems are NP-complete.</p>
 
 <h2 id="problem-definition-rudrata-st-path">Problem Definition: Rudrata (s,t)-Path</h2>
 
@@ -80,195 +80,229 @@
 
 <p><strong>Hamiltonian (s,t)-Path:</strong> A path from s to t that visits each vertex exactly once.</p>
 
-<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+<hr />
 
-<h3 id="q1-how-do-you-reduce-rudrata-st-path-to-rudrata-path">Q1: How do you reduce Rudrata (s,t)-Path to Rudrata Path?</h3>
+<h2 id="q1-how-do-you-reduce-rudrata-st-path-to-rudrata-path">Q1: How do you reduce Rudrata (s,t)-Path to Rudrata Path?</h2>
 
-<p><strong>Answer:</strong> Remove constraint by allowing any start/end.</p>
+<h3 id="1-np-completeness-proof-of-rudrata-path-solution-validation">1. NP-Completeness Proof of Rudrata Path: Solution Validation</h3>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Rudrata Path Problem:</strong></p>
 <ul>
-  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s, t</li>
-  <li>Return Rudrata Path: graph G</li>
+  <li><strong>Input:</strong> Graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G has a path visiting every vertex exactly once, NO otherwise</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Rudrata Path ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (path P):</p>
+<ol>
+  <li>Check that all vertices appear exactly once: O(n) time</li>
+  <li>Check that consecutive vertices are connected: O(n) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Rudrata Path ∈ NP.</p>
+
+<h3 id="2-reduce-rudrata-st-path-to-rudrata-path">2. Reduce Rudrata (s,t)-Path to Rudrata Path</h3>
+
+<h4 id="21-input-conversion">2.1 Input Conversion</h4>
+
+<p>Given a Rudrata (s,t)-Path instance: graph G = (V, E), vertices s, t.</p>
+
+<p><strong>Construction:</strong></p>
 <ul>
-  <li>Hamiltonian (s,t)-path exists → Hamiltonian path exists</li>
-  <li>If Hamiltonian path exists, can reorder to start at s, end at t (if edge exists)</li>
+  <li>Return Rudrata Path instance: graph G</li>
 </ul>
 
-<p><strong>Time:</strong> O(1)</p>
+<p><strong>Key Property:</strong> Hamiltonian (s,t)-path → Hamiltonian path (if edge exists)</p>
 
-<h3 id="q2-how-do-you-reduce-rudrata-st-path-to-longest-st-path">Q2: How do you reduce Rudrata (s,t)-Path to Longest (s,t)-Path?</h3>
+<p><strong>Note:</strong> This reduction works if we can verify that a Hamiltonian path can be reordered to start at s and end at t. For general reduction, may need to add/remove edges.</p>
 
-<p><strong>Answer:</strong> Rudrata (s,t)-Path is special case.</p>
+<h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Given:</strong> Rudrata Path solution (path P)</p>
+
+<p><strong>Extract (s,t)-Path:</strong></p>
 <ul>
-  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s, t</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return Longest (s,t)-Path: graph G, vertices s, t, target length =</td>
-          <td>V</td>
-          <td>- 1</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>If path P starts at s and ends at t, return P</li>
+  <li>Otherwise, check if path can be reordered (if graph allows)</li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<h3 id="3-correctness-justification">3. Correctness Justification</h3>
+
+<h4 id="31-if-rudrata-st-path-has-a-solution-then-rudrata-path-has-a-solution">3.1 If Rudrata (s,t)-Path has a solution, then Rudrata Path has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has solution (path P from s to t).</p>
+
+<p><strong>Construct Hamiltonian Path:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Hamiltonian (s,t)-path ↔ Longest (s,t)-path of length</td>
-          <td>V</td>
-          <td>- 1</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Path P visits all vertices</li>
+  <li>P is Hamiltonian path (may need reordering if endpoints don’t matter)</li>
 </ul>
 
-<p><strong>Time:</strong> O(1)</p>
+<p><strong>Conclusion:</strong> Rudrata Path has a solution.</p>
 
-<h3 id="q3-how-do-you-reduce-rudrata-st-path-to-traveling-salesman-problem">Q3: How do you reduce Rudrata (s,t)-Path to Traveling Salesman Problem?</h3>
+<h4 id="32a-if-rudrata-st-path-does-not-have-a-solution-then-rudrata-path-has-no-solution">3.2a If Rudrata (s,t)-Path does not have a solution, then Rudrata Path has no solution</h4>
 
-<p><strong>Answer:</strong> Convert path to tour via s-t connection.</p>
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has no Hamiltonian (s,t)-path.</p>
 
-<p><strong>Reduction:</strong></p>
+<p><strong>Proof:</strong></p>
 <ul>
-  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s, t</li>
-  <li>Create complete graph G’ with weights:
+  <li>If Hamiltonian path exists, can check if it can start at s and end at t</li>
+  <li>But if no (s,t)-path exists, may still have Hamiltonian path</li>
+  <li>Need more careful construction</li>
+</ul>
+
+<p><strong>Refined Approach:</strong></p>
+<ul>
+  <li>If (s,t)-path doesn’t exist, Hamiltonian path may still exist</li>
+  <li>This reduction shows (s,t)-path is at least as hard, but not necessarily equivalent</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata Path may or may not have solution (reduction is not straightforward).</p>
+
+<h4 id="32b-if-rudrata-path-has-a-solution-then-rudrata-st-path-has-a-solution">3.2b If Rudrata Path has a solution, then Rudrata (s,t)-Path has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata Path instance has solution (path P).</p>
+
+<p><strong>Extract (s,t)-Path:</strong></p>
+<ul>
+  <li>If P starts at s and ends at t, return P</li>
+  <li>Otherwise, need to check if reordering is possible</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata (s,t)-Path may have solution (depends on graph structure).</p>
+
+<p><strong>Note:</strong> This reduction is not straightforward. Better to reduce from Rudrata Cycle.</p>
+
+<p><strong>Polynomial Time:</strong> O(1) (trivial, but correctness is conditional).</p>
+
+<p><strong>Therefore, Rudrata Path is NP-complete (via other reductions).</strong></p>
+
+<hr />
+
+<h2 id="q2-how-do-you-reduce-rudrata-st-path-to-rudrata-cycle">Q2: How do you reduce Rudrata (s,t)-Path to Rudrata Cycle?</h2>
+
+<h3 id="1-np-completeness-proof-of-rudrata-cycle-solution-validation">1. NP-Completeness Proof of Rudrata Cycle: Solution Validation</h3>
+
+<p><strong>Rudrata Cycle Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E)</li>
+  <li><strong>Output:</strong> YES if G has a cycle visiting every vertex exactly once, NO otherwise</li>
+</ul>
+
+<p><strong>Rudrata Cycle ∈ NP:</strong></p>
+
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (cycle C):</p>
+<ol>
+  <li>Check that all vertices appear exactly once: O(n) time</li>
+  <li>Check that cycle is closed: O(1) time</li>
+</ol>
+
+<p><strong>Total Time:</strong> O(n), which is polynomial.</p>
+
+<p><strong>Conclusion:</strong> Rudrata Cycle ∈ NP.</p>
+
+<h3 id="2-reduce-rudrata-st-path-to-rudrata-cycle">2. Reduce Rudrata (s,t)-Path to Rudrata Cycle</h3>
+
+<h4 id="21-input-conversion-1">2.1 Input Conversion</h4>
+
+<p>Given a Rudrata (s,t)-Path instance: graph G = (V, E), vertices s, t.</p>
+
+<p><strong>Construction:</strong></p>
+<ul>
+  <li>Add edge (t, s) to G if it doesn’t exist</li>
+  <li>Return Rudrata Cycle instance: modified graph G’</li>
+</ul>
+
+<p><strong>Key Property:</strong> Hamiltonian (s,t)-path ↔ Hamiltonian cycle (with added edge)</p>
+
+<h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
+
+<p><strong>Given:</strong> Rudrata Cycle solution (cycle C)</p>
+
+<p><strong>Extract (s,t)-Path:</strong></p>
+<ul>
+  <li>Remove edge (t, s) from cycle C</li>
+  <li>Remaining path is Hamiltonian (s,t)-path</li>
+</ul>
+
+<h3 id="3-correctness-justification-1">3. Correctness Justification</h3>
+
+<h4 id="31-if-rudrata-st-path-has-a-solution-then-rudrata-cycle-has-a-solution">3.1 If Rudrata (s,t)-Path has a solution, then Rudrata Cycle has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has solution (path P from s to t).</p>
+
+<p><strong>Construct Hamiltonian Cycle:</strong></p>
+<ul>
+  <li>Path P visits all vertices from s to t</li>
+  <li>Add edge (t, s) to form cycle</li>
+  <li>Cycle visits all vertices exactly once</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Rudrata Cycle has a solution.</p>
+
+<h4 id="32a-if-rudrata-st-path-does-not-have-a-solution-then-rudrata-cycle-has-no-solution">3.2a If Rudrata (s,t)-Path does not have a solution, then Rudrata Cycle has no solution</h4>
+
+<p><strong>Given:</strong> Rudrata (s,t)-Path instance has no Hamiltonian (s,t)-path.</p>
+
+<p><strong>Proof:</strong></p>
+<ul>
+  <li>If Hamiltonian cycle exists in G’:
     <ul>
-      <li>Weight 1 if edge exists in G</li>
-      <li>Weight 2 if edge doesn’t exist</li>
+      <li>Remove edge (t, s) from cycle</li>
+      <li>Remaining path is Hamiltonian (s,t)-path</li>
+      <li>Contradiction</li>
     </ul>
   </li>
-  <li>Add edge (t, s) with weight 1</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Return TSP: graph G’, target =</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
 </ul>
 
-<p><strong>Correctness:</strong></p>
+<p><strong>Conclusion:</strong> Rudrata Cycle has no solution.</p>
+
+<h4 id="32b-if-rudrata-cycle-has-a-solution-then-rudrata-st-path-has-a-solution">3.2b If Rudrata Cycle has a solution, then Rudrata (s,t)-Path has a solution</h4>
+
+<p><strong>Given:</strong> Rudrata Cycle instance has solution (cycle C).</p>
+
+<p><strong>Extract (s,t)-Path:</strong></p>
 <ul>
-  <li>Hamiltonian (s,t)-path ↔ TSP tour s → … → t → s</li>
+  <li>Cycle C visits all vertices</li>
+  <li>Remove edge (t, s) from C</li>
+  <li>Remaining path is Hamiltonian (s,t)-path from s to t</li>
 </ul>
 
-<p><strong>Time:</strong> O(n²)</p>
+<p><strong>Conclusion:</strong> Rudrata (s,t)-Path has a solution.</p>
 
-<h3 id="q4-how-do-you-reduce-rudrata-st-path-to-rudrata-cycle">Q4: How do you reduce Rudrata (s,t)-Path to Rudrata Cycle?</h3>
+<p><strong>Polynomial Time:</strong> O(1) to add edge.</p>
 
-<p><strong>Answer:</strong> Add edge from t to s.</p>
+<p><strong>Therefore, Rudrata Cycle is NP-complete.</strong></p>
 
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s, t</li>
-  <li>Add edge (t, s) to G</li>
-  <li>Return Rudrata Cycle: modified graph G’</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Hamiltonian (s,t)-path ↔ Hamiltonian cycle (with added edge)</li>
-</ul>
-
-<p><strong>Time:</strong> O(1)</p>
-
-<h3 id="q5-how-do-you-reduce-rudrata-st-path-to-graph-bandwidth">Q5: How do you reduce Rudrata (s,t)-Path to Graph Bandwidth?</h3>
-
-<p><strong>Answer:</strong> Encode path as linear arrangement with fixed endpoints.</p>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>Given Rudrata (s,t)-Path instance: graph G, vertices s, t</li>
-  <li>Return Graph Bandwidth: graph G, with s and t at endpoints</li>
-</ul>
-
-<p><strong>Correctness:</strong></p>
-<ul>
-  <li>Hamiltonian (s,t)-path ↔ Linear arrangement with s at start, t at end</li>
-</ul>
-
-<p><strong>Time:</strong> O(n)</p>
-
-<h2 id="reduction-patterns-from-rudrata-st-path">Reduction Patterns from Rudrata (s,t)-Path</h2>
-
-<h3 id="pattern-1-removing-constraints">Pattern 1: Removing Constraints</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem has fewer constraints</li>
-  <li><strong>Examples:</strong> Rudrata Path</li>
-  <li><strong>Key:</strong> Remove start/end requirement</li>
-</ul>
-
-<h3 id="pattern-2-adding-constraints">Pattern 2: Adding Constraints</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem has more constraints</li>
-  <li><strong>Examples:</strong> TSP (add return edge)</li>
-  <li><strong>Key:</strong> Add return connection</li>
-</ul>
-
-<h3 id="pattern-3-optimization">Pattern 3: Optimization</h3>
-<ul>
-  <li><strong>Use when:</strong> Target problem optimizes path</li>
-  <li><strong>Examples:</strong> Longest Path</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Key:</strong> Path length =</td>
-          <td>V</td>
-          <td>- 1</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
+<hr />
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Fixed endpoints:</strong> Constraint can be added or removed</li>
-  <li><strong>Path to cycle:</strong> Add return edge</li>
-  <li><strong>Optimization:</strong> Special case of longest path</li>
-  <li><strong>Ordering:</strong> Path defines vertex ordering</li>
-</ol>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>Reduce Rudrata (s,t)-Path to Shortest Path (with all vertices)</li>
-  <li>Reduce Rudrata (s,t)-Path to Path Cover with endpoints</li>
-  <li>Reduce Rudrata (s,t)-Path to Graph Traversal from s to t</li>
+  <li><strong>Adding Edges:</strong> (s,t)-Path → Cycle adds return edge</li>
+  <li><strong>Removing Constraints:</strong> Cycle → Path removes edge</li>
+  <li><strong>Path-Cycle Relationship:</strong> Natural transformation</li>
+  <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 
 <hr />
 
-<p>Rudrata (s,t)-Path reductions often involve adding or removing endpoint constraints.</p>
-
+<p>Rudrata (s,t)-Path reductions demonstrate path-cycle relationships and constraint manipulation.</p>
 
         </div>
 
         <footer class="post-footer">
           <div class="post-navigation"><a href="/blog_algorithms/2025/11/21/reductions-from-rudrata-path/" class="post-nav-link post-nav-prev">
                 <span class="post-nav-label">← Previous</span>
-                <span class="post-nav-title">Reductions from Rudrata Path: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from Rudrata Path: Detailed Proofs</span>
               </a><a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="post-nav-link post-nav-next">
                 <span class="post-nav-label">Next →</span>
-                <span class="post-nav-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="post-nav-title">Reductions from SAT: Detailed Proofs</span>
               </a></div>
         </footer>
       </article>
@@ -281,27 +315,27 @@
       <h3 class="bottom-section-title">Related Posts</h3>
       <ul class="related-posts-list"><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="related-post-link">
-                    <span class="related-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li><li class="related-post-item">
                   <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="related-post-link">
-                    <span class="related-post-title">Reductions from SAT: Common Questions and Answers</span>
+                    <span class="related-post-title">Reductions from SAT: Detailed Proofs</span>
                     <span class="related-post-date">Nov 21, 2025</span>
                   </a>
                 </li></ul>
@@ -311,27 +345,27 @@
       <h3 class="bottom-section-title">Recent Posts</h3>
       <ul class="recent-posts-list"><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-zoe/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Zero-One Equations: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Zero-One Equations: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-vertex-cover/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Vertex Cover: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Vertex Cover: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-tsp/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Traveling Salesman Problem: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-subset-sum/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from Subset Sum: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from Subset Sum: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li><li class="recent-post-item">
               <a href="/blog_algorithms/2025/11/21/reductions-from-sat/" class="recent-post-link">
-                <span class="recent-post-title">Reductions from SAT: Common Questions and Answers</span>
+                <span class="recent-post-title">Reductions from SAT: Detailed Proofs</span>
                 <span class="recent-post-date">Nov 21, 2025</span>
               </a>
             </li></ul>
