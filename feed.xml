@@ -1,628 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T05:27:35+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Greedy Algorithms: Theory and Examples</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/" rel="alternate" type="text/html" title="Greedy Algorithms: Theory and Examples" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/greedy-algorithms-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Greedy algorithms are a fundamental class of algorithms that make locally optimal choices at each step with the hope of finding a globally optimal solution. They are simple, intuitive, and often very efficient. However, greedy algorithms don’t always produce optimal solutions - understanding when they work and when they don’t is crucial for algorithm design.</p>
-
-<h2 id="what-is-a-greedy-algorithm">What is a Greedy Algorithm?</h2>
-
-<p>A <strong>greedy algorithm</strong> makes the choice that looks best at the moment, without considering future consequences. At each step, it:</p>
-<ol>
-  <li>Makes a locally optimal choice</li>
-  <li>Never reconsiders previous choices</li>
-  <li>Hopes this leads to a globally optimal solution</li>
-</ol>
-
-<h3 id="key-characteristics">Key Characteristics</h3>
-
-<ul>
-  <li><strong>Greedy Choice Property:</strong> A globally optimal solution can be arrived at by making a locally optimal (greedy) choice</li>
-  <li><strong>Optimal Substructure:</strong> An optimal solution contains optimal solutions to subproblems</li>
-  <li><strong>No Backtracking:</strong> Once a choice is made, it’s never reconsidered</li>
-</ul>
-
-<h2 id="when-do-greedy-algorithms-work">When Do Greedy Algorithms Work?</h2>
-
-<p>Greedy algorithms work when:</p>
-
-<ol>
-  <li><strong>Greedy Choice Property:</strong> The greedy choice is always part of some optimal solution</li>
-  <li><strong>Optimal Substructure:</strong> After making the greedy choice, the remaining problem is similar to the original</li>
-  <li><strong>Problem Structure:</strong> The problem has a structure that allows local optimization to lead to global optimization</li>
-</ol>
-
-<h3 id="when-they-dont-work">When They Don’t Work</h3>
-
-<p>Greedy algorithms fail when:</p>
-<ul>
-  <li>Local optima don’t lead to global optima</li>
-  <li>The problem requires considering future consequences</li>
-  <li>The greedy choice property doesn’t hold</li>
-</ul>
-
-<h2 id="classic-examples">Classic Examples</h2>
-
-<h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
-
-<p><strong>Problem:</strong> Given n activities with start and finish ×, select the maximum number of activities that don’t overlap.</p>
-
-<p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: ActivitySelection(activities)
-1. Sort activities by finish time
-2. selected = [activities[0]]
-3. last_finish = activities[0].finish
-4. for i = 1 to n-1:
-5.     if activities[i].start &gt;= last_finish:
-6.         selected.append(activities[i])
-7.         last_finish = activities[i].finish
-8. return selected
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Activities: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
-  <li>Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
-  <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
-<strong>Space Complexity:</strong> O(1) additional space</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: If an optimal solution doesn’t include the earliest-finishing activity, we can replace the first activity in the optimal solution with the earliest-finishing one without reducing the count</li>
-  <li>Optimal substructure: After selecting an activity, the problem reduces to selecting activities from those that start after it finishes</li>
-</ul>
-
-<h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
-
-<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.</p>
-
-<p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: FractionalKnapsack(items, W)
-1. Sort items by value/weight ratio (descending)
-2. total_value = 0
-3. remaining_capacity = W
-4. for each item in sorted_items:
-5.     if remaining_capacity &gt;= item.weight:
-6.         take entire item
-7.         total_value += item.value
-8.         remaining_capacity -= item.weight
-9.     else:
-10.        take fraction: remaining_capacity / item.weight
-11.        total_value += item.value * (remaining_capacity / item.weight)
-12.        break
-13. return total_value
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Items: (weight=10, value=60), (weight=20, value=100), (weight=30, value=120)</li>
-  <li>Capacity: 50</li>
-  <li>Ratios: 6, 5, 4</li>
-  <li>Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)</li>
-  <li>Value: 60 + 100 + 80 = 240</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
-<strong>Space Complexity:</strong> O(1) additional space</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: Taking the highest value-to-weight ratio maximizes value per unit capacity</li>
-  <li>Optimal substructure: After taking some items, the remaining problem is similar with reduced capacity</li>
-</ul>
-
-<p><strong>Note:</strong> This works for fractional knapsack, but NOT for 0-1 knapsack (where items must be taken whole).</p>
-
-<h3 id="example-3-minimum-spanning-tree-kruskals-algorithm">Example 3: Minimum Spanning Tree (Kruskal’s Algorithm)</h3>
-
-<p><strong>Problem:</strong> Find the minimum-weight spanning tree of a connected, weighted graph.</p>
-
-<p><strong>Greedy Strategy:</strong> Always add the minimum-weight edge that doesn’t create a cycle.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: KruskalMST(G)
-1. Sort edges by weight
-2. Initialize Union-Find data structure
-3. MST = []
-4. for each edge (u,v) in sorted_edges:
-5.     if Find(u) != Find(v):  // Not in same component
-6.         MST.append((u,v))
-7.         Union(u,v)
-8. return MST
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
-    A---2---B
-    |\     /|
-    | 3   1 |
-    4|     \|5
-    C---6---D
-</code></pre></div></div>
-
-<ul>
-  <li>Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)</li>
-  <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(E log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E log E)
-<strong>Space Complexity:</strong> O(V) for Union-Find</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The minimum-weight edge across a cut is always in some MST</li>
-  <li>Optimal substructure: After adding an edge, the remaining problem is finding MST of the reduced graph</li>
-</ul>
-
-<h3 id="example-4-minimum-spanning-tree-prims-algorithm">Example 4: Minimum Spanning Tree (Prim’s Algorithm)</h3>
-
-<p><strong>Problem:</strong> Same as Kruskal’s - find MST.</p>
-
-<p><strong>Greedy Strategy:</strong> Start from arbitrary vertex, always add minimum-weight edge connecting tree to new vertex.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: PrimMST(G, start)
-1. Initialize priority queue with (start, 0)
-2. visited = set()
-3. MST = []
-4. while priority queue not empty:
-5.     u = extract_min()
-6.     if u not visited:
-7.         visited.add(u)
-8.         if u != start:
-9.             MST.append((parent[u], u))
-10.        for each neighbor v of u:
-11.            if v not visited and weight(u,v) &lt; key[v]:
-12.                key[v] = weight(u,v)
-13.                parent[v] = u
-14.                insert/update (v, key[v]) in priority queue
-15. return MST
-</code></pre></div></div>
-
-<p><strong>Time Complexity:</strong></p>
-<ul>
-  <li>With binary heap: O(E log V)</li>
-  <li>With Fibonacci heap: O(E + V log V)
-<strong>Space Complexity:</strong> O(V)</li>
-</ul>
-
-<h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
-
-<p><strong>Problem:</strong> Given character frequencies, construct a prefix-free binary code minimizing expected code length.</p>
-
-<p><strong>Greedy Strategy:</strong> Repeatedly merge the two least frequent characters/nodes.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: HuffmanCoding(frequencies)
-1. Create min-heap of nodes (character, frequency)
-2. while heap.size() &gt; 1:
-3.     left = extract_min()
-4.     right = extract_min()
-5.     merged = new Node(left.freq + right.freq)
-6.     merged.left = left
-7.     merged.right = right
-8.     insert(merged)
-9. return root of tree
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Characters: a(45%), b(13%), c(12%), d(16%), e(9%), f(5%)</li>
-  <li>Build tree by repeatedly merging least frequent:
-    <ol>
-      <li>Merge f(5) + e(9) = 14</li>
-      <li>Merge c(12) + 14 = 26</li>
-      <li>Merge b(13) + d(16) = 29</li>
-      <li>Merge 26 + 29 = 55</li>
-      <li>Merge a(45) + 55 = 100</li>
-    </ol>
-  </li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) where n is number of characters
-<strong>Space Complexity:</strong> O(n)</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The two least frequent characters should have the longest codes</li>
-  <li>Optimal substructure: After merging, the problem reduces to coding the merged node plus remaining characters</li>
-</ul>
-
-<h3 id="example-6-dijkstras-algorithm-shortest-paths">Example 6: Dijkstra’s Algorithm (Shortest Paths)</h3>
-
-<p><strong>Problem:</strong> Find shortest paths from a source vertex to all other vertices in a weighted graph (non-negative weights).</p>
-
-<p><strong>Greedy Strategy:</strong> Always relax the vertex with minimum distance that hasn’t been processed.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: Dijkstra(G, source)
-1. Initialize distances: dist[source] = 0, dist[v] = ∞ for v ≠ source
-2. Initialize priority queue with (source, 0)
-3. visited = set()
-4. while priority queue not empty:
-5.     u = extract_min()
-6.     if u in visited: continue
-7.     visited.add(u)
-8.     for each neighbor v of u:
-9.         if dist[u] + weight(u,v) &lt; dist[v]:
-10.            dist[v] = dist[u] + weight(u,v)
-11.            insert/update (v, dist[v]) in priority queue
-12. return dist[]
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
-    A---1---B
-    |\     /|
-    | 4   2 |
-    3|     \|1
-    C---5---D
-</code></pre></div></div>
-
-<ul>
-  <li>Source: A</li>
-  <li>Process A: dist[B]=1, dist[C]=3, dist[D]=4</li>
-  <li>Process B: dist[D]=min(4,1+2)=3</li>
-  <li>Process C: no updates</li>
-  <li>Process D: done</li>
-  <li>Result: A→B=1, A→C=3, A→D=3</li>
-</ul>
-
-<p><strong>Time Complexity:</strong></p>
-<ul>
-  <li>With binary heap: O((V+E) log V)</li>
-  <li>With Fibonacci heap: O(E + V log V)
-<strong>Space Complexity:</strong> O(V)</li>
-</ul>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
-  <li>Optimal substructure: Shortest path to v through u contains shortest path to u</li>
-</ul>
-
-<p><strong>Note:</strong> Only works for non-negative edge weights!</p>
-
-<h3 id="example-7-interval-scheduling">Example 7: Interval Scheduling</h3>
-
-<p><strong>Problem:</strong> Schedule maximum number of non-overlapping intervals.</p>
-
-<p><strong>Greedy Strategy:</strong> Sort by finish time, always pick the interval that finishes earliest and doesn’t conflict.</p>
-
-<p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
-
-<p><strong>Time Complexity:</strong> O(n log n)
-<strong>Space Complexity:</strong> O(1)</p>
-
-<h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
-
-<p><strong>Problem:</strong> Given a universe U and collection of sets S, find minimum number of sets covering U.</p>
-
-<p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: GreedySetCover(U, S)
-1. covered = set()
-2. selected = []
-3. while covered != U:
-4.     best_set = None
-5.     best_new = 0
-6.     for set s in S:
-7.         new = |s - covered|
-8.         if new &gt; best_new:
-9.             best_new = new
-10.            best_set = s
-11.     selected.append(best_set)
-12.     covered = covered ∪ best_set
-13. return selected
-</code></pre></div></div>
-
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Time Complexity:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>S</td>
-      <td>)</td>
-    </tr>
-    <tr>
-      <td><strong>Space Complexity:</strong> O(</td>
-      <td>U</td>
-      <td>)</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>Approximation Ratio:</strong> H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)</p>
-
-<p><strong>Why It’s an Approximation:</strong></p>
-<ul>
-  <li>Greedy doesn’t always give optimal solution</li>
-  <li>But provides good approximation guarantee</li>
-</ul>
-
-<h2 id="greedy-vs-dynamic-programming">Greedy vs Dynamic Programming</h2>
-
-<h3 id="key-differences">Key Differences</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Aspect</th>
-      <th>Greedy</th>
-      <th>Dynamic Programming</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Choices</td>
-      <td>Makes choice and never reconsiders</td>
-      <td>Considers all choices</td>
-    </tr>
-    <tr>
-      <td>Subproblems</td>
-      <td>Usually one subproblem</td>
-      <td>Multiple overlapping subproblems</td>
-    </tr>
-    <tr>
-      <td>Optimality</td>
-      <td>May not be optimal</td>
-      <td>Always optimal</td>
-    </tr>
-    <tr>
-      <td>Efficiency</td>
-      <td>Usually faster</td>
-      <td>May be slower</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="when-to-use-greedy">When to Use Greedy</h3>
-
-<ul>
-  <li>Problem has greedy choice property</li>
-  <li>Optimal substructure holds</li>
-  <li>Need fast algorithm (greedy is usually efficient)</li>
-  <li>Approximation is acceptable (if exact solution not needed)</li>
-</ul>
-
-<h3 id="when-to-use-dp">When to Use DP</h3>
-
-<ul>
-  <li>Need optimal solution</li>
-  <li>Greedy choice property doesn’t hold</li>
-  <li>Overlapping subproblems</li>
-  <li>Problem requires considering all possibilities</li>
-</ul>
-
-<h2 id="common-greedy-patterns">Common Greedy Patterns</h2>
-
-<h3 id="1-sorting--greedy-selection">1. Sorting + Greedy Selection</h3>
-
-<p>Many greedy algorithms:</p>
-<ol>
-  <li>Sort input by some criterion</li>
-  <li>Process in sorted order, making greedy choices</li>
-</ol>
-
-<p>Examples: Activity Selection, Fractional Knapsack, Interval Scheduling</p>
-
-<h3 id="2-priority-queue-based">2. Priority Queue Based</h3>
-
-<p>Use priority queue to always process “best” option:</p>
-<ul>
-  <li>Dijkstra’s: process closest unvisited vertex</li>
-  <li>Prim’s: process minimum edge to tree</li>
-  <li>Huffman: merge least frequent nodes</li>
-</ul>
-
-<h3 id="3-union-find-based">3. Union-Find Based</h3>
-
-<p>Use Union-Find to track connected components:</p>
-<ul>
-  <li>Kruskal’s MST: avoid cycles by checking connectivity</li>
-</ul>
-
-<h2 id="proving-greedy-correctness">Proving Greedy Correctness</h2>
-
-<p>To prove a greedy algorithm is correct:</p>
-
-<ol>
-  <li><strong>Show Greedy Choice Property:</strong>
-    <ul>
-      <li>Prove that a greedy choice is always part of some optimal solution</li>
-      <li>Usually done by showing we can modify any optimal solution to include the greedy choice</li>
-    </ul>
-  </li>
-  <li><strong>Show Optimal Substructure:</strong>
-    <ul>
-      <li>Prove that after making the greedy choice, the remaining problem is similar</li>
-      <li>Show that optimal solution contains optimal solutions to subproblems</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="example-proof-activity-selection">Example Proof: Activity Selection</h3>
-
-<p><strong>Greedy Choice Property:</strong></p>
-<ul>
-  <li>Let a_1 be the activity that finishes earliest</li>
-  <li>Let S be an optimal solution</li>
-  <li>If S doesn’t include a_1, let a_k be the first activity in S</li>
-  <li>Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S</li>
-  <li>This gives another optimal solution containing a_1 ✓</li>
-</ul>
-
-<p><strong>Optimal Substructure:</strong></p>
-<ul>
-  <li>After selecting a_1, remaining problem: select activities starting after a_1 finishes</li>
-  <li>If S’ is optimal for remaining problem, then {a_1} cup S’ is optimal for original ✓</li>
-</ul>
-
-<h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Problem</th>
-      <th>Greedy Algorithm</th>
-      <th>Time Complexity</th>
-      <th>Space Complexity</th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Activity Selection</td>
-      <td>Sort by finish time</td>
-      <td>O(n log n)</td>
-      <td>O(1)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Fractional Knapsack</td>
-      <td>Sort by value/weight</td>
-      <td>O(n log n)</td>
-      <td>O(1)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>MST (Kruskal)</td>
-      <td>Sort edges, Union-Find</td>
-      <td>O(E log E)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>MST (Prim)</td>
-      <td>Priority queue</td>
-      <td>O(E log V)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Huffman Coding</td>
-      <td>Min-heap</td>
-      <td>O(n log n)</td>
-      <td>O(n)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Dijkstra’s</td>
-      <td>Priority queue</td>
-      <td>O((V+E) log V)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Set Cover</td>
-      <td>Greedy selection</td>
-      <td>O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>S</td>
-      <td>)</td>
-      <td>O(</td>
-      <td>U</td>
-      <td>)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
-  <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
-  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n log n) or better)</li>
-  <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
-  <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
-  <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>
-</ol>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>CLRS:</strong> “Introduction to Algorithms” - Comprehensive coverage of greedy algorithms</li>
-  <li><strong>Kleinberg &amp; Tardos:</strong> “Algorithm Design” - Greedy algorithms with proofs</li>
-  <li><strong>Greedy vs DP:</strong> Understanding when to use each approach</li>
-  <li><strong>Approximation Algorithms:</strong> Greedy algorithms for NP-hard problems</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>
-    <p><strong>Activity Selection:</strong> Implement the greedy algorithm and prove its correctness.</p>
-  </li>
-  <li>
-    <p><strong>Fractional vs 0-1 Knapsack:</strong> Why does greedy work for fractional but not 0-1? Give a counterexample.</p>
-  </li>
-  <li>
-    <p><strong>MST Algorithms:</strong> Compare Kruskal’s and Prim’s algorithms. When is each better?</p>
-  </li>
-  <li>
-    <p><strong>Dijkstra’s Limitation:</strong> Why doesn’t Dijkstra’s work with negative weights? Give an example.</p>
-  </li>
-  <li>
-    <p><strong>Huffman Coding:</strong> Construct Huffman tree for frequencies: a(40), b(30), c(20), d(10). What are the codes?</p>
-  </li>
-  <li>
-    <p><strong>Set Cover:</strong> Design a greedy algorithm for weighted set cover (sets have costs). What approximation ratio does it achieve?</p>
-  </li>
-  <li>
-    <p><strong>Interval Coloring:</strong> Given intervals, color them with minimum colors so overlapping intervals have different colors. Design a greedy algorithm.</p>
-  </li>
-  <li>
-    <p><strong>Job Scheduling:</strong> Given jobs with deadlines and profits, schedule to maximize profit. Design a greedy algorithm.</p>
-  </li>
-</ol>
-
-<hr />
-
-<p>Understanding greedy algorithms is essential for algorithm design. They provide elegant, efficient solutions to many optimization problems when the greedy choice property and optimal substructure hold.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Greedy Algorithms" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work.]]></summary></entry><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T06:53:32+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
@@ -1537,49 +913,129 @@
 
 <hr />
 
-<p>Linear Programming is a fundamental optimization technique with wide-ranging applications. Understanding its theory, algorithms, and formulation techniques provides a strong foundation for tackling optimization problems in computer science, operations research, and many other fields. The polynomial-time solvability of LP makes it a powerful tool, while its relationship to Integer Linear Programming (through LP relaxation) connects it to NP-complete problems and approximation algorithms.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[A comprehensive introduction to Linear Programming covering problem formulation, geometric interpretation, standard forms, the Simplex method, interior-point methods, duality theory, and practical applications.]]></summary></entry><entry><title type="html">Linear Programming: Reductions</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-reductions/" rel="alternate" type="text/html" title="Linear Programming: Reductions" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-reductions</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/linear-programming-reductions/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Linear Programming is a fundamental optimization technique with wide-ranging applications. Understanding its theory, algorithms, and formulation techniques provides a strong foundation for tackling optimization problems in computer science, operations research, and many other fields. The polynomial-time solvability of LP makes it a powerful tool, while its relationship to Integer Linear Programming (through LP relaxation) connects it to NP-complete problems and approximation algorithms.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[A comprehensive introduction to Linear Programming covering problem formulation, geometric interpretation, standard forms, the Simplex method, interior-point methods, duality theory, and practical applications.]]></summary></entry><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
-<p>Linear Programming (LP) occupies a unique position in complexity theory: it’s one of the few optimization problems that can be solved in polynomial time, yet it’s closely related to many NP-complete problems through the concept of LP relaxations. Understanding Linear Programming and its role in reductions is crucial for understanding approximation algorithms, integer programming, and the boundary between polynomial-time and NP-complete problems.</p>
+<p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
 <h2 id="what-is-linear-programming">What is Linear Programming?</h2>
 
-<p>Linear Programming asks: <strong>Given linear constraints and a linear objective function, find values for variables that satisfy the constraints and optimize the objective.</strong></p>
+<p>Linear Programming is a mathematical optimization technique for finding the best outcome (maximum or minimum) of a linear objective function subject to linear equality and inequality constraints.</p>
 
 <h3 id="problem-definition">Problem Definition</h3>
 
-<p><strong>Linear Programming (LP) Problem:</strong></p>
+<p><strong>Linear Programming Problem:</strong></p>
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A matrix A ∈ ℝ^{m × n} (constraint coefficients)</li>
-  <li>A vector b ∈ ℝ^m (constraint bounds)</li>
-  <li>A vector c ∈ ℝ^n (objective coefficients)</li>
+  <li>Variables: x₁, x₂, …, x_n (real numbers)</li>
+  <li>Objective function: c₁x₁ + c₂x₂ + … + c_nx_n (linear)</li>
+  <li>Constraints: Linear inequalities or equations</li>
+  <li>Domain: Variables may be restricted (e.g., xᵢ ≥ 0)</li>
 </ul>
 
 <p><strong>Output:</strong></p>
 <ul>
-  <li>A vector x ∈ ℝ^n that:
-    <ul>
-      <li>Satisfies Ax ≤ b (or Ax = b, or Ax ≥ b, or mixed)</li>
-      <li>Satisfies x ≥ 0 (non-negativity constraints, if present)</li>
-      <li>Maximizes (or minimizes) c^T x</li>
-    </ul>
-  </li>
+  <li>Values for variables that satisfy all constraints</li>
+  <li>Optimize (maximize or minimize) the objective function</li>
 </ul>
 
-<p><strong>Standard Form:</strong></p>
+<h3 id="key-characteristics">Key Characteristics</h3>
+
+<ol>
+  <li><strong>Linearity:</strong> All functions (objective and constraints) are linear</li>
+  <li><strong>Continuous Variables:</strong> Variables can take any real values (unlike integer programming)</li>
+  <li><strong>Convexity:</strong> Feasible region is a convex polyhedron</li>
+  <li><strong>Polynomial-Time Solvable:</strong> Can be solved efficiently</li>
+</ol>
+
+<h2 id="standard-forms">Standard Forms</h2>
+
+<p>Linear Programming problems can be written in different standard forms. Understanding these forms is crucial for applying algorithms.</p>
+
+<h3 id="standard-form-inequality-form">Standard Form (Inequality Form)</h3>
+
+<p><strong>Maximize:</strong> c^T x</p>
+
+<p><strong>Subject to:</strong></p>
 <ul>
-  <li>Maximize c^T x</li>
-  <li>Subject to Ax ≤ b and x ≥ 0</li>
+  <li>Ax ≤ b</li>
+  <li>x ≥ 0</li>
 </ul>
 
-<p><strong>Canonical Form:</strong></p>
+<p>Where:</p>
 <ul>
-  <li>Maximize c^T x</li>
-  <li>Subject to Ax = b and x ≥ 0</li>
+  <li>A is an m × n matrix (constraint coefficients)</li>
+  <li>b is an m-dimensional vector (right-hand side)</li>
+  <li>c is an n-dimensional vector (objective coefficients)</li>
+  <li>x is an n-dimensional vector (decision variables)</li>
 </ul>
 
-<h3 id="example">Example</h3>
+<h3 id="canonical-form-equality-form">Canonical Form (Equality Form)</h3>
+
+<p><strong>Maximize:</strong> c^T x</p>
+
+<p><strong>Subject to:</strong></p>
+<ul>
+  <li>Ax = b</li>
+  <li>x ≥ 0</li>
+</ul>
+
+<p><strong>Conversion:</strong> Add slack variables to convert inequalities to equalities:</p>
+<ul>
+  <li>Constraint: a₁x₁ + a₂x₂ ≤ b becomes a₁x₁ + a₂x₂ + s = b, s ≥ 0</li>
+  <li>Slack variable s represents the “slack” or unused capacity</li>
+</ul>
+
+<h3 id="general-form-conversions">General Form Conversions</h3>
+
+<p><strong>Minimization → Maximization:</strong></p>
+<ul>
+  <li>Minimize c^T x ↔ Maximize -c^T x</li>
+</ul>
+
+<p><strong>Unrestricted Variables:</strong></p>
+<ul>
+  <li>Variable x unrestricted ↔ Replace with x = x⁺ - x⁻ where x⁺, x⁻ ≥ 0</li>
+</ul>
+
+<p><strong>≥ Constraints:</strong></p>
+<ul>
+  <li>a^T x ≥ b ↔ -a^T x ≤ -b</li>
+</ul>
+
+<p><strong>Equality Constraints:</strong></p>
+<ul>
+  <li>a^T x = b ↔ a^T x ≤ b and a^T x ≥ b</li>
+</ul>
+
+<h2 id="geometric-interpretation">Geometric Interpretation</h2>
+
+<p>Understanding the geometry of Linear Programming provides crucial intuition.</p>
+
+<h3 id="feasible-region">Feasible Region</h3>
+
+<p><strong>Definition:</strong> The set of all points x that satisfy all constraints.</p>
+
+<p><strong>Properties:</strong></p>
+<ul>
+  <li><strong>Convex Polyhedron:</strong> Intersection of half-spaces (from inequalities)</li>
+  <li><strong>Vertices:</strong> Corner points of the polyhedron</li>
+  <li><strong>Edges:</strong> Lines connecting vertices</li>
+  <li><strong>Faces:</strong> Flat surfaces bounding the polyhedron</li>
+</ul>
+
+<h3 id="fundamental-theorem-of-linear-programming">Fundamental Theorem of Linear Programming</h3>
+
+<p><strong>Theorem:</strong> If an LP has an optimal solution, then there exists an optimal solution at a vertex (extreme point) of the feasible region.</p>
+
+<p><strong>Implications:</strong></p>
+<ul>
+  <li>We only need to check vertices, not all points</li>
+  <li>This is why algorithms like Simplex work (they move between vertices)</li>
+  <li>Number of vertices can be exponential, but algorithms are still efficient</li>
+</ul>
+
+<h3 id="example-2d-visualization">Example: 2D Visualization</h3>
 
 <p>Consider the LP:</p>
 
@@ -1592,494 +1048,787 @@
   <li>x₁, x₂ ≥ 0</li>
 </ul>
 
-<p><strong>Graphical Solution:</strong></p>
+<p><strong>Feasible Region:</strong></p>
 <ul>
-  <li>Feasible region is a polygon</li>
-  <li>Optimal solution is at a vertex (corner point)</li>
-  <li>Optimal: (x₁, x₂) = (4/3, 10/3) with objective value 32/3 ≈ 10.67</li>
+  <li>Bounded polygon (quadrilateral)</li>
+  <li>Vertices: (0,0), (0,4), (4/3, 10/3), (3,0)</li>
+  <li>Optimal solution: (4/3, 10/3) with value 32/3 ≈ 10.67</li>
 </ul>
 
-<p><strong>Key Insight:</strong> The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).</p>
-
-<h2 id="why-lp-is-in-p">Why LP is in P</h2>
-
-<p>Unlike Integer Linear Programming, <strong>Linear Programming is solvable in polynomial time</strong>.</p>
-
-<h3 id="algorithms-for-lp">Algorithms for LP</h3>
-
-<p><strong>1. Simplex Method (Dantzig, 1947):</strong></p>
-<ul>
-  <li>Moves from vertex to vertex along edges</li>
-  <li>Very efficient in practice</li>
-  <li><strong>Worst-case:</strong> Exponential (Klee-Minty examples)</li>
-  <li><strong>Average-case:</strong> Polynomial</li>
-</ul>
-
-<p><strong>2. Ellipsoid Method (Khachiyan, 1979):</strong></p>
-<ul>
-  <li>First polynomial-time algorithm for LP</li>
-  <li>O(n^4 L) time where L is input size</li>
-  <li>Not practical due to large constants</li>
-</ul>
-
-<p><strong>3. Interior-Point Methods (Karmarkar, 1984):</strong></p>
-<ul>
-  <li>Polynomial-time: O(n^{3.5} L) time</li>
-  <li>Practical and widely used</li>
-  <li>Modern implementations are very efficient</li>
-</ul>
-
-<p><strong>Result:</strong> LP ∈ P (solvable in polynomial time)</p>
-
-<h2 id="lp-relaxation-a-key-reduction-technique">LP Relaxation: A Key Reduction Technique</h2>
-
-<p>One of the most important uses of LP in complexity theory is the concept of <strong>LP relaxation</strong>.</p>
-
-<h3 id="what-is-lp-relaxation">What is LP Relaxation?</h3>
-
-<p>Given an Integer Linear Programming (ILP) problem:</p>
-<ul>
-  <li><strong>ILP:</strong> Variables must be integers</li>
-  <li><strong>LP Relaxation:</strong> Allow variables to be real numbers</li>
-</ul>
-
-<p><strong>Key Insight:</strong> The optimal value of the LP relaxation provides a <strong>bound</strong> on the optimal value of the ILP:</p>
-<ul>
-  <li>For maximization: LP optimal ≥ ILP optimal</li>
-  <li>For minimization: LP optimal ≤ ILP optimal</li>
-</ul>
-
-<h3 id="example-vertex-cover-lp-relaxation">Example: Vertex Cover LP Relaxation</h3>
-
-<p><strong>ILP for Vertex Cover:</strong></p>
-<ul>
-  <li>Variables: x_v ∈ {0,1} for each vertex v</li>
-  <li>Constraints: x_u + x_v ≥ 1 for each edge (u,v)</li>
-  <li>Objective: Minimize sum_v x_v</li>
-</ul>
-
-<p><strong>LP Relaxation:</strong></p>
-<ul>
-  <li>Variables: x_v in [0,1] (continuous, not integer)</li>
-  <li>Same constraints and objective</li>
-</ul>
-
-<p><strong>Result:</strong> LP optimal ≤ ILP optimal (since we relaxed constraints)</p>
-
-<p><strong>2-Approximation Algorithm:</strong></p>
+<p><strong>Graphical Method:</strong></p>
 <ol>
-  <li>Solve LP relaxation</li>
-  <li>Round: Include vertex v if x_v ≥ 1/2</li>
-  <li>This gives a 2-approximation for Vertex Cover!</li>
+  <li>Plot constraints as lines</li>
+  <li>Identify feasible region (intersection of half-spaces)</li>
+  <li>Plot objective function as a line</li>
+  <li>Move objective line parallel to itself to find optimal vertex</li>
 </ol>
 
-<h2 id="reductions-involving-lp">Reductions Involving LP</h2>
+<h2 id="algorithms-for-linear-programming">Algorithms for Linear Programming</h2>
 
-<h3 id="reduction-ilp-to-lp-relaxation">Reduction: ILP to LP (Relaxation)</h3>
+<h3 id="1-simplex-method">1. Simplex Method</h3>
 
-<p><strong>ILP ≤ₚ LP (via relaxation):</strong></p>
-<ul>
-  <li>Given ILP instance, remove integrality constraints</li>
-  <li>Solve LP relaxation</li>
-  <li>If LP solution is integer, we’re done</li>
-  <li>Otherwise, use branch-and-bound or cutting planes</li>
-</ul>
+<p><strong>Inventor:</strong> George Dantzig (1947)</p>
 
-<p><strong>Note:</strong> This is not a polynomial-time reduction in the complexity sense, but it’s a practical technique.</p>
+<p><strong>Basic Idea:</strong> Move from vertex to vertex along edges, improving objective at each step.</p>
 
-<h3 id="reduction-lp-to-feasibility">Reduction: LP to Feasibility</h3>
-
-<p><strong>LP Optimization ≤ₚ LP Feasibility:</strong></p>
-<ul>
-  <li>Given LP: maximize c^T x subject to Ax ≤ b, x ≥ 0</li>
-  <li>Add constraint: c^T x ≥ k (where k is a guess for optimal value)</li>
-  <li>Use binary search on k to find optimal value</li>
-  <li>This reduces optimization to feasibility checking</li>
-</ul>
-
-<h3 id="reduction-general-lp-to-standard-form">Reduction: General LP to Standard Form</h3>
-
-<p><strong>General LP ≤ₚ Standard Form LP:</strong></p>
-<ul>
-  <li>Convert inequalities to equations using slack variables</li>
-  <li>Convert unconstrained variables: x = x^+ - x^- where x^+, x^- ≥ 0</li>
-  <li>Convert maximization to minimization: negate objective</li>
-  <li>All conversions are polynomial-time</li>
-</ul>
-
-<h2 id="lp-duality-and-reductions">LP Duality and Reductions</h2>
-
-<h3 id="duality-theorem">Duality Theorem</h3>
-
-<p>Every LP has a <strong>dual</strong> LP:</p>
-
-<p><strong>Primal:</strong> Maximize c^T x subject to Ax ≤ b, x ≥ 0</p>
-
-<p><strong>Dual:</strong> Minimize b^T y subject to A^T y ≥ c, y ≥ 0</p>
-
-<p><strong>Strong Duality:</strong> If both have feasible solutions, then:</p>
-<ul>
-  <li>Primal optimal = Dual optimal</li>
-</ul>
-
-<p><strong>Weak Duality:</strong> For any feasible x and y:</p>
-<ul>
-  <li>c^T x ≤ b^T y</li>
-</ul>
-
-<h3 id="using-duality-in-reductions">Using Duality in Reductions</h3>
-
-<p>Duality provides a powerful tool for:</p>
+<p><strong>Algorithm Outline:</strong></p>
 <ol>
-  <li><strong>Proving optimality:</strong> If primal and dual have same value, both are optimal</li>
-  <li><strong>Finding bounds:</strong> Dual provides upper bounds (for maximization)</li>
-  <li><strong>Sensitivity analysis:</strong> Understanding how changes affect solution</li>
-  <li><strong>Designing algorithms:</strong> Many algorithms use duality</li>
-</ol>
-
-<h2 id="lp-in-approximation-algorithms">LP in Approximation Algorithms</h2>
-
-<p>LP relaxation is fundamental to many approximation algorithms.</p>
-
-<h3 id="vertex-cover-2-approximation">Vertex Cover: 2-Approximation</h3>
-
-<p><strong>Algorithm:</strong></p>
-<ol>
-  <li>Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v ≥ 1 for all edges</li>
-  <li>Round: S = {v : x_v ≥ 1/2}</li>
-  <li>Return S as vertex cover</li>
-</ol>
-
-<p><strong>Analysis:</strong></p>
-<ul>
-  <li>S is a vertex cover (each edge has at least one endpoint with x_v ≥ 1/2)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= ∑<em>{v ∈ S} 1 ≤ ∑</em>{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>Therefore, 2-approximation</li>
-</ul>
-
-<h3 id="set-cover-lp-based-approximation">Set Cover: LP-Based Approximation</h3>
-
-<p><strong>Set Cover ILP:</strong></p>
-<ul>
-  <li>Variables: x_S ∈ {0,1} for each set S</li>
-  <li>Constraints: ∑_{S: e ∈ S} x_S ≥ 1 for each element e</li>
-  <li>Objective: Minimize sum_S x_S</li>
-</ul>
-
-<p><strong>LP Relaxation + Rounding:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>Use randomized rounding or greedy rounding</li>
-  <li>Achieves O(log n) approximation (or better with specific techniques)</li>
-</ul>
-
-<h3 id="maximum-flow-lp-formulation">Maximum Flow: LP Formulation</h3>
-
-<p><strong>Max Flow as LP:</strong></p>
-<ul>
-  <li>Variables: flow f_e on each edge e</li>
-  <li>Constraints: flow conservation, capacity constraints</li>
-  <li>Objective: maximize flow from source to sink</li>
-</ul>
-
-<p><strong>Result:</strong> Max flow can be solved via LP (though specialized algorithms are faster)</p>
-
-<h2 id="reductions-from-np-complete-problems-to-lp">Reductions from NP-Complete Problems to LP</h2>
-
-<p>While LP is polynomial-time, we can reduce NP-complete problems to LP feasibility questions.</p>
-
-<h3 id="3-sat-to-lp-feasibility">3-SAT to LP Feasibility</h3>
-
-<p><strong>Reduction:</strong></p>
-<ul>
-  <li>For 3-SAT instance, create LP:
+  <li>Start at a feasible vertex (basic feasible solution)</li>
+  <li>While not optimal:
     <ul>
-      <li>Variables: x_i in [0,1] for each Boolean variable</li>
-      <li>For clause (l_1 ∨ l_2 ∨ l_3): constraint ensuring at least one literal is “true”</li>
-      <li>But LP doesn’t naturally encode Boolean logic…</li>
+      <li>Choose a non-basic variable to enter basis (improves objective)</li>
+      <li>Choose a basic variable to leave basis (maintains feasibility)</li>
+      <li>Pivot: update tableau</li>
+    </ul>
+  </li>
+  <li>Return optimal solution</li>
+</ol>
+
+<p><strong>Key Concepts:</strong></p>
+<ul>
+  <li><strong>Basic Variables:</strong> Variables set to their bounds (usually 0)</li>
+  <li><strong>Non-Basic Variables:</strong> Variables that can change</li>
+  <li><strong>Basis:</strong> Set of basic variables</li>
+  <li><strong>Tableau:</strong> Matrix representation of the LP</li>
+  <li><strong>Pivoting:</strong> Moving from one basis to another</li>
+</ul>
+
+<p><strong>Advantages:</strong></p>
+<ul>
+  <li>Very efficient in practice</li>
+  <li>Often requires O(m) to O(m+n) iterations</li>
+  <li>Can handle degeneracy</li>
+</ul>
+
+<p><strong>Disadvantages:</strong></p>
+<ul>
+  <li>Exponential worst-case time (Klee-Minty examples)</li>
+  <li>Can cycle if not careful (Bland’s rule prevents this)</li>
+</ul>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li><strong>Worst-case:</strong> Exponential (2^n iterations possible)</li>
+  <li><strong>Average-case:</strong> Polynomial (O(m+n) iterations typical)</li>
+  <li><strong>Practical:</strong> Very fast, often faster than polynomial methods</li>
+</ul>
+
+<h3 id="2-ellipsoid-method">2. Ellipsoid Method</h3>
+
+<p><strong>Inventor:</strong> Leonid Khachiyan (1979)</p>
+
+<p><strong>Basic Idea:</strong> Shrink an ellipsoid containing the feasible region until finding a solution.</p>
+
+<p><strong>Algorithm Outline:</strong></p>
+<ol>
+  <li>Start with large ellipsoid containing feasible region</li>
+  <li>While ellipsoid is large:
+    <ul>
+      <li>Check if center is feasible</li>
+      <li>If not, use violated constraint to shrink ellipsoid</li>
+      <li>Update ellipsoid</li>
+    </ul>
+  </li>
+  <li>Return solution</li>
+</ol>
+
+<p><strong>Significance:</strong></p>
+<ul>
+  <li><strong>First polynomial-time algorithm</strong> for LP</li>
+  <li>Proved LP ∈ P theoretically</li>
+</ul>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>O(n^4 L) where L is input size (bit complexity)</li>
+</ul>
+
+<p><strong>Disadvantages:</strong></p>
+<ul>
+  <li>Large constants make it impractical</li>
+  <li>Not used in practice</li>
+</ul>
+
+<h3 id="3-interior-point-methods">3. Interior-Point Methods</h3>
+
+<p><strong>Inventor:</strong> Narendra Karmarkar (1984)</p>
+
+<p><strong>Basic Idea:</strong> Move through the interior of the feasible region toward the optimal solution.</p>
+
+<p><strong>Algorithm Outline:</strong></p>
+<ol>
+  <li>Start at interior point</li>
+  <li>While not optimal:
+    <ul>
+      <li>Compute search direction (toward optimal)</li>
+      <li>Choose step size (stay in interior)</li>
+      <li>Update solution</li>
+    </ul>
+  </li>
+  <li>Return optimal solution</li>
+</ol>
+
+<p><strong>Key Concepts:</strong></p>
+<ul>
+  <li><strong>Barrier Function:</strong> Keeps solution away from boundaries</li>
+  <li><strong>Newton’s Method:</strong> Used to compute search direction</li>
+  <li><strong>Path-Following:</strong> Follow central path to optimal solution</li>
+</ul>
+
+<p><strong>Advantages:</strong></p>
+<ul>
+  <li>Polynomial-time: O(n^{3.5} L)</li>
+  <li>Practical and efficient</li>
+  <li>Widely used in modern solvers</li>
+</ul>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>O(n^{3.5} L) using path-following methods</li>
+  <li>Typically O(√n log(1/ε)) iterations for ε-accuracy</li>
+</ul>
+
+<p><strong>Modern Variants:</strong></p>
+<ul>
+  <li>Primal-dual interior-point methods</li>
+  <li>Predictor-corrector methods</li>
+  <li>Self-dual embedding</li>
+</ul>
+
+<h3 id="4-comparison-of-methods">4. Comparison of Methods</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Worst-Case</th>
+      <th>Average-Case</th>
+      <th>Practical Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Simplex</td>
+      <td>Exponential</td>
+      <td>Polynomial</td>
+      <td>Very common</td>
+    </tr>
+    <tr>
+      <td>Ellipsoid</td>
+      <td>Polynomial</td>
+      <td>Polynomial</td>
+      <td>Rarely used</td>
+    </tr>
+    <tr>
+      <td>Interior-Point</td>
+      <td>Polynomial</td>
+      <td>Polynomial</td>
+      <td>Very common</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Modern Solvers:</strong> Use combination of methods:</p>
+<ul>
+  <li>Simplex for warm starts</li>
+  <li>Interior-point for initial solution</li>
+  <li>Hybrid approaches</li>
+</ul>
+
+<h2 id="duality-theory">Duality Theory</h2>
+
+<p>Duality is one of the most beautiful and powerful concepts in Linear Programming.</p>
+
+<h3 id="primal-and-dual-problems">Primal and Dual Problems</h3>
+
+<p><strong>Primal LP:</strong></p>
+<ul>
+  <li>Maximize c^T x</li>
+  <li>Subject to Ax ≤ b, x ≥ 0</li>
+</ul>
+
+<p><strong>Dual LP:</strong></p>
+<ul>
+  <li>Minimize b^T y</li>
+  <li>Subject to A^T y ≥ c, y ≥ 0</li>
+</ul>
+
+<p><strong>Key Relationship:</strong> Every LP has a corresponding dual LP.</p>
+
+<h3 id="duality-theorems">Duality Theorems</h3>
+
+<p><strong>Weak Duality Theorem:</strong></p>
+<ul>
+  <li>For any feasible x (primal) and y (dual): c^T x ≤ b^T y</li>
+  <li>Dual provides upper bound for primal (maximization)</li>
+  <li>Primal provides lower bound for dual (minimization)</li>
+</ul>
+
+<p><strong>Strong Duality Theorem:</strong></p>
+<ul>
+  <li>If both primal and dual have feasible solutions, then:
+    <ul>
+      <li>Primal optimal = Dual optimal</li>
+    </ul>
+  </li>
+  <li>If one is unbounded, the other is infeasible</li>
+  <li>If one is infeasible, the other is either infeasible or unbounded</li>
+</ul>
+
+<p><strong>Complementary Slackness:</strong></p>
+<ul>
+  <li>At optimality:
+    <ul>
+      <li>If constraint is not tight, corresponding dual variable = 0</li>
+      <li>If dual constraint is not tight, corresponding primal variable = 0</li>
     </ul>
   </li>
 </ul>
 
-<p><strong>Better:</strong> Reduce to ILP, then use LP relaxation</p>
+<h3 id="economic-interpretation">Economic Interpretation</h3>
+
+<p><strong>Primal:</strong> Resource allocation problem</p>
 <ul>
-  <li>3-SAT → ILP (as we saw earlier)</li>
-  <li>ILP feasibility can be checked via LP (but LP solution might not be integer)</li>
+  <li>Variables: Amount of each activity</li>
+  <li>Objective: Maximize profit</li>
+  <li>Constraints: Resource limitations</li>
 </ul>
 
-<p><strong>Key Point:</strong> LP relaxation gives bounds, but doesn’t solve the original problem.</p>
-
-<h2 id="lp-rounding-techniques">LP Rounding Techniques</h2>
-
-<p>Various rounding techniques convert LP solutions to integer solutions:</p>
-
-<h3 id="deterministic-rounding">Deterministic Rounding</h3>
-
-<p><strong>Example - Vertex Cover:</strong></p>
+<p><strong>Dual:</strong> Pricing problem</p>
 <ul>
-  <li>Round x_v ≥ 1/2 to 1, else 0</li>
-  <li>Guarantees feasibility and approximation ratio</li>
+  <li>Variables: Prices (shadow prices) of resources</li>
+  <li>Objective: Minimize total cost</li>
+  <li>Constraints: Activities must be profitable</li>
 </ul>
 
-<h3 id="randomized-rounding">Randomized Rounding</h3>
+<p><strong>Shadow Prices:</strong> Dual variables represent the value of an additional unit of each resource.</p>
 
-<p><strong>Example - Set Cover:</strong></p>
+<h3 id="example-duality">Example: Duality</h3>
+
+<p><strong>Primal:</strong></p>
 <ul>
-  <li>Include set S with probability proportional to x_S^* (LP solution)</li>
-  <li>Expected cost equals LP cost</li>
-  <li>May need derandomization</li>
+  <li>Maximize: 3x₁ + 2x₂</li>
+  <li>Subject to: 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0</li>
 </ul>
 
-<h3 id="dependent-rounding">Dependent Rounding</h3>
-
-<p><strong>Example - Matching:</strong></p>
+<p><strong>Dual:</strong></p>
 <ul>
-  <li>Round edges while maintaining constraints</li>
-  <li>More sophisticated than independent rounding</li>
+  <li>Minimize: 6y₁ + 8y₂</li>
+  <li>Subject to: 2y₁ + y₂ ≥ 3, y₁ + 2y₂ ≥ 2, y₁, y₂ ≥ 0</li>
 </ul>
 
-<h2 id="practical-implications">Practical Implications</h2>
+<p><strong>Optimal Solutions:</strong></p>
+<ul>
+  <li>Primal: (4/3, 10/3) with value 32/3</li>
+  <li>Dual: (4/3, 1/3) with value 32/3</li>
+  <li>Both have same optimal value (Strong Duality)</li>
+</ul>
 
-<h3 id="why-lp-matters">Why LP Matters</h3>
+<h2 id="special-cases-and-degeneracy">Special Cases and Degeneracy</h2>
 
-<p>Linear Programming is crucial because:</p>
+<h3 id="unbounded-problems">Unbounded Problems</h3>
+
+<p><strong>Definition:</strong> Objective can be made arbitrarily large (maximization) or small (minimization).</p>
+
+<p><strong>Causes:</strong></p>
+<ul>
+  <li>Feasible region is unbounded</li>
+  <li>Objective direction points toward unbounded direction</li>
+</ul>
+
+<p><strong>Detection:</strong> Simplex method identifies unboundedness when no variable can leave basis.</p>
+
+<h3 id="infeasible-problems">Infeasible Problems</h3>
+
+<p><strong>Definition:</strong> No solution satisfies all constraints.</p>
+
+<p><strong>Causes:</strong></p>
+<ul>
+  <li>Conflicting constraints</li>
+  <li>Over-constrained problem</li>
+</ul>
+
+<p><strong>Detection:</strong> Phase I of Simplex method detects infeasibility.</p>
+
+<h3 id="degeneracy">Degeneracy</h3>
+
+<p><strong>Definition:</strong> More than m constraints are tight at a vertex (where m is number of constraints).</p>
+
+<p><strong>Causes:</strong></p>
+<ul>
+  <li>Redundant constraints</li>
+  <li>Special problem structure</li>
+</ul>
+
+<p><strong>Issues:</strong></p>
+<ul>
+  <li>Simplex may cycle (use Bland’s rule to prevent)</li>
+  <li>May require extra iterations</li>
+</ul>
+
+<h3 id="multiple-optimal-solutions">Multiple Optimal Solutions</h3>
+
+<p><strong>Definition:</strong> More than one optimal solution exists.</p>
+
+<p><strong>Causes:</strong></p>
+<ul>
+  <li>Objective function parallel to a face of feasible region</li>
+  <li>Entire face is optimal</li>
+</ul>
+
+<p><strong>Characterization:</strong> If x* and x** are both optimal, then any convex combination is also optimal.</p>
+
+<h2 id="applications-of-linear-programming">Applications of Linear Programming</h2>
+
+<h3 id="1-resource-allocation">1. Resource Allocation</h3>
+
+<p><strong>Problem:</strong> Allocate limited resources to maximize profit or minimize cost.</p>
+
+<p><strong>Example:</strong> Production planning</p>
+<ul>
+  <li>Resources: Labor, materials, machine time</li>
+  <li>Products: Different products with different resource requirements</li>
+  <li>Objective: Maximize profit</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Amount of each product to produce</li>
+  <li>Constraints: Resource limitations</li>
+  <li>Objective: Total profit</li>
+</ul>
+
+<h3 id="2-transportation-problems">2. Transportation Problems</h3>
+
+<p><strong>Problem:</strong> Transport goods from sources to destinations at minimum cost.</p>
+
+<p><strong>Example:</strong> Shipping</p>
+<ul>
+  <li>Sources: Warehouses with supply</li>
+  <li>Destinations: Stores with demand</li>
+  <li>Costs: Shipping cost per unit from each source to each destination</li>
+  <li>Objective: Minimize total shipping cost</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Amount shipped from each source to each destination</li>
+  <li>Constraints: Supply limits, demand requirements</li>
+  <li>Objective: Total shipping cost</li>
+</ul>
+
+<h3 id="3-network-flow-problems">3. Network Flow Problems</h3>
+
+<p><strong>Problem:</strong> Send maximum flow through a network.</p>
+
+<p><strong>Example:</strong> Data routing, water distribution</p>
+<ul>
+  <li>Network: Graph with capacities on edges</li>
+  <li>Source and sink: Where flow starts and ends</li>
+  <li>Objective: Maximize flow</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Flow on each edge</li>
+  <li>Constraints: Flow conservation, capacity limits</li>
+  <li>Objective: Flow from source to sink</li>
+</ul>
+
+<p><strong>Note:</strong> Specialized algorithms (Ford-Fulkerson) are faster than general LP.</p>
+
+<h3 id="4-diet-problem">4. Diet Problem</h3>
+
+<p><strong>Problem:</strong> Find cheapest diet meeting nutritional requirements.</p>
+
+<p><strong>Example:</strong> Meal planning</p>
+<ul>
+  <li>Foods: Different foods with different nutrients and costs</li>
+  <li>Requirements: Minimum amounts of each nutrient</li>
+  <li>Objective: Minimize cost</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Amount of each food</li>
+  <li>Constraints: Nutritional requirements</li>
+  <li>Objective: Total cost</li>
+</ul>
+
+<h3 id="5-portfolio-optimization">5. Portfolio Optimization</h3>
+
+<p><strong>Problem:</strong> Allocate investments to maximize return subject to risk constraints.</p>
+
+<p><strong>Example:</strong> Financial planning</p>
+<ul>
+  <li>Investments: Stocks, bonds with expected returns and risks</li>
+  <li>Constraints: Risk limits, budget</li>
+  <li>Objective: Maximize expected return</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Fraction of portfolio in each investment</li>
+  <li>Constraints: Risk limits, budget (sum to 1)</li>
+  <li>Objective: Expected return</li>
+</ul>
+
+<h3 id="6-scheduling-problems">6. Scheduling Problems</h3>
+
+<p><strong>Problem:</strong> Schedule tasks to minimize completion time or maximize resource utilization.</p>
+
+<p><strong>Example:</strong> Project scheduling, workforce scheduling</p>
+<ul>
+  <li>Tasks: Activities with durations and resource requirements</li>
+  <li>Resources: Limited resources (workers, machines)</li>
+  <li>Constraints: Precedence, resource availability</li>
+  <li>Objective: Minimize makespan or maximize utilization</li>
+</ul>
+
+<p><strong>Formulation:</strong></p>
+<ul>
+  <li>Variables: Start times or resource assignments</li>
+  <li>Constraints: Precedence, resource limits</li>
+  <li>Objective: Completion time or utilization</li>
+</ul>
+
+<h2 id="computational-complexity">Computational Complexity</h2>
+
+<h3 id="polynomial-time-solvability">Polynomial-Time Solvability</h3>
+
+<p><strong>Result:</strong> Linear Programming ∈ P</p>
+
+<p><strong>Proof:</strong> Interior-point methods solve LP in polynomial time:</p>
+<ul>
+  <li>Time: O(n^{3.5} L) where L is input size</li>
+  <li>Space: O(n²) for storing matrices</li>
+</ul>
+
+<p><strong>Significance:</strong> Unlike Integer Linear Programming (NP-complete), LP is efficiently solvable.</p>
+
+<h3 id="input-size">Input Size</h3>
+
+<p><strong>Definition:</strong> Number of bits needed to represent the input.</p>
+
+<p><strong>Components:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Matrix A: O(mn log(max</td>
+          <td>aᵢⱼ</td>
+          <td>))</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Vector b: O(m log(max</td>
+          <td>bᵢ</td>
+          <td>))</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Vector c: O(n log(max</td>
+          <td>cⱼ</td>
+          <td>))</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Total:</strong> L = O(mn log(max coefficients))</p>
+
+<h3 id="practical-performance">Practical Performance</h3>
+
+<p><strong>Modern Solvers:</strong></p>
+<ul>
+  <li>Can solve problems with millions of variables and constraints</li>
+  <li>Use preprocessing, advanced algorithms, parallel processing</li>
+  <li>Very efficient in practice</li>
+</ul>
+
+<p><strong>Typical Performance:</strong></p>
+<ul>
+  <li>Small problems (&lt; 1000 variables): Milliseconds</li>
+  <li>Medium problems (1000-100000 variables): Seconds to minutes</li>
+  <li>Large problems (&gt; 100000 variables): Minutes to hours</li>
+</ul>
+
+<h2 id="software-and-tools">Software and Tools</h2>
+
+<h3 id="commercial-solvers">Commercial Solvers</h3>
+
+<p><strong>CPLEX (IBM):</strong></p>
+<ul>
+  <li>Industry standard</li>
+  <li>Very fast and robust</li>
+  <li>Good for large-scale problems</li>
+</ul>
+
+<p><strong>Gurobi:</strong></p>
+<ul>
+  <li>Excellent performance</li>
+  <li>Good academic licenses</li>
+  <li>Modern, well-documented</li>
+</ul>
+
+<p><strong>XPRESS:</strong></p>
+<ul>
+  <li>Commercial solver</li>
+  <li>Good performance</li>
+</ul>
+
+<h3 id="open-source-solvers">Open-Source Solvers</h3>
+
+<p><strong>GLPK (GNU Linear Programming Kit):</strong></p>
+<ul>
+  <li>Free and open-source</li>
+  <li>Good for small to medium problems</li>
+</ul>
+
+<p><strong>CLP (COIN-OR Linear Programming):</strong></p>
+<ul>
+  <li>Part of COIN-OR project</li>
+  <li>Free and open-source</li>
+</ul>
+
+<p><strong>HiGHS:</strong></p>
+<ul>
+  <li>Modern, high-performance</li>
+  <li>Open-source</li>
+  <li>Actively developed</li>
+</ul>
+
+<h3 id="modeling-languages-and-interfaces">Modeling Languages and Interfaces</h3>
+
+<p><strong>Python:</strong></p>
+<ul>
+  <li><strong>PuLP:</strong> Simple, intuitive interface</li>
+  <li><strong>CVXPY:</strong> More advanced, supports conic programming</li>
+  <li><strong>OR-Tools:</strong> Google’s optimization tools</li>
+</ul>
+
+<p><strong>Julia:</strong></p>
+<ul>
+  <li><strong>JuMP:</strong> Mathematical modeling language</li>
+  <li>Very fast and expressive</li>
+</ul>
+
+<p><strong>MATLAB:</strong></p>
+<ul>
+  <li><strong>linprog:</strong> Built-in LP solver</li>
+  <li><strong>Optimization Toolbox:</strong> More advanced features</li>
+</ul>
+
+<p><strong>R:</strong></p>
+<ul>
+  <li><strong>lpSolve:</strong> R interface to lp_solve</li>
+  <li><strong>Rglpk:</strong> Interface to GLPK</li>
+</ul>
+
+<h2 id="formulating-problems-as-lps">Formulating Problems as LPs</h2>
+
+<h3 id="step-by-step-process">Step-by-Step Process</h3>
 
 <ol>
-  <li><strong>Polynomial-Time Solvability:</strong> Can solve large instances efficiently</li>
-  <li><strong>LP Relaxation:</strong> Provides bounds for NP-complete problems</li>
-  <li><strong>Approximation Algorithms:</strong> Foundation for many approximation schemes</li>
-  <li><strong>Duality:</strong> Powerful theoretical and practical tool</li>
-  <li><strong>Widespread Applications:</strong> Used in many real-world optimization problems</li>
+  <li><strong>Identify Decision Variables:</strong>
+    <ul>
+      <li>What quantities do we need to decide?</li>
+      <li>What are the units?</li>
+    </ul>
+  </li>
+  <li><strong>Formulate Objective Function:</strong>
+    <ul>
+      <li>What are we trying to optimize?</li>
+      <li>Is it maximize or minimize?</li>
+      <li>Write as linear function of variables</li>
+    </ul>
+  </li>
+  <li><strong>Identify Constraints:</strong>
+    <ul>
+      <li>What limitations exist?</li>
+      <li>What relationships must hold?</li>
+      <li>Write as linear inequalities or equations</li>
+    </ul>
+  </li>
+  <li><strong>Specify Variable Domains:</strong>
+    <ul>
+      <li>Are variables non-negative?</li>
+      <li>Are there upper bounds?</li>
+    </ul>
+  </li>
+  <li><strong>Verify Linearity:</strong>
+    <ul>
+      <li>All functions must be linear</li>
+      <li>No products, powers, or nonlinear functions</li>
+    </ul>
+  </li>
 </ol>
 
-<h3 id="modern-lp-solvers">Modern LP Solvers</h3>
+<h3 id="common-formulation-patterns">Common Formulation Patterns</h3>
 
-<p><strong>Commercial Solvers:</strong></p>
+<p><strong>Pattern 1: Allocation</strong></p>
 <ul>
-  <li><strong>CPLEX:</strong> Industry standard, very fast</li>
-  <li><strong>Gurobi:</strong> Excellent performance, good academic licenses</li>
-  <li><strong>XPRESS:</strong> Commercial solver</li>
+  <li>Variables: Amount allocated to each option</li>
+  <li>Constraints: Total allocation limits</li>
+  <li>Objective: Maximize value or minimize cost</li>
 </ul>
 
-<p><strong>Open-Source Solvers:</strong></p>
+<p><strong>Pattern 2: Selection</strong></p>
 <ul>
-  <li><strong>GLPK:</strong> GNU Linear Programming Kit</li>
-  <li><strong>CLP:</strong> COIN-OR Linear Programming</li>
-  <li><strong>HiGHS:</strong> Modern, high-performance solver</li>
+  <li>Variables: Binary (0-1) selection variables</li>
+  <li>Constraints: Must select certain combinations</li>
+  <li>Objective: Maximize value of selection</li>
 </ul>
 
-<p><strong>Interfaces:</strong></p>
+<p><strong>Pattern 3: Flow</strong></p>
 <ul>
-  <li><strong>PuLP</strong> (Python)</li>
-  <li><strong>CVXPY</strong> (Python)</li>
-  <li><strong>JuMP</strong> (Julia)</li>
-  <li><strong>OR-Tools</strong> (Google)</li>
+  <li>Variables: Flow on each edge/path</li>
+  <li>Constraints: Flow conservation, capacity</li>
+  <li>Objective: Maximize flow or minimize cost</li>
 </ul>
 
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>LP has countless applications:</p>
-
-<ol>
-  <li><strong>Resource Allocation:</strong> Allocating limited resources optimally</li>
-  <li><strong>Production Planning:</strong> Optimizing production schedules</li>
-  <li><strong>Transportation:</strong> Network flow, transportation problems</li>
-  <li><strong>Finance:</strong> Portfolio optimization, risk management</li>
-  <li><strong>Scheduling:</strong> Workforce scheduling, project scheduling</li>
-  <li><strong>Network Design:</strong> Designing efficient networks</li>
-  <li><strong>Game Theory:</strong> Finding Nash equilibria in some games</li>
-</ol>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="simplex-method">Simplex Method</h3>
-
-<p><strong>Algorithm:</strong> Move from vertex to vertex along edges</p>
+<p><strong>Pattern 4: Assignment</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case (Klee-Minty examples), but polynomial average-case</li>
-  <li><strong>Space Complexity:</strong> O(mn) for storing tableau</li>
-  <li><strong>Practical Performance:</strong> Very efficient in practice, often faster than polynomial methods</li>
-  <li><strong>Iterations:</strong> Typically O(m) to O(m+n) iterations</li>
+  <li>Variables: Assignment indicators</li>
+  <li>Constraints: Each item assigned exactly once</li>
+  <li>Objective: Minimize total assignment cost</li>
 </ul>
 
-<h3 id="ellipsoid-method">Ellipsoid Method</h3>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
 
-<p><strong>Algorithm:</strong> Shrink ellipsoid containing feasible region</p>
+<p>Sensitivity analysis studies how changes in input parameters affect the optimal solution.</p>
+
+<h3 id="shadow-prices-dual-variables">Shadow Prices (Dual Variables)</h3>
+
+<p><strong>Definition:</strong> Rate of change in optimal objective value per unit change in right-hand side.</p>
+
+<p><strong>Interpretation:</strong> Value of an additional unit of each resource.</p>
+
+<p><strong>Use:</strong> Determine which resources are most valuable.</p>
+
+<h3 id="reduced-costs">Reduced Costs</h3>
+
+<p><strong>Definition:</strong> Rate of change in optimal objective value per unit change in objective coefficient.</p>
+
+<p><strong>Interpretation:</strong> How much objective coefficient must change before variable enters basis.</p>
+
+<p><strong>Use:</strong> Determine which activities are profitable.</p>
+
+<h3 id="range-analysis">Range Analysis</h3>
+
+<p><strong>Right-Hand Side Ranges:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n^4L) where L is input size (bit complexity)</li>
-  <li><strong>Space Complexity:</strong> O(n^2)</li>
-  <li><strong>Significance:</strong> First proven polynomial-time algorithm for LP</li>
-  <li><strong>Practical Performance:</strong> Not used in practice due to large constants</li>
+  <li>Range of b values for which current basis remains optimal</li>
+  <li>Shows sensitivity to constraint changes</li>
 </ul>
 
-<h3 id="interior-point-methods">Interior-Point Methods</h3>
-
-<p><strong>Algorithm:</strong> Move through interior of feasible region</p>
+<p><strong>Objective Coefficient Ranges:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using path-following methods</li>
-  <li><strong>Space Complexity:</strong> O(n^2) for storing matrices</li>
-  <li><strong>Practical Performance:</strong> Very efficient, widely used in modern solvers</li>
-  <li><strong>Iterations:</strong> Typically O(sqrt{n} log(1/epsilon)) iterations for \epsilon-accuracy</li>
-</ul>
-
-<h3 id="primal-dual-methods">Primal-Dual Methods</h3>
-
-<p><strong>Algorithm:</strong> Solve primal and dual simultaneously</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) similar to interior-point</li>
-  <li><strong>Space Complexity:</strong> O(n^2)</li>
-  <li><strong>Advantage:</strong> Can exploit structure better in some cases</li>
-</ul>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p><strong>Network Flow Problems:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^2m) using specialized algorithms (faster than general LP)</li>
-  <li><strong>Space Complexity:</strong> O(n + m)</li>
-</ul>
-
-<p><strong>Transportation Problems:</strong></p>
-<ul>
-  <li>Specialized algorithms can be more efficient than general LP</li>
-</ul>
-
-<h3 id="lp-relaxation-runtime">LP Relaxation Runtime</h3>
-
-<p><strong>For ILP Relaxation:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as regular LP</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Use:</strong> Provides bounds for branch-and-bound algorithms</li>
-</ul>
-
-<h3 id="modern-solvers">Modern Solvers</h3>
-
-<p><strong>Commercial Solvers (CPLEX, Gurobi):</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> Polynomial (interior-point or simplex)</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Practical Performance:</strong> Can solve instances with millions of variables and constraints</li>
-  <li><strong>Techniques:</strong> Preprocessing, advanced pivoting, parallel processing</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate solution:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability is straightforward for LP</li>
+  <li>Range of c values for which current solution remains optimal</li>
+  <li>Shows sensitivity to objective changes</li>
 </ul>
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>LP is in P:</strong> Solvable in polynomial time using interior-point methods</li>
-  <li><strong>LP Relaxation:</strong> Fundamental technique for approximating NP-complete problems</li>
-  <li><strong>Duality:</strong> Powerful theoretical tool with practical applications</li>
-  <li><strong>Approximation Algorithms:</strong> Many use LP relaxation + rounding</li>
-  <li><strong>Reductions:</strong> LP provides bounds and approximations, not exact solutions for integer problems</li>
+  <li><strong>LP is Polynomial-Time:</strong> Can be solved efficiently using interior-point methods</li>
+  <li><strong>Geometric Intuition:</strong> Optimal solutions occur at vertices</li>
+  <li><strong>Duality:</strong> Every LP has a dual providing bounds and insights</li>
+  <li><strong>Wide Applications:</strong> Used in many real-world optimization problems</li>
+  <li><strong>Formulation Skills:</strong> Key to applying LP successfully</li>
+  <li><strong>Modern Solvers:</strong> Very efficient and can handle large problems</li>
+  <li><strong>Foundation for Advanced Topics:</strong> Basis for Integer Programming, Approximation Algorithms</li>
 </ol>
 
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>Key Reductions Involving LP:</strong></p>
+<h2 id="practice-problems">Practice Problems</h2>
 
 <ol>
-  <li><strong>ILP → LP (Relaxation):</strong>
+  <li>
+    <p><strong>Formulate as LP:</strong> A company produces two products. Product 1 requires 2 hours of labor and 1 unit of material, sells for $10. Product 2 requires 1 hour of labor and 2 units of material, sells for $15. Available: 100 hours labor, 80 units material. Maximize profit.</p>
+  </li>
+  <li>
+    <p><strong>Graphical Solution:</strong> Solve the LP from problem 1 graphically. Identify vertices and optimal solution.</p>
+  </li>
+  <li><strong>Standard Form:</strong> Convert the following to standard form:
     <ul>
-      <li>Remove integrality constraints</li>
-      <li>Provides upper/lower bounds</li>
-      <li>Used in branch-and-bound</li>
+      <li>Minimize: x₁ - 2x₂</li>
+      <li>Subject to: x₁ + x₂ = 5, x₁ ≥ 0, x₂ unrestricted</li>
     </ul>
   </li>
-  <li><strong>LP Optimization → LP Feasibility:</strong>
+  <li><strong>Dual Problem:</strong> Write the dual of:
     <ul>
-      <li>Use binary search on objective value</li>
-      <li>Reduces optimization to feasibility</li>
+      <li>Maximize: 3x₁ + 2x₂</li>
+      <li>Subject to: 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0</li>
     </ul>
   </li>
-  <li><strong>General LP → Standard Form:</strong>
+  <li>
+    <p><strong>Simplex Method:</strong> Solve a small LP using the Simplex method manually. Show all tableaus.</p>
+  </li>
+  <li>
+    <p><strong>Applications:</strong> Research one real-world application of LP. Formulate it as an LP problem.</p>
+  </li>
+  <li>
+    <p><strong>Sensitivity:</strong> For a solved LP, interpret shadow prices. What do they mean in the context of the problem?</p>
+  </li>
+  <li><strong>Special Cases:</strong> Construct examples of:
     <ul>
-      <li>Convert to standard form using slack variables</li>
-      <li>All conversions are polynomial-time</li>
+      <li>Unbounded LP</li>
+      <li>Infeasible LP</li>
+      <li>Degenerate LP</li>
+      <li>Multiple optimal solutions</li>
     </ul>
   </li>
-  <li><strong>NP-Complete → LP Relaxation:</strong>
-    <ul>
-      <li>Many NP-complete problems have natural LP relaxations</li>
-      <li>LP solution provides approximation bounds</li>
-    </ul>
+  <li>
+    <p><strong>Network Flow:</strong> Formulate a maximum flow problem as an LP. How does it differ from using specialized algorithms?</p>
   </li>
+  <li><strong>Software:</strong> Use a solver (PuLP, CVXPY, or other) to solve a small LP problem. Compare with manual solution.</li>
 </ol>
 
 <h2 id="further-reading">Further Reading</h2>
 
 <ul>
-  <li><strong>Linear Programming:</strong> Chvátal’s “Linear Programming” or Vanderbei’s “Linear Programming”</li>
-  <li><strong>Interior-Point Methods:</strong> Nesterov &amp; Nemirovskii’s work on interior-point methods</li>
-  <li><strong>Approximation Algorithms:</strong> Vazirani’s “Approximation Algorithms” covers LP-based approximations</li>
-  <li><strong>Duality:</strong> Understanding the dual simplex method and sensitivity analysis</li>
-  <li><strong>Modern Solvers:</strong> Documentation for CPLEX, Gurobi, or other solvers</li>
+  <li><strong>Textbooks:</strong>
+    <ul>
+      <li>Chvátal: “Linear Programming” - Classic, comprehensive</li>
+      <li>Vanderbei: “Linear Programming: Foundations and Extensions” - Modern, clear</li>
+      <li>Bertsimas &amp; Tsitsiklis: “Introduction to Linear Optimization” - Rigorous</li>
+    </ul>
+  </li>
+  <li><strong>Algorithms:</strong>
+    <ul>
+      <li>Dantzig: “Linear Programming and Extensions” - Original Simplex method</li>
+      <li>Nesterov &amp; Nemirovskii: “Interior-Point Polynomial Algorithms” - Interior-point methods</li>
+    </ul>
+  </li>
+  <li><strong>Applications:</strong>
+    <ul>
+      <li>Hillier &amp; Lieberman: “Introduction to Operations Research” - Applications focus</li>
+      <li>Taha: “Operations Research” - Practical applications</li>
+    </ul>
+  </li>
+  <li><strong>Software Documentation:</strong>
+    <ul>
+      <li>CPLEX, Gurobi, or other solver documentation</li>
+      <li>PuLP, CVXPY, or JuMP tutorials</li>
+    </ul>
+  </li>
 </ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li><strong>Formulate as LP</strong>: Convert the following to LP:
-    <ul>
-      <li>You have resources and want to maximize profit</li>
-      <li>Each product uses certain amounts of resources</li>
-      <li>You have limited resources</li>
-      <li>Products have different profits</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>LP Relaxation</strong>: For a Vertex Cover instance, write the LP relaxation. What is the relationship between LP optimal and ILP optimal?</p>
-  </li>
-  <li><strong>Duality</strong>: Write the dual of the following LP:
-    <ul>
-      <li>Maximize 3x₁ + 2x₂</li>
-      <li>Subject to 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Rounding</strong>: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?</p>
-  </li>
-  <li>
-    <p><strong>Reduction</strong>: Show how to reduce LP optimization to LP feasibility using binary search. What is the time complexity?</p>
-  </li>
-  <li><strong>Standard Form</strong>: Convert the following to standard form:
-    <ul>
-      <li>Minimize x₁ - 2x₁</li>
-      <li>Subject to x₁ + x₂ = 5, x₁ ≥ 0, x₁ unrestricted</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Applications</strong>: Research one real-world application of LP. How is it formulated? What solver is used?</p>
-  </li>
-  <li>
-    <p><strong>Approximation</strong>: Research the LP-based approximation for Set Cover. What approximation ratio does it achieve? How does rounding work?</p>
-  </li>
-  <li>
-    <p><strong>Duality Applications</strong>: How is LP duality used in the design of algorithms? Research one example.</p>
-  </li>
-  <li><strong>Interior-Point Methods</strong>: Research how interior-point methods work. How do they differ from the simplex method?</li>
-</ol>
 
 <hr />
 
-<p>Understanding Linear Programming and its role in reductions provides crucial insight into the boundary between polynomial-time and NP-complete problems. LP relaxation is one of the most powerful techniques for designing approximation algorithms and understanding the structure of optimization problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to Linear Programming, its polynomial-time solvability, and how it relates to reductions in complexity theory, including LP relaxations, duality, and reductions to/from LP.]]></summary></entry><entry><title type="html">NP-Complete Reduction Examples: How to Prove NP-Completeness</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-examples/" rel="alternate" type="text/html" title="NP-Complete Reduction Examples: How to Prove NP-Completeness" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Linear Programming is a fundamental optimization technique with wide-ranging applications. Understanding its theory, algorithms, and formulation techniques provides a strong foundation for tackling optimization problems in computer science, operations research, and many other fields. The polynomial-time solvability of LP makes it a powerful tool, while its relationship to Integer Linear Programming (through LP relaxation) connects it to NP-complete problems and approximation algorithms.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[A comprehensive introduction to Linear Programming covering problem formulation, geometric interpretation, standard forms, the Simplex method, interior-point methods, duality theory, and practical applications.]]></summary></entry><entry><title type="html">NP-Complete Reduction Examples: How to Prove NP-Completeness</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-examples/" rel="alternate" type="text/html" title="NP-Complete Reduction Examples: How to Prove NP-Completeness" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Proving that a problem is NP-complete is a fundamental skill in computational complexity theory. The standard approach is to reduce from a known NP-complete problem (like 3-SAT) to the problem we want to prove is NP-complete. This post provides a systematic guide with detailed examples of how to construct and verify such reductions.</p>
 
@@ -2638,7 +2387,7 @@
 
 <hr />
 
-<p>Understanding how to construct reductions is essential for proving NP-completeness. The key is to design gadgets that correctly encode the constraints of the known NP-complete problem (like 3-SAT) into the structure of your target problem. With practice, you’ll develop intuition for which reduction techniques work best for different problem types.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to proving NP-completeness through reductions, with step-by-step examples showing how to reduce from known NP-complete problems (like 3-SAT) to prove new problems are NP-complete.]]></summary></entry><entry><title type="html">NP-Complete Reduction Reference: Using Known Problems to Prove NP-Completeness</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-reference/" rel="alternate" type="text/html" title="NP-Complete Reduction Reference: Using Known Problems to Prove NP-Completeness" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-reference</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-complete-reduction-reference/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Understanding how to construct reductions is essential for proving NP-completeness. The key is to design gadgets that correctly encode the constraints of the known NP-complete problem (like 3-SAT) into the structure of your target problem. With practice, you’ll develop intuition for which reduction techniques work best for different problem types.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to proving NP-completeness through reductions, with step-by-step examples showing how to reduce from known NP-complete problems (like 3-SAT) to prove new problems are NP-complete.]]></summary></entry><entry><title type="html">NP-Complete Reduction Reference: Using Known Problems to Prove NP-Completeness</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-reference/" rel="alternate" type="text/html" title="NP-Complete Reduction Reference: Using Known Problems to Prove NP-Completeness" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-reference</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/np-complete-reduction-reference/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Once we have a collection of known NP-complete problems, we can use any of them as a starting point for proving new problems are NP-complete. This post provides a comprehensive reference showing which known NP-complete problems are best suited for reducing to different types of problems, along with reduction chains and examples.</p>
 
@@ -3565,7 +3314,1613 @@
 
 <hr />
 
-<p>This reference guide provides a roadmap for proving NP-completeness. By understanding which known NP-complete problems work best for different problem types, you can efficiently construct reductions and prove new problems are NP-complete. The key is matching the structure of your target problem to an appropriate starting point and designing gadgets that correctly encode the constraints.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive reference guide showing how to use known NP-complete problems (SAT, 3-SAT, Clique, Independent Set, Vertex Cover, Subset Sum, Rudrata Path/Cycle, ILP, ZOE, 3D Matching, TSP) to prove new problems are NP-complete through reductions.]]></summary></entry><entry><title type="html">NP-Hard Introduction: 3D Matching</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-3d-matching/" rel="alternate" type="text/html" title="NP-Hard Introduction: 3D Matching" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-3d-matching</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-3d-matching/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>This reference guide provides a roadmap for proving NP-completeness. By understanding which known NP-complete problems work best for different problem types, you can efficiently construct reductions and prove new problems are NP-complete. The key is matching the structure of your target problem to an appropriate starting point and designing gadgets that correctly encode the constraints.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive reference guide showing how to use known NP-complete problems (SAT, 3-SAT, Clique, Independent Set, Vertex Cover, Subset Sum, Rudrata Path/Cycle, ILP, ZOE, 3D Matching, TSP) to prove new problems are NP-complete through reductions.]]></summary></entry><entry><title type="html">NP-Hard Introduction: Integer Linear Programming (ILP)</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming/" rel="alternate" type="text/html" title="NP-Hard Introduction: Integer Linear Programming (ILP)" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Integer Linear Programming (ILP) is a fundamental optimization problem that extends Linear Programming by requiring variables to take integer values. While Linear Programming can be solved in polynomial time, ILP is NP-complete, making it one of the most important problems in optimization theory. ILP has widespread applications in operations research, scheduling, resource allocation, and many other domains.</p>
+
+<h2 id="what-is-integer-linear-programming">What is Integer Linear Programming?</h2>
+
+<p>Integer Linear Programming asks: <strong>Given linear constraints and a linear objective function, find integer values for variables that satisfy the constraints and optimize the objective.</strong></p>
+
+<h3 id="problem-definition">Problem Definition</h3>
+
+<p><strong>Integer Linear Programming (ILP) Decision Problem:</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A matrix A ∈ ℤ^(m×n) (constraint coefficients)</li>
+  <li>A vector b ∈ ℤ^m (constraint bounds)</li>
+  <li>A vector c ∈ ℤ^n (objective coefficients)</li>
+  <li>An integer k (target value)</li>
+</ul>
+
+<p><strong>Output:</strong> YES if there exists an integer vector x ∈ ℤ^n such that:</p>
+<ul>
+  <li>Ax ≤ b (constraints satisfied)</li>
+  <li>c^T x ≥ k (objective value at least k)</li>
+</ul>
+
+<p>NO otherwise</p>
+
+<p><strong>ILP Optimization Problem:</strong></p>
+
+<p><strong>Input:</strong> Same as above (without k)</p>
+
+<p><strong>Output:</strong> The maximum value of c^T x subject to Ax ≤ b and x ∈ ℤ^n</p>
+
+<h3 id="variants">Variants</h3>
+
+<p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
+<ul>
+  <li>Variables restricted to {0, 1}</li>
+  <li>Very common in practice</li>
+</ul>
+
+<p><strong>Mixed Integer Linear Programming (MILP):</strong></p>
+<ul>
+  <li>Some variables are integers, others are continuous</li>
+  <li>Combines ILP and LP</li>
+</ul>
+
+<p><strong>Unbounded ILP:</strong></p>
+<ul>
+  <li>Variables can be any integers (not necessarily non-negative)</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>Consider the ILP:</p>
+
+<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
+
+<p><strong>Subject to:</strong></p>
+<ul>
+  <li>2x₁ + x₂ ≤ 6</li>
+  <li>x₁ + 2x₂ ≤ 8</li>
+  <li>x₁, x₂ ≥ 0 and integer</li>
+</ul>
+
+<p><strong>Feasible integer solutions:</strong></p>
+<ul>
+  <li>(0, 0): objective = 0</li>
+  <li>(1, 0): objective = 3</li>
+  <li>(2, 0): objective = 6</li>
+  <li>(0, 1): objective = 2</li>
+  <li>(1, 1): objective = 5</li>
+  <li>(2, 1): objective = 8</li>
+  <li>(3, 0): objective = 9 ✓ (optimal, satisfies constraints)</li>
+</ul>
+
+<p><strong>LP relaxation</strong> (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.</p>
+
+<h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
+
+<p>To show that ILP is NP-complete, we first need to show it’s in NP.</p>
+
+<p><strong>ILP ∈ NP:</strong></p>
+
+<p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
+<ol>
+  <li>Check that x has integer values: O(n) time</li>
+  <li>Check that Ax ≤ b: O(mn) time (matrix-vector multiplication)</li>
+  <li>Check that c^T x ≥ k: O(n) time</li>
+</ol>
+
+<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
+
+<p><strong>Note:</strong> The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
+
+<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
+
+<p>The standard proof that ILP is NP-complete reduces from 3-SAT.</p>
+
+<h3 id="construction">Construction</h3>
+
+<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
+
+<p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
+
+<ol>
+  <li><strong>Variables:</strong>
+    <ul>
+      <li>For each Boolean variable xᵢ, create an integer variable yᵢ ∈ {0, 1}</li>
+      <li>yᵢ = 1 means xᵢ = TRUE, yᵢ = 0 means xᵢ = FALSE</li>
+    </ul>
+  </li>
+  <li><strong>Clauses:</strong>
+    <ul>
+      <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+        <ul>
+          <li>If literal is xᵢ, use yᵢ</li>
+          <li>If literal is ¬xᵢ, use (1 - yᵢ)</li>
+          <li>Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):</p>
+    <ul>
+      <li>Constraint: y₁ + (1 - y₂) + y₃ ≥ 1</li>
+      <li>Simplifies to: y₁ - y₂ + y₃ ≥ 0</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Objective:</strong> Maximize ∑ᵢ₌₁ⁿ yᵢ (or any objective, since we’re just checking feasibility)</p>
+  </li>
+  <li><strong>Bounds:</strong> 0 ≤ yᵢ ≤ 1 for all i (enforces binary variables)</li>
+</ol>
+
+<h3 id="why-this-works">Why This Works</h3>
+
+<p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
+<ul>
+  <li>If φ is satisfiable, set yᵢ = 1 if xᵢ = TRUE, else yᵢ = 0</li>
+  <li>Each clause constraint is satisfied (at least one literal is 1)</li>
+  <li>This gives a feasible ILP solution</li>
+</ul>
+
+<p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
+<ul>
+  <li>If ILP has feasible solution with yᵢ ∈ {0,1}, set xᵢ = TRUE if yᵢ = 1, else xᵢ = FALSE</li>
+  <li>Since each clause constraint requires at least one yᵢ = 1 (or (1-yᵢ) = 1), each clause has at least one true literal</li>
+  <li>This gives a satisfying assignment</li>
+</ul>
+
+<p><strong>Polynomial Time:</strong></p>
+<ul>
+  <li>Construction takes O(mn) time (one constraint per clause)</li>
+</ul>
+
+<p>Therefore, <strong>ILP is NP-complete</strong>.</p>
+
+<h2 id="relationship-to-linear-programming">Relationship to Linear Programming</h2>
+
+<h3 id="linear-programming-lp">Linear Programming (LP)</h3>
+
+<p><strong>LP Decision Problem:</strong></p>
+<ul>
+  <li>Same as ILP but variables can be <strong>real numbers</strong> (not necessarily integers)</li>
+  <li><strong>Solvable in polynomial time</strong> using interior-point methods or simplex method (though simplex has exponential worst-case, it’s efficient in practice)</li>
+</ul>
+
+<h3 id="key-difference">Key Difference</h3>
+
+<p><strong>LP:</strong> Variables x ∈ ℝ^n (continuous)
+<strong>ILP:</strong> Variables x ∈ ℤ^n (integer)</p>
+
+<p>This seemingly small restriction makes the problem NP-complete!</p>
+
+<h3 id="lp-relaxation">LP Relaxation</h3>
+
+<p>A common technique for solving ILP:</p>
+<ol>
+  <li>Solve the <strong>LP relaxation</strong> (allow fractional values)</li>
+  <li>If LP solution is integer, we’re done</li>
+  <li>Otherwise, use branch-and-bound or cutting planes to find integer solution</li>
+</ol>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>ILP: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 integer</li>
+  <li>LP relaxation: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 (real)</li>
+  <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
+  <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
+</ul>
+
+<h2 id="practical-implications">Practical Implications</h2>
+
+<h3 id="why-ilp-is-hard">Why ILP is Hard</h3>
+
+<p>Integer Linear Programming is NP-complete, which means:</p>
+
+<ol>
+  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
+  <li><strong>Branch-and-Bound</strong>: Systematic search through solution space</li>
+  <li><strong>Cutting Planes</strong>: Add constraints to eliminate fractional solutions</li>
+  <li><strong>Branch-and-Cut</strong>: Combines branch-and-bound with cutting planes</li>
+  <li><strong>Heuristics</strong>: Various heuristics work well in practice</li>
+</ol>
+
+<h3 id="solving-methods">Solving Methods</h3>
+
+<p><strong>1. Branch-and-Bound:</strong></p>
+<ul>
+  <li>Solve LP relaxation</li>
+  <li>If solution is fractional, branch on a fractional variable</li>
+  <li>Create two subproblems: xᵢ ≤ ⌊xᵢ<em>⌋ and xᵢ ≥ ⌈xᵢ</em>⌉</li>
+  <li>Recursively solve subproblems</li>
+  <li>Prune branches that can’t improve best known solution</li>
+</ul>
+
+<p><strong>2. Cutting Planes:</strong></p>
+<ul>
+  <li>Solve LP relaxation</li>
+  <li>If solution is fractional, find a “cut” (constraint) that:
+    <ul>
+      <li>Is satisfied by all integer solutions</li>
+      <li>Is violated by current fractional solution</li>
+    </ul>
+  </li>
+  <li>Add cut and re-solve</li>
+  <li>Repeat until integer solution found</li>
+</ul>
+
+<p><strong>3. Branch-and-Cut:</strong></p>
+<ul>
+  <li>Combines both techniques</li>
+  <li>Most effective in practice</li>
+</ul>
+
+<p><strong>4. Special Cases:</strong></p>
+<ul>
+  <li><strong>Unimodular matrices</strong>: If constraint matrix is totally unimodular, LP solution is automatically integer</li>
+  <li><strong>Network flow problems</strong>: Often have integer solutions</li>
+  <li><strong>Assignment problems</strong>: Can be solved as LP (Hungarian algorithm)</li>
+</ul>
+
+<h3 id="real-world-applications">Real-World Applications</h3>
+
+<p>ILP has numerous applications:</p>
+
+<ol>
+  <li><strong>Scheduling</strong>: Job scheduling, course scheduling, employee scheduling</li>
+  <li><strong>Resource Allocation</strong>: Allocating resources optimally</li>
+  <li><strong>Network Design</strong>: Designing networks with capacity constraints</li>
+  <li><strong>Production Planning</strong>: Optimizing production schedules</li>
+  <li><strong>Facility Location</strong>: Choosing where to place facilities</li>
+  <li><strong>Cutting Stock</strong>: Optimizing material cutting</li>
+  <li><strong>Set Covering/Packing</strong>: Various covering and packing problems</li>
+  <li><strong>Vehicle Routing</strong>: Optimizing delivery routes</li>
+  <li><strong>Portfolio Optimization</strong>: With integer constraints</li>
+  <li><strong>Game Theory</strong>: Finding Nash equilibria in some games</li>
+</ol>
+
+<h3 id="modern-solvers">Modern Solvers</h3>
+
+<p>Despite NP-completeness, modern ILP solvers are very effective:</p>
+
+<ul>
+  <li><strong>CPLEX</strong>: Commercial solver (very powerful)</li>
+  <li><strong>Gurobi</strong>: Commercial solver (excellent performance)</li>
+  <li><strong>GLPK</strong>: Open-source solver</li>
+  <li><strong>CBC</strong>: Open-source solver from COIN-OR</li>
+  <li><strong>SCIP</strong>: Academic solver</li>
+</ul>
+
+<p>These solvers use sophisticated techniques:</p>
+<ul>
+  <li>Advanced preprocessing</li>
+  <li>Strong cutting planes</li>
+  <li>Efficient branch-and-bound</li>
+  <li>Parallel processing</li>
+  <li>Heuristics</li>
+</ul>
+
+<p>Many practical ILP instances can be solved efficiently, even though worst-case is exponential.</p>
+
+<h2 id="runtime-analysis">Runtime Analysis</h2>
+
+<h3 id="brute-force-approach">Brute Force Approach</h3>
+
+<p><strong>Algorithm:</strong> Try all possible integer assignments (exponential space)</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential in number of variables</li>
+  <li><strong>Space Complexity:</strong> Exponential</li>
+  <li><strong>Not Practical:</strong> Only feasible for very small instances</li>
+</ul>
+
+<h3 id="branch-and-bound">Branch-and-Bound</h3>
+
+<p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
+  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
+  <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
+  <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
+</ul>
+
+<h3 id="cutting-planes">Cutting Planes</h3>
+
+<p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
+  <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
+  <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
+</ul>
+
+<h3 id="branch-and-cut">Branch-and-Cut</h3>
+
+<p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
+  <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
+</ul>
+
+<h3 id="lp-relaxation-1">LP Relaxation</h3>
+
+<p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using interior-point methods where L is input size</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
+  <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
+</ul>
+
+<h3 id="special-cases">Special Cases</h3>
+
+<p><strong>Totally Unimodular Matrices:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as LP, solution automatically integer</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
+</ul>
+
+<p><strong>Network Flow Problems:</strong></p>
+<ul>
+  <li>Often have integer solutions when solved as LP</li>
+</ul>
+
+<h3 id="modern-solvers-cplex-gurobi">Modern Solvers (CPLEX, Gurobi)</h3>
+
+<p><strong>Techniques Used:</strong></p>
+<ul>
+  <li>Preprocessing: O(mn) to simplify problem</li>
+  <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
+  <li>Heuristics: Fast approximate solutions</li>
+  <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
+</ul>
+
+<h3 id="verification-complexity">Verification Complexity</h3>
+
+<p><strong>Given a candidate integer solution:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
+  <li>This polynomial-time verifiability shows ILP is in NP</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>ILP is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
+  <li><strong>LP vs ILP</strong>: Linear Programming is polynomial-time, but requiring integer variables makes it NP-complete</li>
+  <li><strong>LP Relaxation</strong>: Solving the continuous relaxation is a key technique</li>
+  <li><strong>Solving Methods</strong>: Branch-and-bound, cutting planes, and branch-and-cut are standard approaches</li>
+  <li><strong>Practical Solvers</strong>: Modern solvers are very effective despite theoretical hardness</li>
+</ol>
+
+<h2 id="reduction-summary">Reduction Summary</h2>
+
+<p><strong>3-SAT ≤ₚ ILP:</strong></p>
+<ul>
+  <li>Encode Boolean variables as 0-1 integer variables</li>
+  <li>Encode clauses as linear constraints requiring at least one true literal</li>
+  <li>3-SAT satisfiable ↔ ILP feasible</li>
+</ul>
+
+<p><strong>ILP ≤ₚ 0-1 ILP:</strong></p>
+<ul>
+  <li>Can reduce general ILP to binary ILP using binary expansion</li>
+  <li>This shows 0-1 ILP is also NP-complete</li>
+</ul>
+
+<p>All reductions are polynomial-time, establishing ILP as NP-complete.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
+  <li><strong>Linear Programming</strong>: Understanding the polynomial-time LP algorithms</li>
+  <li><strong>Integer Programming</strong>: Books by Nemhauser &amp; Wolsey, or Schrijver</li>
+  <li><strong>Modern Solvers</strong>: Documentation for CPLEX, Gurobi, or other solvers</li>
+  <li><strong>Cutting Planes</strong>: Research on Gomory cuts, Chvátal-Gomory cuts, and other cutting plane methods</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li><strong>Formulate as ILP</strong>: Convert the following problem to ILP:
+    <ul>
+      <li>You have items with weights and values</li>
+      <li>You want to select items to maximize value</li>
+      <li>Total weight must be ≤ capacity</li>
+      <li>Each item can be selected at most once</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
+  </li>
+  <li>
+    <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>
+  </li>
+  <li>
+    <p><strong>Branch-and-Bound</strong>: Trace through a branch-and-bound algorithm on a small ILP instance. Show the search tree.</p>
+  </li>
+  <li>
+    <p><strong>Unimodularity</strong>: Research what it means for a matrix to be totally unimodular. Why does this make ILP easier?</p>
+  </li>
+  <li><strong>Formulation practice</strong>: Formulate the following as ILP:
+    <ul>
+      <li>Set cover problem</li>
+      <li>Maximum independent set (in a graph)</li>
+      <li>Traveling salesman problem</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Solver comparison</strong>: Try solving the same ILP instance with different solvers (if available). Compare their performance.</p>
+  </li>
+  <li><strong>Cutting planes</strong>: Research Gomory cuts. How are they derived? Why do they work?</li>
+</ol>
+
+<hr />
+
+<p>Understanding Integer Linear Programming provides crucial insight into optimization problems and the dramatic impact that requiring integrality can have on problem complexity. The relationship to Linear Programming and the practical solving methods make ILP a cornerstone of operations research and optimization.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods.]]></summary></entry><entry><title type="html">Greedy Algorithms: Theory and Examples</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples/" rel="alternate" type="text/html" title="Greedy Algorithms: Theory and Examples" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Greedy algorithms are a fundamental class of algorithms that make locally optimal choices at each step with the hope of finding a globally optimal solution. They are simple, intuitive, and often very efficient. However, greedy algorithms don’t always produce optimal solutions - understanding when they work and when they don’t is crucial for algorithm design.</p>
+
+<h2 id="what-is-a-greedy-algorithm">What is a Greedy Algorithm?</h2>
+
+<p>A <strong>greedy algorithm</strong> makes the choice that looks best at the moment, without considering future consequences. At each step, it:</p>
+<ol>
+  <li>Makes a locally optimal choice</li>
+  <li>Never reconsiders previous choices</li>
+  <li>Hopes this leads to a globally optimal solution</li>
+</ol>
+
+<h3 id="key-characteristics">Key Characteristics</h3>
+
+<ul>
+  <li><strong>Greedy Choice Property:</strong> A globally optimal solution can be arrived at by making a locally optimal (greedy) choice</li>
+  <li><strong>Optimal Substructure:</strong> An optimal solution contains optimal solutions to subproblems</li>
+  <li><strong>No Backtracking:</strong> Once a choice is made, it’s never reconsidered</li>
+</ul>
+
+<h2 id="when-do-greedy-algorithms-work">When Do Greedy Algorithms Work?</h2>
+
+<p>Greedy algorithms work when:</p>
+
+<ol>
+  <li><strong>Greedy Choice Property:</strong> The greedy choice is always part of some optimal solution</li>
+  <li><strong>Optimal Substructure:</strong> After making the greedy choice, the remaining problem is similar to the original</li>
+  <li><strong>Problem Structure:</strong> The problem has a structure that allows local optimization to lead to global optimization</li>
+</ol>
+
+<h3 id="when-they-dont-work">When They Don’t Work</h3>
+
+<p>Greedy algorithms fail when:</p>
+<ul>
+  <li>Local optima don’t lead to global optima</li>
+  <li>The problem requires considering future consequences</li>
+  <li>The greedy choice property doesn’t hold</li>
+</ul>
+
+<h2 id="classic-examples">Classic Examples</h2>
+
+<h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
+
+<p><strong>Problem:</strong> Given n activities with start and finish ×, select the maximum number of activities that don’t overlap.</p>
+
+<p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: ActivitySelection(activities)
+1. Sort activities by finish time
+2. selected = [activities[0]]
+3. last_finish = activities[0].finish
+4. for i = 1 to n-1:
+5.     if activities[i].start &gt;= last_finish:
+6.         selected.append(activities[i])
+7.         last_finish = activities[i].finish
+8. return selected
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Activities: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
+  <li>Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
+  <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: If an optimal solution doesn’t include the earliest-finishing activity, we can replace the first activity in the optimal solution with the earliest-finishing one without reducing the count</li>
+  <li>Optimal substructure: After selecting an activity, the problem reduces to selecting activities from those that start after it finishes</li>
+</ul>
+
+<h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
+
+<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.</p>
+
+<p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: FractionalKnapsack(items, W)
+1. Sort items by value/weight ratio (descending)
+2. total_value = 0
+3. remaining_capacity = W
+4. for each item in sorted_items:
+5.     if remaining_capacity &gt;= item.weight:
+6.         take entire item
+7.         total_value += item.value
+8.         remaining_capacity -= item.weight
+9.     else:
+10.        take fraction: remaining_capacity / item.weight
+11.        total_value += item.value * (remaining_capacity / item.weight)
+12.        break
+13. return total_value
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Items: (weight=10, value=60), (weight=20, value=100), (weight=30, value=120)</li>
+  <li>Capacity: 50</li>
+  <li>Ratios: 6, 5, 4</li>
+  <li>Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)</li>
+  <li>Value: 60 + 100 + 80 = 240</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
+<strong>Space Complexity:</strong> O(1) additional space</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: Taking the highest value-to-weight ratio maximizes value per unit capacity</li>
+  <li>Optimal substructure: After taking some items, the remaining problem is similar with reduced capacity</li>
+</ul>
+
+<p><strong>Note:</strong> This works for fractional knapsack, but NOT for 0-1 knapsack (where items must be taken whole).</p>
+
+<h3 id="example-3-minimum-spanning-tree-kruskals-algorithm">Example 3: Minimum Spanning Tree (Kruskal’s Algorithm)</h3>
+
+<p><strong>Problem:</strong> Find the minimum-weight spanning tree of a connected, weighted graph.</p>
+
+<p><strong>Greedy Strategy:</strong> Always add the minimum-weight edge that doesn’t create a cycle.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: KruskalMST(G)
+1. Sort edges by weight
+2. Initialize Union-Find data structure
+3. MST = []
+4. for each edge (u,v) in sorted_edges:
+5.     if Find(u) != Find(v):  // Not in same component
+6.         MST.append((u,v))
+7.         Union(u,v)
+8. return MST
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
+    A---2---B
+    |\     /|
+    | 3   1 |
+    4|     \|5
+    C---6---D
+</code></pre></div></div>
+
+<ul>
+  <li>Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)</li>
+  <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
+</ul>
+
+<p><strong>Time Complexity:</strong> O(E log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E log E)
+<strong>Space Complexity:</strong> O(V) for Union-Find</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The minimum-weight edge across a cut is always in some MST</li>
+  <li>Optimal substructure: After adding an edge, the remaining problem is finding MST of the reduced graph</li>
+</ul>
+
+<h3 id="example-4-minimum-spanning-tree-prims-algorithm">Example 4: Minimum Spanning Tree (Prim’s Algorithm)</h3>
+
+<p><strong>Problem:</strong> Same as Kruskal’s - find MST.</p>
+
+<p><strong>Greedy Strategy:</strong> Start from arbitrary vertex, always add minimum-weight edge connecting tree to new vertex.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: PrimMST(G, start)
+1. Initialize priority queue with (start, 0)
+2. visited = set()
+3. MST = []
+4. while priority queue not empty:
+5.     u = extract_min()
+6.     if u not visited:
+7.         visited.add(u)
+8.         if u != start:
+9.             MST.append((parent[u], u))
+10.        for each neighbor v of u:
+11.            if v not visited and weight(u,v) &lt; key[v]:
+12.                key[v] = weight(u,v)
+13.                parent[v] = u
+14.                insert/update (v, key[v]) in priority queue
+15. return MST
+</code></pre></div></div>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>With binary heap: O(E log V)</li>
+  <li>With Fibonacci heap: O(E + V log V)
+<strong>Space Complexity:</strong> O(V)</li>
+</ul>
+
+<h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
+
+<p><strong>Problem:</strong> Given character frequencies, construct a prefix-free binary code minimizing expected code length.</p>
+
+<p><strong>Greedy Strategy:</strong> Repeatedly merge the two least frequent characters/nodes.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: HuffmanCoding(frequencies)
+1. Create min-heap of nodes (character, frequency)
+2. while heap.size() &gt; 1:
+3.     left = extract_min()
+4.     right = extract_min()
+5.     merged = new Node(left.freq + right.freq)
+6.     merged.left = left
+7.     merged.right = right
+8.     insert(merged)
+9. return root of tree
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li>Characters: a(45%), b(13%), c(12%), d(16%), e(9%), f(5%)</li>
+  <li>Build tree by repeatedly merging least frequent:
+    <ol>
+      <li>Merge f(5) + e(9) = 14</li>
+      <li>Merge c(12) + 14 = 26</li>
+      <li>Merge b(13) + d(16) = 29</li>
+      <li>Merge 26 + 29 = 55</li>
+      <li>Merge a(45) + 55 = 100</li>
+    </ol>
+  </li>
+</ul>
+
+<p><strong>Time Complexity:</strong> O(n log n) where n is number of characters
+<strong>Space Complexity:</strong> O(n)</p>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The two least frequent characters should have the longest codes</li>
+  <li>Optimal substructure: After merging, the problem reduces to coding the merged node plus remaining characters</li>
+</ul>
+
+<h3 id="example-6-dijkstras-algorithm-shortest-paths">Example 6: Dijkstra’s Algorithm (Shortest Paths)</h3>
+
+<p><strong>Problem:</strong> Find shortest paths from a source vertex to all other vertices in a weighted graph (non-negative weights).</p>
+
+<p><strong>Greedy Strategy:</strong> Always relax the vertex with minimum distance that hasn’t been processed.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: Dijkstra(G, source)
+1. Initialize distances: dist[source] = 0, dist[v] = ∞ for v ≠ source
+2. Initialize priority queue with (source, 0)
+3. visited = set()
+4. while priority queue not empty:
+5.     u = extract_min()
+6.     if u in visited: continue
+7.     visited.add(u)
+8.     for each neighbor v of u:
+9.         if dist[u] + weight(u,v) &lt; dist[v]:
+10.            dist[v] = dist[u] + weight(u,v)
+11.            insert/update (v, dist[v]) in priority queue
+12. return dist[]
+</code></pre></div></div>
+
+<p><strong>Example:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
+    A---1---B
+    |\     /|
+    | 4   2 |
+    3|     \|1
+    C---5---D
+</code></pre></div></div>
+
+<ul>
+  <li>Source: A</li>
+  <li>Process A: dist[B]=1, dist[C]=3, dist[D]=4</li>
+  <li>Process B: dist[D]=min(4,1+2)=3</li>
+  <li>Process C: no updates</li>
+  <li>Process D: done</li>
+  <li>Result: A→B=1, A→C=3, A→D=3</li>
+</ul>
+
+<p><strong>Time Complexity:</strong></p>
+<ul>
+  <li>With binary heap: O((V+E) log V)</li>
+  <li>With Fibonacci heap: O(E + V log V)
+<strong>Space Complexity:</strong> O(V)</li>
+</ul>
+
+<p><strong>Why It Works:</strong></p>
+<ul>
+  <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
+  <li>Optimal substructure: Shortest path to v through u contains shortest path to u</li>
+</ul>
+
+<p><strong>Note:</strong> Only works for non-negative edge weights!</p>
+
+<h3 id="example-7-interval-scheduling">Example 7: Interval Scheduling</h3>
+
+<p><strong>Problem:</strong> Schedule maximum number of non-overlapping intervals.</p>
+
+<p><strong>Greedy Strategy:</strong> Sort by finish time, always pick the interval that finishes earliest and doesn’t conflict.</p>
+
+<p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
+
+<p><strong>Time Complexity:</strong> O(n log n)
+<strong>Space Complexity:</strong> O(1)</p>
+
+<h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
+
+<p><strong>Problem:</strong> Given a universe U and collection of sets S, find minimum number of sets covering U.</p>
+
+<p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
+
+<p><strong>Algorithm:</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: GreedySetCover(U, S)
+1. covered = set()
+2. selected = []
+3. while covered != U:
+4.     best_set = None
+5.     best_new = 0
+6.     for set s in S:
+7.         new = |s - covered|
+8.         if new &gt; best_new:
+9.             best_new = new
+10.            best_set = s
+11.     selected.append(best_set)
+12.     covered = covered ∪ best_set
+13. return selected
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Time Complexity:</strong> O(</td>
+      <td>U</td>
+      <td>·</td>
+      <td>S</td>
+      <td>)</td>
+    </tr>
+    <tr>
+      <td><strong>Space Complexity:</strong> O(</td>
+      <td>U</td>
+      <td>)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Approximation Ratio:</strong> H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)</p>
+
+<p><strong>Why It’s an Approximation:</strong></p>
+<ul>
+  <li>Greedy doesn’t always give optimal solution</li>
+  <li>But provides good approximation guarantee</li>
+</ul>
+
+<h2 id="greedy-vs-dynamic-programming">Greedy vs Dynamic Programming</h2>
+
+<h3 id="key-differences">Key Differences</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aspect</th>
+      <th>Greedy</th>
+      <th>Dynamic Programming</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Choices</td>
+      <td>Makes choice and never reconsiders</td>
+      <td>Considers all choices</td>
+    </tr>
+    <tr>
+      <td>Subproblems</td>
+      <td>Usually one subproblem</td>
+      <td>Multiple overlapping subproblems</td>
+    </tr>
+    <tr>
+      <td>Optimality</td>
+      <td>May not be optimal</td>
+      <td>Always optimal</td>
+    </tr>
+    <tr>
+      <td>Efficiency</td>
+      <td>Usually faster</td>
+      <td>May be slower</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="when-to-use-greedy">When to Use Greedy</h3>
+
+<ul>
+  <li>Problem has greedy choice property</li>
+  <li>Optimal substructure holds</li>
+  <li>Need fast algorithm (greedy is usually efficient)</li>
+  <li>Approximation is acceptable (if exact solution not needed)</li>
+</ul>
+
+<h3 id="when-to-use-dp">When to Use DP</h3>
+
+<ul>
+  <li>Need optimal solution</li>
+  <li>Greedy choice property doesn’t hold</li>
+  <li>Overlapping subproblems</li>
+  <li>Problem requires considering all possibilities</li>
+</ul>
+
+<h2 id="common-greedy-patterns">Common Greedy Patterns</h2>
+
+<h3 id="1-sorting--greedy-selection">1. Sorting + Greedy Selection</h3>
+
+<p>Many greedy algorithms:</p>
+<ol>
+  <li>Sort input by some criterion</li>
+  <li>Process in sorted order, making greedy choices</li>
+</ol>
+
+<p>Examples: Activity Selection, Fractional Knapsack, Interval Scheduling</p>
+
+<h3 id="2-priority-queue-based">2. Priority Queue Based</h3>
+
+<p>Use priority queue to always process “best” option:</p>
+<ul>
+  <li>Dijkstra’s: process closest unvisited vertex</li>
+  <li>Prim’s: process minimum edge to tree</li>
+  <li>Huffman: merge least frequent nodes</li>
+</ul>
+
+<h3 id="3-union-find-based">3. Union-Find Based</h3>
+
+<p>Use Union-Find to track connected components:</p>
+<ul>
+  <li>Kruskal’s MST: avoid cycles by checking connectivity</li>
+</ul>
+
+<h2 id="proving-greedy-correctness">Proving Greedy Correctness</h2>
+
+<p>To prove a greedy algorithm is correct:</p>
+
+<ol>
+  <li><strong>Show Greedy Choice Property:</strong>
+    <ul>
+      <li>Prove that a greedy choice is always part of some optimal solution</li>
+      <li>Usually done by showing we can modify any optimal solution to include the greedy choice</li>
+    </ul>
+  </li>
+  <li><strong>Show Optimal Substructure:</strong>
+    <ul>
+      <li>Prove that after making the greedy choice, the remaining problem is similar</li>
+      <li>Show that optimal solution contains optimal solutions to subproblems</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="example-proof-activity-selection">Example Proof: Activity Selection</h3>
+
+<p><strong>Greedy Choice Property:</strong></p>
+<ul>
+  <li>Let a_1 be the activity that finishes earliest</li>
+  <li>Let S be an optimal solution</li>
+  <li>If S doesn’t include a_1, let a_k be the first activity in S</li>
+  <li>Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S</li>
+  <li>This gives another optimal solution containing a_1 ✓</li>
+</ul>
+
+<p><strong>Optimal Substructure:</strong></p>
+<ul>
+  <li>After selecting a_1, remaining problem: select activities starting after a_1 finishes</li>
+  <li>If S’ is optimal for remaining problem, then {a_1} cup S’ is optimal for original ✓</li>
+</ul>
+
+<h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Greedy Algorithm</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Activity Selection</td>
+      <td>Sort by finish time</td>
+      <td>O(n log n)</td>
+      <td>O(1)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Fractional Knapsack</td>
+      <td>Sort by value/weight</td>
+      <td>O(n log n)</td>
+      <td>O(1)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MST (Kruskal)</td>
+      <td>Sort edges, Union-Find</td>
+      <td>O(E log E)</td>
+      <td>O(V)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>MST (Prim)</td>
+      <td>Priority queue</td>
+      <td>O(E log V)</td>
+      <td>O(V)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Huffman Coding</td>
+      <td>Min-heap</td>
+      <td>O(n log n)</td>
+      <td>O(n)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Dijkstra’s</td>
+      <td>Priority queue</td>
+      <td>O((V+E) log V)</td>
+      <td>O(V)</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Set Cover</td>
+      <td>Greedy selection</td>
+      <td>O(</td>
+      <td>U</td>
+      <td>·</td>
+      <td>S</td>
+      <td>)</td>
+      <td>O(</td>
+      <td>U</td>
+      <td>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
+  <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
+  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n log n) or better)</li>
+  <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
+  <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
+  <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>
+</ol>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>CLRS:</strong> “Introduction to Algorithms” - Comprehensive coverage of greedy algorithms</li>
+  <li><strong>Kleinberg &amp; Tardos:</strong> “Algorithm Design” - Greedy algorithms with proofs</li>
+  <li><strong>Greedy vs DP:</strong> Understanding when to use each approach</li>
+  <li><strong>Approximation Algorithms:</strong> Greedy algorithms for NP-hard problems</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>
+    <p><strong>Activity Selection:</strong> Implement the greedy algorithm and prove its correctness.</p>
+  </li>
+  <li>
+    <p><strong>Fractional vs 0-1 Knapsack:</strong> Why does greedy work for fractional but not 0-1? Give a counterexample.</p>
+  </li>
+  <li>
+    <p><strong>MST Algorithms:</strong> Compare Kruskal’s and Prim’s algorithms. When is each better?</p>
+  </li>
+  <li>
+    <p><strong>Dijkstra’s Limitation:</strong> Why doesn’t Dijkstra’s work with negative weights? Give an example.</p>
+  </li>
+  <li>
+    <p><strong>Huffman Coding:</strong> Construct Huffman tree for frequencies: a(40), b(30), c(20), d(10). What are the codes?</p>
+  </li>
+  <li>
+    <p><strong>Set Cover:</strong> Design a greedy algorithm for weighted set cover (sets have costs). What approximation ratio does it achieve?</p>
+  </li>
+  <li>
+    <p><strong>Interval Coloring:</strong> Given intervals, color them with minimum colors so overlapping intervals have different colors. Design a greedy algorithm.</p>
+  </li>
+  <li>
+    <p><strong>Job Scheduling:</strong> Given jobs with deadlines and profits, schedule to maximize profit. Design a greedy algorithm.</p>
+  </li>
+</ol>
+
+<hr />
+
+<p>Understanding greedy algorithms is essential for algorithm design. They provide elegant, efficient solutions to many optimization problems when the greedy choice property and optimal substructure hold.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Greedy Algorithms" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work.]]></summary></entry><entry><title type="html">Linear Programming: Reductions</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions/" rel="alternate" type="text/html" title="Linear Programming: Reductions" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Linear Programming (LP) occupies a unique position in complexity theory: it’s one of the few optimization problems that can be solved in polynomial time, yet it’s closely related to many NP-complete problems through the concept of LP relaxations. Understanding Linear Programming and its role in reductions is crucial for understanding approximation algorithms, integer programming, and the boundary between polynomial-time and NP-complete problems.</p>
+
+<h2 id="what-is-linear-programming">What is Linear Programming?</h2>
+
+<p>Linear Programming asks: <strong>Given linear constraints and a linear objective function, find values for variables that satisfy the constraints and optimize the objective.</strong></p>
+
+<h3 id="problem-definition">Problem Definition</h3>
+
+<p><strong>Linear Programming (LP) Problem:</strong></p>
+
+<p><strong>Input:</strong></p>
+<ul>
+  <li>A matrix A ∈ ℝ^{m × n} (constraint coefficients)</li>
+  <li>A vector b ∈ ℝ^m (constraint bounds)</li>
+  <li>A vector c ∈ ℝ^n (objective coefficients)</li>
+</ul>
+
+<p><strong>Output:</strong></p>
+<ul>
+  <li>A vector x ∈ ℝ^n that:
+    <ul>
+      <li>Satisfies Ax ≤ b (or Ax = b, or Ax ≥ b, or mixed)</li>
+      <li>Satisfies x ≥ 0 (non-negativity constraints, if present)</li>
+      <li>Maximizes (or minimizes) c^T x</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Standard Form:</strong></p>
+<ul>
+  <li>Maximize c^T x</li>
+  <li>Subject to Ax ≤ b and x ≥ 0</li>
+</ul>
+
+<p><strong>Canonical Form:</strong></p>
+<ul>
+  <li>Maximize c^T x</li>
+  <li>Subject to Ax = b and x ≥ 0</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>Consider the LP:</p>
+
+<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
+
+<p><strong>Subject to:</strong></p>
+<ul>
+  <li>2x₁ + x₂ ≤ 6</li>
+  <li>x₁ + 2x₂ ≤ 8</li>
+  <li>x₁, x₂ ≥ 0</li>
+</ul>
+
+<p><strong>Graphical Solution:</strong></p>
+<ul>
+  <li>Feasible region is a polygon</li>
+  <li>Optimal solution is at a vertex (corner point)</li>
+  <li>Optimal: (x₁, x₂) = (4/3, 10/3) with objective value 32/3 ≈ 10.67</li>
+</ul>
+
+<p><strong>Key Insight:</strong> The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).</p>
+
+<h2 id="why-lp-is-in-p">Why LP is in P</h2>
+
+<p>Unlike Integer Linear Programming, <strong>Linear Programming is solvable in polynomial time</strong>.</p>
+
+<h3 id="algorithms-for-lp">Algorithms for LP</h3>
+
+<p><strong>1. Simplex Method (Dantzig, 1947):</strong></p>
+<ul>
+  <li>Moves from vertex to vertex along edges</li>
+  <li>Very efficient in practice</li>
+  <li><strong>Worst-case:</strong> Exponential (Klee-Minty examples)</li>
+  <li><strong>Average-case:</strong> Polynomial</li>
+</ul>
+
+<p><strong>2. Ellipsoid Method (Khachiyan, 1979):</strong></p>
+<ul>
+  <li>First polynomial-time algorithm for LP</li>
+  <li>O(n^4 L) time where L is input size</li>
+  <li>Not practical due to large constants</li>
+</ul>
+
+<p><strong>3. Interior-Point Methods (Karmarkar, 1984):</strong></p>
+<ul>
+  <li>Polynomial-time: O(n^{3.5} L) time</li>
+  <li>Practical and widely used</li>
+  <li>Modern implementations are very efficient</li>
+</ul>
+
+<p><strong>Result:</strong> LP ∈ P (solvable in polynomial time)</p>
+
+<h2 id="lp-relaxation-a-key-reduction-technique">LP Relaxation: A Key Reduction Technique</h2>
+
+<p>One of the most important uses of LP in complexity theory is the concept of <strong>LP relaxation</strong>.</p>
+
+<h3 id="what-is-lp-relaxation">What is LP Relaxation?</h3>
+
+<p>Given an Integer Linear Programming (ILP) problem:</p>
+<ul>
+  <li><strong>ILP:</strong> Variables must be integers</li>
+  <li><strong>LP Relaxation:</strong> Allow variables to be real numbers</li>
+</ul>
+
+<p><strong>Key Insight:</strong> The optimal value of the LP relaxation provides a <strong>bound</strong> on the optimal value of the ILP:</p>
+<ul>
+  <li>For maximization: LP optimal ≥ ILP optimal</li>
+  <li>For minimization: LP optimal ≤ ILP optimal</li>
+</ul>
+
+<h3 id="example-vertex-cover-lp-relaxation">Example: Vertex Cover LP Relaxation</h3>
+
+<p><strong>ILP for Vertex Cover:</strong></p>
+<ul>
+  <li>Variables: x_v ∈ {0,1} for each vertex v</li>
+  <li>Constraints: x_u + x_v ≥ 1 for each edge (u,v)</li>
+  <li>Objective: Minimize sum_v x_v</li>
+</ul>
+
+<p><strong>LP Relaxation:</strong></p>
+<ul>
+  <li>Variables: x_v in [0,1] (continuous, not integer)</li>
+  <li>Same constraints and objective</li>
+</ul>
+
+<p><strong>Result:</strong> LP optimal ≤ ILP optimal (since we relaxed constraints)</p>
+
+<p><strong>2-Approximation Algorithm:</strong></p>
+<ol>
+  <li>Solve LP relaxation</li>
+  <li>Round: Include vertex v if x_v ≥ 1/2</li>
+  <li>This gives a 2-approximation for Vertex Cover!</li>
+</ol>
+
+<h2 id="reductions-involving-lp">Reductions Involving LP</h2>
+
+<h3 id="reduction-ilp-to-lp-relaxation">Reduction: ILP to LP (Relaxation)</h3>
+
+<p><strong>ILP ≤ₚ LP (via relaxation):</strong></p>
+<ul>
+  <li>Given ILP instance, remove integrality constraints</li>
+  <li>Solve LP relaxation</li>
+  <li>If LP solution is integer, we’re done</li>
+  <li>Otherwise, use branch-and-bound or cutting planes</li>
+</ul>
+
+<p><strong>Note:</strong> This is not a polynomial-time reduction in the complexity sense, but it’s a practical technique.</p>
+
+<h3 id="reduction-lp-to-feasibility">Reduction: LP to Feasibility</h3>
+
+<p><strong>LP Optimization ≤ₚ LP Feasibility:</strong></p>
+<ul>
+  <li>Given LP: maximize c^T x subject to Ax ≤ b, x ≥ 0</li>
+  <li>Add constraint: c^T x ≥ k (where k is a guess for optimal value)</li>
+  <li>Use binary search on k to find optimal value</li>
+  <li>This reduces optimization to feasibility checking</li>
+</ul>
+
+<h3 id="reduction-general-lp-to-standard-form">Reduction: General LP to Standard Form</h3>
+
+<p><strong>General LP ≤ₚ Standard Form LP:</strong></p>
+<ul>
+  <li>Convert inequalities to equations using slack variables</li>
+  <li>Convert unconstrained variables: x = x^+ - x^- where x^+, x^- ≥ 0</li>
+  <li>Convert maximization to minimization: negate objective</li>
+  <li>All conversions are polynomial-time</li>
+</ul>
+
+<h2 id="lp-duality-and-reductions">LP Duality and Reductions</h2>
+
+<h3 id="duality-theorem">Duality Theorem</h3>
+
+<p>Every LP has a <strong>dual</strong> LP:</p>
+
+<p><strong>Primal:</strong> Maximize c^T x subject to Ax ≤ b, x ≥ 0</p>
+
+<p><strong>Dual:</strong> Minimize b^T y subject to A^T y ≥ c, y ≥ 0</p>
+
+<p><strong>Strong Duality:</strong> If both have feasible solutions, then:</p>
+<ul>
+  <li>Primal optimal = Dual optimal</li>
+</ul>
+
+<p><strong>Weak Duality:</strong> For any feasible x and y:</p>
+<ul>
+  <li>c^T x ≤ b^T y</li>
+</ul>
+
+<h3 id="using-duality-in-reductions">Using Duality in Reductions</h3>
+
+<p>Duality provides a powerful tool for:</p>
+<ol>
+  <li><strong>Proving optimality:</strong> If primal and dual have same value, both are optimal</li>
+  <li><strong>Finding bounds:</strong> Dual provides upper bounds (for maximization)</li>
+  <li><strong>Sensitivity analysis:</strong> Understanding how changes affect solution</li>
+  <li><strong>Designing algorithms:</strong> Many algorithms use duality</li>
+</ol>
+
+<h2 id="lp-in-approximation-algorithms">LP in Approximation Algorithms</h2>
+
+<p>LP relaxation is fundamental to many approximation algorithms.</p>
+
+<h3 id="vertex-cover-2-approximation">Vertex Cover: 2-Approximation</h3>
+
+<p><strong>Algorithm:</strong></p>
+<ol>
+  <li>Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v ≥ 1 for all edges</li>
+  <li>Round: S = {v : x_v ≥ 1/2}</li>
+  <li>Return S as vertex cover</li>
+</ol>
+
+<p><strong>Analysis:</strong></p>
+<ul>
+  <li>S is a vertex cover (each edge has at least one endpoint with x_v ≥ 1/2)</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>S</td>
+          <td>= ∑<em>{v ∈ S} 1 ≤ ∑</em>{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Therefore, 2-approximation</li>
+</ul>
+
+<h3 id="set-cover-lp-based-approximation">Set Cover: LP-Based Approximation</h3>
+
+<p><strong>Set Cover ILP:</strong></p>
+<ul>
+  <li>Variables: x_S ∈ {0,1} for each set S</li>
+  <li>Constraints: ∑_{S: e ∈ S} x_S ≥ 1 for each element e</li>
+  <li>Objective: Minimize sum_S x_S</li>
+</ul>
+
+<p><strong>LP Relaxation + Rounding:</strong></p>
+<ul>
+  <li>Solve LP relaxation</li>
+  <li>Use randomized rounding or greedy rounding</li>
+  <li>Achieves O(log n) approximation (or better with specific techniques)</li>
+</ul>
+
+<h3 id="maximum-flow-lp-formulation">Maximum Flow: LP Formulation</h3>
+
+<p><strong>Max Flow as LP:</strong></p>
+<ul>
+  <li>Variables: flow f_e on each edge e</li>
+  <li>Constraints: flow conservation, capacity constraints</li>
+  <li>Objective: maximize flow from source to sink</li>
+</ul>
+
+<p><strong>Result:</strong> Max flow can be solved via LP (though specialized algorithms are faster)</p>
+
+<h2 id="reductions-from-np-complete-problems-to-lp">Reductions from NP-Complete Problems to LP</h2>
+
+<p>While LP is polynomial-time, we can reduce NP-complete problems to LP feasibility questions.</p>
+
+<h3 id="3-sat-to-lp-feasibility">3-SAT to LP Feasibility</h3>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>For 3-SAT instance, create LP:
+    <ul>
+      <li>Variables: x_i in [0,1] for each Boolean variable</li>
+      <li>For clause (l_1 ∨ l_2 ∨ l_3): constraint ensuring at least one literal is “true”</li>
+      <li>But LP doesn’t naturally encode Boolean logic…</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Better:</strong> Reduce to ILP, then use LP relaxation</p>
+<ul>
+  <li>3-SAT → ILP (as we saw earlier)</li>
+  <li>ILP feasibility can be checked via LP (but LP solution might not be integer)</li>
+</ul>
+
+<p><strong>Key Point:</strong> LP relaxation gives bounds, but doesn’t solve the original problem.</p>
+
+<h2 id="lp-rounding-techniques">LP Rounding Techniques</h2>
+
+<p>Various rounding techniques convert LP solutions to integer solutions:</p>
+
+<h3 id="deterministic-rounding">Deterministic Rounding</h3>
+
+<p><strong>Example - Vertex Cover:</strong></p>
+<ul>
+  <li>Round x_v ≥ 1/2 to 1, else 0</li>
+  <li>Guarantees feasibility and approximation ratio</li>
+</ul>
+
+<h3 id="randomized-rounding">Randomized Rounding</h3>
+
+<p><strong>Example - Set Cover:</strong></p>
+<ul>
+  <li>Include set S with probability proportional to x_S^* (LP solution)</li>
+  <li>Expected cost equals LP cost</li>
+  <li>May need derandomization</li>
+</ul>
+
+<h3 id="dependent-rounding">Dependent Rounding</h3>
+
+<p><strong>Example - Matching:</strong></p>
+<ul>
+  <li>Round edges while maintaining constraints</li>
+  <li>More sophisticated than independent rounding</li>
+</ul>
+
+<h2 id="practical-implications">Practical Implications</h2>
+
+<h3 id="why-lp-matters">Why LP Matters</h3>
+
+<p>Linear Programming is crucial because:</p>
+
+<ol>
+  <li><strong>Polynomial-Time Solvability:</strong> Can solve large instances efficiently</li>
+  <li><strong>LP Relaxation:</strong> Provides bounds for NP-complete problems</li>
+  <li><strong>Approximation Algorithms:</strong> Foundation for many approximation schemes</li>
+  <li><strong>Duality:</strong> Powerful theoretical and practical tool</li>
+  <li><strong>Widespread Applications:</strong> Used in many real-world optimization problems</li>
+</ol>
+
+<h3 id="modern-lp-solvers">Modern LP Solvers</h3>
+
+<p><strong>Commercial Solvers:</strong></p>
+<ul>
+  <li><strong>CPLEX:</strong> Industry standard, very fast</li>
+  <li><strong>Gurobi:</strong> Excellent performance, good academic licenses</li>
+  <li><strong>XPRESS:</strong> Commercial solver</li>
+</ul>
+
+<p><strong>Open-Source Solvers:</strong></p>
+<ul>
+  <li><strong>GLPK:</strong> GNU Linear Programming Kit</li>
+  <li><strong>CLP:</strong> COIN-OR Linear Programming</li>
+  <li><strong>HiGHS:</strong> Modern, high-performance solver</li>
+</ul>
+
+<p><strong>Interfaces:</strong></p>
+<ul>
+  <li><strong>PuLP</strong> (Python)</li>
+  <li><strong>CVXPY</strong> (Python)</li>
+  <li><strong>JuMP</strong> (Julia)</li>
+  <li><strong>OR-Tools</strong> (Google)</li>
+</ul>
+
+<h3 id="real-world-applications">Real-World Applications</h3>
+
+<p>LP has countless applications:</p>
+
+<ol>
+  <li><strong>Resource Allocation:</strong> Allocating limited resources optimally</li>
+  <li><strong>Production Planning:</strong> Optimizing production schedules</li>
+  <li><strong>Transportation:</strong> Network flow, transportation problems</li>
+  <li><strong>Finance:</strong> Portfolio optimization, risk management</li>
+  <li><strong>Scheduling:</strong> Workforce scheduling, project scheduling</li>
+  <li><strong>Network Design:</strong> Designing efficient networks</li>
+  <li><strong>Game Theory:</strong> Finding Nash equilibria in some games</li>
+</ol>
+
+<h2 id="runtime-analysis">Runtime Analysis</h2>
+
+<h3 id="simplex-method">Simplex Method</h3>
+
+<p><strong>Algorithm:</strong> Move from vertex to vertex along edges</p>
+<ul>
+  <li><strong>Time Complexity:</strong> Exponential worst-case (Klee-Minty examples), but polynomial average-case</li>
+  <li><strong>Space Complexity:</strong> O(mn) for storing tableau</li>
+  <li><strong>Practical Performance:</strong> Very efficient in practice, often faster than polynomial methods</li>
+  <li><strong>Iterations:</strong> Typically O(m) to O(m+n) iterations</li>
+</ul>
+
+<h3 id="ellipsoid-method">Ellipsoid Method</h3>
+
+<p><strong>Algorithm:</strong> Shrink ellipsoid containing feasible region</p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^4L) where L is input size (bit complexity)</li>
+  <li><strong>Space Complexity:</strong> O(n^2)</li>
+  <li><strong>Significance:</strong> First proven polynomial-time algorithm for LP</li>
+  <li><strong>Practical Performance:</strong> Not used in practice due to large constants</li>
+</ul>
+
+<h3 id="interior-point-methods">Interior-Point Methods</h3>
+
+<p><strong>Algorithm:</strong> Move through interior of feasible region</p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using path-following methods</li>
+  <li><strong>Space Complexity:</strong> O(n^2) for storing matrices</li>
+  <li><strong>Practical Performance:</strong> Very efficient, widely used in modern solvers</li>
+  <li><strong>Iterations:</strong> Typically O(sqrt{n} log(1/epsilon)) iterations for \epsilon-accuracy</li>
+</ul>
+
+<h3 id="primal-dual-methods">Primal-Dual Methods</h3>
+
+<p><strong>Algorithm:</strong> Solve primal and dual simultaneously</p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) similar to interior-point</li>
+  <li><strong>Space Complexity:</strong> O(n^2)</li>
+  <li><strong>Advantage:</strong> Can exploit structure better in some cases</li>
+</ul>
+
+<h3 id="special-cases">Special Cases</h3>
+
+<p><strong>Network Flow Problems:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^2m) using specialized algorithms (faster than general LP)</li>
+  <li><strong>Space Complexity:</strong> O(n + m)</li>
+</ul>
+
+<p><strong>Transportation Problems:</strong></p>
+<ul>
+  <li>Specialized algorithms can be more efficient than general LP</li>
+</ul>
+
+<h3 id="lp-relaxation-runtime">LP Relaxation Runtime</h3>
+
+<p><strong>For ILP Relaxation:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as regular LP</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
+  <li><strong>Use:</strong> Provides bounds for branch-and-bound algorithms</li>
+</ul>
+
+<h3 id="modern-solvers">Modern Solvers</h3>
+
+<p><strong>Commercial Solvers (CPLEX, Gurobi):</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> Polynomial (interior-point or simplex)</li>
+  <li><strong>Space Complexity:</strong> O(mn)</li>
+  <li><strong>Practical Performance:</strong> Can solve instances with millions of variables and constraints</li>
+  <li><strong>Techniques:</strong> Preprocessing, advanced pivoting, parallel processing</li>
+</ul>
+
+<h3 id="verification-complexity">Verification Complexity</h3>
+
+<p><strong>Given a candidate solution:</strong></p>
+<ul>
+  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
+  <li><strong>Space Complexity:</strong> O(1) additional space</li>
+  <li>This polynomial-time verifiability is straightforward for LP</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>LP is in P:</strong> Solvable in polynomial time using interior-point methods</li>
+  <li><strong>LP Relaxation:</strong> Fundamental technique for approximating NP-complete problems</li>
+  <li><strong>Duality:</strong> Powerful theoretical tool with practical applications</li>
+  <li><strong>Approximation Algorithms:</strong> Many use LP relaxation + rounding</li>
+  <li><strong>Reductions:</strong> LP provides bounds and approximations, not exact solutions for integer problems</li>
+</ol>
+
+<h2 id="reduction-summary">Reduction Summary</h2>
+
+<p><strong>Key Reductions Involving LP:</strong></p>
+
+<ol>
+  <li><strong>ILP → LP (Relaxation):</strong>
+    <ul>
+      <li>Remove integrality constraints</li>
+      <li>Provides upper/lower bounds</li>
+      <li>Used in branch-and-bound</li>
+    </ul>
+  </li>
+  <li><strong>LP Optimization → LP Feasibility:</strong>
+    <ul>
+      <li>Use binary search on objective value</li>
+      <li>Reduces optimization to feasibility</li>
+    </ul>
+  </li>
+  <li><strong>General LP → Standard Form:</strong>
+    <ul>
+      <li>Convert to standard form using slack variables</li>
+      <li>All conversions are polynomial-time</li>
+    </ul>
+  </li>
+  <li><strong>NP-Complete → LP Relaxation:</strong>
+    <ul>
+      <li>Many NP-complete problems have natural LP relaxations</li>
+      <li>LP solution provides approximation bounds</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+  <li><strong>Linear Programming:</strong> Chvátal’s “Linear Programming” or Vanderbei’s “Linear Programming”</li>
+  <li><strong>Interior-Point Methods:</strong> Nesterov &amp; Nemirovskii’s work on interior-point methods</li>
+  <li><strong>Approximation Algorithms:</strong> Vazirani’s “Approximation Algorithms” covers LP-based approximations</li>
+  <li><strong>Duality:</strong> Understanding the dual simplex method and sensitivity analysis</li>
+  <li><strong>Modern Solvers:</strong> Documentation for CPLEX, Gurobi, or other solvers</li>
+</ul>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li><strong>Formulate as LP</strong>: Convert the following to LP:
+    <ul>
+      <li>You have resources and want to maximize profit</li>
+      <li>Each product uses certain amounts of resources</li>
+      <li>You have limited resources</li>
+      <li>Products have different profits</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>LP Relaxation</strong>: For a Vertex Cover instance, write the LP relaxation. What is the relationship between LP optimal and ILP optimal?</p>
+  </li>
+  <li><strong>Duality</strong>: Write the dual of the following LP:
+    <ul>
+      <li>Maximize 3x₁ + 2x₂</li>
+      <li>Subject to 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Rounding</strong>: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?</p>
+  </li>
+  <li>
+    <p><strong>Reduction</strong>: Show how to reduce LP optimization to LP feasibility using binary search. What is the time complexity?</p>
+  </li>
+  <li><strong>Standard Form</strong>: Convert the following to standard form:
+    <ul>
+      <li>Minimize x₁ - 2x₁</li>
+      <li>Subject to x₁ + x₂ = 5, x₁ ≥ 0, x₁ unrestricted</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Applications</strong>: Research one real-world application of LP. How is it formulated? What solver is used?</p>
+  </li>
+  <li>
+    <p><strong>Approximation</strong>: Research the LP-based approximation for Set Cover. What approximation ratio does it achieve? How does rounding work?</p>
+  </li>
+  <li>
+    <p><strong>Duality Applications</strong>: How is LP duality used in the design of algorithms? Research one example.</p>
+  </li>
+  <li><strong>Interior-Point Methods</strong>: Research how interior-point methods work. How do they differ from the simplex method?</li>
+</ol>
+
+<hr />
+
+<p>Understanding Linear Programming and its role in reductions provides crucial insight into the boundary between polynomial-time and NP-complete problems. LP relaxation is one of the most powerful techniques for designing approximation algorithms and understanding the structure of optimization problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to Linear Programming, its polynomial-time solvability, and how it relates to reductions in complexity theory, including LP relaxations, duality, and reductions to/from LP.]]></summary></entry><entry><title type="html">NP-Hard Introduction: 3D Matching</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching/" rel="alternate" type="text/html" title="NP-Hard Introduction: 3D Matching" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>The 3D Matching Problem is a fundamental combinatorial optimization problem that generalizes the classic bipartite matching problem to three sets. While bipartite matching can be solved in polynomial time, 3D Matching is NP-complete, making it an important example of how problem complexity can increase dramatically with seemingly small generalizations. 3D Matching has applications in resource allocation, scheduling, and assignment problems.</p>
 
@@ -4044,7 +5399,7 @@ Does a perfect matching exist?</li>
 
 <hr />
 
-<p>Understanding the 3D Matching Problem provides crucial insight into how problem complexity can increase dramatically with seemingly small generalizations. The relationship to bipartite matching demonstrates the boundary between polynomial-time and NP-complete problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the 3D Matching Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to bipartite matching.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Clique Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-clique/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Clique Problem" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-clique</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-clique/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Understanding the 3D Matching Problem provides crucial insight into how problem complexity can increase dramatically with seemingly small generalizations. The relationship to bipartite matching demonstrates the boundary between polynomial-time and NP-complete problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the 3D Matching Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to bipartite matching.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Clique Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Clique Problem" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>The Clique Problem is a fundamental graph problem that plays a crucial role in understanding NP-completeness. It’s one of the classic problems used to demonstrate reduction techniques from 3-SAT and serves as a gateway to understanding many other NP-complete graph problems. In this post, we’ll explore the Clique Problem and its place in computational complexity theory.</p>
 
@@ -4406,7 +5761,7 @@ Find a clique of size 3 and determine the corresponding satisfying assignment.</
 
 <hr />
 
-<p>Understanding the Clique Problem and its NP-completeness proof provides crucial insight into reduction techniques and the interconnected nature of NP-complete problems. The 3-SAT → Clique reduction is a fundamental example that demonstrates how logical constraints can be encoded as graph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Clique Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to other graph problems.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Independent Set Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-independent-set/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Independent Set Problem" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-independent-set</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-independent-set/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Understanding the Clique Problem and its NP-completeness proof provides crucial insight into reduction techniques and the interconnected nature of NP-complete problems. The 3-SAT → Clique reduction is a fundamental example that demonstrates how logical constraints can be encoded as graph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Clique Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to other graph problems.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Independent Set Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Independent Set Problem" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>The Independent Set Problem is a fundamental graph problem that serves as an excellent example of NP-completeness. It’s closely related to the Clique Problem and Vertex Cover Problem, forming a trio of interconnected NP-complete graph problems. Understanding Independent Set provides insight into reduction techniques and the relationships between seemingly different graph problems.</p>
 
@@ -4864,887 +6219,4 @@ Find an independent set of size 3 and determine the corresponding satisfying ass
 
 <hr />
 
-<p>Understanding the Independent Set Problem and its relationships to Clique and Vertex Cover provides crucial insight into the interconnected nature of NP-complete problems. The complement graph relationship is particularly elegant and demonstrates how seemingly different problems can be fundamentally related.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Independent Set Problem, covering problem definition, NP-completeness proof, and connections to Clique and Vertex Cover problems.]]></summary></entry><entry><title type="html">NP-Hard Introduction: Integer Linear Programming (ILP)</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/" rel="alternate" type="text/html" title="NP-Hard Introduction: Integer Linear Programming (ILP)" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-integer-linear-programming/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Integer Linear Programming (ILP) is a fundamental optimization problem that extends Linear Programming by requiring variables to take integer values. While Linear Programming can be solved in polynomial time, ILP is NP-complete, making it one of the most important problems in optimization theory. ILP has widespread applications in operations research, scheduling, resource allocation, and many other domains.</p>
-
-<h2 id="what-is-integer-linear-programming">What is Integer Linear Programming?</h2>
-
-<p>Integer Linear Programming asks: <strong>Given linear constraints and a linear objective function, find integer values for variables that satisfy the constraints and optimize the objective.</strong></p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>Integer Linear Programming (ILP) Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>A matrix A ∈ ℤ^(m×n) (constraint coefficients)</li>
-  <li>A vector b ∈ ℤ^m (constraint bounds)</li>
-  <li>A vector c ∈ ℤ^n (objective coefficients)</li>
-  <li>An integer k (target value)</li>
-</ul>
-
-<p><strong>Output:</strong> YES if there exists an integer vector x ∈ ℤ^n such that:</p>
-<ul>
-  <li>Ax ≤ b (constraints satisfied)</li>
-  <li>c^T x ≥ k (objective value at least k)</li>
-</ul>
-
-<p>NO otherwise</p>
-
-<p><strong>ILP Optimization Problem:</strong></p>
-
-<p><strong>Input:</strong> Same as above (without k)</p>
-
-<p><strong>Output:</strong> The maximum value of c^T x subject to Ax ≤ b and x ∈ ℤ^n</p>
-
-<h3 id="variants">Variants</h3>
-
-<p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
-<ul>
-  <li>Variables restricted to {0, 1}</li>
-  <li>Very common in practice</li>
-</ul>
-
-<p><strong>Mixed Integer Linear Programming (MILP):</strong></p>
-<ul>
-  <li>Some variables are integers, others are continuous</li>
-  <li>Combines ILP and LP</li>
-</ul>
-
-<p><strong>Unbounded ILP:</strong></p>
-<ul>
-  <li>Variables can be any integers (not necessarily non-negative)</li>
-</ul>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the ILP:</p>
-
-<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
-
-<p><strong>Subject to:</strong></p>
-<ul>
-  <li>2x₁ + x₂ ≤ 6</li>
-  <li>x₁ + 2x₂ ≤ 8</li>
-  <li>x₁, x₂ ≥ 0 and integer</li>
-</ul>
-
-<p><strong>Feasible integer solutions:</strong></p>
-<ul>
-  <li>(0, 0): objective = 0</li>
-  <li>(1, 0): objective = 3</li>
-  <li>(2, 0): objective = 6</li>
-  <li>(0, 1): objective = 2</li>
-  <li>(1, 1): objective = 5</li>
-  <li>(2, 1): objective = 8</li>
-  <li>(3, 0): objective = 9 ✓ (optimal, satisfies constraints)</li>
-</ul>
-
-<p><strong>LP relaxation</strong> (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.</p>
-
-<h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
-
-<p>To show that ILP is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>ILP ∈ NP:</strong></p>
-
-<p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
-<ol>
-  <li>Check that x has integer values: O(n) time</li>
-  <li>Check that Ax ≤ b: O(mn) time (matrix-vector multiplication)</li>
-  <li>Check that c^T x ≥ k: O(n) time</li>
-</ol>
-
-<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
-
-<p><strong>Note:</strong> The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
-
-<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
-
-<p>The standard proof that ILP is NP-complete reduces from 3-SAT.</p>
-
-<h3 id="construction">Construction</h3>
-
-<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
-
-<p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
-
-<ol>
-  <li><strong>Variables:</strong>
-    <ul>
-      <li>For each Boolean variable xᵢ, create an integer variable yᵢ ∈ {0, 1}</li>
-      <li>yᵢ = 1 means xᵢ = TRUE, yᵢ = 0 means xᵢ = FALSE</li>
-    </ul>
-  </li>
-  <li><strong>Clauses:</strong>
-    <ul>
-      <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
-        <ul>
-          <li>If literal is xᵢ, use yᵢ</li>
-          <li>If literal is ¬xᵢ, use (1 - yᵢ)</li>
-          <li>Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)</li>
-        </ul>
-      </li>
-    </ul>
-
-    <p>Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):</p>
-    <ul>
-      <li>Constraint: y₁ + (1 - y₂) + y₃ ≥ 1</li>
-      <li>Simplifies to: y₁ - y₂ + y₃ ≥ 0</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Objective:</strong> Maximize ∑ᵢ₌₁ⁿ yᵢ (or any objective, since we’re just checking feasibility)</p>
-  </li>
-  <li><strong>Bounds:</strong> 0 ≤ yᵢ ≤ 1 for all i (enforces binary variables)</li>
-</ol>
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
-<ul>
-  <li>If φ is satisfiable, set yᵢ = 1 if xᵢ = TRUE, else yᵢ = 0</li>
-  <li>Each clause constraint is satisfied (at least one literal is 1)</li>
-  <li>This gives a feasible ILP solution</li>
-</ul>
-
-<p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
-<ul>
-  <li>If ILP has feasible solution with yᵢ ∈ {0,1}, set xᵢ = TRUE if yᵢ = 1, else xᵢ = FALSE</li>
-  <li>Since each clause constraint requires at least one yᵢ = 1 (or (1-yᵢ) = 1), each clause has at least one true literal</li>
-  <li>This gives a satisfying assignment</li>
-</ul>
-
-<p><strong>Polynomial Time:</strong></p>
-<ul>
-  <li>Construction takes O(mn) time (one constraint per clause)</li>
-</ul>
-
-<p>Therefore, <strong>ILP is NP-complete</strong>.</p>
-
-<h2 id="relationship-to-linear-programming">Relationship to Linear Programming</h2>
-
-<h3 id="linear-programming-lp">Linear Programming (LP)</h3>
-
-<p><strong>LP Decision Problem:</strong></p>
-<ul>
-  <li>Same as ILP but variables can be <strong>real numbers</strong> (not necessarily integers)</li>
-  <li><strong>Solvable in polynomial time</strong> using interior-point methods or simplex method (though simplex has exponential worst-case, it’s efficient in practice)</li>
-</ul>
-
-<h3 id="key-difference">Key Difference</h3>
-
-<p><strong>LP:</strong> Variables x ∈ ℝ^n (continuous)
-<strong>ILP:</strong> Variables x ∈ ℤ^n (integer)</p>
-
-<p>This seemingly small restriction makes the problem NP-complete!</p>
-
-<h3 id="lp-relaxation">LP Relaxation</h3>
-
-<p>A common technique for solving ILP:</p>
-<ol>
-  <li>Solve the <strong>LP relaxation</strong> (allow fractional values)</li>
-  <li>If LP solution is integer, we’re done</li>
-  <li>Otherwise, use branch-and-bound or cutting planes to find integer solution</li>
-</ol>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>ILP: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 integer</li>
-  <li>LP relaxation: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 (real)</li>
-  <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
-  <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-ilp-is-hard">Why ILP is Hard</h3>
-
-<p>Integer Linear Programming is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
-  <li><strong>Branch-and-Bound</strong>: Systematic search through solution space</li>
-  <li><strong>Cutting Planes</strong>: Add constraints to eliminate fractional solutions</li>
-  <li><strong>Branch-and-Cut</strong>: Combines branch-and-bound with cutting planes</li>
-  <li><strong>Heuristics</strong>: Various heuristics work well in practice</li>
-</ol>
-
-<h3 id="solving-methods">Solving Methods</h3>
-
-<p><strong>1. Branch-and-Bound:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>If solution is fractional, branch on a fractional variable</li>
-  <li>Create two subproblems: xᵢ ≤ ⌊xᵢ<em>⌋ and xᵢ ≥ ⌈xᵢ</em>⌉</li>
-  <li>Recursively solve subproblems</li>
-  <li>Prune branches that can’t improve best known solution</li>
-</ul>
-
-<p><strong>2. Cutting Planes:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>If solution is fractional, find a “cut” (constraint) that:
-    <ul>
-      <li>Is satisfied by all integer solutions</li>
-      <li>Is violated by current fractional solution</li>
-    </ul>
-  </li>
-  <li>Add cut and re-solve</li>
-  <li>Repeat until integer solution found</li>
-</ul>
-
-<p><strong>3. Branch-and-Cut:</strong></p>
-<ul>
-  <li>Combines both techniques</li>
-  <li>Most effective in practice</li>
-</ul>
-
-<p><strong>4. Special Cases:</strong></p>
-<ul>
-  <li><strong>Unimodular matrices</strong>: If constraint matrix is totally unimodular, LP solution is automatically integer</li>
-  <li><strong>Network flow problems</strong>: Often have integer solutions</li>
-  <li><strong>Assignment problems</strong>: Can be solved as LP (Hungarian algorithm)</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>ILP has numerous applications:</p>
-
-<ol>
-  <li><strong>Scheduling</strong>: Job scheduling, course scheduling, employee scheduling</li>
-  <li><strong>Resource Allocation</strong>: Allocating resources optimally</li>
-  <li><strong>Network Design</strong>: Designing networks with capacity constraints</li>
-  <li><strong>Production Planning</strong>: Optimizing production schedules</li>
-  <li><strong>Facility Location</strong>: Choosing where to place facilities</li>
-  <li><strong>Cutting Stock</strong>: Optimizing material cutting</li>
-  <li><strong>Set Covering/Packing</strong>: Various covering and packing problems</li>
-  <li><strong>Vehicle Routing</strong>: Optimizing delivery routes</li>
-  <li><strong>Portfolio Optimization</strong>: With integer constraints</li>
-  <li><strong>Game Theory</strong>: Finding Nash equilibria in some games</li>
-</ol>
-
-<h3 id="modern-solvers">Modern Solvers</h3>
-
-<p>Despite NP-completeness, modern ILP solvers are very effective:</p>
-
-<ul>
-  <li><strong>CPLEX</strong>: Commercial solver (very powerful)</li>
-  <li><strong>Gurobi</strong>: Commercial solver (excellent performance)</li>
-  <li><strong>GLPK</strong>: Open-source solver</li>
-  <li><strong>CBC</strong>: Open-source solver from COIN-OR</li>
-  <li><strong>SCIP</strong>: Academic solver</li>
-</ul>
-
-<p>These solvers use sophisticated techniques:</p>
-<ul>
-  <li>Advanced preprocessing</li>
-  <li>Strong cutting planes</li>
-  <li>Efficient branch-and-bound</li>
-  <li>Parallel processing</li>
-  <li>Heuristics</li>
-</ul>
-
-<p>Many practical ILP instances can be solved efficiently, even though worst-case is exponential.</p>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Try all possible integer assignments (exponential space)</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential in number of variables</li>
-  <li><strong>Space Complexity:</strong> Exponential</li>
-  <li><strong>Not Practical:</strong> Only feasible for very small instances</li>
-</ul>
-
-<h3 id="branch-and-bound">Branch-and-Bound</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
-  <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
-</ul>
-
-<h3 id="cutting-planes">Cutting Planes</h3>
-
-<p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
-  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
-  <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
-  <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
-</ul>
-
-<h3 id="branch-and-cut">Branch-and-Cut</h3>
-
-<p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
-</ul>
-
-<h3 id="lp-relaxation-1">LP Relaxation</h3>
-
-<p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using interior-point methods where L is input size</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
-</ul>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p><strong>Totally Unimodular Matrices:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as LP, solution automatically integer</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-</ul>
-
-<p><strong>Network Flow Problems:</strong></p>
-<ul>
-  <li>Often have integer solutions when solved as LP</li>
-</ul>
-
-<h3 id="modern-solvers-cplex-gurobi">Modern Solvers (CPLEX, Gurobi)</h3>
-
-<p><strong>Techniques Used:</strong></p>
-<ul>
-  <li>Preprocessing: O(mn) to simplify problem</li>
-  <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
-  <li>Heuristics: Fast approximate solutions</li>
-  <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate integer solution:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows ILP is in NP</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>ILP is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
-  <li><strong>LP vs ILP</strong>: Linear Programming is polynomial-time, but requiring integer variables makes it NP-complete</li>
-  <li><strong>LP Relaxation</strong>: Solving the continuous relaxation is a key technique</li>
-  <li><strong>Solving Methods</strong>: Branch-and-bound, cutting planes, and branch-and-cut are standard approaches</li>
-  <li><strong>Practical Solvers</strong>: Modern solvers are very effective despite theoretical hardness</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>3-SAT ≤ₚ ILP:</strong></p>
-<ul>
-  <li>Encode Boolean variables as 0-1 integer variables</li>
-  <li>Encode clauses as linear constraints requiring at least one true literal</li>
-  <li>3-SAT satisfiable ↔ ILP feasible</li>
-</ul>
-
-<p><strong>ILP ≤ₚ 0-1 ILP:</strong></p>
-<ul>
-  <li>Can reduce general ILP to binary ILP using binary expansion</li>
-  <li>This shows 0-1 ILP is also NP-complete</li>
-</ul>
-
-<p>All reductions are polynomial-time, establishing ILP as NP-complete.</p>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Linear Programming</strong>: Understanding the polynomial-time LP algorithms</li>
-  <li><strong>Integer Programming</strong>: Books by Nemhauser &amp; Wolsey, or Schrijver</li>
-  <li><strong>Modern Solvers</strong>: Documentation for CPLEX, Gurobi, or other solvers</li>
-  <li><strong>Cutting Planes</strong>: Research on Gomory cuts, Chvátal-Gomory cuts, and other cutting plane methods</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li><strong>Formulate as ILP</strong>: Convert the following problem to ILP:
-    <ul>
-      <li>You have items with weights and values</li>
-      <li>You want to select items to maximize value</li>
-      <li>Total weight must be ≤ capacity</li>
-      <li>Each item can be selected at most once</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
-  </li>
-  <li>
-    <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>
-  </li>
-  <li>
-    <p><strong>Branch-and-Bound</strong>: Trace through a branch-and-bound algorithm on a small ILP instance. Show the search tree.</p>
-  </li>
-  <li>
-    <p><strong>Unimodularity</strong>: Research what it means for a matrix to be totally unimodular. Why does this make ILP easier?</p>
-  </li>
-  <li><strong>Formulation practice</strong>: Formulate the following as ILP:
-    <ul>
-      <li>Set cover problem</li>
-      <li>Maximum independent set (in a graph)</li>
-      <li>Traveling salesman problem</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Solver comparison</strong>: Try solving the same ILP instance with different solvers (if available). Compare their performance.</p>
-  </li>
-  <li><strong>Cutting planes</strong>: Research Gomory cuts. How are they derived? Why do they work?</li>
-</ol>
-
-<hr />
-
-<p>Understanding Integer Linear Programming provides crucial insight into optimization problems and the dramatic impact that requiring integrality can have on problem complexity. The relationship to Linear Programming and the practical solving methods make ILP a cornerstone of operations research and optimization.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods.]]></summary></entry><entry><title type="html">NP-Hard Introduction: Rudrata Cycle</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/" rel="alternate" type="text/html" title="NP-Hard Introduction: Rudrata Cycle" /><published>2025-01-15T00:00:00+00:00</published><updated>2025-01-15T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/01/15/np-hard-intro-rudrata-cycle/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>The Rudrata Cycle Problem (also known as the Hamiltonian Cycle Problem) is one of the most fundamental graph problems in computer science. It asks whether a graph contains a cycle that visits each vertex exactly once. This problem is closely related to the Traveling Salesman Problem (TSP) and serves as a cornerstone for understanding NP-completeness in graph theory. The problem is named after Sir William Rowan Hamilton, who studied it in the context of the Icosian game.</p>
-
-<h2 id="what-is-a-rudrata-cycle">What is a Rudrata Cycle?</h2>
-
-<p>A <strong>Rudrata cycle</strong> (also called a <strong>Hamiltonian cycle</strong>) in an undirected graph is a cycle that visits each vertex exactly once and returns to the starting vertex. Unlike an Eulerian cycle (which visits each edge exactly once), a Hamiltonian cycle visits each vertex exactly once.</p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>Rudrata Cycle Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>An undirected graph G = (V, E)</li>
-</ul>
-
-<p><strong>Output:</strong> YES if G contains a Rudrata cycle (a cycle visiting every vertex exactly once), NO otherwise</p>
-
-<p><strong>Rudrata Cycle Optimization Problem (TSP):</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>A complete undirected graph G = (V, E) with edge weights w: E → ℝ⁺</li>
-</ul>
-
-<p><strong>Output:</strong> The minimum weight Rudrata cycle (this is the Traveling Salesman Problem)</p>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the following graph:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2---3
-    |   |   |
-    4---5---6
-</code></pre></div></div>
-
-<p><strong>Rudrata Cycle:</strong></p>
-<ul>
-  <li>Cycle: 1 to 2 to 5 to 4 to 1 ✗ (doesn’t visit all vertices)</li>
-  <li>Cycle: 1 to 2 to 3 to 6 to 5 to 4 to 1 ✓ (visits all 6 vertices exactly once)</li>
-  <li>Cycle: 1 to 4 to 5 to 2 to 1 ✗ (doesn’t visit vertices 3 and 6)</li>
-</ul>
-
-<h3 id="visual-example">Visual Example</h3>
-
-<p>A graph with a Rudrata cycle highlighted:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |\ /|
-    | X |
-    |/ \|
-    3---4
-</code></pre></div></div>
-
-<ul>
-  <li>Rudrata cycle: 1 to 2 to 4 to 3 to 1 (visits all 4 vertices and returns to start)</li>
-  <li>This is a complete graph K_4, so it has many Hamiltonian cycles</li>
-</ul>
-
-<h2 id="why-rudrata-cycle-is-in-np">Why Rudrata Cycle is in NP</h2>
-
-<p>To show that Rudrata Cycle is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>Rudrata Cycle ∈ NP:</strong></p>
-
-<p>Given a candidate solution (a sequence of vertices representing a cycle), we can verify in polynomial time:</p>
-<ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that the cycle has exactly</td>
-          <td>V</td>
-          <td>vertices: O(</td>
-          <td>V</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that each vertex appears exactly once: O(</td>
-          <td>V</td>
-          <td>) time (use a set or array)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that consecutive vertices in the cycle are adjacent: O(</td>
-          <td>V</td>
-          <td>) time (check</td>
-          <td>V</td>
-          <td>edges, including the wrap-around edge from last to first)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>Check that the cycle returns to start: O(1) time</li>
-</ol>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Total verification time: O(</td>
-      <td>V</td>
-      <td>), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
-
-<p>The standard proof that Rudrata Cycle is NP-complete reduces directly from 3-SAT.</p>
-
-<h3 id="construction">Construction</h3>
-
-<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
-
-<p><strong>Key Idea:</strong> Create a graph where a Rudrata cycle corresponds to a satisfying assignment.</p>
-
-<ol>
-  <li><strong>For each variable x_i:</strong>
-    <ul>
-      <li>Create a “variable gadget”: a row of vertices representing the variable</li>
-      <li>Typically: vertices arranged horizontally, where going “left” means x_i = TRUE and going “right” means x_i = FALSE</li>
-      <li>Example: For variable x_i, create vertices v_{i,1}, v_{i,2}, …, v_{i,k} where the cycle can traverse left-to-right (TRUE) or right-to-left (FALSE)</li>
-    </ul>
-  </li>
-  <li><strong>For each clause C_j:</strong>
-    <ul>
-      <li>Create a “clause gadget”: vertices that can be visited if the clause is satisfied</li>
-      <li>Connect clause vertices to variable vertices corresponding to literals in the clause</li>
-      <li>The cycle must visit clause vertices, which is only possible if at least one literal is true</li>
-    </ul>
-  </li>
-  <li><strong>Connect gadgets:</strong>
-    <ul>
-      <li>Chain variable gadgets together in sequence</li>
-      <li>Connect clause gadgets to appropriate variable positions</li>
-      <li>Ensure a Rudrata cycle visits all vertices exactly once</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="simplified-construction-example">Simplified Construction Example</h3>
-
-<p>A common construction uses:</p>
-
-<p><strong>Variable Gadget:</strong></p>
-<ul>
-  <li>For each variable x_i, create a horizontal chain of vertices</li>
-  <li>The cycle can traverse this chain in two ways (encoding TRUE/FALSE)</li>
-</ul>
-
-<p><strong>Clause Gadget:</strong></p>
-<ul>
-  <li>For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create vertices connected to the variable gadgets</li>
-  <li>If the cycle takes the path corresponding to a true literal, it can visit the clause vertex</li>
-</ul>
-
-<p><strong>Why This Works:</strong></p>
-
-<p><strong>Forward Direction (3-SAT satisfiable → Rudrata Cycle exists):</strong></p>
-<ul>
-  <li>If φ is satisfiable, construct cycle through variable gadgets based on assignment</li>
-  <li>Visit clause vertices for satisfied clauses</li>
-  <li>This gives a valid Rudrata cycle</li>
-</ul>
-
-<p><strong>Reverse Direction (Rudrata Cycle exists → 3-SAT satisfiable):</strong></p>
-<ul>
-  <li>Extract truth assignment from cycle’s path through variable gadgets</li>
-  <li>Since all clause vertices are visited, each clause has at least one true literal</li>
-  <li>This gives a satisfying assignment</li>
-</ul>
-
-<h2 id="relationship-to-other-problems">Relationship to Other Problems</h2>
-
-<p>The Rudrata Cycle Problem is closely related to several important problems:</p>
-
-<h3 id="rudrata-path">Rudrata Path</h3>
-
-<p>As we saw in the previous post:</p>
-<ul>
-  <li><strong>Rudrata Cycle ≤ₚ Rudrata Path</strong>: Break cycle into path</li>
-  <li><strong>Rudrata Path ≤ₚ Rudrata Cycle</strong>: Connect path ends to form cycle</li>
-  <li>They are polynomially equivalent</li>
-</ul>
-
-<h3 id="traveling-salesman-problem-tsp">Traveling Salesman Problem (TSP)</h3>
-
-<p><strong>TSP Decision Problem:</strong></p>
-<ul>
-  <li>Given complete graph with edge weights and bound B</li>
-  <li>Does there exist a Rudrata cycle with total weight ≤ B?</li>
-</ul>
-
-<p><strong>Relationship:</strong></p>
-<ul>
-  <li>TSP is a weighted version of Rudrata Cycle</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight</td>
-          <td>V</td>
-          <td>exists</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>TSP reduces to Rudrata Cycle: use unweighted version</li>
-  <li>They are essentially the same problem</li>
-</ul>
-
-<h3 id="eulerian-cycle">Eulerian Cycle</h3>
-
-<p><strong>Eulerian Cycle:</strong></p>
-<ul>
-  <li>Visits each <strong>edge</strong> exactly once (vs. Hamiltonian cycle visits each <strong>vertex</strong> exactly once)</li>
-</ul>
-
-<p><strong>Key Difference:</strong></p>
-<ul>
-  <li>Eulerian cycle: polynomial-time solvable (check degrees, use Fleury’s or Hierholzer’s algorithm)</li>
-  <li>Hamiltonian cycle: NP-complete</li>
-  <li>This demonstrates how a small change in problem statement can dramatically affect complexity</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-rudrata-cycle-is-hard">Why Rudrata Cycle is Hard</h3>
-
-<p>The Rudrata Cycle Problem is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Try all (n-1)!/2 possible cycles (for undirected graphs) - factorial time</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n · n^2) time using bitmask DP (similar to TSP)</li>
-  <li><strong>Backtracking</strong>: Practical for small instances, but still exponential worst-case</li>
-</ol>
-
-<h3 id="dynamic-programming-solution">Dynamic Programming Solution</h3>
-
-<p><strong>Subproblem:</strong> dp[mask][v] = true if there exists a path visiting all vertices in mask ending at vertex v, and this path can be extended to a cycle.</p>
-
-<p><strong>Recurrence:</strong></p>
-<ul>
-  <li>Base case: dp[2^i][i] = true for all i (path of length 1)</li>
-  <li>Recurrence: dp[mask][v] = bigvee_{u in mask, (u,v) in E} dp[mask setminus {v}][u]</li>
-  <li>Final check: For each v, check if dp[2^n-1][v] = true and (v, start) is an edge</li>
-</ul>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: RudrataCycleDP(G)
-1. n = |V|
-2. Let dp[0..2^n-1][0..n-1] be a boolean array
-3. for i = 0 to n-1:
-4.     dp[2^i][i] = true
-5. for mask = 1 to 2^n - 1:
-6.     for v = 0 to n-1:
-7.         if v in mask:
-8.             for each neighbor u of v:
-9.                 if u in mask:
-10.                    dp[mask][v] = dp[mask][v] OR dp[mask - 2^v][u]
-11. for v = 0 to n-1:
-12.     if dp[2^n - 1][v] AND (v, start) is an edge:
-13.         return true
-14. return false
-</code></pre></div></div>
-
-<p><strong>Time Complexity:</strong> O(2^n · n^2)
-<strong>Space Complexity:</strong> O(2^n · n)</p>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Try all (n-1)!/2 possible cycles (for undirected graphs)</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O((n-1)! · n) = O(n!)</li>
-  <li><strong>Space Complexity:</strong> O(n) for storing current cycle</li>
-  <li><strong>Analysis:</strong> For each permutation, verify it forms a valid cycle (O(n) checks including wrap-around)</li>
-</ul>
-
-<h3 id="dynamic-programming-held-karp-algorithm">Dynamic Programming (Held-Karp Algorithm)</h3>
-
-<p><strong>Algorithm:</strong> Bitmask DP as described above</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
-  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
-  <li><strong>Subproblem:</strong> dp[mask][v] = true if path exists visiting all vertices in mask ending at v</li>
-  <li><strong>Final Check:</strong> Verify edge exists from last vertex to start vertex</li>
-</ul>
-
-<h3 id="backtracking">Backtracking</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with pruning</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop if current path can’t form a cycle visiting all vertices</li>
-</ul>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p><strong>Complete Graphs:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(1) - trivial, any cycle works</li>
-</ul>
-
-<p><strong>Trees:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n) - check if tree has exactly n-1 edges (then no cycle possible unless n=2)</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate cycle:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n) - verify all n edges exist (including wrap-around)</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows Rudrata Cycle is in NP</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>Rudrata Cycle has numerous applications:</p>
-
-<ol>
-  <li><strong>Route Planning</strong>: Finding routes that visit all locations and return to start (TSP)</li>
-  <li><strong>Circuit Design</strong>: Designing circuits that visit all components</li>
-  <li><strong>DNA Sequencing</strong>: Finding cycles in overlap graphs</li>
-  <li><strong>Network Analysis</strong>: Analyzing connectivity and designing network topologies</li>
-  <li><strong>Game Theory</strong>: Solving puzzles and games</li>
-  <li><strong>Scheduling</strong>: Sequencing tasks with return constraints</li>
-  <li><strong>Logistics</strong>: Vehicle routing, delivery optimization</li>
-</ol>
-
-<h3 id="special-cases-1">Special Cases</h3>
-
-<p>Some restricted versions of Rudrata Cycle are tractable:</p>
-
-<ul>
-  <li><strong>Complete Graphs</strong>: Always has a Rudrata cycle (any permutation works)</li>
-  <li><strong>Dirac’s Theorem</strong>: If deg(v) ≥ n/2 for all vertices, then Hamiltonian cycle exists (but finding it is still hard)</li>
-  <li><strong>Ore’s Theorem</strong>: If deg(u) + deg(v) ≥ n for all non-adjacent u,v, then Hamiltonian cycle exists</li>
-  <li><strong>Grid Graphs</strong>: Can be solved efficiently for certain grid structures</li>
-  <li><strong>Bounded Treewidth</strong>: Can be solved efficiently using tree decomposition</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Rudrata Cycle is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
-  <li><strong>TSP Connection</strong>: Traveling Salesman Problem is essentially weighted Rudrata Cycle</li>
-  <li><strong>Path vs Cycle</strong>: Rudrata Cycle and Rudrata Path are polynomially equivalent</li>
-  <li><strong>Dynamic Programming</strong>: O(2^n · n^2) time solution using bitmask DP works for small graphs</li>
-  <li><strong>Practical Algorithms</strong>: Despite NP-completeness, DP and heuristics work well for many practical instances</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>3-SAT ≤ₚ Rudrata Cycle:</strong></p>
-<ul>
-  <li>Construct graph with variable and clause gadgets</li>
-  <li>Satisfying assignment ↔ Rudrata cycle</li>
-  <li>The construction ensures cycle visits all vertices exactly once</li>
-</ul>
-
-<p><strong>Rudrata Cycle ≤ₚ TSP:</strong></p>
-<ul>
-  <li>Given Rudrata Cycle instance: graph G</li>
-  <li>Create complete graph G’ with edge weights: 1 if edge exists in G, ∈fty otherwise</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Rudrata cycle exists ↔ TSP has solution of weight</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<p><strong>TSP ≤ₚ Rudrata Cycle:</strong></p>
-<ul>
-  <li>Given TSP instance, ask if unweighted version has Hamiltonian cycle</li>
-  <li>They are essentially equivalent</li>
-</ul>
-
-<p>All reductions are polynomial-time, establishing Rudrata Cycle as NP-complete.</p>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Hamilton’s Icosian Game</strong>: Historical context of the problem</li>
-  <li><strong>TSP</strong>: Understanding the relationship to Traveling Salesman Problem</li>
-  <li><strong>Dynamic Programming</strong>: CLRS covers bitmask DP techniques for TSP</li>
-  <li><strong>Graph Theory</strong>: Dirac’s and Ore’s theorems provide sufficient conditions</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>
-    <p><strong>Find all Rudrata cycles</strong>: For the complete graph K_4 with vertices {1,2,3,4}, list all distinct Rudrata cycles. How many are there? (Consider cycles equivalent if they’re rotations or reversals)</p>
-  </li>
-  <li>
-    <p><strong>Prove the reduction</strong>: Show that Rudrata Cycle reduces to TSP. What edge weights should you use?</p>
-  </li>
-  <li>
-    <p><strong>DP implementation</strong>: Implement the dynamic programming algorithm for Rudrata Cycle. Test it on small graphs and analyze its performance.</p>
-  </li>
-  <li>
-    <p><strong>Path to Cycle</strong>: Show that Rudrata Path reduces to Rudrata Cycle. How do you modify the graph?</p>
-  </li>
-  <li>
-    <p><strong>Time complexity analysis</strong>: For the DP algorithm, verify the O(2^n · n^2) time complexity. Can you optimize the space complexity?</p>
-  </li>
-  <li>
-    <p><strong>Special cases</strong>: Research Dirac’s theorem. If a graph satisfies the conditions, does that mean we can find a Hamiltonian cycle in polynomial time?</p>
-  </li>
-  <li>
-    <p><strong>Eulerian vs Hamiltonian</strong>: Explain the key difference between Eulerian cycles and Hamiltonian cycles. Why is one polynomial-time and the other NP-complete?</p>
-  </li>
-  <li>
-    <p><strong>Extension</strong>: Research approximation algorithms for TSP. What approximation ratios can be achieved? What about metric TSP?</p>
-  </li>
-</ol>
-
-<hr />
-
-<p>Understanding the Rudrata Cycle Problem provides crucial insight into cycle problems in graph theory and their connection to optimization problems like TSP. The relationship to 3-SAT demonstrates how logical constraints can be encoded as graph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Rudrata Cycle Problem (also known as Hamiltonian Cycle), covering problem definition, NP-completeness proof, and connections to Rudrata Path and TSP.]]></summary></entry></feed>
+<p>Understanding the Independent Set Problem and its relationships to Clique and Vertex Cover provides crucial insight into the interconnected nature of NP-complete problems. The complement graph relationship is particularly elegant and demonstrates how seemingly different problems can be fundamentally related.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Independent Set Problem, covering problem definition, NP-completeness proof, and connections to Clique and Vertex Cover problems.]]></summary></entry></feed>
