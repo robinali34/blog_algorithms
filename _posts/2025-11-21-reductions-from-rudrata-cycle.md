@@ -61,17 +61,17 @@ Given a Rudrata Cycle instance: graph G = (V, E).
 - For each edge (u, v):
   - If (u, v) ∈ E, set weight w(u, v) = 1
   - If (u, v) ∉ E, set weight w(u, v) = 2
-- Bound B = |V|
+- Bound B = `|V|`
 - Return TSP instance: graph G', weights w, bound B
 
-**Key Property:** Hamiltonian cycle ↔ TSP tour of weight |V|
+**Key Property:** Hamiltonian cycle ↔ TSP tour of weight `|V|`
 
 #### 2.2 Output Conversion
 
-**Given:** TSP solution (tour) with total weight ≤ B = |V|
+**Given:** TSP solution (tour) with total weight ≤ B = `|V|`
 
 **Extract Hamiltonian Cycle:**
-- If tour weight = |V|, all edges have weight 1
+- If tour weight = `|V|`, all edges have weight 1
 - These edges exist in original graph G
 - Tour is Hamiltonian cycle in G
 
@@ -84,8 +84,8 @@ Given a Rudrata Cycle instance: graph G = (V, E).
 **Construct TSP Tour:**
 - C visits all vertices exactly once
 - All edges in C exist in G, so have weight 1
-- Total weight = |V| ≤ B
-- Therefore, C is TSP tour of weight |V|
+- Total weight = `|V|` ≤ B
+- Therefore, C is TSP tour of weight `|V|`
 
 **Conclusion:** TSP has a solution.
 
@@ -94,21 +94,21 @@ Given a Rudrata Cycle instance: graph G = (V, E).
 **Given:** Rudrata Cycle instance has no Hamiltonian cycle.
 
 **Proof:**
-- Any tour visiting all vertices must use at least |V| edges
-- If all edges have weight 1, tour weight = |V|
+- Any tour visiting all vertices must use at least `|V|` edges
+- If all edges have weight 1, tour weight = `|V|`
 - But if Hamiltonian cycle doesn't exist, any tour must use at least one edge not in G
-- That edge has weight 2, so tour weight ≥ |V| + 1 > B
+- That edge has weight 2, so tour weight ≥ `|V|` + 1 > B
 - Therefore, no TSP tour of weight ≤ B
 
 **Conclusion:** TSP has no solution.
 
 #### 3.2b If TSP has a solution, then Rudrata Cycle has a solution
 
-**Given:** TSP instance has solution (tour) with total weight ≤ B = |V|.
+**Given:** TSP instance has solution (tour) with total weight ≤ B = `|V|`.
 
 **Extract Hamiltonian Cycle:**
 - Tour visits all vertices exactly once
-- Total weight ≤ |V|, so all edges have weight 1
+- Total weight ≤ `|V|`, so all edges have weight 1
 - These edges exist in original graph G
 - Therefore, tour is Hamiltonian cycle in G
 

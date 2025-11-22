@@ -44,12 +44,12 @@ excerpt: "Comprehensive detailed proofs showing how to reduce from 3-SAT to prov
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≥ k: O(1) time
-3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(`|S|`²) time
 4. If no edges found, return YES; else return NO
 
-**Total Time:** O(|S|²) ≤ O(|V|²), which is polynomial in input size.
+**Total Time:** O(`|S|`²) ≤ O(`|V|`²), which is polynomial in input size.
 
 **Conclusion:** Independent Set ∈ NP.
 
@@ -85,8 +85,8 @@ Given a 3-SAT instance φ with n variables x₁, x₂, ..., x_n and m clauses C�
 - We need: n vertices from variable gadgets (one per variable) + m vertices from clause gadgets (one per clause)
 
 **Graph G:**
-- |V| = 2n + 3m vertices
-- |E| = n + 3m + 3m = n + 6m edges
+- `|V|` = 2n + 3m vertices
+- `|E|` = n + 3m + 3m = n + 6m edges
 
 #### 2.2 Output Conversion
 
@@ -191,7 +191,7 @@ Assume Independent Set instance has solution S of size n + m.
 
 **Key Insight:** 
 - S is an independent set ↔ V \ S is a vertex cover
-- Independent set of size k ↔ Vertex cover of size |V| - k
+- Independent set of size k ↔ Vertex cover of size `|V|` - k
 - Can reduce via Independent Set reduction
 
 **Hint:** After reducing 3-SAT to Independent Set, use the complement set relationship. This is a simple transformation that doesn't require redesigning gadgets.
@@ -206,12 +206,12 @@ Assume Independent Set instance has solution S of size n + m.
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≤ k: O(1) time
-3. For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(|E|) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≤ k: O(1) time
+3. For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(`|E|`) time
 4. If all edges covered, return YES; else return NO
 
-**Total Time:** O(|E|), which is polynomial in input size.
+**Total Time:** O(`|E|`), which is polynomial in input size.
 
 **Conclusion:** Vertex Cover ∈ NP.
 
@@ -225,16 +225,16 @@ Given a candidate solution (set S of vertices):
 
 **Construction:**
 - Given 3-SAT instance, construct Independent Set instance as in Q1
-- Return Vertex Cover instance: graph G, k' = |V| - (n + m)
-- Where |V| = 2n + 3m
+- Return Vertex Cover instance: graph G, k' = `|V|` - (n + m)
+- Where `|V|` = 2n + 3m
 
 #### 2.2 Output Conversion
 
-**Given:** Vertex Cover S' of size k' = |V| - (n + m)
+**Given:** Vertex Cover S' of size k' = `|V|` - (n + m)
 
 **Extract Independent Set:**
 - S = V \ S'
-- |S| = |V| - |S'| = |V| - (|V| - (n + m)) = n + m
+- `|S|` = `|V|` - `|S'|` = `|V|` - (`|V|` - (n + m)) = n + m
 - S is independent set (complement of vertex cover)
 
 **Extract Variable Assignment:**
@@ -250,7 +250,7 @@ Given a candidate solution (set S of vertices):
 
 **Construct Vertex Cover:**
 - S' = V \ S
-- |S'| = |V| - (n + m) = k'
+- `|S'|` = `|V|` - (n + m) = k'
 - S' is vertex cover (complement of independent set)
 
 **Conclusion:** Vertex Cover has a solution.
@@ -305,12 +305,12 @@ Given a candidate solution (set S of vertices):
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≥ k: O(1) time
-3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(`|S|`²) time
 4. If all pairs connected, return YES; else return NO
 
-**Total Time:** O(|S|²) ≤ O(|V|²), which is polynomial.
+**Total Time:** O(`|S|`²) ≤ O(`|V|`²), which is polynomial.
 
 **Conclusion:** Clique ∈ NP.
 
@@ -398,11 +398,11 @@ Given a candidate solution (set S of vertices):
 
 **Verification Algorithm:**
 Given a candidate solution (subset S'):
-1. Check that S' ⊆ S: O(|S'|) time
-2. Sum elements in S': O(|S'|) time
+1. Check that S' ⊆ S: O(`|S'|`) time
+2. Sum elements in S': O(`|S'|`) time
 3. Check if sum equals t: O(1) time
 
-**Total Time:** O(|S'|) ≤ O(|S|), which is polynomial.
+**Total Time:** O(`|S'|`) ≤ O(`|S|`), which is polynomial.
 
 **Conclusion:** Subset Sum ∈ NP.
 

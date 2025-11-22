@@ -40,12 +40,12 @@ Independent Set is a fundamental graph problem proven NP-complete by reduction f
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≥ k: O(1) time
-3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(`|S|`²) time
 4. If all pairs connected, return YES; else return NO
 
-**Total Time:** O(|S|²) ≤ O(|V|²), which is polynomial.
+**Total Time:** O(`|S|`²) ≤ O(`|V|`²), which is polynomial.
 
 **Conclusion:** Clique ∈ NP.
 
@@ -117,7 +117,7 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Key Insight:** 
 - S is an independent set ↔ V \ S is a vertex cover
-- Independent set of size k ↔ Vertex cover of size |V| - k
+- Independent set of size k ↔ Vertex cover of size `|V|` - k
 
 **Hint:** If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.
 
@@ -131,12 +131,12 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≤ k: O(1) time
-3. For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(|E|) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≤ k: O(1) time
+3. For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(`|E|`) time
 4. If all edges covered, return YES; else return NO
 
-**Total Time:** O(|E|), which is polynomial.
+**Total Time:** O(`|E|`), which is polynomial.
 
 **Conclusion:** Vertex Cover ∈ NP.
 
@@ -147,17 +147,17 @@ Given a candidate solution (set S of vertices):
 Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Construction:**
-- Return Vertex Cover instance: graph G, integer k' = |V| - k
+- Return Vertex Cover instance: graph G, integer k' = `|V|` - k
 
 **Key Property:** S is independent set ↔ V \ S is vertex cover
 
 #### 2.2 Output Conversion
 
-**Given:** Vertex Cover S' of size k' = |V| - k
+**Given:** Vertex Cover S' of size k' = `|V|` - k
 
 **Extract Independent Set:**
 - S = V \ S'
-- |S| = |V| - |S'| = |V| - (|V| - k) = k
+- `|S|` = `|V|` - `|S'|` = `|V|` - (`|V|` - k) = k
 - S is independent set (complement of vertex cover)
 
 ### 3. Correctness Justification
@@ -168,7 +168,7 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Construct Vertex Cover:**
 - S' = V \ S
-- |S'| = |V| - k = k'
+- `|S'|` = `|V|` - k = k'
 - S' is vertex cover (complement of independent set)
 
 **Verify Coverage:**
@@ -192,11 +192,11 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 #### 3.2b If Vertex Cover has a solution, then Independent Set has a solution
 
-**Given:** Vertex Cover instance has solution S' of size k' = |V| - k.
+**Given:** Vertex Cover instance has solution S' of size k' = `|V|` - k.
 
 **Extract Independent Set:**
 - S = V \ S'
-- |S| = |V| - k' = k
+- `|S|` = `|V|` - k' = k
 - S is independent set (complement of vertex cover)
 
 **Verify Independence:**
@@ -225,11 +225,11 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Verification Algorithm:**
 Given a candidate solution (partition S, V \ S):
-1. Check that S ⊆ V: O(|S|) time
-2. Count edges crossing cut: O(|E|) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Count edges crossing cut: O(`|E|`) time
 3. Check if count ≥ k: O(1) time
 
-**Total Time:** O(|E|), which is polynomial.
+**Total Time:** O(`|E|`), which is polynomial.
 
 **Conclusion:** Maximum Cut ∈ NP.
 
@@ -241,17 +241,17 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Construction:**
 - Create complete graph G' = (V, E') where E' contains all possible edges
-- Return Maximum Cut instance: graph G', target = k(|V| - k)
+- Return Maximum Cut instance: graph G', target = k(`|V|` - k)
 
 **Key Idea:** Independent set of size k → Cut with k vertices on one side, no edges within that side
 
 #### 2.2 Output Conversion
 
-**Given:** Maximum Cut (S, V \ S) with at least k(|V| - k) edges crossing
+**Given:** Maximum Cut (S, V \ S) with at least k(`|V|` - k) edges crossing
 
 **Extract Independent Set:**
-- If |S| = k, return S as independent set
-- If |V \ S| = k, return V \ S as independent set
+- If `|S|` = k, return S as independent set
+- If `|V \ S|` = k, return V \ S as independent set
 - Otherwise, need refinement
 
 ### 3. Correctness Justification
@@ -262,7 +262,7 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 
 **Construct Cut:**
 - Partition: (S, V \ S)
-- Number of crossing edges = |S| · |V \ S| = k(|V| - k)
+- Number of crossing edges = `|S|` · `|V \ S|` = k(`|V|` - k)
 - Since S is independent set, no edges within S
 - All edges incident to S cross the cut
 
@@ -273,21 +273,21 @@ Given an Independent Set instance: graph G = (V, E), integer k.
 **Given:** Independent Set instance has no solution of size k in G.
 
 **Proof:**
-- For any partition (S, V \ S) with |S| = k:
+- For any partition (S, V \ S) with `|S|` = k:
   - If S is not independent set, there are edges within S
   - These edges don't cross the cut
-  - Maximum crossing edges < k(|V| - k)
-- Similar argument for |V \ S| = k
+  - Maximum crossing edges < k(`|V|` - k)
+- Similar argument for `|V \ S|` = k
 
 **Conclusion:** Maximum Cut has no solution.
 
 #### 3.2b If Maximum Cut has a solution, then Independent Set has a solution
 
-**Given:** Maximum Cut instance has solution (S, V \ S) with at least k(|V| - k) edges crossing.
+**Given:** Maximum Cut instance has solution (S, V \ S) with at least k(`|V|` - k) edges crossing.
 
 **Extract Independent Set:**
-- If |S| = k and no edges within S, return S
-- If |V \ S| = k and no edges within V \ S, return V \ S
+- If `|S|` = k and no edges within S, return S
+- If `|V \ S|` = k and no edges within V \ S, return V \ S
 - Otherwise, refine partition
 
 **Conclusion:** Independent Set has a solution.

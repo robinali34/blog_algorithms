@@ -40,12 +40,12 @@ Clique is a fundamental graph problem proven NP-complete. This post provides det
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≥ k: O(1) time
-3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(`|S|`²) time
 4. If no edges found, return YES; else return NO
 
-**Total Time:** O(|S|²), which is polynomial.
+**Total Time:** O(`|S|`²), which is polynomial.
 
 **Conclusion:** Independent Set ∈ NP.
 
@@ -123,10 +123,10 @@ Given a Clique instance: graph G = (V, E), integer k.
 
 **Verification Algorithm:**
 Given a candidate solution (mapping f: V(H) → V(G)):
-1. Check that f is injective: O(|V(H)|²) time
-2. For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(|E(H)|) time
+1. Check that f is injective: O(`|V(H)|`²) time
+2. For each edge (u, v) ∈ E(H), check if (f(u), f(v)) ∈ E(G): O(`|E(H)|`) time
 
-**Total Time:** O(|V(H)|² + |E(H)|), which is polynomial.
+**Total Time:** O(`|V(H)|`² + `|E(H)|`), which is polynomial.
 
 **Conclusion:** Subgraph Isomorphism ∈ NP.
 
@@ -148,7 +148,7 @@ Given a Clique instance: graph G = (V, E), integer k.
 
 **Extract Clique:**
 - S = {f(v) : v ∈ V(Kₖ)}
-- |S| = k
+- `|S|` = k
 - S is clique in G (Kₖ is complete graph)
 
 ### 3. Correctness Justification
@@ -181,7 +181,7 @@ Given a Clique instance: graph G = (V, E), integer k.
 
 **Extract Clique:**
 - S = {f(v) : v ∈ V(Kₖ)}
-- |S| = k
+- `|S|` = k
 - Since Kₖ is complete, all pairs in S are connected
 - S is clique of size k
 

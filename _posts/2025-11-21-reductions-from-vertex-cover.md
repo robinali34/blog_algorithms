@@ -35,17 +35,17 @@ Vertex Cover is a fundamental covering problem proven NP-complete by reduction f
 
 **Set Cover Problem:**
 - **Input:** Universe U, collection C of subsets of U, integer k
-- **Output:** YES if there exists subcollection C' ⊆ C with |C'| ≤ k covering U, NO otherwise
+- **Output:** YES if there exists subcollection C' ⊆ C with `|C'|` ≤ k covering U, NO otherwise
 
 **Set Cover ∈ NP:**
 
 **Verification Algorithm:**
 Given a candidate solution (subcollection C'):
-1. Check that C' ⊆ C: O(|C'|) time
-2. Check that |C'| ≤ k: O(1) time
-3. Check that ∪_{S ∈ C'} S = U: O(|U| · |C'|) time
+1. Check that C' ⊆ C: O(`|C'|`) time
+2. Check that `|C'|` ≤ k: O(1) time
+3. Check that ∪_{S ∈ C'} S = U: O(`|U|` · `|C'|`) time
 
-**Total Time:** O(|U| · |C'|), which is polynomial.
+**Total Time:** O(`|U|` · `|C'|`), which is polynomial.
 
 **Conclusion:** Set Cover ∈ NP.
 
@@ -65,11 +65,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 2.2 Output Conversion
 
-**Given:** Set Cover solution C' ⊆ C with |C'| ≤ k covering U
+**Given:** Set Cover solution C' ⊆ C with `|C'|` ≤ k covering U
 
 **Extract Vertex Cover:**
 - S = {v ∈ V : Sᵥ ∈ C'}
-- |S| = |C'| ≤ k
+- `|S|` = `|C'|` ≤ k
 - S is vertex cover (each edge covered by at least one set Sᵥ)
 
 ### 3. Correctness Justification
@@ -80,7 +80,7 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construct Set Cover:**
 - C' = {Sᵥ : v ∈ S}
-- |C'| = |S| ≤ k
+- `|C'|` = `|S|` ≤ k
 - For each edge e = (u, v) ∈ E:
   - Since S is vertex cover, at least one of u, v ∈ S
   - Therefore, e ∈ Sᵤ or e ∈ Sᵥ
@@ -101,11 +101,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 3.2b If Set Cover has a solution, then Vertex Cover has a solution
 
-**Given:** Set Cover instance has solution C' ⊆ C with |C'| ≤ k covering U.
+**Given:** Set Cover instance has solution C' ⊆ C with `|C'|` ≤ k covering U.
 
 **Extract Vertex Cover:**
 - S = {v ∈ V : Sᵥ ∈ C'}
-- |S| = |C'| ≤ k
+- `|S|` = `|C'|` ≤ k
 - For each edge e ∈ E:
   - Since C' covers U, e is in some set Sᵥ ∈ C'
   - Therefore, v ∈ S, so e is covered by S
@@ -124,17 +124,17 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Hitting Set Problem:**
 - **Input:** Collection C of subsets of universe U, integer k
-- **Output:** YES if there exists set H ⊆ U with |H| ≤ k hitting all sets in C, NO otherwise
+- **Output:** YES if there exists set H ⊆ U with `|H|` ≤ k hitting all sets in C, NO otherwise
 
 **Hitting Set ∈ NP:**
 
 **Verification Algorithm:**
 Given a candidate solution (set H):
-1. Check that H ⊆ U: O(|H|) time
-2. Check that |H| ≤ k: O(1) time
-3. For each set S ∈ C, check if S ∩ H ≠ ∅: O(|C| · |U|) time
+1. Check that H ⊆ U: O(`|H|`) time
+2. Check that `|H|` ≤ k: O(1) time
+3. For each set S ∈ C, check if S ∩ H ≠ ∅: O(`|C|` · `|U|`) time
 
-**Total Time:** O(|C| · |U|), which is polynomial.
+**Total Time:** O(`|C|` · `|U|`), which is polynomial.
 
 **Conclusion:** Hitting Set ∈ NP.
 
@@ -153,11 +153,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 2.2 Output Conversion
 
-**Given:** Hitting Set solution H ⊆ U with |H| ≤ k hitting all sets
+**Given:** Hitting Set solution H ⊆ U with `|H|` ≤ k hitting all sets
 
 **Extract Vertex Cover:**
 - S = H
-- |S| = |H| ≤ k
+- `|S|` = `|H|` ≤ k
 - S is vertex cover (each edge e has Sₑ ∩ H ≠ ∅)
 
 ### 3. Correctness Justification
@@ -168,7 +168,7 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construct Hitting Set:**
 - H = S
-- |H| = |S| ≤ k
+- `|H|` = `|S|` ≤ k
 - For each edge e = (u, v) ∈ E:
   - Since S is vertex cover, at least one of u, v ∈ S
   - Therefore, Sₑ ∩ H ≠ ∅
@@ -189,11 +189,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 3.2b If Hitting Set has a solution, then Vertex Cover has a solution
 
-**Given:** Hitting Set instance has solution H ⊆ U with |H| ≤ k hitting all sets.
+**Given:** Hitting Set instance has solution H ⊆ U with `|H|` ≤ k hitting all sets.
 
 **Extract Vertex Cover:**
 - S = H
-- |S| = |H| ≤ k
+- `|S|` = `|H|` ≤ k
 - For each edge e = (u, v) ∈ E:
   - Since H hits Sₑ, Sₑ ∩ H ≠ ∅
   - Therefore, at least one of u, v ∈ H = S
@@ -219,11 +219,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Verification Algorithm:**
 Given a candidate solution (set S of vertices):
-1. Check that S ⊆ V: O(|S|) time
-2. Check that |S| ≥ k: O(1) time
-3. For each pair (u, v) in S, check if (u, v) ∈ E: O(|S|²) time
+1. Check that S ⊆ V: O(`|S|`) time
+2. Check that `|S|` ≥ k: O(1) time
+3. For each pair (u, v) in S, check if (u, v) ∈ E: O(`|S|`²) time
 
-**Total Time:** O(|S|²), which is polynomial.
+**Total Time:** O(`|S|`²), which is polynomial.
 
 **Conclusion:** Independent Set ∈ NP.
 
@@ -234,17 +234,17 @@ Given a candidate solution (set S of vertices):
 Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construction:**
-- Return Independent Set instance: graph G, integer k' = |V| - k
+- Return Independent Set instance: graph G, integer k' = `|V|` - k
 
 **Key Property:** S is vertex cover ↔ V \ S is independent set
 
 #### 2.2 Output Conversion
 
-**Given:** Independent Set solution S' of size k' = |V| - k
+**Given:** Independent Set solution S' of size k' = `|V|` - k
 
 **Extract Vertex Cover:**
 - S = V \ S'
-- |S| = |V| - k' = k
+- `|S|` = `|V|` - k' = k
 - S is vertex cover (complement of independent set)
 
 ### 3. Correctness Justification
@@ -255,7 +255,7 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construct Independent Set:**
 - S' = V \ S
-- |S'| = |V| - |S| ≥ |V| - k = k'
+- `|S'|` = `|V|` - `|S|` ≥ `|V|` - k = k'
 - S' is independent set (complement of vertex cover)
 
 **Conclusion:** Independent Set has a solution.
@@ -273,11 +273,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 3.2b If Independent Set has a solution, then Vertex Cover has a solution
 
-**Given:** Independent Set instance has solution S' of size ≥ k' = |V| - k.
+**Given:** Independent Set instance has solution S' of size ≥ k' = `|V|` - k.
 
 **Extract Vertex Cover:**
 - S = V \ S'
-- |S| = |V| - |S'| ≤ |V| - k' = k
+- `|S|` = `|V|` - `|S'|` ≤ `|V|` - k' = k
 - S is vertex cover (complement of independent set)
 
 **Conclusion:** Vertex Cover has a solution.

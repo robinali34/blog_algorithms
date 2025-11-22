@@ -41,11 +41,11 @@ Zero-One Equations (ZOE) is a matrix equation problem proven NP-complete by redu
 
 **Verification Algorithm:**
 Given a candidate solution (matching M):
-1. Check that M ⊆ T: O(|M|) time
-2. Check that all elements in X, Y, Z are covered: O(|X| + |Y| + |Z|) time
-3. Check that no element appears twice: O(|M|) time
+1. Check that M ⊆ T: O(`|M|`) time
+2. Check that all elements in X, Y, Z are covered: O(`|X|` + `|Y|` + `|Z|`) time
+3. Check that no element appears twice: O(`|M|`) time
 
-**Total Time:** O(|X| + |Y| + |Z| + |M|), which is polynomial.
+**Total Time:** O(`|X|` + `|Y|` + `|Z|` + `|M|`), which is polynomial.
 
 **Conclusion:** 3D Matching ∈ NP.
 
@@ -151,10 +151,10 @@ Given a ZOE instance: matrix A (m × n), vector b (m-dimensional).
 
 **Verification Algorithm:**
 Given a candidate solution (subcollection C'):
-1. Check that C' ⊆ C: O(|C'|) time
-2. Check that each element appears exactly once: O(|U| · |C'|) time
+1. Check that C' ⊆ C: O(`|C'|`) time
+2. Check that each element appears exactly once: O(`|U|` · `|C'|`) time
 
-**Total Time:** O(|U| · |C'|), which is polynomial.
+**Total Time:** O(`|U|` · `|C'|`), which is polynomial.
 
 **Conclusion:** Exact Cover ∈ NP.
 

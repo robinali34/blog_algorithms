@@ -29,7 +29,7 @@ Traveling Salesman Problem (TSP) is a fundamental routing problem proven NP-comp
 - Create graph with only edges satisfying weight constraint
 - Hamiltonian cycle in filtered graph ↔ TSP tour
 
-**Hint:** Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ |V| exists if and only if Hamiltonian cycle exists (using only weight-1 edges).
+**Hint:** Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ `|V|` exists if and only if Hamiltonian cycle exists (using only weight-1 edges).
 
 ### 1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation
 
@@ -70,7 +70,7 @@ Given a TSP instance: complete graph G with weights w, bound B.
 **Extract TSP Tour:**
 - C is cycle visiting all vertices
 - All edges in C have weight ≤ B (by construction)
-- Total weight ≤ |V| · B (but actually ≤ B if weights are appropriate)
+- Total weight ≤ `|V|` · B (but actually ≤ B if weights are appropriate)
 - Return C as TSP tour
 
 ### 3. Correctness Justification
@@ -94,15 +94,15 @@ Given a TSP instance: complete graph G with weights w, bound B.
 **Proof:**
 - If Hamiltonian cycle exists in G':
   - All edges have weight ≤ B
-  - Cycle is TSP tour with weight ≤ |V| · (max weight ≤ B)
+  - Cycle is TSP tour with weight ≤ `|V|` · (max weight ≤ B)
   - But need to ensure total ≤ B
-  - If all edges ≤ B and cycle has |V| edges, total ≤ |V| · B
+  - If all edges ≤ B and cycle has `|V|` edges, total ≤ `|V|` · B
   - Need refinement: use binary weights (1 if ≤ B, 2 if > B)
 
 **Refined Construction:**
 - Set weights: w'(u, v) = 1 if w(u, v) ≤ B, else w'(u, v) = 2
-- Bound B' = |V|
-- Then: TSP tour weight ≤ |V| ↔ All edges have weight 1 ↔ Hamiltonian cycle exists
+- Bound B' = `|V|`
+- Then: TSP tour weight ≤ `|V|` ↔ All edges have weight 1 ↔ Hamiltonian cycle exists
 
 **Conclusion:** Hamiltonian Cycle has no solution.
 
@@ -113,8 +113,8 @@ Given a TSP instance: complete graph G with weights w, bound B.
 **Extract TSP Tour:**
 - C visits all vertices exactly once
 - All edges in C are in G', so have weight ≤ B (by construction)
-- Total weight ≤ |V| · B
-- With refined construction (binary weights), total weight = |V| ≤ B'
+- Total weight ≤ `|V|` · B
+- With refined construction (binary weights), total weight = `|V|` ≤ B'
 
 **Conclusion:** TSP has a solution.
 

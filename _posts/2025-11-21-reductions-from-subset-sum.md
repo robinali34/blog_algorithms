@@ -39,13 +39,13 @@ Subset Sum is a fundamental number problem proven NP-complete by reduction from 
 
 **Verification Algorithm:**
 Given a candidate solution (partition S₁, S₂):
-1. Check that S₁ ∪ S₂ = A: O(|A|) time
-2. Check that S₁ ∩ S₂ = ∅: O(|A|) time
-3. Compute sum₁ = ∑_{a ∈ S₁} a: O(|A|) time
-4. Compute sum₂ = ∑_{a ∈ S₂} a: O(|A|) time
+1. Check that S₁ ∪ S₂ = A: O(`|A|`) time
+2. Check that S₁ ∩ S₂ = ∅: O(`|A|`) time
+3. Compute sum₁ = ∑_{a ∈ S₁} a: O(`|A|`) time
+4. Compute sum₂ = ∑_{a ∈ S₂} a: O(`|A|`) time
 5. Check if sum₁ = sum₂: O(1) time
 
-**Total Time:** O(|A|), which is polynomial.
+**Total Time:** O(`|A|`), which is polynomial.
 
 **Conclusion:** Partition ∈ NP.
 

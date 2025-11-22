@@ -29,23 +29,23 @@ excerpt: "Comprehensive detailed proofs showing how to reduce from 3D Matching t
 - Perfect matching covers all elements exactly once
 - Set cover allows covering elements multiple times, but perfect matching ensures exactly once
 
-**Hint:** Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size |X| = |Y| = |Z|, where each element is covered exactly once.
+**Hint:** Each triple becomes a set containing its three elements. A perfect 3D matching corresponds to a set cover of size `|X|` = `|Y|` = `|Z|`, where each element is covered exactly once.
 
 ### 1. NP-Completeness Proof of Set Cover: Solution Validation
 
 **Set Cover Problem:**
 - **Input:** Universe U, collection C of subsets of U, integer k
-- **Output:** YES if there exists subcollection C' ⊆ C with |C'| ≤ k covering U, NO otherwise
+- **Output:** YES if there exists subcollection C' ⊆ C with `|C'|` ≤ k covering U, NO otherwise
 
 **Set Cover ∈ NP:**
 
 **Verification Algorithm:**
 Given a candidate solution (subcollection C'):
-1. Check that C' ⊆ C: O(|C'|) time
-2. Check that |C'| ≤ k: O(1) time
-3. Check that ∪_{S ∈ C'} S = U: O(|U| · |C'|) time
+1. Check that C' ⊆ C: O(`|C'|`) time
+2. Check that `|C'|` ≤ k: O(1) time
+3. Check that ∪_{S ∈ C'} S = U: O(`|U|` · `|C'|`) time
 
-**Total Time:** O(|U| · |C'|), which is polynomial.
+**Total Time:** O(`|U|` · `|C'|`), which is polynomial.
 
 **Conclusion:** Set Cover ∈ NP.
 
@@ -59,19 +59,19 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 - Universe U = X ∪ Y ∪ Z (all elements)
 - For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}
 - Collection C = {Sₜ : t ∈ T}
-- Target k = |X| = |Y| = |Z| (assuming equal sizes)
+- Target k = `|X|` = `|Y|` = `|Z|` (assuming equal sizes)
 - Return Set Cover instance: universe U, collection C, integer k
 
 **Key Property:** Perfect 3D matching ↔ Set cover of size k
 
 #### 2.2 Output Conversion
 
-**Given:** Set Cover solution C' ⊆ C with |C'| ≤ k covering U
+**Given:** Set Cover solution C' ⊆ C with `|C'|` ≤ k covering U
 
 **Extract Matching:**
 - M = {t ∈ T : Sₜ ∈ C'}
-- |M| = |C'| ≤ k
-- Since |X| = |Y| = |Z| = k and each set covers 3 elements, need exactly k sets
+- `|M|` = `|C'|` ≤ k
+- Since `|X|` = `|Y|` = `|Z|` = k and each set covers 3 elements, need exactly k sets
 - M is perfect 3D matching
 
 ### 3. Correctness Justification
@@ -82,7 +82,7 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 
 **Construct Set Cover:**
 - C' = {Sₜ : t ∈ M}
-- |C'| = |M| = k
+- `|C'|` = `|M|` = k
 - Since M covers all elements:
   - Each x ∈ X appears in exactly one triple t ∈ M
   - Each y ∈ Y appears in exactly one triple t ∈ M
@@ -98,7 +98,7 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 **Proof:**
 - If Set Cover has solution C' of size k:
   - Then M = {t : Sₜ ∈ C'} is matching of size k
-  - Since |X| = |Y| = |Z| = k, M covers all elements
+  - Since `|X|` = `|Y|` = `|Z|` = k, M covers all elements
   - M is perfect matching
   - Contradiction
 
@@ -106,12 +106,12 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 
 #### 3.2b If Set Cover has a solution, then 3D Matching has a solution
 
-**Given:** Set Cover instance has solution C' ⊆ C with |C'| ≤ k covering U.
+**Given:** Set Cover instance has solution C' ⊆ C with `|C'|` ≤ k covering U.
 
 **Extract Matching:**
 - M = {t ∈ T : Sₜ ∈ C'}
-- |M| = |C'| ≤ k
-- Since C' covers U and |U| = 3k:
+- `|M|` = `|C'|` ≤ k
+- Since C' covers U and `|U|` = 3k:
   - Need at least k sets (each covers 3 elements)
   - Have at most k sets
   - Therefore, exactly k sets, each covering 3 distinct elements
@@ -119,7 +119,7 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 
 **Conclusion:** 3D Matching has a solution.
 
-**Polynomial Time:** O(|T|) to create sets.
+**Polynomial Time:** O(`|T|`) to create sets.
 
 **Therefore, Set Cover is NP-complete.**
 
@@ -137,10 +137,10 @@ Given a 3D Matching instance: sets X, Y, Z, triples T ⊆ X × Y × Z.
 
 **Verification Algorithm:**
 Given a candidate solution (subcollection C'):
-1. Check that C' ⊆ C: O(|C'|) time
-2. Check that each element appears exactly once: O(|U| · |C'|) time
+1. Check that C' ⊆ C: O(`|C'|`) time
+2. Check that each element appears exactly once: O(`|U|` · `|C'|`) time
 
-**Total Time:** O(|U| · |C'|), which is polynomial.
+**Total Time:** O(`|U|` · `|C'|`), which is polynomial.
 
 **Conclusion:** Exact Cover ∈ NP.
 
