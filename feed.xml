@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T06:53:32+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-22T07:09:53+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Linear Programming Fundamentals: Theory, Algorithms, and Applications</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/" rel="alternate" type="text/html" title="Linear Programming Fundamentals: Theory, Algorithms, and Applications" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/linear-programming-fundamentals/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>Linear Programming (LP) is one of the most important and widely used optimization techniques in computer science, operations research, and applied mathematics. Unlike many optimization problems that are NP-complete, Linear Programming can be solved efficiently in polynomial time, making it a powerful tool for solving real-world optimization problems. This post provides a comprehensive introduction to Linear Programming, covering its theory, algorithms, and applications.</p>
 
@@ -3314,2909 +3314,1383 @@
 
 <hr />
 
-<p>This reference guide provides a roadmap for proving NP-completeness. By understanding which known NP-complete problems work best for different problem types, you can efficiently construct reductions and prove new problems are NP-complete. The key is matching the structure of your target problem to an appropriate starting point and designing gadgets that correctly encode the constraints.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive reference guide showing how to use known NP-complete problems (SAT, 3-SAT, Clique, Independent Set, Vertex Cover, Subset Sum, Rudrata Path/Cycle, ILP, ZOE, 3D Matching, TSP) to prove new problems are NP-complete through reductions.]]></summary></entry><entry><title type="html">NP-Hard Introduction: Integer Linear Programming (ILP)</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming/" rel="alternate" type="text/html" title="NP-Hard Introduction: Integer Linear Programming (ILP)" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-integer-linear-programming/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>This reference guide provides a roadmap for proving NP-completeness. By understanding which known NP-complete problems work best for different problem types, you can efficiently construct reductions and prove new problems are NP-complete. The key is matching the structure of your target problem to an appropriate starting point and designing gadgets that correctly encode the constraints.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive reference guide showing how to use known NP-complete problems (SAT, 3-SAT, Clique, Independent Set, Vertex Cover, Subset Sum, Rudrata Path/Cycle, ILP, ZOE, 3D Matching, TSP) to prove new problems are NP-complete through reductions.]]></summary></entry><entry><title type="html">Reduction: 3-SAT to Partition</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reduction-3sat-to-partition/" rel="alternate" type="text/html" title="Reduction: 3-SAT to Partition" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reduction-3sat-to-partition</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reduction-3sat-to-partition/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
-<p>Integer Linear Programming (ILP) is a fundamental optimization problem that extends Linear Programming by requiring variables to take integer values. While Linear Programming can be solved in polynomial time, ILP is NP-complete, making it one of the most important problems in optimization theory. ILP has widespread applications in operations research, scheduling, resource allocation, and many other domains.</p>
+<p>This post provides a detailed proof that the Partition problem is NP-complete by reducing from 3-SAT. The reduction encodes variable assignments and clause satisfaction using numbers and subset sums, demonstrating how logical constraints can be represented arithmetically.</p>
 
-<h2 id="what-is-integer-linear-programming">What is Integer Linear Programming?</h2>
+<h2 id="problem-definitions">Problem Definitions</h2>
 
-<p>Integer Linear Programming asks: <strong>Given linear constraints and a linear objective function, find integer values for variables that satisfy the constraints and optimize the objective.</strong></p>
+<h3 id="partition-problem">Partition Problem</h3>
 
-<h3 id="problem-definition">Problem Definition</h3>
+<p><strong>Input:</strong> A set of integers A = {a₁, a₂, …, a_n}</p>
 
-<p><strong>Integer Linear Programming (ILP) Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
+<p><strong>Output:</strong> YES if A can be partitioned into two subsets S₁ and S₂ such that:</p>
 <ul>
-  <li>A matrix A ∈ ℤ^(m×n) (constraint coefficients)</li>
-  <li>A vector b ∈ ℤ^m (constraint bounds)</li>
-  <li>A vector c ∈ ℤ^n (objective coefficients)</li>
-  <li>An integer k (target value)</li>
+  <li>S₁ ∪ S₂ = A</li>
+  <li>S₁ ∩ S₂ = ∅</li>
+  <li>∑<em>{a ∈ S₁} a = ∑</em>{a ∈ S₂} a</li>
 </ul>
 
-<p><strong>Output:</strong> YES if there exists an integer vector x ∈ ℤ^n such that:</p>
+<p>NO otherwise.</p>
+
+<h3 id="3-sat-problem">3-SAT Problem</h3>
+
+<p><strong>Input:</strong> A Boolean formula φ in 3-CNF with:</p>
 <ul>
-  <li>Ax ≤ b (constraints satisfied)</li>
-  <li>c^T x ≥ k (objective value at least k)</li>
+  <li>Variables: x₁, x₂, …, x_n</li>
+  <li>Clauses: C₁, C₂, …, C_m, each with exactly 3 literals</li>
 </ul>
 
-<p>NO otherwise</p>
+<p><strong>Output:</strong> YES if φ is satisfiable, NO otherwise.</p>
 
-<p><strong>ILP Optimization Problem:</strong></p>
+<h2 id="1-np-completeness-proof-of-partition-solution-validation">1. NP-Completeness Proof of Partition: Solution Validation</h2>
 
-<p><strong>Input:</strong> Same as above (without k)</p>
+<h3 id="partition--np">Partition ∈ NP</h3>
 
-<p><strong>Output:</strong> The maximum value of c^T x subject to Ax ≤ b and x ∈ ℤ^n</p>
-
-<h3 id="variants">Variants</h3>
-
-<p><strong>0-1 Integer Programming (Binary ILP):</strong></p>
-<ul>
-  <li>Variables restricted to {0, 1}</li>
-  <li>Very common in practice</li>
-</ul>
-
-<p><strong>Mixed Integer Linear Programming (MILP):</strong></p>
-<ul>
-  <li>Some variables are integers, others are continuous</li>
-  <li>Combines ILP and LP</li>
-</ul>
-
-<p><strong>Unbounded ILP:</strong></p>
-<ul>
-  <li>Variables can be any integers (not necessarily non-negative)</li>
-</ul>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the ILP:</p>
-
-<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
-
-<p><strong>Subject to:</strong></p>
-<ul>
-  <li>2x₁ + x₂ ≤ 6</li>
-  <li>x₁ + 2x₂ ≤ 8</li>
-  <li>x₁, x₂ ≥ 0 and integer</li>
-</ul>
-
-<p><strong>Feasible integer solutions:</strong></p>
-<ul>
-  <li>(0, 0): objective = 0</li>
-  <li>(1, 0): objective = 3</li>
-  <li>(2, 0): objective = 6</li>
-  <li>(0, 1): objective = 2</li>
-  <li>(1, 1): objective = 5</li>
-  <li>(2, 1): objective = 8</li>
-  <li>(3, 0): objective = 9 ✓ (optimal, satisfies constraints)</li>
-</ul>
-
-<p><strong>LP relaxation</strong> (allowing fractional values) might give (2.67, 0.67) with objective 9.33, but this is not integer.</p>
-
-<h2 id="why-ilp-is-in-np">Why ILP is in NP</h2>
-
-<p>To show that ILP is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>ILP ∈ NP:</strong></p>
-
-<p>Given a candidate solution (an integer vector x), we can verify in polynomial time:</p>
+<p><strong>Verification Algorithm:</strong>
+Given a candidate solution (partition S₁, S₂):</p>
 <ol>
-  <li>Check that x has integer values: O(n) time</li>
-  <li>Check that Ax ≤ b: O(mn) time (matrix-vector multiplication)</li>
-  <li>Check that c^T x ≥ k: O(n) time</li>
+  <li>Check that S₁ ∪ S₂ = A: O(n) time</li>
+  <li>Check that S₁ ∩ S₂ = ∅: O(n) time</li>
+  <li>Compute sum₁ = ∑_{a ∈ S₁} a: O(n) time</li>
+  <li>Compute sum₂ = ∑_{a ∈ S₂} a: O(n) time</li>
+  <li>Check if sum₁ = sum₂: O(1) time</li>
 </ol>
 
-<p>Total verification time: O(mn), which is polynomial in the input size. Therefore, ILP is in NP.</p>
+<p><strong>Total Time:</strong> O(n), which is polynomial in input size.</p>
 
-<p><strong>Note:</strong> The size of the solution x might be exponential in the input size (if values are large), but we can verify constraints in polynomial time relative to the input size.</p>
+<p><strong>Conclusion:</strong> Partition ∈ NP.</p>
 
-<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
+<h2 id="2-reduce-3-sat-to-partition">2. Reduce 3-SAT to Partition</h2>
 
-<p>The standard proof that ILP is NP-complete reduces from 3-SAT.</p>
+<h3 id="21-input-conversion">2.1 Input Conversion</h3>
 
-<h3 id="construction">Construction</h3>
+<p>Given a 3-SAT instance with n variables and m clauses, we construct a Partition instance.</p>
 
-<p>For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x₂, …, xₙ:</p>
+<p><strong>Key Idea:</strong> Use base representation to encode variable assignments and clause satisfaction.</p>
 
-<p><strong>Key Idea:</strong> Encode Boolean variables as 0-1 integer variables and clauses as linear constraints.</p>
+<p><strong>Construction:</strong></p>
 
-<ol>
-  <li><strong>Variables:</strong>
+<p><strong>Step 1: Create Variable Numbers</strong></p>
+<ul>
+  <li>For each variable xᵢ, create two numbers:
     <ul>
-      <li>For each Boolean variable xᵢ, create an integer variable yᵢ ∈ {0, 1}</li>
-      <li>yᵢ = 1 means xᵢ = TRUE, yᵢ = 0 means xᵢ = FALSE</li>
+      <li><strong>vᵢ</strong>: Represents xᵢ = TRUE</li>
+      <li><strong>v’ᵢ</strong>: Represents xᵢ = FALSE</li>
     </ul>
   </li>
-  <li><strong>Clauses:</strong>
+  <li>Each number has n + m digits (base representation)</li>
+  <li>Variable digits: positions 1 through n</li>
+  <li>Clause digits: positions n+1 through n+m</li>
+</ul>
+
+<p><strong>Step 2: Encode Variable Assignments</strong></p>
+<ul>
+  <li>For variable xᵢ:
     <ul>
-      <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+      <li>vᵢ has digit i = 1, all other variable digits = 0</li>
+      <li>v’ᵢ has digit i = 1, all other variable digits = 0</li>
+    </ul>
+  </li>
+  <li>This ensures exactly one of vᵢ or v’ᵢ is chosen (representing TRUE or FALSE)</li>
+</ul>
+
+<p><strong>Step 3: Encode Clause Satisfaction</strong></p>
+<ul>
+  <li>For clause Cⱼ and variable xᵢ:
+    <ul>
+      <li>If xᵢ appears positively in Cⱼ: add 1 to clause digit (n+j) of vᵢ</li>
+      <li>If ¬xᵢ appears in Cⱼ: add 1 to clause digit (n+j) of v’ᵢ</li>
+    </ul>
+  </li>
+  <li>This ensures that if a clause is satisfied, the corresponding clause digit contributes to the sum</li>
+</ul>
+
+<p><strong>Step 4: Create Clause Numbers</strong></p>
+<ul>
+  <li>For each clause Cⱼ, create two “slack” numbers:
+    <ul>
+      <li><strong>sⱼ</strong>: Has digit (n+j) = 1, all other digits = 0</li>
+      <li><strong>s’ⱼ</strong>: Has digit (n+j) = 1, all other digits = 0</li>
+    </ul>
+  </li>
+  <li>These allow flexibility in achieving the target sum</li>
+</ul>
+
+<p><strong>Step 5: Set Target</strong></p>
+<ul>
+  <li>Compute total sum T = sum of all numbers created</li>
+  <li>Target for Partition: T/2</li>
+  <li>Since we have variable numbers (2n numbers) and clause slack numbers (2m numbers), total is 2(n+m) numbers</li>
+</ul>
+
+<p><strong>Detailed Example:</strong></p>
+
+<p>Consider 3-SAT instance:</p>
+<ul>
+  <li>Variables: x₁, x₂</li>
+  <li>Clauses: C₁ = (x₁ ∨ ¬x₂ ∨ x₁), C₂ = (¬x₁ ∨ x₂ ∨ x₂)</li>
+</ul>
+
+<p><strong>Variable Numbers (base 10, but think in base representation):</strong></p>
+<ul>
+  <li>v₁ (x₁ = TRUE): digit 1 = 1, digit 3 (clause 1) = 1, digit 4 (clause 2) = 0 → value encoding</li>
+  <li>v’₁ (x₁ = FALSE): digit 1 = 1, digit 3 = 0, digit 4 = 1</li>
+  <li>v₂ (x₂ = TRUE): digit 2 = 1, digit 3 = 0, digit 4 = 1</li>
+  <li>v’₂ (x₂ = FALSE): digit 2 = 1, digit 3 = 1, digit 4 = 0</li>
+</ul>
+
+<p><strong>Clause Slack Numbers:</strong></p>
+<ul>
+  <li>s₁: digit 3 = 1</li>
+  <li>s’₁: digit 3 = 1</li>
+  <li>s₂: digit 4 = 1</li>
+  <li>s’₂: digit 4 = 1</li>
+</ul>
+
+<p><strong>Total Set:</strong> {v₁, v’₁, v₂, v’₂, s₁, s’₁, s₂, s’₂}
+<strong>Target:</strong> T/2 where T = sum of all numbers</p>
+
+<h3 id="22-output-conversion">2.2 Output Conversion</h3>
+
+<p><strong>Given:</strong> Partition solution (S₁, S₂) where sum(S₁) = sum(S₂) = T/2</p>
+
+<p><strong>Extract Variable Assignment:</strong></p>
+<ul>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>If vᵢ ∈ S₁ (or S₂), set xᵢ = TRUE</li>
+      <li>If v’ᵢ ∈ S₁ (or S₂), set xᵢ = FALSE</li>
+      <li>Exactly one of vᵢ or v’ᵢ must be in each partition (by construction)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Verify Clause Satisfaction:</strong></p>
+<ul>
+  <li>For each clause Cⱼ:
+    <ul>
+      <li>Check if at least one literal is TRUE</li>
+      <li>This corresponds to clause digit (n+j) summing to at least 1 in the chosen partition</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="3-correctness-justification">3. Correctness Justification</h2>
+
+<h3 id="31-if-3-sat-has-a-solution-then-partition-has-a-solution">3.1 If 3-SAT has a solution, then Partition has a solution</h3>
+
+<p><strong>Given:</strong> 3-SAT instance φ is satisfiable with assignment A.</p>
+
+<p><strong>Construct Partition:</strong></p>
+
+<p><strong>Step 1: Choose Variable Numbers</strong></p>
+<ul>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>If A(xᵢ) = TRUE, put vᵢ in S₁</li>
+      <li>If A(xᵢ) = FALSE, put v’ᵢ in S₁</li>
+    </ul>
+  </li>
+  <li>Put the other variable number (v’ᵢ or vᵢ) in S₂</li>
+</ul>
+
+<p><strong>Step 2: Balance Clause Digits</strong></p>
+<ul>
+  <li>For each clause Cⱼ:
+    <ul>
+      <li>Since φ is satisfiable, at least one literal in Cⱼ is TRUE</li>
+      <li>This means clause digit (n+j) has contribution ≥ 1 from variable numbers in S₁</li>
+      <li>Use slack numbers sⱼ and s’ⱼ to balance:
         <ul>
-          <li>If literal is xᵢ, use yᵢ</li>
-          <li>If literal is ¬xᵢ, use (1 - yᵢ)</li>
-          <li>Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)</li>
+          <li>If clause digit in S₁ needs more, add sⱼ to S₂</li>
+          <li>If clause digit in S₂ needs more, add s’ⱼ to S₁</li>
+          <li>Distribute slack numbers to achieve balance</li>
         </ul>
       </li>
     </ul>
+  </li>
+</ul>
 
-    <p>Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):</p>
+<p><strong>Step 3: Verify Balance</strong></p>
+<ul>
+  <li>Variable digits: Each position i has exactly one 1 in S₁ and one 1 in S₂ (balanced)</li>
+  <li>Clause digits: Can be balanced using slack numbers</li>
+  <li>Therefore, sum(S₁) = sum(S₂) = T/2</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Partition has a solution.</p>
+
+<h3 id="32a-if-3-sat-does-not-have-a-solution-then-partition-has-no-solution">3.2a If 3-SAT does not have a solution, then Partition has no solution</h3>
+
+<p><strong>Given:</strong> 3-SAT instance φ is unsatisfiable.</p>
+
+<p><strong>Proof by Contradiction:</strong></p>
+
+<p>Assume Partition has a solution (S₁, S₂).</p>
+
+<p><strong>Extract Assignment:</strong></p>
+<ul>
+  <li>For each variable xᵢ:
     <ul>
-      <li>Constraint: y₁ + (1 - y₂) + y₃ ≥ 1</li>
-      <li>Simplifies to: y₁ - y₂ + y₃ ≥ 0</li>
+      <li>If vᵢ ∈ S₁, set xᵢ = TRUE</li>
+      <li>If v’ᵢ ∈ S₁, set xᵢ = FALSE</li>
+      <li>(Exactly one must be in S₁ by construction)</li>
     </ul>
   </li>
-  <li>
-    <p><strong>Objective:</strong> Maximize ∑ᵢ₌₁ⁿ yᵢ (or any objective, since we’re just checking feasibility)</p>
-  </li>
-  <li><strong>Bounds:</strong> 0 ≤ yᵢ ≤ 1 for all i (enforces binary variables)</li>
-</ol>
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p><strong>Forward Direction (3-SAT satisfiable → ILP feasible):</strong></p>
-<ul>
-  <li>If φ is satisfiable, set yᵢ = 1 if xᵢ = TRUE, else yᵢ = 0</li>
-  <li>Each clause constraint is satisfied (at least one literal is 1)</li>
-  <li>This gives a feasible ILP solution</li>
 </ul>
 
-<p><strong>Reverse Direction (ILP feasible → 3-SAT satisfiable):</strong></p>
+<p><strong>Check Clause Satisfaction:</strong></p>
 <ul>
-  <li>If ILP has feasible solution with yᵢ ∈ {0,1}, set xᵢ = TRUE if yᵢ = 1, else xᵢ = FALSE</li>
-  <li>Since each clause constraint requires at least one yᵢ = 1 (or (1-yᵢ) = 1), each clause has at least one true literal</li>
-  <li>This gives a satisfying assignment</li>
-</ul>
-
-<p><strong>Polynomial Time:</strong></p>
-<ul>
-  <li>Construction takes O(mn) time (one constraint per clause)</li>
-</ul>
-
-<p>Therefore, <strong>ILP is NP-complete</strong>.</p>
-
-<h2 id="relationship-to-linear-programming">Relationship to Linear Programming</h2>
-
-<h3 id="linear-programming-lp">Linear Programming (LP)</h3>
-
-<p><strong>LP Decision Problem:</strong></p>
-<ul>
-  <li>Same as ILP but variables can be <strong>real numbers</strong> (not necessarily integers)</li>
-  <li><strong>Solvable in polynomial time</strong> using interior-point methods or simplex method (though simplex has exponential worst-case, it’s efficient in practice)</li>
-</ul>
-
-<h3 id="key-difference">Key Difference</h3>
-
-<p><strong>LP:</strong> Variables x ∈ ℝ^n (continuous)
-<strong>ILP:</strong> Variables x ∈ ℤ^n (integer)</p>
-
-<p>This seemingly small restriction makes the problem NP-complete!</p>
-
-<h3 id="lp-relaxation">LP Relaxation</h3>
-
-<p>A common technique for solving ILP:</p>
-<ol>
-  <li>Solve the <strong>LP relaxation</strong> (allow fractional values)</li>
-  <li>If LP solution is integer, we’re done</li>
-  <li>Otherwise, use branch-and-bound or cutting planes to find integer solution</li>
-</ol>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>ILP: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 integer</li>
-  <li>LP relaxation: maximize 3x₁ + 2x₂ subject to 2x₁ + x₂ ≤ 6, x₁, x₂ ≥ 0 (real)</li>
-  <li>LP solution: (3, 0) with objective 9 (happens to be integer!)</li>
-  <li>If LP gave (2.5, 1), we’d need to branch or add cuts</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-ilp-is-hard">Why ILP is Hard</h3>
-
-<p>Integer Linear Programming is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
-  <li><strong>Branch-and-Bound</strong>: Systematic search through solution space</li>
-  <li><strong>Cutting Planes</strong>: Add constraints to eliminate fractional solutions</li>
-  <li><strong>Branch-and-Cut</strong>: Combines branch-and-bound with cutting planes</li>
-  <li><strong>Heuristics</strong>: Various heuristics work well in practice</li>
-</ol>
-
-<h3 id="solving-methods">Solving Methods</h3>
-
-<p><strong>1. Branch-and-Bound:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>If solution is fractional, branch on a fractional variable</li>
-  <li>Create two subproblems: xᵢ ≤ ⌊xᵢ<em>⌋ and xᵢ ≥ ⌈xᵢ</em>⌉</li>
-  <li>Recursively solve subproblems</li>
-  <li>Prune branches that can’t improve best known solution</li>
-</ul>
-
-<p><strong>2. Cutting Planes:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>If solution is fractional, find a “cut” (constraint) that:
+  <li>For each clause Cⱼ:
     <ul>
-      <li>Is satisfied by all integer solutions</li>
-      <li>Is violated by current fractional solution</li>
+      <li>Clause digit (n+j) must sum to the same value in S₁ and S₂</li>
+      <li>Variable numbers contribute based on assignment</li>
+      <li>Slack numbers can adjust, but cannot create satisfaction</li>
     </ul>
   </li>
-  <li>Add cut and re-solve</li>
-  <li>Repeat until integer solution found</li>
 </ul>
 
-<p><strong>3. Branch-and-Cut:</strong></p>
+<p><strong>Contradiction:</strong></p>
 <ul>
-  <li>Combines both techniques</li>
-  <li>Most effective in practice</li>
+  <li>If φ is unsatisfiable, there exists at least one clause Cⱼ where all literals are FALSE</li>
+  <li>This means clause digit (n+j) gets no contribution from variable numbers representing TRUE literals</li>
+  <li>To balance, we’d need slack numbers, but this doesn’t correspond to a satisfying assignment</li>
+  <li>However, the construction ensures that if clause digit balances, at least one literal must be TRUE</li>
+  <li>This contradicts unsatisfiability</li>
 </ul>
 
-<p><strong>4. Special Cases:</strong></p>
+<p><strong>Conclusion:</strong> Partition has no solution.</p>
+
+<h3 id="32b-if-partition-has-a-solution-then-3-sat-has-a-solution">3.2b If Partition has a solution, then 3-SAT has a solution</h3>
+
+<p><strong>Given:</strong> Partition instance has solution (S₁, S₂) with sum(S₁) = sum(S₂) = T/2.</p>
+
+<p><strong>Extract Variable Assignment:</strong></p>
 <ul>
-  <li><strong>Unimodular matrices</strong>: If constraint matrix is totally unimodular, LP solution is automatically integer</li>
-  <li><strong>Network flow problems</strong>: Often have integer solutions</li>
-  <li><strong>Assignment problems</strong>: Can be solved as LP (Hungarian algorithm)</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>ILP has numerous applications:</p>
-
-<ol>
-  <li><strong>Scheduling</strong>: Job scheduling, course scheduling, employee scheduling</li>
-  <li><strong>Resource Allocation</strong>: Allocating resources optimally</li>
-  <li><strong>Network Design</strong>: Designing networks with capacity constraints</li>
-  <li><strong>Production Planning</strong>: Optimizing production schedules</li>
-  <li><strong>Facility Location</strong>: Choosing where to place facilities</li>
-  <li><strong>Cutting Stock</strong>: Optimizing material cutting</li>
-  <li><strong>Set Covering/Packing</strong>: Various covering and packing problems</li>
-  <li><strong>Vehicle Routing</strong>: Optimizing delivery routes</li>
-  <li><strong>Portfolio Optimization</strong>: With integer constraints</li>
-  <li><strong>Game Theory</strong>: Finding Nash equilibria in some games</li>
-</ol>
-
-<h3 id="modern-solvers">Modern Solvers</h3>
-
-<p>Despite NP-completeness, modern ILP solvers are very effective:</p>
-
-<ul>
-  <li><strong>CPLEX</strong>: Commercial solver (very powerful)</li>
-  <li><strong>Gurobi</strong>: Commercial solver (excellent performance)</li>
-  <li><strong>GLPK</strong>: Open-source solver</li>
-  <li><strong>CBC</strong>: Open-source solver from COIN-OR</li>
-  <li><strong>SCIP</strong>: Academic solver</li>
-</ul>
-
-<p>These solvers use sophisticated techniques:</p>
-<ul>
-  <li>Advanced preprocessing</li>
-  <li>Strong cutting planes</li>
-  <li>Efficient branch-and-bound</li>
-  <li>Parallel processing</li>
-  <li>Heuristics</li>
-</ul>
-
-<p>Many practical ILP instances can be solved efficiently, even though worst-case is exponential.</p>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Try all possible integer assignments (exponential space)</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential in number of variables</li>
-  <li><strong>Space Complexity:</strong> Exponential</li>
-  <li><strong>Not Practical:</strong> Only feasible for very small instances</li>
-</ul>
-
-<h3 id="branch-and-bound">Branch-and-Bound</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with LP relaxation bounds</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, but much better in practice</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Key:</strong> Use LP relaxation to get bounds, prune branches that can’t improve best solution</li>
-  <li><strong>Practical Performance:</strong> Very effective for many real-world instances</li>
-</ul>
-
-<h3 id="cutting-planes">Cutting Planes</h3>
-
-<p><strong>Algorithm:</strong> Solve LP relaxation, add cuts, repeat</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case (may need exponential number of cuts)</li>
-  <li><strong>Space Complexity:</strong> O(mn) for storing constraints</li>
-  <li><strong>Cuts:</strong> Gomory cuts, Chvátal-Gomory cuts, etc.</li>
-  <li><strong>Practical Performance:</strong> Often converges quickly in practice</li>
-</ul>
-
-<h3 id="branch-and-cut">Branch-and-Cut</h3>
-
-<p><strong>Algorithm:</strong> Combine branch-and-bound with cutting planes</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, but state-of-the-art approach</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Practical Performance:</strong> Most effective method, used by modern solvers</li>
-</ul>
-
-<h3 id="lp-relaxation-1">LP Relaxation</h3>
-
-<p><strong>Algorithm:</strong> Solve continuous relaxation (ignore integrality)</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using interior-point methods where L is input size</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Use:</strong> Provides bounds for branch-and-bound, sometimes gives integer solution</li>
-</ul>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p><strong>Totally Unimodular Matrices:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as LP, solution automatically integer</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-</ul>
-
-<p><strong>Network Flow Problems:</strong></p>
-<ul>
-  <li>Often have integer solutions when solved as LP</li>
-</ul>
-
-<h3 id="modern-solvers-cplex-gurobi">Modern Solvers (CPLEX, Gurobi)</h3>
-
-<p><strong>Techniques Used:</strong></p>
-<ul>
-  <li>Preprocessing: O(mn) to simplify problem</li>
-  <li>Branch-and-cut: Exponential worst-case, but very efficient in practice</li>
-  <li>Heuristics: Fast approximate solutions</li>
-  <li><strong>Practical Performance:</strong> Can solve instances with thousands of variables and constraints</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate integer solution:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows ILP is in NP</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>ILP is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
-  <li><strong>LP vs ILP</strong>: Linear Programming is polynomial-time, but requiring integer variables makes it NP-complete</li>
-  <li><strong>LP Relaxation</strong>: Solving the continuous relaxation is a key technique</li>
-  <li><strong>Solving Methods</strong>: Branch-and-bound, cutting planes, and branch-and-cut are standard approaches</li>
-  <li><strong>Practical Solvers</strong>: Modern solvers are very effective despite theoretical hardness</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>3-SAT ≤ₚ ILP:</strong></p>
-<ul>
-  <li>Encode Boolean variables as 0-1 integer variables</li>
-  <li>Encode clauses as linear constraints requiring at least one true literal</li>
-  <li>3-SAT satisfiable ↔ ILP feasible</li>
-</ul>
-
-<p><strong>ILP ≤ₚ 0-1 ILP:</strong></p>
-<ul>
-  <li>Can reduce general ILP to binary ILP using binary expansion</li>
-  <li>This shows 0-1 ILP is also NP-complete</li>
-</ul>
-
-<p>All reductions are polynomial-time, establishing ILP as NP-complete.</p>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Linear Programming</strong>: Understanding the polynomial-time LP algorithms</li>
-  <li><strong>Integer Programming</strong>: Books by Nemhauser &amp; Wolsey, or Schrijver</li>
-  <li><strong>Modern Solvers</strong>: Documentation for CPLEX, Gurobi, or other solvers</li>
-  <li><strong>Cutting Planes</strong>: Research on Gomory cuts, Chvátal-Gomory cuts, and other cutting plane methods</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li><strong>Formulate as ILP</strong>: Convert the following problem to ILP:
+  <li>For each variable xᵢ:
     <ul>
-      <li>You have items with weights and values</li>
-      <li>You want to select items to maximize value</li>
-      <li>Total weight must be ≤ capacity</li>
-      <li>Each item can be selected at most once</li>
+      <li>Exactly one of {vᵢ, v’ᵢ} is in S₁ (by construction of numbers)</li>
+      <li>If vᵢ ∈ S₁, set xᵢ = TRUE</li>
+      <li>If v’ᵢ ∈ S₁, set xᵢ = FALSE</li>
     </ul>
   </li>
-  <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
-  </li>
-  <li>
-    <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>
-  </li>
-  <li>
-    <p><strong>Branch-and-Bound</strong>: Trace through a branch-and-bound algorithm on a small ILP instance. Show the search tree.</p>
-  </li>
-  <li>
-    <p><strong>Unimodularity</strong>: Research what it means for a matrix to be totally unimodular. Why does this make ILP easier?</p>
-  </li>
-  <li><strong>Formulation practice</strong>: Formulate the following as ILP:
+</ul>
+
+<p><strong>Verify Clause Satisfaction:</strong></p>
+
+<p><strong>For each clause Cⱼ:</strong></p>
+<ul>
+  <li>Clause digit (n+j) must sum to the same value in S₁ and S₂</li>
+  <li>Variable numbers contribute:
     <ul>
-      <li>Set cover problem</li>
-      <li>Maximum independent set (in a graph)</li>
-      <li>Traveling salesman problem</li>
+      <li>vᵢ contributes 1 to clause digit if xᵢ appears positively in Cⱼ and vᵢ ∈ S₁</li>
+      <li>v’ᵢ contributes 1 to clause digit if ¬xᵢ appears in Cⱼ and v’ᵢ ∈ S₁</li>
     </ul>
   </li>
-  <li>
-    <p><strong>Solver comparison</strong>: Try solving the same ILP instance with different solvers (if available). Compare their performance.</p>
+  <li>Slack numbers sⱼ and s’ⱼ can contribute, but:
+    <ul>
+      <li>If clause digit in S₁ has contribution ≥ 1 from variable numbers, then at least one literal is TRUE</li>
+      <li>If clause digit in S₁ has contribution 0 from variable numbers, slack must balance, but this means all literals are FALSE, which contradicts the balance requirement</li>
+    </ul>
   </li>
-  <li><strong>Cutting planes</strong>: Research Gomory cuts. How are they derived? Why do they work?</li>
+</ul>
+
+<p><strong>Key Insight:</strong></p>
+<ul>
+  <li>For clause digit (n+j) to balance:
+    <ul>
+      <li>If variable numbers contribute k to S₁, they contribute (total - k) to S₂</li>
+      <li>Slack numbers can adjust, but cannot create satisfaction</li>
+      <li>Therefore, if balance is achieved, at least one literal in each clause must be TRUE</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Conclusion:</strong> The extracted assignment satisfies all clauses, so 3-SAT has a solution.</p>
+
+<h2 id="polynomial-time-analysis">Polynomial Time Analysis</h2>
+
+<p><strong>Input Size:</strong></p>
+<ul>
+  <li>3-SAT: n variables, m clauses</li>
+  <li>Partition: 2(n+m) numbers, each with O(n+m) digits</li>
+</ul>
+
+<p><strong>Construction Time:</strong></p>
+<ul>
+  <li>Create variable numbers: O(n(n+m)) = O(n² + nm)</li>
+  <li>Create clause slack numbers: O(m(n+m)) = O(m² + nm)</li>
+  <li>Total: O(n² + m² + nm) = O((n+m)²)</li>
+</ul>
+
+<p><strong>Conclusion:</strong> Reduction is polynomial-time.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>We have shown:</p>
+<ol>
+  <li><strong>Partition ∈ NP</strong>: Solutions can be verified in polynomial time</li>
+  <li><strong>3-SAT ≤ₚ Partition</strong>: Polynomial-time reduction exists</li>
+  <li><strong>Correctness</strong>: 3-SAT satisfiable ↔ Partition has solution</li>
+</ol>
+
+<p><strong>Therefore, Partition is NP-complete.</strong></p>
+
+<h2 id="key-insights">Key Insights</h2>
+
+<ol>
+  <li><strong>Base Representation:</strong> Using digits to encode constraints allows arithmetic encoding of logical relationships</li>
+  <li><strong>Variable Encoding:</strong> Two numbers per variable ensure exactly one assignment</li>
+  <li><strong>Clause Encoding:</strong> Clause digits track which literals are satisfied</li>
+  <li><strong>Slack Numbers:</strong> Provide flexibility to achieve target sum while maintaining correctness</li>
+  <li><strong>Balance Requirement:</strong> The partition requirement (equal sums) enforces that all clauses are satisfied</li>
+</ol>
+
+<h2 id="practice-questions">Practice Questions</h2>
+
+<ol>
+  <li><strong>Modify the reduction</strong> to handle 2-SAT. What changes?</li>
+  <li><strong>Extend the reduction</strong> to handle weighted clauses. How would you encode clause weights?</li>
+  <li><strong>Analyze the base</strong> used in the reduction. What base is sufficient? Can we use base 2?</li>
+  <li><strong>Prove the reverse reduction:</strong> Partition ≤ₚ Subset Sum. How does this relate?</li>
+  <li><strong>Consider the numbers created.</strong> What is the maximum value? Is the reduction strongly polynomial?</li>
 </ol>
 
 <hr />
 
-<p>Understanding Integer Linear Programming provides crucial insight into optimization problems and the dramatic impact that requiring integrality can have on problem complexity. The relationship to Linear Programming and the practical solving methods make ILP a cornerstone of operations research and optimization.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to NP-hardness through Integer Linear Programming (ILP), covering problem definition, NP-completeness proof, relationship to Linear Programming, and practical solving methods.]]></summary></entry><entry><title type="html">Greedy Algorithms: Theory and Examples</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples/" rel="alternate" type="text/html" title="Greedy Algorithms: Theory and Examples" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/greedy-algorithms-examples/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>This reduction demonstrates the power of arithmetic encoding in complexity theory, showing how logical constraints can be represented as numerical relationships, enabling reductions between seemingly different problem domains.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A detailed proof showing how to reduce 3-SAT to Partition, encoding variable assignments and clause satisfaction using subset sums.]]></summary></entry><entry><title type="html">Reductions from 3D Matching: Common Questions and Answers</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/" rel="alternate" type="text/html" title="Reductions from 3D Matching: Common Questions and Answers" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3d-matching/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
-<p>Greedy algorithms are a fundamental class of algorithms that make locally optimal choices at each step with the hope of finding a globally optimal solution. They are simple, intuitive, and often very efficient. However, greedy algorithms don’t always produce optimal solutions - understanding when they work and when they don’t is crucial for algorithm design.</p>
+<p>3D Matching is a fundamental matching problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using 3D Matching to prove other problems are NP-complete.</p>
 
-<h2 id="what-is-a-greedy-algorithm">What is a Greedy Algorithm?</h2>
+<h2 id="problem-definition-3d-matching">Problem Definition: 3D Matching</h2>
 
-<p>A <strong>greedy algorithm</strong> makes the choice that looks best at the moment, without considering future consequences. At each step, it:</p>
-<ol>
-  <li>Makes a locally optimal choice</li>
-  <li>Never reconsiders previous choices</li>
-  <li>Hopes this leads to a globally optimal solution</li>
-</ol>
-
-<h3 id="key-characteristics">Key Characteristics</h3>
-
+<p><strong>3D Matching Problem:</strong></p>
 <ul>
-  <li><strong>Greedy Choice Property:</strong> A globally optimal solution can be arrived at by making a locally optimal (greedy) choice</li>
-  <li><strong>Optimal Substructure:</strong> An optimal solution contains optimal solutions to subproblems</li>
-  <li><strong>No Backtracking:</strong> Once a choice is made, it’s never reconsidered</li>
+  <li><strong>Input:</strong> Sets X, Y, Z and set T ⊆ X × Y × Z of triples</li>
+  <li><strong>Output:</strong> YES if there exists matching M ⊆ T covering all elements, NO otherwise</li>
 </ul>
 
-<h2 id="when-do-greedy-algorithms-work">When Do Greedy Algorithms Work?</h2>
+<p><strong>Perfect 3D Matching:</strong> A set of triples covering each element exactly once.</p>
 
-<p>Greedy algorithms work when:</p>
+<h2 id="common-reduction-questions">Common Reduction Questions</h2>
 
-<ol>
-  <li><strong>Greedy Choice Property:</strong> The greedy choice is always part of some optimal solution</li>
-  <li><strong>Optimal Substructure:</strong> After making the greedy choice, the remaining problem is similar to the original</li>
-  <li><strong>Problem Structure:</strong> The problem has a structure that allows local optimization to lead to global optimization</li>
-</ol>
+<h3 id="q1-how-do-you-reduce-3d-matching-to-set-cover">Q1: How do you reduce 3D Matching to Set Cover?</h3>
 
-<h3 id="when-they-dont-work">When They Don’t Work</h3>
-
-<p>Greedy algorithms fail when:</p>
-<ul>
-  <li>Local optima don’t lead to global optima</li>
-  <li>The problem requires considering future consequences</li>
-  <li>The greedy choice property doesn’t hold</li>
-</ul>
-
-<h2 id="classic-examples">Classic Examples</h2>
-
-<h3 id="example-1-activity-selection-problem">Example 1: Activity Selection Problem</h3>
-
-<p><strong>Problem:</strong> Given n activities with start and finish ×, select the maximum number of activities that don’t overlap.</p>
-
-<p><strong>Greedy Strategy:</strong> Always pick the activity that finishes earliest.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: ActivitySelection(activities)
-1. Sort activities by finish time
-2. selected = [activities[0]]
-3. last_finish = activities[0].finish
-4. for i = 1 to n-1:
-5.     if activities[i].start &gt;= last_finish:
-6.         selected.append(activities[i])
-7.         last_finish = activities[i].finish
-8. return selected
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Activities: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
-  <li>Sorted by finish: (1,4), (3,5), (0,6), (5,7), (8,9), (5,9)</li>
-  <li>Greedy selection: (1,4), (5,7), (8,9) = 3 activities</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
-<strong>Space Complexity:</strong> O(1) additional space</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: If an optimal solution doesn’t include the earliest-finishing activity, we can replace the first activity in the optimal solution with the earliest-finishing one without reducing the count</li>
-  <li>Optimal substructure: After selecting an activity, the problem reduces to selecting activities from those that start after it finishes</li>
-</ul>
-
-<h3 id="example-2-fractional-knapsack">Example 2: Fractional Knapsack</h3>
-
-<p><strong>Problem:</strong> Given items with weights and values, fill a knapsack of capacity W to maximize value. Items can be taken fractionally.</p>
-
-<p><strong>Greedy Strategy:</strong> Always take the item with highest value-to-weight ratio.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: FractionalKnapsack(items, W)
-1. Sort items by value/weight ratio (descending)
-2. total_value = 0
-3. remaining_capacity = W
-4. for each item in sorted_items:
-5.     if remaining_capacity &gt;= item.weight:
-6.         take entire item
-7.         total_value += item.value
-8.         remaining_capacity -= item.weight
-9.     else:
-10.        take fraction: remaining_capacity / item.weight
-11.        total_value += item.value * (remaining_capacity / item.weight)
-12.        break
-13. return total_value
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Items: (weight=10, value=60), (weight=20, value=100), (weight=30, value=120)</li>
-  <li>Capacity: 50</li>
-  <li>Ratios: 6, 5, 4</li>
-  <li>Greedy: Take all of item 1 (10), all of item 2 (20), 2/3 of item 3 (20)</li>
-  <li>Value: 60 + 100 + 80 = 240</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) (sorting) + O(n) (selection) = O(n log n)
-<strong>Space Complexity:</strong> O(1) additional space</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: Taking the highest value-to-weight ratio maximizes value per unit capacity</li>
-  <li>Optimal substructure: After taking some items, the remaining problem is similar with reduced capacity</li>
-</ul>
-
-<p><strong>Note:</strong> This works for fractional knapsack, but NOT for 0-1 knapsack (where items must be taken whole).</p>
-
-<h3 id="example-3-minimum-spanning-tree-kruskals-algorithm">Example 3: Minimum Spanning Tree (Kruskal’s Algorithm)</h3>
-
-<p><strong>Problem:</strong> Find the minimum-weight spanning tree of a connected, weighted graph.</p>
-
-<p><strong>Greedy Strategy:</strong> Always add the minimum-weight edge that doesn’t create a cycle.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: KruskalMST(G)
-1. Sort edges by weight
-2. Initialize Union-Find data structure
-3. MST = []
-4. for each edge (u,v) in sorted_edges:
-5.     if Find(u) != Find(v):  // Not in same component
-6.         MST.append((u,v))
-7.         Union(u,v)
-8. return MST
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
-    A---2---B
-    |\     /|
-    | 3   1 |
-    4|     \|5
-    C---6---D
-</code></pre></div></div>
-
-<ul>
-  <li>Edges sorted: (B,D,1), (A,B,2), (A,C,3), (A,D,4), (B,D,5), (C,D,6)</li>
-  <li>MST: (B,D), (A,B), (A,C) = weight 6</li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(E log E) (sorting) + O(E · \alpha(V)) (Union-Find) = O(E log E)
-<strong>Space Complexity:</strong> O(V) for Union-Find</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The minimum-weight edge across a cut is always in some MST</li>
-  <li>Optimal substructure: After adding an edge, the remaining problem is finding MST of the reduced graph</li>
-</ul>
-
-<h3 id="example-4-minimum-spanning-tree-prims-algorithm">Example 4: Minimum Spanning Tree (Prim’s Algorithm)</h3>
-
-<p><strong>Problem:</strong> Same as Kruskal’s - find MST.</p>
-
-<p><strong>Greedy Strategy:</strong> Start from arbitrary vertex, always add minimum-weight edge connecting tree to new vertex.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: PrimMST(G, start)
-1. Initialize priority queue with (start, 0)
-2. visited = set()
-3. MST = []
-4. while priority queue not empty:
-5.     u = extract_min()
-6.     if u not visited:
-7.         visited.add(u)
-8.         if u != start:
-9.             MST.append((parent[u], u))
-10.        for each neighbor v of u:
-11.            if v not visited and weight(u,v) &lt; key[v]:
-12.                key[v] = weight(u,v)
-13.                parent[v] = u
-14.                insert/update (v, key[v]) in priority queue
-15. return MST
-</code></pre></div></div>
-
-<p><strong>Time Complexity:</strong></p>
-<ul>
-  <li>With binary heap: O(E log V)</li>
-  <li>With Fibonacci heap: O(E + V log V)
-<strong>Space Complexity:</strong> O(V)</li>
-</ul>
-
-<h3 id="example-5-huffman-coding">Example 5: Huffman Coding</h3>
-
-<p><strong>Problem:</strong> Given character frequencies, construct a prefix-free binary code minimizing expected code length.</p>
-
-<p><strong>Greedy Strategy:</strong> Repeatedly merge the two least frequent characters/nodes.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: HuffmanCoding(frequencies)
-1. Create min-heap of nodes (character, frequency)
-2. while heap.size() &gt; 1:
-3.     left = extract_min()
-4.     right = extract_min()
-5.     merged = new Node(left.freq + right.freq)
-6.     merged.left = left
-7.     merged.right = right
-8.     insert(merged)
-9. return root of tree
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<ul>
-  <li>Characters: a(45%), b(13%), c(12%), d(16%), e(9%), f(5%)</li>
-  <li>Build tree by repeatedly merging least frequent:
-    <ol>
-      <li>Merge f(5) + e(9) = 14</li>
-      <li>Merge c(12) + 14 = 26</li>
-      <li>Merge b(13) + d(16) = 29</li>
-      <li>Merge 26 + 29 = 55</li>
-      <li>Merge a(45) + 55 = 100</li>
-    </ol>
-  </li>
-</ul>
-
-<p><strong>Time Complexity:</strong> O(n log n) where n is number of characters
-<strong>Space Complexity:</strong> O(n)</p>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The two least frequent characters should have the longest codes</li>
-  <li>Optimal substructure: After merging, the problem reduces to coding the merged node plus remaining characters</li>
-</ul>
-
-<h3 id="example-6-dijkstras-algorithm-shortest-paths">Example 6: Dijkstra’s Algorithm (Shortest Paths)</h3>
-
-<p><strong>Problem:</strong> Find shortest paths from a source vertex to all other vertices in a weighted graph (non-negative weights).</p>
-
-<p><strong>Greedy Strategy:</strong> Always relax the vertex with minimum distance that hasn’t been processed.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: Dijkstra(G, source)
-1. Initialize distances: dist[source] = 0, dist[v] = ∞ for v ≠ source
-2. Initialize priority queue with (source, 0)
-3. visited = set()
-4. while priority queue not empty:
-5.     u = extract_min()
-6.     if u in visited: continue
-7.     visited.add(u)
-8.     for each neighbor v of u:
-9.         if dist[u] + weight(u,v) &lt; dist[v]:
-10.            dist[v] = dist[u] + weight(u,v)
-11.            insert/update (v, dist[v]) in priority queue
-12. return dist[]
-</code></pre></div></div>
-
-<p><strong>Example:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Graph:
-    A---1---B
-    |\     /|
-    | 4   2 |
-    3|     \|1
-    C---5---D
-</code></pre></div></div>
-
-<ul>
-  <li>Source: A</li>
-  <li>Process A: dist[B]=1, dist[C]=3, dist[D]=4</li>
-  <li>Process B: dist[D]=min(4,1+2)=3</li>
-  <li>Process C: no updates</li>
-  <li>Process D: done</li>
-  <li>Result: A→B=1, A→C=3, A→D=3</li>
-</ul>
-
-<p><strong>Time Complexity:</strong></p>
-<ul>
-  <li>With binary heap: O((V+E) log V)</li>
-  <li>With Fibonacci heap: O(E + V log V)
-<strong>Space Complexity:</strong> O(V)</li>
-</ul>
-
-<p><strong>Why It Works:</strong></p>
-<ul>
-  <li>Greedy choice property: The unprocessed vertex with minimum distance has its shortest path determined</li>
-  <li>Optimal substructure: Shortest path to v through u contains shortest path to u</li>
-</ul>
-
-<p><strong>Note:</strong> Only works for non-negative edge weights!</p>
-
-<h3 id="example-7-interval-scheduling">Example 7: Interval Scheduling</h3>
-
-<p><strong>Problem:</strong> Schedule maximum number of non-overlapping intervals.</p>
-
-<p><strong>Greedy Strategy:</strong> Sort by finish time, always pick the interval that finishes earliest and doesn’t conflict.</p>
-
-<p><strong>Algorithm:</strong> Same as Activity Selection (they’re equivalent problems).</p>
-
-<p><strong>Time Complexity:</strong> O(n log n)
-<strong>Space Complexity:</strong> O(1)</p>
-
-<h3 id="example-8-set-cover-greedy-approximation">Example 8: Set Cover (Greedy Approximation)</h3>
-
-<p><strong>Problem:</strong> Given a universe U and collection of sets S, find minimum number of sets covering U.</p>
-
-<p><strong>Greedy Strategy:</strong> Repeatedly pick the set covering the most uncovered elements.</p>
-
-<p><strong>Algorithm:</strong></p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: GreedySetCover(U, S)
-1. covered = set()
-2. selected = []
-3. while covered != U:
-4.     best_set = None
-5.     best_new = 0
-6.     for set s in S:
-7.         new = |s - covered|
-8.         if new &gt; best_new:
-9.             best_new = new
-10.            best_set = s
-11.     selected.append(best_set)
-12.     covered = covered ∪ best_set
-13. return selected
-</code></pre></div></div>
-
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Time Complexity:</strong> O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>S</td>
-      <td>)</td>
-    </tr>
-    <tr>
-      <td><strong>Space Complexity:</strong> O(</td>
-      <td>U</td>
-      <td>)</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<p><strong>Approximation Ratio:</strong> H_n where H_n = ∑_{i=1}^n 1/i ≈ ln n (harmonic number)</p>
-
-<p><strong>Why It’s an Approximation:</strong></p>
-<ul>
-  <li>Greedy doesn’t always give optimal solution</li>
-  <li>But provides good approximation guarantee</li>
-</ul>
-
-<h2 id="greedy-vs-dynamic-programming">Greedy vs Dynamic Programming</h2>
-
-<h3 id="key-differences">Key Differences</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Aspect</th>
-      <th>Greedy</th>
-      <th>Dynamic Programming</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Choices</td>
-      <td>Makes choice and never reconsiders</td>
-      <td>Considers all choices</td>
-    </tr>
-    <tr>
-      <td>Subproblems</td>
-      <td>Usually one subproblem</td>
-      <td>Multiple overlapping subproblems</td>
-    </tr>
-    <tr>
-      <td>Optimality</td>
-      <td>May not be optimal</td>
-      <td>Always optimal</td>
-    </tr>
-    <tr>
-      <td>Efficiency</td>
-      <td>Usually faster</td>
-      <td>May be slower</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="when-to-use-greedy">When to Use Greedy</h3>
-
-<ul>
-  <li>Problem has greedy choice property</li>
-  <li>Optimal substructure holds</li>
-  <li>Need fast algorithm (greedy is usually efficient)</li>
-  <li>Approximation is acceptable (if exact solution not needed)</li>
-</ul>
-
-<h3 id="when-to-use-dp">When to Use DP</h3>
-
-<ul>
-  <li>Need optimal solution</li>
-  <li>Greedy choice property doesn’t hold</li>
-  <li>Overlapping subproblems</li>
-  <li>Problem requires considering all possibilities</li>
-</ul>
-
-<h2 id="common-greedy-patterns">Common Greedy Patterns</h2>
-
-<h3 id="1-sorting--greedy-selection">1. Sorting + Greedy Selection</h3>
-
-<p>Many greedy algorithms:</p>
-<ol>
-  <li>Sort input by some criterion</li>
-  <li>Process in sorted order, making greedy choices</li>
-</ol>
-
-<p>Examples: Activity Selection, Fractional Knapsack, Interval Scheduling</p>
-
-<h3 id="2-priority-queue-based">2. Priority Queue Based</h3>
-
-<p>Use priority queue to always process “best” option:</p>
-<ul>
-  <li>Dijkstra’s: process closest unvisited vertex</li>
-  <li>Prim’s: process minimum edge to tree</li>
-  <li>Huffman: merge least frequent nodes</li>
-</ul>
-
-<h3 id="3-union-find-based">3. Union-Find Based</h3>
-
-<p>Use Union-Find to track connected components:</p>
-<ul>
-  <li>Kruskal’s MST: avoid cycles by checking connectivity</li>
-</ul>
-
-<h2 id="proving-greedy-correctness">Proving Greedy Correctness</h2>
-
-<p>To prove a greedy algorithm is correct:</p>
-
-<ol>
-  <li><strong>Show Greedy Choice Property:</strong>
-    <ul>
-      <li>Prove that a greedy choice is always part of some optimal solution</li>
-      <li>Usually done by showing we can modify any optimal solution to include the greedy choice</li>
-    </ul>
-  </li>
-  <li><strong>Show Optimal Substructure:</strong>
-    <ul>
-      <li>Prove that after making the greedy choice, the remaining problem is similar</li>
-      <li>Show that optimal solution contains optimal solutions to subproblems</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="example-proof-activity-selection">Example Proof: Activity Selection</h3>
-
-<p><strong>Greedy Choice Property:</strong></p>
-<ul>
-  <li>Let a_1 be the activity that finishes earliest</li>
-  <li>Let S be an optimal solution</li>
-  <li>If S doesn’t include a_1, let a_k be the first activity in S</li>
-  <li>Since a_1 finishes before a_k starts, we can replace a_k with a_1 in S</li>
-  <li>This gives another optimal solution containing a_1 ✓</li>
-</ul>
-
-<p><strong>Optimal Substructure:</strong></p>
-<ul>
-  <li>After selecting a_1, remaining problem: select activities starting after a_1 finishes</li>
-  <li>If S’ is optimal for remaining problem, then {a_1} cup S’ is optimal for original ✓</li>
-</ul>
-
-<h2 id="runtime-analysis-summary">Runtime Analysis Summary</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Problem</th>
-      <th>Greedy Algorithm</th>
-      <th>Time Complexity</th>
-      <th>Space Complexity</th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Activity Selection</td>
-      <td>Sort by finish time</td>
-      <td>O(n log n)</td>
-      <td>O(1)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Fractional Knapsack</td>
-      <td>Sort by value/weight</td>
-      <td>O(n log n)</td>
-      <td>O(1)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>MST (Kruskal)</td>
-      <td>Sort edges, Union-Find</td>
-      <td>O(E log E)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>MST (Prim)</td>
-      <td>Priority queue</td>
-      <td>O(E log V)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Huffman Coding</td>
-      <td>Min-heap</td>
-      <td>O(n log n)</td>
-      <td>O(n)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Dijkstra’s</td>
-      <td>Priority queue</td>
-      <td>O((V+E) log V)</td>
-      <td>O(V)</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Set Cover</td>
-      <td>Greedy selection</td>
-      <td>O(</td>
-      <td>U</td>
-      <td>·</td>
-      <td>S</td>
-      <td>)</td>
-      <td>O(</td>
-      <td>U</td>
-      <td>)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Greedy Choice Property:</strong> The greedy choice must be part of some optimal solution</li>
-  <li><strong>Optimal Substructure:</strong> Optimal solutions contain optimal solutions to subproblems</li>
-  <li><strong>Efficiency:</strong> Greedy algorithms are usually efficient (often O(n log n) or better)</li>
-  <li><strong>Not Always Optimal:</strong> Greedy doesn’t always give optimal solutions (e.g., 0-1 Knapsack)</li>
-  <li><strong>Common Patterns:</strong> Sorting + selection, priority queues, Union-Find</li>
-  <li><strong>Proof Technique:</strong> Show greedy choice property and optimal substructure</li>
-</ol>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>CLRS:</strong> “Introduction to Algorithms” - Comprehensive coverage of greedy algorithms</li>
-  <li><strong>Kleinberg &amp; Tardos:</strong> “Algorithm Design” - Greedy algorithms with proofs</li>
-  <li><strong>Greedy vs DP:</strong> Understanding when to use each approach</li>
-  <li><strong>Approximation Algorithms:</strong> Greedy algorithms for NP-hard problems</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>
-    <p><strong>Activity Selection:</strong> Implement the greedy algorithm and prove its correctness.</p>
-  </li>
-  <li>
-    <p><strong>Fractional vs 0-1 Knapsack:</strong> Why does greedy work for fractional but not 0-1? Give a counterexample.</p>
-  </li>
-  <li>
-    <p><strong>MST Algorithms:</strong> Compare Kruskal’s and Prim’s algorithms. When is each better?</p>
-  </li>
-  <li>
-    <p><strong>Dijkstra’s Limitation:</strong> Why doesn’t Dijkstra’s work with negative weights? Give an example.</p>
-  </li>
-  <li>
-    <p><strong>Huffman Coding:</strong> Construct Huffman tree for frequencies: a(40), b(30), c(20), d(10). What are the codes?</p>
-  </li>
-  <li>
-    <p><strong>Set Cover:</strong> Design a greedy algorithm for weighted set cover (sets have costs). What approximation ratio does it achieve?</p>
-  </li>
-  <li>
-    <p><strong>Interval Coloring:</strong> Given intervals, color them with minimum colors so overlapping intervals have different colors. Design a greedy algorithm.</p>
-  </li>
-  <li>
-    <p><strong>Job Scheduling:</strong> Given jobs with deadlines and profits, schedule to maximize profit. Design a greedy algorithm.</p>
-  </li>
-</ol>
-
-<hr />
-
-<p>Understanding greedy algorithms is essential for algorithm design. They provide elegant, efficient solutions to many optimization problems when the greedy choice property and optimal substructure hold.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Greedy Algorithms" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to greedy algorithms, covering the greedy choice property, optimal substructure, common examples including activity selection, interval scheduling, and minimum spanning trees, and when greedy algorithms work.]]></summary></entry><entry><title type="html">Linear Programming: Reductions</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions/" rel="alternate" type="text/html" title="Linear Programming: Reductions" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/linear-programming-reductions/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>Linear Programming (LP) occupies a unique position in complexity theory: it’s one of the few optimization problems that can be solved in polynomial time, yet it’s closely related to many NP-complete problems through the concept of LP relaxations. Understanding Linear Programming and its role in reductions is crucial for understanding approximation algorithms, integer programming, and the boundary between polynomial-time and NP-complete problems.</p>
-
-<h2 id="what-is-linear-programming">What is Linear Programming?</h2>
-
-<p>Linear Programming asks: <strong>Given linear constraints and a linear objective function, find values for variables that satisfy the constraints and optimize the objective.</strong></p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>Linear Programming (LP) Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>A matrix A ∈ ℝ^{m × n} (constraint coefficients)</li>
-  <li>A vector b ∈ ℝ^m (constraint bounds)</li>
-  <li>A vector c ∈ ℝ^n (objective coefficients)</li>
-</ul>
-
-<p><strong>Output:</strong></p>
-<ul>
-  <li>A vector x ∈ ℝ^n that:
-    <ul>
-      <li>Satisfies Ax ≤ b (or Ax = b, or Ax ≥ b, or mixed)</li>
-      <li>Satisfies x ≥ 0 (non-negativity constraints, if present)</li>
-      <li>Maximizes (or minimizes) c^T x</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Standard Form:</strong></p>
-<ul>
-  <li>Maximize c^T x</li>
-  <li>Subject to Ax ≤ b and x ≥ 0</li>
-</ul>
-
-<p><strong>Canonical Form:</strong></p>
-<ul>
-  <li>Maximize c^T x</li>
-  <li>Subject to Ax = b and x ≥ 0</li>
-</ul>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the LP:</p>
-
-<p><strong>Maximize:</strong> 3x₁ + 2x₂</p>
-
-<p><strong>Subject to:</strong></p>
-<ul>
-  <li>2x₁ + x₂ ≤ 6</li>
-  <li>x₁ + 2x₂ ≤ 8</li>
-  <li>x₁, x₂ ≥ 0</li>
-</ul>
-
-<p><strong>Graphical Solution:</strong></p>
-<ul>
-  <li>Feasible region is a polygon</li>
-  <li>Optimal solution is at a vertex (corner point)</li>
-  <li>Optimal: (x₁, x₂) = (4/3, 10/3) with objective value 32/3 ≈ 10.67</li>
-</ul>
-
-<p><strong>Key Insight:</strong> The optimal solution of an LP always occurs at a vertex of the feasible region (if the problem is bounded).</p>
-
-<h2 id="why-lp-is-in-p">Why LP is in P</h2>
-
-<p>Unlike Integer Linear Programming, <strong>Linear Programming is solvable in polynomial time</strong>.</p>
-
-<h3 id="algorithms-for-lp">Algorithms for LP</h3>
-
-<p><strong>1. Simplex Method (Dantzig, 1947):</strong></p>
-<ul>
-  <li>Moves from vertex to vertex along edges</li>
-  <li>Very efficient in practice</li>
-  <li><strong>Worst-case:</strong> Exponential (Klee-Minty examples)</li>
-  <li><strong>Average-case:</strong> Polynomial</li>
-</ul>
-
-<p><strong>2. Ellipsoid Method (Khachiyan, 1979):</strong></p>
-<ul>
-  <li>First polynomial-time algorithm for LP</li>
-  <li>O(n^4 L) time where L is input size</li>
-  <li>Not practical due to large constants</li>
-</ul>
-
-<p><strong>3. Interior-Point Methods (Karmarkar, 1984):</strong></p>
-<ul>
-  <li>Polynomial-time: O(n^{3.5} L) time</li>
-  <li>Practical and widely used</li>
-  <li>Modern implementations are very efficient</li>
-</ul>
-
-<p><strong>Result:</strong> LP ∈ P (solvable in polynomial time)</p>
-
-<h2 id="lp-relaxation-a-key-reduction-technique">LP Relaxation: A Key Reduction Technique</h2>
-
-<p>One of the most important uses of LP in complexity theory is the concept of <strong>LP relaxation</strong>.</p>
-
-<h3 id="what-is-lp-relaxation">What is LP Relaxation?</h3>
-
-<p>Given an Integer Linear Programming (ILP) problem:</p>
-<ul>
-  <li><strong>ILP:</strong> Variables must be integers</li>
-  <li><strong>LP Relaxation:</strong> Allow variables to be real numbers</li>
-</ul>
-
-<p><strong>Key Insight:</strong> The optimal value of the LP relaxation provides a <strong>bound</strong> on the optimal value of the ILP:</p>
-<ul>
-  <li>For maximization: LP optimal ≥ ILP optimal</li>
-  <li>For minimization: LP optimal ≤ ILP optimal</li>
-</ul>
-
-<h3 id="example-vertex-cover-lp-relaxation">Example: Vertex Cover LP Relaxation</h3>
-
-<p><strong>ILP for Vertex Cover:</strong></p>
-<ul>
-  <li>Variables: x_v ∈ {0,1} for each vertex v</li>
-  <li>Constraints: x_u + x_v ≥ 1 for each edge (u,v)</li>
-  <li>Objective: Minimize sum_v x_v</li>
-</ul>
-
-<p><strong>LP Relaxation:</strong></p>
-<ul>
-  <li>Variables: x_v in [0,1] (continuous, not integer)</li>
-  <li>Same constraints and objective</li>
-</ul>
-
-<p><strong>Result:</strong> LP optimal ≤ ILP optimal (since we relaxed constraints)</p>
-
-<p><strong>2-Approximation Algorithm:</strong></p>
-<ol>
-  <li>Solve LP relaxation</li>
-  <li>Round: Include vertex v if x_v ≥ 1/2</li>
-  <li>This gives a 2-approximation for Vertex Cover!</li>
-</ol>
-
-<h2 id="reductions-involving-lp">Reductions Involving LP</h2>
-
-<h3 id="reduction-ilp-to-lp-relaxation">Reduction: ILP to LP (Relaxation)</h3>
-
-<p><strong>ILP ≤ₚ LP (via relaxation):</strong></p>
-<ul>
-  <li>Given ILP instance, remove integrality constraints</li>
-  <li>Solve LP relaxation</li>
-  <li>If LP solution is integer, we’re done</li>
-  <li>Otherwise, use branch-and-bound or cutting planes</li>
-</ul>
-
-<p><strong>Note:</strong> This is not a polynomial-time reduction in the complexity sense, but it’s a practical technique.</p>
-
-<h3 id="reduction-lp-to-feasibility">Reduction: LP to Feasibility</h3>
-
-<p><strong>LP Optimization ≤ₚ LP Feasibility:</strong></p>
-<ul>
-  <li>Given LP: maximize c^T x subject to Ax ≤ b, x ≥ 0</li>
-  <li>Add constraint: c^T x ≥ k (where k is a guess for optimal value)</li>
-  <li>Use binary search on k to find optimal value</li>
-  <li>This reduces optimization to feasibility checking</li>
-</ul>
-
-<h3 id="reduction-general-lp-to-standard-form">Reduction: General LP to Standard Form</h3>
-
-<p><strong>General LP ≤ₚ Standard Form LP:</strong></p>
-<ul>
-  <li>Convert inequalities to equations using slack variables</li>
-  <li>Convert unconstrained variables: x = x^+ - x^- where x^+, x^- ≥ 0</li>
-  <li>Convert maximization to minimization: negate objective</li>
-  <li>All conversions are polynomial-time</li>
-</ul>
-
-<h2 id="lp-duality-and-reductions">LP Duality and Reductions</h2>
-
-<h3 id="duality-theorem">Duality Theorem</h3>
-
-<p>Every LP has a <strong>dual</strong> LP:</p>
-
-<p><strong>Primal:</strong> Maximize c^T x subject to Ax ≤ b, x ≥ 0</p>
-
-<p><strong>Dual:</strong> Minimize b^T y subject to A^T y ≥ c, y ≥ 0</p>
-
-<p><strong>Strong Duality:</strong> If both have feasible solutions, then:</p>
-<ul>
-  <li>Primal optimal = Dual optimal</li>
-</ul>
-
-<p><strong>Weak Duality:</strong> For any feasible x and y:</p>
-<ul>
-  <li>c^T x ≤ b^T y</li>
-</ul>
-
-<h3 id="using-duality-in-reductions">Using Duality in Reductions</h3>
-
-<p>Duality provides a powerful tool for:</p>
-<ol>
-  <li><strong>Proving optimality:</strong> If primal and dual have same value, both are optimal</li>
-  <li><strong>Finding bounds:</strong> Dual provides upper bounds (for maximization)</li>
-  <li><strong>Sensitivity analysis:</strong> Understanding how changes affect solution</li>
-  <li><strong>Designing algorithms:</strong> Many algorithms use duality</li>
-</ol>
-
-<h2 id="lp-in-approximation-algorithms">LP in Approximation Algorithms</h2>
-
-<p>LP relaxation is fundamental to many approximation algorithms.</p>
-
-<h3 id="vertex-cover-2-approximation">Vertex Cover: 2-Approximation</h3>
-
-<p><strong>Algorithm:</strong></p>
-<ol>
-  <li>Solve LP relaxation: minimize sum_v x_v subject to x_u + x_v ≥ 1 for all edges</li>
-  <li>Round: S = {v : x_v ≥ 1/2}</li>
-  <li>Return S as vertex cover</li>
-</ol>
-
-<p><strong>Analysis:</strong></p>
-<ul>
-  <li>S is a vertex cover (each edge has at least one endpoint with x_v ≥ 1/2)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= ∑<em>{v ∈ S} 1 ≤ ∑</em>{v ∈ S} 2x_v ≤ 2 · LP optimal ≤ 2 · ILP optimal</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>Therefore, 2-approximation</li>
-</ul>
-
-<h3 id="set-cover-lp-based-approximation">Set Cover: LP-Based Approximation</h3>
-
-<p><strong>Set Cover ILP:</strong></p>
-<ul>
-  <li>Variables: x_S ∈ {0,1} for each set S</li>
-  <li>Constraints: ∑_{S: e ∈ S} x_S ≥ 1 for each element e</li>
-  <li>Objective: Minimize sum_S x_S</li>
-</ul>
-
-<p><strong>LP Relaxation + Rounding:</strong></p>
-<ul>
-  <li>Solve LP relaxation</li>
-  <li>Use randomized rounding or greedy rounding</li>
-  <li>Achieves O(log n) approximation (or better with specific techniques)</li>
-</ul>
-
-<h3 id="maximum-flow-lp-formulation">Maximum Flow: LP Formulation</h3>
-
-<p><strong>Max Flow as LP:</strong></p>
-<ul>
-  <li>Variables: flow f_e on each edge e</li>
-  <li>Constraints: flow conservation, capacity constraints</li>
-  <li>Objective: maximize flow from source to sink</li>
-</ul>
-
-<p><strong>Result:</strong> Max flow can be solved via LP (though specialized algorithms are faster)</p>
-
-<h2 id="reductions-from-np-complete-problems-to-lp">Reductions from NP-Complete Problems to LP</h2>
-
-<p>While LP is polynomial-time, we can reduce NP-complete problems to LP feasibility questions.</p>
-
-<h3 id="3-sat-to-lp-feasibility">3-SAT to LP Feasibility</h3>
+<p><strong>Answer:</strong> Encode triples as sets covering elements.</p>
 
 <p><strong>Reduction:</strong></p>
 <ul>
-  <li>For 3-SAT instance, create LP:
-    <ul>
-      <li>Variables: x_i in [0,1] for each Boolean variable</li>
-      <li>For clause (l_1 ∨ l_2 ∨ l_3): constraint ensuring at least one literal is “true”</li>
-      <li>But LP doesn’t naturally encode Boolean logic…</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Better:</strong> Reduce to ILP, then use LP relaxation</p>
-<ul>
-  <li>3-SAT → ILP (as we saw earlier)</li>
-  <li>ILP feasibility can be checked via LP (but LP solution might not be integer)</li>
-</ul>
-
-<p><strong>Key Point:</strong> LP relaxation gives bounds, but doesn’t solve the original problem.</p>
-
-<h2 id="lp-rounding-techniques">LP Rounding Techniques</h2>
-
-<p>Various rounding techniques convert LP solutions to integer solutions:</p>
-
-<h3 id="deterministic-rounding">Deterministic Rounding</h3>
-
-<p><strong>Example - Vertex Cover:</strong></p>
-<ul>
-  <li>Round x_v ≥ 1/2 to 1, else 0</li>
-  <li>Guarantees feasibility and approximation ratio</li>
-</ul>
-
-<h3 id="randomized-rounding">Randomized Rounding</h3>
-
-<p><strong>Example - Set Cover:</strong></p>
-<ul>
-  <li>Include set S with probability proportional to x_S^* (LP solution)</li>
-  <li>Expected cost equals LP cost</li>
-  <li>May need derandomization</li>
-</ul>
-
-<h3 id="dependent-rounding">Dependent Rounding</h3>
-
-<p><strong>Example - Matching:</strong></p>
-<ul>
-  <li>Round edges while maintaining constraints</li>
-  <li>More sophisticated than independent rounding</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-lp-matters">Why LP Matters</h3>
-
-<p>Linear Programming is crucial because:</p>
-
-<ol>
-  <li><strong>Polynomial-Time Solvability:</strong> Can solve large instances efficiently</li>
-  <li><strong>LP Relaxation:</strong> Provides bounds for NP-complete problems</li>
-  <li><strong>Approximation Algorithms:</strong> Foundation for many approximation schemes</li>
-  <li><strong>Duality:</strong> Powerful theoretical and practical tool</li>
-  <li><strong>Widespread Applications:</strong> Used in many real-world optimization problems</li>
-</ol>
-
-<h3 id="modern-lp-solvers">Modern LP Solvers</h3>
-
-<p><strong>Commercial Solvers:</strong></p>
-<ul>
-  <li><strong>CPLEX:</strong> Industry standard, very fast</li>
-  <li><strong>Gurobi:</strong> Excellent performance, good academic licenses</li>
-  <li><strong>XPRESS:</strong> Commercial solver</li>
-</ul>
-
-<p><strong>Open-Source Solvers:</strong></p>
-<ul>
-  <li><strong>GLPK:</strong> GNU Linear Programming Kit</li>
-  <li><strong>CLP:</strong> COIN-OR Linear Programming</li>
-  <li><strong>HiGHS:</strong> Modern, high-performance solver</li>
-</ul>
-
-<p><strong>Interfaces:</strong></p>
-<ul>
-  <li><strong>PuLP</strong> (Python)</li>
-  <li><strong>CVXPY</strong> (Python)</li>
-  <li><strong>JuMP</strong> (Julia)</li>
-  <li><strong>OR-Tools</strong> (Google)</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>LP has countless applications:</p>
-
-<ol>
-  <li><strong>Resource Allocation:</strong> Allocating limited resources optimally</li>
-  <li><strong>Production Planning:</strong> Optimizing production schedules</li>
-  <li><strong>Transportation:</strong> Network flow, transportation problems</li>
-  <li><strong>Finance:</strong> Portfolio optimization, risk management</li>
-  <li><strong>Scheduling:</strong> Workforce scheduling, project scheduling</li>
-  <li><strong>Network Design:</strong> Designing efficient networks</li>
-  <li><strong>Game Theory:</strong> Finding Nash equilibria in some games</li>
-</ol>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="simplex-method">Simplex Method</h3>
-
-<p><strong>Algorithm:</strong> Move from vertex to vertex along edges</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case (Klee-Minty examples), but polynomial average-case</li>
-  <li><strong>Space Complexity:</strong> O(mn) for storing tableau</li>
-  <li><strong>Practical Performance:</strong> Very efficient in practice, often faster than polynomial methods</li>
-  <li><strong>Iterations:</strong> Typically O(m) to O(m+n) iterations</li>
-</ul>
-
-<h3 id="ellipsoid-method">Ellipsoid Method</h3>
-
-<p><strong>Algorithm:</strong> Shrink ellipsoid containing feasible region</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^4L) where L is input size (bit complexity)</li>
-  <li><strong>Space Complexity:</strong> O(n^2)</li>
-  <li><strong>Significance:</strong> First proven polynomial-time algorithm for LP</li>
-  <li><strong>Practical Performance:</strong> Not used in practice due to large constants</li>
-</ul>
-
-<h3 id="interior-point-methods">Interior-Point Methods</h3>
-
-<p><strong>Algorithm:</strong> Move through interior of feasible region</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) using path-following methods</li>
-  <li><strong>Space Complexity:</strong> O(n^2) for storing matrices</li>
-  <li><strong>Practical Performance:</strong> Very efficient, widely used in modern solvers</li>
-  <li><strong>Iterations:</strong> Typically O(sqrt{n} log(1/epsilon)) iterations for \epsilon-accuracy</li>
-</ul>
-
-<h3 id="primal-dual-methods">Primal-Dual Methods</h3>
-
-<p><strong>Algorithm:</strong> Solve primal and dual simultaneously</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) similar to interior-point</li>
-  <li><strong>Space Complexity:</strong> O(n^2)</li>
-  <li><strong>Advantage:</strong> Can exploit structure better in some cases</li>
-</ul>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p><strong>Network Flow Problems:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^2m) using specialized algorithms (faster than general LP)</li>
-  <li><strong>Space Complexity:</strong> O(n + m)</li>
-</ul>
-
-<p><strong>Transportation Problems:</strong></p>
-<ul>
-  <li>Specialized algorithms can be more efficient than general LP</li>
-</ul>
-
-<h3 id="lp-relaxation-runtime">LP Relaxation Runtime</h3>
-
-<p><strong>For ILP Relaxation:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n^{3.5}L) - solve as regular LP</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Use:</strong> Provides bounds for branch-and-bound algorithms</li>
-</ul>
-
-<h3 id="modern-solvers">Modern Solvers</h3>
-
-<p><strong>Commercial Solvers (CPLEX, Gurobi):</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> Polynomial (interior-point or simplex)</li>
-  <li><strong>Space Complexity:</strong> O(mn)</li>
-  <li><strong>Practical Performance:</strong> Can solve instances with millions of variables and constraints</li>
-  <li><strong>Techniques:</strong> Preprocessing, advanced pivoting, parallel processing</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate solution:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(mn) - verify all constraints satisfied</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability is straightforward for LP</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>LP is in P:</strong> Solvable in polynomial time using interior-point methods</li>
-  <li><strong>LP Relaxation:</strong> Fundamental technique for approximating NP-complete problems</li>
-  <li><strong>Duality:</strong> Powerful theoretical tool with practical applications</li>
-  <li><strong>Approximation Algorithms:</strong> Many use LP relaxation + rounding</li>
-  <li><strong>Reductions:</strong> LP provides bounds and approximations, not exact solutions for integer problems</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>Key Reductions Involving LP:</strong></p>
-
-<ol>
-  <li><strong>ILP → LP (Relaxation):</strong>
-    <ul>
-      <li>Remove integrality constraints</li>
-      <li>Provides upper/lower bounds</li>
-      <li>Used in branch-and-bound</li>
-    </ul>
-  </li>
-  <li><strong>LP Optimization → LP Feasibility:</strong>
-    <ul>
-      <li>Use binary search on objective value</li>
-      <li>Reduces optimization to feasibility</li>
-    </ul>
-  </li>
-  <li><strong>General LP → Standard Form:</strong>
-    <ul>
-      <li>Convert to standard form using slack variables</li>
-      <li>All conversions are polynomial-time</li>
-    </ul>
-  </li>
-  <li><strong>NP-Complete → LP Relaxation:</strong>
-    <ul>
-      <li>Many NP-complete problems have natural LP relaxations</li>
-      <li>LP solution provides approximation bounds</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Linear Programming:</strong> Chvátal’s “Linear Programming” or Vanderbei’s “Linear Programming”</li>
-  <li><strong>Interior-Point Methods:</strong> Nesterov &amp; Nemirovskii’s work on interior-point methods</li>
-  <li><strong>Approximation Algorithms:</strong> Vazirani’s “Approximation Algorithms” covers LP-based approximations</li>
-  <li><strong>Duality:</strong> Understanding the dual simplex method and sensitivity analysis</li>
-  <li><strong>Modern Solvers:</strong> Documentation for CPLEX, Gurobi, or other solvers</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li><strong>Formulate as LP</strong>: Convert the following to LP:
-    <ul>
-      <li>You have resources and want to maximize profit</li>
-      <li>Each product uses certain amounts of resources</li>
-      <li>You have limited resources</li>
-      <li>Products have different profits</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>LP Relaxation</strong>: For a Vertex Cover instance, write the LP relaxation. What is the relationship between LP optimal and ILP optimal?</p>
-  </li>
-  <li><strong>Duality</strong>: Write the dual of the following LP:
-    <ul>
-      <li>Maximize 3x₁ + 2x₂</li>
-      <li>Subject to 2x₁ + x₂ ≤ 6, x₁ + 2x₂ ≤ 8, x₁, x₂ ≥ 0</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Rounding</strong>: Prove that the LP-based 2-approximation for Vertex Cover is correct. What happens if we round at threshold 1/3 instead of 1/2?</p>
-  </li>
-  <li>
-    <p><strong>Reduction</strong>: Show how to reduce LP optimization to LP feasibility using binary search. What is the time complexity?</p>
-  </li>
-  <li><strong>Standard Form</strong>: Convert the following to standard form:
-    <ul>
-      <li>Minimize x₁ - 2x₁</li>
-      <li>Subject to x₁ + x₂ = 5, x₁ ≥ 0, x₁ unrestricted</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Applications</strong>: Research one real-world application of LP. How is it formulated? What solver is used?</p>
-  </li>
-  <li>
-    <p><strong>Approximation</strong>: Research the LP-based approximation for Set Cover. What approximation ratio does it achieve? How does rounding work?</p>
-  </li>
-  <li>
-    <p><strong>Duality Applications</strong>: How is LP duality used in the design of algorithms? Research one example.</p>
-  </li>
-  <li><strong>Interior-Point Methods</strong>: Research how interior-point methods work. How do they differ from the simplex method?</li>
-</ol>
-
-<hr />
-
-<p>Understanding Linear Programming and its role in reductions provides crucial insight into the boundary between polynomial-time and NP-complete problems. LP relaxation is one of the most powerful techniques for designing approximation algorithms and understanding the structure of optimization problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="Linear Programming" /><category term="Optimization" /><summary type="html"><![CDATA[An introduction to Linear Programming, its polynomial-time solvability, and how it relates to reductions in complexity theory, including LP relaxations, duality, and reductions to/from LP.]]></summary></entry><entry><title type="html">NP-Hard Introduction: 3D Matching</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching/" rel="alternate" type="text/html" title="NP-Hard Introduction: 3D Matching" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-3d-matching/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>The 3D Matching Problem is a fundamental combinatorial optimization problem that generalizes the classic bipartite matching problem to three sets. While bipartite matching can be solved in polynomial time, 3D Matching is NP-complete, making it an important example of how problem complexity can increase dramatically with seemingly small generalizations. 3D Matching has applications in resource allocation, scheduling, and assignment problems.</p>
-
-<h2 id="what-is-3d-matching">What is 3D Matching?</h2>
-
-<p>A <strong>3D matching</strong> (also called <strong>3-dimensional matching</strong>) is a generalization of bipartite matching to three sets. Given three disjoint sets and a collection of triples (one element from each set), we want to find a collection of disjoint triples that covers all elements.</p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>3D Matching Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
+  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
+  <li>Universe U = X ∪ Y ∪ Z (all elements)</li>
+  <li>For each triple t = (x, y, z) ∈ T, create set Sₜ = {x, y, z}</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Three disjoint sets X, Y, Z with</td>
+          <td>Return Set Cover: universe U, sets {Sₜ : t ∈ T}, target =</td>
           <td>X</td>
           <td>=</td>
           <td>Y</td>
           <td>=</td>
           <td>Z</td>
-          <td>= n</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>A set T subseteq X × Y × Z of triples</li>
 </ul>
-
-<p><strong>Output:</strong> YES if there exists a subset M subseteq T such that:</p>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>M</td>
-          <td>= n (exactly n triples)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>All triples in M are disjoint (no two share an element)</li>
-  <li>Every element in X cup Y cup Z appears in exactly one triple of M</li>
-</ul>
-
-<p>Such a set M is called a <strong>perfect 3D matching</strong>.</p>
-
-<p><strong>3D Matching Optimization Problem:</strong></p>
-
-<p><strong>Input:</strong> Same as above</p>
-
-<p><strong>Output:</strong> The maximum size of a matching (subset of disjoint triples)</p>
-
-<h3 id="example">Example</h3>
-
-<p>Consider:</p>
-<ul>
-  <li>X = {x₁, x₂, x₁}</li>
-  <li>Y = {y_1, y_2, y_3}</li>
-  <li>Z = {z_1, z_2, z_3}</li>
-  <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}</li>
-</ul>
-
-<p><strong>Trying to find a perfect matching:</strong></p>
-<ul>
-  <li>If we pick (x₁, y_1, z_1), we can’t use (x₁, y_2, z_2) or (x₁, y_1, z_3) (they share x₁ or y_1)</li>
-  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_1) ✗ (both use z_1)</li>
-  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_2) ✗ (z_2 not available, need to check)</li>
-  <li>Actually: (x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3) ✓ (perfect matching!)</li>
-</ul>
-
-<h3 id="visual-example">Visual Example</h3>
-
-<p>A 3D matching instance:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X: {x1, x2, x3}
-Y: {y1, y2, y3}  
-Z: {z1, z2, z3}
-
-Triples:
-(x1,y1,z1)  (x1,y2,z2)
-(x2,y1,z3)  (x2,y3,z1)
-(x3,y2,z3)  (x3,y3,z2)
-</code></pre></div></div>
-
-<p><strong>Perfect matching:</strong> {(x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3)}</p>
-
-<h2 id="why-3d-matching-is-in-np">Why 3D Matching is in NP</h2>
-
-<p>To show that 3D Matching is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>3D Matching ∈ NP:</strong></p>
-
-<p>Given a candidate solution (a set M of triples), we can verify in polynomial time:</p>
-<ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>M</td>
-          <td>= n: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>Check that all triples are disjoint: O(n^2) time (compare all pairs)</li>
-  <li>Check that every element appears exactly once: O(n) time (use arrays/sets to count occurrences)</li>
-</ol>
-
-<p>Total verification time: O(n^2), which is polynomial in the input size. Therefore, 3D Matching is in NP.</p>
-
-<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
-
-<p>The standard proof that 3D Matching is NP-complete reduces from 3-SAT.</p>
-
-<h3 id="construction">Construction</h3>
-
-<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:</p>
-
-<p><strong>Key Idea:</strong> Create gadgets for variables and clauses, ensuring a perfect 3D matching corresponds to a satisfying assignment.</p>
-
-<ol>
-  <li><strong>For each variable x_i:</strong>
-    <ul>
-      <li>Create a “variable gadget” with elements that can be matched in two ways (encoding TRUE/FALSE)</li>
-      <li>Typically: Create 2m elements in each of X, Y, Z for variable x_i</li>
-      <li>The matching can “go left” (TRUE) or “go right” (FALSE)</li>
-    </ul>
-  </li>
-  <li><strong>For each clause C_j:</strong>
-    <ul>
-      <li>Create a “clause gadget” with elements that can be matched if the clause is satisfied</li>
-      <li>Connect clause gadgets to variable gadgets based on which literals appear</li>
-    </ul>
-  </li>
-  <li><strong>Ensure perfect matching:</strong>
-    <ul>
-      <li>Structure the gadgets so that any perfect matching must:
-        <ul>
-          <li>Choose a truth value for each variable (via variable gadget)</li>
-          <li>Satisfy each clause (via clause gadget)</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="simplified-construction-sketch">Simplified Construction Sketch</h3>
-
-<p><strong>Variable Gadget for x_i:</strong></p>
-<ul>
-  <li>Create elements that force a choice between TRUE and FALSE</li>
-  <li>If matching goes “TRUE path”, it encodes x_i = TRUE</li>
-  <li>If matching goes “FALSE path”, it encodes x_i = FALSE</li>
-</ul>
-
-<p><strong>Clause Gadget for C_j = (l_1 ∨ l_2 ∨ l_3):</strong></p>
-<ul>
-  <li>Create elements that can be matched if at least one literal is true</li>
-  <li>Connect to variable gadgets: if variable x_i is set to make literal true, clause gadget can be matched</li>
-</ul>
-
-<p><strong>Key Constraint:</strong></p>
-<ul>
-  <li>A perfect matching must use exactly n triples covering all elements</li>
-  <li>This forces exactly one choice per variable and satisfaction of all clauses</li>
-</ul>
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p><strong>Forward Direction (3-SAT satisfiable → 3D Matching exists):</strong></p>
-<ul>
-  <li>If φ is satisfiable, construct matching:
-    <ul>
-      <li>For each variable, choose triples corresponding to its truth value</li>
-      <li>For each clause, choose triples that match clause elements (possible because at least one literal is true)</li>
-    </ul>
-  </li>
-  <li>This gives a perfect 3D matching</li>
-</ul>
-
-<p><strong>Reverse Direction (3D Matching exists → 3-SAT satisfiable):</strong></p>
-<ul>
-  <li>Extract truth assignment from matching’s choices in variable gadgets</li>
-  <li>Since all clause gadgets are matched, each clause has at least one true literal</li>
-  <li>This gives a satisfying assignment</li>
-</ul>
-
-<p><strong>Polynomial Time:</strong></p>
-<ul>
-  <li>Construction creates O(mn) elements and O(mn) triples</li>
-  <li>This is polynomial in input size</li>
-</ul>
-
-<p>Therefore, <strong>3D Matching is NP-complete</strong>.</p>
-
-<h2 id="relationship-to-other-problems">Relationship to Other Problems</h2>
-
-<p>The 3D Matching Problem is closely related to several important problems:</p>
-
-<h3 id="bipartite-matching">Bipartite Matching</h3>
-
-<p><strong>Bipartite Matching:</strong></p>
-<ul>
-  <li>Given two sets and edges between them, find maximum matching</li>
-  <li><strong>Polynomial-time solvable</strong> (using augmenting paths, Hungarian algorithm, or max-flow)</li>
-</ul>
-
-<p><strong>Key Difference:</strong></p>
-<ul>
-  <li>2D (bipartite) matching: Polynomial-time</li>
-  <li>3D matching: NP-complete</li>
-  <li>This shows how a small generalization dramatically increases complexity</li>
-</ul>
-
-<h3 id="set-packing">Set Packing</h3>
-
-<p><strong>Set Packing:</strong></p>
-<ul>
-  <li>Given a collection of sets, find maximum collection of disjoint sets</li>
-  <li>3D Matching is a special case where all sets have size 3 and we want to cover all elements exactly once</li>
-</ul>
-
-<h3 id="exact-cover">Exact Cover</h3>
-
-<p><strong>Exact Cover:</strong></p>
-<ul>
-  <li>Given a set and collection of subsets, find subcollection covering each element exactly once</li>
-  <li>3D Matching is a special case of Exact Cover</li>
-</ul>
-
-<h3 id="hypergraph-matching">Hypergraph Matching</h3>
-
-<p><strong>Hypergraph Matching:</strong></p>
-<ul>
-  <li>Generalization to hypergraphs (edges can connect more than 2 vertices)</li>
-  <li>3D Matching is 3-uniform hypergraph matching</li>
-  <li>k-dimensional matching is NP-complete for k ≥ 3</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-3d-matching-is-hard">Why 3D Matching is Hard</h3>
-
-<p>The 3D Matching Problem is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential worst-case time</li>
-  <li><strong>Brute Force</strong>: Try all possible matchings - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can use DP but still exponential</li>
-  <li><strong>Integer Linear Programming</strong>: Can formulate as 0-1 ILP and use ILP solvers</li>
-</ol>
-
-<h3 id="solving-methods">Solving Methods</h3>
-
-<p><strong>1. Brute Force:</strong></p>
-<ul>
-  <li>Enumerate all possible matchings</li>
-  <li>Check each one: Exponential time</li>
-  <li>Only feasible for very small instances</li>
-</ul>
-
-<p><strong>2. Backtracking:</strong></p>
-<ul>
-  <li>Systematically search solution space</li>
-  <li>Prune branches early when constraints violated</li>
-  <li>More efficient than brute force</li>
-</ul>
-
-<p><strong>3. Integer Linear Programming:</strong></p>
-<ul>
-  <li>Formulate as 0-1 ILP:
-    <ul>
-      <li>Variables: x_t ∈ {0,1} for each triple t</li>
-      <li>Constraints: For each element, sum of triples containing it equals 1</li>
-      <li>Objective: Maximize number of triples (or just feasibility)</li>
-    </ul>
-  </li>
-  <li>Use ILP solvers (CPLEX, Gurobi, etc.)</li>
-</ul>
-
-<p><strong>4. Approximation Algorithms:</strong></p>
-<ul>
-  <li>Can achieve approximation ratios for optimization version</li>
-  <li>Greedy algorithms work reasonably well in practice</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>3D Matching has numerous applications:</p>
-
-<ol>
-  <li><strong>Resource Allocation</strong>: Allocating resources across three dimensions (e.g., tasks, workers, machines)</li>
-  <li><strong>Scheduling</strong>: Scheduling with three constraints (time, location, resource)</li>
-  <li><strong>Assignment Problems</strong>: Assigning items with three attributes</li>
-  <li><strong>Network Design</strong>: Designing networks with three types of nodes</li>
-  <li><strong>Database Queries</strong>: Optimizing joins across three tables</li>
-  <li><strong>Game Theory</strong>: Finding stable matchings in three-sided markets</li>
-</ol>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p>Some restricted versions of 3D Matching are tractable:</p>
-
-<ul>
-  <li><strong>2D Matching (Bipartite)</strong>: Polynomial-time solvable</li>
-  <li><strong>Planar 3D Matching</strong>: Still NP-complete but may have better algorithms</li>
-  <li><strong>Bounded Degree</strong>: If each element appears in few triples, may be easier</li>
-  <li><strong>Structured Instances</strong>: Certain structured instances may be solvable efficiently</li>
-</ul>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Try all possible subsets of triples</p>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(2^{</td>
-          <td>T</td>
-          <td>} · n) where</td>
-          <td>T</td>
-          <td>is number of triples</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li><strong>Space Complexity:</strong> O(n) for storing current matching</li>
-  <li><strong>Analysis:</strong> For each subset, verify it’s a valid matching (O(n) to check disjointness)</li>
-</ul>
-
-<h3 id="backtracking">Backtracking</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with pruning</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop if current matching can’t be extended to perfect matching</li>
-</ul>
-
-<h3 id="integer-linear-programming">Integer Linear Programming</h3>
-
-<p><strong>Algorithm:</strong> Formulate as 0-1 ILP, use solver</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Depends on ILP solver (exponential worst-case, efficient in practice)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(</td>
-          <td>T</td>
-          <td>+ n) for storing variables and constraints</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Formulation:</strong> O(</td>
-          <td>T</td>
-          <td>) variables, O(n) constraints</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li><strong>Practical Performance:</strong> Modern solvers handle moderate-sized instances well</li>
-</ul>
-
-<h3 id="2d-matching-special-case">2D Matching (Special Case)</h3>
-
-<p><strong>Algorithm:</strong> For bipartite matching, use augmenting paths</p>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Time Complexity:</strong> O(sqrt{n} ·</td>
-          <td>E</td>
-          <td>) using Hopcroft-Karp algorithm</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Space Complexity:</strong> O(n +</td>
-          <td>E</td>
-          <td>)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li><strong>Why Polynomial:</strong> 2D matching has special structure allowing polynomial-time solution</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate matching:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n) - verify all elements appear exactly once and triples are disjoint</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows 3D Matching is in NP</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>3D Matching is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
-  <li><strong>Generalization Matters</strong>: 2D matching is polynomial, but 3D matching is NP-complete</li>
-  <li><strong>Gadget Construction</strong>: The reduction uses variable and clause gadgets, a common technique</li>
-  <li><strong>ILP Formulation</strong>: Can be solved using integer linear programming</li>
-  <li><strong>Practical Algorithms</strong>: Despite NP-completeness, ILP solvers and heuristics work well in practice</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>3-SAT ≤ₚ 3D Matching:</strong></p>
-<ul>
-  <li>Construct variable gadgets (encode TRUE/FALSE choices)</li>
-  <li>Construct clause gadgets (encode clause satisfaction)</li>
-  <li>Ensure perfect matching forces satisfying assignment</li>
-  <li>Satisfying assignment ↔ Perfect 3D matching</li>
-</ul>
-
-<p>The reduction is polynomial-time, establishing 3D Matching as NP-complete.</p>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Bipartite Matching</strong>: Understanding why 2D is easy but 3D is hard</li>
-  <li><strong>Hypergraph Matching</strong>: Generalizations to higher dimensions</li>
-  <li><strong>Approximation Algorithms</strong>: Research on approximating 3D matching</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li><strong>Find a matching</strong>: For the 3D matching instance:
-    <ul>
-      <li>X = {x₁, x₂}, Y = {y_1, y_2}, Z = {z_1, z_2}</li>
-      <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_2), (x₁, y_2, z_1)}
-Does a perfect matching exist?</li>
-    </ul>
-  </li>
-  <li>
-    <p><strong>Prove the reduction</strong>: Research the detailed construction for reducing 3-SAT to 3D Matching. What do the variable and clause gadgets look like?</p>
-  </li>
-  <li>
-    <p><strong>Formulate as ILP</strong>: Convert a 3D matching instance to a 0-1 ILP instance. What are the variables? What are the constraints?</p>
-  </li>
-  <li>
-    <p><strong>2D vs 3D</strong>: Explain why bipartite matching is polynomial-time but 3D matching is NP-complete. What’s the key difference?</p>
-  </li>
-  <li>
-    <p><strong>Algorithm design</strong>: Design a backtracking algorithm for 3D Matching. How can you prune the search space?</p>
-  </li>
-  <li>
-    <p><strong>Extension</strong>: Research k-dimensional matching. For what values of k is it NP-complete? Polynomial-time?</p>
-  </li>
-  <li>
-    <p><strong>Applications</strong>: Research one real-world application of 3D Matching. How is it formulated? What solving methods are used?</p>
-  </li>
-  <li><strong>Approximation</strong>: Design a greedy approximation algorithm for the optimization version of 3D Matching. What approximation ratio does it achieve?</li>
-</ol>
-
-<hr />
-
-<p>Understanding the 3D Matching Problem provides crucial insight into how problem complexity can increase dramatically with seemingly small generalizations. The relationship to bipartite matching demonstrates the boundary between polynomial-time and NP-complete problems.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the 3D Matching Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to bipartite matching.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Clique Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Clique Problem" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-clique/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>The Clique Problem is a fundamental graph problem that plays a crucial role in understanding NP-completeness. It’s one of the classic problems used to demonstrate reduction techniques from 3-SAT and serves as a gateway to understanding many other NP-complete graph problems. In this post, we’ll explore the Clique Problem and its place in computational complexity theory.</p>
-
-<h2 id="what-is-a-clique">What is a Clique?</h2>
-
-<p>A <strong>clique</strong> in an undirected graph is a subset of vertices where every pair of vertices is connected by an edge. In other words, it’s a complete subgraph - a subgraph where all vertices are pairwise adjacent.</p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>Clique Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>An undirected graph G = (V, E)</li>
-  <li>An integer k</li>
-</ul>
-
-<p><strong>Output:</strong> YES if G contains a clique of size at least k, NO otherwise</p>
-
-<p><strong>Clique Optimization Problem:</strong></p>
-
-<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
-
-<p><strong>Output:</strong> The size of the largest clique in G (called the <strong>clique number</strong>, denoted omega(G))</p>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the following graph:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    | /|
-    | X |
-    |/ |
-    3---4
-</code></pre></div></div>
-
-<ul>
-  <li>Cliques of size 2: {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}</li>
-  <li>Cliques of size 3: {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}</li>
-  <li>Clique of size 4: {1,2,3,4} (this is a 4-clique, also called a complete graph K_4)</li>
-</ul>
-
-<p>So the clique number of this graph is 4.</p>
-
-<h3 id="visual-example">Visual Example</h3>
-
-<p>A graph with a 3-clique highlighted:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |   |
-    3---4---5
-        |
-        6
-</code></pre></div></div>
-
-<p>The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.</p>
-
-<h2 id="why-clique-is-in-np">Why Clique is in NP</h2>
-
-<p>To show that Clique is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>Clique ∈ NP:</strong></p>
-
-<p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
-<ol>
-  <li>Check that the set has exactly k vertices: O(k) time</li>
-  <li>Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs)</li>
-</ol>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Since k ≤</td>
-      <td>V</td>
-      <td>, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
-
-<p>To prove Clique is NP-complete, we need to show it’s NP-hard by reducing a known NP-complete problem to it. We’ll reduce <strong>3-SAT</strong> to Clique.</p>
-
-<h3 id="reduction-strategy">Reduction Strategy</h3>
-
-<p>Given a 3-SAT instance with m clauses, we construct a graph G such that:</p>
-<ul>
-  <li>The 3-SAT instance is satisfiable <strong>if and only if</strong> G has a clique of size m</li>
-</ul>
-
-<h3 id="construction">Construction</h3>
-
-<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3 literals:</p>
-
-<ol>
-  <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
-    <ul>
-      <li>Label vertices as (i, j) where i is the clause number and j is the literal position</li>
-      <li>Example: For clause C_1 = (x₁ ∨ ¬ x₁ ∨ x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁</li>
-    </ul>
-  </li>
-  <li><strong>Add edges</strong>: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
-    <ul>
-      <li>They are in <strong>different clauses</strong> (i_1 neq i_2)</li>
-      <li>The literals are <strong>not complementary</strong> (one is not the negation of the other)</li>
-    </ul>
-  </li>
-  <li><strong>Set k = m</strong>: We’re looking for a clique of size m (one vertex per clause)</li>
-</ol>
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p><strong>Intuition:</strong></p>
-<ul>
-  <li>A clique of size m means we pick one literal from each clause</li>
-  <li>Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both x and ¬ x</li>
-  <li>Therefore, a clique corresponds to a satisfying assignment</li>
-</ul>
-
-<p><strong>Formal Proof:</strong></p>
-
-<p><strong>Forward Direction (3-SAT satisfiable → Clique exists):</strong></p>
-<ul>
-  <li>If φ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
-  <li>Pick the vertex corresponding to that true literal from each clause</li>
-  <li>These m vertices form a clique because:
-    <ul>
-      <li>They’re from different clauses (so edges exist by construction)</li>
-      <li>They can’t be complementary (both can’t be true simultaneously)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Reverse Direction (Clique exists → 3-SAT satisfiable):</strong></p>
-<ul>
-  <li>If there’s a clique of size m, we have one vertex (literal) from each clause</li>
-  <li>Set variables to make these literals true:
-    <ul>
-      <li>If literal is x_i, set x_i = TRUE</li>
-      <li>If literal is ¬ x_i, set x_i = FALSE</li>
-    </ul>
-  </li>
-  <li>Since no complementary literals are in the clique, this assignment is consistent</li>
-  <li>This assignment satisfies all clauses</li>
-</ul>
-
-<h3 id="example-reduction">Example Reduction</h3>
-
-<p>Consider the 3-SAT instance:
-φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
-
-<p><strong>Step 1: Create vertices</strong></p>
-<ul>
-  <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
-  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
-  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
-</ul>
-
-<p><strong>Step 2: Add edges</strong></p>
-<ul>
-  <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>For example: (1,1) (represents x₁) connects to (2,2) (x₁) and (2,3) (¬ x₁) and (3,1) (x₁) and (3,2) (¬ x₁) and (3,3) (x₁)</li>
-  <li>But (1,1) does NOT connect to (2,1) because x₁ and ¬ x₁ are complementary</li>
-  <li>Similarly, (1,3) does NOT connect to (2,3) because x₁ and ¬ x₁ are complementary</li>
-</ul>
-
-<p><strong>Step 3: Find clique of size 3</strong></p>
-<ul>
-  <li>One possible clique: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3</li>
-  <li>This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE</li>
-  <li>Verify: All clauses satisfied!</li>
-</ul>
-
-<h2 id="relationship-to-other-graph-problems">Relationship to Other Graph Problems</h2>
-
-<p>The Clique Problem is closely related to several other NP-complete problems:</p>
-
-<h3 id="independent-set">Independent Set</h3>
-
-<p>An <strong>independent set</strong> is a set of vertices where no two are adjacent (opposite of a clique).</p>
-
-<p><strong>Key Relationship:</strong></p>
-<ul>
-  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in G̅ (the complement graph)</li>
-  <li>Therefore, Clique and Independent Set are polynomially equivalent</li>
-</ul>
-
-<h3 id="vertex-cover">Vertex Cover</h3>
-
-<p>A <strong>vertex cover</strong> is a set of vertices that covers all edges (every edge has at least one endpoint in the set).</p>
-
-<p><strong>Key Relationship:</strong></p>
-<ul>
-  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
-  <li>This connects Clique to Vertex Cover through Independent Set</li>
-</ul>
-
-<h3 id="graph-coloring">Graph Coloring</h3>
-
-<p>The <strong>chromatic number</strong> \chi(G) is the minimum number of colors needed to color vertices so no adjacent vertices share a color.</p>
-
-<p><strong>Key Relationship:</strong></p>
-<ul>
-  <li>omega(G) ≤ chi(G) (clique number is a lower bound for chromatic number)</li>
-  <li>Finding the clique number helps bound the chromatic number</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-clique-is-hard">Why Clique is Hard</h3>
-
-<p>The Clique Problem is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Check all C(n,k) subsets of size k - exponential in k</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n · n^2) time using inclusion-exclusion or bitmask DP</li>
-  <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
-</ol>
-
-<h3 id="approximation">Approximation</h3>
-
-<p>The Clique Problem is particularly difficult to approximate:</p>
-
-<ul>
-  <li><strong>No PTAS</strong>: Unless P = NP, there is no polynomial-time approximation scheme</li>
-  <li><strong>Hard to Approximate</strong>: Cannot be approximated within n^{1-\epsilon} for any \epsilon &gt; 0 (unless P = NP)</li>
-  <li>This makes Clique one of the hardest problems to approximate</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>Despite being NP-complete, clique-finding has applications:</p>
-
-<ol>
-  <li><strong>Social Networks</strong>: Finding communities (groups where everyone knows everyone)</li>
-  <li><strong>Bioinformatics</strong>: Finding protein complexes, gene clusters</li>
-  <li><strong>Data Mining</strong>: Finding dense subgraphs in networks</li>
-  <li><strong>Cryptography</strong>: Some cryptographic protocols rely on clique hardness</li>
-  <li><strong>Network Analysis</strong>: Identifying tightly-knit groups in communication networks</li>
-</ol>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p>Some restricted versions of Clique are tractable:</p>
-
-<ul>
-  <li><strong>Planar Graphs</strong>: Clique is polynomial-time solvable (maximum clique size is at most 4)</li>
-  <li><strong>Bounded Treewidth</strong>: Can be solved efficiently using tree decomposition</li>
-  <li><strong>Interval Graphs</strong>: Polynomial-time algorithms exist</li>
-  <li><strong>Perfect Graphs</strong>: Clique and coloring can be solved in polynomial time</li>
-</ul>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Check all C(n,k) subsets of size k</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(C(n,k) · k^2) = O(n^k · k^2)</li>
-  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, check all C(k,2) pairs of vertices for edges</li>
-</ul>
-
-<h3 id="dynamic-programming">Dynamic Programming</h3>
-
-<p><strong>Algorithm:</strong> Use bitmask DP to track visited vertices</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
-  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
-  <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists a clique in vertices mask ending at v</li>
-  <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∈ E} dp[mask \setminus {v}][u]</li>
-</ul>
-
-<h3 id="branch-and-bound">Branch-and-Bound</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with pruning</p>
-<ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, but better than brute force with good pruning</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop exploring branches that can’t lead to clique of size k</li>
-</ul>
-
-<h3 id="bron-kerbosch-algorithm-maximum-clique">Bron-Kerbosch Algorithm (Maximum Clique)</h3>
-
-<p><strong>Algorithm:</strong> Recursive backtracking for finding all maximal cliques</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(3^{n/3}) worst-case (tight bound)</li>
-  <li><strong>Space Complexity:</strong> O(n)</li>
-  <li><strong>Practical Performance:</strong> Very efficient for sparse graphs</li>
-</ul>
-
-<h3 id="verification-complexity">Verification Complexity</h3>
-
-<p><strong>Given a candidate clique of size k:</strong></p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows Clique is in NP</li>
-</ul>
-
-<h2 id="key-takeaways">Key Takeaways</h2>
-
-<ol>
-  <li><strong>Clique is NP-Complete</strong>: Proven by reduction from 3-SAT</li>
-  <li><strong>Reduction Pattern</strong>: The 3-SAT → Clique reduction is a classic example showing how to encode logical constraints as graph structures</li>
-  <li><strong>Graph Problem Relationships</strong>: Clique is closely related to Independent Set, Vertex Cover, and Graph Coloring</li>
-  <li><strong>Hard to Approximate</strong>: Clique is particularly difficult to approximate, making it a benchmark for approximation hardness</li>
-  <li><strong>Practical Algorithms</strong>: Despite NP-completeness, various techniques (DP, branch-and-bound, heuristics) work well for many practical instances</li>
-</ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>3-SAT ≤ₚ Clique:</strong></p>
-<ul>
-  <li>Given 3-SAT instance with m clauses</li>
-  <li>Create graph with vertices for each literal occurrence</li>
-  <li>Connect vertices from different clauses if literals are not complementary</li>
-  <li>3-SAT satisfiable ↔ Graph has clique of size m</li>
-</ul>
-
-<p>This reduction is polynomial-time because:</p>
-<ul>
-  <li>Number of vertices: 3m (at most)</li>
-  <li>Number of edges: O(m^2) (check all pairs)</li>
-  <li>Construction time: Polynomial in input size</li>
-</ul>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Approximation Hardness</strong>: Research on why Clique is hard to approximate</li>
-  <li><strong>Perfect Graphs</strong>: Special graph classes where Clique is tractable</li>
-  <li><strong>Social Network Analysis</strong>: Applications of clique detection in real networks</li>
-</ul>
-
-<h2 id="practice-problems">Practice Problems</h2>
-
-<ol>
-  <li>
-    <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁ ∨ x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
-Find a clique of size 3 and determine the corresponding satisfying assignment.</p>
-  </li>
-  <li>
-    <p><strong>Prove the relationship</strong>: Show that S is a clique in G if and only if S is an independent set in G̅ (the complement graph).</p>
-  </li>
-  <li>
-    <p><strong>Reduction practice</strong>: Given that Clique is NP-complete, show that Independent Set is also NP-complete using the complement graph relationship.</p>
-  </li>
-  <li>
-    <p><strong>Algorithm design</strong>: Design a dynamic programming algorithm to find the maximum clique size in a graph. What is its time complexity?</p>
-  </li>
-  <li>
-    <p><strong>Special cases</strong>: Research why the Clique problem is polynomial-time solvable for planar graphs. What is the maximum clique size possible in a planar graph?</p>
-  </li>
-</ol>
-
-<hr />
-
-<p>Understanding the Clique Problem and its NP-completeness proof provides crucial insight into reduction techniques and the interconnected nature of NP-complete problems. The 3-SAT → Clique reduction is a fundamental example that demonstrates how logical constraints can be encoded as graph structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Clique Problem, covering problem definition, NP-completeness proof via reduction from 3-SAT, and connections to other graph problems.]]></summary></entry><entry><title type="html">NP-Hard Introduction: The Independent Set Problem</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set/" rel="alternate" type="text/html" title="NP-Hard Introduction: The Independent Set Problem" /><published>2025-11-16T00:00:00+00:00</published><updated>2025-11-16T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/16/np-hard-intro-independent-set/"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>The Independent Set Problem is a fundamental graph problem that serves as an excellent example of NP-completeness. It’s closely related to the Clique Problem and Vertex Cover Problem, forming a trio of interconnected NP-complete graph problems. Understanding Independent Set provides insight into reduction techniques and the relationships between seemingly different graph problems.</p>
-
-<h2 id="what-is-an-independent-set">What is an Independent Set?</h2>
-
-<p>An <strong>independent set</strong> (also called a <strong>stable set</strong>) in an undirected graph is a set of vertices where no two vertices are adjacent (connected by an edge). In other words, it’s a set of vertices with no edges between them.</p>
-
-<h3 id="problem-definition">Problem Definition</h3>
-
-<p><strong>Independent Set Decision Problem:</strong></p>
-
-<p><strong>Input:</strong></p>
-<ul>
-  <li>An undirected graph G = (V, E)</li>
-  <li>An integer k</li>
-</ul>
-
-<p><strong>Output:</strong> YES if G contains an independent set of size at least k, NO otherwise</p>
-
-<p><strong>Independent Set Optimization Problem:</strong></p>
-
-<p><strong>Input:</strong> An undirected graph G = (V, E)</p>
-
-<p><strong>Output:</strong> The size of the largest independent set in G (called the <strong>independence number</strong>, denoted alpha(G))</p>
-
-<h3 id="example">Example</h3>
-
-<p>Consider the following graph:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    | /|
-    | X |
-    |/ |
-    3---4
-</code></pre></div></div>
-
-<ul>
-  <li>Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})</li>
-  <li>Independent sets of size 2: {1, 4}, {2, 3} (vertices not connected)</li>
-  <li>Independent sets of size 3: None (any three vertices will have at least one edge)</li>
-  <li>Maximum independent set: Size 2 (e.g., {1, 4} or {2, 3})</li>
-</ul>
-
-<p>So the independence number \alpha(G) = 2.</p>
-
-<h3 id="visual-example">Visual Example</h3>
-
-<p>A graph with a maximum independent set highlighted:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2---3
-    |       |
-    4---5---6
-</code></pre></div></div>
-
-<ul>
-  <li>Independent sets: {1, 3, 5}, {2, 4, 6}, {1, 6}, {2, 5}, etc.</li>
-  <li>Maximum independent set: {1, 3, 5} or {2, 4, 6} (size 3)</li>
-  <li>Note: {1, 2} is NOT an independent set because vertices 1 and 2 are adjacent</li>
-</ul>
-
-<h2 id="why-independent-set-is-in-np">Why Independent Set is in NP</h2>
-
-<p>To show that Independent Set is NP-complete, we first need to show it’s in NP.</p>
-
-<p><strong>Independent Set ∈ NP:</strong></p>
-
-<p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
-<ol>
-  <li>Check that the set has at least k vertices: O(k) time</li>
-  <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
-</ol>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Since k ≤</td>
-      <td>V</td>
-      <td>, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="np-completeness-reduction-from-clique">NP-Completeness: Reduction from Clique</h2>
-
-<p>The most elegant proof that Independent Set is NP-complete uses the relationship between Independent Set and Clique through the <strong>complement graph</strong>.</p>
-
-<h3 id="complement-graph">Complement Graph</h3>
-
-<p>Given a graph G = (V, E), its <strong>complement graph</strong> G̅ = (V, E̅) has:</p>
-<ul>
-  <li>The same vertex set V</li>
-  <li>An edge (u, v) ∈ E̅ if and only if (u, v) ∉ E</li>
-</ul>
-
-<p>In other words, G̅ has edges exactly where G doesn’t have edges.</p>
-
-<h3 id="key-relationship">Key Relationship</h3>
-
-<p><strong>Fundamental Observation:</strong></p>
-<ul>
-  <li>S is a <strong>clique</strong> in G <strong>if and only if</strong> S is an <strong>independent set</strong> in G̅</li>
-</ul>
-
-<p><strong>Proof:</strong></p>
-<ul>
-  <li>If S is a clique in G, then every pair of vertices in S is connected by an edge in G</li>
-  <li>Therefore, no pair of vertices in S is connected by an edge in G̅</li>
-  <li>So S is an independent set in G̅</li>
-  <li>The reverse direction follows similarly</li>
-</ul>
-
-<h3 id="reduction-from-clique">Reduction from Clique</h3>
-
-<p>Since we know <strong>Clique is NP-complete</strong>, we can reduce Clique to Independent Set:</p>
-
-<p><strong>Reduction:</strong></p>
-<ol>
-  <li>Given a Clique instance: graph G and integer k</li>
-  <li>Construct the complement graph G̅</li>
-  <li>Return Independent Set instance: graph G̅ and integer k</li>
-</ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>G has a clique of size k <strong>if and only if</strong> G̅ has an independent set of size k</li>
-  <li>This follows directly from the fundamental observation above</li>
-</ul>
-
-<p><strong>Polynomial Time:</strong></p>
-<ul>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>Constructing G̅ takes O(</td>
-          <td>V</td>
-          <td>^2) time (check all pairs of vertices)</td>
+          <td>Perfect 3D matching ↔ Set cover of size</td>
+          <td>X</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>This is polynomial in the input size</li>
+  <li>Matching covers all elements ↔ Sets cover universe</li>
 </ul>
 
-<p>Therefore, <strong>Independent Set is NP-complete</strong>.</p>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Time:</strong> O(</td>
+      <td>T</td>
+      <td>)</td>
+    </tr>
+  </tbody>
+</table>
 
-<h2 id="alternative-reduction-direct-from-3-sat">Alternative Reduction: Direct from 3-SAT</h2>
+<h3 id="q2-how-do-you-reduce-3d-matching-to-exact-cover">Q2: How do you reduce 3D Matching to Exact Cover?</h3>
 
-<p>We can also prove Independent Set is NP-complete by directly reducing from 3-SAT, similar to the Clique reduction.</p>
+<p><strong>Answer:</strong> 3D Matching is special case of Exact Cover.</p>
 
-<h3 id="construction">Construction</h3>
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
+  <li>Universe U = X ∪ Y ∪ Z</li>
+  <li>Sets: Each triple t becomes set Sₜ = {x, y, z}</li>
+  <li>Return Exact Cover: universe U, sets {Sₜ : t ∈ T}</li>
+</ul>
 
-<p>For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3 literals:</p>
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Perfect 3D matching ↔ Exact cover</li>
+  <li>Each element covered exactly once</li>
+</ul>
 
-<ol>
-  <li><strong>Create vertices</strong>: For each literal occurrence in each clause, create a vertex
+<p><strong>Time:</strong> O(1)</p>
+
+<h3 id="q3-how-do-you-reduce-3d-matching-to-set-partitioning">Q3: How do you reduce 3D Matching to Set Partitioning?</h3>
+
+<p><strong>Answer:</strong> Partition triples to cover all elements.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
+  <li>Universe U = X ∪ Y ∪ Z</li>
+  <li>Sets: Each triple t becomes set Sₜ</li>
+  <li>Return Set Partitioning: universe U, sets {Sₜ : t ∈ T}</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Perfect 3D matching ↔ Set partition</li>
+  <li>Partition covers all elements exactly once</li>
+</ul>
+
+<p><strong>Time:</strong> O(1)</p>
+
+<h3 id="q4-how-do-you-reduce-3d-matching-to-assignment-problem">Q4: How do you reduce 3D Matching to Assignment Problem?</h3>
+
+<p><strong>Answer:</strong> Encode as three-dimensional assignment.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given 3D Matching instance: sets X, Y, Z, triples T</li>
+  <li>Create Assignment Problem:
     <ul>
-      <li>Label vertices as (i, j) where i is the clause number and j is the literal position</li>
-    </ul>
-  </li>
-  <li><strong>Add edges</strong>: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
-    <ul>
-      <li>They are in the <strong>same clause</strong> (i_1 = i_2), OR</li>
-      <li>The literals are <strong>complementary</strong> (one is the negation of the other)</li>
-    </ul>
-  </li>
-  <li><strong>Set k = m</strong>: We’re looking for an independent set of size m (one vertex per clause)</li>
-</ol>
-
-<h3 id="why-this-works">Why This Works</h3>
-
-<p><strong>Intuition:</strong></p>
-<ul>
-  <li>An independent set of size m means we pick one literal from each clause</li>
-  <li>Since vertices in the same clause are connected, we can pick at most one per clause</li>
-  <li>Since complementary literals are connected, we never pick both x and ¬ x</li>
-  <li>Therefore, an independent set corresponds to a satisfying assignment</li>
-</ul>
-
-<p><strong>Formal Proof:</strong></p>
-
-<p><strong>Forward Direction (3-SAT satisfiable → Independent Set exists):</strong></p>
-<ul>
-  <li>If φ is satisfiable, there exists an assignment that makes at least one literal true in each clause</li>
-  <li>Pick the vertex corresponding to that true literal from each clause</li>
-  <li>These m vertices form an independent set because:
-    <ul>
-      <li>They’re from different clauses (so no edges between them by construction)</li>
-      <li>They can’t be complementary (both can’t be true simultaneously)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Reverse Direction (Independent Set exists → 3-SAT satisfiable):</strong></p>
-<ul>
-  <li>If there’s an independent set of size m, we have one vertex (literal) from each clause</li>
-  <li>Set variables to make these literals true:
-    <ul>
-      <li>If literal is x_i, set x_i = TRUE</li>
-      <li>If literal is ¬ x_i, set x_i = FALSE</li>
-    </ul>
-  </li>
-  <li>Since no complementary literals are in the independent set, this assignment is consistent</li>
-  <li>This assignment satisfies all clauses</li>
-</ul>
-
-<h3 id="example-reduction">Example Reduction</h3>
-
-<p>Consider the 3-SAT instance:
-φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
-
-<p><strong>Step 1: Create vertices</strong></p>
-<ul>
-  <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
-  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
-  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
-</ul>
-
-<p><strong>Step 2: Add edges</strong></p>
-<ul>
-  <li>Connect vertices in the same clause: (1,1)-(1,2), (1,1)-(1,3), (1,2)-(1,3), etc.</li>
-  <li>Connect complementary literals: (1,1)-(2,1) (x₁ and ¬ x₁), (1,3)-(2,3) (x₁ and ¬ x₁), (1,2)-(3,2) (x₁ and ¬ x₁)</li>
-</ul>
-
-<p><strong>Step 3: Find independent set of size 3</strong></p>
-<ul>
-  <li>One possible independent set: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3</li>
-  <li>This corresponds to assignment: x₁ = TRUE (arbitrary), x₁ = TRUE, x₁ = TRUE</li>
-  <li>Verify: All clauses satisfied!</li>
-</ul>
-
-<h2 id="relationship-to-other-graph-problems">Relationship to Other Graph Problems</h2>
-
-<p>The Independent Set Problem is part of a fundamental trio of related NP-complete problems:</p>
-
-<h3 id="clique">Clique</h3>
-
-<p>As we’ve seen:</p>
-<ul>
-  <li>S is a clique in G <strong>if and only if</strong> S is an independent set in G̅</li>
-  <li>This makes Clique and Independent Set polynomially equivalent</li>
-</ul>
-
-<h3 id="vertex-cover">Vertex Cover</h3>
-
-<p>A <strong>vertex cover</strong> is a set of vertices C such that every edge has at least one endpoint in C.</p>
-
-<p><strong>Key Relationship:</strong></p>
-<ul>
-  <li>S is an independent set <strong>if and only if</strong> V \setminus S is a vertex cover</li>
-</ul>
-
-<p><strong>Proof:</strong></p>
-<ul>
-  <li>If S is an independent set, then no edge has both endpoints in S</li>
-  <li>Therefore, every edge has at least one endpoint in V \setminus S</li>
-  <li>So V \setminus S is a vertex cover</li>
-  <li>The reverse direction follows similarly</li>
-</ul>
-
-<p><strong>Corollary:</strong></p>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Maximum independent set size + Minimum vertex cover size =</td>
-          <td>V</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>This is known as <strong>Gallai’s theorem</strong></li>
-</ul>
-
-<h3 id="maximum-matching">Maximum Matching</h3>
-
-<p>In bipartite graphs, there’s a connection to matching:</p>
-<ul>
-  <li><strong>König’s theorem</strong>: In bipartite graphs, the size of the maximum matching equals the size of the minimum vertex cover</li>
-  <li>Combined with the independent set-vertex cover relationship, this connects independent sets to matchings in bipartite graphs</li>
-</ul>
-
-<h2 id="practical-implications">Practical Implications</h2>
-
-<h3 id="why-independent-set-is-hard">Why Independent Set is Hard</h3>
-
-<p>The Independent Set Problem is NP-complete, which means:</p>
-
-<ol>
-  <li><strong>No Known Polynomial-Time Algorithm</strong>: Best known algorithms have exponential time complexity</li>
-  <li><strong>Brute Force</strong>: Check all 2ⁿ subsets of vertices - exponential</li>
-  <li><strong>Dynamic Programming</strong>: Can solve in O(2^n · n^2) time using inclusion-exclusion or bitmask DP</li>
-  <li><strong>Branch and Bound</strong>: Practical for small instances, but still exponential worst-case</li>
-</ol>
-
-<h3 id="approximation">Approximation</h3>
-
-<p>The Independent Set Problem has interesting approximation properties:</p>
-
-<ul>
-  <li><strong>Hard to Approximate</strong>: Cannot be approximated within n^{1-\epsilon} for any \epsilon &gt; 0 (unless P = NP)</li>
-  <li><strong>Greedy Algorithm</strong>: A simple greedy algorithm achieves O(n/Delta) approximation where \Delta is the maximum degree</li>
-  <li><strong>Better Approximations</strong>: For bounded-degree graphs, better approximation ratios are possible</li>
-</ul>
-
-<h3 id="real-world-applications">Real-World Applications</h3>
-
-<p>Independent Set has numerous applications:</p>
-
-<ol>
-  <li><strong>Scheduling</strong>: Assigning non-conflicting tasks (e.g., scheduling classes, meetings)</li>
-  <li><strong>Resource Allocation</strong>: Allocating resources that cannot conflict</li>
-  <li><strong>Wireless Networks</strong>: Selecting non-interfering transmission nodes</li>
-  <li><strong>Social Networks</strong>: Finding groups of people who don’t know each other</li>
-  <li><strong>Bioinformatics</strong>: Finding non-overlapping gene sets</li>
-  <li><strong>VLSI Design</strong>: Placing components that don’t interfere</li>
-</ol>
-
-<h3 id="special-cases">Special Cases</h3>
-
-<p>Some restricted versions of Independent Set are tractable:</p>
-
-<ul>
-  <li><strong>Bipartite Graphs</strong>: Can be solved via maximum matching (using König’s theorem)</li>
-  <li><strong>Interval Graphs</strong>: Polynomial-time algorithms exist (greedy approach works)</li>
-  <li><strong>Trees</strong>: Can be solved efficiently using dynamic programming</li>
-  <li><strong>Bounded Treewidth</strong>: Can be solved efficiently using tree decomposition</li>
-  <li><strong>Planar Graphs</strong>: Still NP-complete, but better approximation algorithms exist</li>
-</ul>
-
-<h2 id="runtime-analysis">Runtime Analysis</h2>
-
-<h3 id="brute-force-approach">Brute Force Approach</h3>
-
-<p><strong>Algorithm:</strong> Check all C(n,k) subsets of size k</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(C(n,k) · k^2) = O(n^k · k^2)</li>
-  <li><strong>Space Complexity:</strong> O(k) for storing current subset</li>
-  <li><strong>Analysis:</strong> For each subset, verify no edges exist between vertices (O(k^2) checks)</li>
-</ul>
-
-<h3 id="dynamic-programming">Dynamic Programming</h3>
-
-<p><strong>Algorithm:</strong> Use bitmask DP similar to Clique</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(2^n · n^2)</li>
-  <li><strong>Space Complexity:</strong> O(2^n · n)</li>
-  <li><strong>Subproblem:</strong> dp[mask][v] = true if there exists an independent set in vertices mask ending at v</li>
-  <li><strong>Recurrence:</strong> dp[mask][v] = \bigvee_{u ∈ mask, (u,v) ∉ E} dp[mask \setminus {v}][u]</li>
-</ul>
-
-<h3 id="tree-dp-special-case">Tree DP (Special Case)</h3>
-
-<p><strong>Algorithm:</strong> For trees, use bottom-up DP</p>
-<ul>
-  <li><strong>Time Complexity:</strong> O(n)</li>
-  <li><strong>Space Complexity:</strong> O(n)</li>
-  <li><strong>Subproblem:</strong> dp[v][0/1] = maximum independent set in subtree rooted at v (0 = don’t include v, 1 = include v)</li>
-  <li><strong>Recurrence:</strong>
-    <ul>
-      <li>dp[v][0] = ∑_{u ∈ children(v)} \max(dp[u][0], dp[u][1])</li>
-      <li>dp[v][1] = 1 + ∑_{u ∈ children(v)} dp[u][0]</li>
+      <li>Three sets: X, Y, Z</li>
+      <li>Assignments: Triples t = (x, y, z)</li>
+      <li>Cost: 0 if t ∈ T, ∞ otherwise</li>
+      <li>Target: Assign all elements</li>
     </ul>
   </li>
 </ul>
 
-<h3 id="branch-and-bound">Branch-and-Bound</h3>
-
-<p><strong>Algorithm:</strong> Systematic search with pruning</p>
+<p><strong>Correctness:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> Exponential worst-case, improved with pruning</li>
-  <li><strong>Space Complexity:</strong> O(n) for recursion stack</li>
-  <li><strong>Pruning:</strong> Stop if remaining vertices can’t form independent set of size k</li>
+  <li>Perfect 3D matching ↔ Assignment covering all elements</li>
 </ul>
 
-<h3 id="verification-complexity">Verification Complexity</h3>
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Time:</strong> O(</td>
+      <td>T</td>
+      <td>)</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><strong>Given a candidate independent set of size k:</strong></p>
+<h3 id="q5-how-do-you-reduce-3d-matching-to-bipartite-matching">Q5: How do you reduce 3D Matching to Bipartite Matching?</h3>
+
+<p><strong>Answer:</strong> Cannot directly (3D is harder than 2D).</p>
+
+<p><strong>Note:</strong> 3D Matching is NP-complete, but Bipartite Matching is polynomial-time. However, can reduce to weighted matching.</p>
+
+<p><strong>Reduction (to Weighted Matching):</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs for absence of edges</li>
-  <li><strong>Space Complexity:</strong> O(1) additional space</li>
-  <li>This polynomial-time verifiability shows Independent Set is in NP</li>
+  <li>Given 3D Matching instance</li>
+  <li>Create bipartite graph: X on left, Y×Z on right</li>
+  <li>Edges: (x, (y,z)) if (x,y,z) ∈ T</li>
+  <li>Weight: 1 for each edge</li>
+  <li>Return: Maximum weight matching covering all of X</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Perfect 3D matching ↔ Perfect bipartite matching</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Time:</strong> O(</td>
+      <td>T</td>
+      <td>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reduction-patterns-from-3d-matching">Reduction Patterns from 3D Matching</h2>
+
+<h3 id="pattern-1-covering-problems">Pattern 1: Covering Problems</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem involves covering</li>
+  <li><strong>Examples:</strong> Set Cover, Exact Cover</li>
+  <li><strong>Key:</strong> Triples cover elements</li>
+</ul>
+
+<h3 id="pattern-2-partitioning">Pattern 2: Partitioning</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem partitions elements</li>
+  <li><strong>Examples:</strong> Set Partitioning</li>
+  <li><strong>Key:</strong> Each element exactly once</li>
+</ul>
+
+<h3 id="pattern-3-assignment">Pattern 3: Assignment</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem assigns elements</li>
+  <li><strong>Examples:</strong> Assignment Problem</li>
+  <li><strong>Key:</strong> Three-way assignment</li>
 </ul>
 
 <h2 id="key-takeaways">Key Takeaways</h2>
 
 <ol>
-  <li><strong>Independent Set is NP-Complete</strong>: Proven by reduction from Clique (via complement graph) or directly from 3-SAT</li>
-  <li><strong>Complement Graph Relationship</strong>: The connection between Clique and Independent Set through complement graphs is elegant and fundamental</li>
-  <li><strong>Vertex Cover Connection</strong>: Independent Set and Vertex Cover are complementary - solving one solves the other</li>
-  <li><strong>Reduction Patterns</strong>: The 3-SAT → Independent Set reduction shows how to encode logical constraints as graph structures (opposite pattern from Clique)</li>
-  <li><strong>Practical Algorithms</strong>: Despite NP-completeness, various techniques work well for many practical instances and special graph classes</li>
+  <li><strong>Covering structure:</strong> Natural for covering problems</li>
+  <li><strong>Exact coverage:</strong> Each element exactly once</li>
+  <li><strong>Triple structure:</strong> Three sets make it harder than 2D</li>
+  <li><strong>Partitioning:</strong> Perfect matching = partition</li>
 </ol>
-
-<h2 id="reduction-summary">Reduction Summary</h2>
-
-<p><strong>Clique ≤ₚ Independent Set:</strong></p>
-<ul>
-  <li>Given Clique instance: graph G and integer k</li>
-  <li>Construct complement graph G̅</li>
-  <li>Return Independent Set instance: graph G̅ and integer k</li>
-  <li>G has clique of size k ↔ G̅ has independent set of size k</li>
-</ul>
-
-<p><strong>3-SAT ≤ₚ Independent Set:</strong></p>
-<ul>
-  <li>Given 3-SAT instance with m clauses</li>
-  <li>Create graph with vertices for each literal occurrence</li>
-  <li>Connect vertices in same clause OR with complementary literals</li>
-  <li>3-SAT satisfiable ↔ Graph has independent set of size m</li>
-</ul>
-
-<p>Both reductions are polynomial-time, establishing Independent Set as NP-complete.</p>
-
-<h2 id="further-reading">Further Reading</h2>
-
-<ul>
-  <li><strong>Garey &amp; Johnson</strong>: “Computers and Intractability” - Standard reference for NP-completeness proofs</li>
-  <li><strong>Gallai’s Theorem</strong>: The relationship between independent sets and vertex covers</li>
-  <li><strong>König’s Theorem</strong>: Connection to matching in bipartite graphs</li>
-  <li><strong>Approximation Algorithms</strong>: Research on approximating independent set in various graph classes</li>
-</ul>
 
 <h2 id="practice-problems">Practice Problems</h2>
 
 <ol>
-  <li>
-    <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in G̅.</p>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) =</td>
-          <td>V</td>
-          <td>where \alpha(G) is the independence number and beta(G) is the vertex cover number.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)
-Find an independent set of size 3 and determine the corresponding satisfying assignment.</p>
-  </li>
-  <li>
-    <p><strong>Algorithm design</strong>: Design a dynamic programming algorithm to find the maximum independent set in a tree. What is its time complexity?</p>
-  </li>
-  <li>
-    <p><strong>Reduction practice</strong>: Given that Independent Set is NP-complete, show that Vertex Cover is also NP-complete using the complement relationship.</p>
-  </li>
-  <li><strong>Greedy algorithm</strong>: Analyze the greedy algorithm for Independent Set that repeatedly picks a vertex of minimum degree and removes it and its neighbors. What approximation ratio does it achieve?</li>
+  <li>Reduce 3D Matching to Hitting Set</li>
+  <li>Reduce 3D Matching to Set Packing</li>
+  <li>Reduce 3D Matching to Resource Allocation</li>
 </ol>
 
 <hr />
 
-<p>Understanding the Independent Set Problem and its relationships to Clique and Vertex Cover provides crucial insight into the interconnected nature of NP-complete problems. The complement graph relationship is particularly elegant and demonstrates how seemingly different problems can be fundamentally related.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><category term="Graph Theory" /><summary type="html"><![CDATA[An introduction to NP-hardness through the Independent Set Problem, covering problem definition, NP-completeness proof, and connections to Clique and Vertex Cover problems.]]></summary></entry></feed>
+<p>3D Matching reductions often use covering and partitioning structures.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to reducing from 3D Matching to prove other problems are NP-complete, with common reduction questions and detailed answers.]]></summary></entry><entry><title type="html">Reductions from 3-SAT: Common Questions and Answers</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3sat/" rel="alternate" type="text/html" title="Reductions from 3-SAT: Common Questions and Answers" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3sat</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-3sat/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>3-SAT is the most commonly used starting point for NP-completeness proofs. This post provides answers to common reduction questions when using 3-SAT to prove other problems are NP-complete.</p>
+
+<h2 id="problem-definition-3-sat">Problem Definition: 3-SAT</h2>
+
+<p><strong>3-SAT Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> A Boolean formula φ in 3-CNF (exactly 3 literals per clause)</li>
+  <li><strong>Output:</strong> YES if φ is satisfiable, NO otherwise</li>
+</ul>
+
+<p><strong>Why 3-SAT is Popular:</strong></p>
+<ul>
+  <li>Simpler structure than general SAT</li>
+  <li>Exactly 3 literals per clause simplifies gadget design</li>
+  <li>Most reductions use 3-SAT as starting point</li>
+</ul>
+
+<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+
+<h3 id="q1-how-do-you-reduce-3-sat-to-independent-set">Q1: How do you reduce 3-SAT to Independent Set?</h3>
+
+<p><strong>Answer:</strong> Create variable gadgets (pairs) and clause gadgets (triangles).</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li><strong>Variable gadgets:</strong> For each xᵢ, create vertices vᵢ (TRUE) and v’ᵢ (FALSE), connect with edge</li>
+  <li><strong>Clause gadgets:</strong> For each clause, create triangle of 3 vertices (one per literal)</li>
+  <li><strong>Connections:</strong> Connect clause vertex to opposite variable vertex</li>
+  <li><strong>Target:</strong> k = n + m (n variables + m clauses)</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ Independent set of size n+m exists</li>
+  <li>Pick one vertex per variable pair, one per clause triangle</li>
+</ul>
+
+<p><strong>Time:</strong> O(n + m)</p>
+
+<h3 id="q2-how-do-you-reduce-3-sat-to-vertex-cover">Q2: How do you reduce 3-SAT to Vertex Cover?</h3>
+
+<p><strong>Answer:</strong> Use complement relationship with Independent Set.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Reduce 3-SAT to Independent Set → graph G, k = n+m</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Vertex Cover: graph G, k’ =</td>
+          <td>V</td>
+          <td>- (n+m)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size n+m ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- (n+m)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Time:</strong> O(n + m)</p>
+
+<h3 id="q3-how-do-you-reduce-3-sat-to-clique">Q3: How do you reduce 3-SAT to Clique?</h3>
+
+<p><strong>Answer:</strong> Use complement graph of Independent Set reduction.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Reduce 3-SAT to Independent Set → graph G, k = n+m</li>
+  <li>Create complement graph G̅</li>
+  <li>Return Clique: graph G̅, k = n+m</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Independent set in G ↔ Clique in G̅</li>
+</ul>
+
+<p><strong>Time:</strong> O(n²)</p>
+
+<h3 id="q4-how-do-you-reduce-3-sat-to-subset-sum">Q4: How do you reduce 3-SAT to Subset Sum?</h3>
+
+<p><strong>Answer:</strong> Use base representation to encode constraints.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Create numbers with n+m digits (n variables + m clauses)</li>
+  <li><strong>Variable numbers:</strong> Two per variable, encode assignment</li>
+  <li><strong>Clause numbers:</strong> Encode clause satisfaction</li>
+  <li><strong>Target:</strong> Sum encoding all variables assigned and all clauses satisfied</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ Subset sums to target</li>
+  <li>Digits encode variable assignments and clause satisfaction</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h3 id="q5-how-do-you-reduce-3-sat-to-3d-matching">Q5: How do you reduce 3-SAT to 3D Matching?</h3>
+
+<p><strong>Answer:</strong> Create variable gadgets (chains) and clause gadgets (triples).</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li><strong>Variable gadgets:</strong> For each xᵢ, create chain of triples</li>
+  <li><strong>Clause gadgets:</strong> For each clause, create triples connecting to variable gadgets</li>
+  <li><strong>Matching:</strong> Covers all elements ↔ consistent assignment + satisfied clauses</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ Perfect 3D matching exists</li>
+  <li>Matching enforces variable consistency and clause satisfaction</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h3 id="q6-how-do-you-reduce-3-sat-to-integer-linear-programming">Q6: How do you reduce 3-SAT to Integer Linear Programming?</h3>
+
+<p><strong>Answer:</strong> Encode variables as 0-1 variables and clauses as constraints.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>For each xᵢ, create variable xᵢ ∈ {0,1}</li>
+  <li>For clause (l₁ ∨ l₂ ∨ l₃):
+    <ul>
+      <li>If lⱼ = xₖ, use xₖ</li>
+      <li>If lⱼ = ¬xₖ, use (1 - xₖ)</li>
+      <li>Constraint: l₁ + l₂ + l₃ ≥ 1</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ ILP feasible</li>
+  <li>Each clause requires at least one TRUE literal</li>
+</ul>
+
+<p><strong>Time:</strong> O(n + m)</p>
+
+<h3 id="q7-how-do-you-reduce-3-sat-to-zero-one-equations">Q7: How do you reduce 3-SAT to Zero-One Equations?</h3>
+
+<p><strong>Answer:</strong> Convert to system of equations over GF(2).</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>For each variable xᵢ, create xᵢ ∈ {0,1}</li>
+  <li>For clause (l₁ ∨ l₂ ∨ l₃):
+    <ul>
+      <li>Equation: l₁ + l₂ + l₃ = 1 (mod 2)</li>
+      <li>Use xᵢ for positive, (1 - xᵢ) for negative</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ ZOE has solution</li>
+  <li>Exactly one literal TRUE per clause (mod 2)</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h3 id="q8-how-do-you-reduce-3-sat-to-rudrata-cycle">Q8: How do you reduce 3-SAT to Rudrata Cycle?</h3>
+
+<p><strong>Answer:</strong> Create variable gadgets (paths) and clause gadgets (requiring visits).</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li><strong>Variable gadgets:</strong> For each xᵢ, create path with two routes (TRUE/FALSE)</li>
+  <li><strong>Clause gadgets:</strong> For each clause, create vertices that must be visited</li>
+  <li><strong>Connections:</strong> Link gadgets to enforce consistency</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ Hamiltonian cycle exists</li>
+  <li>Cycle encodes variable assignment and clause satisfaction</li>
+</ul>
+
+<p><strong>Time:</strong> O(n²m)</p>
+
+<h3 id="q9-how-do-you-reduce-3-sat-to-traveling-salesman-problem">Q9: How do you reduce 3-SAT to Traveling Salesman Problem?</h3>
+
+<p><strong>Answer:</strong> Reduce via Rudrata Cycle.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Reduce 3-SAT to Rudrata Cycle → graph G</li>
+  <li>Create complete graph with weights:
+    <ul>
+      <li>Weight 1 if edge exists in G</li>
+      <li>Weight 2 if edge doesn’t exist</li>
+    </ul>
+  </li>
+  <li>Target: n (number of vertices)</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Rudrata cycle exists ↔ TSP tour of weight n exists</li>
+</ul>
+
+<p><strong>Time:</strong> O(n²)</p>
+
+<h3 id="q10-how-do-you-reduce-3-sat-to-set-cover">Q10: How do you reduce 3-SAT to Set Cover?</h3>
+
+<p><strong>Answer:</strong> Encode variables and clauses as sets.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Universe: All clauses</li>
+  <li>For each variable xᵢ:
+    <ul>
+      <li>Set Sᵢ: Clauses where xᵢ appears positively</li>
+      <li>Set S’ᵢ: Clauses where ¬xᵢ appears</li>
+    </ul>
+  </li>
+  <li>Target: Cover all clauses with n sets</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>3-SAT satisfiable ↔ Set Cover of size n exists</li>
+  <li>Each clause covered by satisfied literal’s set</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h2 id="reduction-patterns-from-3-sat">Reduction Patterns from 3-SAT</h2>
+
+<h3 id="pattern-1-graph-problems">Pattern 1: Graph Problems</h3>
+<ul>
+  <li><strong>Variable gadgets:</strong> Pairs of vertices (TRUE/FALSE)</li>
+  <li><strong>Clause gadgets:</strong> Triangles or other structures</li>
+  <li><strong>Examples:</strong> Independent Set, Vertex Cover, Clique</li>
+</ul>
+
+<h3 id="pattern-2-number-problems">Pattern 2: Number Problems</h3>
+<ul>
+  <li><strong>Base representation:</strong> Digits encode constraints</li>
+  <li><strong>Variable encoding:</strong> Numbers represent assignments</li>
+  <li><strong>Examples:</strong> Subset Sum, Partition</li>
+</ul>
+
+<h3 id="pattern-3-set-problems">Pattern 3: Set Problems</h3>
+<ul>
+  <li><strong>Universe:</strong> Clauses or elements</li>
+  <li><strong>Sets:</strong> Variable assignments or choices</li>
+  <li><strong>Examples:</strong> Set Cover, Exact Cover, 3D Matching</li>
+</ul>
+
+<h3 id="pattern-4-constraint-problems">Pattern 4: Constraint Problems</h3>
+<ul>
+  <li><strong>Variables:</strong> Direct mapping</li>
+  <li><strong>Constraints:</strong> Clause requirements</li>
+  <li><strong>Examples:</strong> ILP, ZOE, Graph Coloring</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>3-SAT is standard:</strong> Most reductions start from 3-SAT</li>
+  <li><strong>Gadget design:</strong> Variable gadgets + clause gadgets</li>
+  <li><strong>Consistency:</strong> Ensure variable assignments are consistent</li>
+  <li><strong>Satisfaction:</strong> Ensure all clauses are satisfied</li>
+  <li><strong>Polynomial time:</strong> Most reductions are efficient</li>
+</ol>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>Reduce 3-SAT to Dominating Set</li>
+  <li>Reduce 3-SAT to Graph Coloring</li>
+  <li>Reduce 3-SAT to Longest Path</li>
+  <li>Reduce 3-SAT to Knapsack</li>
+  <li>Reduce 3-SAT to Bin Packing</li>
+</ol>
+
+<hr />
+
+<p>3-SAT is the workhorse of NP-completeness proofs, and mastering reductions from 3-SAT is essential for complexity theory.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to reducing from 3-SAT to prove other problems are NP-complete, with common reduction questions and detailed answers.]]></summary></entry><entry><title type="html">Reductions from Clique: Common Questions and Answers</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique/" rel="alternate" type="text/html" title="Reductions from Clique: Common Questions and Answers" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-clique/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Clique is a fundamental graph problem that’s NP-complete. This post provides answers to common reduction questions when using Clique to prove other problems are NP-complete.</p>
+
+<h2 id="problem-definition-clique">Problem Definition: Clique</h2>
+
+<p><strong>Clique Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
+  <li><strong>Output:</strong> YES if G has a clique of size ≥ k, NO otherwise</li>
+</ul>
+
+<p><strong>Clique:</strong> A subset of vertices where every pair is connected by an edge.</p>
+
+<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+
+<h3 id="q1-how-do-you-reduce-clique-to-independent-set">Q1: How do you reduce Clique to Independent Set?</h3>
+
+<p><strong>Answer:</strong> Use complement graph.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Clique instance: graph G, integer k</li>
+  <li>Create complement graph G̅ (edge exists in G̅ ↔ edge doesn’t exist in G)</li>
+  <li>Return Independent Set: graph G̅, integer k</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Clique of size k in G ↔ Independent set of size k in G̅</li>
+  <li>No edges in G̅ ↔ all edges in G</li>
+</ul>
+
+<p><strong>Time:</strong> O(n²) to create complement</p>
+
+<h3 id="q2-how-do-you-reduce-clique-to-vertex-cover">Q2: How do you reduce Clique to Vertex Cover?</h3>
+
+<p><strong>Answer:</strong> Use complement graph + complement relationship.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Reduce Clique to Independent Set → graph G̅, k</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Vertex Cover: graph G̅, k’ =</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Clique of size k in G ↔ Independent set of size k in G̅ ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k in G̅</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Time:</strong> O(n²)</p>
+
+<h3 id="q3-how-do-you-reduce-clique-to-subgraph-isomorphism">Q3: How do you reduce Clique to Subgraph Isomorphism?</h3>
+
+<p><strong>Answer:</strong> Check if complete graph Kₖ is subgraph of G.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Clique instance: graph G, integer k</li>
+  <li>Create complete graph Kₖ (clique of size k)</li>
+  <li>Return Subgraph Isomorphism: graph G, pattern Kₖ</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Clique of size k in G ↔ Kₖ is subgraph of G</li>
+</ul>
+
+<p><strong>Time:</strong> O(1) (trivial reduction)</p>
+
+<h3 id="q4-how-do-you-reduce-clique-to-maximum-common-subgraph">Q4: How do you reduce Clique to Maximum Common Subgraph?</h3>
+
+<p><strong>Answer:</strong> Find common subgraph with another complete graph.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Clique instance: graph G, integer k</li>
+  <li>Create complete graph Kₖ</li>
+  <li>Return Maximum Common Subgraph: graphs G and Kₖ, target size k</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Clique of size k in G ↔ Common subgraph of size k exists</li>
+</ul>
+
+<p><strong>Time:</strong> O(1)</p>
+
+<h3 id="q5-how-do-you-reduce-clique-to-dense-subgraph">Q5: How do you reduce Clique to Dense Subgraph?</h3>
+
+<p><strong>Answer:</strong> Clique is special case of dense subgraph.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Clique instance: graph G, integer k</li>
+  <li>Return Dense Subgraph: graph G, size k, density threshold = 1.0 (complete)</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Clique of size k ↔ Dense subgraph with density 1.0</li>
+</ul>
+
+<p><strong>Time:</strong> O(1)</p>
+
+<h2 id="reduction-patterns-from-clique">Reduction Patterns from Clique</h2>
+
+<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem is complement of clique-like structure</li>
+  <li><strong>Examples:</strong> Independent Set, Vertex Cover</li>
+  <li><strong>Key:</strong> Complement graph preserves structure</li>
+</ul>
+
+<h3 id="pattern-2-subgraph-problems">Pattern 2: Subgraph Problems</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem involves finding subgraphs</li>
+  <li><strong>Examples:</strong> Subgraph Isomorphism, Maximum Common Subgraph</li>
+  <li><strong>Key:</strong> Clique is complete subgraph</li>
+</ul>
+
+<h3 id="pattern-3-restriction">Pattern 3: Restriction</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem is generalization</li>
+  <li><strong>Examples:</strong> Dense Subgraph, k-Clique</li>
+  <li><strong>Key:</strong> Clique is special case</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Complement graph:</strong> Powerful tool for graph reductions</li>
+  <li><strong>Complete subgraphs:</strong> Clique represents perfect connectivity</li>
+  <li><strong>Subgraph problems:</strong> Many reduce from Clique</li>
+  <li><strong>Restriction:</strong> Clique is special case of many problems</li>
+</ol>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>Reduce Clique to k-Clique (fixed k)</li>
+  <li>Reduce Clique to Maximum Clique</li>
+  <li>Reduce Clique to Clique Cover</li>
+  <li>Reduce Clique to Partition into Cliques</li>
+</ol>
+
+<hr />
+
+<p>Clique reductions often use complement graphs and subgraph relationships.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to reducing from Clique to prove other problems are NP-complete, with common reduction questions and detailed answers.]]></summary></entry><entry><title type="html">Reductions from Integer Linear Programming: Common Questions and Answers</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/" rel="alternate" type="text/html" title="Reductions from Integer Linear Programming: Common Questions and Answers" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-ilp/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Integer Linear Programming (ILP) is a fundamental optimization problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using ILP to prove other problems are NP-complete.</p>
+
+<h2 id="problem-definition-integer-linear-programming">Problem Definition: Integer Linear Programming</h2>
+
+<p><strong>ILP Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Matrix A, vectors b, c, integer k</li>
+  <li><strong>Output:</strong> YES if there exists integer vector x such that Ax ≤ b and c^T x ≥ k, NO otherwise</li>
+</ul>
+
+<p><strong>Key:</strong> Variables must be integers (unlike LP which is polynomial-time).</p>
+
+<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+
+<h3 id="q1-how-do-you-reduce-ilp-to-0-1-ilp">Q1: How do you reduce ILP to 0-1 ILP?</h3>
+
+<p><strong>Answer:</strong> Use binary expansion of integer variables.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given ILP instance with variables xᵢ ∈ ℤ, bounds xᵢ ≤ M</li>
+  <li>For each xᵢ, create ⌈log₂(M+1)⌉ binary variables</li>
+  <li>Represent xᵢ = ∑ⱼ 2ʲ · yᵢⱼ where yᵢⱼ ∈ {0,1}</li>
+  <li>Convert constraints using binary representation</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>ILP feasible ↔ 0-1 ILP feasible</li>
+  <li>Binary expansion preserves integer values</li>
+</ul>
+
+<p><strong>Time:</strong> O(n log M)</p>
+
+<h3 id="q2-how-do-you-reduce-ilp-to-knapsack">Q2: How do you reduce ILP to Knapsack?</h3>
+
+<p><strong>Answer:</strong> Encode ILP constraints as knapsack constraints.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given ILP instance: maximize c^T x subject to Ax ≤ b, x ≥ 0, x integer</li>
+  <li>Create Knapsack instance:
+    <ul>
+      <li>Items: Each variable xᵢ becomes item</li>
+      <li>Weights: Constraint coefficients</li>
+      <li>Values: Objective coefficients</li>
+      <li>Capacity: Constraint bounds</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>ILP feasible ↔ Knapsack has solution</li>
+  <li>Constraints become capacity limits</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h3 id="q3-how-do-you-reduce-ilp-to-set-cover">Q3: How do you reduce ILP to Set Cover?</h3>
+
+<p><strong>Answer:</strong> Encode ILP as covering problem.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given ILP instance with 0-1 variables</li>
+  <li>Universe: All constraints</li>
+  <li>Sets: Variable assignments satisfying constraints</li>
+  <li>Target: Cover all constraints</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>ILP feasible ↔ Set Cover exists</li>
+  <li>Variables cover constraints</li>
+</ul>
+
+<p><strong>Time:</strong> O(2ⁿ · m) (exponential, but reduction is valid)</p>
+
+<h3 id="q4-how-do-you-reduce-ilp-to-scheduling">Q4: How do you reduce ILP to Scheduling?</h3>
+
+<p><strong>Answer:</strong> Encode ILP constraints as scheduling constraints.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given ILP instance</li>
+  <li>Jobs: Variables become jobs</li>
+  <li>Resources: Constraints become resource limits</li>
+  <li>Time: Objective becomes makespan</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>ILP feasible ↔ Scheduling feasible</li>
+  <li>Constraints become resource/time limits</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h3 id="q5-how-do-you-reduce-ilp-to-network-flow">Q5: How do you reduce ILP to Network Flow?</h3>
+
+<p><strong>Answer:</strong> Special ILP structures map to flow problems.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given ILP with special structure (e.g., transportation problem)</li>
+  <li>Create flow network:
+    <ul>
+      <li>Nodes: Variables/constraints</li>
+      <li>Edges: Variable-constraint relationships</li>
+      <li>Capacities: Constraint bounds</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>ILP feasible ↔ Flow exists</li>
+  <li>Flow conservation ↔ Constraint satisfaction</li>
+</ul>
+
+<p><strong>Time:</strong> O(nm)</p>
+
+<h2 id="reduction-patterns-from-ilp">Reduction Patterns from ILP</h2>
+
+<h3 id="pattern-1-binary-expansion">Pattern 1: Binary Expansion</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem requires binary variables</li>
+  <li><strong>Examples:</strong> 0-1 ILP</li>
+  <li><strong>Key:</strong> Expand integers in binary</li>
+</ul>
+
+<h3 id="pattern-2-constraint-encoding">Pattern 2: Constraint Encoding</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem has similar constraints</li>
+  <li><strong>Examples:</strong> Knapsack, Scheduling</li>
+  <li><strong>Key:</strong> Map constraints directly</li>
+</ul>
+
+<h3 id="pattern-3-special-structures">Pattern 3: Special Structures</h3>
+<ul>
+  <li><strong>Use when:</strong> ILP has special form</li>
+  <li><strong>Examples:</strong> Network Flow, Transportation</li>
+  <li><strong>Key:</strong> Exploit problem structure</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Binary expansion:</strong> Convert to 0-1 ILP</li>
+  <li><strong>Constraint mapping:</strong> Direct encoding to similar problems</li>
+  <li><strong>Special structures:</strong> Exploit problem-specific structure</li>
+  <li><strong>Generalization:</strong> ILP generalizes many problems</li>
+</ol>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>Reduce ILP to Multiple Knapsack</li>
+  <li>Reduce ILP to Resource Allocation</li>
+  <li>Reduce ILP to Assignment Problem</li>
+</ol>
+
+<hr />
+
+<p>ILP reductions often use binary expansion and constraint encoding techniques.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to reducing from Integer Linear Programming to prove other problems are NP-complete, with common reduction questions and detailed answers.]]></summary></entry><entry><title type="html">Reductions from Independent Set: Common Questions and Answers</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/" rel="alternate" type="text/html" title="Reductions from Independent Set: Common Questions and Answers" /><published>2025-11-21T00:00:00+00:00</published><updated>2025-11-21T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/21/reductions-from-independent-set/"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Independent Set is a fundamental graph problem proven NP-complete by reduction from 3-SAT. This post provides answers to common reduction questions when using Independent Set to prove other problems are NP-complete.</p>
+
+<h2 id="problem-definition-independent-set">Problem Definition: Independent Set</h2>
+
+<p><strong>Independent Set Problem:</strong></p>
+<ul>
+  <li><strong>Input:</strong> Graph G = (V, E) and integer k</li>
+  <li><strong>Output:</strong> YES if G has an independent set of size ≥ k, NO otherwise</li>
+</ul>
+
+<p><strong>Independent Set:</strong> A subset of vertices where no two vertices are connected by an edge.</p>
+
+<h2 id="common-reduction-questions">Common Reduction Questions</h2>
+
+<h3 id="q1-how-do-you-reduce-independent-set-to-clique">Q1: How do you reduce Independent Set to Clique?</h3>
+
+<p><strong>Answer:</strong> Use complement graph.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Independent Set instance: graph G, integer k</li>
+  <li>Create complement graph G̅</li>
+  <li>Return Clique: graph G̅, integer k</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Independent set of size k in G ↔ Clique of size k in G̅</li>
+  <li>No edges in G ↔ all edges in G̅</li>
+</ul>
+
+<p><strong>Time:</strong> O(n²)</p>
+
+<h3 id="q2-how-do-you-reduce-independent-set-to-vertex-cover">Q2: How do you reduce Independent Set to Vertex Cover?</h3>
+
+<p><strong>Answer:</strong> Use complement relationship.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Independent Set instance: graph G, integer k</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Vertex Cover: graph G, k’ =</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Vertex cover of size</td>
+          <td>V</td>
+          <td>- k</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>S is independent set ↔ V \ S is vertex cover</li>
+</ul>
+
+<p><strong>Time:</strong> O(1)</p>
+
+<h3 id="q3-how-do-you-reduce-independent-set-to-maximum-cut">Q3: How do you reduce Independent Set to Maximum Cut?</h3>
+
+<p><strong>Answer:</strong> Encode independent set as one side of cut.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Independent Set instance: graph G, integer k</li>
+  <li>Create graph G’ by adding edges if needed</li>
+  <li>Return Maximum Cut: graph G’, target cut size</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Independent set of size k ↔ Cut with k vertices on one side, no edges within</li>
+</ul>
+
+<p><strong>Time:</strong> O(n + m)</p>
+
+<h3 id="q4-how-do-you-reduce-independent-set-to-graph-coloring">Q4: How do you reduce Independent Set to Graph Coloring?</h3>
+
+<p><strong>Answer:</strong> Use independent sets as color classes.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Independent Set instance: graph G, integer k</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Return Graph Coloring: graph G, number of colors =</td>
+          <td>V</td>
+          <td>- k + 1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>Independent set of size k ↔ Can color with</td>
+          <td>V</td>
+          <td>- k + 1 colors</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Large independent set ↔ Few colors needed</li>
+</ul>
+
+<p><strong>Time:</strong> O(1)</p>
+
+<h3 id="q5-how-do-you-reduce-independent-set-to-dominating-set">Q5: How do you reduce Independent Set to Dominating Set?</h3>
+
+<p><strong>Answer:</strong> Independent set + neighbors form dominating set.</p>
+
+<p><strong>Reduction:</strong></p>
+<ul>
+  <li>Given Independent Set instance: graph G, integer k</li>
+  <li>Return Dominating Set: graph G, k’ = k + (some function of neighbors)</li>
+</ul>
+
+<p><strong>Correctness:</strong></p>
+<ul>
+  <li>Independent set of size k → Can extend to dominating set</li>
+  <li>Requires careful construction</li>
+</ul>
+
+<p><strong>Time:</strong> O(n + m)</p>
+
+<h2 id="reduction-patterns-from-independent-set">Reduction Patterns from Independent Set</h2>
+
+<h3 id="pattern-1-complement-graph">Pattern 1: Complement Graph</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem is complement structure</li>
+  <li><strong>Examples:</strong> Clique</li>
+  <li><strong>Key:</strong> Complement preserves no-edge property</li>
+</ul>
+
+<h3 id="pattern-2-complement-set">Pattern 2: Complement Set</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem uses complement vertices</li>
+  <li><strong>Examples:</strong> Vertex Cover</li>
+  <li><strong>Key:</strong> V \ S relationship</li>
+</ul>
+
+<h3 id="pattern-3-partitioncut">Pattern 3: Partition/Cut</h3>
+<ul>
+  <li><strong>Use when:</strong> Target problem partitions vertices</li>
+  <li><strong>Examples:</strong> Maximum Cut, Graph Partitioning</li>
+  <li><strong>Key:</strong> Independent set forms one partition</li>
+</ul>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Complement graph:</strong> Clique reductions</li>
+  <li><strong>Complement set:</strong> Vertex cover reductions</li>
+  <li><strong>Partition problems:</strong> Cuts and colorings</li>
+  <li><strong>Selection problems:</strong> Many reduce from IS</li>
+</ol>
+
+<h2 id="practice-problems">Practice Problems</h2>
+
+<ol>
+  <li>Reduce Independent Set to Set Packing</li>
+  <li>Reduce Independent Set to Maximum Weight Independent Set</li>
+  <li>Reduce Independent Set to Clique Cover</li>
+</ol>
+
+<hr />
+
+<p>Independent Set reductions often use complement relationships and graph transformations.</p>]]></content><author><name></name></author><category term="Algorithms" /><category term="Complexity Theory" /><category term="NP-Hard" /><summary type="html"><![CDATA[A comprehensive guide to reducing from Independent Set to prove other problems are NP-complete, with common reduction questions and detailed answers.]]></summary></entry></feed>
