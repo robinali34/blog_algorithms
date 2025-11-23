@@ -108,12 +108,12 @@
 Given a candidate solution (clique C of size k, independent set I of size k):</p>
 <ol>
   <li>Check that C has exactly k vertices: O(1) time</li>
-  <li>Check that all pairs in C are adjacent: O(k²) time</li>
+  <li>Check that all pairs in C are adjacent: O(n²) time (since k ≤ n)</li>
   <li>Check that I has exactly k vertices: O(1) time</li>
-  <li>Check that no two vertices in I are adjacent: O(k²) time</li>
+  <li>Check that no two vertices in I are adjacent: O(n²) time (since k ≤ n)</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(k²), which is polynomial in input size.</p>
+<p><strong>Total Time:</strong> O(n²), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Clique + Independent Set ∈ NP.</p>
 

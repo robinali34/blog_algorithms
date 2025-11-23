@@ -156,8 +156,8 @@
 
 <p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has exactly k vertices: O(k) time</li>
-  <li>Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs)</li>
+  <li>Check that the set has exactly k vertices: O(n) time (since k ≤ n)</li>
+  <li>Check that every pair of vertices in the set is connected by an edge: O(n²) time (check all pairs, since k ≤ n)</li>
 </ol>
 
 <p>Since k ≤ n, this verification takes polynomial time in the input size. Therefore, Clique is in NP.</p>
@@ -379,7 +379,7 @@
 
 <p><strong>Given a candidate clique of size k:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs</li>
+  <li><strong>Time Complexity:</strong> O(n²) - check all pairs (since k ≤ n)</li>
   <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Clique is in NP</li>
 </ul>

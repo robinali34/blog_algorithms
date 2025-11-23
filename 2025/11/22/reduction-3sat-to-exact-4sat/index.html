@@ -88,13 +88,15 @@
 
 <h3 id="3-sat-problem">3-SAT Problem</h3>
 
-<p><strong>Input:</strong> A Boolean formula φ in 3-CNF with:</p>
+<p><strong>Input:</strong> A Boolean formula φ in CNF with:</p>
 <ul>
   <li>Variables: x₁, x₂, …, xₙ</li>
-  <li>Clauses: C₁, C₂, …, Cₘ, each with exactly 3 literals</li>
+  <li>Clauses: C₁, C₂, …, Cₘ, each with at most 3 literals</li>
 </ul>
 
 <p><strong>Output:</strong> YES if φ is satisfiable, NO otherwise.</p>
+
+<p><strong>Note:</strong> Each clause has at most 3 literals (can have 1, 2, or 3 literals).</p>
 
 <h2 id="1-np-completeness-proof-of-exact-4-sat-solution-validation">1. NP-Completeness Proof of Exact 4-SAT: Solution Validation</h2>
 
@@ -119,9 +121,14 @@ Given a candidate solution (variable assignment):</p>
 
 <h2 id="2-reduce-3-sat-to-exact-4-sat">2. Reduce 3-SAT to Exact 4-SAT</h2>
 
-<p><strong>Key Insight:</strong> Transform each 3-clause into a 4-clause by adding a new variable that doesn’t affect satisfiability. The new variable can be set to make the clause equivalent to the original 3-clause.</p>
+<p><strong>Key Insight:</strong> Transform each clause (with at most 3 literals) into multiple 4-clauses by adding new variables in all possible combinations. This ensures that the original clause is satisfied if and only if all the new 4-clauses are satisfied.</p>
 
-<p><strong>Hint:</strong> For each 3-clause (l₁ ∨ l₂ ∨ l₃), create a 4-clause (l₁ ∨ l₂ ∨ l₃ ∨ y) where y is a new variable. Since y can always be set to FALSE, the satisfiability is preserved.</p>
+<p><strong>Hint:</strong></p>
+<ul>
+  <li>For a 3-literal clause (l₁ ∨ l₂ ∨ l₃), create two 4-clauses: (l₁ ∨ l₂ ∨ l₃ ∨ w) and (l₁ ∨ l₂ ∨ l₃ ∨ !w). Both must be satisfied, which is equivalent to (l₁ ∨ l₂ ∨ l₃) being satisfied.</li>
+  <li>For a 2-literal clause (l₁ ∨ l₂), create four 4-clauses covering all combinations of two new variables.</li>
+  <li>For a 1-literal clause (l₁), create eight 4-clauses covering all combinations of three new variables.</li>
+</ul>
 
 <h3 id="21-input-conversion">2.1 Input Conversion</h3>
 
@@ -131,34 +138,66 @@ Given a candidate solution (variable assignment):</p>
 
 <p><strong>Step 1: Preprocess 3-SAT Instance</strong></p>
 <ul>
-  <li>Ensure each clause has exactly 3 distinct literals (no variable appears twice)</li>
-  <li>If a clause has duplicate literals, simplify it (e.g., (x₁ ∨ x₁ ∨ x₂) → (x₁ ∨ x₂), but this would make it a 2-clause)</li>
+  <li>Ensure each clause has at most 3 distinct literals (no variable appears twice within a clause)</li>
+  <li>If a clause has duplicate literals, simplify it (e.g., (x₁ ∨ x₁ ∨ x₂) → (x₁ ∨ x₂))</li>
   <li>For our reduction, we assume the 3-SAT instance has no duplicate literals within clauses</li>
 </ul>
 
-<p><strong>Step 2: Add New Variables</strong></p>
-<ul>
-  <li>For each clause Cⱼ, introduce a new variable yⱼ</li>
-  <li>Total variables: n + m (original n variables + m new variables)</li>
-</ul>
+<p><strong>Step 2: Transform Clauses Based on Size</strong></p>
 
-<p><strong>Step 2: Transform Clauses</strong></p>
+<p>For each clause Cⱼ, transform it based on the number of literals:</p>
+
+<p><strong>Case 1: Clause has 3 literals</strong> Cⱼ = (l₁ ∨ l₂ ∨ l₃)</p>
 <ul>
-  <li>For each 3-clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+  <li>Add 1 new variable wⱼ</li>
+  <li>Create 2 clauses:
     <ul>
-      <li>Ensure each variable appears at most once in Cⱼ (if not, the 3-SAT instance is invalid for our reduction)</li>
-      <li>Create 4-clause C’ⱼ = (l₁ ∨ l₂ ∨ l₃ ∨ yⱼ)</li>
-      <li>The new variable yⱼ is added as a disjunct</li>
-      <li>Since yⱼ is a new variable not appearing in the original clause, each variable occurs at most once in C’ⱼ</li>
+      <li>C’ⱼ₁ = (l₁ ∨ l₂ ∨ l₃ ∨ wⱼ)</li>
+      <li>C’ⱼ₂ = (l₁ ∨ l₂ ∨ l₃ ∨ !wⱼ)</li>
     </ul>
   </li>
+  <li>Both clauses must be satisfied, which is equivalent to (l₁ ∨ l₂ ∨ l₃) being satisfied</li>
 </ul>
+
+<p><strong>Case 2: Clause has 2 literals</strong> Cⱼ = (l₁ ∨ l₂)</p>
+<ul>
+  <li>Add 2 new variables wⱼ₁ and wⱼ₂</li>
+  <li>Create 4 clauses (all combinations of wⱼ₁ and wⱼ₂):
+    <ul>
+      <li>C’ⱼ₁ = (l₁ ∨ l₂ ∨ wⱼ₁ ∨ wⱼ₂)</li>
+      <li>C’ⱼ₂ = (l₁ ∨ l₂ ∨ wⱼ₁ ∨ !wⱼ₂)</li>
+      <li>C’ⱼ₃ = (l₁ ∨ l₂ ∨ !wⱼ₁ ∨ wⱼ₂)</li>
+      <li>C’ⱼ₄ = (l₁ ∨ l₂ ∨ !wⱼ₁ ∨ !wⱼ₂)</li>
+    </ul>
+  </li>
+  <li>All 4 clauses must be satisfied, which is equivalent to (l₁ ∨ l₂) being satisfied</li>
+</ul>
+
+<p><strong>Case 3: Clause has 1 literal</strong> Cⱼ = (l₁)</p>
+<ul>
+  <li>Add 3 new variables wⱼ₁, wⱼ₂, and wⱼ₃</li>
+  <li>Create 8 clauses (all combinations of wⱼ₁, wⱼ₂, wⱼ₃):
+    <ul>
+      <li>C’ⱼ₁ = (l₁ ∨ wⱼ₁ ∨ wⱼ₂ ∨ wⱼ₃)</li>
+      <li>C’ⱼ₂ = (l₁ ∨ wⱼ₁ ∨ wⱼ₂ ∨ !wⱼ₃)</li>
+      <li>C’ⱼ₃ = (l₁ ∨ wⱼ₁ ∨ !wⱼ₂ ∨ wⱼ₃)</li>
+      <li>C’ⱼ₄ = (l₁ ∨ wⱼ₁ ∨ !wⱼ₂ ∨ !wⱼ₃)</li>
+      <li>C’ⱼ₅ = (l₁ ∨ !wⱼ₁ ∨ wⱼ₂ ∨ wⱼ₃)</li>
+      <li>C’ⱼ₆ = (l₁ ∨ !wⱼ₁ ∨ wⱼ₂ ∨ !wⱼ₃)</li>
+      <li>C’ⱼ₇ = (l₁ ∨ !wⱼ₁ ∨ !wⱼ₂ ∨ wⱼ₃)</li>
+      <li>C’ⱼ₈ = (l₁ ∨ !wⱼ₁ ∨ !wⱼ₂ ∨ !wⱼ₃)</li>
+    </ul>
+  </li>
+  <li>All 8 clauses must be satisfied, which is equivalent to (l₁) being satisfied</li>
+</ul>
+
+<p><strong>Note:</strong> In each case, the new variables are unique to that clause and don’t appear in other clauses. This ensures each variable occurs at most once in each clause.</p>
 
 <p><strong>Step 3: Result</strong></p>
 <ul>
-  <li>φ’ contains m clauses, each with exactly 4 literals</li>
-  <li>Each variable occurs at most once in each clause (by construction: original literals have no duplicates, and yⱼ appears only once)</li>
-  <li>φ’ uses n + m variables</li>
+  <li>φ’ contains clauses, each with exactly 4 literals</li>
+  <li>Each variable occurs at most once in each clause (by construction: original literals have no duplicates, and new variables are unique per clause)</li>
+  <li>Total new variables: depends on clause sizes (1 variable per 3-literal clause, 2 per 2-literal clause, 3 per 1-literal clause)</li>
 </ul>
 
 <p><strong>Detailed Example:</strong></p>
@@ -166,47 +205,80 @@ Given a candidate solution (variable assignment):</p>
 <p>Consider 3-SAT instance (with each variable appearing at most once per clause):</p>
 <ul>
   <li>Variables: x₁, x₂, x₃</li>
-  <li>Clauses: C₁ = (x₁ ∨ !x₂ ∨ x₃), C₂ = (!x₁ ∨ x₂ ∨ x₃)</li>
+  <li>Clauses:
+    <ul>
+      <li>C₁ = (x₁ ∨ !x₂ ∨ x₃)  (3 literals)</li>
+      <li>C₂ = (!x₁ ∨ x₂)  (2 literals)</li>
+      <li>C₃ = (x₃)  (1 literal)</li>
+    </ul>
+  </li>
 </ul>
 
 <p><strong>Transformation:</strong></p>
+
+<p><strong>For C₁ (3 literals):</strong></p>
 <ul>
-  <li>C’₁ = (x₁ ∨ !x₂ ∨ x₃ ∨ y₁)</li>
-  <li>C’₂ = (!x₁ ∨ x₂ ∨ x₃ ∨ y₂)</li>
+  <li>Add variable w₁</li>
+  <li>C’₁₁ = (x₁ ∨ !x₂ ∨ x₃ ∨ w₁)</li>
+  <li>C’₁₂ = (x₁ ∨ !x₂ ∨ x₃ ∨ !w₁)</li>
 </ul>
 
-<p><strong>New variables:</strong> y₁, y₂</p>
+<p><strong>For C₂ (2 literals):</strong></p>
+<ul>
+  <li>Add variables w₂₁ and w₂₂</li>
+  <li>C’₂₁ = (!x₁ ∨ x₂ ∨ w₂₁ ∨ w₂₂)</li>
+  <li>C’₂₂ = (!x₁ ∨ x₂ ∨ w₂₁ ∨ !w₂₂)</li>
+  <li>C’₂₃ = (!x₁ ∨ x₂ ∨ !w₂₁ ∨ w₂₂)</li>
+  <li>C’₂₄ = (!x₁ ∨ x₂ ∨ !w₂₁ ∨ !w₂₂)</li>
+</ul>
+
+<p><strong>For C₃ (1 literal):</strong></p>
+<ul>
+  <li>Add variables w₃₁, w₃₂, w₃₃</li>
+  <li>C’₃₁ = (x₃ ∨ w₃₁ ∨ w₃₂ ∨ w₃₃)</li>
+  <li>C’₃₂ = (x₃ ∨ w₃₁ ∨ w₃₂ ∨ !w₃₃)</li>
+  <li>C’₃₃ = (x₃ ∨ w₃₁ ∨ !w₃₂ ∨ w₃₃)</li>
+  <li>C’₃₄ = (x₃ ∨ w₃₁ ∨ !w₃₂ ∨ !w₃₃)</li>
+  <li>C’₃₅ = (x₃ ∨ !w₃₁ ∨ w₃₂ ∨ w₃₃)</li>
+  <li>C’₃₆ = (x₃ ∨ !w₃₁ ∨ w₃₂ ∨ !w₃₃)</li>
+  <li>C’₃₇ = (x₃ ∨ !w₃₁ ∨ !w₃₂ ∨ w₃₃)</li>
+  <li>C’₃₈ = (x₃ ∨ !w₃₁ ∨ !w₃₂ ∨ !w₃₃)</li>
+</ul>
+
+<p><strong>New variables:</strong> w₁, w₂₁, w₂₂, w₃₁, w₃₂, w₃₃
+<strong>Total clauses:</strong> 2 + 4 + 8 = 14 clauses, all with exactly 4 literals</p>
 
 <p><strong>Verification:</strong></p>
 <ul>
   <li>Each clause has exactly 4 literals: ✓</li>
   <li>Each variable occurs at most once in each clause: ✓
     <ul>
-      <li>C’₁: x₁ (once), x₂ (once as !x₂), x₃ (once), y₁ (once)</li>
-      <li>C’₂: x₁ (once as !x₁), x₂ (once), x₃ (once), y₂ (once)</li>
+      <li>Original variables appear at most once per clause (by assumption)</li>
+      <li>New variables (w₁, w₂₁, w₂₂, w₃₁, w₃₂, w₃₃) are unique to their clause groups and appear at most once per clause</li>
     </ul>
   </li>
 </ul>
 
 <h3 id="22-output-conversion">2.2 Output Conversion</h3>
 
-<p><strong>Given:</strong> Exact 4-SAT solution (assignment to all n + m variables)</p>
+<p><strong>Given:</strong> Exact 4-SAT solution (assignment to all variables including new ones)</p>
 
 <p><strong>Extract 3-SAT Assignment:</strong></p>
 <ul>
-  <li>Simply use the assignment to the original n variables</li>
-  <li>Ignore the assignments to the new variables y₁, …, yₘ</li>
+  <li>Simply use the assignment to the original n variables (x₁, …, xₙ)</li>
+  <li>Ignore the assignments to the new variables (wⱼ, wⱼ₁, wⱼ₂, wⱼ₃, etc.)</li>
 </ul>
 
 <p><strong>Verify Satisfaction:</strong></p>
 <ul>
-  <li>For each original 3-clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+  <li>For each original clause Cⱼ:
     <ul>
-      <li>If Cⱼ is satisfied by the original literals, then C’ⱼ = (l₁ ∨ l₂ ∨ l₃ ∨ yⱼ) is also satisfied</li>
-      <li>If Cⱼ is not satisfied, then C’ⱼ requires yⱼ = TRUE to be satisfied</li>
-      <li>Since we can set yⱼ = TRUE if needed, the 4-SAT solution corresponds to a 3-SAT solution</li>
+      <li><strong>Case 1 (3 literals):</strong> If Cⱼ = (l₁ ∨ l₂ ∨ l₃) is satisfied, then both C’ⱼ₁ = (l₁ ∨ l₂ ∨ l₃ ∨ wⱼ) and C’ⱼ₂ = (l₁ ∨ l₂ ∨ l₃ ∨ !wⱼ) are satisfied. If Cⱼ is not satisfied, then both new clauses require wⱼ to be both TRUE and FALSE, which is impossible. Therefore, Cⱼ must be satisfied.</li>
+      <li><strong>Case 2 (2 literals):</strong> If Cⱼ = (l₁ ∨ l₂) is satisfied, then all four new clauses are satisfied. If Cⱼ is not satisfied, then all four clauses require specific combinations of wⱼ₁ and wⱼ₂ that cannot all be satisfied simultaneously. Therefore, Cⱼ must be satisfied.</li>
+      <li><strong>Case 3 (1 literal):</strong> If Cⱼ = (l₁) is satisfied, then all eight new clauses are satisfied. If Cⱼ is not satisfied, then all eight clauses require specific combinations of wⱼ₁, wⱼ₂, wⱼ₃ that cannot all be satisfied simultaneously. Therefore, Cⱼ must be satisfied.</li>
     </ul>
   </li>
+  <li>Since all original clauses are satisfied, the 3-SAT instance has a solution</li>
 </ul>
 
 <h2 id="3-correctness-justification">3. Correctness Justification</h2>
@@ -218,18 +290,19 @@ Given a candidate solution (variable assignment):</p>
 <p><strong>Construct Exact 4-SAT Assignment:</strong></p>
 <ul>
   <li>For original variables: Use assignment A</li>
-  <li>For new variables yⱼ: Set yⱼ = FALSE for all j</li>
+  <li>For new variables: Set them arbitrarily (e.g., all FALSE)</li>
 </ul>
 
 <p><strong>Verify Satisfaction:</strong></p>
 <ul>
-  <li>For each clause C’ⱼ = (l₁ ∨ l₂ ∨ l₃ ∨ yⱼ):
+  <li>For each original clause Cⱼ:
     <ul>
-      <li>Since original clause Cⱼ = (l₁ ∨ l₂ ∨ l₃) is satisfied by A, at least one of l₁, l₂, l₃ is TRUE</li>
-      <li>Therefore, C’ⱼ is satisfied regardless of yⱼ’s value</li>
-      <li>All clauses are satisfied</li>
+      <li><strong>Case 1 (3 literals):</strong> Since Cⱼ = (l₁ ∨ l₂ ∨ l₃) is satisfied by A, at least one of l₁, l₂, l₃ is TRUE. Therefore, both C’ⱼ₁ = (l₁ ∨ l₂ ∨ l₃ ∨ wⱼ) and C’ⱼ₂ = (l₁ ∨ l₂ ∨ l₃ ∨ !wⱼ) are satisfied regardless of wⱼ’s value.</li>
+      <li><strong>Case 2 (2 literals):</strong> Since Cⱼ = (l₁ ∨ l₂) is satisfied by A, at least one of l₁, l₂ is TRUE. Therefore, all four new clauses are satisfied regardless of wⱼ₁ and wⱼ₂’s values.</li>
+      <li><strong>Case 3 (1 literal):</strong> Since Cⱼ = (l₁) is satisfied by A, l₁ is TRUE. Therefore, all eight new clauses are satisfied regardless of wⱼ₁, wⱼ₂, wⱼ₃’s values.</li>
     </ul>
   </li>
+  <li>All clauses in φ’ are satisfied</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Exact 4-SAT has a solution.</p>
@@ -250,11 +323,15 @@ Given a candidate solution (variable assignment):</p>
 
 <p><strong>Check Clause Satisfaction:</strong></p>
 <ul>
-  <li>For each original clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
+  <li>For each original clause Cⱼ:
     <ul>
-      <li>If Cⱼ is not satisfied by the original assignment, then all of l₁, l₂, l₃ are FALSE</li>
-      <li>For C’ⱼ = (l₁ ∨ l₂ ∨ l₃ ∨ yⱼ) to be satisfied, we need yⱼ = TRUE</li>
-      <li>However, if φ is unsatisfiable, there exists at least one clause Cⱼ that cannot be satisfied</li>
+      <li><strong>Case 1 (3 literals):</strong> If Cⱼ = (l₁ ∨ l₂ ∨ l₃) is not satisfied, then all of l₁, l₂, l₃ are FALSE. For both C’ⱼ₁ = (l₁ ∨ l₂ ∨ l₃ ∨ wⱼ) and C’ⱼ₂ = (l₁ ∨ l₂ ∨ l₃ ∨ !wⱼ) to be satisfied, we need wⱼ = TRUE and wⱼ = FALSE simultaneously, which is impossible.</li>
+      <li><strong>Case 2 (2 literals):</strong> If Cⱼ = (l₁ ∨ l₂) is not satisfied, then both l₁ and l₂ are FALSE. For all four new clauses to be satisfied, we need specific combinations of wⱼ₁ and wⱼ₂ that cannot all be satisfied simultaneously.</li>
+      <li><strong>Case 3 (1 literal):</strong> If Cⱼ = (l₁) is not satisfied, then l₁ is FALSE. For all eight new clauses to be satisfied, we need specific combinations of wⱼ₁, wⱼ₂, wⱼ₃ that cannot all be satisfied simultaneously.</li>
+    </ul>
+  </li>
+  <li>If φ is unsatisfiable, there exists at least one clause Cⱼ that cannot be satisfied, leading to a contradiction
+    <ul>
       <li>Even if we set yⱼ = TRUE for that clause, we cannot satisfy all clauses simultaneously if the original formula is unsatisfiable</li>
     </ul>
   </li>

@@ -104,41 +104,13 @@ Given a candidate solution (hitting set H):</p>
   <li>Check that <code class="language-plaintext highlighter-rouge">|H|</code> ≤ b: O(1) time</li>
   <li>For each set Sᵢ:
     <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Check that H ∩ Sᵢ ≠ ∅: O(</td>
-              <td>Sᵢ</td>
-              <td>) time</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Check that H ∩ Sᵢ ≠ ∅: O(<code class="language-plaintext highlighter-rouge">|Sᵢ|</code>) time</li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check all sets: O(∑ᵢ</td>
-          <td>Sᵢ</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check all sets: O(∑ᵢ <code class="language-plaintext highlighter-rouge">|Sᵢ|</code>) time</li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(∑ᵢ</td>
-      <td>Sᵢ</td>
-      <td>), which is polynomial in input size.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(∑ᵢ <code class="language-plaintext highlighter-rouge">|Sᵢ|</code>), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Hitting Set ∈ NP.</p>
 

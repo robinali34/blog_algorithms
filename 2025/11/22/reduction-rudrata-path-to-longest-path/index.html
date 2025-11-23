@@ -103,12 +103,12 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (simple path P = v₁, v₂, …, vₖ):</p>
 <ol>
-  <li>Check that P is a simple path (no repeated vertices): O(k) time</li>
-  <li>Check that all edges in P exist in G: O(k) time</li>
+  <li>Check that P is a simple path (no repeated vertices): O(n) time (since k ≤ n)</li>
+  <li>Check that all edges in P exist in G: O(n) time (since k ≤ n)</li>
   <li>Check that the length of P (number of edges) equals g: O(1) time</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(k), which is polynomial in input size.</p>
+<p><strong>Total Time:</strong> O(n), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Longest Path ∈ NP.</p>
 

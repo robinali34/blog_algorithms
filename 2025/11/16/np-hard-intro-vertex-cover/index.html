@@ -157,7 +157,7 @@
 
 <p>Given a candidate solution (a set of at most k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has at most k vertices: O(k) time</li>
+  <li>Check that the set has at most k vertices: O(n) time (since k ≤ n)</li>
   <li>Check that every edge has at least one endpoint in the set: O(m) time (iterate through all edges and check if at least one endpoint is in the cover)</li>
 </ol>
 

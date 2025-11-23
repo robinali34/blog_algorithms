@@ -102,11 +102,11 @@
 Given a candidate solution (set S of a vertices):</p>
 <ol>
   <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> = a: O(1) time</li>
-  <li>Count the number of edges in the subgraph induced by S: O(a²) time</li>
+  <li>Count the number of edges in the subgraph induced by S: O(n²) time (since a ≤ n)</li>
   <li>Check if the count ≥ b: O(1) time</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(a²), which is polynomial in input size.</p>
+<p><strong>Total Time:</strong> O(n²), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Dense Subgraph ∈ NP.</p>
 

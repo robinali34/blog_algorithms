@@ -101,28 +101,8 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (sets V₁’ ⊆ V₁ and V₂’ ⊆ V₂):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>V₁ \ V₁’</td>
-          <td>≥ b: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>V₂ \ V₂’</td>
-          <td>≥ b: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|V₁ \ V₁'|</code> ≥ b: O(1) time</li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|V₂ \ V₂'|</code> ≥ b: O(1) time</li>
   <li>Construct remaining graphs G₁’ and G₂’ by deleting V₁’ and V₂’: O(n₁ + n₂ + m₁ + m₂) time</li>
   <li>Check that G₁’ and G₂’ are isomorphic: O(n²) time using graph isomorphism algorithms</li>
 </ol>
@@ -306,9 +286,9 @@ Given a candidate solution (sets V₁’ ⊆ V₁ and V₂’ ⊆ V₂):</p>
 <p><strong>Construction Time:</strong></p>
 <ul>
   <li>Set G₁ = G: O(1) time</li>
-  <li>Create K_k: O(k²) time (k vertices, k(k-1)/2 edges)</li>
+  <li>Create K_k: O(k²) ≤ O(n²) time (k vertices, k(k-1)/2 edges, since k ≤ n)</li>
   <li>Set b = k: O(1) time</li>
-  <li>Total: O(k²) time</li>
+  <li>Total: O(n²) time</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Reduction is polynomial-time.</p>

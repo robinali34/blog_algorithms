@@ -120,17 +120,17 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (circuit C):</p>
 <ol>
-  <li>Check that circuit C has size ≤ k: O(k) time</li>
+  <li>Check that circuit C has size ≤ k: O(n) time (since k ≤ n in typical cases)</li>
   <li>Check that C is a valid circuit structure:
     <ul>
-      <li>Verify gates are properly connected: O(k) time</li>
-      <li>Verify no cycles (circuit is acyclic): O(k) time</li>
+      <li>Verify gates are properly connected: O(n) time</li>
+      <li>Verify no cycles (circuit is acyclic): O(n) time</li>
     </ul>
   </li>
   <li>Evaluate circuit C on all input combinations to verify it computes the desired function:
     <ul>
-      <li>For each of 2ⁿ input combinations: O(k) time to evaluate</li>
-      <li>Total: O(2ⁿ · k) time</li>
+      <li>For each of 2ⁿ input combinations: O(n) time to evaluate</li>
+      <li>Total: O(2ⁿ · n) time</li>
     </ul>
   </li>
 </ol>

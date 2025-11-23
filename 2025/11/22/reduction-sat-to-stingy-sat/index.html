@@ -195,17 +195,17 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (variable assignment):</p>
 <ol>
-  <li>Check that at most k variables are true: O(n) time</li>
+  <li>Check that at most k variables are true: O(n) time (count TRUE variables)</li>
   <li>For each clause Cⱼ:
     <ul>
-      <li>Evaluate the clause: O(1) time</li>
-      <li>Check if at least one literal is TRUE: O(1) time</li>
+      <li>Evaluate the clause: O(<code class="language-plaintext highlighter-rouge">|Cⱼ|</code>) time (check each literal in the clause)</li>
+      <li>Check if at least one literal is TRUE: O(<code class="language-plaintext highlighter-rouge">|Cⱼ|</code>) time</li>
     </ul>
   </li>
-  <li>Check that all clauses are satisfied: O(m) time</li>
+  <li>Check that all m clauses are satisfied: O(nm) time (worst case: n literals per clause × m clauses)</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(n + m), which is polynomial in input size.</p>
+<p><strong>Total Time:</strong> O(n + nm) = O(nm), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Stingy SAT ∈ NP.</p>
 

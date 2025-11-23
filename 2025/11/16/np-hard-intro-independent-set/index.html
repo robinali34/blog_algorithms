@@ -152,8 +152,8 @@
 
 <p>Given a candidate solution (a set of k vertices), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the set has at least k vertices: O(k) time</li>
-  <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
+  <li>Check that the set has at least k vertices: O(n) time (since k ≤ n)</li>
+  <li>Check that no two vertices in the set are adjacent: O(n²) time (check all pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
 </ol>
 
 <p>Since k ≤ n, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</p>
@@ -437,7 +437,7 @@
 
 <p><strong>Given a candidate independent set of size k:</strong></p>
 <ul>
-  <li><strong>Time Complexity:</strong> O(k^2) - check all pairs for absence of edges</li>
+  <li><strong>Time Complexity:</strong> O(n²) - check all pairs for absence of edges (since k ≤ n)</li>
   <li><strong>Space Complexity:</strong> O(1) additional space</li>
   <li>This polynomial-time verifiability shows Independent Set is in NP</li>
 </ul>

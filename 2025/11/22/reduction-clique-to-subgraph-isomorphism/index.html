@@ -100,28 +100,8 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (mapping f: V_G → V_H):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that f is injective (one-to-one): O(</td>
-          <td>V_G</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that f maps V_G into V_H: O(</td>
-          <td>V_G</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that f is injective (one-to-one): O(<code class="language-plaintext highlighter-rouge">|V_G|</code>) time</li>
+  <li>Check that f maps V_G into V_H: O(<code class="language-plaintext highlighter-rouge">|V_G|</code>) time</li>
   <li>For each edge (u, v) ∈ E_G:
     <ul>
       <li>Check that (f(u), f(v)) ∈ E_H: O(1) time</li>
@@ -129,41 +109,13 @@ Given a candidate solution (mapping f: V_G → V_H):</p>
   </li>
   <li>Verify that the subgraph H’ induced by f(V_G) is isomorphic to G:
     <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Check that for each edge (u, v) ∈ E_G, (f(u), f(v)) ∈ E_H: O(</td>
-              <td>E_G</td>
-              <td>) time</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Check that for each non-edge (u, v) ∉ E_G, (f(u), f(v)) ∉ E_H: O(</td>
-              <td>V_G</td>
-              <td>²) time</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
+      <li>Check that for each edge (u, v) ∈ E_G, (f(u), f(v)) ∈ E_H: O(<code class="language-plaintext highlighter-rouge">|E_G|</code>) time</li>
+      <li>Check that for each non-edge (u, v) ∉ E_G, (f(u), f(v)) ∉ E_H: O(<code class="language-plaintext highlighter-rouge">|V_G|²</code>) time</li>
     </ul>
   </li>
 </ol>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Total Time:</strong> O(</td>
-      <td>V_G</td>
-      <td>²), which is polynomial in input size.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V_G|²</code>), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> Subgraph Isomorphism ∈ NP.</p>
 
@@ -234,17 +186,7 @@ Given a candidate solution (mapping f: V_G → V_H):</p>
 
 <p><strong>Verify Satisfaction:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>f(V_G) has k vertices (since f is injective and</td>
-          <td>V_G</td>
-          <td>= k)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>f(V_G) has k vertices (since f is injective and <code class="language-plaintext highlighter-rouge">|V_G|</code> = k)</li>
   <li>All pairs of vertices in f(V_G) are adjacent in H (since G is complete and f preserves edges)</li>
   <li>Therefore, f(V_G) is a clique of size k in H</li>
 </ul>
@@ -304,17 +246,7 @@ Given a candidate solution (mapping f: V_G → V_H):</p>
 <p><strong>Extract Clique:</strong></p>
 <ul>
   <li>Let C = f(V_G) = {f(1), f(2), …, f(k)} be the image of the mapping</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C has k vertices (since f is injective and</td>
-          <td>V_G</td>
-          <td>= k)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>C has k vertices (since f is injective and <code class="language-plaintext highlighter-rouge">|V_G|</code> = k)</li>
   <li>Since G = K_k is complete, for every edge (i, j) in G, we have (f(i), f(j)) ∈ E_H</li>
   <li>Therefore, all pairs of vertices in C are adjacent in H</li>
 </ul>
@@ -349,8 +281,8 @@ Given a candidate solution (mapping f: V_G → V_H):</p>
 <p><strong>Construction Time:</strong></p>
 <ul>
   <li>Use graph H as is: O(1) time</li>
-  <li>Create K_k: O(k²) time (k vertices, k(k-1)/2 edges)</li>
-  <li>Total: O(k²) time</li>
+  <li>Create K_k: O(k²) ≤ O(n²) time (k vertices, k(k-1)/2 edges, since k ≤ n)</li>
+  <li>Total: O(n²) time</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Reduction is polynomial-time.</p>
