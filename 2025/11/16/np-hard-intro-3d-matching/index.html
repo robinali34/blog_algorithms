@@ -103,35 +103,65 @@
 
 <p>Consider:</p>
 <ul>
-  <li>X = {x₁, x₂, x₁}</li>
-  <li>Y = {y_1, y_2, y_3}</li>
-  <li>Z = {z_1, z_2, z_3}</li>
-  <li>T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}</li>
+  <li>X = {x₁, x₂, x₃}</li>
+  <li>Y = {y₁, y₂, y₃}</li>
+  <li>Z = {z₁, z₂, z₃}</li>
+  <li>T = {(x₁, y₁, z₁), (x₁, y₂, z₂), (x₂, y₁, z₃), (x₂, y₃, z₁), (x₃, y₂, z₃), (x₃, y₃, z₂)}</li>
 </ul>
 
 <p><strong>Trying to find a perfect matching:</strong></p>
 <ul>
-  <li>If we pick (x₁, y_1, z_1), we can’t use (x₁, y_2, z_2) or (x₁, y_1, z_3) (they share x₁ or y_1)</li>
-  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_1) ✗ (both use z_1)</li>
-  <li>Try: (x₁, y_1, z_1), (x₁, y_3, z_2) ✗ (z_2 not available, need to check)</li>
-  <li>Actually: (x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3) ✓ (perfect matching!)</li>
+  <li>If we pick (x₁, y₁, z₁), we can’t use (x₁, y₂, z₂) (shares x₁) or (x₂, y₁, z₃) (shares y₁)</li>
+  <li>We must pick (x₂, y₃, z₁) from the remaining, but this shares z₁ with (x₁, y₁, z₁) ✗</li>
+  <li>Try: (x₁, y₂, z₂), (x₂, y₁, z₃), (x₃, y₃, z₂) ✗ (z₂ appears twice)</li>
+  <li>Try: (x₁, y₂, z₂), (x₂, y₁, z₃), (x₃, y₂, z₃) ✗ (y₂ appears twice)</li>
+</ul>
+
+<p><strong>This instance does NOT have a perfect matching</strong> because:</p>
+<ul>
+  <li>All triples containing z₁ also share either x₁ or y₁ with other triples</li>
+  <li>All triples containing z₂ share either x₁ or x₃ with other triples</li>
+  <li>All triples containing z₃ share either x₂ or x₃ with other triples</li>
 </ul>
 
 <h3 id="visual-example">Visual Example</h3>
 
-<p>A 3D matching instance:</p>
+<p>A 3D matching instance that HAS a perfect matching:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X: {x1, x2, x3}
-Y: {y1, y2, y3}  
-Z: {z1, z2, z3}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X: {x₁, x₂, x₃}
+Y: {y₁, y₂, y₃}  
+Z: {z₁, z₂, z₃}
 
 Triples:
-(x1,y1,z1)  (x1,y2,z2)
-(x2,y1,z3)  (x2,y3,z1)
-(x3,y2,z3)  (x3,y3,z2)
+(x₁, y₁, z₁)  (x₁, y₂, z₂)
+(x₂, y₂, z₃)  (x₂, y₃, z₁)
+(x₃, y₁, z₃)  (x₃, y₃, z₂)
 </code></pre></div></div>
 
-<p><strong>Perfect matching:</strong> {(x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3)}</p>
+<p><strong>Finding a perfect matching:</strong></p>
+<ul>
+  <li>Pick (x₁, y₁, z₁) → covers x₁, y₁, z₁</li>
+  <li>Can’t pick (x₁, y₂, z₂) (shares x₁), so skip it</li>
+  <li>Can’t pick (x₂, y₂, z₃) (shares y₂ with (x₁, y₂, z₂) which we skipped, but more importantly we need x₂)</li>
+  <li>Pick (x₂, y₃, z₁) ✗ (shares z₁ with (x₁, y₁, z₁))</li>
+  <li>Pick (x₂, y₂, z₃) ✗ (shares y₂ with (x₁, y₂, z₂) which we skipped)</li>
+</ul>
+
+<p>Let’s try a different approach:</p>
+<ul>
+  <li>Pick (x₁, y₂, z₂) → covers x₁, y₂, z₂</li>
+  <li>Pick (x₂, y₃, z₁) → covers x₂, y₃, z₁ (no conflict so far)</li>
+  <li>Pick (x₃, y₁, z₃) → covers x₃, y₁, z₃ (no conflict!)</li>
+</ul>
+
+<p><strong>Perfect matching:</strong> {(x₁, y₂, z₂), (x₂, y₃, z₁), (x₃, y₁, z₃)} ✓</p>
+
+<p>This covers all elements exactly once:</p>
+<ul>
+  <li>X: x₁, x₂, x₃ ✓</li>
+  <li>Y: y₂, y₃, y₁ ✓</li>
+  <li>Z: z₂, z₁, z₃ ✓</li>
+</ul>
 
 <h2 id="why-3d-matching-is-in-np">Why 3D Matching is in NP</h2>
 
