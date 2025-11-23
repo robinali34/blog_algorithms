@@ -31,11 +31,36 @@ Consider the formula:
 
 Is this satisfiable?
 
-- If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁ ∨ x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).
+Let's evaluate each clause:
+- Clause 1: (x₁ ∨ x₁) simplifies to x₁
+- Clause 2: (¬ x₁ ∨ x₁) is always TRUE (tautology)
+- Clause 3: (¬ x₁ ∨ ¬ x₁) simplifies to ¬ x₁
 
-- Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).
+So the formula simplifies to: x₁ ∧ TRUE ∧ ¬ x₁ = x₁ ∧ ¬ x₁ = FALSE
 
-So this formula is satisfiable.
+**Analysis:**
+- If x₁ = TRUE:
+  - Clause 1: (TRUE ∨ TRUE) = TRUE ✓
+  - Clause 2: (FALSE ∨ TRUE) = TRUE ✓
+  - Clause 3: (FALSE ∨ FALSE) = FALSE ✗
+  
+- If x₁ = FALSE:
+  - Clause 1: (FALSE ∨ FALSE) = FALSE ✗
+  - Clause 2: (TRUE ∨ FALSE) = TRUE ✓
+  - Clause 3: (TRUE ∨ TRUE) = TRUE ✓
+
+**Conclusion:** This formula is **unsatisfiable** because no single assignment to x₁ can satisfy all three clauses simultaneously.
+
+**Better Example (Satisfiable):**
+
+Consider the formula:
+(x₁ ∨ ¬ x₁) ∧ (x₁)
+
+This is satisfiable:
+- Clause 1: (x₁ ∨ ¬ x₁) is always TRUE (tautology)
+- Clause 2: (x₁) requires x₁ = TRUE
+
+With x₁ = TRUE, both clauses are satisfied, so the formula is satisfiable.
 
 ## Complexity Classes: P, NP, and NP-Complete
 
