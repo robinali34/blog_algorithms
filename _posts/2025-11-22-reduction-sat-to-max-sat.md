@@ -71,10 +71,10 @@ Given a SAT instance φ with n variables and m clauses, we construct a Max SAT i
 
 Consider SAT instance:
 - Variables: x₁, x₂, x₃
-- Clauses: C₁ = (x₁ ∨ ¬x₂), C₂ = (¬x₁ ∨ x₃), C₃ = (x₂ ∨ ¬x₃)
+- Clauses: C₁ = (x₁ ∨ !x₂), C₂ = (!x₁ ∨ x₃), C₃ = (x₂ ∨ !x₃)
 
 **Transformation:**
-- φ' = (x₁ ∨ ¬x₂) ∧ (¬x₁ ∨ x₃) ∧ (x₂ ∨ ¬x₃)
+- φ' = (x₁ ∨ !x₂) ∧ (!x₁ ∨ x₃) ∧ (x₂ ∨ !x₃)
 - g = 3
 
 **Max SAT instance:** (φ', 3)

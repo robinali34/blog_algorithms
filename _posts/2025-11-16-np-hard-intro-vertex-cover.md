@@ -143,7 +143,7 @@ We can also prove Vertex Cover is NP-complete by directly reducing from 3-SAT, s
 For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, …, x_n:
 
 1. **Create vertices**: 
-   - For each variable x_i, create two vertices: one for x_i and one for ¬ x_i
+   - For each variable x_i, create two vertices: one for x_i and one for ! x_i
    - For each clause C_j, create a triangle (3 vertices, one for each literal)
 
 2. **Add edges**:
@@ -388,7 +388,7 @@ Using linear programming relaxation:
 2. **Prove the reduction**: Show that G has an independent set of size ≥ k if and only if G has a vertex cover of size ≤ n - k.
 
 3. **Construct the graph** for the 3-SAT instance:
-   (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁)
+   (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁)
    Determine the vertex cover size and corresponding satisfying assignment.
 
 4. **Algorithm design**: Design a dynamic programming algorithm to find the minimum vertex cover in a tree. What is its time complexity?

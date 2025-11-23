@@ -39,7 +39,7 @@ If both conditions hold, then X is NP-complete.
 - **Input:** A Boolean formula φ in 3-CNF (conjunctive normal form with exactly 3 literals per clause)
 - **Output:** YES if φ is satisfiable, NO otherwise
 
-**Example:** φ = (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃) ∧ (x₁ ∨ x₂ ∨ ¬x₃)
+**Example:** φ = (x₁ ∨ !x₂ ∨ x₃) ∧ (!x₁ ∨ x₂ ∨ x₃) ∧ (x₁ ∨ x₂ ∨ !x₃)
 
 ## General Strategy for Reductions
 
@@ -77,7 +77,7 @@ If both conditions hold, then X is NP-complete.
 **Step 3: Connect Clause to Variable Gadgets**
 - For each clause vertex cⱼ,ᵢ representing literal l:
   - If l = xₖ, connect cⱼ,ᵢ to vₖ (if xₖ = FALSE, we can't use this clause vertex)
-  - If l = ¬xₖ, connect cⱼ,ᵢ to v'ₖ (if xₖ = TRUE, we can't use this clause vertex)
+  - If l = !xₖ, connect cⱼ,ᵢ to v'ₖ (if xₖ = TRUE, we can't use this clause vertex)
 
 **Step 4: Set k = n + m**
 - n = number of variables (one from each variable pair)
@@ -179,7 +179,7 @@ Therefore, **Clique is NP-complete**.
 **Detailed Construction:**
 - For variable xᵢ and clause Cⱼ:
   - If xᵢ appears positively in Cⱼ: create triple allowing TRUE assignment
-  - If ¬xᵢ appears in Cⱼ: create triple allowing FALSE assignment
+  - If !xᵢ appears in Cⱼ: create triple allowing FALSE assignment
 - Matching exists ↔ each variable has consistent assignment ↔ each clause is satisfied
 
 **Polynomial Time:** O(nm) triples created
@@ -217,7 +217,7 @@ Therefore, **3D Matching is NP-complete**.
 
 **Example (simplified):**
 - Variables: x₁, x₂
-- Clauses: (x₁ ∨ x₂), (¬x₁ ∨ x₂)
+- Clauses: (x₁ ∨ x₂), (!x₁ ∨ x₂)
 - Create numbers encoding assignments and clause satisfaction
 - Target: 1111 (both variables assigned, both clauses satisfied)
 

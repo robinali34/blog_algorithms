@@ -18,25 +18,25 @@ The Boolean Satisfiability Problem asks: **Given a Boolean formula, is there an 
 
 **Input:** A Boolean formula in Conjunctive Normal Form (CNF)
 - Variables: x₁, x₂, …, x_n (each can be TRUE or FALSE)
-- Literals: a variable or its negation (e.g., x₁ or ¬ x₁)
-- Clauses: disjunctions of literals (e.g., (x₁ ∨ ¬ x₁ ∨ x₁))
-- Formula: conjunction of clauses (e.g., (x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁))
+- Literals: a variable or its negation (e.g., x₁ or ! x₁)
+- Clauses: disjunctions of literals (e.g., (x₁ ∨ ! x₁ ∨ x₁))
+- Formula: conjunction of clauses (e.g., (x₁ ∨ ! x₁) ∧ (! x₁ ∨ x₁) ∧ (x₁ ∨ ! x₁))
 
 **Output:** YES if there exists an assignment that satisfies all clauses, NO otherwise
 
 ### Example
 
 Consider the formula:
-(x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁)
+(x₁ ∨ x₁) ∧ (! x₁ ∨ x₁) ∧ (! x₁ ∨ ! x₁)
 
 Is this satisfiable?
 
 Let's evaluate each clause:
 - Clause 1: (x₁ ∨ x₁) simplifies to x₁
-- Clause 2: (¬ x₁ ∨ x₁) is always TRUE (tautology)
-- Clause 3: (¬ x₁ ∨ ¬ x₁) simplifies to ¬ x₁
+- Clause 2: (! x₁ ∨ x₁) is always TRUE (tautology)
+- Clause 3: (! x₁ ∨ ! x₁) simplifies to ! x₁
 
-So the formula simplifies to: x₁ ∧ TRUE ∧ ¬ x₁ = x₁ ∧ ¬ x₁ = FALSE
+So the formula simplifies to: x₁ ∧ TRUE ∧ ! x₁ = x₁ ∧ ! x₁ = FALSE
 
 **Analysis:**
 - If x₁ = TRUE:
@@ -54,10 +54,10 @@ So the formula simplifies to: x₁ ∧ TRUE ∧ ¬ x₁ = x₁ ∧ ¬ x₁ = FAL
 **Better Example (Satisfiable):**
 
 Consider the formula:
-(x₁ ∨ ¬ x₁) ∧ (x₁)
+(x₁ ∨ ! x₁) ∧ (x₁)
 
 This is satisfiable:
-- Clause 1: (x₁ ∨ ¬ x₁) is always TRUE (tautology)
+- Clause 1: (x₁ ∨ ! x₁) is always TRUE (tautology)
 - Clause 2: (x₁) requires x₁ = TRUE
 
 With x₁ = TRUE, both clauses are satisfied, so the formula is satisfiable.
@@ -112,7 +112,7 @@ The Cook-Levin theorem proves SAT is NP-complete by:
 **3-SAT** is a restricted version of SAT where each clause contains exactly 3 literals.
 
 **Example:**
-(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
+(x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)
 
 ### Why 3-SAT?
 
@@ -206,7 +206,7 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 - **Space Complexity:** O(n + m)
 - **Why Polynomial:** 2-SAT has special structure that allows polynomial-time solution
 - **Key Method:** 
-  1. Create implication graph: For clause (a ∨ b), add edges (¬a → b) and (¬b → a)
+  1. Create implication graph: For clause (a ∨ b), add edges (!a → b) and (!b → a)
   2. Find strongly connected components (SCCs)
   3. Check if any variable and its negation are in the same SCC
   4. If no conflict, formula is satisfiable; otherwise unsatisfiable
@@ -238,7 +238,7 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 ## Practice Problems
 
 1. Determine if the following 3-SAT instance is satisfiable:
-   (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁ ∨ ¬ x₁)
+   (x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ ! x₁ ∨ ! x₁)
 
 2. Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?
 

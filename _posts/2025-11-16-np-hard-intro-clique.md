@@ -103,7 +103,7 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3
 
 1. **Create vertices**: For each literal occurrence in each clause, create a vertex
    - Label vertices as (i, j) where i is the clause number and j is the literal position
-   - Example: For clause C_1 = (x₁ ∨ ¬ x₁ ∨ x₁), create vertices (1,1) for x₁, (1,2) for ¬ x₁, and (1,3) for x₁
+   - Example: For clause C_1 = (x₁ ∨ ! x₁ ∨ x₁), create vertices (1,1) for x₁, (1,2) for ! x₁, and (1,3) for x₁
 
 2. **Add edges**: Connect two vertices (i_1, j_1) and (i_2, j_2) with an edge if:
    - They are in **different clauses** (i_1 neq i_2)
@@ -115,7 +115,7 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3
 
 **Intuition:**
 - A clique of size m means we pick one literal from each clause
-- Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both x and ¬ x
+- Since vertices in different clauses are connected only if literals are not complementary, a clique ensures we never pick both x and ! x
 - Therefore, a clique corresponds to a satisfying assignment
 
 **Formal Proof:**
@@ -131,25 +131,25 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3
 - If there's a clique of size m, we have one vertex (literal) from each clause
 - Set variables to make these literals true:
   - If literal is x_i, set x_i = TRUE
-  - If literal is ¬ x_i, set x_i = FALSE
+  - If literal is ! x_i, set x_i = FALSE
 - Since no complementary literals are in the clique, this assignment is consistent
 - This assignment satisfies all clauses
 
 ### Example Reduction
 
 Consider the 3-SAT instance:
-φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)
 
 **Step 1: Create vertices**
 - Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁
-- Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁
-- Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁
+- Clause 2: (2,1) for ! x₁, (2,2) for x₁, (2,3) for ! x₁
+- Clause 3: (3,1) for x₁, (3,2) for ! x₁, (3,3) for x₁
 
 **Step 2: Add edges**
 - Connect vertices from different clauses if literals are not complementary
-- For example: (1,1) (represents x₁) connects to (2,2) (x₁) and (2,3) (¬ x₁) and (3,1) (x₁) and (3,2) (¬ x₁) and (3,3) (x₁)
-- But (1,1) does NOT connect to (2,1) because x₁ and ¬ x₁ are complementary
-- Similarly, (1,3) does NOT connect to (2,3) because x₁ and ¬ x₁ are complementary
+- For example: (1,1) (represents x₁) connects to (2,2) (x₁) and (2,3) (! x₁) and (3,1) (x₁) and (3,2) (! x₁) and (3,3) (x₁)
+- But (1,1) does NOT connect to (2,1) because x₁ and ! x₁ are complementary
+- Similarly, (1,3) does NOT connect to (2,3) because x₁ and ! x₁ are complementary
 
 **Step 3: Find clique of size 3**
 - One possible clique: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
@@ -291,7 +291,7 @@ This reduction is polynomial-time because:
 ## Practice Problems
 
 1. **Construct the graph** for the 3-SAT instance:
-   (x₁ ∨ x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
+   (x₁ ∨ x₁ ∨ ! x₁) ∧ (! x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)
    Find a clique of size 3 and determine the corresponding satisfying assignment.
 
 2. **Prove the relationship**: Show that S is a clique in G if and only if S is an independent set in G̅ (the complement graph).

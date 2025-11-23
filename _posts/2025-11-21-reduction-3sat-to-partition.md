@@ -78,7 +78,7 @@ Given a 3-SAT instance with n variables and m clauses, we construct a Partition 
 **Step 3: Encode Clause Satisfaction**
 - For clause Cⱼ and variable xᵢ:
   - If xᵢ appears positively in Cⱼ: add 1 to clause digit (n+j) of vᵢ
-  - If ¬xᵢ appears in Cⱼ: add 1 to clause digit (n+j) of v'ᵢ
+  - If !xᵢ appears in Cⱼ: add 1 to clause digit (n+j) of v'ᵢ
 - This ensures that if a clause is satisfied, the corresponding clause digit contributes to the sum
 
 **Step 4: Create Clause Numbers**
@@ -96,7 +96,7 @@ Given a 3-SAT instance with n variables and m clauses, we construct a Partition 
 
 Consider 3-SAT instance:
 - Variables: x₁, x₂
-- Clauses: C₁ = (x₁ ∨ ¬x₂ ∨ x₁), C₂ = (¬x₁ ∨ x₂ ∨ x₂)
+- Clauses: C₁ = (x₁ ∨ !x₂ ∨ x₁), C₂ = (!x₁ ∨ x₂ ∨ x₂)
 
 **Variable Numbers (base 10, but think in base representation):**
 - v₁ (x₁ = TRUE): digit 1 = 1, digit 3 (clause 1) = 1, digit 4 (clause 2) = 0 → value encoding
@@ -203,7 +203,7 @@ Assume Partition has a solution (S₁, S₂).
 - Clause digit (n+j) must sum to the same value in S₁ and S₂
 - Variable numbers contribute:
   - vᵢ contributes 1 to clause digit if xᵢ appears positively in Cⱼ and vᵢ ∈ S₁
-  - v'ᵢ contributes 1 to clause digit if ¬xᵢ appears in Cⱼ and v'ᵢ ∈ S₁
+  - v'ᵢ contributes 1 to clause digit if !xᵢ appears in Cⱼ and v'ᵢ ∈ S₁
 - Slack numbers sⱼ and s'ⱼ can contribute, but:
   - If clause digit in S₁ has contribution ≥ 1 from variable numbers, then at least one literal is TRUE
   - If clause digit in S₁ has contribution 0 from variable numbers, slack must balance, but this means all literals are FALSE, which contradicts the balance requirement

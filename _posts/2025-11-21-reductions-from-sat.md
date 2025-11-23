@@ -32,7 +32,7 @@ SAT (Boolean Satisfiability) is the first problem proven NP-complete by the Cook
 - New variables can be set to satisfy intermediate clauses
 - Original clause satisfiable ↔ at least one new clause satisfiable
 
-**Hint:** For a clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) with k > 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ ... The new variables yᵢ act as "switches" that can be set to propagate satisfaction.
+**Hint:** For a clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) with k > 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (!y₁ ∨ l₃ ∨ y₂) ∧ ... The new variables yᵢ act as "switches" that can be set to propagate satisfaction.
 
 ### 1. NP-Completeness Proof of 3-SAT: Solution Validation
 
@@ -62,11 +62,11 @@ Given a SAT instance: formula φ in CNF with clauses C₁, C₂, ..., C_m.
 **Case 1: Clause has k > 3 literals**
 - For clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) where k > 3:
   - Introduce new variables y₁, y₂, ..., y_{k-3}
-  - Replace with: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ ... ∧ (¬y_{k-3} ∨ l_{k-1} ∨ lₖ)
+  - Replace with: (l₁ ∨ l₂ ∨ y₁) ∧ (!y₁ ∨ l₃ ∨ y₂) ∧ ... ∧ (!y_{k-3} ∨ l_{k-1} ∨ lₖ)
 
 **Case 2: Clause has k = 2 literals**
 - For clause (l₁ ∨ l₂):
-  - Replace with: (l₁ ∨ l₂ ∨ y) ∧ (l₁ ∨ l₂ ∨ ¬y) where y is new variable
+  - Replace with: (l₁ ∨ l₂ ∨ y) ∧ (l₁ ∨ l₂ ∨ !y) where y is new variable
   - Or simply: (l₁ ∨ l₂ ∨ l₁) (duplicate literal)
 
 **Case 3: Clause has k = 1 literal**
@@ -92,7 +92,7 @@ Given a SAT instance: formula φ in CNF with clauses C₁, C₂, ..., C_m.
 **Construct 3-SAT Assignment:**
 - For original variables: use assignment A
 - For new variables yᵢ: set to satisfy intermediate clauses
-- For clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) replaced by (l₁ ∨ l₂ ∨ y₁) ∧ ... ∧ (¬y_{k-3} ∨ l_{k-1} ∨ lₖ):
+- For clause (l₁ ∨ l₂ ∨ ... ∨ lₖ) replaced by (l₁ ∨ l₂ ∨ y₁) ∧ ... ∧ (!y_{k-3} ∨ l_{k-1} ∨ lₖ):
   - If any original literal is TRUE, set all yᵢ appropriately
   - If all original literals are FALSE, set y₁ = FALSE, then y₂ = FALSE, etc., until last clause needs y_{k-3} = TRUE
 
@@ -136,7 +136,7 @@ Given a SAT instance: formula φ in CNF with clauses C₁, C₂, ..., C_m.
 - Encode clause satisfaction as linear inequality: sum of literals ≥ 1
 - Use (1 - xᵢ) for negated literals
 
-**Hint:** Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ ¬x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.
+**Hint:** Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ !x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.
 
 ### 1. NP-Completeness Proof of ILP: Solution Validation
 
@@ -166,11 +166,11 @@ Given a SAT instance: formula φ in CNF with n variables and m clauses.
 - For each Boolean variable xᵢ, create ILP variable xᵢ ∈ {0,1}
 - For each clause Cⱼ = (l₁ ∨ l₂ ∨ ... ∨ lₖ):
   - Create constraint: ∑_{i=1}^k l'ᵢ ≥ 1
-  - Where l'ᵢ = xⱼ if lᵢ = xⱼ, and l'ᵢ = (1 - xⱼ) if lᵢ = ¬xⱼ
+  - Where l'ᵢ = xⱼ if lᵢ = xⱼ, and l'ᵢ = (1 - xⱼ) if lᵢ = !xⱼ
 - Return ILP instance: variables x ∈ {0,1}ⁿ, constraints as above
 
 **Example:**
-- Clause (x₁ ∨ ¬x₂ ∨ x₃) becomes: x₁ + (1 - x₂) + x₃ ≥ 1
+- Clause (x₁ ∨ !x₂ ∨ x₃) becomes: x₁ + (1 - x₂) + x₃ ≥ 1
 - Simplifies to: x₁ - x₂ + x₃ ≥ 0
 
 #### 2.2 Output Conversion

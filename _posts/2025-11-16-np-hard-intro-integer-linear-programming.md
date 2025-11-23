@@ -103,10 +103,10 @@ For a 3-SAT formula φ = C₁ ∧ C₂ ∧ … ∧ Cₘ with variables x₁, x�
 2. **Clauses:**
    - For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
      - If literal is xᵢ, use yᵢ
-     - If literal is ¬xᵢ, use (1 - yᵢ)
+     - If literal is !xᵢ, use (1 - yᵢ)
      - Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)
    
-   Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):
+   Example: For clause (x₁ ∨ !x₂ ∨ x₃):
    - Constraint: y₁ + (1 - y₂) + y₃ ≥ 1
    - Simplifies to: y₁ - y₂ + y₃ ≥ 0
 
@@ -331,7 +331,7 @@ All reductions are polynomial-time, establishing ILP as NP-complete.
    - Total weight must be ≤ capacity
    - Each item can be selected at most once
 
-2. **Reduce 3-SAT to ILP**: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.
+2. **Reduce 3-SAT to ILP**: For the 3-SAT instance (x₁ ∨ !x₂ ∨ x₃) ∧ (!x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.
 
 3. **LP Relaxation**: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?
 

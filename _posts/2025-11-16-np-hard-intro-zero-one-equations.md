@@ -103,7 +103,7 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m with variables x₁, x₂, 
 2. **Clauses:**
    - For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create an equation:
      - If literal is x_i, use y_i
-     - If literal is ¬ x_i, use (1 - y_i)
+     - If literal is ! x_i, use (1 - y_i)
      - Equation: y_{l_1} + y_{l_2} + y_{l_3} = 1 (exactly one literal is true)
    
    **Wait** - this doesn't work! A clause requires **at least one** true literal, not exactly one.
@@ -306,7 +306,7 @@ All reductions are polynomial-time, establishing ZOE as NP-complete.
    ```
    Find all 0-1 solutions.
 
-2. **Reduce 3-SAT to ZOE**: For the 3-SAT instance (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.
+2. **Reduce 3-SAT to ZOE**: For the 3-SAT instance (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.
 
 3. **Formulate as ZOE**: Convert the following to ZOE:
    - You have items, each can be selected (1) or not (0)

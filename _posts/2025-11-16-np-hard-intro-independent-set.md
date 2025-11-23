@@ -38,7 +38,7 @@ Consider the following graph:
     1---2
     |\ /|
     | X |
-    |/ |
+    |/  |
     3---4
 ```
 
@@ -151,7 +151,7 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3
 **Intuition:**
 - An independent set of size m means we pick one literal from each clause
 - Since vertices in the same clause are connected, we can pick at most one per clause
-- Since complementary literals are connected, we never pick both x and ¬ x
+- Since complementary literals are connected, we never pick both x and ! x
 - Therefore, an independent set corresponds to a satisfying assignment
 
 **Formal Proof:**
@@ -167,23 +167,23 @@ For a 3-SAT formula φ = C_1 ∧ C_2 ∧ … ∧ C_m where each clause C_i has 3
 - If there's an independent set of size m, we have one vertex (literal) from each clause
 - Set variables to make these literals true:
   - If literal is x_i, set x_i = TRUE
-  - If literal is ¬ x_i, set x_i = FALSE
+  - If literal is ! x_i, set x_i = FALSE
 - Since no complementary literals are in the independent set, this assignment is consistent
 - This assignment satisfies all clauses
 
 ### Example Reduction
 
 Consider the 3-SAT instance:
-φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)
 
 **Step 1: Create vertices**
 - Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁
-- Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁
-- Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁
+- Clause 2: (2,1) for ! x₁, (2,2) for x₁, (2,3) for ! x₁
+- Clause 3: (3,1) for x₁, (3,2) for ! x₁, (3,3) for x₁
 
 **Step 2: Add edges**
 - Connect vertices in the same clause: (1,1)-(1,2), (1,1)-(1,3), (1,2)-(1,3), etc.
-- Connect complementary literals: (1,1)-(2,1) (x₁ and ¬ x₁), (1,3)-(2,3) (x₁ and ¬ x₁), (1,2)-(3,2) (x₁ and ¬ x₁)
+- Connect complementary literals: (1,1)-(2,1) (x₁ and ! x₁), (1,3)-(2,3) (x₁ and ! x₁), (1,2)-(3,2) (x₁ and ! x₁)
 
 **Step 3: Find independent set of size 3**
 - One possible independent set: {(1,2), (2,2), (3,3)} representing x₁ from clause 1, x₁ from clause 2, and x₁ from clause 3
@@ -342,7 +342,7 @@ Both reductions are polynomial-time, establishing Independent Set as NP-complete
 2. **Prove Gallai's theorem**: Show that for any graph G, \alpha(G) + \beta(G) = n where \alpha(G) is the independence number and beta(G) is the vertex cover number.
 
 3. **Construct the graph** for the 3-SAT instance:
-   (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)
+   (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ! x₁)
    Find an independent set of size 3 and determine the corresponding satisfying assignment.
 
 4. **Algorithm design**: Design a dynamic programming algorithm to find the maximum independent set in a tree. What is its time complexity?

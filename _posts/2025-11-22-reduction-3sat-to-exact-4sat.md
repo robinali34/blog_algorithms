@@ -85,19 +85,19 @@ Given a 3-SAT instance φ with n variables and m clauses, we construct an Exact 
 
 Consider 3-SAT instance (with each variable appearing at most once per clause):
 - Variables: x₁, x₂, x₃
-- Clauses: C₁ = (x₁ ∨ ¬x₂ ∨ x₃), C₂ = (¬x₁ ∨ x₂ ∨ x₃)
+- Clauses: C₁ = (x₁ ∨ !x₂ ∨ x₃), C₂ = (!x₁ ∨ x₂ ∨ x₃)
 
 **Transformation:**
-- C'₁ = (x₁ ∨ ¬x₂ ∨ x₃ ∨ y₁)
-- C'₂ = (¬x₁ ∨ x₂ ∨ x₃ ∨ y₂)
+- C'₁ = (x₁ ∨ !x₂ ∨ x₃ ∨ y₁)
+- C'₂ = (!x₁ ∨ x₂ ∨ x₃ ∨ y₂)
 
 **New variables:** y₁, y₂
 
 **Verification:**
 - Each clause has exactly 4 literals: ✓
 - Each variable occurs at most once in each clause: ✓
-  - C'₁: x₁ (once), x₂ (once as ¬x₂), x₃ (once), y₁ (once)
-  - C'₂: x₁ (once as ¬x₁), x₂ (once), x₃ (once), y₂ (once)
+  - C'₁: x₁ (once), x₂ (once as !x₂), x₃ (once), y₁ (once)
+  - C'₂: x₁ (once as !x₁), x₂ (once), x₃ (once), y₂ (once)
 
 ### 2.2 Output Conversion
 

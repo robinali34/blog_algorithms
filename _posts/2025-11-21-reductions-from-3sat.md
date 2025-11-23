@@ -77,7 +77,7 @@ Given a 3-SAT instance φ with n variables x₁, x₂, ..., x_n and m clauses C�
 **Step 3: Connect Clause to Variable Gadgets**
 - For each clause vertex cⱼ,ᵢ representing literal l:
   - If l = xₖ (positive literal), add edge (cⱼ,ᵢ, v'ₖ)
-  - If l = ¬xₖ (negative literal), add edge (cⱼ,ᵢ, vₖ)
+  - If l = !xₖ (negative literal), add edge (cⱼ,ᵢ, vₖ)
 - This ensures: if we pick a clause vertex, we cannot pick the conflicting variable vertex
 
 **Step 4: Set Target**
@@ -128,7 +128,7 @@ Given a 3-SAT instance φ with n variables x₁, x₂, ..., x_n and m clauses C�
 - Clause vertices: No conflicts (we pick one per triangle)
 - Variable-clause connections: If literal l is TRUE:
   - If l = xₖ, we picked vₖ (TRUE), so we didn't pick v'ₖ, so no conflict with cⱼ,ᵢ
-  - If l = ¬xₖ, we picked v'ₖ (FALSE), so we didn't pick vₖ, so no conflict with cⱼ,ᵢ
+  - If l = !xₖ, we picked v'ₖ (FALSE), so we didn't pick vₖ, so no conflict with cⱼ,ᵢ
 
 **Conclusion:** S is an independent set of size n + m.
 
@@ -150,7 +150,7 @@ Assume Independent Set instance has solution S of size n + m.
 - This clause vertex corresponds to a literal
 - By construction, if cⱼ,ᵢ is in S, then:
   - If cⱼ,ᵢ represents xₖ, then v'ₖ is not in S, so xₖ = TRUE
-  - If cⱼ,ᵢ represents ¬xₖ, then vₖ is not in S, so xₖ = FALSE
+  - If cⱼ,ᵢ represents !xₖ, then vₖ is not in S, so xₖ = FALSE
 - Therefore, the literal corresponding to cⱼ,ᵢ is TRUE
 
 **Contradiction:**
@@ -173,7 +173,7 @@ Assume Independent Set instance has solution S of size n + m.
 - For each clause Cⱼ, exactly one clause vertex cⱼ,ᵢ is in S
 - By construction of connections:
   - If cⱼ,ᵢ represents literal xₖ and cⱼ,ᵢ ∈ S, then v'ₖ ∉ S, so xₖ = TRUE
-  - If cⱼ,ᵢ represents literal ¬xₖ and cⱼ,ᵢ ∈ S, then vₖ ∉ S, so xₖ = FALSE
+  - If cⱼ,ᵢ represents literal !xₖ and cⱼ,ᵢ ∈ S, then vₖ ∉ S, so xₖ = FALSE
 - Therefore, the literal corresponding to cⱼ,ᵢ is TRUE
 - Each clause has at least one TRUE literal
 
@@ -429,7 +429,7 @@ Given a 3-SAT instance φ with n variables and m clauses, we construct a Subset 
   - **v'ᵢ**: Represents xᵢ = FALSE
     - Variable digit i = 1
     - All other variable digits = 0
-    - Clause digit (n+j) = 1 if ¬xᵢ appears in Cⱼ, else 0
+    - Clause digit (n+j) = 1 if !xᵢ appears in Cⱼ, else 0
 
 **Step 3: Create Target Number**
 - Target t has:
