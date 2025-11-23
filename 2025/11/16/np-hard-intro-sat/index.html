@@ -93,16 +93,47 @@
 
 <p>Is this satisfiable?</p>
 
+<p>Let’s evaluate each clause:</p>
 <ul>
-  <li>
-    <p>If x₁ = TRUE, then the first clause is satisfied. For the second clause (¬ x₁ ∨ x₁) to be satisfied, we need x₁ = TRUE. With x₁ = TRUE, the third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This assignment satisfies all clauses: (x₁=TRUE, x₁=FALSE, x₁=TRUE).</p>
+  <li>Clause 1: (x₁ ∨ x₁) simplifies to x₁</li>
+  <li>Clause 2: (¬ x₁ ∨ x₁) is always TRUE (tautology)</li>
+  <li>Clause 3: (¬ x₁ ∨ ¬ x₁) simplifies to ¬ x₁</li>
+</ul>
+
+<p>So the formula simplifies to: x₁ ∧ TRUE ∧ ¬ x₁ = x₁ ∧ ¬ x₁ = FALSE</p>
+
+<p><strong>Analysis:</strong></p>
+<ul>
+  <li>If x₁ = TRUE:
+    <ul>
+      <li>Clause 1: (TRUE ∨ TRUE) = TRUE ✓</li>
+      <li>Clause 2: (FALSE ∨ TRUE) = TRUE ✓</li>
+      <li>Clause 3: (FALSE ∨ FALSE) = FALSE ✗</li>
+    </ul>
   </li>
-  <li>
-    <p>Alternatively, if x₁ = FALSE, then the first clause requires x₁ = TRUE. The second clause is automatically satisfied. The third clause (¬ x₁ ∨ ¬ x₁) requires x₁ = FALSE. This also works: (x₁=FALSE, x₁=TRUE, x₁=FALSE).</p>
+  <li>If x₁ = FALSE:
+    <ul>
+      <li>Clause 1: (FALSE ∨ FALSE) = FALSE ✗</li>
+      <li>Clause 2: (TRUE ∨ FALSE) = TRUE ✓</li>
+      <li>Clause 3: (TRUE ∨ TRUE) = TRUE ✓</li>
+    </ul>
   </li>
 </ul>
 
-<p>So this formula is satisfiable.</p>
+<p><strong>Conclusion:</strong> This formula is <strong>unsatisfiable</strong> because no single assignment to x₁ can satisfy all three clauses simultaneously.</p>
+
+<p><strong>Better Example (Satisfiable):</strong></p>
+
+<p>Consider the formula:
+(x₁ ∨ ¬ x₁) ∧ (x₁)</p>
+
+<p>This is satisfiable:</p>
+<ul>
+  <li>Clause 1: (x₁ ∨ ¬ x₁) is always TRUE (tautology)</li>
+  <li>Clause 2: (x₁) requires x₁ = TRUE</li>
+</ul>
+
+<p>With x₁ = TRUE, both clauses are satisfied, so the formula is satisfiable.</p>
 
 <h2 id="complexity-classes-p-np-and-np-complete">Complexity Classes: P, NP, and NP-Complete</h2>
 
