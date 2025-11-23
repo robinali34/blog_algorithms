@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-23T05:56:48+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: 3-SAT to Exact 4-SAT</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat/" rel="alternate" type="text/html" title="Reduction: 3-SAT to Exact 4-SAT" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat/"><![CDATA[<h2 id="introduction">Introduction</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml" rel="self" type="application/atom+xml" /><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/" rel="alternate" type="text/html" /><updated>2025-11-23T06:02:11+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/feed.xml</id><title type="html">Robina Li</title><subtitle>Algorithms Blog - Graduate Algorithms course notes and resources</subtitle><entry><title type="html">Reduction: 3-SAT to Exact 4-SAT</title><link href="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat/" rel="alternate" type="text/html" title="Reduction: 3-SAT to Exact 4-SAT" /><published>2025-11-22T00:00:00+00:00</published><updated>2025-11-22T00:00:00+00:00</updated><id>https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat</id><content type="html" xml:base="https://robinali34.github.io/blog_algorithms//blog_algorithms/2025/11/22/reduction-3sat-to-exact-4sat/"><![CDATA[<h2 id="introduction">Introduction</h2>
 
 <p>This post provides a detailed proof that the Exact 4-SAT problem is NP-complete by reducing from 3-SAT. The reduction transforms 3-clause formulas into 4-clause formulas while preserving satisfiability and ensuring each variable occurs at most once per clause.</p>
 
@@ -640,15 +640,7 @@ Given a candidate solution (set C of k vertices):</p>
 
 <p><strong>Output:</strong> YES if there exists a set of a vertices of G such that there are at least b edges between them, NO otherwise.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Note:</strong> The problem asks to find a set S ⊆ V with</td>
-      <td>S</td>
-      <td>= a such that the number of edges in the subgraph induced by S is at least b.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Note:</strong> The problem asks to find a set S ⊆ V with <code class="language-plaintext highlighter-rouge">|S|</code> = a such that the number of edges in the subgraph induced by S is at least b.</p>
 
 <h3 id="clique-problem">Clique Problem</h3>
 
@@ -667,17 +659,7 @@ Given a candidate solution (set C of k vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of a vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>= a: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> = a: O(1) time</li>
   <li>Count the number of edges in the subgraph induced by S: O(a²) time</li>
   <li>Check if the count ≥ b: O(1) time</li>
 </ol>
@@ -1304,30 +1286,8 @@ Given a candidate solution (sets V₁’ ⊆ V₁ and V₂’ ⊆ V₂):</p>
 
 <p><strong>Verify Satisfaction:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V₁ \ V₁’</td>
-          <td>=</td>
-          <td>C</td>
-          <td>= k ≥ b = k: ✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V₂ \ V₂’</td>
-          <td>=</td>
-          <td>V₂</td>
-          <td>= k ≥ b = k: ✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|V₁ \ V₁'|</code> = <code class="language-plaintext highlighter-rouge">|C|</code> = k ≥ b = k: ✓</li>
+  <li><code class="language-plaintext highlighter-rouge">|V₂ \ V₂'|</code> = <code class="language-plaintext highlighter-rouge">|V₂|</code> = k ≥ b = k: ✓</li>
   <li>G₁’ is isomorphic to G₂’: ✓ (both are K_k)</li>
   <li>Therefore, the solution is valid</li>
 </ul>
@@ -2036,15 +1996,7 @@ Given a candidate solution (clique C of size k, independent set I of size k):</p
 
 <p><strong>Output:</strong> YES if there exists a set of a vertices of G such that there are at most b edges between them, NO otherwise.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Note:</strong> The problem asks to find a set S ⊆ V with</td>
-      <td>S</td>
-      <td>= a such that the number of edges in the subgraph induced by S is at most b.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Note:</strong> The problem asks to find a set S ⊆ V with <code class="language-plaintext highlighter-rouge">|S|</code> = a such that the number of edges in the subgraph induced by S is at most b.</p>
 
 <h3 id="independent-set-problem">Independent Set Problem</h3>
 
@@ -2063,17 +2015,7 @@ Given a candidate solution (clique C of size k, independent set I of size k):</p
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of a vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>= a: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> = a: O(1) time</li>
   <li>Count the number of edges in the subgraph induced by S: O(a²) time</li>
   <li>Check if the count ≤ b: O(1) time</li>
 </ol>
@@ -2328,17 +2270,7 @@ Given a candidate solution (set S of a vertices):</p>
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (graph G = ({1, 2, …, n}, E)):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that total cost ≤ b: O(</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that total cost ≤ b: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
   <li>For each pair (i, j) with i ≠ j:
     <ul>
       <li>Find r_ij vertex-disjoint paths: O(n²) time using max-flow algorithms</li>

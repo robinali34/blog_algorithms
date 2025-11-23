@@ -111,17 +111,7 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (graph G = ({1, 2, …, n}, E)):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that total cost ≤ b: O(</td>
-          <td>E</td>
-          <td>) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that total cost ≤ b: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
   <li>For each pair (i, j) with i ≠ j:
     <ul>
       <li>Find r_ij vertex-disjoint paths: O(n²) time using max-flow algorithms</li>

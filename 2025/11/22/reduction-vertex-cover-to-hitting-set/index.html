@@ -101,17 +101,7 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (hitting set H):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>H</td>
-          <td>≤ b: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|H|</code> ≤ b: O(1) time</li>
   <li>For each set Sᵢ:
     <ul>
       <li>
@@ -176,17 +166,7 @@ Given a candidate solution (hitting set H):</p>
       <li>Create set Sₑ = {u, v} (set containing the two endpoints)</li>
     </ul>
   </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Family of sets: {S₁, S₂, …, Sₘ} where m =</td>
-          <td>E</td>
-          <td>(one set per edge)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Family of sets: {S₁, S₂, …, Sₘ} where m = <code class="language-plaintext highlighter-rouge">|E|</code> (one set per edge)</li>
 </ul>
 
 <p><strong>Step 3: Set Budget</strong></p>
@@ -255,18 +235,7 @@ Given a candidate solution (hitting set H):</p>
 <ul>
   <li>Use C as the hitting set H</li>
   <li>H = C ⊆ V = U</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>H</td>
-          <td>=</td>
-          <td>C</td>
-          <td>≤ k = b</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|H|</code> = <code class="language-plaintext highlighter-rouge">|C|</code> ≤ k = b</li>
 </ul>
 
 <p><strong>Verify Hitting Property:</strong></p>
@@ -295,16 +264,7 @@ Given a candidate solution (hitting set H):</p>
 <ul>
   <li>Use H as the vertex cover</li>
   <li>H ⊆ U = V</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>H</td>
-          <td>≤ b = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|H|</code> ≤ b = k</li>
 </ul>
 
 <p><strong>Check Coverage:</strong></p>
@@ -336,16 +296,7 @@ Given a candidate solution (hitting set H):</p>
 <ul>
   <li>Use H as the vertex cover</li>
   <li>H ⊆ U = V</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>H</td>
-          <td>≤ b = k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|H|</code> ≤ b = k</li>
 </ul>
 
 <p><strong>Verify Coverage:</strong></p>

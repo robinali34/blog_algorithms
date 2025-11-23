@@ -102,17 +102,7 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (collection C of at most k sets):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>C</td>
-          <td>≤ k: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|C|</code> ≤ k: O(1) time</li>
   <li>Check that C ⊆ S: O(k) time</li>
   <li>
     <table>
@@ -155,16 +145,7 @@ Given a candidate solution (collection C of at most k sets):</p>
 <p><strong>Step 1: Set Universe</strong></p>
 <ul>
   <li>U = E (edges become universe elements)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>U</td>
-          <td>= m</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|U|</code> = m</li>
 </ul>
 
 <p><strong>Step 2: Create Sets from Vertices</strong></p>
@@ -175,16 +156,7 @@ Given a candidate solution (collection C of at most k sets):</p>
     </ul>
   </li>
   <li>Collection S = {Sᵥ : v ∈ V}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>S</td>
-          <td>= n</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = n</li>
 </ul>
 
 <p><strong>Step 3: Set Parameter</strong></p>
@@ -258,18 +230,7 @@ Given a candidate solution (collection C of at most k sets):</p>
 <ul>
   <li>For each vertex v ∈ C, include set Sᵥ in the collection</li>
   <li>Collection C_sets = {Sᵥ : v ∈ C}</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C_sets</td>
-          <td>=</td>
-          <td>C</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|C_sets|</code> = <code class="language-plaintext highlighter-rouge">|C|</code> ≤ k</li>
 </ul>
 
 <p><strong>Verify Coverage:</strong></p>

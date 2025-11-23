@@ -82,15 +82,7 @@
 
 <p><strong>Output:</strong> YES if there exists a set of a vertices of G such that there are at least b edges between them, NO otherwise.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Note:</strong> The problem asks to find a set S ⊆ V with</td>
-      <td>S</td>
-      <td>= a such that the number of edges in the subgraph induced by S is at least b.</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>Note:</strong> The problem asks to find a set S ⊆ V with <code class="language-plaintext highlighter-rouge">|S|</code> = a such that the number of edges in the subgraph induced by S is at least b.</p>
 
 <h3 id="clique-problem">Clique Problem</h3>
 
@@ -109,17 +101,7 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (set S of a vertices):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>S</td>
-          <td>= a: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> = a: O(1) time</li>
   <li>Count the number of edges in the subgraph induced by S: O(a²) time</li>
   <li>Check if the count ≥ b: O(1) time</li>
 </ol>

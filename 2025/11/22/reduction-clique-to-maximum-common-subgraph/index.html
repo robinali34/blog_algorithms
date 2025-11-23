@@ -230,30 +230,8 @@ Given a candidate solution (sets V₁’ ⊆ V₁ and V₂’ ⊆ V₂):</p>
 
 <p><strong>Verify Satisfaction:</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V₁ \ V₁’</td>
-          <td>=</td>
-          <td>C</td>
-          <td>= k ≥ b = k: ✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>V₂ \ V₂’</td>
-          <td>=</td>
-          <td>V₂</td>
-          <td>= k ≥ b = k: ✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|V₁ \ V₁'|</code> = <code class="language-plaintext highlighter-rouge">|C|</code> = k ≥ b = k: ✓</li>
+  <li><code class="language-plaintext highlighter-rouge">|V₂ \ V₂'|</code> = <code class="language-plaintext highlighter-rouge">|V₂|</code> = k ≥ b = k: ✓</li>
   <li>G₁’ is isomorphic to G₂’: ✓ (both are K_k)</li>
   <li>Therefore, the solution is valid</li>
 </ul>

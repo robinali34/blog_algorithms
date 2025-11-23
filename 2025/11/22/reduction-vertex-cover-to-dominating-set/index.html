@@ -103,17 +103,7 @@
 <p><strong>Verification Algorithm:</strong>
 Given a candidate solution (dominating set D):</p>
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Check that</td>
-          <td>D</td>
-          <td>≤ b: O(1) time</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Check that <code class="language-plaintext highlighter-rouge">|D|</code> ≤ b: O(1) time</li>
   <li>For each vertex v ∈ V:
     <ul>
       <li>Check if v ∈ D: O(1) time, OR</li>
@@ -223,18 +213,7 @@ Given a candidate solution (dominating set D):</p>
 <ul>
   <li>Use C as the dominating set D</li>
   <li>D = C ⊆ V ⊆ V’</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>D</td>
-          <td>=</td>
-          <td>C</td>
-          <td>≤ k = b</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|D|</code> = <code class="language-plaintext highlighter-rouge">|C|</code> ≤ k = b</li>
 </ul>
 
 <p><strong>Verify Dominating Property:</strong></p>
@@ -287,17 +266,7 @@ Given a candidate solution (dominating set D):</p>
 <ul>
   <li>If D contains only original vertices: Use D as vertex cover</li>
   <li>If D contains edge vertices: For each edge vertex wₑ in D, replace it with one of its neighbors (u or v)</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>This gives us a set C ⊆ V of size ≤</td>
-          <td>D</td>
-          <td>≤ k</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>This gives us a set C ⊆ V of size ≤ <code class="language-plaintext highlighter-rouge">|D|</code> ≤ k</li>
 </ul>
 
 <p><strong>Check Coverage:</strong></p>
@@ -339,18 +308,7 @@ Given a candidate solution (dominating set D):</p>
 
 <p><strong>Step 2: Verify Size</strong></p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>C</td>
-          <td>≤</td>
-          <td>D</td>
-          <td>≤ b = k (we replaced each edge vertex with one neighbor, possibly duplicates)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><code class="language-plaintext highlighter-rouge">|C|</code> ≤ <code class="language-plaintext highlighter-rouge">|D|</code> ≤ b = k (we replaced each edge vertex with one neighbor, possibly duplicates)</li>
 </ul>
 
 <p><strong>Step 3: Verify Coverage</strong></p>
