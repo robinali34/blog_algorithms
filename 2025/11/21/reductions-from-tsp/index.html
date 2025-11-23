@@ -93,7 +93,7 @@
   <li>Hamiltonian cycle in filtered graph ↔ TSP tour</li>
 </ul>
 
-<p><strong>Hint:</strong> Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> exists if and only if Hamiltonian cycle exists (using only weight-1 edges).</p>
+<p><strong>Hint:</strong> Use binary weights: weight 1 if original weight ≤ B, weight 2 otherwise. Then TSP tour of weight ≤ n exists if and only if Hamiltonian cycle exists (using only weight-1 edges).</p>
 
 <h3 id="1-np-completeness-proof-of-hamiltonian-cycle-solution-validation">1. NP-Completeness Proof of Hamiltonian Cycle: Solution Validation</h3>
 
@@ -144,7 +144,7 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <ul>
   <li>C is cycle visiting all vertices</li>
   <li>All edges in C have weight ≤ B (by construction)</li>
-  <li>Total weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B (but actually ≤ B if weights are appropriate)</li>
+  <li>Total weight ≤ n · B (but actually ≤ B if weights are appropriate)</li>
   <li>Return C as TSP tour</li>
 </ul>
 
@@ -173,9 +173,9 @@ Given a candidate solution (cycle - sequence of vertices):</p>
   <li>If Hamiltonian cycle exists in G’:
     <ul>
       <li>All edges have weight ≤ B</li>
-      <li>Cycle is TSP tour with weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · (max weight ≤ B)</li>
+      <li>Cycle is TSP tour with weight ≤ n · (max weight ≤ B)</li>
       <li>But need to ensure total ≤ B</li>
-      <li>If all edges ≤ B and cycle has <code class="language-plaintext highlighter-rouge">|V|</code> edges, total ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B</li>
+      <li>If all edges ≤ B and cycle has n edges, total ≤ n · B</li>
       <li>Need refinement: use binary weights (1 if ≤ B, 2 if &gt; B)</li>
     </ul>
   </li>
@@ -184,8 +184,8 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <p><strong>Refined Construction:</strong></p>
 <ul>
   <li>Set weights: w’(u, v) = 1 if w(u, v) ≤ B, else w’(u, v) = 2</li>
-  <li>Bound B’ = <code class="language-plaintext highlighter-rouge">|V|</code></li>
-  <li>Then: TSP tour weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> ↔ All edges have weight 1 ↔ Hamiltonian cycle exists</li>
+  <li>Bound B’ = n</li>
+  <li>Then: TSP tour weight ≤ n ↔ All edges have weight 1 ↔ Hamiltonian cycle exists</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Hamiltonian Cycle has no solution.</p>
@@ -198,8 +198,8 @@ Given a candidate solution (cycle - sequence of vertices):</p>
 <ul>
   <li>C visits all vertices exactly once</li>
   <li>All edges in C are in G’, so have weight ≤ B (by construction)</li>
-  <li>Total weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code> · B</li>
-  <li>With refined construction (binary weights), total weight = <code class="language-plaintext highlighter-rouge">|V|</code> ≤ B’</li>
+  <li>Total weight ≤ n · B</li>
+  <li>With refined construction (binary weights), total weight = n ≤ B’</li>
 </ul>
 
 <p><strong>Conclusion:</strong> TSP has a solution.</p>

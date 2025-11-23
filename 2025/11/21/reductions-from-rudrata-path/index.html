@@ -225,19 +225,19 @@ Given a candidate solution (path P):</p>
 
 <p><strong>Construction:</strong></p>
 <ul>
-  <li>Return Longest Path instance: graph G, target length k = <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
+  <li>Return Longest Path instance: graph G, target length k = n - 1</li>
 </ul>
 
-<p><strong>Key Property:</strong> Hamiltonian path ↔ Path of length <code class="language-plaintext highlighter-rouge">|V|</code> - 1</p>
+<p><strong>Key Property:</strong> Hamiltonian path ↔ Path of length n - 1</p>
 
 <h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<p><strong>Given:</strong> Longest Path solution (path P of length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1)</p>
+<p><strong>Given:</strong> Longest Path solution (path P of length ≥ n - 1)</p>
 
 <p><strong>Extract Hamiltonian Path:</strong></p>
 <ul>
-  <li>Path P has length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
-  <li>Since graph has <code class="language-plaintext highlighter-rouge">|V|</code> vertices, path visits all vertices</li>
+  <li>Path P has length ≥ n - 1</li>
+  <li>Since graph has n vertices, path visits all vertices</li>
   <li>P is Hamiltonian path</li>
 </ul>
 
@@ -249,9 +249,9 @@ Given a candidate solution (path P):</p>
 
 <p><strong>Construct Longest Path:</strong></p>
 <ul>
-  <li>Path P visits all <code class="language-plaintext highlighter-rouge">|V|</code> vertices</li>
-  <li>Length of P = <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
-  <li>Therefore, path of length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1 exists</li>
+  <li>Path P visits all n vertices</li>
+  <li>Length of P = n - 1</li>
+  <li>Therefore, path of length ≥ n - 1 exists</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Longest Path has a solution.</p>
@@ -262,21 +262,21 @@ Given a candidate solution (path P):</p>
 
 <p><strong>Proof:</strong></p>
 <ul>
-  <li>Maximum path length is <code class="language-plaintext highlighter-rouge">|V|</code> - 1 (visiting all vertices)</li>
-  <li>If no Hamiltonian path exists, maximum path length &lt; <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
-  <li>Therefore, no path of length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
+  <li>Maximum path length is n - 1 (visiting all vertices)</li>
+  <li>If no Hamiltonian path exists, maximum path length &lt; n - 1</li>
+  <li>Therefore, no path of length ≥ n - 1</li>
 </ul>
 
 <p><strong>Conclusion:</strong> Longest Path has no solution.</p>
 
 <h4 id="32b-if-longest-path-has-a-solution-then-rudrata-path-has-a-solution">3.2b If Longest Path has a solution, then Rudrata Path has a solution</h4>
 
-<p><strong>Given:</strong> Longest Path instance has solution (path P of length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1).</p>
+<p><strong>Given:</strong> Longest Path instance has solution (path P of length ≥ n - 1).</p>
 
 <p><strong>Extract Hamiltonian Path:</strong></p>
 <ul>
-  <li>Path P has length ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
-  <li>Since graph has <code class="language-plaintext highlighter-rouge">|V|</code> vertices, P must visit all vertices</li>
+  <li>Path P has length ≥ n - 1</li>
+  <li>Since graph has n vertices, P must visit all vertices</li>
   <li>P is Hamiltonian path</li>
 </ul>
 
@@ -293,7 +293,7 @@ Given a candidate solution (path P):</p>
 <ol>
   <li><strong>Adding Constraints:</strong> Rudrata Path → (s,t)-Path adds endpoints</li>
   <li><strong>Optimization:</strong> Rudrata Path → Longest Path is special case</li>
-  <li><strong>Path Length:</strong> Maximum is <code class="language-plaintext highlighter-rouge">|V|</code> - 1</li>
+  <li><strong>Path Length:</strong> Maximum is n - 1</li>
   <li><strong>Template Structure:</strong> All reductions follow rigorous format</li>
 </ol>
 

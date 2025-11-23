@@ -134,13 +134,13 @@
 
 <p>Given a candidate solution (a sequence of vertices representing a cycle), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the cycle has exactly <code class="language-plaintext highlighter-rouge">|V|</code> vertices: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time</li>
-  <li>Check that each vertex appears exactly once: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time (use a set or array)</li>
-  <li>Check that consecutive vertices in the cycle are adjacent: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time (check <code class="language-plaintext highlighter-rouge">|V|</code> edges, including the wrap-around edge from last to first)</li>
+  <li>Check that the cycle has exactly n vertices: O(n) time</li>
+  <li>Check that each vertex appears exactly once: O(n) time (use a set or array)</li>
+  <li>Check that consecutive vertices in the cycle are adjacent: O(n) time (check n edges, including the wrap-around edge from last to first)</li>
   <li>Check that the cycle returns to start: O(1) time</li>
 </ol>
 
-<p>Total verification time: O(<code class="language-plaintext highlighter-rouge">|V|</code>), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</p>
+<p>Total verification time: O(n), which is polynomial in the input size. Therefore, Rudrata Cycle is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-3-sat">NP-Completeness: Reduction from 3-SAT</h2>
 
@@ -232,7 +232,7 @@
 <p><strong>Relationship:</strong></p>
 <ul>
   <li>TSP is a weighted version of Rudrata Cycle</li>
-  <li>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight <code class="language-plaintext highlighter-rouge">|V|</code> exists</li>
+  <li>Rudrata Cycle reduces to TSP: set all edge weights to 1, ask if cycle of weight n exists</li>
   <li>TSP reduces to Rudrata Cycle: use unweighted version</li>
   <li>They are essentially the same problem</li>
 </ul>
@@ -277,7 +277,7 @@
 
 <p><strong>Algorithm:</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: RudrataCycleDP(G)
-1. n = `|V|`
+1. n = n
 2. Let dp[0..2^n-1][0..n-1] be a boolean array
 3. for i = 0 to n-1:
 4.     dp[2^i][i] = true
@@ -396,7 +396,7 @@
 <ul>
   <li>Given Rudrata Cycle instance: graph G</li>
   <li>Create complete graph G’ with edge weights: 1 if edge exists in G, ∈fty otherwise</li>
-  <li>Rudrata cycle exists ↔ TSP has solution of weight <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Rudrata cycle exists ↔ TSP has solution of weight n</li>
 </ul>
 
 <p><strong>TSP ≤ₚ Rudrata Cycle:</strong></p>

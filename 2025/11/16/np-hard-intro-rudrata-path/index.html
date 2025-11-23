@@ -141,12 +141,12 @@
 
 <p>Given a candidate solution (a sequence of vertices representing a path), we can verify in polynomial time:</p>
 <ol>
-  <li>Check that the path has exactly <code class="language-plaintext highlighter-rouge">|V|</code> vertices: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time</li>
-  <li>Check that each vertex appears exactly once: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time (use a set or array)</li>
-  <li>Check that consecutive vertices in the path are adjacent: O(<code class="language-plaintext highlighter-rouge">|V|</code>) time (check <code class="language-plaintext highlighter-rouge">|V|</code>-1 edges)</li>
+  <li>Check that the path has exactly n vertices: O(n) time</li>
+  <li>Check that each vertex appears exactly once: O(n) time (use a set or array)</li>
+  <li>Check that consecutive vertices in the path are adjacent: O(n) time (check n-1 edges)</li>
 </ol>
 
-<p>Total verification time: O(<code class="language-plaintext highlighter-rouge">|V|</code>), which is polynomial in the input size. Therefore, Rudrata Path is in NP.</p>
+<p>Total verification time: O(n), which is polynomial in the input size. Therefore, Rudrata Path is in NP.</p>
 
 <p>Similarly, <strong>Rudrata (s,t)-Path ∈ NP</strong> with the additional checks:</p>
 <ul>
@@ -203,7 +203,7 @@
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>The reduction takes O(<code class="language-plaintext highlighter-rouge">|V|</code> + <code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
+  <li>The reduction takes O(n + m) time</li>
 </ul>
 
 <p>Therefore, <strong>Rudrata Path and Rudrata (s,t)-Path are NP-complete</strong>.</p>
@@ -328,7 +328,7 @@
 
 <p><strong>Algorithm:</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: RudrataPathDP(G)
-1. n = `|V|`
+1. n = n
 2. Let dp[0..2^n-1][0..n-1] be a boolean array
 3. for i = 0 to n-1:
 4.     dp[2^i][i] = true

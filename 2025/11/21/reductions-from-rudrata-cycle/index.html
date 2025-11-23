@@ -133,19 +133,19 @@ Given a candidate solution (tour - sequence of vertices):</p>
       <li>If (u, v) ∉ E, set weight w(u, v) = 2</li>
     </ul>
   </li>
-  <li>Bound B = <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Bound B = n</li>
   <li>Return TSP instance: graph G’, weights w, bound B</li>
 </ul>
 
-<p><strong>Key Property:</strong> Hamiltonian cycle ↔ TSP tour of weight <code class="language-plaintext highlighter-rouge">|V|</code></p>
+<p><strong>Key Property:</strong> Hamiltonian cycle ↔ TSP tour of weight n</p>
 
 <h4 id="22-output-conversion">2.2 Output Conversion</h4>
 
-<p><strong>Given:</strong> TSP solution (tour) with total weight ≤ B = <code class="language-plaintext highlighter-rouge">|V|</code></p>
+<p><strong>Given:</strong> TSP solution (tour) with total weight ≤ B = n</p>
 
 <p><strong>Extract Hamiltonian Cycle:</strong></p>
 <ul>
-  <li>If tour weight = <code class="language-plaintext highlighter-rouge">|V|</code>, all edges have weight 1</li>
+  <li>If tour weight = n, all edges have weight 1</li>
   <li>These edges exist in original graph G</li>
   <li>Tour is Hamiltonian cycle in G</li>
 </ul>
@@ -160,8 +160,8 @@ Given a candidate solution (tour - sequence of vertices):</p>
 <ul>
   <li>C visits all vertices exactly once</li>
   <li>All edges in C exist in G, so have weight 1</li>
-  <li>Total weight = <code class="language-plaintext highlighter-rouge">|V|</code> ≤ B</li>
-  <li>Therefore, C is TSP tour of weight <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Total weight = n ≤ B</li>
+  <li>Therefore, C is TSP tour of weight n</li>
 </ul>
 
 <p><strong>Conclusion:</strong> TSP has a solution.</p>
@@ -172,10 +172,10 @@ Given a candidate solution (tour - sequence of vertices):</p>
 
 <p><strong>Proof:</strong></p>
 <ul>
-  <li>Any tour visiting all vertices must use at least <code class="language-plaintext highlighter-rouge">|V|</code> edges</li>
-  <li>If all edges have weight 1, tour weight = <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Any tour visiting all vertices must use at least n edges</li>
+  <li>If all edges have weight 1, tour weight = n</li>
   <li>But if Hamiltonian cycle doesn’t exist, any tour must use at least one edge not in G</li>
-  <li>That edge has weight 2, so tour weight ≥ <code class="language-plaintext highlighter-rouge">|V|</code> + 1 &gt; B</li>
+  <li>That edge has weight 2, so tour weight ≥ n + 1 &gt; B</li>
   <li>Therefore, no TSP tour of weight ≤ B</li>
 </ul>
 
@@ -183,12 +183,12 @@ Given a candidate solution (tour - sequence of vertices):</p>
 
 <h4 id="32b-if-tsp-has-a-solution-then-rudrata-cycle-has-a-solution">3.2b If TSP has a solution, then Rudrata Cycle has a solution</h4>
 
-<p><strong>Given:</strong> TSP instance has solution (tour) with total weight ≤ B = <code class="language-plaintext highlighter-rouge">|V|</code>.</p>
+<p><strong>Given:</strong> TSP instance has solution (tour) with total weight ≤ B = n.</p>
 
 <p><strong>Extract Hamiltonian Cycle:</strong></p>
 <ul>
   <li>Tour visits all vertices exactly once</li>
-  <li>Total weight ≤ <code class="language-plaintext highlighter-rouge">|V|</code>, so all edges have weight 1</li>
+  <li>Total weight ≤ n, so all edges have weight 1</li>
   <li>These edges exist in original graph G</li>
   <li>Therefore, tour is Hamiltonian cycle in G</li>
 </ul>

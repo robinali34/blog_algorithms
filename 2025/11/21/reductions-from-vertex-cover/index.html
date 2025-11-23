@@ -343,19 +343,19 @@ Given a candidate solution (set S of vertices):</p>
 
 <p><strong>Construction:</strong></p>
 <ul>
-  <li>Return Independent Set instance: graph G, integer k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+  <li>Return Independent Set instance: graph G, integer k’ = n - k</li>
 </ul>
 
 <p><strong>Key Property:</strong> S is vertex cover ↔ V \ S is independent set</p>
 
 <h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
 
-<p><strong>Given:</strong> Independent Set solution S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</p>
+<p><strong>Given:</strong> Independent Set solution S’ of size k’ = n - k</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = n - k’ = k</li>
   <li>S is vertex cover (complement of independent set)</li>
 </ul>
 
@@ -368,7 +368,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construct Independent Set:</strong></p>
 <ul>
   <li>S’ = V \ S</li>
-  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S|</code> ≥ <code class="language-plaintext highlighter-rouge">|V|</code> - k = k’</li>
+  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = n - <code class="language-plaintext highlighter-rouge">|S|</code> ≥ n - k = k’</li>
   <li>S’ is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -389,12 +389,12 @@ Given a candidate solution (set S of vertices):</p>
 
 <h4 id="32b-if-independent-set-has-a-solution-then-vertex-cover-has-a-solution">3.2b If Independent Set has a solution, then Vertex Cover has a solution</h4>
 
-<p><strong>Given:</strong> Independent Set instance has solution S’ of size ≥ k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
+<p><strong>Given:</strong> Independent Set instance has solution S’ of size ≥ k’ = n - k.</p>
 
 <p><strong>Extract Vertex Cover:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = n - <code class="language-plaintext highlighter-rouge">|S'|</code> ≤ n - k’ = k</li>
   <li>S is vertex cover (complement of independent set)</li>
 </ul>
 

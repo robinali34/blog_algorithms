@@ -113,7 +113,7 @@ Given a candidate solution (set S of vertices):</p>
   <li>If all pairs connected, return YES; else return NO</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(<code class="language-plaintext highlighter-rouge">|V|</code>²), which is polynomial.</p>
+<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|S|</code>²) ≤ O(n²), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Clique ∈ NP.</p>
 
@@ -199,7 +199,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Key Insight:</strong></p>
 <ul>
   <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>Independent set of size k ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+  <li>Independent set of size k ↔ Vertex cover of size n - k</li>
 </ul>
 
 <p><strong>Hint:</strong> If S is an independent set, then V \ S covers all edges (since no edge has both endpoints in S). This is a simple set complement transformation.</p>
@@ -219,11 +219,11 @@ Given a candidate solution (set S of vertices):</p>
 <ol>
   <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
   <li>Check that <code class="language-plaintext highlighter-rouge">|S|</code> ≤ k: O(1) time</li>
-  <li>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
+  <li>For each edge (u, v) ∈ E, check if u ∈ S or v ∈ S: O(m) time</li>
   <li>If all edges covered, return YES; else return NO</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
+<p><strong>Total Time:</strong> O(m), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Vertex Cover ∈ NP.</p>
 
@@ -235,19 +235,19 @@ Given a candidate solution (set S of vertices):</p>
 
 <p><strong>Construction:</strong></p>
 <ul>
-  <li>Return Vertex Cover instance: graph G, integer k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+  <li>Return Vertex Cover instance: graph G, integer k’ = n - k</li>
 </ul>
 
 <p><strong>Key Property:</strong> S is independent set ↔ V \ S is vertex cover</p>
 
 <h4 id="22-output-conversion-1">2.2 Output Conversion</h4>
 
-<p><strong>Given:</strong> Vertex Cover S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k</p>
+<p><strong>Given:</strong> Vertex Cover S’ of size k’ = n - k</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - <code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - (<code class="language-plaintext highlighter-rouge">|V|</code> - k) = k</li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = n - <code class="language-plaintext highlighter-rouge">|S'|</code> = n - (n - k) = k</li>
   <li>S is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -260,7 +260,7 @@ Given a candidate solution (set S of vertices):</p>
 <p><strong>Construct Vertex Cover:</strong></p>
 <ul>
   <li>S’ = V \ S</li>
-  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k = k’</li>
+  <li><code class="language-plaintext highlighter-rouge">|S'|</code> = n - k = k’</li>
   <li>S’ is vertex cover (complement of independent set)</li>
 </ul>
 
@@ -292,12 +292,12 @@ Given a candidate solution (set S of vertices):</p>
 
 <h4 id="32b-if-vertex-cover-has-a-solution-then-independent-set-has-a-solution">3.2b If Vertex Cover has a solution, then Independent Set has a solution</h4>
 
-<p><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - k.</p>
+<p><strong>Given:</strong> Vertex Cover instance has solution S’ of size k’ = n - k.</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
   <li>S = V \ S’</li>
-  <li><code class="language-plaintext highlighter-rouge">|S|</code> = <code class="language-plaintext highlighter-rouge">|V|</code> - k’ = k</li>
+  <li><code class="language-plaintext highlighter-rouge">|S|</code> = n - k’ = k</li>
   <li>S is independent set (complement of vertex cover)</li>
 </ul>
 
@@ -336,11 +336,11 @@ Given a candidate solution (set S of vertices):</p>
 Given a candidate solution (partition S, V \ S):</p>
 <ol>
   <li>Check that S ⊆ V: O(<code class="language-plaintext highlighter-rouge">|S|</code>) time</li>
-  <li>Count edges crossing cut: O(<code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
+  <li>Count edges crossing cut: O(m) time</li>
   <li>Check if count ≥ k: O(1) time</li>
 </ol>
 
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|E|</code>), which is polynomial.</p>
+<p><strong>Total Time:</strong> O(m), which is polynomial.</p>
 
 <p><strong>Conclusion:</strong> Maximum Cut ∈ NP.</p>
 
@@ -353,14 +353,14 @@ Given a candidate solution (partition S, V \ S):</p>
 <p><strong>Construction:</strong></p>
 <ul>
   <li>Create complete graph G’ = (V, E’) where E’ contains all possible edges</li>
-  <li>Return Maximum Cut instance: graph G’, target = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
+  <li>Return Maximum Cut instance: graph G’, target = k(n - k)</li>
 </ul>
 
 <p><strong>Key Idea:</strong> Independent set of size k → Cut with k vertices on one side, no edges within that side</p>
 
 <h4 id="22-output-conversion-2">2.2 Output Conversion</h4>
 
-<p><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing</p>
+<p><strong>Given:</strong> Maximum Cut (S, V \ S) with at least k(n - k) edges crossing</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>
@@ -378,7 +378,7 @@ Given a candidate solution (partition S, V \ S):</p>
 <p><strong>Construct Cut:</strong></p>
 <ul>
   <li>Partition: (S, V \ S)</li>
-  <li>Number of crossing edges = <code class="language-plaintext highlighter-rouge">|S|</code> · <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
+  <li>Number of crossing edges = <code class="language-plaintext highlighter-rouge">|S|</code> · <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k(n - k)</li>
   <li>Since S is independent set, no edges within S</li>
   <li>All edges incident to S cross the cut</li>
 </ul>
@@ -395,7 +395,7 @@ Given a candidate solution (partition S, V \ S):</p>
     <ul>
       <li>If S is not independent set, there are edges within S</li>
       <li>These edges don’t cross the cut</li>
-      <li>Maximum crossing edges &lt; k(<code class="language-plaintext highlighter-rouge">|V|</code> - k)</li>
+      <li>Maximum crossing edges &lt; k(n - k)</li>
     </ul>
   </li>
   <li>Similar argument for <code class="language-plaintext highlighter-rouge">|V \ S|</code> = k</li>
@@ -405,7 +405,7 @@ Given a candidate solution (partition S, V \ S):</p>
 
 <h4 id="32b-if-maximum-cut-has-a-solution-then-independent-set-has-a-solution">3.2b If Maximum Cut has a solution, then Independent Set has a solution</h4>
 
-<p><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(<code class="language-plaintext highlighter-rouge">|V|</code> - k) edges crossing.</p>
+<p><strong>Given:</strong> Maximum Cut instance has solution (S, V \ S) with at least k(n - k) edges crossing.</p>
 
 <p><strong>Extract Independent Set:</strong></p>
 <ul>

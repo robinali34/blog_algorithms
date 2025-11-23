@@ -123,12 +123,12 @@ Given a candidate solution (ordered list of vertices P representing a path):</p>
   <li>Check that white count ≥ w: O(1) time</li>
   <li>Check that all colored vertices are present:
     <ul>
-      <li>For each vertex v with color c[v] defined, check if v ∈ P: O(<code class="language-plaintext highlighter-rouge">|V|</code> · <code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
+      <li>For each vertex v with color c[v] defined, check if v ∈ P: O(n · <code class="language-plaintext highlighter-rouge">|P|</code>) time</li>
     </ul>
   </li>
 </ol>
 
-<p><strong>Total Time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code> · <code class="language-plaintext highlighter-rouge">|P|</code>), which is polynomial in input size.</p>
+<p><strong>Total Time:</strong> O(n · <code class="language-plaintext highlighter-rouge">|P|</code>), which is polynomial in input size.</p>
 
 <p><strong>Conclusion:</strong> White and Gold Path ∈ NP.</p>
 
@@ -140,7 +140,7 @@ Given a candidate solution (ordered list of vertices P representing a path):</p>
 
 <h3 id="21-input-conversion">2.1 Input Conversion</h3>
 
-<p>Given a Rudrata (s,t)-Path instance: graph G = (V, E) with <code class="language-plaintext highlighter-rouge">|V|</code> = n, vertices s, t.</p>
+<p>Given a Rudrata (s,t)-Path instance: graph G = (V, E) with n = n, vertices s, t.</p>
 
 <p><strong>Construction:</strong></p>
 

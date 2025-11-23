@@ -217,18 +217,18 @@
 <p><strong>Key Insight:</strong> Use the complement relationship with Independent Set</p>
 <ul>
   <li>S is an independent set ↔ V \ S is a vertex cover</li>
-  <li>Independent set of size ≥ k ↔ Vertex cover of size ≤ <code class="language-plaintext highlighter-rouge">|V|</code> - k</li>
+  <li>Independent set of size ≥ k ↔ Vertex cover of size ≤ n - k</li>
 </ul>
 
 <p><strong>Reduction:</strong></p>
 <ol>
   <li>Reduce 3-SAT to Independent Set (as above) to get graph G and k = n + m</li>
-  <li>Return Vertex Cover instance: graph G, k’ = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</li>
+  <li>Return Vertex Cover instance: graph G, k’ = n - (n + m)</li>
 </ol>
 
 <p><strong>Correctness:</strong></p>
 <ul>
-  <li>3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m) exists</li>
+  <li>3-SAT satisfiable ↔ Independent set of size n + m exists ↔ Vertex cover of size n - (n + m) exists</li>
 </ul>
 
 <p><strong>Polynomial Time:</strong> O(n + m)</p>
@@ -549,7 +549,7 @@
 <p><strong>3-SAT ≤ₚ Vertex Cover:</strong></p>
 <ul>
   <li>Via Independent Set complement relationship</li>
-  <li>k = <code class="language-plaintext highlighter-rouge">|V|</code> - (n + m)</li>
+  <li>k = n - (n + m)</li>
 </ul>
 
 <p><strong>3-SAT ≤ₚ Clique:</strong></p>

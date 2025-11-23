@@ -139,7 +139,7 @@
   <li>Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)</li>
 </ol>
 
-<p>Since k ≤ <code class="language-plaintext highlighter-rouge">|V|</code>, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</p>
+<p>Since k ≤ n, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.</p>
 
 <h2 id="np-completeness-reduction-from-clique">NP-Completeness: Reduction from Clique</h2>
 
@@ -189,7 +189,7 @@
 
 <p><strong>Polynomial Time:</strong></p>
 <ul>
-  <li>Constructing G̅ takes O(<code class="language-plaintext highlighter-rouge">|V|</code>^2) time (check all pairs of vertices)</li>
+  <li>Constructing G̅ takes O(n²) time (check all pairs of vertices)</li>
   <li>This is polynomial in the input size</li>
 </ul>
 
@@ -311,7 +311,7 @@
 
 <p><strong>Corollary:</strong></p>
 <ul>
-  <li>Maximum independent set size + Minimum vertex cover size = <code class="language-plaintext highlighter-rouge">|V|</code></li>
+  <li>Maximum independent set size + Minimum vertex cover size = n</li>
   <li>This is known as <strong>Gallai’s theorem</strong></li>
 </ul>
 
@@ -471,7 +471,7 @@
     <p><strong>Prove the complement relationship</strong>: Show that S is a clique in G if and only if S is an independent set in G̅.</p>
   </li>
   <li>
-    <p><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) = <code class="language-plaintext highlighter-rouge">|V|</code> where \alpha(G) is the independence number and beta(G) is the vertex cover number.</p>
+    <p><strong>Prove Gallai’s theorem</strong>: Show that for any graph G, \alpha(G) + \beta(G) = n where \alpha(G) is the independence number and beta(G) is the vertex cover number.</p>
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:

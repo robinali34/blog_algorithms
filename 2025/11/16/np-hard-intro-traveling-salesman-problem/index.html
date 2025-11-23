@@ -80,7 +80,7 @@
 
 <p><strong>Input:</strong></p>
 <ul>
-  <li>A complete undirected graph G = (V, E) with <code class="language-plaintext highlighter-rouge">|V|</code> = n</li>
+  <li>A complete undirected graph G = (V, E) with n = n</li>
   <li>Edge weights w: E → ℝ⁺ (distances/costs)</li>
   <li>A bound B</li>
 </ul>
@@ -226,7 +226,7 @@ B---C---D
 
 <p><strong>Algorithm:</strong></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Algorithm: TSP_DP(G, w)
-1. n = `|V|`
+1. n = n
 2. Let dp[0..2^n-1][0..n-1] be a 2D array
 3. dp[2^0][0] = 0
 4. for mask = 1 to 2^n - 1:

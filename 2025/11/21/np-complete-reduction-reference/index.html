@@ -474,7 +474,7 @@
       <li>G has independent set of size k ↔ G̅ has clique of size k</li>
     </ul>
   </li>
-  <li><strong>Polynomial time:</strong> Creating complement graph takes O(<code class="language-plaintext highlighter-rouge">|V|</code>²) time</li>
+  <li><strong>Polynomial time:</strong> Creating complement graph takes O(n²) time</li>
 </ol>
 
 <p><strong>Therefore, Clique is NP-complete.</strong></p>
@@ -500,7 +500,7 @@
       <li>G has vertex cover of size k ↔ Sets cover universe with k sets</li>
     </ul>
   </li>
-  <li><strong>Polynomial time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code> + <code class="language-plaintext highlighter-rouge">|E|</code>) time</li>
+  <li><strong>Polynomial time:</strong> O(n + m) time</li>
 </ol>
 
 <p><strong>Therefore, Set Cover is NP-complete.</strong></p>
@@ -541,11 +541,11 @@
       <li>Given Rudrata Cycle instance: graph G = (V, E)</li>
       <li>Create complete graph G’ with same vertices</li>
       <li>Set edge weights: w(u,v) = 1 if (u,v) ∈ E, else w(u,v) = 2</li>
-      <li>Set bound B = <code class="language-plaintext highlighter-rouge">|V|</code></li>
-      <li>G has Hamiltonian cycle ↔ G’ has TSP tour of weight <code class="language-plaintext highlighter-rouge">|V|</code></li>
+      <li>Set bound B = n</li>
+      <li>G has Hamiltonian cycle ↔ G’ has TSP tour of weight n</li>
     </ul>
   </li>
-  <li><strong>Polynomial time:</strong> O(<code class="language-plaintext highlighter-rouge">|V|</code>²) time</li>
+  <li><strong>Polynomial time:</strong> O(n²) time</li>
 </ol>
 
 <p><strong>Therefore, TSP is NP-complete.</strong></p>
