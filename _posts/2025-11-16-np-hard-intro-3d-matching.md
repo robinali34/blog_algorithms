@@ -38,33 +38,55 @@ Such a set M is called a **perfect 3D matching**.
 ### Example
 
 Consider:
-- X = {x₁, x₂, x₁}
-- Y = {y_1, y_2, y_3}
-- Z = {z_1, z_2, z_3}
-- T = {(x₁, y_1, z_1), (x₁, y_2, z_2), (x₁, y_1, z_3), (x₁, y_3, z_1), (x₁, y_2, z_3), (x₁, y_3, z_2)}
+- X = {x₁, x₂, x₃}
+- Y = {y₁, y₂, y₃}
+- Z = {z₁, z₂, z₃}
+- T = {(x₁, y₁, z₁), (x₁, y₂, z₂), (x₂, y₁, z₃), (x₂, y₃, z₁), (x₃, y₂, z₃), (x₃, y₃, z₂)}
 
 **Trying to find a perfect matching:**
-- If we pick (x₁, y_1, z_1), we can't use (x₁, y_2, z_2) or (x₁, y_1, z_3) (they share x₁ or y_1)
-- Try: (x₁, y_1, z_1), (x₁, y_3, z_1) ✗ (both use z_1)
-- Try: (x₁, y_1, z_1), (x₁, y_3, z_2) ✗ (z_2 not available, need to check)
-- Actually: (x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3) ✓ (perfect matching!)
+- If we pick (x₁, y₁, z₁), we can't use (x₁, y₂, z₂) (shares x₁) or (x₂, y₁, z₃) (shares y₁)
+- We must pick (x₂, y₃, z₁) from the remaining, but this shares z₁ with (x₁, y₁, z₁) ✗
+- Try: (x₁, y₂, z₂), (x₂, y₁, z₃), (x₃, y₃, z₂) ✗ (z₂ appears twice)
+- Try: (x₁, y₂, z₂), (x₂, y₁, z₃), (x₃, y₂, z₃) ✗ (y₂ appears twice)
+
+**This instance does NOT have a perfect matching** because:
+- All triples containing z₁ also share either x₁ or y₁ with other triples
+- All triples containing z₂ share either x₁ or x₃ with other triples
+- All triples containing z₃ share either x₂ or x₃ with other triples
 
 ### Visual Example
 
-A 3D matching instance:
+A 3D matching instance that HAS a perfect matching:
 
 ```
-X: {x1, x2, x3}
-Y: {y1, y2, y3}  
-Z: {z1, z2, z3}
+X: {x₁, x₂, x₃}
+Y: {y₁, y₂, y₃}  
+Z: {z₁, z₂, z₃}
 
 Triples:
-(x1,y1,z1)  (x1,y2,z2)
-(x2,y1,z3)  (x2,y3,z1)
-(x3,y2,z3)  (x3,y3,z2)
+(x₁, y₁, z₁)  (x₁, y₂, z₂)
+(x₂, y₂, z₃)  (x₂, y₃, z₁)
+(x₃, y₁, z₃)  (x₃, y₃, z₂)
 ```
 
-**Perfect matching:** {(x₁, y_1, z_1), (x₁, y_3, z_2), (x₁, y_2, z_3)}
+**Finding a perfect matching:**
+- Pick (x₁, y₁, z₁) → covers x₁, y₁, z₁
+- Can't pick (x₁, y₂, z₂) (shares x₁), so skip it
+- Can't pick (x₂, y₂, z₃) (shares y₂ with (x₁, y₂, z₂) which we skipped, but more importantly we need x₂)
+- Pick (x₂, y₃, z₁) ✗ (shares z₁ with (x₁, y₁, z₁))
+- Pick (x₂, y₂, z₃) ✗ (shares y₂ with (x₁, y₂, z₂) which we skipped)
+
+Let's try a different approach:
+- Pick (x₁, y₂, z₂) → covers x₁, y₂, z₂
+- Pick (x₂, y₃, z₁) → covers x₂, y₃, z₁ (no conflict so far)
+- Pick (x₃, y₁, z₃) → covers x₃, y₁, z₃ (no conflict!)
+
+**Perfect matching:** {(x₁, y₂, z₂), (x₂, y₃, z₁), (x₃, y₁, z₃)} ✓
+
+This covers all elements exactly once:
+- X: x₁, x₂, x₃ ✓
+- Y: y₂, y₃, y₁ ✓
+- Z: z₂, z₁, z₃ ✓
 
 ## Why 3D Matching is in NP
 
