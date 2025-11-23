@@ -166,13 +166,13 @@ Given a candidate solution (variable assignment):</p>
 <p>Consider 3-SAT instance (with each variable appearing at most once per clause):</p>
 <ul>
   <li>Variables: x₁, x₂, x₃</li>
-  <li>Clauses: C₁ = (x₁ ∨ ¬x₂ ∨ x₃), C₂ = (¬x₁ ∨ x₂ ∨ x₃)</li>
+  <li>Clauses: C₁ = (x₁ ∨ !x₂ ∨ x₃), C₂ = (!x₁ ∨ x₂ ∨ x₃)</li>
 </ul>
 
 <p><strong>Transformation:</strong></p>
 <ul>
-  <li>C’₁ = (x₁ ∨ ¬x₂ ∨ x₃ ∨ y₁)</li>
-  <li>C’₂ = (¬x₁ ∨ x₂ ∨ x₃ ∨ y₂)</li>
+  <li>C’₁ = (x₁ ∨ !x₂ ∨ x₃ ∨ y₁)</li>
+  <li>C’₂ = (!x₁ ∨ x₂ ∨ x₃ ∨ y₂)</li>
 </ul>
 
 <p><strong>New variables:</strong> y₁, y₂</p>
@@ -182,8 +182,8 @@ Given a candidate solution (variable assignment):</p>
   <li>Each clause has exactly 4 literals: ✓</li>
   <li>Each variable occurs at most once in each clause: ✓
     <ul>
-      <li>C’₁: x₁ (once), x₂ (once as ¬x₂), x₃ (once), y₁ (once)</li>
-      <li>C’₂: x₁ (once as ¬x₁), x₂ (once), x₃ (once), y₂ (once)</li>
+      <li>C’₁: x₁ (once), x₂ (once as !x₂), x₃ (once), y₁ (once)</li>
+      <li>C’₂: x₁ (once as !x₁), x₂ (once), x₃ (once), y₂ (once)</li>
     </ul>
   </li>
 </ul>

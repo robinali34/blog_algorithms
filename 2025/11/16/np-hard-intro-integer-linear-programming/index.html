@@ -184,13 +184,13 @@
       <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ l₃):
         <ul>
           <li>If literal is xᵢ, use yᵢ</li>
-          <li>If literal is ¬xᵢ, use (1 - yᵢ)</li>
+          <li>If literal is !xᵢ, use (1 - yᵢ)</li>
           <li>Constraint: y_{l₁} + y_{l₂} + y_{l₃} ≥ 1 (at least one literal is true)</li>
         </ul>
       </li>
     </ul>
 
-    <p>Example: For clause (x₁ ∨ ¬x₂ ∨ x₃):</p>
+    <p>Example: For clause (x₁ ∨ !x₂ ∨ x₃):</p>
     <ul>
       <li>Constraint: y₁ + (1 - y₂) + y₃ ≥ 1</li>
       <li>Simplifies to: y₁ - y₂ + y₃ ≥ 0</li>
@@ -480,7 +480,7 @@
     </ul>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
+    <p><strong>Reduce 3-SAT to ILP</strong>: For the 3-SAT instance (x₁ ∨ !x₂ ∨ x₃) ∧ (!x₁ ∨ x₂ ∨ x₃), construct the corresponding ILP instance.</p>
   </li>
   <li>
     <p><strong>LP Relaxation</strong>: Solve the LP relaxation of a small ILP instance. Is the solution integer? If not, how would you proceed?</p>

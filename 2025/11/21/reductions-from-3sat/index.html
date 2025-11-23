@@ -159,7 +159,7 @@ Given a candidate solution (set S of vertices):</p>
   <li>For each clause vertex cⱼ,ᵢ representing literal l:
     <ul>
       <li>If l = xₖ (positive literal), add edge (cⱼ,ᵢ, v’ₖ)</li>
-      <li>If l = ¬xₖ (negative literal), add edge (cⱼ,ᵢ, vₖ)</li>
+      <li>If l = !xₖ (negative literal), add edge (cⱼ,ᵢ, vₖ)</li>
     </ul>
   </li>
   <li>This ensures: if we pick a clause vertex, we cannot pick the conflicting variable vertex</li>
@@ -236,7 +236,7 @@ Given a candidate solution (set S of vertices):</p>
   <li>Variable-clause connections: If literal l is TRUE:
     <ul>
       <li>If l = xₖ, we picked vₖ (TRUE), so we didn’t pick v’ₖ, so no conflict with cⱼ,ᵢ</li>
-      <li>If l = ¬xₖ, we picked v’ₖ (FALSE), so we didn’t pick vₖ, so no conflict with cⱼ,ᵢ</li>
+      <li>If l = !xₖ, we picked v’ₖ (FALSE), so we didn’t pick vₖ, so no conflict with cⱼ,ᵢ</li>
     </ul>
   </li>
 </ul>
@@ -268,7 +268,7 @@ Given a candidate solution (set S of vertices):</p>
   <li>By construction, if cⱼ,ᵢ is in S, then:
     <ul>
       <li>If cⱼ,ᵢ represents xₖ, then v’ₖ is not in S, so xₖ = TRUE</li>
-      <li>If cⱼ,ᵢ represents ¬xₖ, then vₖ is not in S, so xₖ = FALSE</li>
+      <li>If cⱼ,ᵢ represents !xₖ, then vₖ is not in S, so xₖ = FALSE</li>
     </ul>
   </li>
   <li>Therefore, the literal corresponding to cⱼ,ᵢ is TRUE</li>
@@ -303,7 +303,7 @@ Given a candidate solution (set S of vertices):</p>
   <li>By construction of connections:
     <ul>
       <li>If cⱼ,ᵢ represents literal xₖ and cⱼ,ᵢ ∈ S, then v’ₖ ∉ S, so xₖ = TRUE</li>
-      <li>If cⱼ,ᵢ represents literal ¬xₖ and cⱼ,ᵢ ∈ S, then vₖ ∉ S, so xₖ = FALSE</li>
+      <li>If cⱼ,ᵢ represents literal !xₖ and cⱼ,ᵢ ∈ S, then vₖ ∉ S, so xₖ = FALSE</li>
     </ul>
   </li>
   <li>Therefore, the literal corresponding to cⱼ,ᵢ is TRUE</li>
@@ -615,7 +615,7 @@ Given a candidate solution (subset S’):</p>
         <ul>
           <li>Variable digit i = 1</li>
           <li>All other variable digits = 0</li>
-          <li>Clause digit (n+j) = 1 if ¬xᵢ appears in Cⱼ, else 0</li>
+          <li>Clause digit (n+j) = 1 if !xᵢ appears in Cⱼ, else 0</li>
         </ul>
       </li>
     </ul>

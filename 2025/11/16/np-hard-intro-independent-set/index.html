@@ -99,7 +99,7 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
     |\ /|
     | X |
-    |/ |
+    |/  |
     3---4
 </code></pre></div></div>
 
@@ -241,7 +241,7 @@
 <ul>
   <li>An independent set of size m means we pick one literal from each clause</li>
   <li>Since vertices in the same clause are connected, we can pick at most one per clause</li>
-  <li>Since complementary literals are connected, we never pick both x and ¬ x</li>
+  <li>Since complementary literals are connected, we never pick both x and ! x</li>
   <li>Therefore, an independent set corresponds to a satisfying assignment</li>
 </ul>
 
@@ -265,7 +265,7 @@
   <li>Set variables to make these literals true:
     <ul>
       <li>If literal is x_i, set x_i = TRUE</li>
-      <li>If literal is ¬ x_i, set x_i = FALSE</li>
+      <li>If literal is ! x_i, set x_i = FALSE</li>
     </ul>
   </li>
   <li>Since no complementary literals are in the independent set, this assignment is consistent</li>
@@ -275,19 +275,19 @@
 <h3 id="example-reduction">Example Reduction</h3>
 
 <p>Consider the 3-SAT instance:
-φ = (x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
+φ = (x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)</p>
 
 <p><strong>Step 1: Create vertices</strong></p>
 <ul>
   <li>Clause 1: (1,1) for x₁, (1,2) for x₁, (1,3) for x₁</li>
-  <li>Clause 2: (2,1) for ¬ x₁, (2,2) for x₁, (2,3) for ¬ x₁</li>
-  <li>Clause 3: (3,1) for x₁, (3,2) for ¬ x₁, (3,3) for x₁</li>
+  <li>Clause 2: (2,1) for ! x₁, (2,2) for x₁, (2,3) for ! x₁</li>
+  <li>Clause 3: (3,1) for x₁, (3,2) for ! x₁, (3,3) for x₁</li>
 </ul>
 
 <p><strong>Step 2: Add edges</strong></p>
 <ul>
   <li>Connect vertices in the same clause: (1,1)-(1,2), (1,1)-(1,3), (1,2)-(1,3), etc.</li>
-  <li>Connect complementary literals: (1,1)-(2,1) (x₁ and ¬ x₁), (1,3)-(2,3) (x₁ and ¬ x₁), (1,2)-(3,2) (x₁ and ¬ x₁)</li>
+  <li>Connect complementary literals: (1,1)-(2,1) (x₁ and ! x₁), (1,3)-(2,3) (x₁ and ! x₁), (1,2)-(3,2) (x₁ and ! x₁)</li>
 </ul>
 
 <p><strong>Step 3: Find independent set of size 3</strong></p>
@@ -492,7 +492,7 @@
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ¬ x₁)
+(x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁) ∧ (x₁ ∨ x₁ ∨ ! x₁)
 Find an independent set of size 3 and determine the corresponding satisfying assignment.</p>
   </li>
   <li>

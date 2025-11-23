@@ -147,12 +147,12 @@ Given a candidate solution (truth assignment):</p>
 <p>Consider SAT instance:</p>
 <ul>
   <li>Variables: x₁, x₂, x₃</li>
-  <li>Clauses: C₁ = (x₁ ∨ ¬x₂), C₂ = (¬x₁ ∨ x₃), C₃ = (x₂ ∨ ¬x₃)</li>
+  <li>Clauses: C₁ = (x₁ ∨ !x₂), C₂ = (!x₁ ∨ x₃), C₃ = (x₂ ∨ !x₃)</li>
 </ul>
 
 <p><strong>Transformation:</strong></p>
 <ul>
-  <li>φ’ = (x₁ ∨ ¬x₂) ∧ (¬x₁ ∨ x₃) ∧ (x₂ ∨ ¬x₃)</li>
+  <li>φ’ = (x₁ ∨ !x₂) ∧ (!x₁ ∨ x₃) ∧ (x₂ ∨ !x₃)</li>
   <li>g = 3</li>
 </ul>
 

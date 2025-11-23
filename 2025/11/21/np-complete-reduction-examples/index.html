@@ -107,7 +107,7 @@
   <li><strong>Output:</strong> YES if φ is satisfiable, NO otherwise</li>
 </ul>
 
-<p><strong>Example:</strong> φ = (x₁ ∨ ¬x₂ ∨ x₃) ∧ (¬x₁ ∨ x₂ ∨ x₃) ∧ (x₁ ∨ x₂ ∨ ¬x₃)</p>
+<p><strong>Example:</strong> φ = (x₁ ∨ !x₂ ∨ x₃) ∧ (!x₁ ∨ x₂ ∨ x₃) ∧ (x₁ ∨ x₂ ∨ !x₃)</p>
 
 <h2 id="general-strategy-for-reductions">General Strategy for Reductions</h2>
 
@@ -155,7 +155,7 @@
   <li>For each clause vertex cⱼ,ᵢ representing literal l:
     <ul>
       <li>If l = xₖ, connect cⱼ,ᵢ to vₖ (if xₖ = FALSE, we can’t use this clause vertex)</li>
-      <li>If l = ¬xₖ, connect cⱼ,ᵢ to v’ₖ (if xₖ = TRUE, we can’t use this clause vertex)</li>
+      <li>If l = !xₖ, connect cⱼ,ᵢ to v’ₖ (if xₖ = TRUE, we can’t use this clause vertex)</li>
     </ul>
   </li>
 </ul>
@@ -297,7 +297,7 @@
   <li>For variable xᵢ and clause Cⱼ:
     <ul>
       <li>If xᵢ appears positively in Cⱼ: create triple allowing TRUE assignment</li>
-      <li>If ¬xᵢ appears in Cⱼ: create triple allowing FALSE assignment</li>
+      <li>If !xᵢ appears in Cⱼ: create triple allowing FALSE assignment</li>
     </ul>
   </li>
   <li>Matching exists ↔ each variable has consistent assignment ↔ each clause is satisfied</li>
@@ -350,7 +350,7 @@
 <p><strong>Example (simplified):</strong></p>
 <ul>
   <li>Variables: x₁, x₂</li>
-  <li>Clauses: (x₁ ∨ x₂), (¬x₁ ∨ x₂)</li>
+  <li>Clauses: (x₁ ∨ x₂), (!x₁ ∨ x₂)</li>
   <li>Create numbers encoding assignments and clause satisfaction</li>
   <li>Target: 1111 (both variables assigned, both clauses satisfied)</li>
 </ul>

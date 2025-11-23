@@ -92,20 +92,20 @@
   <li>Variables: x₁, x₂, x₃</li>
   <li>Clauses:
     <ul>
-      <li>C₁ = (x₁ ∨ ¬x₂)  (read as: “x₁ OR NOT x₂”)</li>
-      <li>C₂ = (¬x₁ ∨ x₃)  (read as: “NOT x₁ OR x₃”)</li>
-      <li>C₃ = (x₂ ∨ ¬x₃)  (read as: “x₂ OR NOT x₃”)</li>
+      <li>C₁ = (x₁ ∨ !x₂)  (read as: “x₁ OR NOT x₂”)</li>
+      <li>C₂ = (!x₁ ∨ x₃)  (read as: “NOT x₁ OR x₃”)</li>
+      <li>C₃ = (x₂ ∨ !x₃)  (read as: “x₂ OR NOT x₃”)</li>
     </ul>
   </li>
 </ul>
 
-<p>The formula φ = C₁ ∧ C₂ ∧ C₃ = (x₁ ∨ ¬x₂) ∧ (¬x₁ ∨ x₃) ∧ (x₂ ∨ ¬x₃)</p>
+<p>The formula φ = C₁ ∧ C₂ ∧ C₃ = (x₁ ∨ !x₂) ∧ (!x₁ ∨ x₃) ∧ (x₂ ∨ !x₃)</p>
 
 <p><strong>What is a clause?</strong></p>
 <ul>
   <li>A clause is a disjunction (OR) of literals</li>
-  <li>A literal is either a variable (xᵢ) or its negation (¬xᵢ)</li>
-  <li>Example: (x₁ ∨ ¬x₂) means “x₁ is TRUE OR x₂ is FALSE”</li>
+  <li>A literal is either a variable (xᵢ) or its negation (!xᵢ)</li>
+  <li>Example: (x₁ ∨ !x₂) means “x₁ is TRUE OR x₂ is FALSE”</li>
 </ul>
 
 <p><strong>What does it mean for a formula to be satisfiable?</strong></p>
@@ -121,24 +121,24 @@
 
 <p><strong>Trying assignment: x₁ = TRUE, x₂ = FALSE, x₃ = TRUE</strong></p>
 <ul>
-  <li>C₁ = (TRUE ∨ ¬FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
-  <li>C₂ = (¬TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
-  <li>C₃ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>C₁ = (TRUE ∨ !FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (!TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ !TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
   <li>Formula is FALSE (not satisfiable with this assignment)</li>
 </ul>
 
 <p><strong>Trying assignment: x₁ = TRUE, x₂ = FALSE, x₃ = FALSE</strong></p>
 <ul>
-  <li>C₁ = (TRUE ∨ ¬FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
-  <li>C₂ = (¬TRUE ∨ FALSE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>C₁ = (TRUE ∨ !FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (!TRUE ∨ FALSE) = (FALSE ∨ FALSE) = FALSE ✗</li>
   <li>Formula is FALSE</li>
 </ul>
 
 <p><strong>Trying assignment: x₁ = TRUE, x₂ = TRUE, x₃ = TRUE</strong></p>
 <ul>
-  <li>C₁ = (TRUE ∨ ¬TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
-  <li>C₂ = (¬TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
-  <li>C₃ = (TRUE ∨ ¬TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>C₁ = (TRUE ∨ !TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>C₂ = (!TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (TRUE ∨ !TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
   <li>Formula is TRUE ✓</li>
   <li>Number of TRUE variables: 3</li>
   <li>Since k = 2 and we have 3 TRUE variables, this assignment does NOT satisfy the “at most k variables true” constraint</li>
@@ -146,7 +146,7 @@
 
 <p><strong>Trying assignment: x₁ = FALSE, x₂ = TRUE, x₃ = TRUE</strong></p>
 <ul>
-  <li>C₁ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>C₁ = (FALSE ∨ !TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
   <li>Formula is FALSE</li>
 </ul>
 
@@ -154,23 +154,23 @@
 
 <p><strong>Trying assignment: x₁ = FALSE, x₂ = TRUE, x₃ = FALSE</strong></p>
 <ul>
-  <li>C₁ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>C₁ = (FALSE ∨ !TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
   <li>Formula is FALSE</li>
 </ul>
 
 <p><strong>Trying assignment: x₁ = FALSE, x₂ = FALSE, x₃ = TRUE</strong></p>
 <ul>
-  <li>C₁ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
-  <li>C₂ = (¬FALSE ∨ TRUE) = (TRUE ∨ TRUE) = TRUE ✓</li>
-  <li>C₃ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>C₁ = (FALSE ∨ !FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (!FALSE ∨ TRUE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ !TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
   <li>Formula is FALSE</li>
 </ul>
 
 <p><strong>Trying assignment: x₁ = FALSE, x₂ = FALSE, x₃ = FALSE</strong></p>
 <ul>
-  <li>C₁ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
-  <li>C₂ = (¬FALSE ∨ FALSE) = (TRUE ∨ FALSE) = TRUE ✓</li>
-  <li>C₃ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₁ = (FALSE ∨ !FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (!FALSE ∨ FALSE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ !FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
   <li>Formula is TRUE ✓</li>
   <li>Number of TRUE variables: 0</li>
   <li>Since k = 2 and we have 0 TRUE variables (0 ≤ 2), this assignment satisfies the “at most k variables true” constraint ✓</li>
@@ -241,12 +241,12 @@ Given a candidate solution (variable assignment):</p>
 <p>Consider SAT instance:</p>
 <ul>
   <li>Variables: x₁, x₂, x₃</li>
-  <li>Clauses: C₁ = (x₁ ∨ ¬x₂), C₂ = (¬x₁ ∨ x₃), C₃ = (x₂ ∨ ¬x₃)</li>
+  <li>Clauses: C₁ = (x₁ ∨ !x₂), C₂ = (!x₁ ∨ x₃), C₃ = (x₂ ∨ !x₃)</li>
 </ul>
 
 <p><strong>Transformation:</strong></p>
 <ul>
-  <li>φ’ = (x₁ ∨ ¬x₂) ∧ (¬x₁ ∨ x₃) ∧ (x₂ ∨ ¬x₃)</li>
+  <li>φ’ = (x₁ ∨ !x₂) ∧ (!x₁ ∨ x₃) ∧ (x₂ ∨ !x₃)</li>
   <li>k = 3</li>
 </ul>
 

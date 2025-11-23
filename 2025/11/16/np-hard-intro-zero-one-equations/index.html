@@ -183,7 +183,7 @@ x₁ + x₂ + x₁ &amp;= 2
       <li>For each clause C_j = (l_1 ∨ l_2 ∨ l_3), create an equation:
         <ul>
           <li>If literal is x_i, use y_i</li>
-          <li>If literal is ¬ x_i, use (1 - y_i)</li>
+          <li>If literal is ! x_i, use (1 - y_i)</li>
           <li>Equation: y_{l_1} + y_{l_2} + y_{l_3} = 1 (exactly one literal is true)</li>
         </ul>
       </li>
@@ -448,7 +448,7 @@ x₁ + x₂ = 1
     <p>Find all 0-1 solutions.</p>
   </li>
   <li>
-    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.</p>
+    <p><strong>Reduce 3-SAT to ZOE</strong>: For the 3-SAT instance (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.</p>
   </li>
   <li><strong>Formulate as ZOE</strong>: Convert the following to ZOE:
     <ul>

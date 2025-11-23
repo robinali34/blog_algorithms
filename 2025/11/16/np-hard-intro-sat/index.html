@@ -79,9 +79,9 @@
 <p><strong>Input:</strong> A Boolean formula in Conjunctive Normal Form (CNF)</p>
 <ul>
   <li>Variables: x₁, x₂, …, x_n (each can be TRUE or FALSE)</li>
-  <li>Literals: a variable or its negation (e.g., x₁ or ¬ x₁)</li>
-  <li>Clauses: disjunctions of literals (e.g., (x₁ ∨ ¬ x₁ ∨ x₁))</li>
-  <li>Formula: conjunction of clauses (e.g., (x₁ ∨ ¬ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (x₁ ∨ ¬ x₁))</li>
+  <li>Literals: a variable or its negation (e.g., x₁ or ! x₁)</li>
+  <li>Clauses: disjunctions of literals (e.g., (x₁ ∨ ! x₁ ∨ x₁))</li>
+  <li>Formula: conjunction of clauses (e.g., (x₁ ∨ ! x₁) ∧ (! x₁ ∨ x₁) ∧ (x₁ ∨ ! x₁))</li>
 </ul>
 
 <p><strong>Output:</strong> YES if there exists an assignment that satisfies all clauses, NO otherwise</p>
@@ -89,18 +89,18 @@
 <h3 id="example">Example</h3>
 
 <p>Consider the formula:
-(x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁)</p>
+(x₁ ∨ x₁) ∧ (! x₁ ∨ x₁) ∧ (! x₁ ∨ ! x₁)</p>
 
 <p>Is this satisfiable?</p>
 
 <p>Let’s evaluate each clause:</p>
 <ul>
   <li>Clause 1: (x₁ ∨ x₁) simplifies to x₁</li>
-  <li>Clause 2: (¬ x₁ ∨ x₁) is always TRUE (tautology)</li>
-  <li>Clause 3: (¬ x₁ ∨ ¬ x₁) simplifies to ¬ x₁</li>
+  <li>Clause 2: (! x₁ ∨ x₁) is always TRUE (tautology)</li>
+  <li>Clause 3: (! x₁ ∨ ! x₁) simplifies to ! x₁</li>
 </ul>
 
-<p>So the formula simplifies to: x₁ ∧ TRUE ∧ ¬ x₁ = x₁ ∧ ¬ x₁ = FALSE</p>
+<p>So the formula simplifies to: x₁ ∧ TRUE ∧ ! x₁ = x₁ ∧ ! x₁ = FALSE</p>
 
 <p><strong>Analysis:</strong></p>
 <ul>
@@ -125,11 +125,11 @@
 <p><strong>Better Example (Satisfiable):</strong></p>
 
 <p>Consider the formula:
-(x₁ ∨ ¬ x₁) ∧ (x₁)</p>
+(x₁ ∨ ! x₁) ∧ (x₁)</p>
 
 <p>This is satisfiable:</p>
 <ul>
-  <li>Clause 1: (x₁ ∨ ¬ x₁) is always TRUE (tautology)</li>
+  <li>Clause 1: (x₁ ∨ ! x₁) is always TRUE (tautology)</li>
   <li>Clause 2: (x₁) requires x₁ = TRUE</li>
 </ul>
 
@@ -202,7 +202,7 @@
 <p><strong>3-SAT</strong> is a restricted version of SAT where each clause contains exactly 3 literals.</p>
 
 <p><strong>Example:</strong>
-(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁)</p>
+(x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁)</p>
 
 <h3 id="why-3-sat">Why 3-SAT?</h3>
 
@@ -341,7 +341,7 @@
   <li><strong>Why Polynomial:</strong> 2-SAT has special structure that allows polynomial-time solution</li>
   <li><strong>Key Method:</strong>
     <ol>
-      <li>Create implication graph: For clause (a ∨ b), add edges (¬a → b) and (¬b → a)</li>
+      <li>Create implication graph: For clause (a ∨ b), add edges (!a → b) and (!b → a)</li>
       <li>Find strongly connected components (SCCs)</li>
       <li>Check if any variable and its negation are in the same SCC</li>
       <li>If no conflict, formula is satisfiable; otherwise unsatisfiable</li>
@@ -384,7 +384,7 @@
 <ol>
   <li>
     <p>Determine if the following 3-SAT instance is satisfiable:
-(x₁ ∨ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ ¬ x₁) ∧ (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ ¬ x₁ ∨ ¬ x₁)</p>
+(x₁ ∨ x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ ! x₁) ∧ (x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ ! x₁ ∨ ! x₁)</p>
   </li>
   <li>
     <p>Why is 2-SAT solvable in polynomial time while 3-SAT is NP-complete?</p>

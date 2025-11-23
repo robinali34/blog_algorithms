@@ -156,7 +156,7 @@ Given a candidate solution (partition S₁, S₂):</p>
   <li>For clause Cⱼ and variable xᵢ:
     <ul>
       <li>If xᵢ appears positively in Cⱼ: add 1 to clause digit (n+j) of vᵢ</li>
-      <li>If ¬xᵢ appears in Cⱼ: add 1 to clause digit (n+j) of v’ᵢ</li>
+      <li>If !xᵢ appears in Cⱼ: add 1 to clause digit (n+j) of v’ᵢ</li>
     </ul>
   </li>
   <li>This ensures that if a clause is satisfied, the corresponding clause digit contributes to the sum</li>
@@ -185,7 +185,7 @@ Given a candidate solution (partition S₁, S₂):</p>
 <p>Consider 3-SAT instance:</p>
 <ul>
   <li>Variables: x₁, x₂</li>
-  <li>Clauses: C₁ = (x₁ ∨ ¬x₂ ∨ x₁), C₂ = (¬x₁ ∨ x₂ ∨ x₂)</li>
+  <li>Clauses: C₁ = (x₁ ∨ !x₂ ∨ x₁), C₂ = (!x₁ ∨ x₂ ∨ x₂)</li>
 </ul>
 
 <p><strong>Variable Numbers (base 10, but think in base representation):</strong></p>
@@ -341,7 +341,7 @@ Given a candidate solution (partition S₁, S₂):</p>
   <li>Variable numbers contribute:
     <ul>
       <li>vᵢ contributes 1 to clause digit if xᵢ appears positively in Cⱼ and vᵢ ∈ S₁</li>
-      <li>v’ᵢ contributes 1 to clause digit if ¬xᵢ appears in Cⱼ and v’ᵢ ∈ S₁</li>
+      <li>v’ᵢ contributes 1 to clause digit if !xᵢ appears in Cⱼ and v’ᵢ ∈ S₁</li>
     </ul>
   </li>
   <li>Slack numbers sⱼ and s’ⱼ can contribute, but:

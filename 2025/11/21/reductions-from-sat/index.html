@@ -98,7 +98,7 @@
   <li>Original clause satisfiable ↔ at least one new clause satisfiable</li>
 </ul>
 
-<p><strong>Hint:</strong> For a clause (l₁ ∨ l₂ ∨ … ∨ lₖ) with k &gt; 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ … The new variables yᵢ act as “switches” that can be set to propagate satisfaction.</p>
+<p><strong>Hint:</strong> For a clause (l₁ ∨ l₂ ∨ … ∨ lₖ) with k &gt; 3, use chain: (l₁ ∨ l₂ ∨ y₁) ∧ (!y₁ ∨ l₃ ∨ y₂) ∧ … The new variables yᵢ act as “switches” that can be set to propagate satisfaction.</p>
 
 <h3 id="1-np-completeness-proof-of-3-sat-solution-validation">1. NP-Completeness Proof of 3-SAT: Solution Validation</h3>
 
@@ -134,7 +134,7 @@ Given a candidate solution (assignment A):</p>
   <li>For clause (l₁ ∨ l₂ ∨ … ∨ lₖ) where k &gt; 3:
     <ul>
       <li>Introduce new variables y₁, y₂, …, y_{k-3}</li>
-      <li>Replace with: (l₁ ∨ l₂ ∨ y₁) ∧ (¬y₁ ∨ l₃ ∨ y₂) ∧ … ∧ (¬y_{k-3} ∨ l_{k-1} ∨ lₖ)</li>
+      <li>Replace with: (l₁ ∨ l₂ ∨ y₁) ∧ (!y₁ ∨ l₃ ∨ y₂) ∧ … ∧ (!y_{k-3} ∨ l_{k-1} ∨ lₖ)</li>
     </ul>
   </li>
 </ul>
@@ -143,7 +143,7 @@ Given a candidate solution (assignment A):</p>
 <ul>
   <li>For clause (l₁ ∨ l₂):
     <ul>
-      <li>Replace with: (l₁ ∨ l₂ ∨ y) ∧ (l₁ ∨ l₂ ∨ ¬y) where y is new variable</li>
+      <li>Replace with: (l₁ ∨ l₂ ∨ y) ∧ (l₁ ∨ l₂ ∨ !y) where y is new variable</li>
       <li>Or simply: (l₁ ∨ l₂ ∨ l₁) (duplicate literal)</li>
     </ul>
   </li>
@@ -180,7 +180,7 @@ Given a candidate solution (assignment A):</p>
 <ul>
   <li>For original variables: use assignment A</li>
   <li>For new variables yᵢ: set to satisfy intermediate clauses</li>
-  <li>For clause (l₁ ∨ l₂ ∨ … ∨ lₖ) replaced by (l₁ ∨ l₂ ∨ y₁) ∧ … ∧ (¬y_{k-3} ∨ l_{k-1} ∨ lₖ):
+  <li>For clause (l₁ ∨ l₂ ∨ … ∨ lₖ) replaced by (l₁ ∨ l₂ ∨ y₁) ∧ … ∧ (!y_{k-3} ∨ l_{k-1} ∨ lₖ):
     <ul>
       <li>If any original literal is TRUE, set all yᵢ appropriately</li>
       <li>If all original literals are FALSE, set y₁ = FALSE, then y₂ = FALSE, etc., until last clause needs y_{k-3} = TRUE</li>
@@ -237,7 +237,7 @@ Given a candidate solution (assignment A):</p>
   <li>Use (1 - xᵢ) for negated literals</li>
 </ul>
 
-<p><strong>Hint:</strong> Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ ¬x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.</p>
+<p><strong>Hint:</strong> Each clause becomes a constraint requiring at least one literal to be TRUE. For clause (x₁ ∨ !x₂ ∨ x₃), use constraint: x₁ + (1 - x₂) + x₃ ≥ 1.</p>
 
 <h3 id="1-np-completeness-proof-of-ilp-solution-validation">1. NP-Completeness Proof of ILP: Solution Validation</h3>
 
@@ -273,7 +273,7 @@ Given a candidate solution (integer vector x):</p>
   <li>For each clause Cⱼ = (l₁ ∨ l₂ ∨ … ∨ lₖ):
     <ul>
       <li>Create constraint: ∑_{i=1}^k l’ᵢ ≥ 1</li>
-      <li>Where l’ᵢ = xⱼ if lᵢ = xⱼ, and l’ᵢ = (1 - xⱼ) if lᵢ = ¬xⱼ</li>
+      <li>Where l’ᵢ = xⱼ if lᵢ = xⱼ, and l’ᵢ = (1 - xⱼ) if lᵢ = !xⱼ</li>
     </ul>
   </li>
   <li>Return ILP instance: variables x ∈ {0,1}ⁿ, constraints as above</li>
@@ -281,7 +281,7 @@ Given a candidate solution (integer vector x):</p>
 
 <p><strong>Example:</strong></p>
 <ul>
-  <li>Clause (x₁ ∨ ¬x₂ ∨ x₃) becomes: x₁ + (1 - x₂) + x₃ ≥ 1</li>
+  <li>Clause (x₁ ∨ !x₂ ∨ x₃) becomes: x₁ + (1 - x₂) + x₃ ≥ 1</li>
   <li>Simplifies to: x₁ - x₂ + x₃ ≥ 0</li>
 </ul>
 

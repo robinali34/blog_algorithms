@@ -236,7 +236,7 @@
 <ol>
   <li><strong>Create vertices</strong>:
     <ul>
-      <li>For each variable x_i, create two vertices: one for x_i and one for ¬ x_i</li>
+      <li>For each variable x_i, create two vertices: one for x_i and one for ! x_i</li>
       <li>For each clause C_j, create a triangle (3 vertices, one for each literal)</li>
     </ul>
   </li>
@@ -546,7 +546,7 @@
   </li>
   <li>
     <p><strong>Construct the graph</strong> for the 3-SAT instance:
-(x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁)
+(x₁ ∨ ! x₁ ∨ x₁) ∧ (! x₁ ∨ x₁ ∨ x₁)
 Determine the vertex cover size and corresponding satisfying assignment.</p>
   </li>
   <li>
