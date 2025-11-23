@@ -85,6 +85,99 @@
 
 <p><strong>Note:</strong> The problem asks to find a satisfying assignment (if such an assignment exists) where at most k variables are set to TRUE.</p>
 
+<p><strong>Example:</strong></p>
+
+<p>Consider a Boolean formula φ with:</p>
+<ul>
+  <li>Variables: x₁, x₂, x₃</li>
+  <li>Clauses:
+    <ul>
+      <li>C₁ = (x₁ ∨ ¬x₂)  (read as: “x₁ OR NOT x₂”)</li>
+      <li>C₂ = (¬x₁ ∨ x₃)  (read as: “NOT x₁ OR x₃”)</li>
+      <li>C₃ = (x₂ ∨ ¬x₃)  (read as: “x₂ OR NOT x₃”)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The formula φ = C₁ ∧ C₂ ∧ C₃ = (x₁ ∨ ¬x₂) ∧ (¬x₁ ∨ x₃) ∧ (x₂ ∨ ¬x₃)</p>
+
+<p><strong>What is a clause?</strong></p>
+<ul>
+  <li>A clause is a disjunction (OR) of literals</li>
+  <li>A literal is either a variable (xᵢ) or its negation (¬xᵢ)</li>
+  <li>Example: (x₁ ∨ ¬x₂) means “x₁ is TRUE OR x₂ is FALSE”</li>
+</ul>
+
+<p><strong>What does it mean for a formula to be satisfiable?</strong></p>
+<ul>
+  <li>A formula is satisfiable if there exists an assignment of TRUE/FALSE to variables that makes the entire formula TRUE</li>
+  <li>For a clause to be TRUE, at least one of its literals must be TRUE</li>
+  <li>For the formula to be TRUE, all clauses must be TRUE</li>
+</ul>
+
+<p><strong>Stingy SAT Example:</strong></p>
+
+<p>Given the formula above and k = 2:</p>
+
+<p><strong>Trying assignment: x₁ = TRUE, x₂ = FALSE, x₃ = TRUE</strong></p>
+<ul>
+  <li>C₁ = (TRUE ∨ ¬FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (¬TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>Formula is FALSE (not satisfiable with this assignment)</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = TRUE, x₂ = FALSE, x₃ = FALSE</strong></p>
+<ul>
+  <li>C₁ = (TRUE ∨ ¬FALSE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (¬TRUE ∨ FALSE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>Formula is FALSE</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = TRUE, x₂ = TRUE, x₃ = TRUE</strong></p>
+<ul>
+  <li>C₁ = (TRUE ∨ ¬TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>C₂ = (¬TRUE ∨ TRUE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (TRUE ∨ ¬TRUE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>Formula is TRUE ✓</li>
+  <li>Number of TRUE variables: 3</li>
+  <li>Since k = 2 and we have 3 TRUE variables, this assignment does NOT satisfy the “at most k variables true” constraint</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = FALSE, x₂ = TRUE, x₃ = TRUE</strong></p>
+<ul>
+  <li>C₁ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>Formula is FALSE</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = TRUE, x₂ = FALSE, x₃ = TRUE</strong> (already tried, FALSE)</p>
+
+<p><strong>Trying assignment: x₁ = FALSE, x₂ = TRUE, x₃ = FALSE</strong></p>
+<ul>
+  <li>C₁ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>Formula is FALSE</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = FALSE, x₂ = FALSE, x₃ = TRUE</strong></p>
+<ul>
+  <li>C₁ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (¬FALSE ∨ TRUE) = (TRUE ∨ TRUE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ ¬TRUE) = (FALSE ∨ FALSE) = FALSE ✗</li>
+  <li>Formula is FALSE</li>
+</ul>
+
+<p><strong>Trying assignment: x₁ = FALSE, x₂ = FALSE, x₃ = FALSE</strong></p>
+<ul>
+  <li>C₁ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>C₂ = (¬FALSE ∨ FALSE) = (TRUE ∨ FALSE) = TRUE ✓</li>
+  <li>C₃ = (FALSE ∨ ¬FALSE) = (FALSE ∨ TRUE) = TRUE ✓</li>
+  <li>Formula is TRUE ✓</li>
+  <li>Number of TRUE variables: 0</li>
+  <li>Since k = 2 and we have 0 TRUE variables (0 ≤ 2), this assignment satisfies the “at most k variables true” constraint ✓</li>
+</ul>
+
+<p><strong>Answer:</strong> YES, the Stingy SAT instance (φ, k=2) has a solution: x₁ = FALSE, x₂ = FALSE, x₃ = FALSE (0 variables are TRUE, which is ≤ 2).</p>
+
 <h3 id="sat-problem">SAT Problem</h3>
 
 <p><strong>Input:</strong> A Boolean formula φ in CNF with:</p>
