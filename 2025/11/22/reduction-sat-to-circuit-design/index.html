@@ -201,17 +201,7 @@ Given a candidate solution (circuit C):</p>
     </ul>
   </li>
   <li>Create AND gate combining all clause outputs</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Total gates: n (inputs) + ∑ⱼ (</td>
-          <td>Cⱼ</td>
-          <td>- 1) (OR gates) + 1 (final AND) = n + m’ + 1 where m’ is total literals</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Total gates: n (inputs) + ∑ⱼ (<code class="language-plaintext highlighter-rouge">|Cⱼ|</code> - 1) (OR gates) + 1 (final AND) = n + m’ + 1 where m’ is total literals</li>
 </ul>
 
 <p><strong>Simplified Approach:</strong></p>
@@ -277,17 +267,7 @@ Given a candidate solution (circuit C):</p>
     </ul>
   </li>
   <li>This circuit computes φ</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>Circuit size: n + ∑ⱼ (</td>
-          <td>Cⱼ</td>
-          <td>- 1) + 1 ≤ k (by construction of k)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>Circuit size: n + ∑ⱼ (<code class="language-plaintext highlighter-rouge">|Cⱼ|</code> - 1) + 1 ≤ k (by construction of k)</li>
 </ul>
 
 <p><strong>Verify Circuit:</strong></p>
