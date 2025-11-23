@@ -48,7 +48,10 @@ Consider the following graph:
 
 **Rudrata (1,6)-Path:**
 - Path: 1 → 4 → 5 → 2 → 3 → 6 ✓ (starts at 1, ends at 6, visits all vertices)
-- Path: 1 → 2 → 5 → 4 → 3 → 6 ✓ (another valid (1,6)-path)
+- Path: 1 → 2 → 3 → 6 → 5 → 4 ✗ (ends at 4, not 6)
+- Path: 1 → 2 → 5 → 4 → 3 → 6 ✗ (no edge between 4 and 3)
+
+**Note:** In this graph, there is only one valid Rudrata (1,6)-path: 1 → 4 → 5 → 2 → 3 → 6
 
 ### Visual Example
 

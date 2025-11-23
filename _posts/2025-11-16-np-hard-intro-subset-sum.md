@@ -80,9 +80,31 @@ Partition is known to be NP-complete (can be proven by reduction from 3-SAT or S
 ### Reduction from Partition to Subset Sum
 
 **Reduction:**
-1. Given a Partition instance: set A = {a_1, a_2, …, a_n}
-2. Compute s = ∑_{i=1}^n a_i (total sum)
+1. Given a Partition instance: set A = {a₁, a₂, …, aₙ}
+2. Compute s = ∑ᵢ₌₁ⁿ aᵢ (total sum)
 3. Return Subset Sum instance: set A and target t = s/2
+
+**Example:**
+
+Consider a Partition instance:
+- Set A = {3, 1, 4, 2, 2}
+- Total sum: s = 3 + 1 + 4 + 2 + 2 = 12
+- Target for partition: s/2 = 6
+
+**Reduction to Subset Sum:**
+- Subset Sum instance: set A = {3, 1, 4, 2, 2}, target t = 6
+
+**Verification:**
+
+**Partition → Subset Sum:**
+- Partition solution: {3, 1, 2} and {4, 2} (both sum to 6)
+- Subset Sum solution: {3, 1, 2} sums to 6 ✓
+- Therefore, Subset Sum returns YES
+
+**Subset Sum → Partition:**
+- Subset Sum solution: {3, 1, 2} sums to 6
+- Complement: {4, 2} sums to 12 - 6 = 6 ✓
+- Therefore, Partition returns YES (partition: {3, 1, 2} and {4, 2})
 
 **Correctness:**
 - If Partition has a solution, then A can be split into two subsets each summing to s/2

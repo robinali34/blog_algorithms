@@ -30,29 +30,42 @@ The Zero-One Equations Problem asks: **Given a system of linear equations over i
 
 Consider the system:
 
-begin{align}
-x₁ + x₂ + x₁ &= 2 
-x₁ + x₂ &= 1 
-x₁ + x₂ &= 1
-end{align}
+```
+x₁ + x₂ + x₃ = 2 
+x₁ + x₂ = 1
+x₂ + x₃ = 1
+```
 
-where x₁, x₂, x₁ ∈ {0,1}.
+where x₁, x₂, x₃ ∈ {0,1}.
 
 **Trying solutions:**
-- (1, 1, 0): 1+1+0=2 ✓, 1+0=1 ✓, 1+0=1 ✓ (satisfies all equations!)
-- (1, 0, 1): 1+0+1=2 ✓, 1+1=2 ✗
-- (0, 1, 1): 0+1+1=2 ✓, 0+1=1 ✓, 1+1=2 ✗
-- (1, 1, 1): 1+1+1=3 ✗
+- (x₁, x₂, x₃) = (1, 0, 1):
+  - Equation 1: 1 + 0 + 1 = 2 ✓
+  - Equation 2: 1 + 0 = 1 ✓
+  - Equation 3: 0 + 1 = 1 ✓
+  - **Solution found!** ✓
 
-So (1, 1, 0) is a solution.
+- (x₁, x₂, x₃) = (1, 1, 0):
+  - Equation 1: 1 + 1 + 0 = 2 ✓
+  - Equation 2: 1 + 1 = 2 ✗ (should be 1)
+
+- (x₁, x₂, x₃) = (0, 1, 1):
+  - Equation 1: 0 + 1 + 1 = 2 ✓
+  - Equation 2: 0 + 1 = 1 ✓
+  - Equation 3: 1 + 1 = 2 ✗ (should be 1)
+
+- (x₁, x₂, x₃) = (0, 0, 0):
+  - Equation 1: 0 + 0 + 0 = 0 ✗ (should be 2)
+
+So (1, 0, 1) is a solution.
 
 ### Visual Example
 
 For the system:
-begin{align}
+```
 2x₁ + x₂ &= 2 
 x₁ + x₂ + x₁ &= 2
-end{align}
+```
 
 **Possible 0-1 solutions:**
 - (1, 0, 1): 2(1)+0=2 ✓, 1+0+1=2 ✓
@@ -286,11 +299,11 @@ All reductions are polynomial-time, establishing ZOE as NP-complete.
 ## Practice Problems
 
 1. **Solve by hand**: For the ZOE system:
-   begin{align}
-   x₁ + x₂ &= 1 
-   x₁ + x₂ &= 1 
-   x₁ + x₂ &= 1
-   end{align}
+   ```
+   x₁ + x₂ = 1 
+   x₁ + x₂ = 1 
+   x₁ + x₂ = 1
+   ```
    Find all 0-1 solutions.
 
 2. **Reduce 3-SAT to ZOE**: For the 3-SAT instance (x₁ ∨ ¬ x₁ ∨ x₁) ∧ (¬ x₁ ∨ x₁ ∨ x₁), construct the corresponding ZOE instance.

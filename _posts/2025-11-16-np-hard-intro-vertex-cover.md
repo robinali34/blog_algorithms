@@ -59,9 +59,23 @@ A graph with a minimum vertex cover highlighted:
     4---5---6
 ```
 
-- Some vertex covers: {2, 5}, {1, 3, 4, 6}, {1, 2, 3}, etc.
-- Minimum vertex cover: {2, 5} (size 2)
-- Note: {1} is NOT a vertex cover because edge (2,3) is not covered
+**Edges in the graph:**
+- 1-2, 2-3, 1-4, 3-6, 4-5, 5-6
+
+**Vertex covers:**
+- {1, 3, 5}: Covers all edges (1 covers 1-2 and 1-4, 3 covers 2-3 and 3-6, 5 covers 4-5 and 5-6) ✓
+- {2, 4, 6}: Covers all edges (2 covers 1-2 and 2-3, 4 covers 1-4 and 4-5, 6 covers 3-6 and 5-6) ✓
+- {1, 3, 4, 6}: Covers all edges ✓ (but not minimum)
+- {2, 5}: **NOT a vertex cover** ✗
+  - Edge 1-4 is not covered (neither 1 nor 4 is in {2, 5})
+  - Edge 3-6 is not covered (neither 3 nor 6 is in {2, 5})
+- {1, 2, 3}: **NOT a vertex cover** ✗
+  - Edge 4-5 is not covered
+  - Edge 5-6 is not covered
+
+**Minimum vertex cover:** {1, 3, 5} or {2, 4, 6} (size 3)
+
+**Note:** {1} is NOT a vertex cover because edges (2,3), (3,6), (4,5), and (5,6) are not covered.
 
 ## Why Vertex Cover is in NP
 
