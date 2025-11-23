@@ -252,8 +252,8 @@ Some restricted versions of 3D Matching are tractable:
 ### 2D Matching (Special Case)
 
 **Algorithm:** For bipartite matching, use augmenting paths
-- **Time Complexity:** O(sqrt{n} · `|E|`) using Hopcroft-Karp algorithm
-- **Space Complexity:** O(n + `|E|`)
+- **Time Complexity:** O(√n · m) using Hopcroft-Karp algorithm
+- **Space Complexity:** O(n + m)
 - **Why Polynomial:** 2D matching has special structure allowing polynomial-time solution
 
 ### Verification Complexity

@@ -142,17 +142,17 @@ Given a candidate solution (path P):
 Given a Rudrata Path instance: graph G = (V, E).
 
 **Construction:**
-- Return Longest Path instance: graph G, target length k = `|V|` - 1
+- Return Longest Path instance: graph G, target length k = n - 1
 
-**Key Property:** Hamiltonian path ↔ Path of length `|V|` - 1
+**Key Property:** Hamiltonian path ↔ Path of length n - 1
 
 #### 2.2 Output Conversion
 
-**Given:** Longest Path solution (path P of length ≥ `|V|` - 1)
+**Given:** Longest Path solution (path P of length ≥ n - 1)
 
 **Extract Hamiltonian Path:**
-- Path P has length ≥ `|V|` - 1
-- Since graph has `|V|` vertices, path visits all vertices
+- Path P has length ≥ n - 1
+- Since graph has n vertices, path visits all vertices
 - P is Hamiltonian path
 
 ### 3. Correctness Justification
@@ -162,9 +162,9 @@ Given a Rudrata Path instance: graph G = (V, E).
 **Given:** Rudrata Path instance has solution (Hamiltonian path P).
 
 **Construct Longest Path:**
-- Path P visits all `|V|` vertices
-- Length of P = `|V|` - 1
-- Therefore, path of length ≥ `|V|` - 1 exists
+- Path P visits all n vertices
+- Length of P = n - 1
+- Therefore, path of length ≥ n - 1 exists
 
 **Conclusion:** Longest Path has a solution.
 
@@ -173,19 +173,19 @@ Given a Rudrata Path instance: graph G = (V, E).
 **Given:** Rudrata Path instance has no Hamiltonian path.
 
 **Proof:**
-- Maximum path length is `|V|` - 1 (visiting all vertices)
-- If no Hamiltonian path exists, maximum path length < `|V|` - 1
-- Therefore, no path of length ≥ `|V|` - 1
+- Maximum path length is n - 1 (visiting all vertices)
+- If no Hamiltonian path exists, maximum path length < n - 1
+- Therefore, no path of length ≥ n - 1
 
 **Conclusion:** Longest Path has no solution.
 
 #### 3.2b If Longest Path has a solution, then Rudrata Path has a solution
 
-**Given:** Longest Path instance has solution (path P of length ≥ `|V|` - 1).
+**Given:** Longest Path instance has solution (path P of length ≥ n - 1).
 
 **Extract Hamiltonian Path:**
-- Path P has length ≥ `|V|` - 1
-- Since graph has `|V|` vertices, P must visit all vertices
+- Path P has length ≥ n - 1
+- Since graph has n vertices, P must visit all vertices
 - P is Hamiltonian path
 
 **Conclusion:** Rudrata Path has a solution.
@@ -200,7 +200,7 @@ Given a Rudrata Path instance: graph G = (V, E).
 
 1. **Adding Constraints:** Rudrata Path → (s,t)-Path adds endpoints
 2. **Optimization:** Rudrata Path → Longest Path is special case
-3. **Path Length:** Maximum is `|V|` - 1
+3. **Path Length:** Maximum is n - 1
 4. **Template Structure:** All reductions follow rigorous format
 
 ---

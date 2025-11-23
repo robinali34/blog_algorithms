@@ -234,17 +234,17 @@ Given a candidate solution (set S of vertices):
 Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construction:**
-- Return Independent Set instance: graph G, integer k' = `|V|` - k
+- Return Independent Set instance: graph G, integer k' = n - k
 
 **Key Property:** S is vertex cover ↔ V \ S is independent set
 
 #### 2.2 Output Conversion
 
-**Given:** Independent Set solution S' of size k' = `|V|` - k
+**Given:** Independent Set solution S' of size k' = n - k
 
 **Extract Vertex Cover:**
 - S = V \ S'
-- `|S|` = `|V|` - k' = k
+- `|S|` = n - k' = k
 - S is vertex cover (complement of independent set)
 
 ### 3. Correctness Justification
@@ -255,7 +255,7 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 **Construct Independent Set:**
 - S' = V \ S
-- `|S'|` = `|V|` - `|S|` ≥ `|V|` - k = k'
+- `|S'|` = n - `|S|` ≥ n - k = k'
 - S' is independent set (complement of vertex cover)
 
 **Conclusion:** Independent Set has a solution.
@@ -273,11 +273,11 @@ Given a Vertex Cover instance: graph G = (V, E), integer k.
 
 #### 3.2b If Independent Set has a solution, then Vertex Cover has a solution
 
-**Given:** Independent Set instance has solution S' of size ≥ k' = `|V|` - k.
+**Given:** Independent Set instance has solution S' of size ≥ k' = n - k.
 
 **Extract Vertex Cover:**
 - S = V \ S'
-- `|S|` = `|V|` - `|S'|` ≤ `|V|` - k' = k
+- `|S|` = n - `|S'|` ≤ n - k' = k
 - S is vertex cover (complement of independent set)
 
 **Conclusion:** Vertex Cover has a solution.

@@ -54,9 +54,9 @@ Given a candidate solution (ordered list of vertices P representing a path):
 6. Check that gold count ≥ g: O(1) time
 7. Check that white count ≥ w: O(1) time
 8. Check that all colored vertices are present:
-   - For each vertex v with color c[v] defined, check if v ∈ P: O(`|V|` · `|P|`) time
+   - For each vertex v with color c[v] defined, check if v ∈ P: O(n · `|P|`) time
 
-**Total Time:** O(`|V|` · `|P|`), which is polynomial in input size.
+**Total Time:** O(n · `|P|`), which is polynomial in input size.
 
 **Conclusion:** White and Gold Path ∈ NP.
 
@@ -68,7 +68,7 @@ Given a candidate solution (ordered list of vertices P representing a path):
 
 ### 2.1 Input Conversion
 
-Given a Rudrata (s,t)-Path instance: graph G = (V, E) with `|V|` = n, vertices s, t.
+Given a Rudrata (s,t)-Path instance: graph G = (V, E) with n = n, vertices s, t.
 
 **Construction:**
 

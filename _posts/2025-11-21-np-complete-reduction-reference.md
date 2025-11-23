@@ -346,7 +346,7 @@ SAT
    - Return Clique instance: graph G̅, integer k
    - G has independent set of size k ↔ G̅ has clique of size k
 
-3. **Polynomial time:** Creating complement graph takes O(`|V|`²) time
+3. **Polynomial time:** Creating complement graph takes O(n²) time
 
 **Therefore, Clique is NP-complete.**
 
@@ -364,7 +364,7 @@ SAT
      - k' = k
    - G has vertex cover of size k ↔ Sets cover universe with k sets
 
-3. **Polynomial time:** O(`|V|` + `|E|`) time
+3. **Polynomial time:** O(n + m) time
 
 **Therefore, Set Cover is NP-complete.**
 
@@ -396,10 +396,10 @@ SAT
    - Given Rudrata Cycle instance: graph G = (V, E)
    - Create complete graph G' with same vertices
    - Set edge weights: w(u,v) = 1 if (u,v) ∈ E, else w(u,v) = 2
-   - Set bound B = `|V|`
-   - G has Hamiltonian cycle ↔ G' has TSP tour of weight `|V|`
+   - Set bound B = n
+   - G has Hamiltonian cycle ↔ G' has TSP tour of weight n
 
-3. **Polynomial time:** O(`|V|`²) time
+3. **Polynomial time:** O(n²) time
 
 **Therefore, TSP is NP-complete.**
 

@@ -56,7 +56,7 @@ Given a candidate solution (set S of N+4 vertices):
 
 ### 2.1 Input Conversion
 
-Given a Vertex Cover instance: graph G = (V, E) with `|V|` = n, `|E|` = m, integer k.
+Given a Vertex Cover instance: graph G = (V, E) with n = n, m = m, integer k.
 
 **Construction:**
 
