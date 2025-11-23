@@ -36,7 +36,7 @@ This post provides a detailed proof that the Hitting Set problem is NP-complete 
 
 **Verification Algorithm:**
 Given a candidate solution (hitting set H):
-1. Check that |H| ≤ b: O(1) time
+1. Check that `|H|` ≤ b: O(1) time
 2. For each set Sᵢ:
    - Check that H ∩ Sᵢ ≠ ∅: O(|Sᵢ|) time
 3. Check all sets: O(∑ᵢ |Sᵢ|) time
@@ -63,7 +63,7 @@ Given a Vertex Cover instance (G, k) where G = (V, E) with n vertices and m edge
 **Step 2: Create Sets from Edges**
 - For each edge e = (u, v) ∈ E:
   - Create set Sₑ = {u, v} (set containing the two endpoints)
-- Family of sets: {S₁, S₂, ..., Sₘ} where m = |E| (one set per edge)
+- Family of sets: {S₁, S₂, ..., Sₘ} where m = `|E|` (one set per edge)
 
 **Step 3: Set Budget**
 - b = k (same size constraint)
@@ -115,7 +115,7 @@ Consider Vertex Cover instance:
 **Construct Hitting Set Solution:**
 - Use C as the hitting set H
 - H = C ⊆ V = U
-- |H| = |C| ≤ k = b
+- `|H|` = `|C|` ≤ k = b
 
 **Verify Hitting Property:**
 - For each set Sᵢ (corresponding to edge e = (u, v) ∈ E):
@@ -137,7 +137,7 @@ Consider Vertex Cover instance:
 **Extract Vertex Cover:**
 - Use H as the vertex cover
 - H ⊆ U = V
-- |H| ≤ b = k
+- `|H|` ≤ b = k
 
 **Check Coverage:**
 - For each set Sᵢ (corresponding to edge e = (u, v) ∈ E):
@@ -160,7 +160,7 @@ Consider Vertex Cover instance:
 **Extract Vertex Cover:**
 - Use H as the vertex cover
 - H ⊆ U = V
-- |H| ≤ b = k
+- `|H|` ≤ b = k
 
 **Verify Coverage:**
 

@@ -62,7 +62,7 @@ Given a Rudrata Path instance (G, s, t) where G = (V, E) with n vertices, we con
 - G' = G (same graph, no changes)
 
 **Step 2: Set Goal Length**
-- g = n - 1 (where n = |V| is the number of vertices)
+- g = n - 1 (where n = `|V|` is the number of vertices)
 
 **Step 3: Result**
 - Longest Path instance: (G', n-1)

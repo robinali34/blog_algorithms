@@ -41,7 +41,7 @@ NO otherwise.
 
 **Verification Algorithm:**
 Given a candidate solution (graph G = ({1, 2, ..., n}, E)):
-1. Check that total cost ≤ b: O(|E|) time
+1. Check that total cost ≤ b: O(`|E|`) time
 2. For each pair (i, j) with i ≠ j:
    - Find r_ij vertex-disjoint paths: O(n²) time using max-flow algorithms
    - Check that at least r_ij paths exist: O(n²) time

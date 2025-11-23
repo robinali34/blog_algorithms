@@ -38,7 +38,7 @@ This post provides a detailed proof that the Dominating Set problem is NP-comple
 
 **Verification Algorithm:**
 Given a candidate solution (dominating set D):
-1. Check that |D| ≤ b: O(1) time
+1. Check that `|D|` ≤ b: O(1) time
 2. For each vertex v ∈ V:
    - Check if v ∈ D: O(1) time, OR
    - Check if v is adjacent to at least one vertex in D: O(deg(v)) time
@@ -121,7 +121,7 @@ Consider Vertex Cover instance:
 **Construct Dominating Set Solution:**
 - Use C as the dominating set D
 - D = C ⊆ V ⊆ V'
-- |D| = |C| ≤ k = b
+- `|D|` = `|C|` ≤ k = b
 
 **Verify Dominating Property:**
 
@@ -160,7 +160,7 @@ Consider Vertex Cover instance:
 **Extract Vertex Cover:**
 - If D contains only original vertices: Use D as vertex cover
 - If D contains edge vertices: For each edge vertex wₑ in D, replace it with one of its neighbors (u or v)
-- This gives us a set C ⊆ V of size ≤ |D| ≤ k
+- This gives us a set C ⊆ V of size ≤ `|D|` ≤ k
 
 **Check Coverage:**
 - For each edge e = (u, v):
@@ -188,7 +188,7 @@ Consider Vertex Cover instance:
 - This gives us a set C ⊆ V (only original vertices)
 
 **Step 2: Verify Size**
-- |C| ≤ |D| ≤ b = k (we replaced each edge vertex with one neighbor, possibly duplicates)
+- `|C|` ≤ `|D|` ≤ b = k (we replaced each edge vertex with one neighbor, possibly duplicates)
 
 **Step 3: Verify Coverage**
 

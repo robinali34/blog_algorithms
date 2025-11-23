@@ -20,7 +20,7 @@ This post provides a detailed proof that the Sparse Subgraph problem is NP-compl
 
 **Output:** YES if there exists a set of a vertices of G such that there are at most b edges between them, NO otherwise.
 
-**Note:** The problem asks to find a set S ⊆ V with |S| = a such that the number of edges in the subgraph induced by S is at most b.
+**Note:** The problem asks to find a set S ⊆ V with `|S|` = a such that the number of edges in the subgraph induced by S is at most b.
 
 ### Independent Set Problem
 
@@ -36,7 +36,7 @@ This post provides a detailed proof that the Sparse Subgraph problem is NP-compl
 
 **Verification Algorithm:**
 Given a candidate solution (set S of a vertices):
-1. Check that |S| = a: O(1) time
+1. Check that `|S|` = a: O(1) time
 2. Count the number of edges in the subgraph induced by S: O(a²) time
 3. Check if the count ≤ b: O(1) time
 

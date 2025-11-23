@@ -119,8 +119,8 @@ Consider Clique instance:
   - Both graphs are isomorphic (both are K_k)
 
 **Verify Satisfaction:**
-- |V₁ \ V₁'| = |C| = k ≥ b = k: ✓
-- |V₂ \ V₂'| = |V₂| = k ≥ b = k: ✓
+- `|V₁ \ V₁'|` = `|C|` = k ≥ b = k: ✓
+- `|V₂ \ V₂'|` = `|V₂|` = k ≥ b = k: ✓
 - G₁' is isomorphic to G₂': ✓ (both are K_k)
 - Therefore, the solution is valid
 

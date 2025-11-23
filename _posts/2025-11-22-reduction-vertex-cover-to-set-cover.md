@@ -37,7 +37,7 @@ This post provides a detailed proof that the Set Cover problem is NP-complete by
 
 **Verification Algorithm:**
 Given a candidate solution (collection C of at most k sets):
-1. Check that |C| ≤ k: O(1) time
+1. Check that `|C|` ≤ k: O(1) time
 2. Check that C ⊆ S: O(k) time
 3. Compute the union of sets in C: O(∑_{Sᵢ ∈ C} |Sᵢ|) time
 4. Check if the union equals U: O(n) time
@@ -60,13 +60,13 @@ Given a Vertex Cover instance (G, k) where G = (V, E) with n vertices and m edge
 
 **Step 1: Set Universe**
 - U = E (edges become universe elements)
-- |U| = m
+- `|U|` = m
 
 **Step 2: Create Sets from Vertices**
 - For each vertex v ∈ V:
   - Create set Sᵥ = {e ∈ E : e is incident to v} (set of all edges incident to v)
 - Collection S = {Sᵥ : v ∈ V}
-- |S| = n
+- `|S|` = n
 
 **Step 3: Set Parameter**
 - k' = k (same size constraint)
@@ -120,7 +120,7 @@ Consider Vertex Cover instance:
 **Construct Set Cover Solution:**
 - For each vertex v ∈ C, include set Sᵥ in the collection
 - Collection C_sets = {Sᵥ : v ∈ C}
-- |C_sets| = |C| ≤ k
+- `|C_sets|` = `|C|` ≤ k
 
 **Verify Coverage:**
 
