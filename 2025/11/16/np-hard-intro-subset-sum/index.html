@@ -151,10 +151,40 @@
 
 <p><strong>Reduction:</strong></p>
 <ol>
-  <li>Given a Partition instance: set A = {a_1, a_2, …, a_n}</li>
-  <li>Compute s = ∑_{i=1}^n a_i (total sum)</li>
+  <li>Given a Partition instance: set A = {a₁, a₂, …, aₙ}</li>
+  <li>Compute s = ∑ᵢ₌₁ⁿ aᵢ (total sum)</li>
   <li>Return Subset Sum instance: set A and target t = s/2</li>
 </ol>
+
+<p><strong>Example:</strong></p>
+
+<p>Consider a Partition instance:</p>
+<ul>
+  <li>Set A = {3, 1, 4, 2, 2}</li>
+  <li>Total sum: s = 3 + 1 + 4 + 2 + 2 = 12</li>
+  <li>Target for partition: s/2 = 6</li>
+</ul>
+
+<p><strong>Reduction to Subset Sum:</strong></p>
+<ul>
+  <li>Subset Sum instance: set A = {3, 1, 4, 2, 2}, target t = 6</li>
+</ul>
+
+<p><strong>Verification:</strong></p>
+
+<p><strong>Partition → Subset Sum:</strong></p>
+<ul>
+  <li>Partition solution: {3, 1, 2} and {4, 2} (both sum to 6)</li>
+  <li>Subset Sum solution: {3, 1, 2} sums to 6 ✓</li>
+  <li>Therefore, Subset Sum returns YES</li>
+</ul>
+
+<p><strong>Subset Sum → Partition:</strong></p>
+<ul>
+  <li>Subset Sum solution: {3, 1, 2} sums to 6</li>
+  <li>Complement: {4, 2} sums to 12 - 6 = 6 ✓</li>
+  <li>Therefore, Partition returns YES (partition: {3, 1, 2} and {4, 2})</li>
+</ul>
 
 <p><strong>Correctness:</strong></p>
 <ul>
