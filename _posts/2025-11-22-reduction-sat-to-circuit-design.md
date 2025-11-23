@@ -102,7 +102,7 @@ Given a SAT instance: Boolean formula φ in CNF with variables x₁, x₂, ..., 
   - Create OR gate computing l₁ ∨ l₂ ∨ ... ∨ lₖ
   - This requires k-1 OR gates for a clause with k literals
 - Create AND gate combining all clause outputs
-- Total gates: n (inputs) + ∑ⱼ (|Cⱼ| - 1) (OR gates) + 1 (final AND) = n + m' + 1 where m' is total literals
+- Total gates: n (inputs) + ∑ⱼ (`|Cⱼ|` - 1) (OR gates) + 1 (final AND) = n + m' + 1 where m' is total literals
 
 **Simplified Approach:**
 - Set k = n + m + 1 (sufficient for the natural circuit)
@@ -150,7 +150,7 @@ Given a SAT instance: Boolean formula φ in CNF with variables x₁, x₂, ..., 
   - For each clause Cⱼ, create OR gate computing the clause
   - Create AND gate combining all clause outputs
 - This circuit computes φ
-- Circuit size: n + ∑ⱼ (|Cⱼ| - 1) + 1 ≤ k (by construction of k)
+- Circuit size: n + ∑ⱼ (`|Cⱼ|` - 1) + 1 ≤ k (by construction of k)
 
 **Verify Circuit:**
 - Circuit C computes φ (by construction)
