@@ -113,16 +113,40 @@
 
 <h3 id="visual-example">Visual Example</h3>
 
-<p>A graph with a 3-clique highlighted:</p>
+<p>A graph showing both a clique and a non-clique:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    |   |
-    3---4---5
-        |
-        6
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        1---2
+        |\ /|     ← Clique {1,2,3}: triangle (all pairs connected)
+        | X |
+        |/ \|
+        3   4---5
+            |     ← Non-clique {4,5,6}: missing edge 5-6
+            6
 </code></pre></div></div>
 
-<p>The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.</p>
+<p><strong>Clique {1, 2, 3} ✓:</strong></p>
+<ul>
+  <li>All three vertices form a complete triangle:
+    <ul>
+      <li>Edge 1-2 exists</li>
+      <li>Edge 1-3 exists</li>
+      <li>Edge 2-3 exists (diagonal)</li>
+    </ul>
+  </li>
+  <li>Since every pair is connected, {1, 2, 3} is a 3-clique ✓</li>
+</ul>
+
+<p><strong>Non-clique {4, 5, 6} ✗:</strong></p>
+<ul>
+  <li>Not all pairs are connected:
+    <ul>
+      <li>Edge 4-5 exists ✓</li>
+      <li>Edge 4-6 exists ✓</li>
+      <li>Edge 5-6 is <strong>missing</strong> ✗</li>
+    </ul>
+  </li>
+  <li>Since 5 and 6 are not connected, {4, 5, 6} is NOT a clique ✗</li>
+</ul>
 
 <h2 id="why-clique-is-in-np">Why Clique is in NP</h2>
 

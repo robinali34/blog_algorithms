@@ -207,10 +207,41 @@
 <h3 id="why-3-sat">Why 3-SAT?</h3>
 
 <ul>
-  <li>3-SAT is also NP-complete (can be proven by reducing SAT to 3-SAT)</li>
+  <li><strong>3-SAT is NP-complete</strong> (can be proven by reducing SAT to 3-SAT)</li>
   <li>Many reductions use 3-SAT as the starting point because of its simpler structure</li>
-  <li>2-SAT (clauses with 2 literals) is actually solvable in polynomial time!</li>
+  <li><strong>2-SAT (clauses with 2 literals) is NOT NP-complete</strong> - it’s actually solvable in polynomial time!</li>
 </ul>
+
+<h3 id="complexity-comparison">Complexity Comparison</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Problem</th>
+      <th>Complexity</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SAT</strong></td>
+      <td>NP-complete</td>
+      <td>General CNF formulas</td>
+    </tr>
+    <tr>
+      <td><strong>3-SAT</strong></td>
+      <td>NP-complete</td>
+      <td>Exactly 3 literals per clause</td>
+    </tr>
+    <tr>
+      <td><strong>2-SAT</strong></td>
+      <td><strong>P (polynomial-time)</strong></td>
+      <td>Solvable in O(n + m) time</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key Insight:</strong> The jump from 2 literals to 3 literals per clause is the boundary between polynomial-time solvability and NP-completeness!</p>
 
 <h2 id="reduction-techniques">Reduction Techniques</h2>
 
@@ -301,12 +332,24 @@
 
 <h3 id="2-sat-special-case">2-SAT Special Case</h3>
 
+<p><strong>2-SAT is NOT NP-complete</strong> - it’s in P (polynomial-time solvable)!</p>
+
 <p><strong>Algorithm:</strong> Build implication graph, check for strongly connected components</p>
 <ul>
   <li><strong>Time Complexity:</strong> O(n + m) using Kosaraju’s or Tarjan’s algorithm</li>
   <li><strong>Space Complexity:</strong> O(n + m)</li>
   <li><strong>Why Polynomial:</strong> 2-SAT has special structure that allows polynomial-time solution</li>
+  <li><strong>Key Method:</strong>
+    <ol>
+      <li>Create implication graph: For clause (a ∨ b), add edges (¬a → b) and (¬b → a)</li>
+      <li>Find strongly connected components (SCCs)</li>
+      <li>Check if any variable and its negation are in the same SCC</li>
+      <li>If no conflict, formula is satisfiable; otherwise unsatisfiable</li>
+    </ol>
+  </li>
 </ul>
+
+<p><strong>Why 2-SAT is easier:</strong> With only 2 literals per clause, the constraint structure is simpler and can be modeled as a graph problem solvable in polynomial time.</p>
 
 <h3 id="verification-complexity">Verification Complexity</h3>
 

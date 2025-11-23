@@ -97,20 +97,37 @@
 <p>Consider the following graph:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    1---2
-    | /|
+    |\ /|
     | X |
     |/ |
     3---4
 </code></pre></div></div>
 
+<p><strong>Edges in the graph:</strong></p>
 <ul>
-  <li>Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})</li>
-  <li>Independent sets of size 2: {1, 4}, {2, 3} (vertices not connected)</li>
-  <li>Independent sets of size 3: None (any three vertices will have at least one edge)</li>
-  <li>Maximum independent set: Size 2 (e.g., {1, 4} or {2, 3})</li>
+  <li>1-2 (top horizontal)</li>
+  <li>1-3 (left diagonal )</li>
+  <li>2-3 (left diagonal /)</li>
+  <li>2-4 (right diagonal )</li>
+  <li>3-4 (bottom horizontal)</li>
+  <li><strong>Note:</strong> 1-4 is NOT connected (no edge between them)</li>
 </ul>
 
-<p>So the independence number \alpha(G) = 2.</p>
+<p><strong>Independent sets:</strong></p>
+<ul>
+  <li>Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})</li>
+  <li>Independent sets of size 2: {1, 4} only
+    <ul>
+      <li>{1, 4} is independent because vertices 1 and 4 are not connected ✓</li>
+      <li>{2, 3} is NOT independent because vertices 2 and 3 are connected ✗</li>
+      <li>All other pairs are connected</li>
+    </ul>
+  </li>
+  <li>Independent sets of size 3: None (any three vertices will have at least one edge)</li>
+  <li>Maximum independent set: Size 2, which is {1, 4}</li>
+</ul>
+
+<p>So the independence number α(G) = 2.</p>
 
 <h3 id="visual-example">Visual Example</h3>
 
