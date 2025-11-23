@@ -36,18 +36,30 @@ Consider the following graph:
 
 ```
     1---2
-    | /|
+    |\ /|
     | X |
     |/ |
     3---4
 ```
 
-- Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})
-- Independent sets of size 2: {1, 4}, {2, 3} (vertices not connected)
-- Independent sets of size 3: None (any three vertices will have at least one edge)
-- Maximum independent set: Size 2 (e.g., {1, 4} or {2, 3})
+**Edges in the graph:**
+- 1-2 (top horizontal)
+- 1-3 (left diagonal \)
+- 2-3 (left diagonal /)
+- 2-4 (right diagonal \)
+- 3-4 (bottom horizontal)
+- **Note:** 1-4 is NOT connected (no edge between them)
 
-So the independence number \alpha(G) = 2.
+**Independent sets:**
+- Independent sets of size 1: Any single vertex (e.g., {1}, {2}, {3}, {4})
+- Independent sets of size 2: {1, 4} only
+  - {1, 4} is independent because vertices 1 and 4 are not connected ✓
+  - {2, 3} is NOT independent because vertices 2 and 3 are connected ✗
+  - All other pairs are connected
+- Independent sets of size 3: None (any three vertices will have at least one edge)
+- Maximum independent set: Size 2, which is {1, 4}
+
+So the independence number α(G) = 2.
 
 ### Visual Example
 

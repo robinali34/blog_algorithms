@@ -116,9 +116,19 @@ The Cook-Levin theorem proves SAT is NP-complete by:
 
 ### Why 3-SAT?
 
-- 3-SAT is also NP-complete (can be proven by reducing SAT to 3-SAT)
+- **3-SAT is NP-complete** (can be proven by reducing SAT to 3-SAT)
 - Many reductions use 3-SAT as the starting point because of its simpler structure
-- 2-SAT (clauses with 2 literals) is actually solvable in polynomial time!
+- **2-SAT (clauses with 2 literals) is NOT NP-complete** - it's actually solvable in polynomial time!
+
+### Complexity Comparison
+
+| Problem | Complexity | Notes |
+|---------|-----------|-------|
+| **SAT** | NP-complete | General CNF formulas |
+| **3-SAT** | NP-complete | Exactly 3 literals per clause |
+| **2-SAT** | **P (polynomial-time)** | Solvable in O(n + m) time |
+
+**Key Insight:** The jump from 2 literals to 3 literals per clause is the boundary between polynomial-time solvability and NP-completeness!
 
 ## Reduction Techniques
 
@@ -189,10 +199,19 @@ Modern SAT solvers use sophisticated techniques (conflict-driven clause learning
 
 ### 2-SAT Special Case
 
+**2-SAT is NOT NP-complete** - it's in P (polynomial-time solvable)!
+
 **Algorithm:** Build implication graph, check for strongly connected components
 - **Time Complexity:** O(n + m) using Kosaraju's or Tarjan's algorithm
 - **Space Complexity:** O(n + m)
 - **Why Polynomial:** 2-SAT has special structure that allows polynomial-time solution
+- **Key Method:** 
+  1. Create implication graph: For clause (a ∨ b), add edges (¬a → b) and (¬b → a)
+  2. Find strongly connected components (SCCs)
+  3. Check if any variable and its negation are in the same SCC
+  4. If no conflict, formula is satisfiable; otherwise unsatisfiable
+
+**Why 2-SAT is easier:** With only 2 literals per clause, the constraint structure is simpler and can be modeled as a graph problem solvable in polynomial time.
 
 ### Verification Complexity
 

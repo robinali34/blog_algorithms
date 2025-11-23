@@ -50,17 +50,31 @@ So the clique number of this graph is 4.
 
 ### Visual Example
 
-A graph with a 3-clique highlighted:
+A graph showing both a clique and a non-clique:
 
 ```
-    1---2
-    |   |
-    3---4---5
-        |
-        6
+        1---2
+        |\ /|     ← Clique {1,2,3}: triangle (all pairs connected)
+        | X |
+        |/ \|
+        3   4---5
+            |     ← Non-clique {4,5,6}: missing edge 5-6
+            6
 ```
 
-The vertices {1, 2, 3} form a clique (all pairwise connected). The vertices {4, 5, 6} do NOT form a clique because 5 and 6 are not connected.
+**Clique {1, 2, 3} ✓:**
+- All three vertices form a complete triangle:
+  - Edge 1-2 exists
+  - Edge 1-3 exists  
+  - Edge 2-3 exists (diagonal)
+- Since every pair is connected, {1, 2, 3} is a 3-clique ✓
+
+**Non-clique {4, 5, 6} ✗:**
+- Not all pairs are connected:
+  - Edge 4-5 exists ✓
+  - Edge 4-6 exists ✓
+  - Edge 5-6 is **missing** ✗
+- Since 5 and 6 are not connected, {4, 5, 6} is NOT a clique ✗
 
 ## Why Clique is in NP
 
