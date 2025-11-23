@@ -82,8 +82,8 @@ To show that Independent Set is NP-complete, we first need to show it's in NP.
 **Independent Set ∈ NP:**
 
 Given a candidate solution (a set of k vertices), we can verify in polynomial time:
-1. Check that the set has at least k vertices: O(k) time
-2. Check that no two vertices in the set are adjacent: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)
+1. Check that the set has at least k vertices: O(n) time (since k ≤ n)
+2. Check that no two vertices in the set are adjacent: O(n²) time (check all pairs, and for each pair, check if an edge exists in O(1) time with an adjacency matrix or O(deg(v)) with an adjacency list)
 
 Since k ≤ n, this verification takes polynomial time in the input size. Therefore, Independent Set is in NP.
 
@@ -300,7 +300,7 @@ Some restricted versions of Independent Set are tractable:
 ### Verification Complexity
 
 **Given a candidate independent set of size k:**
-- **Time Complexity:** O(k^2) - check all pairs for absence of edges
+- **Time Complexity:** O(n²) - check all pairs for absence of edges (since k ≤ n)
 - **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability shows Independent Set is in NP
 

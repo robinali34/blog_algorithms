@@ -38,11 +38,11 @@ This post provides a detailed proof that the Set Cover problem is NP-complete by
 **Verification Algorithm:**
 Given a candidate solution (collection C of at most k sets):
 1. Check that `|C|` ≤ k: O(1) time
-2. Check that C ⊆ S: O(k) time
-3. Compute the union of sets in C: O(∑_{Sᵢ ∈ C} |Sᵢ|) time
+2. Check that C ⊆ S: O(n) time (since k ≤ n)
+3. Compute the union of sets in C: O(∑_{Sᵢ ∈ C} `|Sᵢ|`) time
 4. Check if the union equals U: O(n) time
 
-**Total Time:** O(n + ∑_{Sᵢ ∈ C} |Sᵢ|), which is polynomial in input size.
+**Total Time:** O(n + ∑_{Sᵢ ∈ C} `|Sᵢ|`), which is polynomial in input size.
 
 **Conclusion:** Set Cover ∈ NP.
 

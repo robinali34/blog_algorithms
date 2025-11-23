@@ -47,13 +47,13 @@ This post provides a detailed proof that the Circuit Design problem is NP-comple
 
 **Verification Algorithm:**
 Given a candidate solution (circuit C):
-1. Check that circuit C has size ≤ k: O(k) time
+1. Check that circuit C has size ≤ k: O(n) time (since k ≤ n in typical cases)
 2. Check that C is a valid circuit structure:
-   - Verify gates are properly connected: O(k) time
-   - Verify no cycles (circuit is acyclic): O(k) time
+   - Verify gates are properly connected: O(n) time
+   - Verify no cycles (circuit is acyclic): O(n) time
 3. Evaluate circuit C on all input combinations to verify it computes the desired function:
-   - For each of 2ⁿ input combinations: O(k) time to evaluate
-   - Total: O(2ⁿ · k) time
+   - For each of 2ⁿ input combinations: O(n) time to evaluate
+   - Total: O(2ⁿ · n) time
 
 **Total Time:** O(2ⁿ · k), which is exponential in n but polynomial in the size of the circuit specification (if given as truth table or formula).
 

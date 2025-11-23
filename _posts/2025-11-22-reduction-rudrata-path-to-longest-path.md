@@ -38,11 +38,11 @@ This post provides a detailed proof that the Longest Path problem is NP-complete
 
 **Verification Algorithm:**
 Given a candidate solution (simple path P = v₁, v₂, ..., vₖ):
-1. Check that P is a simple path (no repeated vertices): O(k) time
-2. Check that all edges in P exist in G: O(k) time
+1. Check that P is a simple path (no repeated vertices): O(n) time (since k ≤ n)
+2. Check that all edges in P exist in G: O(n) time (since k ≤ n)
 3. Check that the length of P (number of edges) equals g: O(1) time
 
-**Total Time:** O(k), which is polynomial in input size.
+**Total Time:** O(n), which is polynomial in input size.
 
 **Conclusion:** Longest Path ∈ NP.
 

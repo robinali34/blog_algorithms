@@ -294,7 +294,7 @@ Algorithm: GreedySetCover(U, S)
 4.     best_set = None
 5.     best_new = 0
 6.     for set s in S:
-7.         new = |s - covered|
+7.         new = `|s - covered|`
 8.         if new > best_new:
 9.             best_new = new
 10.            best_set = s

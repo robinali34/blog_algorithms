@@ -107,13 +107,13 @@ Given the formula above and k = 2:
 
 **Verification Algorithm:**
 Given a candidate solution (variable assignment):
-1. Check that at most k variables are true: O(n) time
+1. Check that at most k variables are true: O(n) time (count TRUE variables)
 2. For each clause Cⱼ:
-   - Evaluate the clause: O(1) time
-   - Check if at least one literal is TRUE: O(1) time
-3. Check that all clauses are satisfied: O(m) time
+   - Evaluate the clause: O(`|Cⱼ|`) time (check each literal in the clause)
+   - Check if at least one literal is TRUE: O(`|Cⱼ|`) time
+3. Check that all m clauses are satisfied: O(nm) time (worst case: n literals per clause × m clauses)
 
-**Total Time:** O(n + m), which is polynomial in input size.
+**Total Time:** O(n + nm) = O(nm), which is polynomial in input size.
 
 **Conclusion:** Stingy SAT ∈ NP.
 

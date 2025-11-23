@@ -36,8 +36,8 @@ This post provides a detailed proof that the Maximum Common Subgraph problem is 
 
 **Verification Algorithm:**
 Given a candidate solution (sets V₁' ⊆ V₁ and V₂' ⊆ V₂):
-1. Check that |V₁ \ V₁'| ≥ b: O(1) time
-2. Check that |V₂ \ V₂'| ≥ b: O(1) time
+1. Check that `|V₁ \ V₁'|` ≥ b: O(1) time
+2. Check that `|V₂ \ V₂'|` ≥ b: O(1) time
 3. Construct remaining graphs G₁' and G₂' by deleting V₁' and V₂': O(n₁ + n₂ + m₁ + m₂) time
 4. Check that G₁' and G₂' are isomorphic: O(n²) time using graph isomorphism algorithms
 
@@ -181,9 +181,9 @@ Consider Clique instance:
 
 **Construction Time:**
 - Set G₁ = G: O(1) time
-- Create K_k: O(k²) time (k vertices, k(k-1)/2 edges)
+- Create K_k: O(k²) ≤ O(n²) time (k vertices, k(k-1)/2 edges, since k ≤ n)
 - Set b = k: O(1) time
-- Total: O(k²) time
+- Total: O(n²) time
 
 **Conclusion:** Reduction is polynomial-time.
 

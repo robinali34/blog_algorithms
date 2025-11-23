@@ -41,11 +41,11 @@ NO otherwise.
 **Verification Algorithm:**
 Given a candidate solution (clique C of size k, independent set I of size k):
 1. Check that C has exactly k vertices: O(1) time
-2. Check that all pairs in C are adjacent: O(k²) time
+2. Check that all pairs in C are adjacent: O(n²) time (since k ≤ n)
 3. Check that I has exactly k vertices: O(1) time
-4. Check that no two vertices in I are adjacent: O(k²) time
+4. Check that no two vertices in I are adjacent: O(n²) time (since k ≤ n)
 
-**Total Time:** O(k²), which is polynomial in input size.
+**Total Time:** O(n²), which is polynomial in input size.
 
 **Conclusion:** Clique + Independent Set ∈ NP.
 

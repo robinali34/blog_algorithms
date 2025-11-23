@@ -57,7 +57,7 @@ Given a Rudrata Cycle instance G = (V, E) with n vertices, we construct a TSP in
 
 **Step 1: Create Complete Graph**
 - G' = (V, E') where E' contains all pairs of vertices (complete graph)
-- |E'| = n(n-1)/2
+- `|E'|` = n(n-1)/2
 
 **Step 2: Set Edge Weights**
 - For each edge (u, v) ∈ E (existing edge): w(u, v) = 1

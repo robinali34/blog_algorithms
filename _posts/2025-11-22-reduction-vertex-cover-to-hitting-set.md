@@ -38,10 +38,10 @@ This post provides a detailed proof that the Hitting Set problem is NP-complete 
 Given a candidate solution (hitting set H):
 1. Check that `|H|` ≤ b: O(1) time
 2. For each set Sᵢ:
-   - Check that H ∩ Sᵢ ≠ ∅: O(|Sᵢ|) time
-3. Check all sets: O(∑ᵢ |Sᵢ|) time
+   - Check that H ∩ Sᵢ ≠ ∅: O(`|Sᵢ|`) time
+3. Check all sets: O(∑ᵢ `|Sᵢ|`) time
 
-**Total Time:** O(∑ᵢ |Sᵢ|), which is polynomial in input size.
+**Total Time:** O(∑ᵢ `|Sᵢ|`), which is polynomial in input size.
 
 **Conclusion:** Hitting Set ∈ NP.
 

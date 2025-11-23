@@ -84,7 +84,7 @@ To show that Vertex Cover is NP-complete, we first need to show it's in NP.
 **Vertex Cover ∈ NP:**
 
 Given a candidate solution (a set of at most k vertices), we can verify in polynomial time:
-1. Check that the set has at most k vertices: O(k) time
+1. Check that the set has at most k vertices: O(n) time (since k ≤ n)
 2. Check that every edge has at least one endpoint in the set: O(m) time (iterate through all edges and check if at least one endpoint is in the cover)
 
 Since k ≤ n and we need to check m edges, this verification takes polynomial time in the input size. Therefore, Vertex Cover is in NP.

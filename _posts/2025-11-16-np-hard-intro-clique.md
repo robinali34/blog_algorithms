@@ -83,8 +83,8 @@ To show that Clique is NP-complete, we first need to show it's in NP.
 **Clique ∈ NP:**
 
 Given a candidate solution (a set of k vertices), we can verify in polynomial time:
-1. Check that the set has exactly k vertices: O(k) time
-2. Check that every pair of vertices in the set is connected by an edge: O(k^2) time (check all C(k,2) = (k(k-1))/(2) pairs)
+1. Check that the set has exactly k vertices: O(n) time (since k ≤ n)
+2. Check that every pair of vertices in the set is connected by an edge: O(n²) time (check all pairs, since k ≤ n)
 
 Since k ≤ n, this verification takes polynomial time in the input size. Therefore, Clique is in NP.
 
@@ -256,7 +256,7 @@ Some restricted versions of Clique are tractable:
 ### Verification Complexity
 
 **Given a candidate clique of size k:**
-- **Time Complexity:** O(k^2) - check all pairs
+- **Time Complexity:** O(n²) - check all pairs (since k ≤ n)
 - **Space Complexity:** O(1) additional space
 - This polynomial-time verifiability shows Clique is in NP
 

@@ -35,15 +35,15 @@ This post provides a detailed proof that the Subgraph Isomorphism problem is NP-
 
 **Verification Algorithm:**
 Given a candidate solution (mapping f: V_G → V_H):
-1. Check that f is injective (one-to-one): O(|V_G|) time
-2. Check that f maps V_G into V_H: O(|V_G|) time
+1. Check that f is injective (one-to-one): O(`|V_G|`) time
+2. Check that f maps V_G into V_H: O(`|V_G|`) time
 3. For each edge (u, v) ∈ E_G:
    - Check that (f(u), f(v)) ∈ E_H: O(1) time
 4. Verify that the subgraph H' induced by f(V_G) is isomorphic to G:
-   - Check that for each edge (u, v) ∈ E_G, (f(u), f(v)) ∈ E_H: O(|E_G|) time
-   - Check that for each non-edge (u, v) ∉ E_G, (f(u), f(v)) ∉ E_H: O(|V_G|²) time
+   - Check that for each edge (u, v) ∈ E_G, (f(u), f(v)) ∈ E_H: O(`|E_G|`) time
+   - Check that for each non-edge (u, v) ∉ E_G, (f(u), f(v)) ∉ E_H: O(`|V_G|²`) time
 
-**Total Time:** O(|V_G|²), which is polynomial in input size.
+**Total Time:** O(`|V_G|²`), which is polynomial in input size.
 
 **Conclusion:** Subgraph Isomorphism ∈ NP.
 
@@ -98,7 +98,7 @@ Consider Clique instance:
 - f(V_G) is a k-clique in H
 
 **Verify Satisfaction:**
-- f(V_G) has k vertices (since f is injective and |V_G| = k)
+- f(V_G) has k vertices (since f is injective and `|V_G|` = k)
 - All pairs of vertices in f(V_G) are adjacent in H (since G is complete and f preserves edges)
 - Therefore, f(V_G) is a clique of size k in H
 
@@ -148,7 +148,7 @@ Consider Clique instance:
 
 **Extract Clique:**
 - Let C = f(V_G) = {f(1), f(2), ..., f(k)} be the image of the mapping
-- C has k vertices (since f is injective and |V_G| = k)
+- C has k vertices (since f is injective and `|V_G|` = k)
 - Since G = K_k is complete, for every edge (i, j) in G, we have (f(i), f(j)) ∈ E_H
 - Therefore, all pairs of vertices in C are adjacent in H
 
@@ -175,8 +175,8 @@ Consider Clique instance:
 
 **Construction Time:**
 - Use graph H as is: O(1) time
-- Create K_k: O(k²) time (k vertices, k(k-1)/2 edges)
-- Total: O(k²) time
+- Create K_k: O(k²) ≤ O(n²) time (k vertices, k(k-1)/2 edges, since k ≤ n)
+- Total: O(n²) time
 
 **Conclusion:** Reduction is polynomial-time.
 

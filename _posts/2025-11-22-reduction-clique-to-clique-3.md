@@ -37,9 +37,9 @@ This post provides a detailed proof that the Clique-3 problem is NP-complete by 
 **Verification Algorithm:**
 Given a candidate solution (set C of k vertices):
 1. Check that C has exactly k vertices: O(1) time
-2. Check that all pairs in C are adjacent: O(k²) time
+2. Check that all pairs in C are adjacent: O(k²) ≤ O(n²) time (since k ≤ n)
 
-**Total Time:** O(k²), which is polynomial in input size.
+**Total Time:** O(n²), which is polynomial in input size.
 
 **Conclusion:** Clique-3 ∈ NP.
 
@@ -47,7 +47,7 @@ Given a candidate solution (set C of k vertices):
 
 **Key Insight:** Given a Clique instance, we can reduce it to Clique-3 by replacing high-degree vertices with gadgets that preserve clique structure while ensuring all vertices have degree at most 3. We use a local replacement strategy where each vertex v with degree d > 3 is replaced with a structure that maintains clique relationships.
 
-**Hint:** For a vertex v with neighbors N(v) where |N(v)| > 3, replace v with a chain of vertices connected in a way that distributes the neighbors among the chain vertices, ensuring each vertex in the chain has degree ≤ 3. The clique property is preserved: if v was in a clique, all vertices in its replacement chain are in the corresponding clique.
+**Hint:** For a vertex v with neighbors N(v) where `|N(v)|` > 3, replace v with a chain of vertices connected in a way that distributes the neighbors among the chain vertices, ensuring each vertex in the chain has degree ≤ 3. The clique property is preserved: if v was in a clique, all vertices in its replacement chain are in the corresponding clique.
 
 ### 2.1 Input Conversion
 

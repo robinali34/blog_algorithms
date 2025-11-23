@@ -37,10 +37,10 @@ This post provides a detailed proof that the Sparse Subgraph problem is NP-compl
 **Verification Algorithm:**
 Given a candidate solution (set S of a vertices):
 1. Check that `|S|` = a: O(1) time
-2. Count the number of edges in the subgraph induced by S: O(a²) time
+2. Count the number of edges in the subgraph induced by S: O(n²) time (since a ≤ n)
 3. Check if the count ≤ b: O(1) time
 
-**Total Time:** O(a²), which is polynomial in input size.
+**Total Time:** O(n²), which is polynomial in input size.
 
 **Conclusion:** Sparse Subgraph ∈ NP.
 

@@ -338,7 +338,7 @@ SAT
 
 **Prove Clique is NP-complete:**
 
-1. **Clique ∈ NP:** Given set of k vertices, verify all pairs are connected: O(k²) time
+1. **Clique ∈ NP:** Given set of k vertices, verify all pairs are connected: O(n²) time (since k ≤ n)
 
 2. **Independent Set ≤ₚ Clique:**
    - Given Independent Set instance: graph G, integer k
