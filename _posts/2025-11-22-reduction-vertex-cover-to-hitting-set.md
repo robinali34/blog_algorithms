@@ -36,12 +36,17 @@ This post provides a detailed proof that the Hitting Set problem is NP-complete 
 
 **Verification Algorithm:**
 Given a candidate solution (hitting set H):
-1. Check that `|H|` ≤ b: O(1) time
-2. For each set Sᵢ:
-   - Check that H ∩ Sᵢ ≠ ∅: O(`|Sᵢ|`) time
-3. Check all sets: O(∑ᵢ `|Sᵢ|`) time
+- Let n = number of sets in the family
+- Let m = number of unique elements in the universe U
 
-**Total Time:** O(∑ᵢ `|Sᵢ|`), which is polynomial in input size.
+1. Check that `|H|` ≤ b: O(m) time (need to verify H is a valid set and count its elements)
+2. Create a boolean helper array A of size n (one for each subset), initialized to false: O(n) time
+3. For each element h in H:
+   - For each set Sᵢ (i = 1 to n):
+     - If h ∈ Sᵢ, set A[i] = true: O(nm²) time total (for all h in H and all sets Sᵢ)
+4. Check that all entries in A are true: O(n) time
+
+**Total Time:** O(m + n + nm² + n) = O(nm²), which is polynomial in input size.
 
 **Conclusion:** Hitting Set ∈ NP.
 
